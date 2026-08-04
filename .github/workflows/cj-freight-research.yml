@@ -1,0 +1,64 @@
+name: CJ freight and sourcing research
+
+# Read-only. Measures how CJ actually charges freight (carrier menus, quantity
+# scaling, multi-item baskets, warehouse geography) and hunts replacement
+# products for the ones the pricing study found unsellable. Commits the JSON.
+#
+# Trigger: push a change to config/research_freight.py on a claude/** branch.
+# The results commit only touches docs/qa/freight-research.json, so it cannot
+# retrigger itself.
+
+on:
+  push:
+    branches: ['claude/**']
+    paths: ['config/research_freight.py']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Recreate CJ credential file from encrypted secrets
+        env:
+          CJ_EMAIL:    ${{ secrets.CJ_EMAIL }}
+          CJ_API_KEY:  ${{ secrets.CJ_API_KEY }}
+          CJ_API_BASE: ${{ secrets.CJ_API_BASE }}
+        run: |
+          set -euo pipefail
+          for v in CJ_EMAIL CJ_API_KEY CJ_API_BASE; do
+            if [ -z "${!v}" ]; then
+              echo "::error::Missing repository secret: $v"; exit 1
+            fi
+          done
+          printf 'CJ_EMAIL=%s\nCJ_API_KEY=%s\nCJ_API_BASE=%s\n' \
+            "$CJ_EMAIL" "$CJ_API_KEY" "$CJ_API_BASE" > config/cj.env
+
+      - name: Run the freight study
+        run: |
+          mkdir -p docs/qa
+          python config/research_freight.py docs/qa/freight-research.json
+
+      - name: Remove credential files
+        if: always()
+        run: rm -f config/cj.env config/cj_token.json
+
+      - name: Commit results to this branch
+        if: always()
+        run: |
+          git config user.name 'wagvive-ops'
+          git config user.email 'hello@wagvive.com'
+          git add docs/qa/freight-research.json || true
+          git diff --cached --quiet && { echo 'nothing to commit'; exit 0; }
+          git commit -m "research: CJ freight mechanics and replacement candidates"
+          git pull --rebase origin "${{ github.ref_name }}"
+          git push origin "HEAD:${{ github.ref_name }}"
