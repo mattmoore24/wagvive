@@ -115,11 +115,22 @@ For CJ API reads without credentials, dispatch the `cj-image-refs` workflow
 route work through the Actions job. Pricing changes should still be computed
 against `config/pricing.py` logic before any write.
 
-**Queued for the next home PC session:** #67 and #67a (pair 41 new size
-variants, then price and create them), plus anything in #70 if wanted. #57
-(NY tax filing) and #64 (CJ DDP ticket) are also owner actions waiting.
+**Queued for the next home PC session**, quickest first:
+
+1. **#71, theme copy fixes.** About 5 minutes in the theme editor. Four dashes
+   and a wrong "Care & use" block, on every product page. Exact find and
+   replace text: `docs/qa/theme-copy-fixes.md`. Claude is blocked from live
+   theme writes, so this can only be done by hand.
+2. **#67 and #67a**, the big one. Pair 41 new size variants in the CJ browser
+   app (SKU list: appendix of `docs/qa/variant-audit-2026-08.md`), then Claude
+   prices them against the 50% floor and creates them, and the sofa cover size
+   labels get renamed in the same pass.
+3. **#70** if wanted, larger wipe counts, same pairing mechanics as #67.
+4. **#57** (NY tax filing) and **#64** (CJ DDP ticket) are owner actions that
+   have been waiting a while and do not depend on being at the PC.
 
 **Home PC only:** CJ UI work (pairing, sync settings — no API exists),
+theme editor work (Claude's live theme writes are refused by policy),
 Shopify admin settings screens (do not render in background tabs), visual
 storefront QA in the user's logged-in Chrome, and anything needing
 `config/shopify.env` / `config/cj.env` which live only there.
