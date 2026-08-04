@@ -1,11 +1,23 @@
 name: Fetch CJ reference images
 
 # Read-only QA helper: pulls a CJ product's record and images so a session
-# without CJ credentials can compare our generated imagery against the real
-# product. Commits the files to the branch it was dispatched on. Touches
-# nothing in Shopify or CJ beyond authenticated reads.
+# without CJ credentials (e.g. claude.ai/code) can compare our generated
+# imagery against the real product. Touches nothing in Shopify or CJ beyond
+# authenticated reads; commits the fetched files back to the same branch.
+#
+# Trigger: commit docs/qa/request.json to a claude/** branch, e.g.
+#   {"sku": "CJYD275409401AZ", "label": "dematting",
+#    "shopify_image_url": "https://cdn.shopify.com/...png"}
+# (workflow_dispatch by filename only works once this file is on the default
+# branch — the push trigger is what makes it usable from feature branches.)
+#
+# No retrigger loop: the results commit only adds docs/qa/<label>/ files and
+# the paths filter below only matches docs/qa/request.json.
 
 on:
+  push:
+    branches: ['claude/**']
+    paths: ['docs/qa/request.json']
   workflow_dispatch:
     inputs:
       sku:
@@ -30,6 +42,24 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Resolve parameters (dispatch inputs or docs/qa/request.json)
+        id: params
+        run: |
+          set -euo pipefail
+          if [ -n "${{ inputs.sku || '' }}" ]; then
+            echo "sku=${{ inputs.sku }}"                         >> "$GITHUB_OUTPUT"
+            echo "label=${{ inputs.label }}"                     >> "$GITHUB_OUTPUT"
+            echo "shopify_url=${{ inputs.shopify_image_url }}"   >> "$GITHUB_OUTPUT"
+          else
+            python - <<'EOF' >> "$GITHUB_OUTPUT"
+          import json
+          r = json.load(open('docs/qa/request.json'))
+          print(f"sku={r['sku']}")
+          print(f"label={r['label']}")
+          print(f"shopify_url={r.get('shopify_image_url','')}")
+          EOF
+          fi
+
       - name: Recreate CJ credential file from encrypted secrets
         env:
           CJ_EMAIL:    ${{ secrets.CJ_EMAIL }}
@@ -48,9 +78,9 @@ jobs:
       - name: Fetch product record and images
         run: |
           python config/fetch_cj_refs.py \
-            "${{ inputs.sku }}" \
-            "docs/qa/${{ inputs.label }}" \
-            "${{ inputs.shopify_image_url }}"
+            "${{ steps.params.outputs.sku }}" \
+            "docs/qa/${{ steps.params.outputs.label }}" \
+            "${{ steps.params.outputs.shopify_url }}"
 
       - name: Remove credential files
         if: always()
@@ -60,7 +90,8 @@ jobs:
         run: |
           git config user.name 'wagvive-ops'
           git config user.email 'hello@wagvive.com'
-          git add docs/qa/
+          git add "docs/qa/${{ steps.params.outputs.label }}"
           git diff --cached --quiet && { echo 'nothing to commit'; exit 0; }
-          git commit -m "QA: CJ reference images for ${{ inputs.label }} (${{ inputs.sku }})"
+          git commit -m "QA: CJ reference images for ${{ steps.params.outputs.label }} (${{ steps.params.outputs.sku }})"
+          git pull --rebase origin "${{ github.ref_name }}"
           git push origin "HEAD:${{ github.ref_name }}"
