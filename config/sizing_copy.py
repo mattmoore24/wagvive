@@ -242,3 +242,51 @@ COPY['wagvive-anti-spill-floating-water-bowl'] = (
         ])
     + '<!--wagvive-bundle-upsell--><hr>'
 )
+
+
+# --------------------------------------------------------- dental/ear wipes
+# Not a sizing product, but the same problem: the page sold two different
+# products under one listing and the copy only described one of them. The
+# variant images point at the matching tub and the gallery is ordered
+# dental tub, dental in use, ear tub, ear in use, so selecting a variant lands
+# on the right pair. Shopify only supports one featured image per variant, so
+# the gallery cannot be filtered per variant without a theme change.
+COPY['wagvive-ear-teeth-cleaning-wipes'] = (
+    '<p><strong>A wipe is the version of dental and ear care that actually '
+    'happens.</strong></p>'
+    '<p>Two separate tubs of finger wipes, one for teeth and one for ears. You pull a '
+    'wipe over a finger, clean, and throw it away. No paste to spit out, no bottle of '
+    'solution, no brushing standoff. For most dogs it is the difference between a '
+    'routine you keep and one you abandon in week two.</p>'
+    '<h3>Which one do you need?</h3>'
+    '<p>These are two different products, so choose the tub that matches the job. They '
+    'are not interchangeable: the ear wipe is not made for the mouth, and the dental '
+    'wipe is not made for the ear canal.</p>'
+    + table(
+        ['Choose', 'What it does', 'How often'],
+        [
+            ['<strong>Dental wipes (50)</strong>',
+             'A textured wipe that scrubs along the gum line to lift plaque and freshen '
+             'breath before it hardens into tartar.',
+             'A few times a week. Little and often beats a perfect daily plan you give '
+             'up on.'],
+            ['<strong>Ear wipes (50)</strong>',
+             'A softer, smoother wipe for the outer ear and the folds you can see, '
+             'clearing wax and grime that would otherwise build up.',
+             'About once a week. Floppy eared breeds and swimmers usually need it more '
+             'often.'],
+        ])
+    + '<ul>'
+      '<li>50 wipes per tub</li>'
+      '<li>Fits over a finger, so you can feel what you are doing</li>'
+      '<li>Single use, so nothing is carried between sessions or between ears</li>'
+      '<li>No rinsing, no water, nothing to wipe off afterwards</li>'
+      '</ul>'
+      '<p><strong>How to use them.</strong> Slide one wipe over your index finger. For '
+      'teeth, lift the lip and work along the outer surfaces where plaque collects, back '
+      'to front. For ears, lift the ear flap and clean only the part you can see. Never '
+      'push into the ear canal.</p>'
+      '<p>Wipes clean what is already there. If you see persistent redness, discharge, '
+      'swelling or a strong odour, that is a vet visit rather than a wipe.</p>'
+    + DELIVERY
+)
