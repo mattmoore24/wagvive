@@ -162,25 +162,279 @@ what `config/research_kits.py` does before recommending anything.
 
 ## 3. Delivered price: the comparison the pricing study did not make
 
-<!-- DELIVERED -->
+The pricing study compared our item price against market prices. Amazon and
+Chewy prices are **delivered** prices, and on any order under $60 our customer
+also pays $5.95 for shipping. So the comparison was item-against-delivered, and
+it was unfair to us in one direction and to the customer in the other.
+
+`config/delivered_price.py` redoes it like for like. Delivered price is item plus
+whatever shipping the customer pays; the floor is the delivered price at which a
+product clears a given margin after real freight, duty, returns and card fees.
+
+**30 of 36 products clear 15% at the market delivered price, and 25 clear 25%.**
+The pricing study's count of nine unsellable products was too harsh, and it named
+the wrong nine.
+
+### The six that genuinely cannot work
+
+| Product | Cost | Freight | Floor at 15% | Market delivered | Margin at market |
+|---|---|---|---|---|---|
+| Crinkle Plush Buddy | $3.48 | $5.35 | $12.35 | $8.00 | **-29.5%** |
+| Waterproof Snuggle Blanket, 1,220g | $10.71 | $18.63 | $39.96 | $29.95 | **-12.4%** |
+| Dental & Ear Wipes | $1.62 | $12.38 | $18.38 | $13.99 | **-10.7%** |
+| Anti-Spill Floating Water Bowl, 1,833g | $11.69 | $26.59 | $51.45 | $40.00 | **-8.4%** |
+| Waterproof Sofa & Furniture Cover, 1,340g | $11.28 | $20.19 | $42.78 | $39.99 | +9.3% |
+| Squirrel Squeaky Plush | $6.12 | $5.65 | $16.71 | $16.23 | +12.6% |
+
+Four of the six are heavy or restricted, which is the same finding as section 2
+seen from the demand side. The **Dental & Ear Wipes** is the one to look at
+first: it is live at $22.00 today, it was healthy in the July economics, and it
+broke purely because CJ's liquid-carrier freight went from $7.88 to $12.38 in a
+month. It is the only product in the catalogue currently listed above a price it
+cannot sustain.
+
+### The ones the pricing study wrote off that are actually fine
+
+| Product | Verdict then | Margin at market delivered, now |
+|---|---|---|
+| Self-Cleaning Slicker Brush | Re-source or drop | **43.4%** |
+| Lick Bowl with Ball | Bundle only | 19.6% |
+| Dental Duck Chew Toy | Bundle only | 18.2% |
+| Woodland Rope-Limb Plush | Bundle only | 17.5% |
+| Rope-Limb Puppy Plush | Bundle only | 15.7% |
+| Screaming Chicken | Bundle only | 15.5% |
+
+The slicker brush turnaround is not the delivered-price change, it is section
+7.1: it was being costed against a freight quote that does not exist. On real
+freight it is a 43% product and needs no re-sourcing at all. The other five clear
+15% but only just, so they are fair game for the kits rather than the shop front.
+
+### The number that should drive merchandising
+
+The last column of `docs/qa/delivered-price.json` is what each product costs to
+**add to a parcel that is already going out**: goods, duty, returns and the
+weight-share of freight, with no fixed parcel cost at all.
+
+| Product | Alone | Added to an existing parcel | Sells for |
+|---|---|---|---|
+| Finger Toothbrush | $6.88 floor | **$0.81** | $13.99 |
+| LED Waste Bag Dispenser | $8.02 | **$1.82** | $11.99 |
+| Watermelon Rope Frisbee | $8.65 | **$2.31** | $14.99 |
+| Sneaker Chew Buddy | $9.39 | **$2.94** | $16.99 |
+| Barnyard Squeaker | $9.59 | **$3.02** | $15.99 |
+| Talk Button | $9.79 | **$3.19** | $22.00 |
+
+A $2.31 frisbee attached to an order already in the box, sold at $14.99, is a
+better piece of business than almost anything else available to this store. That
+is the case for kits, for cross-sell, and for a free-shipping progress bar, all
+in one line.
 
 ---
 
 ## 4. The five kits as they stand today
 
-<!-- KIT_TABLE -->
+**The open question is settled: CJ ships all five kits as ONE parcel.** Every
+one returned a combined quote. `config/research_kits.py` quoted each live kit's
+exact composition against CJ; these are real quotes, not the fitted formula.
+
+| Kit | Price | Goods | Weight | Separate parcels | **One parcel** | Saving | Margin |
+|---|---|---|---|---|---|---|---|
+| New Puppy Kit | $79.00 | $6.68 | 352g | $17.28 | **$9.85** | $7.43 | **73.2%** |
+| Toy Kit | $65.00 | $8.27 | 368g | $21.83 | **$8.50** | $13.33 | **67.2%** |
+| Travel Kit | $77.00 | $12.23 | 525g | $23.80 | **$12.83** | $10.97 | **59.7%** |
+| Grooming Essentials Kit | $85.00 | $16.90 | 451g | $23.55 | **$11.00** | $12.55 | **58.6%** |
+| Dog Enrichment Kit | $98.00 | $19.59 | 2,429g | $48.13 | **$45.42** | $2.71 | **24.1%** |
+
+Four of the five are in good health and need no change at all. The kits are
+already doing the job the study says they should: consolidation is worth $46.99
+across the five, and the Toy Kit alone saves $13.33 of freight on a $65 order.
+
+**The Dog Enrichment Kit is broken.** At $98 it returns 24.1%, and it would need
+**$137.38** to clear 45%. The cause is one component: the Anti-Spill Floating
+Water Bowl is 1,833g of the kit's 2,429g and drags the whole parcel onto a
+freight bill of $45.42. Consolidation saves only $2.71 here, because at that
+weight there is barely any fixed cost left to share. This is the same product
+that fails as a single at -8.4%, and it fails in both places for the same reason.
+
+One caveat on the Grooming kit's $11.00 quote: it came back on "Yunexpress CN to
+US", the same line that produced the $3.00 placeholders in section 7.1. At 451g
+the fitted line says $9.78, so $11.00 is plausible and it passes the credibility
+test. It is still the one number here I would want confirmed by a real order.
 
 ---
 
 ## 5. Kit redesigns
 
-<!-- KIT_DESIGNS -->
+Every on-theme combination of three and four products was scored against the
+fitted freight model, and the leaders in each theme were then **quoted live at
+CJ**. What follows is the quoted number, not the predicted one. Kit prices are
+20% off the sum of the components' own recommended single prices, which is the
+middle of what the pricing study found shoppers expect from a set.
+
+### Dog Enrichment Kit: rebuild, this is the urgent one
+
+Drop the Anti-Spill Floating Water Bowl. Best on-theme replacement, quoted:
+
+| Composition | Price | Freight | Margin | Contribution |
+|---|---|---|---|---|
+| Slow Feeder Bowl + Lick Bowl with Ball + Talk Button + Sneaker Chew Buddy | **$52.99** | $14.47 | **47.0%** | $24.91 |
+| Slow Feeder Bowl + Lick Bowl + Bouncy Egg Squeaker + Sneaker Chew Buddy | $49.99 | $12.39 | 47.0% | $23.51 |
+| Slow Feeder Bowl + Talk Button + Bouncy Egg Squeaker + Sneaker Chew Buddy | $45.99 | $14.52 | 47.0% | $21.63 |
+
+The first is the pick: it keeps the two feeders and the talk button, which is
+what "enrichment" means, and swaps the water bowl for a chew toy. Margin goes
+from 24.1% to 47.0%. The price falls from $98 to $52.99, which is a large drop,
+but $98 was never a price this kit could hold and $52.99 sits inside the $55 to
+$110 pet AOV band while still qualifying for free shipping at $60 if a single
+item is added.
+
+### New Puppy Kit: keep the economics, fix the theme
+
+At 73.2% the current kit is the healthiest thing in the catalogue, so there is
+no financial case for changing it. There is an editorial one: a **Cooling
+Comfort Pad** is not a new-puppy product, and the kit has only three items
+against four in the others. The best on-theme four, quoted:
+
+| Composition | Price | Freight | Margin |
+|---|---|---|---|
+| Finger Toothbrush + LED Waste Bag Dispenser + Heartbeat Soothing Sloth + Jingle Plush Ball | **$67.99** | $15.07 | **53.7%** |
+
+A heartbeat plush is exactly the right object for a puppy's first nights, and it
+is one of the highest-contribution products we sell. The trade is 73.2% on three
+items against 53.7% on four that actually tell the story. Contribution per kit
+is $36.54 against the current kit's $57.82, so **on pure economics, keep what is
+there**. Change it only if the puppy kit is meant to be a story rather than a
+margin engine.
+
+### Toy Kit and Travel Kit: keep, with an optional swap
+
+Both are healthy. If you want more contribution per order without touching
+anything else:
+
+| Kit | Alternative composition | Price | Margin | Contribution |
+|---|---|---|---|---|
+| Toy | Big Squeak Plush + Jingle Plush Ball + Sneaker Chew Buddy + Corduroy Squeak Pals | $64.99 | 59.6% | $38.74 |
+| Travel | Watermelon Rope Frisbee + Quick-Dry Bath Robe + Paw Washing Cup + Cooling Comfort Pad | $65.99 | **62.9%** | **$41.54** |
+
+The Travel alternative is the strongest kit in the whole study on contribution,
+and it drops the Travel Water Bottle, which is our third most expensive product
+at $6.92. Whether a travel kit can credibly omit the water bottle is a
+merchandising call, not a numbers one.
+
+### Grooming Essentials Kit: keep, or trade $85 for $70.99
+
+The live kit is fine at 58.6%. The best alternative is $70.99 at 55.9% with
+$39.68 of contribution against the current kit's $49.80, so the current kit
+wins on money. Keep it.
+
+### Calm & Comfort Kit: the one worth adding
+
+The Heartbeat Soothing Sloth, the Calming Thunder Wrap and the two blankets are
+four of the highest-contribution products in the catalogue and **none of them is
+in any kit**. Quoted:
+
+| Composition | Price | Weight | Freight | Margin | Contribution |
+|---|---|---|---|---|---|
+| Heartbeat Sloth + Thunder Wrap + Paw Print Fleece Blanket + Cooling Comfort Pad | **$100.99** | 1,340g | $20.19 | **53.0%** | **$53.52** |
+| Heartbeat Sloth + Thunder Wrap + Cooling Comfort Pad | $85.99 | 1,120g | $17.34 | 51.3% | $44.10 |
+| Thunder Wrap + Paw Print Fleece Blanket + Cooling Comfort Pad | $67.99 | 850g | $13.83 | 55.4% | $37.68 |
+
+$53.52 of contribution is more than any existing kit. The four-item version at
+$100.99 is above the $55 to $110 pet AOV band's midpoint, so the $85.99 three-item
+version is the safer opening move.
+
+Do **not** add the Waterproof Snuggle Blanket to it. Quoted with it in, the kit
+goes to 2,340g and $32.15 of freight, and margin falls to 33.6%.
+
+### Two composition rules the quotes established
+
+1. **Never put the Anti-Spill Floating Water Bowl in a kit.** At 1,833g it
+   consumes the entire consolidation saving and then some.
+2. **Never pair the Slow Feeder Bowl with a bulky plush.** Four New Puppy
+   candidates containing both quoted **$42.28 to $48.91** of freight at only 840
+   to 908g, because the combined dimensions force a "CJPacket Ordinary Over
+   Length" line. That is five times what the weight alone predicts, and it is the
+   clearest evidence in the study that **dimensional weight, not just mass, sets
+   the carrier**. The same bowl sits happily in the Enrichment kit at $14.47
+   alongside flat items.
 
 ---
 
 ## 6. Replacements for the products that cannot work
 
-<!-- REPLACEMENTS -->
+Scored at the owner's new floor: 15% target, 10% hard minimum, real freight, and
+the product's own market delivered ceiling. Candidates are ranked by margin at
+that ceiling. Every one still needs the images eyeballed against the CJ
+reference before it goes anywhere near the store, and a duplicate-SPU check
+against `sku[:11]` across the catalogue.
+
+### Squirrel Squeaky Plush, ceiling $16.23, currently 12.6%
+
+| Candidate | CJ SPU | Cost | Freight | Margin at ceiling |
+|---|---|---|---|---|
+| Squeaky Dog Toys For Aggressive Chewers, Durable Stuffed, 70g | CJPT2915091 | $3.04 | $5.09 | **39.6%** |
+| Squeaky Stuffed Dog Toy Small, No-Stuffing Crinkle Paper, 68g | CJPT2913504 | $3.37 | $5.05 | 37.3% |
+
+Both are half the weight of the incumbent's 112g at a similar cost, and both
+turn a 12.6% product into a high-thirties one. Straight swap.
+
+### Lick Bowl with Ball, ceiling $19.00, currently 19.6%
+
+| Candidate | CJ SPU | Cost | Freight | Margin at ceiling |
+|---|---|---|---|---|
+| Portable Household Silicone Pet Feeding Mat, 172g | CJYD2951433 | $0.86 | $6.48 | **54.6%** |
+| Multifunctional Solid-Color Silicone Pet Feeding Bowl, 230g | CJYD2985999 | $1.88 | $6.71 | 46.7% |
+
+The incumbent is $5.00 of goods at 328g. A silicone lick mat does the same job
+for $0.86 at 172g and nearly triples the margin. Worth doing even though the
+incumbent technically clears 15%.
+
+### Anti-Spill Floating Water Bowl, ceiling $18.00, currently -8.4%
+
+| Candidate | CJ SPU | Cost | Freight | Margin at ceiling |
+|---|---|---|---|---|
+| Slow-feeding Anti-choking And Non-slip Pet Bowl, 335g | CJYD2888211 | $1.74 | $8.07 | **37.1%** |
+| Slow-feeding Bowl Silicone, 304g | CJYD2931138 | $2.99 | $7.66 | 30.9% |
+
+Be clear about what this is: **there is no viable anti-spill floating water bowl
+at CJ under an $18 ceiling.** Everything in that shape is 800g and up, and at
+those weights the freight is fatal. The candidates above are lighter silicone
+bowls, which is a different product serving a different need. So this is a
+replacement of the *slot*, not of the *product*, and it overlaps what the Slow
+Feeder Bowl already does. The honest recommendation is to **drop the category**
+rather than replace it.
+
+### Self-Cleaning Slicker Brush, ceiling $29.99
+
+**No replacement needed.** On corrected freight it returns 43.4% at market. The
+pricing study's "re-source or drop" verdict was an artifact of the $3.00
+placeholder quote. Cheaper candidates exist at 74% to 80% if you ever want them,
+but there is no problem to solve here.
+
+### Crinkle Plush Buddy, ceiling $8.00
+
+**Nothing works, and nothing can.** The best candidate found was $2.08 of goods
+at 130g, which needs $10.93 delivered against an $8.00 ceiling: -15.0%. The
+cheapest thing in CJ's plush category still lands above what the market pays,
+because a $4.43 parcel plus $1.55 of weight is already $6 before the toy. Drop
+it. This is the one product where "no supplier can fix this" is literally true.
+
+### The three still open
+
+The scan did not produce a usable answer for these, and they need a targeted
+follow-up rather than a guess:
+
+- **Dental & Ear Wipes.** The problem is liquid-carrier freight at $12.38 on
+  354g, not the product. Two things to try before dropping it: a smaller pack
+  (the current one is 50 wipes per box and the weight scales with it) and a
+  US-warehouse source, since section 8 shows US-stocked cleaning wipes exist at
+  CJ. Note that CJ lists this product as disposable single-use wet wipes, so a
+  30-count pack is a legitimate size rather than a downgrade.
+- **Waterproof Snuggle Blanket**, 1,220g, and **Waterproof Sofa & Furniture
+  Cover**, 1,340g. Both are heavy fabric goods where China air freight is
+  structurally wrong. These are the two products in the catalogue where a US
+  supplier or a US-warehouse CJ source would genuinely change the answer, and
+  section 9 explains why that is the only place it does.
 
 ---
 
@@ -222,7 +476,49 @@ treated as the thing that catches this, not as a formality.
 
 ## 8. Non-China options inside CJ
 
-<!-- US_WAREHOUSE -->
+Yes, CJ has them, and the first pass missed them by looking for the wrong thing.
+
+The catalogue scan inferred US stock from the `CJBQ` SKU prefix, the way
+`config/scout.py` always has, and found **none of our 36 products** in a US
+warehouse. That is correct as far as it goes. But `/product/list` accepts a
+`countryCode` parameter, and it works: the plush toy category returns **350
+products plain and 70 with `countryCode=US`**. One product in five is US-stocked
+and the prefix test never sees them.
+
+Quoting 30 US-stocked candidates from both warehouses shows where it matters:
+
+| Product | Weight | US freight | China freight | Price advantage at 15% |
+|---|---|---|---|---|
+| Pet Water Dispenser | 1,500g | $17.08 | $27.43 | **$16.85** |
+| Professional Low Noise Pet Hair Clipper | 534g | $10.09 | $12.98 | $5.74 |
+| Traveling Out Portable Dog Water Dispenser | 484g | $9.74 | $10.01 | $1.99 |
+| Waterproof Silicone Spot Pet Mat | 562g | $10.29 | $11.02 | $1.92 |
+| Pet Water Cup Outdoor Portable Bottle | 220g | $6.76 | $6.57 | -$0.19 |
+
+The advantage combines cheaper carriage with the 20% duty that a US-warehoused
+item does not pay again. And it is **entirely a function of weight**. Above
+about 500g the US warehouse is meaningfully cheaper; below 250g it is a wash or
+slightly worse.
+
+That maps exactly onto our problem list. The three heavy products the delivered
+price analysis kills, the **snuggle blanket at 1,220g**, the **sofa cover at
+1,340g** and the **anti-spill bowl at 1,833g**, are precisely the goods a US
+warehouse fixes, and the toys it would not help at all.
+
+Two cautions before treating this as solved:
+
+1. The stock rows for many `countryCode=US` results still read `CN`, so the
+   filter appears to mean "available to be stocked in the US" as much as
+   "currently sitting in a US warehouse". A candidate has to be checked
+   individually.
+2. Several genuinely US-stocked items returned no usable US quote and fell back
+   to the estimate, marked `us_estimated` in the data. Those numbers are
+   planning figures, not prices.
+
+**The follow-up worth running** is a `countryCode=US` scan restricted to
+Blankets and quilts, Pet mats and Pet bowls, hunting a US-stocked equivalent of
+the three heavy failures. That is a 15 minute job and it is the highest-value
+sourcing question left open.
 
 ---
 
@@ -329,4 +625,62 @@ catalogue, and do not sign a 3PL.
 
 ## 10. What to do, ranked
 
-<!-- ACTIONS -->
+Nothing below has been applied. Ranked by money at stake, not by effort.
+
+### Do first, because a live product is losing money
+
+1. **Rebuild the Dog Enrichment Kit.** It is live at $98 returning 24.1%, and it
+   needs $137.38 to clear 45%. Drop the Anti-Spill Floating Water Bowl, use Slow
+   Feeder Bowl + Lick Bowl with Ball + Talk Button + Sneaker Chew Buddy, price
+   **$52.99** for 47.0%. Biggest single correction in the study.
+2. **Fix the Dental & Ear Wipes.** Live at $22.00 with a delivered floor of
+   $18.38 against a $13.99 market. CJ's liquid freight went from $7.88 to $12.38
+   in a month and took the product with it. Either source a smaller pack, find a
+   US-warehouse equivalent, or withdraw it. Do not leave it at $22.00.
+3. **Reprice the Self-Cleaning Slicker Brush and the Cordless Paw Trimmer on
+   real freight.** Both were costed against a $3.00 placeholder. The brush is
+   fine at 43.4%; the trimmer drops to 35.1%. Neither needs dropping, but the
+   numbers in `docs/qa/pricing-recommendations.json` for these two are wrong and
+   should be recomputed before the repricing pass (#74) runs.
+
+### Do next, because they are pure upside
+
+4. **Add a free-shipping progress bar.** With $4.43 of fixed parcel cost, every
+   item a customer adds to reach $60 costs us $1 to $3 to ship and sells for $12
+   to $22. Independent benchmarks put the progress bar at an 8 to 14% conversion
+   lift on top of the free-shipping effect, and it is described as the single
+   most reliable AOV lever in ecommerce. Nothing else in this study has that
+   ratio of effort to return. Keep the threshold at $60: it sits inside the $55
+   to $110 pet AOV band, above every single item, and below every kit.
+5. **Launch the Calm & Comfort Kit** at $85.99 for three items, 51.3%, $44.10 of
+   contribution. Four of our best products are currently in no kit at all.
+6. **Swap in the two clear replacement wins**: the Squirrel Squeaky Plush for
+   CJPT2915091 (12.6% to 39.6%) and the Lick Bowl with Ball for the silicone
+   feeding mat CJYD2951433 (19.6% to 54.6%).
+
+### Do when convenient
+
+7. **Drop the Crinkle Plush Buddy and the Anti-Spill Floating Water Bowl.**
+   Neither can be fixed by price or by re-sourcing, and the bowl now fails in the
+   kit as well as on its own.
+8. **Run the US-warehouse scan on the heavy categories** (section 8) to hunt
+   sources for the snuggle blanket and the sofa cover. Fifteen minutes of API
+   time, and it is the only route that changes the answer for those two.
+9. **Open the CJ ticket on duty** (task #64). CJ's freight quote is provably
+   value-independent, so it contains no ad-valorem tariff. Whether the 20% in
+   `pricing.py` is being billed elsewhere or is pure conservatism is worth 20% of
+   product cost on every order, and it is one support message.
+10. **Treat the margin guard as the thing that catches freight drift.** Two
+    products moved 57% and 72% in a month. Prices set against a freight quote
+    have a shelf life.
+
+### Do not do
+
+11. **Do not switch suppliers.** US dropship wholesalers raise landed cost on
+    everything except heavy goods, and charge $35 to $60 a month for the
+    privilege. The one exception worth a look is a zero-fee US supplier for the
+    heavy fabric items, and opening that account needs your tax ID.
+12. **Do not sign a 3PL.** $10 to $14 per order all-in plus a $500-plus monthly
+    minimum, against a store with no order volume to spread it over.
+13. **Do not buy bulk inventory speculatively.** Revisit it for one product
+    only, once that product is selling more than about 20 units a month.

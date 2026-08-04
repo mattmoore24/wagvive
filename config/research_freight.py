@@ -71,6 +71,15 @@ CATS = {
 REPLACE = [
     {'for': 'Crinkle Plush Buddy',        'cat': 'Plush toys',
      'ceiling': 8.00,  'match': r'crinkle|plush|squeak'},
+    # Added on the second pass. The delivered-price analysis put these three
+    # below their own floor, two of them because they are heavy and one because
+    # CJ's freight on liquids jumped 57% in a month.
+    {'for': 'Dental & Ear Wipes',         'cat': 'Towels',
+     'ceiling': 13.99, 'match': r'wipe|cleaning|grooming|deodoriz'},
+    {'for': 'Waterproof Snuggle Blanket', 'cat': 'Blankets and quilts',
+     'ceiling': 29.95, 'match': r'blanket|quilt|waterproof|throw|sherpa|flannel'},
+    {'for': 'Waterproof Sofa & Furniture Cover', 'cat': 'Pet mats',
+     'ceiling': 39.99, 'match': r'sofa|couch|furniture|cover|mat|pad|waterproof'},
     {'for': 'Dental Duck Chew Toy',       'cat': 'Chew toys',
      'ceiling': 10.99, 'match': r'dental|chew|clean.*teeth|toothbrush'},
     {'for': 'Woodland Rope-Limb Plush',   'cat': 'Plush toys',
@@ -92,9 +101,22 @@ REPLACE = [
 # Species and formats that are not this catalogue. "Scalp", "eyebrow" and
 # "seaming" caught human grooming tools sitting in CJ's pet comb category on the
 # first pass; "self pickup" items are warehouse collection only and cannot ship.
-REJECT = re.compile(r'kitten|litter box|bird|fish|hamster|rabbit|reptile|'
+REJECT = re.compile(r'kitten|litter|bird|fish|hamster|rabbit|reptile|'
                     r'aquarium|parrot|costume|human|scalp|eyebrow|seaming|'
-                    r'self pickup|wig|eyelash|beard|nail art', re.I)
+                    r'self pickup|wig|eyelash|beard|nail art|catnip|'
+                    r'\bcat\b|cats\b|feline|\bfor cats\b', re.I)
+
+# ...but keep a listing that names cats only alongside dogs, which is most of
+# CJ's catalogue and perfectly sellable to dog owners.
+KEEP_ANYWAY = re.compile(r'dog|puppy|pet\b', re.I)
+
+
+def off_catalogue(name):
+    """True when a listing is for a species or a market we do not serve."""
+    if not REJECT.search(name):
+        return False
+    # "Cat And Dog Comb" is fine. "Elevated Cat Bowls Set" is not.
+    return not KEEP_ANYWAY.search(name)
 
 
 def log(msg):
@@ -406,7 +428,7 @@ def phase_d(out):
         pool = [p for p in listings.values()
                 if p.get('_cat') == brief['cat']
                 and pat.search(name(p))
-                and not REJECT.search(name(p))
+                and not off_catalogue(name(p))
                 and listprice(p) <= ceiling * 0.35]
         pool.sort(key=listprice)
         log(f"\n  {brief['for']}  ceiling ${ceiling:.2f}  "
@@ -505,7 +527,7 @@ def phase_e(out):
         except ValueError:
             return 999.0
 
-    pool = [p for p in found.values() if not REJECT.search(name(p))]
+    pool = [p for p in found.values() if not off_catalogue(name(p))]
     pool.sort(key=listprice)
     log(f'  {len(pool)} US-stocked candidates after filtering')
 

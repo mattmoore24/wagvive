@@ -182,6 +182,14 @@ def main():
 
     by_title = {p['title']: p for p in study['products'].values() if p.get('vid')}
 
+    # Re-decide each product's freight from its stored carrier menu, so a change
+    # to the credibility rule takes effect without re-querying CJ.
+    for p in by_title.values():
+        f, c, a, est = freight_floor.resolve_from_menu(
+            p.get('carrier_menu'), p.get('weight_g'))
+        p['freight_resolved'], p['carrier_resolved'] = f, c
+        p['aging_resolved'], p['freight_estimated'] = a, est
+
     # Recommended single prices, so a kit can be priced as a discount on the sum
     # of its parts rather than out of the air.
     recs = {}
