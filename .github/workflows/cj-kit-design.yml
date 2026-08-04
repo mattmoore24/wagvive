@@ -1,0 +1,64 @@
+name: CJ kit design
+
+# Read-only. Reads docs/qa/freight-research.json, ranks every on-theme kit
+# combination against a fitted freight model, then verifies the leaders with
+# real CJ quotes. Commits docs/qa/kit-designs.json.
+#
+# Trigger: push a change to config/kit_run.json on a claude/** branch. It is
+# deliberately NOT triggered by the script itself, so the script can be
+# committed before the freight study it depends on has finished.
+
+on:
+  push:
+    branches: ['claude/**']
+    paths: ['config/kit_run.json']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  kits:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Recreate CJ credential file from encrypted secrets
+        env:
+          CJ_EMAIL:    ${{ secrets.CJ_EMAIL }}
+          CJ_API_KEY:  ${{ secrets.CJ_API_KEY }}
+          CJ_API_BASE: ${{ secrets.CJ_API_BASE }}
+        run: |
+          set -euo pipefail
+          for v in CJ_EMAIL CJ_API_KEY CJ_API_BASE; do
+            if [ -z "${!v}" ]; then
+              echo "::error::Missing repository secret: $v"; exit 1
+            fi
+          done
+          printf 'CJ_EMAIL=%s\nCJ_API_KEY=%s\nCJ_API_BASE=%s\n' \
+            "$CJ_EMAIL" "$CJ_API_KEY" "$CJ_API_BASE" > config/cj.env
+
+      - name: Rank and verify kit designs
+        run: |
+          python config/research_kits.py docs/qa/freight-research.json \
+                                         docs/qa/kit-designs.json
+
+      - name: Remove credential files
+        if: always()
+        run: rm -f config/cj.env config/cj_token.json
+
+      - name: Commit results to this branch
+        if: always()
+        run: |
+          git config user.name 'wagvive-ops'
+          git config user.email 'hello@wagvive.com'
+          git add docs/qa/kit-designs.json || true
+          git diff --cached --quiet && { echo 'nothing to commit'; exit 0; }
+          git commit -m "research: kit designs ranked against measured CJ freight"
+          git pull --rebase origin "${{ github.ref_name }}"
+          git push origin "HEAD:${{ github.ref_name }}"
