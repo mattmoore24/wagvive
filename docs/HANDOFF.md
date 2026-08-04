@@ -21,6 +21,20 @@ A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
 
+- **PRICING STUDY (2026-08-04).** Full market research on all 36 products plus
+  the pricing literature. Report: `docs/pricing-study-2026-08.md`, data in
+  `docs/qa/pricing-recommendations.json`. Headline: **33 of 36 products are
+  priced above the top of their observed market range**, several at 2 to 3x,
+  and on six of seven plush toys the brand-name leader (KONG, ZippyPaws,
+  PetSafe) is cheaper than our generic. But the binding constraint is not
+  markup, it is **freight at a median 73% of landed cost** and roughly fixed
+  per parcel, which makes cheap goods structurally unsellable. Owner has said
+  the 50% floor can go; the report proposes a four-tier margin system instead
+  (55%+ differentiated, 40 to 50% comparable, 25 to 35% basket, bundle-only).
+  At market prices the median margin is 49% and 27 of 36 products clear 25%;
+  nine cannot work as singles and two lose money at any market price.
+  **Nothing has been repriced yet.** Tracked as #72 to #75.
+
 - **CATALOGUE AUDIT (2026-08-04, web session).** Full pass over all 41 products
   against CJ source data (`docs/qa/cj-variants.json`, regenerate via the
   `cj-variant-audit` workflow by editing `config/audit_spus.json`).
@@ -84,6 +98,10 @@ A failed run emails the owner — silence means healthy.
 | # | Task | Status / notes |
 |---|---|---|
 | 59 | GA4 + Meta pixel | NEXT UP, but owner-gated: needs a GA4 measurement ID (G-XXXX) and a Meta pixel ID from the owner's own accounts. Once those exist Claude installs both. Store has zero analytics; blocks #62 and any ad spend. |
+| 72 | **Verify whether CJ ships multi-item orders as one parcel** | NEW 2026-08-04, blocks #73 to #75. Kit margin is 51% if kits ship as separate parcels and 71% if combined, and consolidating shipping is worth more than every price change in the study. Check order #1001 and the next multi-item order. Also note the margin guard checks 147 variants but NO kits (their SKUs are null), so kit economics have never been verified against live CJ cost. |
+| 73 | **Replace the 50% floor with the tier system** | NEW 2026-08-04. Owner has approved dropping the flat floor. Tiers proposed in `docs/pricing-study-2026-08.md` section 2. Repoint `config/margin_guard.py` at a per-product tier table rather than one global number. Do this BEFORE repricing. |
+| 74 | **Apply the price changes** | NEW 2026-08-04, blocked by #73. Per-product recommendations in `docs/qa/pricing-recommendations.json`. Catalogue price sum falls about 23%. Standardise `.99` endings at the same time; keep `.00` for kits only. |
+| 75 | **Archive or bundle-lock the nine non-viable products** | NEW 2026-08-04. Anti-spill water bowl and crinkle plush lose money at market price and should go. Seven more work only inside kits. Slicker brush is worth a re-sourcing attempt first: at $8.26 it is our most expensive product cost. |
 | 71 | **Fix four dashes and the wrong care text on every product page** | NEW 2026-08-04, OWNER ACTION, quick. `templates/product.json` carries two en dashes in the shipping copy, one in a trust badge, one em dash in returns, and a "Care & use" block telling customers to rinse and dry the product before storing, which is wrong for disposable wipes and plush toys and still mentions "older or anxious dogs". Claude CANNOT fix this: live theme writes are refused by policy. Exact find and replace text is in `docs/qa/theme-copy-fixes.md`, about five minutes in the theme editor. Every other theme file was scanned and is clean. |
 | 67 | **Add the 41 missing size variants (HOME PC)** | NEW 2026-08-04. Four products are missing sizes CJ actually sells. **Exact SKU list with CJ costs is in the appendix of `docs/qa/variant-audit-2026-08.md`** so pairing is mechanical: sofa cover 12, snuggle blanket 9, fleece blanket 12, cooling pad 8. Sequence: (1) owner pairs each SKU in the CJ browser app, one product at a time, verifying `matchitem.shopType === 'Shopify'` before confirming; (2) Claude resolves freight via `freight_floor.py` and prices each size to clear the 50% floor, levelling colours as usual; (3) Claude creates the Shopify variants and wires variant images. Freight, not product cost, will decide whether the biggest sizes are viable, so expect some to fail the floor and be dropped. |
 | 67a | Rename the sofa cover's size labels | Depends on #67. Our Small/Medium/Large are CJ's XS/S/M of seven sizes, so the labels stop making sense the moment bigger sizes are added. Rename to the true range at the same time. Renaming option values rewrites variant titles, so do it in one pass with the additions, not before. |
@@ -94,7 +112,7 @@ A failed run emails the owner — silence means healthy.
 | 63 | Post-purchase reviews | Biggest untouched conversion lever. Judge.me free tier or similar; needs app install (owner clicks, Claude configures). |
 | 57 | NY sales tax registration | OWNER ACTION: file DTF-17 at NY Business Express (needs SSN/EIN). Then Claude adds the Certificate of Authority number in Shopify tax settings. |
 | 64 | DDP/DDU confirmation with CJ | Owner raises a CJ ticket (order-gated; order #1001 exists now). Margin model assumes duties included — DDU would mean surprise customer charges. |
-| 60 | TikTok Shop | Blocked on repricing pass: TikTok commission (~6-8%) is a fee layer the 50% floor model does not yet include. |
+| 60 | TikTok Shop | RESEARCHED 2026-08-04 and the answer is mostly no. Median pet price there is $15.53 and 69% sell under $20, while all-in costs run 35 to 55% of revenue (referral + affiliate + Shop Ads). Most of the catalogue cannot be profitable there at any price. Only credible candidates are the four high-contribution items (nail grinder, thunder wrap, heartbeat sloth, sofa cover) and kits. Do not open catalogue-wide. |
 | 61 | Short-form video for social-first products | Runway videos for screaming chicken, talk button, paw washing cup, LED clippers. |
 | 65 | Recreate the dematting comb lifestyle image | Deferred by owner 2026-08-04 after six failed regeneration rounds. Product page currently ships master-only, which is accurate, so this is cosmetic not urgent. Start from `docs/qa/dematting/best-attempt-v6.png` (handle/axle collinearity already correct). Prompting alone has not worked — consider compositing the master's tool into a scene, or a photographed sample, before burning more Runway credits. |
 | 62 | Ad-spend guardrails | Blocked on #59. |
