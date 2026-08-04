@@ -21,6 +21,32 @@ A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
 
+- **CATALOGUE AUDIT (2026-08-04, web session).** Full pass over all 41 products
+  against CJ source data (`docs/qa/cj-variants.json`, regenerate via the
+  `cj-variant-audit` workflow by editing `config/audit_spus.json`).
+  1. **Five missing lifestyle images added** and verified live: Barnyard
+     Squeaker, Woodland Rope-Limb Plush, Crinkle Plush Buddy, Big Squeak
+     Plush, Dental Wipes. Each generated from its own studio master and
+     eyeballed against it before upload. Owner is checking accuracy
+     themselves. The Pet Hair Remover Mitt and Dematting Comb stay
+     master-only by owner decision.
+  2. **Sizing guides written for all seven size or capacity products** from
+     CJ's own charts: bath robe (by dog weight), paw washing cup, snuggle
+     blanket, fleece blanket, cooling pad, sofa cover, water bowl. Copy lives
+     in `config/sizing_copy.py`, applied via Admin GraphQL.
+  3. **Two real copy errors fixed.** The fleece blanket's M size was listed as
+     100 x 75cm when CJ says 76 x 104cm, and the sofa cover claimed its range
+     reached "a full three-seater" when the largest stocked size is 39 x 57in.
+  4. **Dimensions added** to the dental duck, squirrel plush, cuddle teddy,
+     LED nail clippers and travel bottle. Deliberately NOT added elsewhere:
+     CJ's per-variant numbers are package dimensions, and for soft goods those
+     are not product dimensions. Do not treat them as such.
+  5. **Variant gaps found, nothing added.** See
+     `docs/qa/variant-audit-2026-08.md`. Four products are missing real sizes
+     (sofa cover, snuggle blanket, fleece blanket, cooling pad) and the sofa
+     cover's Small/Medium/Large are actually CJ's XS/S/M of seven. Adding any
+     of them needs CJ pairing in the browser plus a margin-floor check, so it
+     is owner-gated. Tracked as #67.
 - (Web session, 2026-08-04) Confirmed live Shopify access works from
   claude.ai/code via the Shopify connector; capabilities section below
   rewritten to match. Added `config/fetch_cj_refs.py` + the `cj-image-refs`
@@ -58,7 +84,8 @@ A failed run emails the owner — silence means healthy.
 | # | Task | Status / notes |
 |---|---|---|
 | 59 | GA4 + Meta pixel | NEXT UP, but owner-gated: needs a GA4 measurement ID (G-XXXX) and a Meta pixel ID from the owner's own accounts. Once those exist Claude installs both. Store has zero analytics; blocks #62 and any ad spend. |
-| 66 | Audit ALL lifestyle images against CJ references | NEW 2026-08-04, and fully unblocked — no owner action, tooling already built (`cj-image-refs` workflow + `config/fetch_cj_refs.py`). The dematting comb's "in use" photo depicted a tool that does not exist and had been live since launch; the rest of the catalogue has never been checked the same way. Misleading imagery drives returns and chargebacks, so do this BEFORE paying for traffic. Method and failure patterns: `docs/qa/dematting/README.md`. |
+| 67 | Stock the missing sizes | NEW 2026-08-04, OWNER-GATED. Four products are missing sizes CJ actually sells, detailed in `docs/qa/variant-audit-2026-08.md`. Biggest is the sofa cover: we sell CJ's three smallest of seven and label them Small/Medium/Large, so "Large" is really a mid-size. Each new size needs CJ pairing in the browser (no API) and must clear the 50% floor at its own cost and freight. Claude can compute the pricing once the owner is ready to pair. |
+| 66 | Audit ALL lifestyle images against CJ references | PARTLY DONE 2026-08-04: every product now HAS a lifestyle image except the two the owner excluded, and all descriptions were checked for sizing accuracy. Still outstanding: confirming each existing lifestyle image actually depicts the right product, which the owner is doing themselves. Fully unblocked — no owner action, tooling already built (`cj-image-refs` workflow + `config/fetch_cj_refs.py`). The dematting comb's "in use" photo depicted a tool that does not exist and had been live since launch; the rest of the catalogue has never been checked the same way. Misleading imagery drives returns and chargebacks, so do this BEFORE paying for traffic. Method and failure patterns: `docs/qa/dematting/README.md`. |
 | 63 | Post-purchase reviews | Biggest untouched conversion lever. Judge.me free tier or similar; needs app install (owner clicks, Claude configures). |
 | 57 | NY sales tax registration | OWNER ACTION: file DTF-17 at NY Business Express (needs SSN/EIN). Then Claude adds the Certificate of Authority number in Shopify tax settings. |
 | 64 | DDP/DDU confirmation with CJ | Owner raises a CJ ticket (order-gated; order #1001 exists now). Margin model assumes duties included — DDU would mean surprise customer charges. |
