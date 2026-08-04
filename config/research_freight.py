@@ -89,8 +89,12 @@ REPLACE = [
      'ceiling': 18.00, 'match': r'water|spill|float|drink|slow'},
 ]
 
-REJECT = re.compile(r'cat\b|kitten|litter|bird|fish|hamster|rabbit|reptile|'
-                    r'aquarium|parrot|clothes|costume|human', re.I)
+# Species and formats that are not this catalogue. "Scalp", "eyebrow" and
+# "seaming" caught human grooming tools sitting in CJ's pet comb category on the
+# first pass; "self pickup" items are warehouse collection only and cannot ship.
+REJECT = re.compile(r'kitten|litter box|bird|fish|hamster|rabbit|reptile|'
+                    r'aquarium|parrot|costume|human|scalp|eyebrow|seaming|'
+                    r'self pickup|wig|eyelash|beard|nail art', re.I)
 
 
 def log(msg):
@@ -166,7 +170,9 @@ def phase_a_and_c(spus, out):
         start = 'US' if us_prefix else 'CN'
         raw = quote([{'quantity': 1, 'vid': v.get('vid')}], start)
         opts = slim(raw)
-        freight, carrier, aging, estimated = freight_floor.resolve(raw)
+        grams = v.get('variantWeight') or d.get('productWeight')
+        freight, carrier, aging, estimated = freight_floor.resolve(
+            raw, weight_g=grams)
 
         try:
             cost = float(str(v.get('variantSellPrice') or '0').split('-')[0])
@@ -416,7 +422,9 @@ def phase_d(out):
             us = sku.startswith('CJBQ')
             start = 'US' if us else 'CN'
             opts = quote([{'quantity': 1, 'vid': v.get('vid')}], start)
-            freight, carrier, aging, estimated = freight_floor.resolve(opts)
+            grams = v.get('variantWeight') or d.get('productWeight')
+            freight, carrier, aging, estimated = freight_floor.resolve(
+                opts, weight_g=grams)
             try:
                 cost = float(str(v.get('variantSellPrice') or '999').split('-')[0])
             except ValueError:
@@ -461,6 +469,94 @@ def phase_d(out):
     return results
 
 
+def phase_e(out):
+    """US-warehouse goods.
+
+    The first pass inferred US stock from the CJBQ SKU prefix and found none in
+    our catalogue. It also showed that `/product/list` accepts countryCode: the
+    plush category returns 350 products plain and 70 with countryCode=US. So CJ
+    does expose the filter, and this phase uses it properly: scan every pet
+    category for US-stocked goods, then quote them from the US warehouse to see
+    what domestic carriage actually costs against China air freight.
+    """
+    log('\n=== Phase E: US warehouse goods ===')
+    found = {}
+    for label, cid in CATS.items():
+        for pg in (1, 2):
+            r = cj_api.call('/product/list', {'categoryId': cid, 'pageSize': 20,
+                                              'pageNum': pg, 'countryCode': 'US'})
+            data = r.get('data') or {}
+            lst = data.get('list') or []
+            if pg == 1:
+                log(f'  {label}: {data.get("total")} US-stocked products')
+            if not lst:
+                break
+            for p in lst:
+                p['_cat'] = label
+                found.setdefault(p.get('productSku'), p)
+
+    def name(p):
+        return str(p.get('productNameEn') or p.get('productName') or '')
+
+    def listprice(p):
+        try:
+            return float(str(p.get('sellPrice') or p.get('productSellPrice')
+                             or '999').split('-')[0])
+        except ValueError:
+            return 999.0
+
+    pool = [p for p in found.values() if not REJECT.search(name(p))]
+    pool.sort(key=listprice)
+    log(f'  {len(pool)} US-stocked candidates after filtering')
+
+    rows = []
+    for p in pool[:30]:
+        spu = p.get('productSku')
+        d, v = rep_variant(spu)
+        if not v:
+            continue
+        sku = v.get('variantSku') or ''
+        grams = v.get('variantWeight') or d.get('productWeight')
+        # Quote it both ways. If the US warehouse really holds it, the US quote
+        # should be domestic carriage; the CN quote is what we pay today.
+        us_opts = quote([{'quantity': 1, 'vid': v.get('vid')}], 'US')
+        cn_opts = quote([{'quantity': 1, 'vid': v.get('vid')}], 'CN')
+        us_f, us_c, us_a, us_e = freight_floor.resolve(us_opts, weight_g=grams)
+        cn_f, cn_c, cn_a, cn_e = freight_floor.resolve(cn_opts, weight_g=grams)
+        rows_stock = stock_rows(sku)
+        try:
+            cost = float(str(v.get('variantSellPrice') or '999').split('-')[0])
+        except ValueError:
+            cost = 999.0
+        rec = {
+            'spu': spu, 'name': name(p)[:90], 'category': p.get('_cat'),
+            'sku': sku, 'cost': round(cost, 2), 'weight_g': grams,
+            'listed_count': p.get('listedNum'),
+            'us_freight': round(us_f, 2), 'us_carrier': us_c, 'us_aging': us_a,
+            'us_estimated': us_e,
+            'cn_freight': round(cn_f, 2), 'cn_carrier': cn_c, 'cn_aging': cn_a,
+            'cn_estimated': cn_e,
+            'stock_warehouses': sorted({str(r.get('countryCode') or '?')
+                                        for r in rows_stock}),
+            # US stock was already imported by CJ, so no duty is charged again.
+            'price_for_15pct_us': round(
+                (landed(cost, us_f, DUTY_PCT_US_WAREHOUSE) + FLAT)
+                / (1 - FEE - FLOOR_MIN), 2),
+            'price_for_15pct_cn': round(
+                (landed(cost, cn_f, DUTY_PCT) + FLAT) / (1 - FEE - FLOOR_MIN), 2),
+        }
+        rec['us_advantage'] = round(rec['price_for_15pct_cn']
+                                    - rec['price_for_15pct_us'], 2)
+        rows.append(rec)
+        log(f"    ${cost:5.2f} {str(grams or 0):>6}g  US ${us_f:5.2f}"
+            f"{'E' if us_e else ' '} vs CN ${cn_f:5.2f}{'E' if cn_e else ' '}  "
+            f"advantage ${rec['us_advantage']:6.2f}  {rec['name'][:44]}")
+
+    rows.sort(key=lambda r: -r['us_advantage'])
+    out['us_warehouse'] = rows
+    return rows
+
+
 def main():
     out_file = sys.argv[1] if len(sys.argv) > 1 else 'docs/qa/freight-research.json'
     with open(os.path.join(ROOT, 'config', 'audit_spus.json'), encoding='utf-8') as fh:
@@ -473,6 +569,7 @@ def main():
     carrier_overlap(products, out)
     phase_b(products, out)
     phase_d(out)
+    phase_e(out)
 
     os.makedirs(os.path.dirname(os.path.join(ROOT, out_file)), exist_ok=True)
     with open(os.path.join(ROOT, out_file), 'w', encoding='utf-8') as fh:
