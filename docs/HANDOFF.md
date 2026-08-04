@@ -31,15 +31,22 @@ A failed run emails the owner — silence means healthy.
   collar, thumb shield, tooth count and serration). No Runway re-run needed.
   Only nit: the axle's hex nut is subtler in our shot than in CJ's. References
   live in `docs/qa/dematting/`; owner has the side-by-side for final say.
-- BUT the comb's LIFESTYLE image (`ls-dematting.png`, second on the product
-  page) FAILS QA: the owner spotted it, and a 4-pass review (one adversarial)
-  unanimously confirmed the tool head is invented — a closed oval loop with
-  internal wires and ball caps instead of the real open rake of serrated
-  blades, with the usage staged wrong (head face-on, fur wad threaded through
-  the frame). NEEDS a Runway re-run from the approved master with the real
-  head described and loops/hoops banned; scene composition (owner + resting
-  golden retriever) can stay. Awaiting owner go-ahead before spending Runway
-  credits. Local copy: `docs/qa/dematting/shopify-lifestyle.png`.
+- The comb's LIFESTYLE image (`ls-dematting.png`, second on the product page)
+  FAILED QA: the owner spotted it, and a 4-pass review (one adversarial)
+  unanimously confirmed the tool head was invented — a closed oval loop with
+  internal wires and ball caps instead of the real open rake. RESOLVED same
+  day with owner approval: regenerated in Runway (nano-banana-pro; master as
+  product reference + old lifestyle as scene reference, then a targeted
+  retouch pass to fix the axle hinge/hex-nut area), verified by two
+  adversarial review passes, uploaded via Admin GraphQL as
+  `ls-dematting-v2.png` (media 47616876806433, alt "Wagvive Dematting Comb in
+  use"), old media deleted, storefront re-fetch confirmed master first +
+  new image second. Approved copy: `docs/qa/dematting/lifestyle-approved.png`.
+  LESSONS: prompting alone doesn't stop head hallucination — a full re-shoot
+  reproduced the wrong head when the bad image was the scene reference, and
+  one candidate of each batch failed; generate 2, pick, retouch, re-verify.
+  The other 40 products' lifestyle images have NOT been audited (owner
+  deferred; likely more of these lurking).
 - CJ's stock-writing disabled store-wide via the authorization page's Sync
   Settings → "Not Sync" (see docs/knowledge/cj-inventory-sync-model.md, "kill
   switch"). `sync_inventory.py` is now the ONLY inventory writer. Verified: 144
