@@ -31,6 +31,9 @@ on:
         required: false
         default: ''
 
+permissions:
+  contents: write   # the results commit; default token is read-only
+
 jobs:
   fetch:
     runs-on: ubuntu-latest
