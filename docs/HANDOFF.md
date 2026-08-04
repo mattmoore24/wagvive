@@ -31,6 +31,15 @@ A failed run emails the owner — silence means healthy.
   collar, thumb shield, tooth count and serration). No Runway re-run needed.
   Only nit: the axle's hex nut is subtler in our shot than in CJ's. References
   live in `docs/qa/dematting/`; owner has the side-by-side for final say.
+- BUT the comb's LIFESTYLE image (`ls-dematting.png`, second on the product
+  page) FAILS QA: the owner spotted it, and a 4-pass review (one adversarial)
+  unanimously confirmed the tool head is invented — a closed oval loop with
+  internal wires and ball caps instead of the real open rake of serrated
+  blades, with the usage staged wrong (head face-on, fur wad threaded through
+  the frame). NEEDS a Runway re-run from the approved master with the real
+  head described and loops/hoops banned; scene composition (owner + resting
+  golden retriever) can stay. Awaiting owner go-ahead before spending Runway
+  credits. Local copy: `docs/qa/dematting/shopify-lifestyle.png`.
 - CJ's stock-writing disabled store-wide via the authorization page's Sync
   Settings → "Not Sync" (see docs/knowledge/cj-inventory-sync-model.md, "kill
   switch"). `sync_inventory.py` is now the ONLY inventory writer. Verified: 144
