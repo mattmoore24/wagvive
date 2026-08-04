@@ -1,0 +1,92 @@
+{
+ "travel-water-bottle": {
+  "id": 10470547489057,
+  "handle": "wagvive-travel-water-bottle-bowl",
+  "title": "Wagvive Travel Water Bottle & Bowl"
+ },
+ "lick-bowl": {
+  "id": 10470547587361,
+  "handle": "wagvive-lick-bowl-with-ball",
+  "title": "Wagvive Lick Bowl with Ball"
+ },
+ "talk-button": {
+  "id": 10470547652897,
+  "handle": "wagvive-talk-button",
+  "title": "Wagvive Talk Button"
+ },
+ "bouncy-egg": {
+  "id": 10470547751201,
+  "handle": "wagvive-bouncy-egg-squeaker",
+  "title": "Wagvive Bouncy Egg Squeaker"
+ },
+ "sneaker": {
+  "id": 10471549632801,
+  "handle": "wagvive-sneaker-chew-buddy",
+  "title": "Wagvive Sneaker Chew Buddy"
+ },
+ "ringball": {
+  "id": 10471549698337,
+  "handle": "wagvive-jingle-plush-ball",
+  "title": "Wagvive Jingle Plush Ball"
+ },
+ "teddy": {
+  "id": 10471549731105,
+  "handle": "wagvive-cuddle-companion-teddy",
+  "title": "Wagvive Cuddle Companion Teddy"
+ },
+ "vocalplush": {
+  "id": 10471549796641,
+  "handle": "wagvive-corduroy-squeak-pals",
+  "title": "Wagvive Corduroy Squeak Pals"
+ },
+ "chicken": {
+  "id": 10471549862177,
+  "handle": "wagvive-screaming-chicken",
+  "title": "Wagvive Screaming Chicken"
+ },
+ "towel": {
+  "id": 10471549927713,
+  "handle": "wagvive-quick-dry-bath-robe",
+  "title": "Wagvive Quick-Dry Bath Robe"
+ },
+ "lednail": {
+  "id": 10471549993249,
+  "handle": "wagvive-led-nail-clippers",
+  "title": "Wagvive LED Nail Clippers"
+ },
+ "dematting": {
+  "id": 10471550058785,
+  "handle": "wagvive-dematting-comb",
+  "title": "Wagvive Dematting Comb"
+ },
+ "pawtrimmer": {
+  "id": 10471550091553,
+  "handle": "wagvive-cordless-paw-trimmer",
+  "title": "Wagvive Cordless Paw Trimmer"
+ },
+ "pawcup": {
+  "id": 10471550189857,
+  "handle": "wagvive-paw-washing-cup",
+  "title": "Wagvive Paw Washing Cup"
+ },
+ "wblanket": {
+  "id": 10471550222625,
+  "handle": "wagvive-waterproof-snuggle-blanket",
+  "title": "Wagvive Waterproof Snuggle Blanket"
+ },
+ "thunder": {
+  "id": 10471550320929,
+  "handle": "wagvive-calming-thunder-wrap",
+  "title": "Wagvive Calming Thunder Wrap"
+ },
+ "heartbeat": {
+  "id": 10471550419233,
+  "handle": "wagvive-heartbeat-soothing-sloth",
+  "title": "Wagvive Heartbeat Soothing Sloth"
+ },
+ "fleece": {
+  "id": 10471550484769,
+  "handle": "wagvive-paw-print-fleece-blanket",
+  "title": "Wagvive Paw Print Fleece Blanket"
+ }
+}

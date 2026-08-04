@@ -58,10 +58,22 @@ writes tracking back regardless of location — order #1001 fulfilled "from Shop
 location"), and `sync_inventory.py` owns the numbers. That split is deliberate,
 not a workaround left half-done.
 
-**When pairing new products, leave CJ's "Sync CJ's Inventory Levels" OFF.**
-Enabling it is what lets CJ write to the inert location and create the double
-count. The 17 originally-paired products never had it on; the 18 paired later
-did, which is the whole source of the problem.
+**CJ inventory writing is disabled at the STORE level (2026-08-04).** CJ's
+authorization page (my.html#/authorize/Shopify → Inventory Sync → Setting) has a
+per-store Sync Settings modal; `cjdropshipping` location is set to **"Not
+Sync"**. That one switch stops CJ writing stock for every product, current and
+future — per-connection toggles were never needed. The three row switches next
+to it (Email Permission, Auto-Sync Order&Product, Delivery Profile) are
+UNRELATED and must stay ON; the sync-settings modal is reached only via the
+"Setting" link. `sync_inventory.py` (6-hourly via GitHub Actions) is now the
+single writer of stock. When pairing new products the connect dialog's "Sync
+CJ's Inventory Levels" option should still be left OFF for cleanliness, but the
+store-level Not Sync is the real guarantee.
+
+**Duplicate-source check:** before creating any product, verify the CJ SPU is
+not already used by an existing product — a duplicate slipped through once
+because the audit compared titles, not source SKUs. The margin/catalog audits
+now must compare `sku[:11]` across the catalogue.
 
 Rules:
 - Stock lives at `Shop location` only. `config/fix_locations.py --apply` strips
