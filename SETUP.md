@@ -10,15 +10,24 @@ or not any of your devices are awake.
 
 ---
 
-## Before you start: one OneDrive detail
+## The OneDrive problem — already solved, nothing for you to do
 
-This project currently lives inside OneDrive. OneDrive and git can fight over
-git's internal files, which shows up as weird corruption later.
+This project lives inside OneDrive, and OneDrive can corrupt git's internal
+files. Personal OneDrive only lets you exclude file *extensions*, not folders,
+so the obvious fix is not available.
 
-**Fix (2 minutes):** right-click the OneDrive cloud icon in your taskbar →
-Settings → Sync and backup → Advanced settings → *Exclude files or folders* → add
-this project folder. Your files stay on disk; OneDrive just stops syncing them.
-GitHub becomes the backup instead, which is what a repo is for.
+**What was done instead:** git's database was moved to
+`C:\Users\mattm\git-repos\wagvive.git`, outside OneDrive, and the `.git` entry
+in this folder is now a one-line pointer to it. Your project files stay where
+they are and keep syncing to OneDrive normally; the part OneDrive could damage
+is out of its reach.
+
+Practical consequences:
+* Everything works exactly as before — `git` commands, Claude, all of it.
+* **If you ever move or rename this project folder**, the pointer breaks. Tell
+  me and it is a one-line fix, not a disaster.
+* That `git-repos` folder is now worth keeping. Once the code is on GitHub,
+  GitHub is the real backup, so even losing it is recoverable.
 
 ---
 
