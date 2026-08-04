@@ -28,9 +28,9 @@ A failed run emails the owner — silence means healthy.
   Ran that workflow for the Wagvive Dematting Comb (SPU CJYD2754094; note the
   CJ query endpoint wants the SPU, not the variant SKU): our
   `master-dematting.png` matches CJ's photos feature for feature (handle,
-  collar, thumb shield, tooth count and serration). No Runway re-run needed.
-  Only nit: the axle's hex nut is subtler in our shot than in CJ's. References
-  live in `docs/qa/dematting/`; owner has the side-by-side for final say.
+  collar, thumb shield, tooth count and serration) — the master is ACCURATE and
+  stays. Only nit: the axle's hex nut is subtler in our shot than in CJ's.
+  References live in `docs/qa/dematting/`.
 - The comb's LIFESTYLE image FAILED QA (owner spotted it; a 4-pass review, one
   adversarial, confirmed the tool head was invented — a closed hoop instead of
   the real open rake). Six Runway regeneration rounds across nano-banana-pro,
@@ -42,9 +42,9 @@ A failed run emails the owner — silence means healthy.
   storefront). Owner will revisit creating one another time — everything
   needed is in `docs/qa/dematting/` with a README: CJ ground truth, the two
   failed images, the best attempt (`best-attempt-v6.png`, correct
-  collinearity), and the prompt description of the real tool.
-  The other 40 products' lifestyle images have NOT been audited (owner
-  deferred; likely more of these lurking).
+  collinearity), and the prompt description of the real tool. Tracked as #65.
+  The other 40 products' lifestyle images have NOT been audited — tracked as
+  #66, and the more important of the two, since this one was live since launch.
 - CJ's stock-writing disabled store-wide via the authorization page's Sync
   Settings → "Not Sync" (see docs/knowledge/cj-inventory-sync-model.md, "kill
   switch"). `sync_inventory.py` is now the ONLY inventory writer. Verified: 144
@@ -57,12 +57,14 @@ A failed run emails the owner — silence means healthy.
 
 | # | Task | Status / notes |
 |---|---|---|
-| 59 | GA4 + Meta pixel | NEXT UP. Store has zero analytics; needed before any ad spend. Requires owner's Google/Meta accounts. |
+| 59 | GA4 + Meta pixel | NEXT UP, but owner-gated: needs a GA4 measurement ID (G-XXXX) and a Meta pixel ID from the owner's own accounts. Once those exist Claude installs both. Store has zero analytics; blocks #62 and any ad spend. |
+| 66 | Audit ALL lifestyle images against CJ references | NEW 2026-08-04, and fully unblocked — no owner action, tooling already built (`cj-image-refs` workflow + `config/fetch_cj_refs.py`). The dematting comb's "in use" photo depicted a tool that does not exist and had been live since launch; the rest of the catalogue has never been checked the same way. Misleading imagery drives returns and chargebacks, so do this BEFORE paying for traffic. Method and failure patterns: `docs/qa/dematting/README.md`. |
 | 63 | Post-purchase reviews | Biggest untouched conversion lever. Judge.me free tier or similar; needs app install (owner clicks, Claude configures). |
 | 57 | NY sales tax registration | OWNER ACTION: file DTF-17 at NY Business Express (needs SSN/EIN). Then Claude adds the Certificate of Authority number in Shopify tax settings. |
 | 64 | DDP/DDU confirmation with CJ | Owner raises a CJ ticket (order-gated; order #1001 exists now). Margin model assumes duties included — DDU would mean surprise customer charges. |
 | 60 | TikTok Shop | Blocked on repricing pass: TikTok commission (~6-8%) is a fee layer the 50% floor model does not yet include. |
 | 61 | Short-form video for social-first products | Runway videos for screaming chicken, talk button, paw washing cup, LED clippers. |
+| 65 | Recreate the dematting comb lifestyle image | Deferred by owner 2026-08-04 after six failed regeneration rounds. Product page currently ships master-only, which is accurate, so this is cosmetic not urgent. Start from `docs/qa/dematting/best-attempt-v6.png` (handle/axle collinearity already correct). Prompting alone has not worked — consider compositing the master's tool into a scene, or a photographed sample, before burning more Runway credits. |
 | 62 | Ad-spend guardrails | Blocked on #59. |
 
 ## Device capabilities — what works where
