@@ -1,0 +1,1394 @@
+{
+ "note": "Runway reshoot state. status: planned|generated|approved|uploaded",
+ "products": {
+  "wagvive-anti-spill-floating-water-bowl": {
+   "id": 10456337547553,
+   "title": "Wagvive Anti-Spill Floating Water Bowl",
+   "options": {
+    "Colour": [
+     "Pink",
+     "Blue",
+     "Grey",
+     "White"
+    ],
+    "Capacity": [
+     "1.5L",
+     "2L"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53079831281953,
+     "title": "Pink / 1.5L",
+     "sku": "CJGY102545401AZ",
+     "opts": {
+      "Colour": "Pink",
+      "Capacity": "1.5L"
+     }
+    },
+    {
+     "id": 53097598779681,
+     "title": "Pink / 2L",
+     "sku": "CJGY102545423WD",
+     "opts": {
+      "Colour": "Pink",
+      "Capacity": "2L"
+     }
+    },
+    {
+     "id": 53097598812449,
+     "title": "Blue / 1.5L",
+     "sku": "CJGY102545402BY",
+     "opts": {
+      "Colour": "Blue",
+      "Capacity": "1.5L"
+     }
+    },
+    {
+     "id": 53097598845217,
+     "title": "Blue / 2L",
+     "sku": "CJGY102545426ZA",
+     "opts": {
+      "Colour": "Blue",
+      "Capacity": "2L"
+     }
+    },
+    {
+     "id": 53097598877985,
+     "title": "Grey / 1.5L",
+     "sku": "CJGY102545403CX",
+     "opts": {
+      "Colour": "Grey",
+      "Capacity": "1.5L"
+     }
+    },
+    {
+     "id": 53097598910753,
+     "title": "Grey / 2L",
+     "sku": "CJGY102545425YB",
+     "opts": {
+      "Colour": "Grey",
+      "Capacity": "2L"
+     }
+    },
+    {
+     "id": 53097598943521,
+     "title": "White / 1.5L",
+     "sku": "CJGY102545404DW",
+     "opts": {
+      "Colour": "White",
+      "Capacity": "1.5L"
+     }
+    },
+    {
+     "id": 53097598976289,
+     "title": "White / 2L",
+     "sku": "CJGY102545424XC",
+     "opts": {
+      "Colour": "White",
+      "Capacity": "2L"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/b02_a1a00791-68bd-4291-adf3-ad11df6165b1.jpg?v=1785376632",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/b03_clean.jpg?v=1785376634",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/b34_clean.jpg?v=1785376635",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/b16_clean.jpg?v=1785376636",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/b23.jpg?v=1785376638"
+   ],
+   "shots": {
+    "master-White": {
+     "task": "888c2f9f-61ce-4cc1-b606-806fc861f0df",
+     "status": "uploaded"
+    },
+    "variant-Pink": {
+     "task": "875a41af-cdbe-497b-9ef9-26f360546a6b",
+     "status": "uploaded"
+    },
+    "variant-Blue": {
+     "task": "4b335e43-08ce-4ec4-ab31-f881cc280105",
+     "status": "uploaded"
+    },
+    "variant-Grey": {
+     "task": "cc97d0ed-1c46-46ec-a988-7d8d486826c5",
+     "status": "uploaded"
+    },
+    "lifestyle": {
+     "task": "8a6279cb-4046-4f7a-8d0f-c9263c757d3b",
+     "status": "uploaded"
+    },
+    "dead-first-pink": {
+     "task": "9aa78423-5633-4c2b-b001-ee134a2c49e4",
+     "status": "discarded bad ref url"
+    }
+   },
+   "done": true
+  },
+  "wagvive-barnyard-squeaker": {
+   "id": 10469665177889,
+   "title": "Wagvive Barnyard Squeaker",
+   "options": {
+    "Character": [
+     "Green Dog",
+     "Brown Dog",
+     "Giraffe",
+     "Grey Donkey",
+     "White Goat",
+     "Puppy",
+     "Blue Donkey"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53158141919521,
+     "title": "Green Dog",
+     "sku": "CJYD242287802BY",
+     "opts": {
+      "Character": "Green Dog"
+     }
+    },
+    {
+     "id": 53158141952289,
+     "title": "Brown Dog",
+     "sku": "CJYD242287803CX",
+     "opts": {
+      "Character": "Brown Dog"
+     }
+    },
+    {
+     "id": 53158141985057,
+     "title": "Giraffe",
+     "sku": "CJYD242287804DW",
+     "opts": {
+      "Character": "Giraffe"
+     }
+    },
+    {
+     "id": 53158142017825,
+     "title": "Grey Donkey",
+     "sku": "CJYD242287805EV",
+     "opts": {
+      "Character": "Grey Donkey"
+     }
+    },
+    {
+     "id": 53158142050593,
+     "title": "White Goat",
+     "sku": "CJYD242287806FU",
+     "opts": {
+      "Character": "White Goat"
+     }
+    },
+    {
+     "id": 53158142083361,
+     "title": "Puppy",
+     "sku": "CJYD242287807GT",
+     "opts": {
+      "Character": "Puppy"
+     }
+    },
+    {
+     "id": 53158142116129,
+     "title": "Blue Donkey",
+     "sku": "CJYD242287801AZ",
+     "opts": {
+      "Character": "Blue Donkey"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2422878_1.jpg?v=1785598614",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2422878_2.jpg?v=1785598616",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2422878_3.jpg?v=1785598618",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2422878_4.jpg?v=1785598620",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2422878_5.jpg?v=1785598622"
+   ],
+   "shots": {
+    "char-Green Dog": {
+     "task": "22c5d1fe-0200-41ac-854b-70b55d8e5f77",
+     "status": "uploaded"
+    },
+    "char-Brown Dog": {
+     "task": "e484517a-bec4-4ab2-a4c3-1b08a25c4f13",
+     "status": "uploaded"
+    },
+    "char-Giraffe": {
+     "task": "32179beb-88a2-4663-9660-66186c1c358e",
+     "status": "uploaded"
+    },
+    "char-Grey Donkey": {
+     "task": "cdbd2728-cb27-402a-b8f7-999f448626a5",
+     "status": "uploaded"
+    },
+    "char-White Goat": {
+     "task": "0cd07e5f-9d7e-47c9-b3eb-108bfcd8114a",
+     "status": "uploaded"
+    },
+    "char-Puppy": {
+     "task": "d1e18f0b-c2f8-434b-b776-3f83f0415591",
+     "status": "uploaded"
+    },
+    "char-Blue Donkey": {
+     "task": "fb9d00e3-ac6a-49ff-9ae6-5261221d1218",
+     "status": "uploaded"
+    },
+    "dead-greendog-badref": {
+     "task": "52a8272b-0845-42b9-94b9-831d416a2f08",
+     "status": "discarded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-big-squeak-plush": {
+   "id": 10469665800481,
+   "title": "Wagvive Big Squeak Plush",
+   "options": {
+    "Colour": [
+     "Blue",
+     "Orange"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53158143787297,
+     "title": "Blue",
+     "sku": "CJST219013201AZ",
+     "opts": {
+      "Colour": "Blue"
+     }
+    },
+    {
+     "id": 53158143820065,
+     "title": "Orange",
+     "sku": "CJST219013202BY",
+     "opts": {
+      "Colour": "Orange"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2190132_1.jpg?v=1785598662",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2190132_2.jpg?v=1785598664",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2190132_3.jpg?v=1785598666",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2190132_4.jpg?v=1785598669",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2190132_5.jpg?v=1785598671"
+   ],
+   "shots": {
+    "master-Blue": {
+     "task": "22615196-16fd-47b6-9c72-1ebae90c1792",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-cooling-comfort-pad": {
+   "id": 10464689881377,
+   "title": "Wagvive Cooling Comfort Pad",
+   "options": {
+    "Colour": [
+     "Light Grey",
+     "Coffee",
+     "Dark Blue",
+     "Pink"
+    ],
+    "Size": [
+     "Medium 24\" x 20\"",
+     "Large 28\" x 22\"",
+     "X-Large 39\" x 28\"",
+     "XX-Large 59\" x 39\""
+    ]
+   },
+   "variants": [
+    {
+     "id": 53097582264609,
+     "title": "Light Grey / Medium 24\" x 20\"",
+     "sku": "CJPM292000021UF",
+     "opts": {
+      "Colour": "Light Grey",
+      "Size": "Medium 24\" x 20\""
+     }
+    },
+    {
+     "id": 53097582297377,
+     "title": "Light Grey / Large 28\" x 22\"",
+     "sku": "CJPM292000022VE",
+     "opts": {
+      "Colour": "Light Grey",
+      "Size": "Large 28\" x 22\""
+     }
+    },
+    {
+     "id": 53097582330145,
+     "title": "Light Grey / X-Large 39\" x 28\"",
+     "sku": "CJPM292000023WD",
+     "opts": {
+      "Colour": "Light Grey",
+      "Size": "X-Large 39\" x 28\""
+     }
+    },
+    {
+     "id": 53097582362913,
+     "title": "Light Grey / XX-Large 59\" x 39\"",
+     "sku": "CJPM292000024XC",
+     "opts": {
+      "Colour": "Light Grey",
+      "Size": "XX-Large 59\" x 39\""
+     }
+    },
+    {
+     "id": 53097582395681,
+     "title": "Coffee / Medium 24\" x 20\"",
+     "sku": "CJPM292000003CX",
+     "opts": {
+      "Colour": "Coffee",
+      "Size": "Medium 24\" x 20\""
+     }
+    },
+    {
+     "id": 53097582428449,
+     "title": "Coffee / Large 28\" x 22\"",
+     "sku": "CJPM292000004DW",
+     "opts": {
+      "Colour": "Coffee",
+      "Size": "Large 28\" x 22\""
+     }
+    },
+    {
+     "id": 53097582461217,
+     "title": "Coffee / X-Large 39\" x 28\"",
+     "sku": "CJPM292000005EV",
+     "opts": {
+      "Colour": "Coffee",
+      "Size": "X-Large 39\" x 28\""
+     }
+    },
+    {
+     "id": 53097582493985,
+     "title": "Coffee / XX-Large 59\" x 39\"",
+     "sku": "CJPM292000006FU",
+     "opts": {
+      "Colour": "Coffee",
+      "Size": "XX-Large 59\" x 39\""
+     }
+    },
+    {
+     "id": 53097582526753,
+     "title": "Dark Blue / Medium 24\" x 20\"",
+     "sku": "CJPM292000015OL",
+     "opts": {
+      "Colour": "Dark Blue",
+      "Size": "Medium 24\" x 20\""
+     }
+    },
+    {
+     "id": 53097582559521,
+     "title": "Dark Blue / Large 28\" x 22\"",
+     "sku": "CJPM292000016PK",
+     "opts": {
+      "Colour": "Dark Blue",
+      "Size": "Large 28\" x 22\""
+     }
+    },
+    {
+     "id": 53097582592289,
+     "title": "Dark Blue / X-Large 39\" x 28\"",
+     "sku": "CJPM292000017QJ",
+     "opts": {
+      "Colour": "Dark Blue",
+      "Size": "X-Large 39\" x 28\""
+     }
+    },
+    {
+     "id": 53097582625057,
+     "title": "Dark Blue / XX-Large 59\" x 39\"",
+     "sku": "CJPM292000018RI",
+     "opts": {
+      "Colour": "Dark Blue",
+      "Size": "XX-Large 59\" x 39\""
+     }
+    },
+    {
+     "id": 53097582657825,
+     "title": "Pink / Medium 24\" x 20\"",
+     "sku": "CJPM292000009IR",
+     "opts": {
+      "Colour": "Pink",
+      "Size": "Medium 24\" x 20\""
+     }
+    },
+    {
+     "id": 53097582690593,
+     "title": "Pink / Large 28\" x 22\"",
+     "sku": "CJPM292000010JQ",
+     "opts": {
+      "Colour": "Pink",
+      "Size": "Large 28\" x 22\""
+     }
+    },
+    {
+     "id": 53097582723361,
+     "title": "Pink / X-Large 39\" x 28\"",
+     "sku": "CJPM292000011KP",
+     "opts": {
+      "Colour": "Pink",
+      "Size": "X-Large 39\" x 28\""
+     }
+    },
+    {
+     "id": 53097582756129,
+     "title": "Pink / XX-Large 59\" x 39\"",
+     "sku": "CJPM292000012LO",
+     "opts": {
+      "Colour": "Pink",
+      "Size": "XX-Large 59\" x 39\""
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/pad04.jpg?v=1785372890",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/pad05.jpg?v=1785372892",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/pad11.jpg?v=1785372893",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/pad08.jpg?v=1785372895",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/pad12.jpg?v=1785372897"
+   ],
+   "shots": {
+    "master-Light Grey": {
+     "task": "44b12273-1345-4209-9297-722d2aa02347",
+     "status": "uploaded"
+    },
+    "variant-Coffee": {
+     "task": "cd570c56-83ce-494d-bcca-7f9a45149431",
+     "status": "uploaded"
+    },
+    "variant-Dark Blue": {
+     "task": "2ec613bc-301f-4ca8-8f78-89cab8e26ded",
+     "status": "uploaded"
+    },
+    "variant-Pink": {
+     "task": "bc0267f6-f8a3-4eae-b9c3-69bc43d4dc1e",
+     "status": "uploaded"
+    },
+    "lifestyle": {
+     "task": "b5b0418f-e650-4043-aec3-1e3938a96a3c",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-crinkle-plush-buddy": {
+   "id": 10469665440033,
+   "title": "Wagvive Crinkle Plush Buddy",
+   "options": {
+    "Colour": [
+     "Blue",
+     "Green",
+     "Orange"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53158142378273,
+     "title": "Blue",
+     "sku": "CJST217834201AZ",
+     "opts": {
+      "Colour": "Blue"
+     }
+    },
+    {
+     "id": 53158142411041,
+     "title": "Green",
+     "sku": "CJST217834202BY",
+     "opts": {
+      "Colour": "Green"
+     }
+    },
+    {
+     "id": 53158142443809,
+     "title": "Orange",
+     "sku": "CJST217834203CX",
+     "opts": {
+      "Colour": "Orange"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2178342_1.jpg?v=1785598637",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2178342_2.jpg?v=1785598638",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2178342_3.jpg?v=1785598641",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2178342_4.jpg?v=1785598643",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2178342_5.jpg?v=1785598645"
+   ],
+   "shots": {
+    "master-Green": {
+     "task": "59a1a5bb-ea13-4af5-8e85-e63fe7ff4eb3",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-ear-teeth-cleaning-wipes": {
+   "id": 10456337154337,
+   "title": "Wagvive Dental & Ear Wipes",
+   "options": {
+    "Type": [
+     "Dental wipes (50)",
+     "Ear wipes (50)"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53158154141985,
+     "title": "Dental wipes (50)",
+     "sku": "CJYD216979603CX",
+     "opts": {
+      "Type": "Dental wipes (50)"
+     }
+    },
+    {
+     "id": 53158154174753,
+     "title": "Ear wipes (50)",
+     "sku": "CJYD216979602BY",
+     "opts": {
+      "Type": "Ear wipes (50)"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2169796_5.jpg?v=1785604347",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2169796_9.jpg?v=1785604349",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2169796_0.jpg?v=1785604351",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2169796_4.jpg?v=1785604353"
+   ],
+   "shots": {},
+   "done": true
+  },
+  "wagvive-dental-duck-chew-toy": {
+   "id": 10469665308961,
+   "title": "Wagvive Dental Duck Chew Toy",
+   "options": {
+    "Title": [
+     "Default Title"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53158142247201,
+     "title": "Default Title",
+     "sku": "CJST217844101AZ",
+     "opts": {
+      "Title": "Default Title"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2178441_1.jpg?v=1785598625",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2178441_2.jpg?v=1785598627",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2178441_3.jpg?v=1785598629",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2178441_4.jpg?v=1785598631",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2178441_5.jpg?v=1785598633"
+   ],
+   "shots": {
+    "master": {
+     "task": "c31bb61d-0602-4557-b49a-18111bedf033",
+     "status": "uploaded"
+    },
+    "lifestyle": {
+     "task": "d4cfe8e2-fff5-4927-b373-6b3a83baddd6",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-finger-toothbrush": {
+   "id": 10469666062625,
+   "title": "Wagvive Finger Toothbrush",
+   "options": {
+    "Colour": [
+     "Blue",
+     "Dark Blue",
+     "Orange",
+     "White"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53158144803105,
+     "title": "Blue",
+     "sku": "CJYD262686408HS",
+     "opts": {
+      "Colour": "Blue"
+     }
+    },
+    {
+     "id": 53158144835873,
+     "title": "Dark Blue",
+     "sku": "CJYD262686409IR",
+     "opts": {
+      "Colour": "Dark Blue"
+     }
+    },
+    {
+     "id": 53158144868641,
+     "title": "Orange",
+     "sku": "CJYD262686411KP",
+     "opts": {
+      "Colour": "Orange"
+     }
+    },
+    {
+     "id": 53158144901409,
+     "title": "White",
+     "sku": "CJYD262686412LO",
+     "opts": {
+      "Colour": "White"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2626864_1.jpg?v=1785598700",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2626864_2.jpg?v=1785598702",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2626864_3.jpg?v=1785598704",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2626864_4.jpg?v=1785598706",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2626864_5.jpg?v=1785598708"
+   ],
+   "shots": {
+    "master-Blue": {
+     "task": "a1fa632c-452f-4323-a5c8-71f992cb248e",
+     "status": "uploaded"
+    },
+    "variant-Dark Blue": {
+     "task": "c06cf483-2eb3-47fc-8838-4e1d88b2a7da",
+     "status": "uploaded"
+    },
+    "variant-Orange": {
+     "task": "4c777b13-9ef2-434e-ac91-a080993960c7",
+     "status": "uploaded"
+    },
+    "variant-White": {
+     "task": "fa0d0258-0b5b-4a81-9117-9da30d6296a8",
+     "status": "uploaded"
+    },
+    "lifestyle": {
+     "task": "6247707d-84b9-4ce8-8cd5-1851aa6e6de9",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-grooming-shedding-gloves": {
+   "id": 10456337056033,
+   "title": "Wagvive Grooming & Shedding Gloves",
+   "options": {
+    "Colour": [
+     "Dark Brown",
+     "Black",
+     "Light Brown",
+     "Classic"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53079831150881,
+     "title": "Dark Brown",
+     "sku": "CJYD233200807GT",
+     "opts": {
+      "Colour": "Dark Brown"
+     }
+    },
+    {
+     "id": 53097597370657,
+     "title": "Black",
+     "sku": "CJYD233200837KP",
+     "opts": {
+      "Colour": "Black"
+     }
+    },
+    {
+     "id": 53097597403425,
+     "title": "Light Brown",
+     "sku": "CJYD233200804DW",
+     "opts": {
+      "Colour": "Light Brown"
+     }
+    },
+    {
+     "id": 53097597436193,
+     "title": "Classic",
+     "sku": "CJYD233200801AZ",
+     "opts": {
+      "Colour": "Classic"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2332008_9.jpg?v=1785604365",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2332008_2.jpg?v=1785604367",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2332008_7.jpg?v=1785604368",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2332008_4.jpg?v=1785604370"
+   ],
+   "shots": {
+    "master-Dark Brown": {
+     "task": "8f1291f7-48d8-4b91-9791-bb731c317b98",
+     "status": "uploaded",
+     "note": "v2 mitt; v1 five-finger invention discarded"
+    },
+    "variant-Black": {
+     "task": "e1d28cfd-f10d-44ca-82cf-ad934e1a75a8",
+     "status": "uploaded"
+    },
+    "variant-Light Brown": {
+     "task": "f0916ecb-a4e1-458a-b630-b2a21ae72a68",
+     "status": "uploaded"
+    },
+    "variant-Classic": {
+     "task": "fcdd3c05-87e7-4fd4-b79e-e0b741aed57d",
+     "status": "uploaded"
+    },
+    "lifestyle": {
+     "task": "c0b49e49-4e94-4bfa-b7ab-fe9fceea77cb",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-led-waste-bag-dispenser": {
+   "id": 10469666128161,
+   "title": "Wagvive LED Waste Bag Dispenser",
+   "options": {
+    "Colour": [
+     "Pink",
+     "Blue",
+     "Grey",
+     "Green",
+     "Black"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53158146867489,
+     "title": "Pink",
+     "sku": "CJYD222274201AZ",
+     "opts": {
+      "Colour": "Pink"
+     }
+    },
+    {
+     "id": 53158146900257,
+     "title": "Blue",
+     "sku": "CJYD222274203CX",
+     "opts": {
+      "Colour": "Blue"
+     }
+    },
+    {
+     "id": 53158146933025,
+     "title": "Grey",
+     "sku": "CJYD222274205EV",
+     "opts": {
+      "Colour": "Grey"
+     }
+    },
+    {
+     "id": 53158146965793,
+     "title": "Green",
+     "sku": "CJYD222274207GT",
+     "opts": {
+      "Colour": "Green"
+     }
+    },
+    {
+     "id": 53158146998561,
+     "title": "Black",
+     "sku": "CJYD222274209IR",
+     "opts": {
+      "Colour": "Black"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2222742_7.jpg?v=1785604338",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2222742_2.jpg?v=1785604339",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2222742_1.jpg?v=1785604341",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2222742_3.jpg?v=1785604342",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2222742_8.jpg?v=1785604344"
+   ],
+   "shots": {
+    "master-Pink": {
+     "task": "1ce94a7a-df18-4a94-a441-f2c12964c781",
+     "status": "uploaded"
+    },
+    "variant-Blue": {
+     "task": "1ba4a31e-0dac-4631-8f4a-f2c51c312fb3",
+     "status": "uploaded"
+    },
+    "variant-Grey": {
+     "task": "57f6bcbb-4289-46b5-8790-a2a074072552",
+     "status": "uploaded"
+    },
+    "variant-Green": {
+     "task": "bc865f9d-0876-420b-a926-9ff345e2ffc1",
+     "status": "uploaded"
+    },
+    "variant-Black": {
+     "task": "08ca261a-d7c3-4e97-a671-b1a12bd785e2",
+     "status": "uploaded"
+    },
+    "lifestyle": {
+     "task": "ca93d8fa-5fe3-4c28-b72d-4b4ea75f2747",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-quiet-electric-nail-grinder": {
+   "id": 10456337318177,
+   "title": "Wagvive Quiet Electric Nail Grinder",
+   "options": {
+    "Colour": [
+     "Deep Green",
+     "Pure White"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53079831216417,
+     "title": "Deep Green",
+     "sku": "CJGY200835701AZ",
+     "opts": {
+      "Colour": "Deep Green"
+     }
+    },
+    {
+     "id": 53097597567265,
+     "title": "Pure White",
+     "sku": "CJGY200835702BY",
+     "opts": {
+      "Colour": "Pure White"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/n05.jpeg?v=1785281440",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/n01.jpg?v=1785281442",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/n02.jpeg?v=1785281443",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/n06.jpeg?v=1785281445"
+   ],
+   "shots": {
+    "master-Deep Green": {
+     "task": "e73ebcd6-76c7-4434-87e5-0705343e3fb4",
+     "status": "uploaded"
+    },
+    "variant-Pure White": {
+     "task": "09375835-09d1-4bdb-bcf2-a9b4986e1d74",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-rope-limb-puppy-plush": {
+   "id": 10469665964321,
+   "title": "Wagvive Rope-Limb Puppy Plush",
+   "options": {
+    "Title": [
+     "Default Title"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53158144016673,
+     "title": "Default Title",
+     "sku": "CJST217558701AZ",
+     "opts": {
+      "Title": "Default Title"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2175587_4.jpg?v=1785604375",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2175587_2.jpg?v=1785604377",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2175587_1.jpg?v=1785604379",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2175587_3.jpg?v=1785604380"
+   ],
+   "shots": {
+    "master": {
+     "task": "7995dafc-a5f1-4f49-a24a-920c13732357",
+     "status": "uploaded"
+    },
+    "lifestyle": {
+     "task": "1b1f3761-e616-4ce6-9337-5a1b12078b31",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-self-cleaning-slicker-brush": {
+   "id": 10456336990497,
+   "title": "Wagvive Self-Cleaning Slicker Brush",
+   "options": {
+    "Colour": [
+     "Green",
+     "Pink",
+     "Orange"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53079831118113,
+     "title": "Green",
+     "sku": "CJMY195218501AZ",
+     "opts": {
+      "Colour": "Green"
+     }
+    },
+    {
+     "id": 53097597305121,
+     "title": "Pink",
+     "sku": "CJMY195218502BY",
+     "opts": {
+      "Colour": "Pink"
+     }
+    },
+    {
+     "id": 53097597337889,
+     "title": "Orange",
+     "sku": "CJMY195218503CX",
+     "opts": {
+      "Colour": "Orange"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJMY1952185_8.jpg?v=1785604356",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJMY1952185_0.jpg?v=1785604358",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJMY1952185_2.jpg?v=1785604360",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJMY1952185_3.jpg?v=1785604361"
+   ],
+   "shots": {
+    "master-Green": {
+     "task": "c4c1a8e9-1ab0-4311-bb52-8c934d2fa69d",
+     "status": "uploaded",
+     "url": "https://dnznrvs05pmza.cloudfront.net/gemini/gemini-3.1-flash-image/images/3a6e0dbb-f6ce-47f7-8212-49d27d4477f8/Professional_ecommerce_catalog_photograph_of__brush__the_exa.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYzg5ZGY4N2UyOTQ3ZTZmNiIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4NTcxMjc2Nn0.yrgiixSKdyhq67vMiA1ogXVMWExUqY6TiANUEt4E2mU"
+    },
+    "variant-Pink": {
+     "task": "864ac841-773d-4040-af66-fac8a65bceec",
+     "status": "uploaded",
+     "url": "https://dnznrvs05pmza.cloudfront.net/gemini/gemini-3.1-flash-image/images/13b9eb12-af38-46af-ab7a-df7b7dea7aef/Recolor_the_product_in__master__change_every_green_rubber_pa.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiN2IwMzNhZTY4MzY0ZmM4ZCIsImJ1Y2tldCI6InJ1bndheS10YXNrLWFydGlmYWN0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4NTc3NDA1NH0.kn3qCqkcmwY9a2sOrMw-Wowf5ED2ozGXolv1e5pD3T4"
+    },
+    "variant-Orange": {
+     "task": "30992c2e-c911-4a2b-97c8-33bfb28410e2",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-slow-feeder-bowl": {
+   "id": 10456337613089,
+   "title": "Wagvive Slow Feeder Bowl",
+   "options": {
+    "Colour": [
+     "Green",
+     "Pink",
+     "Orange"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53079831314721,
+     "title": "Green",
+     "sku": "CJGY174846501AZ",
+     "opts": {
+      "Colour": "Green"
+     }
+    },
+    {
+     "id": 53097599009057,
+     "title": "Pink",
+     "sku": "CJGY174846502BY",
+     "opts": {
+      "Colour": "Pink"
+     }
+    },
+    {
+     "id": 53097599041825,
+     "title": "Orange",
+     "sku": "CJGY174846503CX",
+     "opts": {
+      "Colour": "Orange"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/slowfeeder_1.jpg?v=1785615706",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/slowfeeder_0.jpg?v=1785615707",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/slowfeeder_7.jpg?v=1785615709",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/slowfeeder_2.jpg?v=1785615711",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/slowfeeder_9.jpg?v=1785615712"
+   ],
+   "shots": {
+    "master-Green": {
+     "task": "6016e9dc-67db-4288-9bb6-71c082623565",
+     "status": "uploaded"
+    },
+    "variant-Pink": {
+     "task": "7fe9de3e-9486-4bdc-8c94-bff1fcdf5822",
+     "status": "uploaded"
+    },
+    "variant-Orange": {
+     "task": "e69e3a95-4896-4086-9188-3d70cc8610d9",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-sneaker-squeaky-toy": {
+   "id": 10469804474657,
+   "title": "Wagvive Sneaker Squeaky Toy",
+   "options": {
+    "Colour": [
+     "Blue",
+     "Yellow",
+     "Black"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53158705135905,
+     "title": "Blue",
+     "sku": "CJYD252933703CX",
+     "opts": {
+      "Colour": "Blue"
+     }
+    },
+    {
+     "id": 53158716866849,
+     "title": "Yellow",
+     "sku": "CJYD252933701AZ",
+     "opts": {
+      "Colour": "Yellow"
+     }
+    },
+    {
+     "id": 53158716899617,
+     "title": "Black",
+     "sku": "CJYD252933702BY",
+     "opts": {
+      "Colour": "Black"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2529337_4.jpg?v=1785603696",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2529337_2.jpg?v=1785603698",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2529337_3.jpg?v=1785603700",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2529337_1.jpg?v=1785603702"
+   ],
+   "shots": {
+    "master-Yellow": {
+     "task": "a7179ff8-4c64-4175-8afc-5d6cddc66e8b",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-squirrel-squeaky-plush": {
+   "id": 10469666029857,
+   "title": "Wagvive Squirrel Squeaky Plush",
+   "options": {
+    "Title": [
+     "Default Title"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53158144770337,
+     "title": "Default Title",
+     "sku": "CJST222139701AZ",
+     "opts": {
+      "Title": "Default Title"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2221397_1.jpg?v=1785598687",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2221397_2.jpg?v=1785598689",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2221397_3.jpg?v=1785598691",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2221397_4.jpg?v=1785598694",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2221397_5.jpg?v=1785598697"
+   ],
+   "shots": {
+    "master": {
+     "task": "f5803aae-b510-435a-baf1-34ba5f265d65",
+     "status": "uploaded"
+    },
+    "lifestyle": {
+     "task": "80037ae0-4bff-44f1-ad88-a185b2ae09c9",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-watermelon-rope-frisbee": {
+   "id": 10469803819297,
+   "title": "Wagvive Watermelon Rope Frisbee",
+   "options": {
+    "Title": [
+     "Default Title"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53158703530273,
+     "title": "Default Title",
+     "sku": "CJMY124424501AZ",
+     "opts": {
+      "Title": "Default Title"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJMY1244245_0.jpg?v=1785603686",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJMY1244245_1.jpg?v=1785603688",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJMY1244245_2.jpg?v=1785603690",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJMY1244245_3.jpg?v=1785603692"
+   ],
+   "shots": {
+    "master": {
+     "task": "2c1fda06-9789-4964-9f34-9aa2ba16c5ae",
+     "status": "uploaded"
+    },
+    "lifestyle": {
+     "task": "03daa9de-877a-4262-86b6-a6ca88631440",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-waterproof-sofa-furniture-cover": {
+   "id": 10468724506913,
+   "title": "Wagvive Waterproof Sofa & Furniture Cover",
+   "options": {
+    "Colour": [
+     "Black",
+     "Brown",
+     "Grey"
+    ],
+    "Size": [
+     "Small 20\" x 28\"",
+     "Medium 28\" x 39\"",
+     "Large 39\" x 57\""
+    ]
+   },
+   "variants": [
+    {
+     "id": 53131328651553,
+     "title": "Black / Small 20\" x 28\"",
+     "sku": "CJYD225186001AZ",
+     "opts": {
+      "Colour": "Black",
+      "Size": "Small 20\" x 28\""
+     }
+    },
+    {
+     "id": 53131328684321,
+     "title": "Black / Medium 28\" x 39\"",
+     "sku": "CJYD225186002BY",
+     "opts": {
+      "Colour": "Black",
+      "Size": "Medium 28\" x 39\""
+     }
+    },
+    {
+     "id": 53131328717089,
+     "title": "Black / Large 39\" x 57\"",
+     "sku": "CJYD225186003CX",
+     "opts": {
+      "Colour": "Black",
+      "Size": "Large 39\" x 57\""
+     }
+    },
+    {
+     "id": 53131328749857,
+     "title": "Brown / Small 20\" x 28\"",
+     "sku": "CJYD225186007GT",
+     "opts": {
+      "Colour": "Brown",
+      "Size": "Small 20\" x 28\""
+     }
+    },
+    {
+     "id": 53131328782625,
+     "title": "Brown / Medium 28\" x 39\"",
+     "sku": "CJYD225186008HS",
+     "opts": {
+      "Colour": "Brown",
+      "Size": "Medium 28\" x 39\""
+     }
+    },
+    {
+     "id": 53131328815393,
+     "title": "Brown / Large 39\" x 57\"",
+     "sku": "CJYD225186009IR",
+     "opts": {
+      "Colour": "Brown",
+      "Size": "Large 39\" x 57\""
+     }
+    },
+    {
+     "id": 53131328848161,
+     "title": "Grey / Small 20\" x 28\"",
+     "sku": "CJYD225186013MN",
+     "opts": {
+      "Colour": "Grey",
+      "Size": "Small 20\" x 28\""
+     }
+    },
+    {
+     "id": 53131328880929,
+     "title": "Grey / Medium 28\" x 39\"",
+     "sku": "CJYD225186014NM",
+     "opts": {
+      "Colour": "Grey",
+      "Size": "Medium 28\" x 39\""
+     }
+    },
+    {
+     "id": 53131328913697,
+     "title": "Grey / Large 39\" x 57\"",
+     "sku": "CJYD225186015OL",
+     "opts": {
+      "Colour": "Grey",
+      "Size": "Large 39\" x 57\""
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/p01.jpg?v=1785553735",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/p03_dog.jpg?v=1785553738",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/p00.jpg?v=1785553740",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/p02.jpg?v=1785553742",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/p03_fold.jpg?v=1785553744"
+   ],
+   "shots": {
+    "master-Grey": {
+     "task": "bae8fe03-1cd2-4e24-9758-65758f3a8d07",
+     "status": "uploaded",
+     "note": "v2, plush throw; v1 quilted invention discarded"
+    },
+    "variant-Black": {
+     "task": "fcdfcb78-0869-4e5f-9239-68b9d5996fea",
+     "status": "uploaded"
+    },
+    "variant-Brown": {
+     "task": "61a97145-73eb-4f8f-b1be-98041bef04db",
+     "status": "uploaded"
+    },
+    "lifestyle": {
+     "task": "ee29576a-9a2f-4e7f-b910-9c16ea406bab",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  },
+  "wagvive-woodland-rope-limb-plush": {
+   "id": 10469665603873,
+   "title": "Wagvive Woodland Rope-Limb Plush",
+   "options": {
+    "Animal": [
+     "Fox",
+     "Rabbit",
+     "Tiger",
+     "Monkey",
+     "Koala",
+     "Squirrel"
+    ]
+   },
+   "variants": [
+    {
+     "id": 53158143328545,
+     "title": "Fox",
+     "sku": "CJST258364603CX",
+     "opts": {
+      "Animal": "Fox"
+     }
+    },
+    {
+     "id": 53158143361313,
+     "title": "Rabbit",
+     "sku": "CJST258364602BY",
+     "opts": {
+      "Animal": "Rabbit"
+     }
+    },
+    {
+     "id": 53158143394081,
+     "title": "Tiger",
+     "sku": "CJST258364601AZ",
+     "opts": {
+      "Animal": "Tiger"
+     }
+    },
+    {
+     "id": 53158143426849,
+     "title": "Monkey",
+     "sku": "CJST258364604DW",
+     "opts": {
+      "Animal": "Monkey"
+     }
+    },
+    {
+     "id": 53158143459617,
+     "title": "Koala",
+     "sku": "CJST258364605EV",
+     "opts": {
+      "Animal": "Koala"
+     }
+    },
+    {
+     "id": 53158143492385,
+     "title": "Squirrel",
+     "sku": "CJST258364606FU",
+     "opts": {
+      "Animal": "Squirrel"
+     }
+    }
+   ],
+   "cj_images": [
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2583646_1.jpg?v=1785598649",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2583646_2.jpg?v=1785598651",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2583646_3.jpg?v=1785598653",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2583646_4.jpg?v=1785598655",
+    "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2583646_5.jpg?v=1785598659"
+   ],
+   "shots": {
+    "char-Tiger": {
+     "task": "c6e9dc09-1b76-433c-acc2-31673b9667b6",
+     "status": "uploaded"
+    },
+    "char-Rabbit": {
+     "task": "bd4502b5-0afe-483b-b57b-f2428b204125",
+     "status": "uploaded"
+    },
+    "char-Fox": {
+     "task": "75250006-390c-4bf5-a3ee-60fdbd870e0a",
+     "status": "uploaded"
+    },
+    "char-Monkey": {
+     "task": "20234c4a-6033-4f74-a90e-c013c712dfb7",
+     "status": "uploaded"
+    },
+    "char-Koala": {
+     "task": "f8f61081-692e-4baa-aefb-0497244c8347",
+     "status": "uploaded"
+    },
+    "char-Squirrel": {
+     "task": "3a075cad-494f-45fa-b973-27349bb82faf",
+     "status": "uploaded"
+    }
+   },
+   "done": true
+  }
+ },
+ "completed": "2026-08-02",
+ "summary": "19 products + 4 kit covers re-shot via Runway nano-banana-2 (pro for labeled tubs). ~75 generations incl retries. All 81 variants wired to colour images."
+}

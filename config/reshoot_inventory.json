@@ -1,0 +1,630 @@
+{
+ "wagvive-anti-spill-floating-water-bowl": {
+  "id": 10456337547553,
+  "title": "Wagvive Anti-Spill Floating Water Bowl",
+  "imgs": 5,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/b02_a1a00791-68bd-4291-adf3-ad11df6165b1.jpg?v=1785376632",
+  "variants": [
+   [
+    53079831281953,
+    "Pink / 1.5L",
+    null
+   ],
+   [
+    53097598779681,
+    "Pink / 2L",
+    null
+   ],
+   [
+    53097598812449,
+    "Blue / 1.5L",
+    null
+   ],
+   [
+    53097598845217,
+    "Blue / 2L",
+    null
+   ],
+   [
+    53097598877985,
+    "Grey / 1.5L",
+    null
+   ],
+   [
+    53097598910753,
+    "Grey / 2L",
+    null
+   ],
+   [
+    53097598943521,
+    "White / 1.5L",
+    null
+   ],
+   [
+    53097598976289,
+    "White / 2L",
+    null
+   ]
+  ],
+  "color_values": [
+   "Pink",
+   "Blue",
+   "Grey",
+   "White"
+  ]
+ },
+ "wagvive-barnyard-squeaker": {
+  "id": 10469665177889,
+  "title": "Wagvive Barnyard Squeaker",
+  "imgs": 5,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2422878_1.jpg?v=1785598614",
+  "variants": [
+   [
+    53158141919521,
+    "Green Dog",
+    null
+   ],
+   [
+    53158141952289,
+    "Brown Dog",
+    null
+   ],
+   [
+    53158141985057,
+    "Giraffe",
+    null
+   ],
+   [
+    53158142017825,
+    "Grey Donkey",
+    null
+   ],
+   [
+    53158142050593,
+    "White Goat",
+    null
+   ],
+   [
+    53158142083361,
+    "Puppy",
+    null
+   ],
+   [
+    53158142116129,
+    "Blue Donkey",
+    null
+   ]
+  ],
+  "color_values": null
+ },
+ "wagvive-big-squeak-plush": {
+  "id": 10469665800481,
+  "title": "Wagvive Big Squeak Plush",
+  "imgs": 5,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2190132_1.jpg?v=1785598662",
+  "variants": [
+   [
+    53158143787297,
+    "Blue",
+    null
+   ],
+   [
+    53158143820065,
+    "Orange",
+    null
+   ]
+  ],
+  "color_values": [
+   "Blue",
+   "Orange"
+  ]
+ },
+ "wagvive-cooling-comfort-pad": {
+  "id": 10464689881377,
+  "title": "Wagvive Cooling Comfort Pad",
+  "imgs": 5,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/pad04.jpg?v=1785372890",
+  "variants": [
+   [
+    53097582264609,
+    "Light Grey / Medium 24\" x 20\"",
+    null
+   ],
+   [
+    53097582297377,
+    "Light Grey / Large 28\" x 22\"",
+    null
+   ],
+   [
+    53097582330145,
+    "Light Grey / X-Large 39\" x 28\"",
+    null
+   ],
+   [
+    53097582362913,
+    "Light Grey / XX-Large 59\" x 39\"",
+    null
+   ],
+   [
+    53097582395681,
+    "Coffee / Medium 24\" x 20\"",
+    null
+   ],
+   [
+    53097582428449,
+    "Coffee / Large 28\" x 22\"",
+    null
+   ],
+   [
+    53097582461217,
+    "Coffee / X-Large 39\" x 28\"",
+    null
+   ],
+   [
+    53097582493985,
+    "Coffee / XX-Large 59\" x 39\"",
+    null
+   ],
+   [
+    53097582526753,
+    "Dark Blue / Medium 24\" x 20\"",
+    null
+   ],
+   [
+    53097582559521,
+    "Dark Blue / Large 28\" x 22\"",
+    null
+   ],
+   [
+    53097582592289,
+    "Dark Blue / X-Large 39\" x 28\"",
+    null
+   ],
+   [
+    53097582625057,
+    "Dark Blue / XX-Large 59\" x 39\"",
+    null
+   ],
+   [
+    53097582657825,
+    "Pink / Medium 24\" x 20\"",
+    null
+   ],
+   [
+    53097582690593,
+    "Pink / Large 28\" x 22\"",
+    null
+   ],
+   [
+    53097582723361,
+    "Pink / X-Large 39\" x 28\"",
+    null
+   ],
+   [
+    53097582756129,
+    "Pink / XX-Large 59\" x 39\"",
+    null
+   ]
+  ],
+  "color_values": [
+   "Light Grey",
+   "Coffee",
+   "Dark Blue",
+   "Pink"
+  ]
+ },
+ "wagvive-crinkle-plush-buddy": {
+  "id": 10469665440033,
+  "title": "Wagvive Crinkle Plush Buddy",
+  "imgs": 5,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2178342_1.jpg?v=1785598637",
+  "variants": [
+   [
+    53158142378273,
+    "Blue",
+    null
+   ],
+   [
+    53158142411041,
+    "Green",
+    null
+   ],
+   [
+    53158142443809,
+    "Orange",
+    null
+   ]
+  ],
+  "color_values": [
+   "Blue",
+   "Green",
+   "Orange"
+  ]
+ },
+ "wagvive-ear-teeth-cleaning-wipes": {
+  "id": 10456337154337,
+  "title": "Wagvive Dental & Ear Wipes",
+  "imgs": 4,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2169796_5.jpg?v=1785604347",
+  "variants": [
+   [
+    53158154141985,
+    "Dental wipes (50)",
+    null
+   ],
+   [
+    53158154174753,
+    "Ear wipes (50)",
+    null
+   ]
+  ],
+  "color_values": null
+ },
+ "wagvive-dental-duck-chew-toy": {
+  "id": 10469665308961,
+  "title": "Wagvive Dental Duck Chew Toy",
+  "imgs": 5,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2178441_1.jpg?v=1785598625",
+  "variants": [
+   [
+    53158142247201,
+    "Default Title",
+    null
+   ]
+  ],
+  "color_values": null
+ },
+ "wagvive-finger-toothbrush": {
+  "id": 10469666062625,
+  "title": "Wagvive Finger Toothbrush",
+  "imgs": 5,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2626864_1.jpg?v=1785598700",
+  "variants": [
+   [
+    53158144803105,
+    "Blue",
+    null
+   ],
+   [
+    53158144835873,
+    "Dark Blue",
+    null
+   ],
+   [
+    53158144868641,
+    "Orange",
+    null
+   ],
+   [
+    53158144901409,
+    "White",
+    null
+   ]
+  ],
+  "color_values": [
+   "Blue",
+   "Dark Blue",
+   "Orange",
+   "White"
+  ]
+ },
+ "wagvive-grooming-shedding-gloves": {
+  "id": 10456337056033,
+  "title": "Wagvive Grooming & Shedding Gloves",
+  "imgs": 4,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2332008_9.jpg?v=1785604365",
+  "variants": [
+   [
+    53079831150881,
+    "Dark Brown",
+    null
+   ],
+   [
+    53097597370657,
+    "Black",
+    null
+   ],
+   [
+    53097597403425,
+    "Light Brown",
+    null
+   ],
+   [
+    53097597436193,
+    "Classic",
+    null
+   ]
+  ],
+  "color_values": [
+   "Dark Brown",
+   "Black",
+   "Light Brown",
+   "Classic"
+  ]
+ },
+ "wagvive-led-waste-bag-dispenser": {
+  "id": 10469666128161,
+  "title": "Wagvive LED Waste Bag Dispenser",
+  "imgs": 5,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2222742_7.jpg?v=1785604338",
+  "variants": [
+   [
+    53158146867489,
+    "Pink",
+    null
+   ],
+   [
+    53158146900257,
+    "Blue",
+    null
+   ],
+   [
+    53158146933025,
+    "Grey",
+    null
+   ],
+   [
+    53158146965793,
+    "Green",
+    null
+   ],
+   [
+    53158146998561,
+    "Black",
+    null
+   ]
+  ],
+  "color_values": [
+   "Pink",
+   "Blue",
+   "Grey",
+   "Green",
+   "Black"
+  ]
+ },
+ "wagvive-quiet-electric-nail-grinder": {
+  "id": 10456337318177,
+  "title": "Wagvive Quiet Electric Nail Grinder",
+  "imgs": 4,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/n05.jpeg?v=1785281440",
+  "variants": [
+   [
+    53079831216417,
+    "Deep Green",
+    null
+   ],
+   [
+    53097597567265,
+    "Pure White",
+    null
+   ]
+  ],
+  "color_values": [
+   "Deep Green",
+   "Pure White"
+  ]
+ },
+ "wagvive-rope-limb-puppy-plush": {
+  "id": 10469665964321,
+  "title": "Wagvive Rope-Limb Puppy Plush",
+  "imgs": 4,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2175587_4.jpg?v=1785604375",
+  "variants": [
+   [
+    53158144016673,
+    "Default Title",
+    null
+   ]
+  ],
+  "color_values": null
+ },
+ "wagvive-self-cleaning-slicker-brush": {
+  "id": 10456336990497,
+  "title": "Wagvive Self-Cleaning Slicker Brush",
+  "imgs": 4,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJMY1952185_8.jpg?v=1785604356",
+  "variants": [
+   [
+    53079831118113,
+    "Green",
+    null
+   ],
+   [
+    53097597305121,
+    "Pink",
+    null
+   ],
+   [
+    53097597337889,
+    "Orange",
+    null
+   ]
+  ],
+  "color_values": [
+   "Green",
+   "Pink",
+   "Orange"
+  ]
+ },
+ "wagvive-slow-feeder-bowl": {
+  "id": 10456337613089,
+  "title": "Wagvive Slow Feeder Bowl",
+  "imgs": 5,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/slowfeeder_1.jpg?v=1785615706",
+  "variants": [
+   [
+    53079831314721,
+    "Green",
+    null
+   ],
+   [
+    53097599009057,
+    "Pink",
+    null
+   ],
+   [
+    53097599041825,
+    "Orange",
+    null
+   ]
+  ],
+  "color_values": [
+   "Green",
+   "Pink",
+   "Orange"
+  ]
+ },
+ "wagvive-sneaker-squeaky-toy": {
+  "id": 10469804474657,
+  "title": "Wagvive Sneaker Squeaky Toy",
+  "imgs": 4,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJYD2529337_4.jpg?v=1785603696",
+  "variants": [
+   [
+    53158705135905,
+    "Blue",
+    null
+   ],
+   [
+    53158716866849,
+    "Yellow",
+    null
+   ],
+   [
+    53158716899617,
+    "Black",
+    null
+   ]
+  ],
+  "color_values": [
+   "Blue",
+   "Yellow",
+   "Black"
+  ]
+ },
+ "wagvive-squirrel-squeaky-plush": {
+  "id": 10469666029857,
+  "title": "Wagvive Squirrel Squeaky Plush",
+  "imgs": 5,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2221397_1.jpg?v=1785598687",
+  "variants": [
+   [
+    53158144770337,
+    "Default Title",
+    null
+   ]
+  ],
+  "color_values": null
+ },
+ "wagvive-watermelon-rope-frisbee": {
+  "id": 10469803819297,
+  "title": "Wagvive Watermelon Rope Frisbee",
+  "imgs": 4,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJMY1244245_0.jpg?v=1785603686",
+  "variants": [
+   [
+    53158703530273,
+    "Default Title",
+    null
+   ]
+  ],
+  "color_values": null
+ },
+ "wagvive-waterproof-sofa-furniture-cover": {
+  "id": 10468724506913,
+  "title": "Wagvive Waterproof Sofa & Furniture Cover",
+  "imgs": 5,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/p01.jpg?v=1785553735",
+  "variants": [
+   [
+    53131328651553,
+    "Black / Small 20\" x 28\"",
+    57460092829985
+   ],
+   [
+    53131328684321,
+    "Black / Medium 28\" x 39\"",
+    57460092829985
+   ],
+   [
+    53131328717089,
+    "Black / Large 39\" x 57\"",
+    57460092829985
+   ],
+   [
+    53131328749857,
+    "Brown / Small 20\" x 28\"",
+    57460092076321
+   ],
+   [
+    53131328782625,
+    "Brown / Medium 28\" x 39\"",
+    57460092076321
+   ],
+   [
+    53131328815393,
+    "Brown / Large 39\" x 57\"",
+    57460092076321
+   ],
+   [
+    53131328848161,
+    "Grey / Small 20\" x 28\"",
+    57460092862753
+   ],
+   [
+    53131328880929,
+    "Grey / Medium 28\" x 39\"",
+    57460092862753
+   ],
+   [
+    53131328913697,
+    "Grey / Large 39\" x 57\"",
+    57460092862753
+   ]
+  ],
+  "color_values": [
+   "Black",
+   "Brown",
+   "Grey"
+  ]
+ },
+ "wagvive-woodland-rope-limb-plush": {
+  "id": 10469665603873,
+  "title": "Wagvive Woodland Rope-Limb Plush",
+  "imgs": 5,
+  "cover": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/CJST2583646_1.jpg?v=1785598649",
+  "variants": [
+   [
+    53158143328545,
+    "Fox",
+    null
+   ],
+   [
+    53158143361313,
+    "Rabbit",
+    null
+   ],
+   [
+    53158143394081,
+    "Tiger",
+    null
+   ],
+   [
+    53158143426849,
+    "Monkey",
+    null
+   ],
+   [
+    53158143459617,
+    "Koala",
+    null
+   ],
+   [
+    53158143492385,
+    "Squirrel",
+    null
+   ]
+  ],
+  "color_values": null
+ }
+}

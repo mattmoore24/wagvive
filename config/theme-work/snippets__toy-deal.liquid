@@ -1,0 +1,66 @@
+{% doc %}
+  "Any 3 toys, 15% off" notice on toy product pages.
+
+  The discount is a real automatic Shopify discount scoped to the Toys & Play
+  collection, but an automatic discount is invisible until checkout - the shopper
+  only discovers it after they have already decided. Stating it on the product
+  page turns it from a pleasant surprise into a reason to add two more.
+
+  Renders only for products carrying the `toy` tag, which is the same signal the
+  collection and the discount itself are scoped to, so the three can never
+  disagree about what counts as a toy.
+{% enddoc %}
+
+{%- if product.tags contains 'toy' -%}
+  <a class="wv-toydeal" href="{{ routes.collections_url }}/toys-play">
+    <span class="wv-toydeal__badge">Mix &amp; match</span>
+    <span class="wv-toydeal__text">
+      Any <strong>3 toys</strong> &mdash; <strong>15% off</strong> the toys in your
+      basket. Applied automatically.
+    </span>
+    <span class="wv-toydeal__chev" aria-hidden="true">&rsaquo;</span>
+  </a>
+{%- endif -%}
+
+{% stylesheet %}
+  .wv-toydeal {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: rgb(47 122 77 / 0.08);
+    border: 1px solid rgb(47 122 77 / 0.28);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .wv-toydeal:hover {
+    background: rgb(47 122 77 / 0.14);
+  }
+
+  .wv-toydeal__badge {
+    flex: none;
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #2f7a4d;
+    border: 1px solid rgb(47 122 77 / 0.4);
+    border-radius: 999px;
+    padding: 4px 10px;
+    white-space: nowrap;
+  }
+
+  .wv-toydeal__text {
+    font-size: 0.875rem;
+    line-height: 1.35;
+  }
+
+  .wv-toydeal__chev {
+    margin-inline-start: auto;
+    font-size: 1.3rem;
+    opacity: 0.45;
+    flex: none;
+  }
+{% endstylesheet %}

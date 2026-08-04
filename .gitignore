@@ -1,0 +1,43 @@
+# ─────────────────────────────────────────────────────────────
+# SECRETS — never commit. These hold live store and supplier
+# credentials. If one is ever committed, the token must be
+# ROTATED in Shopify/CJ, not merely deleted from the repo.
+# ─────────────────────────────────────────────────────────────
+config/shopify.env
+config/cj.env
+config/cj_token.json
+*.env
+!*.env.example
+
+# ─────────────────────────────────────────────────────────────
+# Reproducible working artifacts (166MB of the 168MB total):
+# downloaded CJ reference photos, stock imagery, audit
+# screenshots, generation evals. All re-creatable, and they would
+# make the repo painful to clone on a phone.
+#
+# The small brand assets in config/branding/ ARE tracked on
+# purpose — logos, kit covers, the email wordmark and og-share
+# card are referenced by the live site and email templates, so
+# they are source, not scratch.
+# ─────────────────────────────────────────────────────────────
+config/branding/cj-raw/
+config/branding/stock/
+config/branding/audit/
+config/branding/wipes-eval/
+config/branding/products/
+
+# ─────────────────────────────────────────────────────────────
+# Python
+# ─────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ─────────────────────────────────────────────────────────────
+# OS / editor noise
+# ─────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp

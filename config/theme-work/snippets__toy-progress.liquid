@@ -1,0 +1,74 @@
+{% doc %}
+  Cart nudge toward the "any 3 toys, 15% off" discount.
+
+  Counts the toys actually in the basket and says how many more are needed. A
+  shopper with two toys in the cart is one click from a discount they may not
+  know exists, and an automatic discount gives them no hint until checkout.
+
+  Counts line quantities, not lines - three of the same toy qualifies, and
+  telling someone they need "1 more" when they already qualify would be worse
+  than saying nothing. Goes quiet once the discount is active, because the cart
+  totals already show it.
+{% enddoc %}
+
+{%- liquid
+  assign toy_count = 0
+  for line in cart.items
+    if line.product.tags contains 'toy'
+      assign toy_count = toy_count | plus: line.quantity
+    endif
+  endfor
+  assign needed = 3 | minus: toy_count
+-%}
+
+{%- if toy_count > 0 and needed > 0 -%}
+  <a class="wv-toyprog" href="{{ routes.collections_url }}/toys-play">
+    <span class="wv-toyprog__dots" aria-hidden="true">
+      {%- for i in (1..3) -%}
+        <span class="wv-toyprog__dot{% if i <= toy_count %} is-on{% endif %}"></span>
+      {%- endfor -%}
+    </span>
+    <span>
+      Add <strong>{{ needed }}</strong> more
+      {% if needed == 1 %}toy{% else %}toys{% endif %} for
+      <strong>15% off</strong> your toys
+    </span>
+  </a>
+{%- endif -%}
+
+{% stylesheet %}
+  .wv-toyprog {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-block-start: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: rgb(47 122 77 / 0.08);
+    font-size: 0.8125rem;
+    line-height: 1.3;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .wv-toyprog:hover {
+    background: rgb(47 122 77 / 0.14);
+  }
+
+  .wv-toyprog__dots {
+    display: inline-flex;
+    gap: 4px;
+    flex: none;
+  }
+
+  .wv-toyprog__dot {
+    inline-size: 8px;
+    block-size: 8px;
+    border-radius: 50%;
+    background: rgb(47 122 77 / 0.25);
+  }
+
+  .wv-toyprog__dot.is-on {
+    background: #2f7a4d;
+  }
+{% endstylesheet %}

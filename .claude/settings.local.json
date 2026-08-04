@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:who.is)",
+      "mcp__visualize__read_me",
+      "mcp__visualize__show_widget",
+      "WebSearch",
+      "WebFetch(domain:www.shopify.com)",
+      "mcp__claude-in-chrome__tabs_context_mcp",
+      "mcp__claude-in-chrome__navigate",
+      "mcp__claude-in-chrome__browser_batch",
+      "mcp__claude-in-chrome__computer",
+      "Bash(curl -s -X POST https://abezff-5d.myshopify.com/admin/oauth/access_token -H 'Content-Type: application/json' -d '{\"client_id\":\"9cfc0047b4fc130bc0e0cbf8cd685291\",\"client_secret\":\"SHPSS_REDACTED_APP_DELETED_2026_08_19\",\"code\":\"OAUTH_CODE_REDACTED\"}' -o 'C:\\\\Users\\\\mattm/.wagvive_token_response.json' -w 'HTTP_STATUS:%{http_code}\\\\n')",
+      "Bash(grep -o '\"access_token\":\"[a-zA-Z0-9_]\\\\{0,10\\\\}')",
+      "Bash(sed -n 's/.*\"access_token\":\"\\\\\\([^\"]*\\\\\\)\".*/SHOPIFY_ADMIN_API_TOKEN=\\\\1/p' 'C:\\\\Users\\\\mattm/.wagvive_token_response.json')",
+      "Bash(rm 'C:\\\\Users\\\\mattm/.wagvive_token_response.json')",
+      "Bash(node -e ' *)",
+      "Bash(node upload.js \"C:/Users/mattm/OneDrive/Claude Code/Pet Store/config/branding/staged_uploads.json\" \"C:/Users/mattm/OneDrive/Claude Code/Pet Store/config/branding/logo-horizontal.png\" \"C:/Users/mattm/OneDrive/Claude Code/Pet Store/config/branding/icon-1024.png\")"
+    ]
+  }
+}

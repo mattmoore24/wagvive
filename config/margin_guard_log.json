@@ -1,0 +1,1155 @@
+{
+ "ran_at": "2026-08-02T16:20:21",
+ "floor": 0.5,
+ "applied": true,
+ "checked": 147,
+ "breaches": [
+  {
+   "product": "Wagvive Sneaker Chew Buddy",
+   "variant": "Blue",
+   "sku": "CJYD252933701AZ",
+   "price": 16.99,
+   "needed": 17.33,
+   "margin": 49.1
+  },
+  {
+   "product": "Wagvive Sneaker Chew Buddy",
+   "variant": "Black",
+   "sku": "CJYD252933702BY",
+   "price": 16.99,
+   "needed": 17.33,
+   "margin": 49.1
+  },
+  {
+   "product": "Wagvive Sneaker Chew Buddy",
+   "variant": "Sea Fog Blue",
+   "sku": "CJYD252933703CX",
+   "price": 16.99,
+   "needed": 17.33,
+   "margin": 49.1
+  }
+ ],
+ "unresolved": [],
+ "thin": [
+  {
+   "product": "Wagvive Anti-Spill Floating Water Bowl",
+   "variant": "White / 2L",
+   "sku": "CJGY102545424XC",
+   "price": 52.0,
+   "margin": 54.5,
+   "stress_margin": 48.8,
+   "freight_headroom": 18.55,
+   "freight": 15.47
+  },
+  {
+   "product": "Wagvive Barnyard Squeaker",
+   "variant": "Green Dog",
+   "sku": "CJYD242287802BY",
+   "price": 19.0,
+   "margin": 51.3,
+   "stress_margin": 45.2,
+   "freight_headroom": 6.91,
+   "freight": 6.38
+  },
+  {
+   "product": "Wagvive Barnyard Squeaker",
+   "variant": "Brown Dog",
+   "sku": "CJYD242287803CX",
+   "price": 19.0,
+   "margin": 51.3,
+   "stress_margin": 45.2,
+   "freight_headroom": 6.91,
+   "freight": 6.38
+  },
+  {
+   "product": "Wagvive Barnyard Squeaker",
+   "variant": "Giraffe",
+   "sku": "CJYD242287804DW",
+   "price": 19.0,
+   "margin": 51.3,
+   "stress_margin": 45.2,
+   "freight_headroom": 6.91,
+   "freight": 6.38
+  },
+  {
+   "product": "Wagvive Barnyard Squeaker",
+   "variant": "Grey Donkey",
+   "sku": "CJYD242287805EV",
+   "price": 19.0,
+   "margin": 51.3,
+   "stress_margin": 45.2,
+   "freight_headroom": 6.91,
+   "freight": 6.38
+  },
+  {
+   "product": "Wagvive Barnyard Squeaker",
+   "variant": "White Goat",
+   "sku": "CJYD242287806FU",
+   "price": 19.0,
+   "margin": 51.3,
+   "stress_margin": 45.2,
+   "freight_headroom": 6.91,
+   "freight": 6.38
+  },
+  {
+   "product": "Wagvive Barnyard Squeaker",
+   "variant": "Puppy",
+   "sku": "CJYD242287807GT",
+   "price": 19.0,
+   "margin": 51.3,
+   "stress_margin": 45.2,
+   "freight_headroom": 6.91,
+   "freight": 6.38
+  },
+  {
+   "product": "Wagvive Barnyard Squeaker",
+   "variant": "Blue Donkey",
+   "sku": "CJYD242287801AZ",
+   "price": 19.0,
+   "margin": 51.3,
+   "stress_margin": 45.2,
+   "freight_headroom": 6.91,
+   "freight": 6.38
+  },
+  {
+   "product": "Wagvive Big Squeak Plush",
+   "variant": "Blue",
+   "sku": "CJST219013201AZ",
+   "price": 28.0,
+   "margin": 52.7,
+   "stress_margin": 47.2,
+   "freight_headroom": 7.68,
+   "freight": 6.52
+  },
+  {
+   "product": "Wagvive Big Squeak Plush",
+   "variant": "Orange",
+   "sku": "CJST219013202BY",
+   "price": 28.0,
+   "margin": 52.7,
+   "stress_margin": 47.2,
+   "freight_headroom": 7.68,
+   "freight": 6.52
+  },
+  {
+   "product": "Wagvive Bouncy Egg Squeaker",
+   "variant": "Green",
+   "sku": "CJMY141671004DW",
+   "price": 16.99,
+   "margin": 50.9,
+   "stress_margin": 45.1,
+   "freight_headroom": 5.16,
+   "freight": 4.75
+  },
+  {
+   "product": "Wagvive Bouncy Egg Squeaker",
+   "variant": "Blue",
+   "sku": "CJMY141671005EV",
+   "price": 16.99,
+   "margin": 50.9,
+   "stress_margin": 45.1,
+   "freight_headroom": 5.16,
+   "freight": 4.75
+  },
+  {
+   "product": "Wagvive Bouncy Egg Squeaker",
+   "variant": "Orange",
+   "sku": "CJMY141671003CX",
+   "price": 16.99,
+   "margin": 50.9,
+   "stress_margin": 45.1,
+   "freight_headroom": 5.16,
+   "freight": 4.75
+  },
+  {
+   "product": "Wagvive Bouncy Egg Squeaker",
+   "variant": "Purple",
+   "sku": "CJMY141671006FU",
+   "price": 16.99,
+   "margin": 50.9,
+   "stress_margin": 45.1,
+   "freight_headroom": 5.16,
+   "freight": 4.75
+  },
+  {
+   "product": "Wagvive Calming Thunder Wrap",
+   "variant": "Grey",
+   "sku": "CJYD264078601AZ",
+   "price": 36.99,
+   "margin": 51.0,
+   "stress_margin": 45.2,
+   "freight_headroom": 10.35,
+   "freight": 9.43
+  },
+  {
+   "product": "Wagvive Calming Thunder Wrap",
+   "variant": "Dark Blue",
+   "sku": "CJYD264078602BY",
+   "price": 36.99,
+   "margin": 51.0,
+   "stress_margin": 45.2,
+   "freight_headroom": 10.35,
+   "freight": 9.43
+  },
+  {
+   "product": "Wagvive Calming Thunder Wrap",
+   "variant": "Grey and Blue",
+   "sku": "CJYD264078603CX",
+   "price": 36.99,
+   "margin": 51.0,
+   "stress_margin": 45.2,
+   "freight_headroom": 10.35,
+   "freight": 9.43
+  },
+  {
+   "product": "Wagvive Cordless Paw Trimmer",
+   "variant": "Default Title",
+   "sku": "CJNP222636501AZ",
+   "price": 39.99,
+   "margin": 51.4,
+   "stress_margin": 46.5,
+   "freight_headroom": 4.16,
+   "freight": 3.0
+  },
+  {
+   "product": "Wagvive Corduroy Squeak Pals",
+   "variant": "Fawn",
+   "sku": "CJMY126277901AZ",
+   "price": 19.99,
+   "margin": 51.0,
+   "stress_margin": 44.9,
+   "freight_headroom": 7.08,
+   "freight": 6.57
+  },
+  {
+   "product": "Wagvive Corduroy Squeak Pals",
+   "variant": "Crooked Neck",
+   "sku": "CJMY126277902BY",
+   "price": 19.99,
+   "margin": 51.0,
+   "stress_margin": 44.9,
+   "freight_headroom": 7.08,
+   "freight": 6.57
+  },
+  {
+   "product": "Wagvive Corduroy Squeak Pals",
+   "variant": "Frog",
+   "sku": "CJMY126277903CX",
+   "price": 19.99,
+   "margin": 51.0,
+   "stress_margin": 44.9,
+   "freight_headroom": 7.08,
+   "freight": 6.57
+  },
+  {
+   "product": "Wagvive Crinkle Plush Buddy",
+   "variant": "Blue",
+   "sku": "CJST217834201AZ",
+   "price": 24.0,
+   "margin": 51.2,
+   "stress_margin": 45.5,
+   "freight_headroom": 6.83,
+   "freight": 6.17
+  },
+  {
+   "product": "Wagvive Crinkle Plush Buddy",
+   "variant": "Green",
+   "sku": "CJST217834202BY",
+   "price": 24.0,
+   "margin": 51.2,
+   "stress_margin": 45.5,
+   "freight_headroom": 6.83,
+   "freight": 6.17
+  },
+  {
+   "product": "Wagvive Crinkle Plush Buddy",
+   "variant": "Orange",
+   "sku": "CJST217834203CX",
+   "price": 24.0,
+   "margin": 51.2,
+   "stress_margin": 45.5,
+   "freight_headroom": 6.83,
+   "freight": 6.17
+  },
+  {
+   "product": "Wagvive Cuddle Companion Teddy",
+   "variant": "Default Title",
+   "sku": "CJYD245411401AZ",
+   "price": 19.99,
+   "margin": 51.8,
+   "stress_margin": 45.9,
+   "freight_headroom": 6.93,
+   "freight": 6.27
+  },
+  {
+   "product": "Wagvive Dematting Comb",
+   "variant": "Default Title",
+   "sku": "CJYD275409401AZ",
+   "price": 18.99,
+   "margin": 52.4,
+   "stress_margin": 46.5,
+   "freight_headroom": 6.66,
+   "freight": 5.94
+  },
+  {
+   "product": "Wagvive Dental & Ear Wipes",
+   "variant": "Dental wipes (50)",
+   "sku": "CJYD216979603CX",
+   "price": 22.0,
+   "margin": 54.1,
+   "stress_margin": 48.1,
+   "freight_headroom": 9.09,
+   "freight": 7.88
+  },
+  {
+   "product": "Wagvive Dental & Ear Wipes",
+   "variant": "Ear wipes (50)",
+   "sku": "CJYD216979602BY",
+   "price": 22.0,
+   "margin": 54.1,
+   "stress_margin": 48.1,
+   "freight_headroom": 9.09,
+   "freight": 7.88
+  },
+  {
+   "product": "Wagvive Dental Duck Chew Toy",
+   "variant": "Default Title",
+   "sku": "CJST217844101AZ",
+   "price": 22.0,
+   "margin": 53.8,
+   "stress_margin": 48.2,
+   "freight_headroom": 7.22,
+   "freight": 6.08
+  },
+  {
+   "product": "Wagvive Finger Toothbrush",
+   "variant": "Blue",
+   "sku": "CJYD262686408HS",
+   "price": 14.0,
+   "margin": 50.2,
+   "stress_margin": 43.7,
+   "freight_headroom": 5.86,
+   "freight": 5.62
+  },
+  {
+   "product": "Wagvive Finger Toothbrush",
+   "variant": "Dark Blue",
+   "sku": "CJYD262686409IR",
+   "price": 14.0,
+   "margin": 50.2,
+   "stress_margin": 43.7,
+   "freight_headroom": 5.86,
+   "freight": 5.62
+  },
+  {
+   "product": "Wagvive Finger Toothbrush",
+   "variant": "Orange",
+   "sku": "CJYD262686411KP",
+   "price": 14.0,
+   "margin": 50.2,
+   "stress_margin": 43.7,
+   "freight_headroom": 5.86,
+   "freight": 5.62
+  },
+  {
+   "product": "Wagvive Finger Toothbrush",
+   "variant": "White",
+   "sku": "CJYD262686412LO",
+   "price": 14.0,
+   "margin": 50.2,
+   "stress_margin": 43.7,
+   "freight_headroom": 5.86,
+   "freight": 5.62
+  },
+  {
+   "product": "Wagvive Heartbeat Soothing Sloth",
+   "variant": "Default Title",
+   "sku": "CJYD233940102BY",
+   "price": 43.99,
+   "margin": 50.8,
+   "stress_margin": 45.1,
+   "freight_headroom": 11.12,
+   "freight": 10.08
+  },
+  {
+   "product": "Wagvive Jingle Plush Ball",
+   "variant": "Monkey",
+   "sku": "CJST257870801AZ",
+   "price": 19.99,
+   "margin": 50.1,
+   "stress_margin": 44.0,
+   "freight_headroom": 6.51,
+   "freight": 6.18
+  },
+  {
+   "product": "Wagvive Jingle Plush Ball",
+   "variant": "Frog",
+   "sku": "CJST257870802BY",
+   "price": 19.99,
+   "margin": 50.1,
+   "stress_margin": 44.0,
+   "freight_headroom": 6.51,
+   "freight": 6.18
+  },
+  {
+   "product": "Wagvive Jingle Plush Ball",
+   "variant": "Dog",
+   "sku": "CJST257870803CX",
+   "price": 19.99,
+   "margin": 50.1,
+   "stress_margin": 44.0,
+   "freight_headroom": 6.51,
+   "freight": 6.18
+  },
+  {
+   "product": "Wagvive LED Nail Clippers",
+   "variant": "Green",
+   "sku": "CJYD226496002BY",
+   "price": 27.99,
+   "margin": 51.1,
+   "stress_margin": 45.2,
+   "freight_headroom": 8.35,
+   "freight": 7.62
+  },
+  {
+   "product": "Wagvive LED Nail Clippers",
+   "variant": "Pink",
+   "sku": "CJYD226496003CX",
+   "price": 27.99,
+   "margin": 51.1,
+   "stress_margin": 45.2,
+   "freight_headroom": 8.35,
+   "freight": 7.62
+  },
+  {
+   "product": "Wagvive LED Nail Clippers",
+   "variant": "White",
+   "sku": "CJYD226496004DW",
+   "price": 27.99,
+   "margin": 51.1,
+   "stress_margin": 45.2,
+   "freight_headroom": 8.35,
+   "freight": 7.62
+  },
+  {
+   "product": "Wagvive LED Waste Bag Dispenser",
+   "variant": "Pink",
+   "sku": "CJYD222274201AZ",
+   "price": 14.0,
+   "margin": 50.0,
+   "stress_margin": 43.6,
+   "freight_headroom": 5.5,
+   "freight": 5.29
+  },
+  {
+   "product": "Wagvive LED Waste Bag Dispenser",
+   "variant": "Blue",
+   "sku": "CJYD222274203CX",
+   "price": 14.0,
+   "margin": 50.0,
+   "stress_margin": 43.6,
+   "freight_headroom": 5.5,
+   "freight": 5.29
+  },
+  {
+   "product": "Wagvive LED Waste Bag Dispenser",
+   "variant": "Grey",
+   "sku": "CJYD222274205EV",
+   "price": 14.0,
+   "margin": 50.0,
+   "stress_margin": 43.6,
+   "freight_headroom": 5.5,
+   "freight": 5.29
+  },
+  {
+   "product": "Wagvive LED Waste Bag Dispenser",
+   "variant": "Green",
+   "sku": "CJYD222274207GT",
+   "price": 14.0,
+   "margin": 50.0,
+   "stress_margin": 43.6,
+   "freight_headroom": 5.5,
+   "freight": 5.29
+  },
+  {
+   "product": "Wagvive LED Waste Bag Dispenser",
+   "variant": "Black",
+   "sku": "CJYD222274209IR",
+   "price": 14.0,
+   "margin": 50.0,
+   "stress_margin": 43.6,
+   "freight_headroom": 5.5,
+   "freight": 5.29
+  },
+  {
+   "product": "Wagvive Lick Bowl with Ball",
+   "variant": "Blue",
+   "sku": "CJFT286015801AZ",
+   "price": 32.0,
+   "margin": 51.0,
+   "stress_margin": 45.2,
+   "freight_headroom": 8.77,
+   "freight": 7.97
+  },
+  {
+   "product": "Wagvive Lick Bowl with Ball",
+   "variant": "Black",
+   "sku": "CJFT286015802BY",
+   "price": 32.0,
+   "margin": 51.0,
+   "stress_margin": 45.2,
+   "freight_headroom": 8.77,
+   "freight": 7.97
+  },
+  {
+   "product": "Wagvive Lick Bowl with Ball",
+   "variant": "Grey",
+   "sku": "CJFT286015803CX",
+   "price": 32.0,
+   "margin": 51.0,
+   "stress_margin": 45.2,
+   "freight_headroom": 8.77,
+   "freight": 7.97
+  },
+  {
+   "product": "Wagvive Lick Bowl with Ball",
+   "variant": "Yellow",
+   "sku": "CJFT286015804DW",
+   "price": 32.0,
+   "margin": 51.0,
+   "stress_margin": 45.2,
+   "freight_headroom": 8.77,
+   "freight": 7.97
+  },
+  {
+   "product": "Wagvive Paw Print Fleece Blanket",
+   "variant": "Camel / S",
+   "sku": "CJGY211711303CX",
+   "price": 15.99,
+   "margin": 50.3,
+   "stress_margin": 43.9,
+   "freight_headroom": 6.03,
+   "freight": 5.75
+  },
+  {
+   "product": "Wagvive Paw Print Fleece Blanket",
+   "variant": "Camel / M",
+   "sku": "CJGY211711304DW",
+   "price": 19.99,
+   "margin": 50.7,
+   "stress_margin": 44.5,
+   "freight_headroom": 7.0,
+   "freight": 6.57
+  },
+  {
+   "product": "Wagvive Paw Print Fleece Blanket",
+   "variant": "Beige / S",
+   "sku": "CJGY211711310JQ",
+   "price": 15.99,
+   "margin": 50.3,
+   "stress_margin": 43.9,
+   "freight_headroom": 6.03,
+   "freight": 5.75
+  },
+  {
+   "product": "Wagvive Paw Print Fleece Blanket",
+   "variant": "Beige / M",
+   "sku": "CJGY211711311KP",
+   "price": 19.99,
+   "margin": 50.7,
+   "stress_margin": 44.5,
+   "freight_headroom": 7.0,
+   "freight": 6.57
+  },
+  {
+   "product": "Wagvive Paw Print Fleece Blanket",
+   "variant": "Pink / S",
+   "sku": "CJGY211711317QJ",
+   "price": 15.99,
+   "margin": 50.3,
+   "stress_margin": 43.9,
+   "freight_headroom": 6.03,
+   "freight": 5.75
+  },
+  {
+   "product": "Wagvive Paw Print Fleece Blanket",
+   "variant": "Pink / M",
+   "sku": "CJGY211711318RI",
+   "price": 19.99,
+   "margin": 50.7,
+   "stress_margin": 44.5,
+   "freight_headroom": 7.0,
+   "freight": 6.57
+  },
+  {
+   "product": "Wagvive Paw Washing Cup",
+   "variant": "Blue / S",
+   "sku": "CJSP293469601AZ",
+   "price": 17.99,
+   "margin": 51.4,
+   "stress_margin": 45.1,
+   "freight_headroom": 6.97,
+   "freight": 6.46
+  },
+  {
+   "product": "Wagvive Paw Washing Cup",
+   "variant": "Blue / M",
+   "sku": "CJSP293469603CX",
+   "price": 18.99,
+   "margin": 53.9,
+   "stress_margin": 48.0,
+   "freight_headroom": 7.44,
+   "freight": 6.44
+  },
+  {
+   "product": "Wagvive Paw Washing Cup",
+   "variant": "Blue / L",
+   "sku": "CJSP293469605EV",
+   "price": 19.99,
+   "margin": 53.4,
+   "stress_margin": 47.4,
+   "freight_headroom": 7.92,
+   "freight": 6.96
+  },
+  {
+   "product": "Wagvive Paw Washing Cup",
+   "variant": "Orange / S",
+   "sku": "CJSP293469607GT",
+   "price": 17.99,
+   "margin": 51.4,
+   "stress_margin": 45.1,
+   "freight_headroom": 6.97,
+   "freight": 6.46
+  },
+  {
+   "product": "Wagvive Paw Washing Cup",
+   "variant": "Orange / M",
+   "sku": "CJSP293469609IR",
+   "price": 18.99,
+   "margin": 53.9,
+   "stress_margin": 48.0,
+   "freight_headroom": 7.44,
+   "freight": 6.44
+  },
+  {
+   "product": "Wagvive Paw Washing Cup",
+   "variant": "Orange / L",
+   "sku": "CJSP293469611KP",
+   "price": 19.99,
+   "margin": 53.4,
+   "stress_margin": 47.4,
+   "freight_headroom": 7.92,
+   "freight": 6.96
+  },
+  {
+   "product": "Wagvive Paw Washing Cup",
+   "variant": "Green / S",
+   "sku": "CJSP293469613MN",
+   "price": 17.99,
+   "margin": 51.4,
+   "stress_margin": 45.1,
+   "freight_headroom": 6.97,
+   "freight": 6.46
+  },
+  {
+   "product": "Wagvive Paw Washing Cup",
+   "variant": "Green / M",
+   "sku": "CJSP293469615OL",
+   "price": 18.99,
+   "margin": 53.9,
+   "stress_margin": 48.0,
+   "freight_headroom": 7.44,
+   "freight": 6.44
+  },
+  {
+   "product": "Wagvive Paw Washing Cup",
+   "variant": "Green / L",
+   "sku": "CJSP293469617QJ",
+   "price": 19.99,
+   "margin": 53.4,
+   "stress_margin": 47.4,
+   "freight_headroom": 7.92,
+   "freight": 6.96
+  },
+  {
+   "product": "Wagvive Pet Hair Remover Mitt",
+   "variant": "Light Brown",
+   "sku": "CJYD233200804DW",
+   "price": 19.0,
+   "margin": 54.9,
+   "stress_margin": 49.5,
+   "freight_headroom": 6.56,
+   "freight": 5.36
+  },
+  {
+   "product": "Wagvive Quick-Dry Bath Robe",
+   "variant": "Blue / XS",
+   "sku": "CJGY138841301AZ",
+   "price": 18.99,
+   "margin": 51.4,
+   "stress_margin": 45.4,
+   "freight_headroom": 6.29,
+   "freight": 5.75
+  },
+  {
+   "product": "Wagvive Quick-Dry Bath Robe",
+   "variant": "Blue / S",
+   "sku": "CJGY138841302BY",
+   "price": 21.99,
+   "margin": 51.5,
+   "stress_margin": 45.6,
+   "freight_headroom": 7.25,
+   "freight": 6.59
+  },
+  {
+   "product": "Wagvive Quick-Dry Bath Robe",
+   "variant": "Blue / M",
+   "sku": "CJGY138841303CX",
+   "price": 23.99,
+   "margin": 52.3,
+   "stress_margin": 46.4,
+   "freight_headroom": 8.0,
+   "freight": 7.1
+  },
+  {
+   "product": "Wagvive Quick-Dry Bath Robe",
+   "variant": "Pink / XS",
+   "sku": "CJGY138841304DW",
+   "price": 18.99,
+   "margin": 50.0,
+   "stress_margin": 43.9,
+   "freight_headroom": 6.04,
+   "freight": 5.75
+  },
+  {
+   "product": "Wagvive Quick-Dry Bath Robe",
+   "variant": "Pink / S",
+   "sku": "CJGY138841305EV",
+   "price": 21.99,
+   "margin": 51.5,
+   "stress_margin": 45.6,
+   "freight_headroom": 7.25,
+   "freight": 6.59
+  },
+  {
+   "product": "Wagvive Quick-Dry Bath Robe",
+   "variant": "Pink / M",
+   "sku": "CJGY138841306FU",
+   "price": 23.99,
+   "margin": 52.3,
+   "stress_margin": 46.4,
+   "freight_headroom": 8.0,
+   "freight": 7.1
+  },
+  {
+   "product": "Wagvive Quick-Dry Bath Robe",
+   "variant": "Green / XS",
+   "sku": "CJGY138841307GT",
+   "price": 18.99,
+   "margin": 50.0,
+   "stress_margin": 43.9,
+   "freight_headroom": 6.04,
+   "freight": 5.75
+  },
+  {
+   "product": "Wagvive Quick-Dry Bath Robe",
+   "variant": "Green / S",
+   "sku": "CJGY138841308HS",
+   "price": 21.99,
+   "margin": 51.5,
+   "stress_margin": 45.6,
+   "freight_headroom": 7.25,
+   "freight": 6.59
+  },
+  {
+   "product": "Wagvive Quick-Dry Bath Robe",
+   "variant": "Green / M",
+   "sku": "CJGY138841309IR",
+   "price": 23.99,
+   "margin": 52.3,
+   "stress_margin": 46.4,
+   "freight_headroom": 8.0,
+   "freight": 7.1
+  },
+  {
+   "product": "Wagvive Quiet Electric Nail Grinder",
+   "variant": "Deep Green",
+   "sku": "CJGY200835701AZ",
+   "price": 39.0,
+   "margin": 54.8,
+   "stress_margin": 49.6,
+   "freight_headroom": 10.51,
+   "freight": 8.08
+  },
+  {
+   "product": "Wagvive Quiet Electric Nail Grinder",
+   "variant": "Pure White",
+   "sku": "CJGY200835702BY",
+   "price": 39.0,
+   "margin": 54.8,
+   "stress_margin": 49.6,
+   "freight_headroom": 10.51,
+   "freight": 8.08
+  },
+  {
+   "product": "Wagvive Rope-Limb Puppy Plush",
+   "variant": "Default Title",
+   "sku": "CJST217558701AZ",
+   "price": 29.0,
+   "margin": 50.6,
+   "stress_margin": 44.9,
+   "freight_headroom": 7.55,
+   "freight": 6.93
+  },
+  {
+   "product": "Wagvive Screaming Chicken",
+   "variant": "Green",
+   "sku": "CJST258510901AZ",
+   "price": 24.99,
+   "margin": 51.3,
+   "stress_margin": 45.5,
+   "freight_headroom": 7.57,
+   "freight": 6.87
+  },
+  {
+   "product": "Wagvive Screaming Chicken",
+   "variant": "Orange",
+   "sku": "CJST258510902BY",
+   "price": 24.99,
+   "margin": 51.3,
+   "stress_margin": 45.5,
+   "freight_headroom": 7.57,
+   "freight": 6.87
+  },
+  {
+   "product": "Wagvive Screaming Chicken",
+   "variant": "Black",
+   "sku": "CJST258510903CX",
+   "price": 24.99,
+   "margin": 51.3,
+   "stress_margin": 45.5,
+   "freight_headroom": 7.57,
+   "freight": 6.87
+  },
+  {
+   "product": "Wagvive Sneaker Squeaky Toy",
+   "variant": "Blue",
+   "sku": "CJYD252933703CX",
+   "price": 18.0,
+   "margin": 51.8,
+   "stress_margin": 45.6,
+   "freight_headroom": 6.75,
+   "freight": 6.17
+  },
+  {
+   "product": "Wagvive Sneaker Squeaky Toy",
+   "variant": "Yellow",
+   "sku": "CJYD252933701AZ",
+   "price": 18.0,
+   "margin": 51.8,
+   "stress_margin": 45.6,
+   "freight_headroom": 6.75,
+   "freight": 6.17
+  },
+  {
+   "product": "Wagvive Sneaker Squeaky Toy",
+   "variant": "Black",
+   "sku": "CJYD252933702BY",
+   "price": 18.0,
+   "margin": 51.8,
+   "stress_margin": 45.6,
+   "freight_headroom": 6.75,
+   "freight": 6.17
+  },
+  {
+   "product": "Wagvive Squirrel Squeaky Plush",
+   "variant": "Default Title",
+   "sku": "CJST222139701AZ",
+   "price": 32.0,
+   "margin": 52.8,
+   "stress_margin": 47.6,
+   "freight_headroom": 7.43,
+   "freight": 6.05
+  },
+  {
+   "product": "Wagvive Talk Button",
+   "variant": "Green",
+   "sku": "CJYD232561605EV",
+   "price": 18.0,
+   "margin": 52.8,
+   "stress_margin": 46.9,
+   "freight_headroom": 6.32,
+   "freight": 5.56
+  },
+  {
+   "product": "Wagvive Talk Button",
+   "variant": "Pink",
+   "sku": "CJYD232561603CX",
+   "price": 18.0,
+   "margin": 52.4,
+   "stress_margin": 46.5,
+   "freight_headroom": 6.25,
+   "freight": 5.56
+  },
+  {
+   "product": "Wagvive Talk Button",
+   "variant": "Blue",
+   "sku": "CJYD232561606FU",
+   "price": 18.0,
+   "margin": 52.4,
+   "stress_margin": 46.5,
+   "freight_headroom": 6.25,
+   "freight": 5.56
+  },
+  {
+   "product": "Wagvive Talk Button",
+   "variant": "Yellow",
+   "sku": "CJYD232561604DW",
+   "price": 18.0,
+   "margin": 52.4,
+   "stress_margin": 46.5,
+   "freight_headroom": 6.25,
+   "freight": 5.56
+  },
+  {
+   "product": "Wagvive Travel Water Bottle & Bowl",
+   "variant": "Blue",
+   "sku": "CJDT287487301AZ",
+   "price": 30.0,
+   "margin": 50.2,
+   "stress_margin": 44.5,
+   "freight_headroom": 6.91,
+   "freight": 6.39
+  },
+  {
+   "product": "Wagvive Travel Water Bottle & Bowl",
+   "variant": "Pink",
+   "sku": "CJDT287487302BY",
+   "price": 30.0,
+   "margin": 50.2,
+   "stress_margin": 44.5,
+   "freight_headroom": 6.91,
+   "freight": 6.39
+  },
+  {
+   "product": "Wagvive Watermelon Rope Frisbee",
+   "variant": "Default Title",
+   "sku": "CJMY124424501AZ",
+   "price": 18.0,
+   "margin": 52.9,
+   "stress_margin": 46.9,
+   "freight_headroom": 6.98,
+   "freight": 6.19
+  },
+  {
+   "product": "Wagvive Waterproof Snuggle Blanket",
+   "variant": "Black / XS",
+   "sku": "CJGY192649701AZ",
+   "price": 22.99,
+   "margin": 50.1,
+   "stress_margin": 44.0,
+   "freight_headroom": 7.08,
+   "freight": 6.71
+  },
+  {
+   "product": "Wagvive Waterproof Snuggle Blanket",
+   "variant": "Black / S",
+   "sku": "CJGY192649702BY",
+   "price": 32.99,
+   "margin": 50.6,
+   "stress_margin": 44.7,
+   "freight_headroom": 9.89,
+   "freight": 9.17
+  },
+  {
+   "product": "Wagvive Waterproof Snuggle Blanket",
+   "variant": "Gray / XS",
+   "sku": "CJGY192649706FU",
+   "price": 22.99,
+   "margin": 50.1,
+   "stress_margin": 44.0,
+   "freight_headroom": 7.08,
+   "freight": 6.71
+  },
+  {
+   "product": "Wagvive Waterproof Snuggle Blanket",
+   "variant": "Gray / S",
+   "sku": "CJGY192649707GT",
+   "price": 32.99,
+   "margin": 50.6,
+   "stress_margin": 44.7,
+   "freight_headroom": 9.89,
+   "freight": 9.17
+  },
+  {
+   "product": "Wagvive Waterproof Snuggle Blanket",
+   "variant": "Coffee / XS",
+   "sku": "CJGY192649711KP",
+   "price": 22.99,
+   "margin": 50.1,
+   "stress_margin": 44.0,
+   "freight_headroom": 7.08,
+   "freight": 6.71
+  },
+  {
+   "product": "Wagvive Waterproof Snuggle Blanket",
+   "variant": "Coffee / S",
+   "sku": "CJGY192649712LO",
+   "price": 32.99,
+   "margin": 50.6,
+   "stress_margin": 44.7,
+   "freight_headroom": 9.89,
+   "freight": 9.17
+  },
+  {
+   "product": "Wagvive Waterproof Sofa & Furniture Cover",
+   "variant": "Black / Small 20\" x 28\"",
+   "sku": "CJYD225186001AZ",
+   "price": 28.0,
+   "margin": 53.9,
+   "stress_margin": 48.3,
+   "freight_headroom": 9.2,
+   "freight": 7.72
+  },
+  {
+   "product": "Wagvive Waterproof Sofa & Furniture Cover",
+   "variant": "Black / Medium 28\" x 39\"",
+   "sku": "CJYD225186002BY",
+   "price": 40.0,
+   "margin": 54.8,
+   "stress_margin": 49.3,
+   "freight_headroom": 12.64,
+   "freight": 10.17
+  },
+  {
+   "product": "Wagvive Waterproof Sofa & Furniture Cover",
+   "variant": "Black / Large 39\" x 57\"",
+   "sku": "CJYD225186003CX",
+   "price": 58.0,
+   "margin": 54.6,
+   "stress_margin": 49.1,
+   "freight_headroom": 17.47,
+   "freight": 14.0
+  },
+  {
+   "product": "Wagvive Waterproof Sofa & Furniture Cover",
+   "variant": "Brown / Small 20\" x 28\"",
+   "sku": "CJYD225186007GT",
+   "price": 28.0,
+   "margin": 53.9,
+   "stress_margin": 48.3,
+   "freight_headroom": 9.2,
+   "freight": 7.72
+  },
+  {
+   "product": "Wagvive Waterproof Sofa & Furniture Cover",
+   "variant": "Brown / Medium 28\" x 39\"",
+   "sku": "CJYD225186008HS",
+   "price": 40.0,
+   "margin": 54.8,
+   "stress_margin": 49.3,
+   "freight_headroom": 12.64,
+   "freight": 10.17
+  },
+  {
+   "product": "Wagvive Waterproof Sofa & Furniture Cover",
+   "variant": "Brown / Large 39\" x 57\"",
+   "sku": "CJYD225186009IR",
+   "price": 58.0,
+   "margin": 54.6,
+   "stress_margin": 49.1,
+   "freight_headroom": 17.47,
+   "freight": 14.0
+  },
+  {
+   "product": "Wagvive Waterproof Sofa & Furniture Cover",
+   "variant": "Grey / Small 20\" x 28\"",
+   "sku": "CJYD225186013MN",
+   "price": 28.0,
+   "margin": 53.9,
+   "stress_margin": 48.3,
+   "freight_headroom": 9.2,
+   "freight": 7.72
+  },
+  {
+   "product": "Wagvive Waterproof Sofa & Furniture Cover",
+   "variant": "Grey / Medium 28\" x 39\"",
+   "sku": "CJYD225186014NM",
+   "price": 40.0,
+   "margin": 54.8,
+   "stress_margin": 49.3,
+   "freight_headroom": 12.64,
+   "freight": 10.17
+  },
+  {
+   "product": "Wagvive Waterproof Sofa & Furniture Cover",
+   "variant": "Grey / Large 39\" x 57\"",
+   "sku": "CJYD225186015OL",
+   "price": 58.0,
+   "margin": 54.6,
+   "stress_margin": 49.1,
+   "freight_headroom": 17.47,
+   "freight": 14.0
+  },
+  {
+   "product": "Wagvive Woodland Rope-Limb Plush",
+   "variant": "Fox",
+   "sku": "CJST258364603CX",
+   "price": 24.0,
+   "margin": 50.5,
+   "stress_margin": 44.6,
+   "freight_headroom": 6.86,
+   "freight": 6.38
+  },
+  {
+   "product": "Wagvive Woodland Rope-Limb Plush",
+   "variant": "Rabbit",
+   "sku": "CJST258364602BY",
+   "price": 24.0,
+   "margin": 50.5,
+   "stress_margin": 44.6,
+   "freight_headroom": 6.86,
+   "freight": 6.38
+  },
+  {
+   "product": "Wagvive Woodland Rope-Limb Plush",
+   "variant": "Tiger",
+   "sku": "CJST258364601AZ",
+   "price": 24.0,
+   "margin": 50.5,
+   "stress_margin": 44.6,
+   "freight_headroom": 6.86,
+   "freight": 6.38
+  },
+  {
+   "product": "Wagvive Woodland Rope-Limb Plush",
+   "variant": "Monkey",
+   "sku": "CJST258364604DW",
+   "price": 24.0,
+   "margin": 50.5,
+   "stress_margin": 44.6,
+   "freight_headroom": 6.86,
+   "freight": 6.38
+  },
+  {
+   "product": "Wagvive Woodland Rope-Limb Plush",
+   "variant": "Koala",
+   "sku": "CJST258364605EV",
+   "price": 24.0,
+   "margin": 50.5,
+   "stress_margin": 44.6,
+   "freight_headroom": 6.86,
+   "freight": 6.38
+  },
+  {
+   "product": "Wagvive Woodland Rope-Limb Plush",
+   "variant": "Squirrel",
+   "sku": "CJST258364606FU",
+   "price": 24.0,
+   "margin": 50.5,
+   "stress_margin": 44.6,
+   "freight_headroom": 6.86,
+   "freight": 6.38
+  }
+ ]
+}

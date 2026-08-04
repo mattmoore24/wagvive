@@ -1,0 +1,11 @@
+{
+  "product": {
+    "title": "Wagvive Grooming & Shedding Gloves",
+    "body_html": "<p><strong>Grooming that feels like petting.</strong></p><p>Soft rubber tips collect loose fur while your pet experiences what feels like a calming massage, not a grooming session. A gentler entry point for pets who are anxious about brushes, and a great option for senior pets with thinner, more sensitive skin.</p><ul><li>Reduces shedding without scary brush sounds</li><li>Doubles as a calming massage tool</li><li>Adjustable, one-size-fits-most fit</li><li>Washable and reusable</li></ul>",
+    "vendor": "Wagvive",
+    "product_type": "Grooming",
+    "tags": "grooming, deshedding, senior pet, gloves",
+    "status": "draft",
+    "variants": [{"price": "19.00"}]
+  }
+}

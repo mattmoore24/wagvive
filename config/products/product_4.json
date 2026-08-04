@@ -1,0 +1,11 @@
+{
+  "product": {
+    "title": "Wagvive Quiet Electric Nail Grinder",
+    "body_html": "<p><strong>Trim time without the stress.</strong></p><p>A low-noise, low-vibration grinder designed to keep nail trims calm instead of chaotic. Multiple grinding ports adjust for different nail sizes, so it works as your pet grows or if you have multiple pets at home. Rechargeable and cordless for easy use anywhere in the house.</p><ul><li>Whisper-quiet motor reduces anxiety</li><li>Multiple port sizes for any nail</li><li>Cordless, rechargeable design</li><li>Safer than clippers for shaky hands</li></ul>",
+    "vendor": "Wagvive",
+    "product_type": "Grooming",
+    "tags": "grooming, nail care, senior pet",
+    "status": "draft",
+    "variants": [{"price": "32.00"}]
+  }
+}

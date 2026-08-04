@@ -1,0 +1,67 @@
+name: Scheduled store operations
+
+# Keeps Wagvive's stock and margins correct without any device being awake.
+#
+# SAFETY POSTURE — deliberate, do not loosen without thinking it through:
+#   * Only the two provably-safe repairs run with --apply:
+#       sync_inventory.py  copies CJ stock to the sellable location
+#       fix_locations.py   strips service-location levels (double-count fix)
+#   * margin_guard.py runs REPORT-ONLY. It never changes prices unattended.
+#     If any variant is under the 50% floor the job FAILS, which emails you.
+#     Repricing stays a human decision.
+#   * CJ rate-limits token creation, so this runs every 6 hours, not hourly.
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'   # every 6 hours, offset off the hour
+  workflow_dispatch:          # lets you run it on demand from the Actions tab
+
+concurrency:
+  group: store-ops
+  cancel-in-progress: false   # never interrupt a run that is mid-write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Recreate credential files from encrypted secrets
+        env:
+          SHOPIFY_ADMIN_API_TOKEN: ${{ secrets.SHOPIFY_ADMIN_API_TOKEN }}
+          SHOPIFY_STORE_DOMAIN:    ${{ secrets.SHOPIFY_STORE_DOMAIN }}
+          SHOPIFY_API_VERSION:     ${{ secrets.SHOPIFY_API_VERSION }}
+          CJ_EMAIL:                ${{ secrets.CJ_EMAIL }}
+          CJ_API_KEY:              ${{ secrets.CJ_API_KEY }}
+          CJ_API_BASE:             ${{ secrets.CJ_API_BASE }}
+        run: |
+          set -euo pipefail
+          for v in SHOPIFY_ADMIN_API_TOKEN SHOPIFY_STORE_DOMAIN SHOPIFY_API_VERSION \
+                   CJ_EMAIL CJ_API_KEY CJ_API_BASE; do
+            if [ -z "${!v}" ]; then
+              echo "::error::Missing repository secret: $v"; exit 1
+            fi
+          done
+          printf 'SHOPIFY_ADMIN_API_TOKEN=%s\nSHOPIFY_STORE_DOMAIN=%s\nSHOPIFY_API_VERSION=%s\n' \
+            "$SHOPIFY_ADMIN_API_TOKEN" "$SHOPIFY_STORE_DOMAIN" "$SHOPIFY_API_VERSION" > config/shopify.env
+          printf 'CJ_EMAIL=%s\nCJ_API_KEY=%s\nCJ_API_BASE=%s\n' \
+            "$CJ_EMAIL" "$CJ_API_KEY" "$CJ_API_BASE" > config/cj.env
+          echo "credential files written (values masked by Actions)"
+
+      - name: Mirror CJ stock to the sellable location
+        run: python config/sync_inventory.py --apply
+
+      - name: Repair inventory locations (undo any CJ double-count)
+        run: python config/fix_locations.py --apply
+
+      - name: Margin floor check (report only — fails the job on a breach)
+        run: python config/margin_guard.py
+
+      - name: Remove credential files
+        if: always()
+        run: rm -f config/shopify.env config/cj.env config/cj_token.json

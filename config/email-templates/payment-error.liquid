@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>Payment issue with your Wagvive order</title>
+</head>
+<body style="margin:0; padding:0; width:100%; background-color:#EFE7DA; -webkit-font-smoothing:antialiased;">
+
+<div style="display:none; font-size:1px; color:#EFE7DA; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden;">We could not process payment for your Wagvive order.</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EFE7DA;">
+<tr><td align="center" style="padding:28px 12px 40px 12px;">
+  <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#F7F2E9; border-radius:14px; overflow:hidden;">
+
+    <tr><td align="center" style="padding:34px 32px 6px 32px;">
+      <a href="{{ shop.url }}" style="text-decoration:none;">
+        <img src="https://cdn.shopify.com/s/files/1/0994/5114/2433/t/1/assets/email-wordmark.png" width="180" alt="Wagvive" style="display:block; border:0; width:180px; max-width:180px; height:auto;">
+      </a>
+    </td></tr>
+
+    <tr><td align="center" style="padding:14px 32px 0 32px;">
+      <h1 style="margin:0; font-family:Georgia,'Times New Roman',serif; font-size:27px; line-height:34px; font-weight:400; color:#3A3026;">We could not take payment.</h1>
+      <p style="margin:10px 0 0 0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:15px; line-height:24px; color:#6B5F51;">Something went wrong charging your payment method, so your order is on hold. Updating your details will release it.</p>
+      <p style="margin:16px 0 0 0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:20px; color:#8A7B6B; letter-spacing:0.04em; text-transform:uppercase;">Order {{ order_name }}</p>
+    </td></tr>
+
+    <tr><td align="center" style="padding:26px 32px 0 32px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center">
+        <tr><td align="center" bgcolor="#3A3026" style="border-radius:999px;">
+          <a href="{{ order_status_url }}" style="display:inline-block; padding:14px 34px; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:15px; font-weight:600; color:#F7F2E9; text-decoration:none; border-radius:999px;">Update payment method</a>
+        </td></tr>
+      </table>
+    </td></tr>
+
+    <tr><td style="padding:26px 32px 0 32px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #E2D8C8;">
+        <tr><td style="padding:20px 0 0 0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:22px; color:#6B5F51;">
+          Questions? Reply to this email or write to <a href="mailto:hello@wagvive.com" style="color:#3A3026; font-weight:600; text-decoration:underline;">hello@wagvive.com</a> and a real person will get back to you.
+        </td></tr>
+      </table>
+    </td></tr>
+
+    <tr><td align="center" style="padding:26px 32px 34px 32px;">
+      <p style="margin:0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; line-height:19px; color:#8A7B6B;">
+        <a href="{{ shop.url }}" style="color:#8A7B6B; text-decoration:none;">wagvive.com</a> &nbsp;·&nbsp;
+        <a href="{{ shop.url }}/policies/refund-policy" style="color:#8A7B6B; text-decoration:none;">Returns</a> &nbsp;·&nbsp;
+        <a href="{{ shop.url }}/pages/faq" style="color:#8A7B6B; text-decoration:none;">FAQ</a>
+      </p>
+      <p style="margin:8px 0 0 0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; line-height:19px; color:#A2957F;">Wagvive · Dog gear worth keeping</p>
+    </td></tr>
+
+  </table>
+</td></tr>
+</table>
+</body>
+</html>

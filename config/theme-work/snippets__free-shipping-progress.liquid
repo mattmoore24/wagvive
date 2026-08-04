@@ -1,0 +1,93 @@
+{% doc %}
+  Free shipping progress toward the threshold.
+
+  The single largest non-browsing reason people abandon a cart is extra costs
+  appearing late (Baymard: 39% of abandoners). This does the opposite - it states
+  the shipping position on every cart view, and turns it into a reason to add one
+  more item rather than a surprise at checkout.
+
+  Reads the threshold from the shipping bar setting so there is one number to
+  change, and renders from `cart.total_price` so the Section Rendering API keeps
+  it in step whenever the cart changes. No JS needed.
+
+  @param {string} [context] - 'drawer' or 'page', used only for spacing.
+{% enddoc %}
+
+{%- liquid
+  assign threshold = settings.free_shipping_threshold | default: 6000
+  assign subtotal = cart.total_price
+  assign remaining = threshold | minus: subtotal
+  assign pct = 0
+  if threshold > 0
+    assign pct = subtotal | times: 100.0 | divided_by: threshold
+  endif
+  if pct > 100
+    assign pct = 100
+  endif
+-%}
+
+{%- if cart.item_count > 0 -%}
+  <div class="wv-ship-progress wv-ship-progress--{{ context | default: 'drawer' }}">
+    <p class="wv-ship-progress__label">
+      {%- if remaining > 0 -%}
+        Add <strong>{{ remaining | money }}</strong> for free shipping
+      {%- else -%}
+        <strong>Free shipping unlocked.</strong> Nice one.
+      {%- endif -%}
+    </p>
+    <div
+      class="wv-ship-progress__track"
+      role="progressbar"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="{{ pct | round }}"
+      aria-label="Progress toward free shipping"
+    >
+      <div
+        class="wv-ship-progress__fill{% if remaining <= 0 %} is-complete{% endif %}"
+        style="width: {{ pct }}%;"
+      ></div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .wv-ship-progress {
+    padding-block: var(--gap-md, 12px);
+  }
+
+  .wv-ship-progress--drawer {
+    padding-inline: var(--cart-drawer-padding, 20px);
+  }
+
+  .wv-ship-progress__label {
+    margin: 0 0 8px;
+    font-size: 0.875rem;
+    line-height: 1.3;
+  }
+
+  .wv-ship-progress__track {
+    block-size: 6px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgb(var(--color-foreground-rgb, 0 0 0) / 0.12);
+  }
+
+  .wv-ship-progress__fill {
+    block-size: 100%;
+    border-radius: 999px;
+    background: rgb(var(--color-foreground-rgb, 0 0 0) / 0.75);
+    transition: width 320ms ease;
+  }
+
+  /* Completion is the moment worth marking, so it gets the only colour change. */
+  .wv-ship-progress__fill.is-complete {
+    background: #2f7a4d;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wv-ship-progress__fill {
+      transition: none;
+    }
+  }
+{% endstylesheet %}

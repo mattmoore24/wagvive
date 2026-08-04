@@ -1,0 +1,806 @@
+{
+  "10456336990497": {
+    "label": "Self-Cleaning Slicker Brush",
+    "spu": "CJMY1952185",
+    "pid": "1748302991692025856",
+    "name_en": "Self Cleaning Slicker Brush For Dogs, Cats Pets-One Click Cleaning Function-Gentle Effective Cat, Pet Dog Hair Remover-Dog Grooming Accessories For Small, Medium Large Dogs",
+    "variants": [
+      {
+        "vid": "1748302991775911936",
+        "sku": "CJMY195218501AZ",
+        "key": "Green",
+        "cost": 8.261,
+        "weight_g": 80.0,
+        "length": 47,
+        "width": 79,
+        "height": 165
+      },
+      {
+        "vid": "1748302991775911937",
+        "sku": "CJMY195218502BY",
+        "key": "Pink",
+        "cost": 8.261,
+        "weight_g": 80.0,
+        "length": 47,
+        "width": 79,
+        "height": 165
+      },
+      {
+        "vid": "1748302991775911938",
+        "sku": "CJMY195218503CX",
+        "key": "Orange",
+        "cost": 8.261,
+        "weight_g": 80.0,
+        "length": 47,
+        "width": 79,
+        "height": 165
+      }
+    ]
+  },
+  "10456337056033": {
+    "label": "Grooming & Shedding Gloves",
+    "spu": "CJYD2332008",
+    "pid": "2503191148021601200",
+    "name_en": "Pet Hair Remover Mitt Pet Hair Remover Gloves Deshedding Brush Glove For Dog Cat Rabbit With Long Short Curly Hair",
+    "variants": [
+      {
+        "vid": "2503191148021601500",
+        "sku": "CJYD233200801AZ",
+        "key": "Hair Removal Gloves-1PCS",
+        "cost": 0.64,
+        "weight_g": 40.0,
+        "length": 120,
+        "width": 60,
+        "height": 30
+      },
+      {
+        "vid": "2505200823161622300",
+        "sku": "CJYD233200802BY",
+        "key": "Hair Removal Gloves-2PCS",
+        "cost": 1.32,
+        "weight_g": 74.0,
+        "length": 150,
+        "width": 80,
+        "height": 50
+      },
+      {
+        "vid": "2505200823161622500",
+        "sku": "CJYD233200803CX",
+        "key": "Hair Removal Gloves-3PCS",
+        "cost": 1.98,
+        "weight_g": 111.0,
+        "length": 150,
+        "width": 80,
+        "height": 80
+      },
+      {
+        "vid": "2506090526391605000",
+        "sku": "CJYD233200804DW",
+        "key": "Light Brown-1PCS",
+        "cost": 1.74,
+        "weight_g": 35.0,
+        "length": 120,
+        "width": 60,
+        "height": 30
+      },
+      {
+        "vid": "2506090526391605200",
+        "sku": "CJYD233200807GT",
+        "key": "Dark brown-1PCS",
+        "cost": 0.95,
+        "weight_g": 35.0,
+        "length": 120,
+        "width": 60,
+        "height": 30
+      },
+      {
+        "vid": "2507080831081604500",
+        "sku": "CJYD233200820TG",
+        "key": "Hair Removal Gloves-4PCS",
+        "cost": 2.64,
+        "weight_g": 148.0,
+        "length": 170,
+        "width": 100,
+        "height": 100
+      },
+      {
+        "vid": "2507080831081604700",
+        "sku": "CJYD233200821UF",
+        "key": "Hair Removal Gloves-6PCS",
+        "cost": 4.15,
+        "weight_g": 222.0,
+        "length": 200,
+        "width": 150,
+        "height": 100
+      },
+      {
+        "vid": "2508030130101616600",
+        "sku": "CJYD233200814NM",
+        "key": "Dark brown-2PCS",
+        "cost": 1.9,
+        "weight_g": 68.0,
+        "length": 150,
+        "width": 60,
+        "height": 30
+      },
+      {
+        "vid": "2508030130101616800",
+        "sku": "CJYD233200815OL",
+        "key": "Dark brown-3PCS",
+        "cost": 2.85,
+        "weight_g": 102.0,
+        "length": 150,
+        "width": 60,
+        "height": 30
+      },
+      {
+        "vid": "2508030130101617200",
+        "sku": "CJYD233200824XC",
+        "key": "Light Brown-2PCS",
+        "cost": 1.4,
+        "weight_g": 68.0,
+        "length": 150,
+        "width": 60,
+        "height": 30
+      },
+      {
+        "vid": "2508030130101617400",
+        "sku": "CJYD233200825YB",
+        "key": "Light Brown-3PCS",
+        "cost": 2.1,
+        "weight_g": 102.0,
+        "length": 150,
+        "width": 60,
+        "height": 30
+      },
+      {
+        "vid": "2509150950521613200",
+        "sku": "CJYD233200811KP",
+        "key": "Dark brown-4PCS",
+        "cost": 3.98,
+        "weight_g": 136.0,
+        "length": 150,
+        "width": 60,
+        "height": 30
+      },
+      {
+        "vid": "2509150950521613400",
+        "sku": "CJYD233200822VE",
+        "key": "Light Brown-4PCS",
+        "cost": 6.96,
+        "weight_g": 136.0,
+        "length": 150,
+        "width": 60,
+        "height": 30
+      },
+      {
+        "vid": "2602100320141628000",
+        "sku": "CJYD233200829CX",
+        "key": "Hair Removal Gloves-10PCS",
+        "cost": 6.66,
+        "weight_g": 400.0,
+        "length": 240,
+        "width": 120,
+        "height": 60
+      },
+      {
+        "vid": "2603070947481606400",
+        "sku": "CJYD233200837KP",
+        "key": "Black-1PCS",
+        "cost": 0.57,
+        "weight_g": 31.0,
+        "length": 120,
+        "width": 60,
+        "height": 30
+      }
+    ]
+  },
+  "10456337154337": {
+    "label": "Ear & Teeth Cleaning Wipes",
+    "spu": "CJYD2169796",
+    "pid": "2410240358581602600",
+    "name_en": "Disposable Pet Cleaning Products Teeth Cleaning Wipes Ear Care Fingertips Ear Mite Removal Cat And Dog Ear Cleaning Pet Products",
+    "variants": [
+      {
+        "vid": "2410240358581602800",
+        "sku": "CJYD216979602BY",
+        "key": "Ear Cleaning Wipes 50 Pieces",
+        "cost": 0.81,
+        "weight_g": 180.0,
+        "length": 95,
+        "width": 70,
+        "height": 95
+      },
+      {
+        "vid": "2410240358581602900",
+        "sku": "CJYD216979603CX",
+        "key": "Tooth Cleaning Wipes 50 Pieces",
+        "cost": 0.81,
+        "weight_g": 180.0,
+        "length": 95,
+        "width": 70,
+        "height": 95
+      },
+      {
+        "vid": "2410240358581603000",
+        "sku": "CJYD216979604DW",
+        "key": "Set",
+        "cost": 1.59,
+        "weight_g": 360.0,
+        "length": 95,
+        "width": 70,
+        "height": 95
+      },
+      {
+        "vid": "2511070637051633900",
+        "sku": "CJYD216979601AZ",
+        "key": "Tooth Cleaning Wipes 100 Piece",
+        "cost": 1.62,
+        "weight_g": 354.0,
+        "length": 95,
+        "width": 70,
+        "height": 95
+      },
+      {
+        "vid": "2511070637051634100",
+        "sku": "CJYD216979605EV",
+        "key": "Tooth Cleaning Wipes 150 Piece",
+        "cost": 2.43,
+        "weight_g": 531.0,
+        "length": 95,
+        "width": 70,
+        "height": 95
+      },
+      {
+        "vid": "2511070637051634200",
+        "sku": "CJYD216979606FU",
+        "key": "Tooth Cleaning Wipes 200 Piece",
+        "cost": 3.24,
+        "weight_g": 708.0,
+        "length": 95,
+        "width": 70,
+        "height": 95
+      }
+    ]
+  },
+  "10456337318177": {
+    "label": "Quiet Electric Nail Grinder",
+    "spu": "CJGY2008357",
+    "pid": "1778298416737562624",
+    "name_en": "Dog Nail Grinder Electric Pet Nail Trimmers Rechargeable Cat Nail Grinders Super Quiet With 5-Speed Setting For Small Medium Large Dogs Cats Claw Care Pet Products",
+    "variants": [
+      {
+        "vid": "1778298416821448704",
+        "sku": "CJGY200835701AZ",
+        "key": "Deep Green",
+        "cost": 6.3,
+        "weight_g": 230.0,
+        "length": 185,
+        "width": 88,
+        "height": 36
+      },
+      {
+        "vid": "1778298416888557568",
+        "sku": "CJGY200835702BY",
+        "key": "Pure White",
+        "cost": 6.3,
+        "weight_g": 230.0,
+        "length": 185,
+        "width": 88,
+        "height": 36
+      },
+      {
+        "vid": "2601200616291612200",
+        "sku": "CJGY200835703CX",
+        "key": "Grinding head 1pc",
+        "cost": 0.69,
+        "weight_g": 50.0,
+        "length": 185,
+        "width": 88,
+        "height": 36
+      },
+      {
+        "vid": "2607021116061610200",
+        "sku": "CJGY200835704DW",
+        "key": "Deep Green set1",
+        "cost": 7.79,
+        "weight_g": 310.0,
+        "length": 185,
+        "width": 88,
+        "height": 36
+      },
+      {
+        "vid": "2607021116061610800",
+        "sku": "CJGY200835705EV",
+        "key": "Deep Green set2",
+        "cost": 10.95,
+        "weight_g": 526.0,
+        "length": 185,
+        "width": 88,
+        "height": 36
+      }
+    ]
+  },
+  "10456337383713": {
+    "label": "Cooling Comfort Mat",
+    "spu": "CJGY1038962",
+    "pid": "1369963203186003968",
+    "name_en": "Pet Ice Pad Gel Cooling Ice Pad Summer Pet Pad Dog Mat",
+    "variants": [
+      {
+        "vid": "1369963204603678720",
+        "sku": "CJGY103896201AZ",
+        "key": "Blue-S",
+        "cost": 1.89,
+        "weight_g": 2020.0,
+        "length": 200,
+        "width": 150,
+        "height": 140
+      },
+      {
+        "vid": "1369963204666593280",
+        "sku": "CJGY103896202BY",
+        "key": "Blue-M",
+        "cost": 3.02,
+        "weight_g": 2030.0,
+        "length": 250,
+        "width": 140,
+        "height": 140
+      },
+      {
+        "vid": "1369963204725313536",
+        "sku": "CJGY103896203CX",
+        "key": "Blue-MD",
+        "cost": 4.13,
+        "weight_g": 2040.0,
+        "length": 250,
+        "width": 140,
+        "height": 140
+      },
+      {
+        "vid": "1369963204825976832",
+        "sku": "CJGY103896204DW",
+        "key": "Blue-L",
+        "cost": 4.15,
+        "weight_g": 2050.0,
+        "length": 250,
+        "width": 210,
+        "height": 210
+      },
+      {
+        "vid": "1595048575942275072",
+        "sku": "CJGY103896206FU",
+        "key": "Blue-2XL",
+        "cost": 8.57,
+        "weight_g": 2070.0,
+        "length": 250,
+        "width": 210,
+        "height": 210
+      },
+      {
+        "vid": "1600752617888690176",
+        "sku": "CJGY103896208HS",
+        "key": "Blue ice mat-2XL",
+        "cost": 8.14,
+        "weight_g": 5020.0,
+        "length": 300,
+        "width": 400,
+        "height": 80
+      },
+      {
+        "vid": "1600752617888690177",
+        "sku": "CJGY103896209IR",
+        "key": "Blue ice mat-L",
+        "cost": 3.95,
+        "weight_g": 4420.0,
+        "length": 250,
+        "width": 210,
+        "height": 210
+      },
+      {
+        "vid": "1600752617892884480",
+        "sku": "CJGY103896210JQ",
+        "key": "Blue ice mat-M",
+        "cost": 2.87,
+        "weight_g": 4020.0,
+        "length": 250,
+        "width": 210,
+        "height": 210
+      },
+      {
+        "vid": "1600752617892884481",
+        "sku": "CJGY103896212LO",
+        "key": "Blue ice mat-S",
+        "cost": 1.79,
+        "weight_g": 3520.0,
+        "length": 250,
+        "width": 210,
+        "height": 210
+      },
+      {
+        "vid": "1600752617892884482",
+        "sku": "CJGY103896213MN",
+        "key": "Blue ice mat-XL",
+        "cost": 6.58,
+        "weight_g": 4720.0,
+        "length": 250,
+        "width": 210,
+        "height": 210
+      },
+      {
+        "vid": "1600752617892884483",
+        "sku": "CJGY103896214NM",
+        "key": "Blue ice mat-XS",
+        "cost": 1.28,
+        "weight_g": 3220.0,
+        "length": 250,
+        "width": 210,
+        "height": 210
+      }
+    ]
+  },
+  "10456337547553": {
+    "label": "Anti-Spill Floating Water Bowl",
+    "spu": "CJGY1025454",
+    "pid": "1366573785234411520",
+    "name_en": "1.5L Cat Dog Water Bowl Carried Floating Bowl Anti-Overflow Slow Water Feeder Dispenser Pet Fountain ABS&PP Dog Supplies",
+    "variants": [
+      {
+        "vid": "1366573786647891968",
+        "sku": "CJGY102545401AZ",
+        "key": "Pink",
+        "cost": 4.13,
+        "weight_g": 620.0,
+        "length": 240,
+        "width": 240,
+        "height": 90
+      },
+      {
+        "vid": "1366573786715000832",
+        "sku": "CJGY102545402BY",
+        "key": "Blue",
+        "cost": 4.13,
+        "weight_g": 620.0,
+        "length": 240,
+        "width": 240,
+        "height": 90
+      },
+      {
+        "vid": "1366573786782109696",
+        "sku": "CJGY102545403CX",
+        "key": "Grey",
+        "cost": 4.13,
+        "weight_g": 620.0,
+        "length": 240,
+        "width": 240,
+        "height": 90
+      },
+      {
+        "vid": "1366573786849218560",
+        "sku": "CJGY102545404DW",
+        "key": "White",
+        "cost": 4.13,
+        "weight_g": 807.0,
+        "length": 240,
+        "width": 240,
+        "height": 90
+      },
+      {
+        "vid": "1643881125657448448",
+        "sku": "CJGY102545408HS",
+        "key": "White 3pcs",
+        "cost": 11.69,
+        "weight_g": 2358.0,
+        "length": 240,
+        "width": 240,
+        "height": 300
+      },
+      {
+        "vid": "1646844518660059136",
+        "sku": "CJGY102545409IR",
+        "key": "Blue 3pcs",
+        "cost": 11.69,
+        "weight_g": 1830.0,
+        "length": 240,
+        "width": 240,
+        "height": 300
+      },
+      {
+        "vid": "1646844518718779392",
+        "sku": "CJGY102545410JQ",
+        "key": "Grey 3pcs",
+        "cost": 11.69,
+        "weight_g": 1833.0,
+        "length": 240,
+        "width": 240,
+        "height": 300
+      },
+      {
+        "vid": "1646844518777499648",
+        "sku": "CJGY102545411KP",
+        "key": "Pink 3pcs",
+        "cost": 11.69,
+        "weight_g": 1833.0,
+        "length": 240,
+        "width": 240,
+        "height": 300
+      },
+      {
+        "vid": "1646844518836219904",
+        "sku": "CJGY102545412LO",
+        "key": "2Blue1Grey",
+        "cost": 11.69,
+        "weight_g": 1831.0,
+        "length": 240,
+        "width": 240,
+        "height": 300
+      },
+      {
+        "vid": "1646844518894940160",
+        "sku": "CJGY102545413MN",
+        "key": "1Blue2Grey",
+        "cost": 11.69,
+        "weight_g": 1832.0,
+        "length": 240,
+        "width": 240,
+        "height": 300
+      },
+      {
+        "vid": "1646844518953660416",
+        "sku": "CJGY102545414NM",
+        "key": "1Blue2Pink",
+        "cost": 11.69,
+        "weight_g": 1832.0,
+        "length": 240,
+        "width": 240,
+        "height": 300
+      },
+      {
+        "vid": "1646844519012380672",
+        "sku": "CJGY102545415OL",
+        "key": "2Blue1Pink",
+        "cost": 11.69,
+        "weight_g": 1831.0,
+        "length": 240,
+        "width": 240,
+        "height": 300
+      },
+      {
+        "vid": "1646844519071100928",
+        "sku": "CJGY102545416PK",
+        "key": "2Blue1White",
+        "cost": 11.69,
+        "weight_g": 2006.0,
+        "length": 240,
+        "width": 240,
+        "height": 300
+      },
+      {
+        "vid": "1646844519125626880",
+        "sku": "CJGY102545417QJ",
+        "key": "1Blue2White",
+        "cost": 11.69,
+        "weight_g": 2182.0,
+        "length": 240,
+        "width": 240,
+        "height": 300
+      },
+      {
+        "vid": "1646844519180152832",
+        "sku": "CJGY102545418RI",
+        "key": "2Pink1White",
+        "cost": 11.69,
+        "weight_g": 2008.0,
+        "length": 240,
+        "width": 240,
+        "height": 300
+      },
+      {
+        "vid": "1646844519238873088",
+        "sku": "CJGY102545419SH",
+        "key": "1Pink2White",
+        "cost": 11.69,
+        "weight_g": 2183.0,
+        "length": 240,
+        "width": 240,
+        "height": 300
+      },
+      {
+        "vid": "1646844519293399040",
+        "sku": "CJGY102545420TG",
+        "key": "2Pink1Grey",
+        "cost": 11.69,
+        "weight_g": 1833.0,
+        "length": 240,
+        "width": 240,
+        "height": 300
+      },
+      {
+        "vid": "1646844519347924992",
+        "sku": "CJGY102545421UF",
+        "key": "1Pink2Grey",
+        "cost": 11.69,
+        "weight_g": 1833.0,
+        "length": 240,
+        "width": 240,
+        "height": 300
+      },
+      {
+        "vid": "1658366682760486912",
+        "sku": "CJGY102545422VE",
+        "key": "Grey 2pcs",
+        "cost": 7.79,
+        "weight_g": 1222.0,
+        "length": 240,
+        "width": 240,
+        "height": 300
+      },
+      {
+        "vid": "1708795443548786688",
+        "sku": "CJGY102545423WD",
+        "key": "Pink 2L",
+        "cost": 4.7,
+        "weight_g": 670.0,
+        "length": 240,
+        "width": 240,
+        "height": 90
+      },
+      {
+        "vid": "1708795443611701248",
+        "sku": "CJGY102545424XC",
+        "key": "White 2L",
+        "cost": 4.7,
+        "weight_g": 924.0,
+        "length": 240,
+        "width": 240,
+        "height": 90
+      },
+      {
+        "vid": "1708795443674615808",
+        "sku": "CJGY102545425YB",
+        "key": "Grey 2L",
+        "cost": 4.7,
+        "weight_g": 670.0,
+        "length": 240,
+        "width": 240,
+        "height": 90
+      },
+      {
+        "vid": "1708795443737530368",
+        "sku": "CJGY102545426ZA",
+        "key": "Blue 2L",
+        "cost": 4.7,
+        "weight_g": 670.0,
+        "length": 240,
+        "width": 240,
+        "height": 90
+      }
+    ]
+  },
+  "10456337613089": {
+    "label": "Slow Feeder Bowl",
+    "spu": "CJGY1748465",
+    "pid": "1653041912300969984",
+    "name_en": "Pet Dog Cat Slow Feeder Bowls Anti Choking Slow Feeder Dish Bowl Home Dog Eating Plate Anti Gulping Bowl Supplies",
+    "variants": [
+      {
+        "vid": "1653041912363884544",
+        "sku": "CJGY174846501AZ",
+        "key": "Green",
+        "cost": 1.29,
+        "weight_g": 170.0,
+        "length": 230,
+        "width": 230,
+        "height": 50
+      },
+      {
+        "vid": "1653041912418410496",
+        "sku": "CJGY174846502BY",
+        "key": "Pink",
+        "cost": 1.29,
+        "weight_g": 170.0,
+        "length": 230,
+        "width": 230,
+        "height": 50
+      },
+      {
+        "vid": "1653041912468742144",
+        "sku": "CJGY174846503CX",
+        "key": "Orange",
+        "cost": 1.29,
+        "weight_g": 170.0,
+        "length": 230,
+        "width": 230,
+        "height": 50
+      },
+      {
+        "vid": "1717449049042853888",
+        "sku": "CJGY174846504DW",
+        "key": "Set",
+        "cost": 2.11,
+        "weight_g": 322.0,
+        "length": 230,
+        "width": 230,
+        "height": 100
+      },
+      {
+        "vid": "1717449049114157056",
+        "sku": "CJGY174846505EV",
+        "key": "Set1",
+        "cost": 2.11,
+        "weight_g": 322.0,
+        "length": 230,
+        "width": 230,
+        "height": 100
+      }
+    ]
+  },
+  "10456337711393": {
+    "label": "Orthopedic Comfort Bed",
+    "spu": "CJYD2363003",
+    "pid": "2504260315441601200",
+    "name_en": "Pet Bed Large Dog Golden Retriever Dog Thickening Cushion",
+    "variants": [
+      {
+        "vid": "2504260315441601600",
+        "sku": "CJYD236300301AZ",
+        "key": "Light Gray-71X58X16cm",
+        "cost": 9.78,
+        "weight_g": 1600.0,
+        "length": 420,
+        "width": 350,
+        "height": 120
+      },
+      {
+        "vid": "2504260315441601900",
+        "sku": "CJYD236300302BY",
+        "key": "Light Gray-91X68X16cm",
+        "cost": 14.59,
+        "weight_g": 2500.0,
+        "length": 530,
+        "width": 380,
+        "height": 130
+      },
+      {
+        "vid": "2504260315441602300",
+        "sku": "CJYD236300303CX",
+        "key": "Light Gray-105X75X16cm",
+        "cost": 17.91,
+        "weight_g": 3750.0,
+        "length": 600,
+        "width": 400,
+        "height": 600
+      },
+      {
+        "vid": "2504260315441608700",
+        "sku": "CJYD236300304DW",
+        "key": "Dark Gray-71X58X16cm",
+        "cost": 9.78,
+        "weight_g": 1600.0,
+        "length": 420,
+        "width": 350,
+        "height": 120
+      },
+      {
+        "vid": "2504260315441608900",
+        "sku": "CJYD236300305EV",
+        "key": "Dark Gray-91X68X16cm",
+        "cost": 14.59,
+        "weight_g": 2500.0,
+        "length": 530,
+        "width": 380,
+        "height": 130
+      },
+      {
+        "vid": "2504260315441609100",
+        "sku": "CJYD236300306FU",
+        "key": "Dark Gray-105X75X16cm",
+        "cost": 17.91,
+        "weight_g": 3750.0,
+        "length": 600,
+        "width": 400,
+        "height": 600
+      }
+    ]
+  }
+}

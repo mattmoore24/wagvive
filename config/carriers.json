@@ -1,0 +1,26 @@
+{
+  "_comment": "Carrier actually selected in each CJ product connection. This is what gets booked, so it is what pricing must be based on - costing against the cheapest available carrier understates freight whenever a faster one was deliberately chosen. Keep in step with the CJ connection table; config/carrier_audit.py reads this and reports drift.",
+  "_policy": "Cheapest carrier delivering within 9 days. Fall back to the cheapest within 12 days when nothing faster exists, or when the fast option costs more than about $1.50 extra - four days of delivery speed is worth pennies on a 50%+ margin, but not dollars.",
+  "_updated": "2026-08-01",
+  "carriers": {
+    "CJPM2920000": "YunExpress Ordinary",
+    "CJYD2332008": "CJPacket Ordinary",
+    "CJYD2169796": "CJPacket Sensitive Pro",
+    "CJGY1025454": "YunExpress Ordinary",
+    "CJGY1748465": "YunExpress Ordinary",
+    "CJGY2008357": "YunExpress Sensitive",
+    "CJMY1952185": "Yunexpress CN to US",
+    "CJYD2251860": "YunExpress Ordinary",
+    "CJYD2422878": "YunExpress Ordinary",
+    "CJST2178441": "YunExpress Ordinary",
+    "CJST2178342": "YunExpress Ordinary",
+    "CJST2583646": "YunExpress Ordinary",
+    "CJST2190132": "YunExpress Ordinary",
+    "CJST2175587": "YunExpress Ordinary",
+    "CJST2221397": "YunExpress Ordinary",
+    "CJYD2626864": "YunExpress Ordinary",
+    "CJYD2222742": "CJPacket Super Pure Electricity",
+    "CJMY1244245": "YunExpress Ordinary",
+    "CJYD2529337": "YunExpress Ordinary"
+  }
+}

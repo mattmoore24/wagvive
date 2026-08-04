@@ -1,0 +1,186 @@
+{% doc %}
+  One suggested add-on in the cart, chosen by what the shopper is actually short of.
+
+  Generic "you may also like" carousels are noise. This picks deliberately:
+
+  - If the cart is below the free-shipping threshold, it suggests the cheapest
+    item that would CLEAR the threshold - so the suggestion pays for itself and
+    the shopper can see why it is there.
+  - If nothing in the pool closes the gap, it suggests the dearest one, which
+    gets closest.
+  - Once shipping is already free, it falls back to the cheapest unowned item, as
+    a straightforward complement rather than a nudge.
+
+  Items already in the cart are excluded, and anything out of stock is skipped.
+  Shows nothing if the cart is empty or the pool is exhausted - an empty
+  recommendation slot is worse than none.
+
+  @param {string} [context] - 'drawer' or 'page', spacing only.
+{% enddoc %}
+
+{%- liquid
+  assign threshold = settings.free_shipping_threshold | default: 6000
+  assign remaining = threshold | minus: cart.total_price
+
+  comment
+    Add-on pool, cheapest first. Deliberately the low-commitment accessories -
+    suggesting a $109 kit to someone $12 short would be absurd.
+  endcomment
+  assign pool = 'wagvive-grooming-shedding-gloves,wagvive-slow-feeder-bowl,wagvive-ear-teeth-cleaning-wipes,wagvive-self-cleaning-slicker-brush,wagvive-quiet-electric-nail-grinder' | split: ','
+
+  assign in_cart = ''
+  for line in cart.items
+    assign in_cart = in_cart | append: line.product.handle | append: ','
+  endfor
+
+  assign pick = blank
+  assign fallback = blank
+
+  for handle in pool
+    assign candidate = all_products[handle]
+    if candidate == blank or candidate.available == false
+      continue
+    endif
+    if in_cart contains candidate.handle
+      continue
+    endif
+
+    comment - dearest available option, used when nothing closes the gap -
+    endcomment
+    assign fallback = candidate
+
+    if pick == blank and remaining > 0 and candidate.price >= remaining
+      assign pick = candidate
+    endif
+    if pick == blank and remaining <= 0
+      assign pick = candidate
+    endif
+  endfor
+
+  if pick == blank
+    assign pick = fallback
+  endif
+-%}
+
+{%- if cart.item_count > 0 and pick != blank -%}
+  <div class="wv-xsell wv-xsell--{{ context | default: 'drawer' }}">
+    <p class="wv-xsell__head">
+      {%- if remaining > 0 and pick.price >= remaining -%}
+        Add this and shipping is free
+      {%- else -%}
+        Goes well with your order
+      {%- endif -%}
+    </p>
+    <div class="wv-xsell__card">
+      <a class="wv-xsell__link" href="{{ pick.url }}">
+        {%- if pick.featured_image -%}
+          <img
+            class="wv-xsell__img"
+            src="{{ pick.featured_image | image_url: width: 140 }}"
+            alt="{{ pick.title | escape }}"
+            width="64"
+            height="64"
+            loading="lazy"
+          >
+        {%- endif -%}
+        <span class="wv-xsell__meta">
+          <span class="wv-xsell__title">{{ pick.title | remove: 'Wagvive ' }}</span>
+          <span class="wv-xsell__price">{{ pick.price | money }}</span>
+        </span>
+      </a>
+      {%- comment -%}
+        A plain form, so this works with JavaScript disabled and does not depend
+        on the theme's internal cart events. return_to brings the shopper back to
+        the cart rather than dumping them on a product page.
+      {%- endcomment -%}
+      <form action="{{ routes.cart_add_url }}" method="post" class="wv-xsell__form">
+        <input type="hidden" name="id" value="{{ pick.selected_or_first_available_variant.id }}">
+        <input type="hidden" name="quantity" value="1">
+        <input type="hidden" name="return_to" value="{{ routes.cart_url }}">
+        <button type="submit" class="wv-xsell__add">Add</button>
+      </form>
+    </div>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .wv-xsell {
+    padding-block: var(--gap-md, 12px);
+    border-block-start: 1px solid rgb(var(--color-foreground-rgb, 0 0 0) / 0.12);
+    margin-block-start: var(--gap-md, 12px);
+  }
+
+  .wv-xsell--drawer {
+    padding-inline: var(--cart-drawer-padding, 20px);
+  }
+
+  .wv-xsell__head {
+    margin: 0 0 10px;
+    font-size: 0.8125rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    opacity: 0.65;
+  }
+
+  .wv-xsell__card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .wv-xsell__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    min-inline-size: 0;
+    flex: 1;
+  }
+
+  .wv-xsell__img {
+    inline-size: 48px;
+    block-size: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex: none;
+  }
+
+  .wv-xsell__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-inline-size: 0;
+  }
+
+  .wv-xsell__title {
+    font-size: 0.875rem;
+    line-height: 1.25;
+  }
+
+  .wv-xsell__price {
+    font-size: 0.8125rem;
+    opacity: 0.7;
+  }
+
+  .wv-xsell__form {
+    margin: 0;
+    flex: none;
+  }
+
+  .wv-xsell__add {
+    border: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-size: 0.8125rem;
+    cursor: pointer;
+    transition: background-color 160ms ease, color 160ms ease;
+  }
+
+  .wv-xsell__add:hover {
+    background: rgb(var(--color-foreground-rgb, 0 0 0) / 0.9);
+    color: rgb(var(--color-background-rgb, 255 255 255));
+  }
+{% endstylesheet %}

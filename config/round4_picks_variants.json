@@ -1,0 +1,961 @@
+{
+ "sneaker": {
+  "spu": "CJYD2529337",
+  "name": "Dog Sound Slippers Toy Self-Hi Relieving Stuffy Bends And Hi",
+  "variants": [
+   {
+    "sku": "CJYD252933701AZ",
+    "key": "Yellow",
+    "w": 120.0,
+    "cost": 1.19,
+    "img": true
+   },
+   {
+    "sku": "CJYD252933702BY",
+    "key": "Black",
+    "w": 120.0,
+    "cost": 1.19,
+    "img": true
+   },
+   {
+    "sku": "CJYD252933703CX",
+    "key": "Sea Fog Blue",
+    "w": 120.0,
+    "cost": 1.19,
+    "img": true
+   }
+  ]
+ },
+ "ringball": {
+  "spu": "CJST2578708",
+  "name": "Plush Dog Sound Ringing Ball, Interactive Pet Toy, Teeth Cle",
+  "variants": [
+   {
+    "sku": "CJST257870801AZ",
+    "key": "Monkey",
+    "w": 150.0,
+    "cost": 2.17,
+    "img": true
+   },
+   {
+    "sku": "CJST257870802BY",
+    "key": "Frog",
+    "w": 150.0,
+    "cost": 2.17,
+    "img": true
+   },
+   {
+    "sku": "CJST257870803CX",
+    "key": "Dog",
+    "w": 150.0,
+    "cost": 2.17,
+    "img": true
+   }
+  ]
+ },
+ "teddy": {
+  "spu": "CJYD2454114",
+  "name": "Dog Interactive Companion Plush Doll Toy",
+  "variants": [
+   {
+    "sku": "CJYD245411401AZ",
+    "key": "Sky Blue-27\u00d722CM",
+    "w": 140.0,
+    "cost": 1.82,
+    "img": true
+   }
+  ]
+ },
+ "vocalplush": {
+  "spu": "CJMY1262779",
+  "name": "Pet Vocal Toy Plush, Accompany With Bite-resistant And Anti-",
+  "variants": [
+   {
+    "sku": "CJMY126277901AZ",
+    "key": "Fawn",
+    "w": 220.0,
+    "cost": 1.7,
+    "img": true
+   },
+   {
+    "sku": "CJMY126277902BY",
+    "key": "Crooked neck",
+    "w": 220.0,
+    "cost": 1.7,
+    "img": true
+   },
+   {
+    "sku": "CJMY126277903CX",
+    "key": "Frog",
+    "w": 220.0,
+    "cost": 1.7,
+    "img": true
+   }
+  ]
+ },
+ "chicken": {
+  "spu": "CJST2585109",
+  "name": "Pets Dog Toys Screaming Chicken Sound Toy Puppy Bite Resista",
+  "variants": [
+   {
+    "sku": "CJST258510901AZ",
+    "key": "Green",
+    "w": 200.0,
+    "cost": 3.25,
+    "img": true
+   },
+   {
+    "sku": "CJST258510902BY",
+    "key": "Orange",
+    "w": 200.0,
+    "cost": 3.25,
+    "img": true
+   },
+   {
+    "sku": "CJST258510903CX",
+    "key": "Black",
+    "w": 200.0,
+    "cost": 3.25,
+    "img": true
+   },
+   {
+    "sku": "CJST258510904DW",
+    "key": "Three colors",
+    "w": 200.0,
+    "cost": 6.26,
+    "img": true
+   }
+  ]
+ },
+ "towel": {
+  "spu": "CJGY1388413",
+  "name": "Quick-drying Pet Absorbent Towel Dog Bathrobe Pet Dog Bath T",
+  "variants": [
+   {
+    "sku": "CJGY138841301AZ",
+    "key": "Blue-XS",
+    "w": 120.0,
+    "cost": 1.96,
+    "img": true
+   },
+   {
+    "sku": "CJGY138841302BY",
+    "key": "Blue-S",
+    "w": 180.0,
+    "cost": 2.34,
+    "img": true
+   },
+   {
+    "sku": "CJGY138841303CX",
+    "key": "Blue-M",
+    "w": 260.0,
+    "cost": 2.5,
+    "img": true
+   },
+   {
+    "sku": "CJGY138841304DW",
+    "key": "Pink-XS",
+    "w": 120.0,
+    "cost": 2.17,
+    "img": true
+   },
+   {
+    "sku": "CJGY138841305EV",
+    "key": "Pink-S",
+    "w": 180.0,
+    "cost": 2.34,
+    "img": true
+   },
+   {
+    "sku": "CJGY138841306FU",
+    "key": "Pink-M",
+    "w": 260.0,
+    "cost": 2.5,
+    "img": true
+   },
+   {
+    "sku": "CJGY138841307GT",
+    "key": "Green-XS",
+    "w": 120.0,
+    "cost": 2.17,
+    "img": true
+   },
+   {
+    "sku": "CJGY138841308HS",
+    "key": "Green-S",
+    "w": 180.0,
+    "cost": 2.34,
+    "img": true
+   },
+   {
+    "sku": "CJGY138841309IR",
+    "key": "Green-M",
+    "w": 260.0,
+    "cost": 2.5,
+    "img": true
+   },
+   {
+    "sku": "CJGY138841310JQ",
+    "key": "Blue set-M",
+    "w": 332.0,
+    "cost": 3.27,
+    "img": true
+   }
+  ]
+ },
+ "lednail": {
+  "spu": "CJYD2264960",
+  "name": "2 In 1 Pet Nail Clippers With Led Light Dog Cat Special Bloo",
+  "variants": [
+   {
+    "sku": "CJYD226496002BY",
+    "key": "Green",
+    "w": 220.0,
+    "cost": 3.78,
+    "img": true
+   },
+   {
+    "sku": "CJYD226496003CX",
+    "key": "Pink",
+    "w": 220.0,
+    "cost": 3.78,
+    "img": true
+   },
+   {
+    "sku": "CJYD226496004DW",
+    "key": "White",
+    "w": 220.0,
+    "cost": 3.78,
+    "img": true
+   },
+   {
+    "sku": "CJYD226496008HS",
+    "key": "Set5",
+    "w": 1460.0,
+    "cost": 19.18,
+    "img": true
+   },
+   {
+    "sku": "CJYD226496009IR",
+    "key": "Set6",
+    "w": 1460.0,
+    "cost": 19.18,
+    "img": true
+   },
+   {
+    "sku": "CJYD226496010JQ",
+    "key": "Set7",
+    "w": 1460.0,
+    "cost": 19.18,
+    "img": true
+   },
+   {
+    "sku": "CJYD226496011KP",
+    "key": "Set8",
+    "w": 1460.0,
+    "cost": 19.18,
+    "img": true
+   },
+   {
+    "sku": "CJYD226496012LO",
+    "key": "Set9",
+    "w": 455.0,
+    "cost": 10.08,
+    "img": true
+   },
+   {
+    "sku": "CJYD226496013MN",
+    "key": "Repair tool",
+    "w": 220.0,
+    "cost": 4.39,
+    "img": true
+   },
+   {
+    "sku": "CJYD226496014NM",
+    "key": "Set10",
+    "w": 830.0,
+    "cost": 15.02,
+    "img": true
+   },
+   {
+    "sku": "CJYD226496015OL",
+    "key": "Blue brush",
+    "w": 98.0,
+    "cost": 0.36,
+    "img": true
+   },
+   {
+    "sku": "CJYD226496016PK",
+    "key": "Set11",
+    "w": 260.0,
+    "cost": 4.16,
+    "img": true
+   },
+   {
+    "sku": "CJYD226496017QJ",
+    "key": "Pink set",
+    "w": 310.0,
+    "cost": 4.14,
+    "img": true
+   },
+   {
+    "sku": "CJYD226496018RI",
+    "key": "Green set",
+    "w": 310.0,
+    "cost": 4.14,
+    "img": true
+   }
+  ]
+ },
+ "dematting": {
+  "spu": "CJYD2754094",
+  "name": "Pet Grooming Brush For Removing Knots And Loose Fur From Cat",
+  "variants": [
+   {
+    "sku": "CJYD275409401AZ",
+    "key": "Large Size",
+    "w": 133.0,
+    "cost": 1.65,
+    "img": true
+   }
+  ]
+ },
+ "pawtrimmer": {
+  "spu": "CJNP2226365",
+  "name": "New Dog Paw Trimmer With LED Light Fully Waterproof Pet Hair",
+  "variants": [
+   {
+    "sku": "CJNP222636501AZ",
+    "key": "White",
+    "w": 160.0,
+    "cost": 11.98,
+    "img": true
+   }
+  ]
+ },
+ "pawcup": {
+  "spu": "CJSP2934696",
+  "name": "Pet Foot Washing Cup Dog Foot Massager",
+  "variants": [
+   {
+    "sku": "CJSP293469601AZ",
+    "key": "Blue-S-Foundation",
+    "w": 170.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469602BY",
+    "key": "Blue-S-Cartoon",
+    "w": 170.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469603CX",
+    "key": "Blue-M-Foundation",
+    "w": 210.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469604DW",
+    "key": "Blue-M-Cartoon",
+    "w": 210.0,
+    "cost": 1.19,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469605EV",
+    "key": "Blue-L-Foundation",
+    "w": 250.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469606FU",
+    "key": "Blue-L-Cartoon",
+    "w": 250.0,
+    "cost": 1.26,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469607GT",
+    "key": "Orange-S-Foundation",
+    "w": 170.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469608HS",
+    "key": "Orange-S-Cartoon",
+    "w": 170.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469609IR",
+    "key": "Orange-M-Foundation",
+    "w": 210.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469610JQ",
+    "key": "Orange-M-Cartoon",
+    "w": 210.0,
+    "cost": 1.19,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469611KP",
+    "key": "Orange-L-Foundation",
+    "w": 250.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469612LO",
+    "key": "Orange-L-Cartoon",
+    "w": 250.0,
+    "cost": 1.26,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469613MN",
+    "key": "Green-S-Foundation",
+    "w": 170.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469614NM",
+    "key": "Green-S-Cartoon",
+    "w": 170.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469615OL",
+    "key": "Green-M-Foundation",
+    "w": 210.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469616PK",
+    "key": "Green-M-Cartoon",
+    "w": 210.0,
+    "cost": 1.19,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469617QJ",
+    "key": "Green-L-Foundation",
+    "w": 250.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJSP293469618RI",
+    "key": "Green-L-Cartoon",
+    "w": 250.0,
+    "cost": 1.26,
+    "img": true
+   }
+  ]
+ },
+ "wblanket": {
+  "spu": "CJGY1926497",
+  "name": "Water-proof Blanket Flannel Comfortable Cotton Velvet",
+  "variants": [
+   {
+    "sku": "CJGY192649701AZ",
+    "key": "Black-XS",
+    "w": 230.0,
+    "cost": 2.87,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649702BY",
+    "key": "Black-S",
+    "w": 420.0,
+    "cost": 4.46,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649703CX",
+    "key": "Black-M",
+    "w": 770.0,
+    "cost": 7.56,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649704DW",
+    "key": "Black-L",
+    "w": 1220.0,
+    "cost": 10.71,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649705EV",
+    "key": "Black-XL",
+    "w": 1620.0,
+    "cost": 13.86,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649706FU",
+    "key": "Gray-XS",
+    "w": 230.0,
+    "cost": 2.87,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649707GT",
+    "key": "Gray-S",
+    "w": 420.0,
+    "cost": 4.46,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649708HS",
+    "key": "Gray-M",
+    "w": 770.0,
+    "cost": 7.56,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649709IR",
+    "key": "Gray-L",
+    "w": 1220.0,
+    "cost": 10.71,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649710JQ",
+    "key": "Gray-XL",
+    "w": 1620.0,
+    "cost": 13.86,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649711KP",
+    "key": "Coffee-XS",
+    "w": 230.0,
+    "cost": 2.87,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649712LO",
+    "key": "Coffee-S",
+    "w": 420.0,
+    "cost": 4.46,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649713MN",
+    "key": "Coffee-M",
+    "w": 770.0,
+    "cost": 7.56,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649714NM",
+    "key": "Coffee-L",
+    "w": 1220.0,
+    "cost": 10.71,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649715OL",
+    "key": "Coffee-XL",
+    "w": 1620.0,
+    "cost": 13.86,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649716PK",
+    "key": "Black set-L",
+    "w": 2928.0,
+    "cost": 21.11,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649721UF",
+    "key": "Black set1-L",
+    "w": 3142.0,
+    "cost": 24.73,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649726ZA",
+    "key": "Black set2-L",
+    "w": 2897.0,
+    "cost": 21.11,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649731EV",
+    "key": "Black set3-L",
+    "w": 3111.0,
+    "cost": 24.73,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649736JQ",
+    "key": "Black set4-L",
+    "w": 2935.0,
+    "cost": 19.33,
+    "img": true
+   },
+   {
+    "sku": "CJGY192649741OL",
+    "key": "Black set5-L",
+    "w": 3149.0,
+    "cost": 22.95,
+    "img": true
+   }
+  ]
+ },
+ "thunder": {
+  "spu": "CJYD2640786",
+  "name": "Pet Dog Washable Anxiety Thunder Blanket",
+  "variants": [
+   {
+    "sku": "CJYD264078601AZ",
+    "key": "Gray-81.3X61cm",
+    "w": 440.0,
+    "cost": 5.64,
+    "img": true
+   },
+   {
+    "sku": "CJYD264078602BY",
+    "key": "Dark Blue-81.3X61cm",
+    "w": 440.0,
+    "cost": 5.64,
+    "img": true
+   },
+   {
+    "sku": "CJYD264078603CX",
+    "key": "Gray And Blue-81.3X61cm",
+    "w": 440.0,
+    "cost": 5.64,
+    "img": true
+   }
+  ]
+ },
+ "heartbeat": {
+  "spu": "CJYD2339401",
+  "name": "Pet Soothing Plush Toy Training Interactive Toy With Heartbe",
+  "variants": [
+   {
+    "sku": "CJYD233940102BY",
+    "key": "Sloth",
+    "w": 490.0,
+    "cost": 7.75,
+    "img": true
+   }
+  ]
+ },
+ "fleece": {
+  "spu": "CJGY2117113",
+  "name": "Pet Blanket Dog Cat Coral Fleece Blanket",
+  "variants": [
+   {
+    "sku": "CJGY211711301AZ",
+    "key": "Camel Dog's Paw-XXS",
+    "w": 22.0,
+    "cost": 0.33,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711302BY",
+    "key": "Camel Dog's Paw-XS",
+    "w": 90.0,
+    "cost": 0.69,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711303CX",
+    "key": "Camel Dog's Paw-S",
+    "w": 120.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711304DW",
+    "key": "Camel Dog's Paw-M",
+    "w": 220.0,
+    "cost": 1.76,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711305EV",
+    "key": "Camel Dog's Paw-L",
+    "w": 320.0,
+    "cost": 3.02,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711306FU",
+    "key": "Camel Dog's Paw-XL",
+    "w": 410.0,
+    "cost": 4.7,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711307GT",
+    "key": "Camel Dog's Paw-XXL",
+    "w": 770.0,
+    "cost": 7.46,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711308HS",
+    "key": "Beige Dog's Paw-XXS",
+    "w": 22.0,
+    "cost": 0.33,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711309IR",
+    "key": "Beige Dog's Paw-XS",
+    "w": 90.0,
+    "cost": 0.69,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711310JQ",
+    "key": "Beige Dog's Paw-S",
+    "w": 120.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711311KP",
+    "key": "Beige Dog's Paw-M",
+    "w": 220.0,
+    "cost": 1.76,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711312LO",
+    "key": "Beige Dog's Paw-L",
+    "w": 320.0,
+    "cost": 3.02,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711313MN",
+    "key": "Beige Dog's Paw-XL",
+    "w": 410.0,
+    "cost": 4.7,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711314NM",
+    "key": "Beige Dog's Paw-XXL",
+    "w": 770.0,
+    "cost": 7.46,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711315OL",
+    "key": "Pink Dog's Paw-XXS",
+    "w": 22.0,
+    "cost": 0.33,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711316PK",
+    "key": "Pink Dog's Paw-XS",
+    "w": 90.0,
+    "cost": 0.69,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711317QJ",
+    "key": "Pink Dog's Paw-S",
+    "w": 120.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711318RI",
+    "key": "Pink Dog's Paw-M",
+    "w": 220.0,
+    "cost": 1.76,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711319SH",
+    "key": "Pink Dog's Paw-L",
+    "w": 320.0,
+    "cost": 3.02,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711320TG",
+    "key": "Pink Dog's Paw-XL",
+    "w": 410.0,
+    "cost": 4.7,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711321UF",
+    "key": "Pink Dog's Paw-XXL",
+    "w": 770.0,
+    "cost": 7.46,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711322VE",
+    "key": "Purple Dog's Paw-XXS",
+    "w": 22.0,
+    "cost": 0.33,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711323WD",
+    "key": "Purple Dog's Paw-XS",
+    "w": 90.0,
+    "cost": 0.69,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711324XC",
+    "key": "Purple Dog's Paw-S",
+    "w": 120.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711325YB",
+    "key": "Purple Dog's Paw-M",
+    "w": 220.0,
+    "cost": 1.76,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711326ZA",
+    "key": "Purple Dog's Paw-L",
+    "w": 320.0,
+    "cost": 3.02,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711327AZ",
+    "key": "Purple Dog's Paw-XL",
+    "w": 410.0,
+    "cost": 4.7,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711328BY",
+    "key": "Purple Dog's Paw-XXL",
+    "w": 770.0,
+    "cost": 7.46,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711329CX",
+    "key": "Brown Dog's Paw-XXS",
+    "w": 22.0,
+    "cost": 0.33,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711330DW",
+    "key": "Brown Dog's Paw-XS",
+    "w": 90.0,
+    "cost": 0.69,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711331EV",
+    "key": "Brown Dog's Paw-S",
+    "w": 120.0,
+    "cost": 1.0,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711332FU",
+    "key": "Brown Dog's Paw-M",
+    "w": 220.0,
+    "cost": 1.76,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711333GT",
+    "key": "Brown Dog's Paw-L",
+    "w": 320.0,
+    "cost": 3.02,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711334HS",
+    "key": "Brown Dog's Paw-XL",
+    "w": 410.0,
+    "cost": 4.7,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711335IR",
+    "key": "Brown Dog's Paw-XXL",
+    "w": 770.0,
+    "cost": 7.46,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711336JQ",
+    "key": "Gray Dog's Paw-XXS",
+    "w": 22.0,
+    "cost": 0.57,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711337KP",
+    "key": "Gray Dog's Paw-XS",
+    "w": 90.0,
+    "cost": 0.8,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711338LO",
+    "key": "Gray Dog's Paw-S",
+    "w": 120.0,
+    "cost": 1.36,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711339MN",
+    "key": "Gray Dog's Paw-M",
+    "w": 220.0,
+    "cost": 2.46,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711340NM",
+    "key": "Gray Dog's Paw-L",
+    "w": 320.0,
+    "cost": 4.7,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711341OL",
+    "key": "Gray Dog's Paw-XL",
+    "w": 410.0,
+    "cost": 6.3,
+    "img": true
+   },
+   {
+    "sku": "CJGY211711342PK",
+    "key": "Gray Dog's Paw-XXL",
+    "w": 770.0,
+    "cost": 9.62,
+    "img": true
+   }
+  ]
+ }
+}

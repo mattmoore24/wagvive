@@ -1,0 +1,42 @@
+{
+ "bowl": [
+  {
+   "spu": "CJPB2993564",
+   "name": "Professional 7 In 1 Dog Paw Cleaner For Dogs & Cats ",
+   "cost": 21.97,
+   "weight": 350.0,
+   "stock": 50,
+   "freight": 11.0,
+   "estimated": true,
+   "need": 82.702347698147,
+   "variants": 1,
+   "carrier": "no quote",
+   "aging": null,
+   "reviews": 0,
+   "avg_score": null,
+   "images": 6,
+   "us": false,
+   "listed": 14
+  }
+ ],
+ "pouch": [
+  {
+   "spu": "CJYD2958807",
+   "name": "Cartoon-print Portable Pet Treat Bag",
+   "cost": 0.76,
+   "weight": 40.0,
+   "stock": 5190,
+   "freight": 4.75,
+   "estimated": false,
+   "need": 13.07516472269015,
+   "variants": 3,
+   "carrier": "CJPacket Super Pure ",
+   "aging": "5-11",
+   "reviews": 0,
+   "avg_score": null,
+   "images": 8,
+   "us": false,
+   "listed": 11
+  }
+ ]
+}

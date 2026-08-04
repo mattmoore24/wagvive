@@ -1,0 +1,22 @@
+{
+ "travel-water-bottle": {
+  "id": 10470547489057,
+  "handle": "wagvive-travel-water-bottle-bowl",
+  "title": "Wagvive Travel Water Bottle & Bowl"
+ },
+ "lick-bowl": {
+  "id": 10470547587361,
+  "handle": "wagvive-lick-bowl-with-ball",
+  "title": "Wagvive Lick Bowl with Ball"
+ },
+ "talk-button": {
+  "id": 10470547652897,
+  "handle": "wagvive-talk-button",
+  "title": "Wagvive Talk Button"
+ },
+ "bouncy-egg": {
+  "id": 10470547751201,
+  "handle": "wagvive-bouncy-egg-squeaker",
+  "title": "Wagvive Bouncy Egg Squeaker"
+ }
+}

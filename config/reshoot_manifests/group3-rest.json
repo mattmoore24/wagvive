@@ -1,0 +1,67 @@
+{
+ "wagvive-sneaker-squeaky-toy": [
+  {
+   "file": "C:/Users/mattm/AppData/Local/Temp/claude/C--Users-mattm-OneDrive-Claude-Code-Pet-Store/07b37851-ac47-448b-b4a5-0b479e8e1101/scratchpad/reshoot/sneak-blue.png",
+   "alt": "Wagvive Sneaker Squeaky Toy, Blue",
+   "colour": "Blue"
+  },
+  {
+   "file": "C:/Users/mattm/AppData/Local/Temp/claude/C--Users-mattm-OneDrive-Claude-Code-Pet-Store/07b37851-ac47-448b-b4a5-0b479e8e1101/scratchpad/reshoot/sneak-yellow-crop.png",
+   "alt": "Wagvive Sneaker Squeaky Toy, Yellow",
+   "colour": "Yellow"
+  },
+  {
+   "file": "C:/Users/mattm/AppData/Local/Temp/claude/C--Users-mattm-OneDrive-Claude-Code-Pet-Store/07b37851-ac47-448b-b4a5-0b479e8e1101/scratchpad/reshoot/sneak-black.png",
+   "alt": "Wagvive Sneaker Squeaky Toy, Black",
+   "colour": "Black"
+  }
+ ],
+ "wagvive-dental-duck-chew-toy": [
+  {
+   "file": "C:/Users/mattm/AppData/Local/Temp/claude/C--Users-mattm-OneDrive-Claude-Code-Pet-Store/07b37851-ac47-448b-b4a5-0b479e8e1101/scratchpad/reshoot/duck-master.png",
+   "alt": "Wagvive Dental Duck Chew Toy",
+   "colour": null
+  },
+  {
+   "file": "C:/Users/mattm/AppData/Local/Temp/claude/C--Users-mattm-OneDrive-Claude-Code-Pet-Store/07b37851-ac47-448b-b4a5-0b479e8e1101/scratchpad/reshoot/duck-lifestyle.png",
+   "alt": "Puppy chewing the Wagvive Dental Duck",
+   "colour": null
+  }
+ ],
+ "wagvive-watermelon-rope-frisbee": [
+  {
+   "file": "C:/Users/mattm/AppData/Local/Temp/claude/C--Users-mattm-OneDrive-Claude-Code-Pet-Store/07b37851-ac47-448b-b4a5-0b479e8e1101/scratchpad/reshoot/melon-master.png",
+   "alt": "Wagvive Watermelon Rope Frisbee",
+   "colour": null
+  },
+  {
+   "file": "C:/Users/mattm/AppData/Local/Temp/claude/C--Users-mattm-OneDrive-Claude-Code-Pet-Store/07b37851-ac47-448b-b4a5-0b479e8e1101/scratchpad/reshoot/melon-lifestyle.png",
+   "alt": "Dog catching the Wagvive Watermelon Frisbee",
+   "colour": null
+  }
+ ],
+ "wagvive-rope-limb-puppy-plush": [
+  {
+   "file": "C:/Users/mattm/AppData/Local/Temp/claude/C--Users-mattm-OneDrive-Claude-Code-Pet-Store/07b37851-ac47-448b-b4a5-0b479e8e1101/scratchpad/reshoot/pup-master.png",
+   "alt": "Wagvive Rope-Limb Puppy Plush",
+   "colour": null
+  },
+  {
+   "file": "C:/Users/mattm/AppData/Local/Temp/claude/C--Users-mattm-OneDrive-Claude-Code-Pet-Store/07b37851-ac47-448b-b4a5-0b479e8e1101/scratchpad/reshoot/pup-lifestyle-v2.png",
+   "alt": "Puppy tugging the Wagvive Rope-Limb Puppy Plush",
+   "colour": null
+  }
+ ],
+ "wagvive-squirrel-squeaky-plush": [
+  {
+   "file": "C:/Users/mattm/AppData/Local/Temp/claude/C--Users-mattm-OneDrive-Claude-Code-Pet-Store/07b37851-ac47-448b-b4a5-0b479e8e1101/scratchpad/reshoot/squirplush-master.png",
+   "alt": "Wagvive Squirrel Squeaky Plush",
+   "colour": null
+  },
+  {
+   "file": "C:/Users/mattm/AppData/Local/Temp/claude/C--Users-mattm-OneDrive-Claude-Code-Pet-Store/07b37851-ac47-448b-b4a5-0b479e8e1101/scratchpad/reshoot/squirplush-lifestyle.png",
+   "alt": "Beagle carrying the Wagvive Squirrel Squeaky Plush",
+   "colour": null
+  }
+ ]
+}

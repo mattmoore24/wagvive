@@ -1,0 +1,11 @@
+{
+  "product": {
+    "title": "Wagvive Self-Cleaning Slicker Brush",
+    "body_html": "<p><strong>Effortless deshedding, one click to clean.</strong></p><p>Removes loose fur and gentle tangles without tugging on skin, then releases the collected coat with a single button press &mdash; no pulling fur off the brush by hand. Designed for regular use on dogs and cats with any coat length, and especially helpful for senior pets who need slower, gentler grooming.</p><ul><li>Self-cleaning retractable bristles</li><li>Gentle on sensitive, aging skin</li><li>Reduces loose hair around the home</li><li>Comfortable, non-slip grip</li></ul>",
+    "vendor": "Wagvive",
+    "product_type": "Grooming",
+    "tags": "grooming, deshedding, senior pet, brush",
+    "status": "draft",
+    "variants": [{"price": "28.00"}]
+  }
+}

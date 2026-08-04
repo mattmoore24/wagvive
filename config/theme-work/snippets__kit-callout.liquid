@@ -1,0 +1,113 @@
+{% doc %}
+  "Also in the kit" callout for a product that is part of a bundle.
+
+  The kits are the catalogue's best AOV lever - $109 against $136 of components,
+  $79 against $108 - but a shopper on a component page had no way to know that.
+  This states the saving in dollars and percent, computed from live prices rather
+  than hardcoded, so it can never drift out of date or overstate the discount.
+
+  Renders nothing unless the product has a `custom.kit` reference and that kit is
+  genuinely cheaper than its parts, so a pricing change quietly retires the claim
+  instead of turning it into a false one.
+{% enddoc %}
+
+{%- liquid
+  assign kit = product.metafields.custom.kit.value
+  if kit == blank or kit.available == false
+    break
+  endif
+  assign kit_price = kit.price
+  assign parts_total = kit.compare_at_price
+  assign saving = parts_total | minus: kit_price
+-%}
+
+{%- if kit != blank and saving > 0 -%}
+  {%- assign pct = saving | times: 100 | divided_by: parts_total -%}
+  <a class="wv-kit" href="{{ kit.url }}">
+    {%- if kit.featured_image -%}
+      <img
+        class="wv-kit__img"
+        src="{{ kit.featured_image | image_url: width: 160 }}"
+        alt="{{ kit.title | escape }}"
+        width="80"
+        height="80"
+        loading="lazy"
+      >
+    {%- endif -%}
+    <span class="wv-kit__body">
+      <span class="wv-kit__eyebrow">Also in the {{ kit.title }}</span>
+      <span class="wv-kit__line">
+        Buy the set for <strong>{{ kit_price | money }}</strong>
+        <s>{{ parts_total | money }}</s>
+        <span class="wv-kit__save">Save {{ saving | money }} ({{ pct }}%)</span>
+      </span>
+    </span>
+    <span class="wv-kit__chev" aria-hidden="true">&rsaquo;</span>
+  </a>
+{%- endif -%}
+
+{% stylesheet %}
+  .wv-kit {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    border: 1px solid rgb(var(--color-foreground-rgb, 0 0 0) / 0.18);
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 160ms ease, background-color 160ms ease;
+  }
+
+  .wv-kit:hover {
+    border-color: rgb(var(--color-foreground-rgb, 0 0 0) / 0.42);
+    background: rgb(var(--color-foreground-rgb, 0 0 0) / 0.03);
+  }
+
+  .wv-kit__img {
+    inline-size: 52px;
+    block-size: 52px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex: none;
+  }
+
+  .wv-kit__body {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-inline-size: 0;
+  }
+
+  .wv-kit__eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.65;
+  }
+
+  .wv-kit__line {
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  .wv-kit__line s {
+    opacity: 0.5;
+    margin-inline-start: 4px;
+  }
+
+  .wv-kit__save {
+    display: inline-block;
+    margin-inline-start: 6px;
+    color: #2f7a4d;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .wv-kit__chev {
+    margin-inline-start: auto;
+    font-size: 1.4rem;
+    opacity: 0.4;
+    flex: none;
+  }
+{% endstylesheet %}

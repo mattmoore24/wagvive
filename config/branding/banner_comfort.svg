@@ -1,0 +1,13 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="1200" fill="#9AAFAE"/>
+<g transform="translate(396,81) scale(0.8)">
+<ellipse cx="120" cy="140" rx="46" ry="60" transform="rotate(-25,120,140)" fill="#F7F2E9"/>
+<ellipse cx="205" cy="80" rx="42" ry="56" transform="rotate(-8,205,80)" fill="#F7F2E9"/>
+<ellipse cx="307" cy="80" rx="42" ry="56" transform="rotate(8,307,80)" fill="#F7F2E9"/>
+<ellipse cx="392" cy="140" rx="46" ry="60" transform="rotate(25,392,140)" fill="#F7F2E9"/>
+<rect x="90" y="228" width="332" height="212" rx="102" ry="98" fill="#F7F2E9"/>
+<polyline points="128,335 188,335 218,263 250,388 282,298 312,335 402,335" fill="none" stroke="#9AAFAE" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text x="600" y="580" font-family="'Segoe UI', Arial, sans-serif" font-size="62" font-weight="700" fill="#F7F2E9" text-anchor="middle">Comfort &amp; Health</text>
+<text x="600" y="655" font-family="'Segoe UI', Arial, sans-serif" font-size="62" font-weight="700" fill="#F7F2E9" text-anchor="middle">Kit</text>
+</svg>

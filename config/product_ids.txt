@@ -1,0 +1,11 @@
+# Regenerated 2026-07-29 - active products only
+comfort_and_health_kit=10464745718049
+grooming_essentials_kit=10458197819681
+anti_spill_floating_water_bowl=10456337547553
+cooling_comfort_pad=10464689881377
+ear_and_teeth_cleaning_wipes=10456337154337
+grooming_and_shedding_gloves=10456337056033
+quiet_electric_nail_grinder=10456337318177
+self_cleaning_slicker_brush=10456336990497
+slow_feeder_bowl=10456337613089
+waterproof_furniture_cover=10464690143521

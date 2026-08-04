@@ -1,0 +1,11 @@
+{
+  "product": {
+    "title": "Grooming Essentials Kit",
+    "body_html": "<p><strong>Everything for a calmer grooming routine.</strong></p><p>The complete Wagvive grooming set &mdash; self-cleaning slicker brush, shedding gloves, ear &amp; teeth cleaning wipes, and quiet electric nail grinder &mdash; bundled together to cover shedding, ear and dental care, and nail care in one routine. Built for pet parents who want fewer products doing more, and gentler tools for pets who don't love grooming day.</p><p><strong>This kit includes:</strong></p><ul><li>Self-Cleaning Slicker Brush</li><li>Grooming &amp; Shedding Gloves</li><li>Ear &amp; Teeth Cleaning Wipes</li><li>Quiet Electric Nail Grinder</li></ul><p>Save compared to buying each item separately.</p>",
+    "vendor": "Wagvive",
+    "product_type": "Kit Bundle",
+    "tags": "grooming, bundle, kit, senior pet",
+    "status": "draft",
+    "variants": [{"price": "79.00", "compare_at_price": "103.00"}]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "product": {
+    "title": "Comfort & Health Kit",
+    "body_html": "<p><strong>Comfort, hydration, and rest &mdash; covered.</strong></p><p>The complete Wagvive comfort set &mdash; cooling mat, anti-spill floating water bowl, slow feeder bowl, and orthopedic bed &mdash; designed around the daily habits that matter most for health and comfort. Especially built with senior dogs in mind, but valuable for any owner who wants to upgrade the basics.</p><p><strong>This kit includes:</strong></p><ul><li>Cooling Comfort Mat</li><li>Anti-Spill Floating Water Bowl</li><li>Slow Feeder Bowl</li><li>Orthopedic Comfort Bed</li></ul><p>Save $53 compared to buying each item separately.</p>",
+    "vendor": "Wagvive",
+    "product_type": "Kit Bundle",
+    "tags": "comfort, bundle, kit, senior pet",
+    "status": "active",
+    "variants": [{"price": "99.00", "compare_at_price": "152.00"}]
+  }
+}

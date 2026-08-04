@@ -1,0 +1,714 @@
+{
+ "sneaker": {
+  "title": "Wagvive Sneaker Chew Buddy",
+  "opt": "Colour",
+  "spu": "CJYD2529337",
+  "variants": [
+   {
+    "sku": "CJYD252933701AZ",
+    "opts": [
+     "Yellow"
+    ],
+    "cost": 1.19,
+    "need": 16.4,
+    "price": "18.00",
+    "freight": 5.75,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJYD252933702BY",
+    "opts": [
+     "Black"
+    ],
+    "cost": 1.19,
+    "need": 16.4,
+    "price": "18.00",
+    "freight": 5.75,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJYD252933703CX",
+    "opts": [
+     "Sea Fog Blue"
+    ],
+    "cost": 1.19,
+    "need": 16.4,
+    "price": "18.00",
+    "freight": 5.75,
+    "carrier": "LuWei Ordinary US"
+   }
+  ]
+ },
+ "ringball": {
+  "title": "Wagvive Jingle Plush Ball",
+  "opt": "Character",
+  "spu": "CJST2578708",
+  "variants": [
+   {
+    "sku": "CJST257870801AZ",
+    "opts": [
+     "Monkey"
+    ],
+    "cost": 2.17,
+    "need": 19.93,
+    "price": "19.99",
+    "freight": 6.18,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJST257870802BY",
+    "opts": [
+     "Frog"
+    ],
+    "cost": 2.17,
+    "need": 19.93,
+    "price": "19.99",
+    "freight": 6.18,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJST257870803CX",
+    "opts": [
+     "Dog"
+    ],
+    "cost": 2.17,
+    "need": 19.93,
+    "price": "19.99",
+    "freight": 6.18,
+    "carrier": "LuWei Ordinary US"
+   }
+  ]
+ },
+ "teddy": {
+  "title": "Wagvive Cuddle Companion Teddy",
+  "opt": null,
+  "spu": "CJYD2454114",
+  "variants": [
+   {
+    "sku": "CJYD245411401AZ",
+    "opts": [
+     "Default Title"
+    ],
+    "cost": 1.82,
+    "need": 19.21,
+    "price": "19.99",
+    "freight": 6.27,
+    "carrier": "CJPacket Super Pure Electricity"
+   }
+  ]
+ },
+ "vocalplush": {
+  "title": "Wagvive Corduroy Squeak Pals",
+  "opt": "Character",
+  "spu": "CJMY1262779",
+  "variants": [
+   {
+    "sku": "CJMY126277901AZ",
+    "opts": [
+     "Fawn"
+    ],
+    "cost": 1.7,
+    "need": 19.55,
+    "price": "19.99",
+    "freight": 6.57,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJMY126277902BY",
+    "opts": [
+     "Crooked Neck"
+    ],
+    "cost": 1.7,
+    "need": 19.55,
+    "price": "19.99",
+    "freight": 6.57,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJMY126277903CX",
+    "opts": [
+     "Frog"
+    ],
+    "cost": 1.7,
+    "need": 19.55,
+    "price": "19.99",
+    "freight": 6.57,
+    "carrier": "LuWei Ordinary US"
+   }
+  ]
+ },
+ "chicken": {
+  "title": "Wagvive Screaming Chicken",
+  "opt": "Colour",
+  "spu": "CJST2585109",
+  "variants": [
+   {
+    "sku": "CJST258510901AZ",
+    "opts": [
+     "Green"
+    ],
+    "cost": 3.25,
+    "need": 24.29,
+    "price": "24.99",
+    "freight": 6.87,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJST258510902BY",
+    "opts": [
+     "Orange"
+    ],
+    "cost": 3.25,
+    "need": 24.29,
+    "price": "24.99",
+    "freight": 6.87,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJST258510903CX",
+    "opts": [
+     "Black"
+    ],
+    "cost": 3.25,
+    "need": 24.29,
+    "price": "24.99",
+    "freight": 6.87,
+    "carrier": "LuWei Ordinary US"
+   }
+  ]
+ },
+ "towel": {
+  "title": "Wagvive Quick-Dry Bath Robe",
+  "opt": [
+   "Colour",
+   "Size"
+  ],
+  "spu": "CJGY1388413",
+  "variants": [
+   {
+    "sku": "CJGY138841301AZ",
+    "opts": [
+     "Blue",
+     "XS"
+    ],
+    "cost": 1.96,
+    "need": 18.43,
+    "price": "18.99",
+    "freight": 5.75,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY138841302BY",
+    "opts": [
+     "Blue",
+     "S"
+    ],
+    "cost": 2.34,
+    "need": 21.28,
+    "price": "21.99",
+    "freight": 6.59,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY138841303CX",
+    "opts": [
+     "Blue",
+     "M"
+    ],
+    "cost": 2.5,
+    "need": 22.82,
+    "price": "23.99",
+    "freight": 7.1,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY138841304DW",
+    "opts": [
+     "Pink",
+     "XS"
+    ],
+    "cost": 2.17,
+    "need": 18.99,
+    "price": "18.99",
+    "freight": 5.75,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY138841305EV",
+    "opts": [
+     "Pink",
+     "S"
+    ],
+    "cost": 2.34,
+    "need": 21.28,
+    "price": "21.99",
+    "freight": 6.59,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY138841306FU",
+    "opts": [
+     "Pink",
+     "M"
+    ],
+    "cost": 2.5,
+    "need": 22.82,
+    "price": "23.99",
+    "freight": 7.1,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY138841307GT",
+    "opts": [
+     "Green",
+     "XS"
+    ],
+    "cost": 2.17,
+    "need": 18.99,
+    "price": "18.99",
+    "freight": 5.75,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY138841308HS",
+    "opts": [
+     "Green",
+     "S"
+    ],
+    "cost": 2.34,
+    "need": 21.28,
+    "price": "21.99",
+    "freight": 6.59,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY138841309IR",
+    "opts": [
+     "Green",
+     "M"
+    ],
+    "cost": 2.5,
+    "need": 22.82,
+    "price": "23.99",
+    "freight": 7.1,
+    "carrier": "LuWei Ordinary US"
+   }
+  ]
+ },
+ "lednail": {
+  "title": "Wagvive LED Nail Clippers",
+  "opt": "Colour",
+  "spu": "CJYD2264960",
+  "variants": [
+   {
+    "sku": "CJYD226496002BY",
+    "opts": [
+     "Green"
+    ],
+    "cost": 3.78,
+    "need": 27.34,
+    "price": "27.99",
+    "freight": 7.62,
+    "carrier": "CJPacket Super Pure Electricity"
+   },
+   {
+    "sku": "CJYD226496003CX",
+    "opts": [
+     "Pink"
+    ],
+    "cost": 3.78,
+    "need": 27.34,
+    "price": "27.99",
+    "freight": 7.62,
+    "carrier": "CJPacket Super Pure Electricity"
+   },
+   {
+    "sku": "CJYD226496004DW",
+    "opts": [
+     "White"
+    ],
+    "cost": 3.78,
+    "need": 27.34,
+    "price": "27.99",
+    "freight": 7.62,
+    "carrier": "CJPacket Super Pure Electricity"
+   }
+  ]
+ },
+ "dematting": {
+  "title": "Wagvive Dematting Comb",
+  "opt": null,
+  "spu": "CJYD2754094",
+  "variants": [
+   {
+    "sku": "CJYD275409401AZ",
+    "opts": [
+     "Default Title"
+    ],
+    "cost": 1.65,
+    "need": 18.03,
+    "price": "18.99",
+    "freight": 5.94,
+    "carrier": "LuWei Ordinary US"
+   }
+  ]
+ },
+ "pawtrimmer": {
+  "title": "Wagvive Cordless Paw Trimmer",
+  "opt": null,
+  "spu": "CJNP2226365",
+  "variants": [
+   {
+    "sku": "CJNP222636501AZ",
+    "opts": [
+     "Default Title"
+    ],
+    "cost": 11.98,
+    "need": 38.8,
+    "price": "39.99",
+    "freight": 3.0,
+    "carrier": "Yunexpress CN to US"
+   }
+  ]
+ },
+ "pawcup": {
+  "title": "Wagvive Paw Washing Cup",
+  "opt": [
+   "Colour",
+   "Size"
+  ],
+  "spu": "CJSP2934696",
+  "variants": [
+   {
+    "sku": "CJSP293469601AZ",
+    "opts": [
+     "Blue",
+     "S"
+    ],
+    "cost": 1.0,
+    "need": 17.46,
+    "price": "17.99",
+    "freight": 6.46,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJSP293469603CX",
+    "opts": [
+     "Blue",
+     "M"
+    ],
+    "cost": 1.0,
+    "need": 17.42,
+    "price": "18.99",
+    "freight": 6.44,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJSP293469605EV",
+    "opts": [
+     "Blue",
+     "L"
+    ],
+    "cost": 1.0,
+    "need": 18.56,
+    "price": "19.99",
+    "freight": 6.96,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJSP293469607GT",
+    "opts": [
+     "Orange",
+     "S"
+    ],
+    "cost": 1.0,
+    "need": 17.46,
+    "price": "17.99",
+    "freight": 6.46,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJSP293469609IR",
+    "opts": [
+     "Orange",
+     "M"
+    ],
+    "cost": 1.0,
+    "need": 17.42,
+    "price": "18.99",
+    "freight": 6.44,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJSP293469611KP",
+    "opts": [
+     "Orange",
+     "L"
+    ],
+    "cost": 1.0,
+    "need": 18.56,
+    "price": "19.99",
+    "freight": 6.96,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJSP293469613MN",
+    "opts": [
+     "Green",
+     "S"
+    ],
+    "cost": 1.0,
+    "need": 17.46,
+    "price": "17.99",
+    "freight": 6.46,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJSP293469615OL",
+    "opts": [
+     "Green",
+     "M"
+    ],
+    "cost": 1.0,
+    "need": 17.42,
+    "price": "18.99",
+    "freight": 6.44,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJSP293469617QJ",
+    "opts": [
+     "Green",
+     "L"
+    ],
+    "cost": 1.0,
+    "need": 18.56,
+    "price": "19.99",
+    "freight": 6.96,
+    "carrier": "LuWei Ordinary US"
+   }
+  ]
+ },
+ "wblanket": {
+  "title": "Wagvive Waterproof Snuggle Blanket",
+  "opt": [
+   "Colour",
+   "Size"
+  ],
+  "spu": "CJGY1926497",
+  "variants": [
+   {
+    "sku": "CJGY192649701AZ",
+    "opts": [
+     "Black",
+     "XS"
+    ],
+    "cost": 2.87,
+    "need": 22.94,
+    "price": "22.99",
+    "freight": 6.71,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY192649702BY",
+    "opts": [
+     "Black",
+     "S"
+    ],
+    "cost": 4.46,
+    "need": 32.53,
+    "price": "32.99",
+    "freight": 9.17,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY192649706FU",
+    "opts": [
+     "Gray",
+     "XS"
+    ],
+    "cost": 2.87,
+    "need": 22.94,
+    "price": "22.99",
+    "freight": 6.71,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY192649707GT",
+    "opts": [
+     "Gray",
+     "S"
+    ],
+    "cost": 4.46,
+    "need": 32.53,
+    "price": "32.99",
+    "freight": 9.17,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY192649711KP",
+    "opts": [
+     "Coffee",
+     "XS"
+    ],
+    "cost": 2.87,
+    "need": 22.94,
+    "price": "22.99",
+    "freight": 6.71,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY192649712LO",
+    "opts": [
+     "Coffee",
+     "S"
+    ],
+    "cost": 4.46,
+    "need": 32.53,
+    "price": "32.99",
+    "freight": 9.17,
+    "carrier": "LuWei Ordinary US"
+   }
+  ]
+ },
+ "thunder": {
+  "title": "Wagvive Calming Thunder Wrap",
+  "opt": "Colour",
+  "spu": "CJYD2640786",
+  "variants": [
+   {
+    "sku": "CJYD264078601AZ",
+    "opts": [
+     "Grey"
+    ],
+    "cost": 5.64,
+    "need": 36.22,
+    "price": "36.99",
+    "freight": 9.43,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJYD264078602BY",
+    "opts": [
+     "Dark Blue"
+    ],
+    "cost": 5.64,
+    "need": 36.22,
+    "price": "36.99",
+    "freight": 9.43,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJYD264078603CX",
+    "opts": [
+     "Grey and Blue"
+    ],
+    "cost": 5.64,
+    "need": 36.22,
+    "price": "36.99",
+    "freight": 9.43,
+    "carrier": "LuWei Ordinary US"
+   }
+  ]
+ },
+ "heartbeat": {
+  "title": "Wagvive Heartbeat Soothing Sloth",
+  "opt": null,
+  "spu": "CJYD2339401",
+  "variants": [
+   {
+    "sku": "CJYD233940102BY",
+    "opts": [
+     "Default Title"
+    ],
+    "cost": 7.75,
+    "need": 43.2,
+    "price": "43.99",
+    "freight": 10.08,
+    "carrier": "LuWei Ordinary US"
+   }
+  ]
+ },
+ "fleece": {
+  "title": "Wagvive Paw Print Fleece Blanket",
+  "opt": [
+   "Colour",
+   "Size"
+  ],
+  "spu": "CJGY2117113",
+  "variants": [
+   {
+    "sku": "CJGY211711303CX",
+    "opts": [
+     "Camel",
+     "S"
+    ],
+    "cost": 1.0,
+    "need": 15.9,
+    "price": "15.99",
+    "freight": 5.75,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY211711304DW",
+    "opts": [
+     "Camel",
+     "M"
+    ],
+    "cost": 1.76,
+    "need": 19.71,
+    "price": "19.99",
+    "freight": 6.57,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY211711310JQ",
+    "opts": [
+     "Beige",
+     "S"
+    ],
+    "cost": 1.0,
+    "need": 15.9,
+    "price": "15.99",
+    "freight": 5.75,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY211711311KP",
+    "opts": [
+     "Beige",
+     "M"
+    ],
+    "cost": 1.76,
+    "need": 19.71,
+    "price": "19.99",
+    "freight": 6.57,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY211711317QJ",
+    "opts": [
+     "Pink",
+     "S"
+    ],
+    "cost": 1.0,
+    "need": 15.9,
+    "price": "15.99",
+    "freight": 5.75,
+    "carrier": "LuWei Ordinary US"
+   },
+   {
+    "sku": "CJGY211711318RI",
+    "opts": [
+     "Pink",
+     "M"
+    ],
+    "cost": 1.76,
+    "need": 19.71,
+    "price": "19.99",
+    "freight": 6.57,
+    "carrier": "LuWei Ordinary US"
+   }
+  ]
+ }
+}
