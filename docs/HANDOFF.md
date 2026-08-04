@@ -242,6 +242,14 @@ there is only ever one source of truth for the plan.
 > - For anything needing the CJ browser app, tell me exactly which SKUs to pair
 >   and wait for me to confirm each product before continuing.
 > - Tell me plainly if something in the plan turns out to be wrong.
+> - Never enter my credentials anywhere. Logins, payment details, tax filings
+>   and supplier account registrations are mine to do. Flag and hand off.
+>
+> Before you start, tell me in one list everything you will need FROM me across
+> the whole session, so I can gather it once instead of being interrupted: which
+> CJ SKUs to pair, the GA4 measurement ID and Meta pixel ID (#59), and whether I
+> want you to prepare anything for #57 (NY tax filing) or #64 (the CJ duty
+> ticket).
 >
 > When the writes are done, run `config/margin_guard.py`,
 > `config/kit_margins.py` and `config/sync_inventory.py --apply`, check the

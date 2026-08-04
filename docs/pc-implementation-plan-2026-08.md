@@ -9,6 +9,27 @@ a live CJ quote or a live Shopify read on 2026-08-04.
 
 ---
 
+## What this session will need from you
+
+Gather these once rather than being interrupted eleven times:
+
+- **Approval on every price, product and bundle change** before it is written.
+- **CJ browser app logins**, for pairing SKUs in steps 2, 6 and 10. There is no
+  API for pairing; it has to be done by hand, one product at a time.
+- **Theme editor access** for step 9. Claude's live theme writes are refused by
+  policy on every device.
+- **GA4 measurement ID and Meta pixel ID** (task #59) if you want analytics
+  installed in the same session. The store currently has none, which blocks any
+  ad spend and any AOV measurement.
+- Optionally, whether you want anything prepared for **#57** (NY DTF-17 filing)
+  or **#64** (the CJ duty ticket). Both are yours to submit; neither needs the
+  PC.
+
+Credentials, payment details, tax filings and supplier account registrations are
+yours to perform. Claude will flag and hand off, never enter them.
+
+---
+
 ## Read these first, in this order
 
 | Document | What it is |
