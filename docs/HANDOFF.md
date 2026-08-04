@@ -176,7 +176,12 @@ Paste this to pick up everything that was blocked from the web session:
    and a wrong "Care & use" block, on every product page. Exact find and
    replace text: `docs/qa/theme-copy-fixes.md`. Claude is blocked from live
    theme writes, so this can only be done by hand.
-2. **#67 and #67a**, the big one. Pair 41 new size variants in the CJ browser
+2. **#73 then #74, the repricing.** Owner approved the tiered margin system on
+   2026-08-04. Swap `margin_guard.py` from the flat 50% floor to the tier table
+   in `docs/pricing-study-2026-08.md`, THEN apply the per-product prices in
+   `docs/qa/pricing-recommendations.json`. Order matters: tiers first, or the
+   guard will fight the new prices. Standardise `.99` endings in the same pass.
+3. **#67 and #67a**, the big one. Pair 41 new size variants in the CJ browser
    app (SKU list: appendix of `docs/qa/variant-audit-2026-08.md`), then Claude
    prices them against the 50% floor and creates them, and the sofa cover size
    labels get renamed in the same pass.
