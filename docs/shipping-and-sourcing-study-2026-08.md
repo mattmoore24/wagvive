@@ -271,6 +271,14 @@ CJ**. What follows is the quoted number, not the predicted one. Kit prices are
 20% off the sum of the components' own recommended single prices, which is the
 middle of what the pricing study found shoppers expect from a set.
 
+**That last sentence is a sequencing constraint, not a footnote.** The kit prices
+below are 20% off the *recommended* singles, which are not live yet. Against
+today's prices the rebuilt Enrichment kit at $52.99 reads as 43.6% off, which is
+too deep: it would cannibalise the singles rather than lift the order. So the
+repricing pass has to land first, or the kit prices have to be recomputed against
+whatever the singles actually are. Every kit here holds at 20% off; none of them
+holds at 44%.
+
 ### Dog Enrichment Kit: rebuild, this is the urgent one
 
 Drop the Anti-Spill Floating Water Bowl. Best on-theme replacement, quoted:
