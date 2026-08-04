@@ -377,6 +377,12 @@ that ceiling. Every one still needs the images eyeballed against the CJ
 reference before it goes anywhere near the store, and a duplicate-SPU check
 against `sku[:11]` across the catalogue.
 
+A caveat on the lists themselves. CJ's pet categories contain human grooming
+tools and cat-only products, and the name filter in
+`config/research_freight.py` catches most but not all of them: "Star Hair Comb"
+in the slicker brush list is a human comb, for instance. Treat these as a
+shortlist to check, not a shortlist to buy.
+
 ### Squirrel Squeaky Plush, ceiling $16.23, currently 12.6%
 
 | Candidate | CJ SPU | Cost | Freight | Margin at ceiling |
@@ -428,23 +434,63 @@ cheapest thing in CJ's plush category still lands above what the market pays,
 because a $4.43 parcel plus $1.55 of weight is already $6 before the toy. Drop
 it. This is the one product where "no supplier can fix this" is literally true.
 
-### The three still open
+### Dental & Ear Wipes, ceiling $13.99, currently -10.7%
 
-The scan did not produce a usable answer for these, and they need a targeted
-follow-up rather than a guess:
+A targeted second scan settled this one, and it confirms the diagnosis: the
+problem is the 354g pack, not the product. Lighter wipe formats quote normally.
 
-- **Dental & Ear Wipes.** The problem is liquid-carrier freight at $12.38 on
-  354g, not the product. Two things to try before dropping it: a smaller pack
-  (the current one is 50 wipes per box and the weight scales with it) and a
-  US-warehouse source, since section 8 shows US-stocked cleaning wipes exist at
-  CJ. Note that CJ lists this product as disposable single-use wet wipes, so a
-  30-count pack is a legitimate size rather than a downgrade.
-- **Waterproof Snuggle Blanket**, 1,220g, and **Waterproof Sofa & Furniture
-  Cover**, 1,340g. Both are heavy fabric goods where China air freight is
-  structurally wrong. These are the two products in the catalogue where a US
-  supplier or a US-warehouse CJ source would genuinely change the answer, and
-  section 9 explains why that is the only place it does.
+| Candidate | CJ SPU | Cost | Weight | Freight | Margin at ceiling | Listed by |
+|---|---|---|---|---|---|---|
+| Cat Dog Ear Teeth Cleaning Finger Stall | CJYD2449710 | $0.48 | 90g | $5.93 | **46.9%** | 18 |
+| Pet Tear Removal Wipes | CJYD2449712 | $0.63 | 90g | $5.93 | 45.5% | 13 |
+| Disposable Pet Bath Wet Wipes | CJYD2260608 | $0.63 | 180g | $7.88 | 31.2% | 31 |
+| Pet Wipe Gloves, wash-free deodorant | CJYD2235798 | $0.66 | 175g | $7.78 | 31.6% | 45 |
 
+The first is the interesting one. A finger-stall wipe does the same dental and
+ear job the current product does, at 90g against 354g, and returns 46.9% at the
+market ceiling against the incumbent's -10.7%. It also pairs naturally with the
+Finger Toothbrush we already sell.
+
+Note the direction of travel: **task #70 proposed moving to LARGER wipe counts**
+(CJ offers 100, 150 and 200). On this freight curve that is exactly backwards.
+Every extra wipe is weight, and weight is the whole cost. #70 should be closed
+as researched-and-rejected.
+
+### Waterproof Snuggle Blanket, ceiling $29.95, currently -12.4%
+
+**No like-for-like replacement exists at CJ under the ceiling.** The scan found
+plenty of blankets, but the ones that clear 15% are a different product:
+
+| Candidate | CJ SPU | Cost | Weight | Freight | Margin at ceiling | Listed by |
+|---|---|---|---|---|---|---|
+| Pet Blanket Sleep Warm Dog Pet Bed | CJYD2362497 | $0.53 | 120g | $5.75 | 73.9% | **137** |
+| Flannel Fleece Composite Thickened Pet Pad | CJYD2612958 | $2.46 | 170g | $6.46 | 63.5% | 16 |
+| Flannel Blanket, DIY thickened | CJYD2768247 | $4.03 | 620g | $11.77 | 38.8% | 9 |
+
+The incumbent is 1,220g of waterproof-backed blanket. A 120g fleece is not that
+product, however good its margin looks. The 620g flannel at 38.8% is the closest
+thing to a genuine substitute, and it is still half the weight and not
+waterproof. So the choice is honest rather than technical: **either sell a
+lighter, smaller, non-waterproof blanket and describe it as such, or source the
+waterproof one from a US warehouse.** Section 8 has a directly relevant data
+point: a 1,171g cooling pad bed quotes $14.65 from the US warehouse against
+$18.00 from China.
+
+### Waterproof Sofa & Furniture Cover, ceiling $39.99, currently +9.3%
+
+**The scan did not answer this one, and I would rather say so than dress up the
+results.** Every candidate it returned from the Pet mats category was a cooling
+mat or a feeding mat at 92g to 300g, not a furniture cover. Furniture covers are
+not in any of the 16 pet categories mapped in `config/research_freight.py`; they
+sit in CJ's home textiles tree, which this study never scanned.
+
+The product also still clears 15% today, at 9.3% below it but positive, so it is
+not urgent in the way the wipes and the Enrichment kit are.
+
+Two routes, neither of which this study can close: scan CJ's home-textile
+categories for a lighter cover, or take the US-warehouse route in section 8.
+Given that the cover is 1,340g and that the US advantage is a pure weight effect,
+the US route is the more likely answer.
 ---
 
 ## 7. Three corrections to the money model
@@ -535,6 +581,7 @@ Quoting 30 US-stocked candidates from both warehouses shows where it matters:
 | Product | Weight | US freight | China freight | Price advantage at 15% |
 |---|---|---|---|---|
 | Pet Water Dispenser | 1,500g | $17.08 | $27.43 | **$16.85** |
+| Pet Cooling Pad Bed | 1,171g | $14.65 | $18.00 | $5.85 |
 | Professional Low Noise Pet Hair Clipper | 534g | $10.09 | $12.98 | $5.74 |
 | Traveling Out Portable Dog Water Dispenser | 484g | $9.74 | $10.01 | $1.99 |
 | Waterproof Silicone Spot Pet Mat | 562g | $10.29 | $11.02 | $1.92 |
