@@ -50,3 +50,14 @@ Ear&Teeth($44) → Ear-only($30), Water Bowl Pink/1.5L → White, Slow Feeder Gr
 colour — and all six affected variants had a failed sync reading *"Store variant sku is empty"*.
 Fixed by disconnecting each product and reconnecting with **Automatic Connection on**, which
 pairs strictly by exact SKU. See [[cj-shopify-connection-procedure]] for the UI mechanics.
+
+**Store-level kill switch (found 2026-08-04).** CJ's authorization page
+(my.html#/authorize/Shopify) -> Inventory Sync column -> **Setting** link opens a
+per-store "Sync Settings" modal mapping the cjdropshipping location to a sync
+mode. Set to **"Not Sync"**: CJ stops writing stock for ALL products at once —
+no per-connection editing needed (the per-row "Inventory Management" label in
+the connection list is not clickable anyway). The three switches in that table
+row are Email Permission / Auto-Sync (Order&Product) / Delivery Profile — they
+are NOT the inventory toggle; leave them ON or order flow breaks. After this
+change sync_inventory.py is the only stock writer and the double-count can
+never recur.
