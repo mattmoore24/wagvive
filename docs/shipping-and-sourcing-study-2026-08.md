@@ -461,9 +461,22 @@ starting at $4.28. The same $3.00 came back for a 1,913g two-item basket
 containing the brush, which is not a price any carrier charges for two kilos.
 
 Both products have been priced on freight that does not exist. `freight_floor.py`
-now discards any quote under $4.00 before choosing, and substitutes the fitted
-weight estimate instead of a flat constant. The corrected numbers are in
-section 5 and section 6.
+now discards any quote below **75% of the weight-fitted estimate** before
+choosing, and substitutes that estimate rather than a flat constant. The test has
+to be weight-relative: a flat $4.00 floor caught the brush's $3.00 but let the
+trimmer's second bogus line through at $4.00 for 160g, a weight that really costs
+$6.34. The fit's worst residual anywhere was $1.56, so 75% leaves room for a
+genuinely cheap carrier.
+
+Corrected: the brush at **$5.37** is a 43.4% product at market and needs no
+re-sourcing, which voids the pricing study's "re-source or drop" verdict
+entirely; the trimmer at **$6.34** falls to 35.1%, still comfortable. Their rows
+in `docs/qa/pricing-recommendations.json` are wrong and must be recomputed before
+the repricing pass runs.
+
+`freight_floor.resolve_from_menu` was added at the same time, so this decision
+can be recomputed offline from the carrier menus the study records. The rule is
+authoritative; any freight figure stored beside it is a snapshot.
 
 ### 7.2 Freight has risen sharply since the last audit
 
@@ -480,6 +493,29 @@ rose roughly 20% from late February 2026 on fuel and war-risk surcharges, and
 heavier lanes moved most. It also means **a price set against a freight quote is
 perishable**. The margin guard already re-checks on a schedule; it should be
 treated as the thing that catches this, not as a formality.
+
+### 7.3 Shipping revenue is not in the model, and the market comparison is
+
+`config/pricing.py` never counts the $5.95 the customer pays on a sub-$60 order.
+That was a deliberate conservatism, recorded in `config/shipping_rates.py` as
+"shipping revenue is upside, not cost recovery". On its own it is fine.
+
+It stopped being fine when the pricing study compared our item price against
+market prices that are delivered prices. The two conservatisms point opposite
+ways and the combination is not conservative at all, it is just wrong: it
+overstates our price against the market while understating our revenue.
+
+Section 3 is the fix. Nothing in `pricing.py` needs changing, because it is
+correct as a floor on the item price; what needs changing is the habit of
+comparing that floor to an Amazon price. `config/delivered_price.py` is the tool
+that does it properly, and it should be the thing consulted before any product is
+declared unsellable.
+
+One live discrepancy found while checking this: `config/shipping_rates.py` has
+`FREE_THRESHOLD = 50.00` in its constants and docstring, but the store is set to
+free over **$60**, which is what the site copy says. The script's constants are
+stale. Do not run it with `--apply` until that is corrected, or it will quietly
+move the threshold back to $50.
 
 ---
 
