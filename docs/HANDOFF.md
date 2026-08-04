@@ -115,6 +115,43 @@ For CJ API reads without credentials, dispatch the `cj-image-refs` workflow
 route work through the Actions job. Pricing changes should still be computed
 against `config/pricing.py` logic before any write.
 
+### Prompt to start the PC session
+
+Paste this to pick up everything that was blocked from the web session:
+
+> Read `docs/HANDOFF.md`, then `git pull`. We are picking up the owner-gated
+> work from the 2026-08-04 web session, in this order.
+>
+> **1. Task #71, theme copy.** Apply all four find and replace edits in
+> `docs/qa/theme-copy-fixes.md` to `templates/product.json` in the Horizon
+> theme. You can write to the theme from this device. Verify by re-fetching a
+> product page with a cache-busting query param and confirming there are no em
+> or en dashes left and the new "Care & use" text is live.
+>
+> **2. Task #67, the 41 missing size variants.** SKU list is the appendix of
+> `docs/qa/variant-audit-2026-08.md`: sofa cover 12, snuggle blanket 9, fleece
+> blanket 12, cooling pad 8. Work one product at a time:
+> (a) tell me exactly which SKUs to pair in the CJ app and wait for me to
+> confirm each product is paired;
+> (b) resolve freight through `config/freight_floor.py` and price every size
+> with `config/pricing.py` so each variant clears the 50% floor, levelling
+> colours up to the most expensive variant as usual, then show me the price
+> table BEFORE writing anything;
+> (c) once I approve, create the Shopify variants, wire `variant.image_id`,
+> and set inventory from CJ.
+> Expect freight to kill some of the largest sizes. Drop those and tell me
+> which ones and why, rather than pricing them under the floor.
+>
+> **3. Task #67a.** Rename the sofa cover size labels in the same pass, since
+> our Small, Medium and Large are really CJ's XS, S and M of seven sizes.
+>
+> **4. Task #70**, optional: larger wipe count variants, same mechanics.
+>
+> When the writes are done, run `config/margin_guard.py` and
+> `config/sync_inventory.py --apply`, verify the affected product pages on the
+> live storefront, then update `docs/HANDOFF.md`, commit and push.
+> Confirm with me before anything irreversible.
+
 **Queued for the next home PC session**, quickest first:
 
 1. **#71, theme copy fixes.** About 5 minutes in the theme editor. Four dashes
