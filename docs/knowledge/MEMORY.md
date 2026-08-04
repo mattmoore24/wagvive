@@ -1,0 +1,8 @@
+- [Wagvive product imagery](wagvive-placeholder-product-art.md) — all 8 SKUs use real CJ photos; only bundle-kit images are still illustrations
+- [CJ–Shopify connection procedure](cj-shopify-connection-procedure.md) — sync before pairing, and audit mappings after any product change
+- [Wagvive sourcing rules](wagvive-sourcing-rules.md) — supplier consolidation dropped; freight weight is the real constraint, reject >1kg from China
+- [CJ inventory sync model](cj-inventory-sync-model.md) — CJ syncs stock natively by webhook; never script it, and beware the two-location doubling trap
+- [Wagvive cost model](wagvive-cost-model.md) — what the 50% floor includes, and the three ways CJ freight data lies (a $0 quote is missing data, not free)
+- [Horizon theme JSON traps](horizon-theme-json-traps.md) - placeholder product cards look real; handles not gids; static block keys; homepage SEO lives in meta-tags.liquid not preferences; check sections with ?sections=
+- [Wagvive email architecture](wagvive-email-architecture.md) - hello@ is Shopify forwarding to a dedicated Gmail; sender verified + DKIM live; check _domainkey existence, not selector guesses
+- [Shopify admin UI automation limits](shopify-admin-ui-automation-limits.md) - notification templates have no API; admin settings never render in a background tab; REST 2/sec limit and the tail-pipe trap

@@ -38,12 +38,30 @@ pricing.
 
 Two Shopify locations exist:
 - `Shop location` (113363058977) — **canonical, the only one that can sell**
-- `cjdropshipping` (113382293793) — a THIRD_PARTY fulfilment-service location
+- `cjdropshipping` (113382293793) — a LEGACY fulfilment-service location.
+  GraphQL's `locations` connection does not even return it; REST flags it
+  `legacy: true`.
 
 Variants are `fulfillment_service: manual` (created via Admin API, and REST
 silently ignores attempts to change this). **Shopify will not sell a manual
 variant from a service location**, so stock written there is inert. Worse,
 `inventory_quantity` SUMS across locations, so stock in both places reads double.
+
+**Why we cannot just let CJ's webhook do it.** CJ's webhook works fine — it
+writes accurate stock to its own location, which cannot sell. Making that the
+sellable stock would require the variants to be owned by the CJ fulfilment
+service, which is only set when the CJ app creates the products. There is no
+supported API to reassign fulfilment service on existing variants. Rebuilding 42
+products through CJ's importer would discard every custom title, description,
+Runway image and kit structure. So: CJ owns fulfilment (it reads orders and
+writes tracking back regardless of location — order #1001 fulfilled "from Shop
+location"), and `sync_inventory.py` owns the numbers. That split is deliberate,
+not a workaround left half-done.
+
+**When pairing new products, leave CJ's "Sync CJ's Inventory Levels" OFF.**
+Enabling it is what lets CJ write to the inert location and create the double
+count. The 17 originally-paired products never had it on; the 18 paired later
+did, which is the whole source of the problem.
 
 Rules:
 - Stock lives at `Shop location` only. `config/fix_locations.py --apply` strips
