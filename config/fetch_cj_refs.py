@@ -76,10 +76,13 @@ def main():
                 print(f'  FAILED {u}: {exc}')
 
     if shopify_url:
-        ext = os.path.splitext(shopify_url.split('?')[0])[1].lower() or '.png'
-        dest = os.path.join(outdir, f'shopify-current{ext}')
-        size = fetch(shopify_url, dest)
-        print(f'  shopify-current{ext}  {size} bytes')
+        urls = [u for u in shopify_url.split('|') if u]
+        for j, u in enumerate(urls, 1):
+            ext = os.path.splitext(u.split('?')[0])[1].lower() or '.png'
+            stem = 'shopify-current' if len(urls) == 1 else f'candidate-{j}'
+            dest = os.path.join(outdir, f'{stem}{ext}')
+            size = fetch(u, dest)
+            print(f'  {stem}{ext}  {size} bytes')
 
 
 if __name__ == '__main__':
