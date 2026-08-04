@@ -127,6 +127,29 @@ items on an unrestricted carrier, and keep restricted items (liquids,
 electronics) and heavy items out of baskets where they drag everything onto a
 worse line.**
 
+### 2.5 How far the formula can be trusted
+
+The $4.43 + $11.90/kg line was fitted on single items. Checking it against
+independently measured multi-item baskets and quantity ladders says where it
+holds and where it does not:
+
+| Basket, measured | Grams | Formula | Actual | Error |
+|---|---|---|---|---|
+| Bouncy Egg Squeaker x5 | 250 | $7.40 | $6.96 | -$0.44 |
+| Travel Water Bottle x10 | 1,650 | $24.07 | $24.21 | +$0.14 |
+| Live Toy Kit, 4 items | 531 | $10.75 | $10.62 | -$0.13 |
+| Live New Puppy Kit, 3 items | 1,423 | $21.36 | $21.27 | -$0.09 |
+| Live Travel Kit, 3 items | 427 | $9.51 | $11.11 | +$1.60 |
+| Live Enrichment Kit, 3 items | 596 | $11.52 | $14.02 | +$2.50 |
+| Wipes + Anti-Spill Bowl | 2,187 | $30.46 | $49.86 | **+$19.40** |
+| Nail Grinder + Anti-Spill Bowl | 2,063 | $28.98 | $36.74 | **+$7.76** |
+
+Within a few percent for ordinary goods, and badly optimistic the moment a
+liquid or an electronic item shares the parcel. So the formula is a planning
+tool for light unrestricted baskets and nothing more. **Every kit that actually
+goes live must be priced off a real quote for its exact composition**, which is
+what `config/research_kits.py` does before recommending anything.
+
 ---
 
 ## 3. What this means for the five kits
@@ -202,22 +225,29 @@ different business with a different cash requirement.
 The appeal is obvious: goods already in the US, no duty, 2 to 5 day delivery, no
 customs risk. The arithmetic does not survive contact with a $12 dog toy.
 
-| | CJ, China | US dropship wholesaler |
+| | CJ, China (measured) | US dropship wholesaler (derived) |
 |---|---|---|
 | Product cost, generic plush toy | $1.45 | $7.50 to $9.00 |
 | Freight, single item | $5.59 | $5.50 to $8.74 |
 | Duty | 20% modelled | none |
 | Platform fee | none | $34.99 to $59.99/month |
 | Landed, single | ~$7.90 | ~$13.00 to $17.70 |
-| Market price | $13.00 | $13.00 |
+| Market delivered price | $13.00 | $13.00 |
 
-The wholesale price is the problem. TopDawg prices at 40% to 50% below MSRP,
-which sounds generous until you notice that MSRP *is* the market price we are
-competing at. A 45% discount off a $15 toy is $8.25, and $8.25 plus $6 of
-domestic ground shipping is already above what the toy sells for. Independent
-reviews say the same thing from the other direction: Spocket's US and EU
-suppliers deliver **30 to 40% margins against 45 to 55% on Chinese sourcing**,
-and reviewers specifically flag low-ticket items as where the model breaks.
+One caveat on that right-hand column before relying on it. **Neither of the two
+zero-fee US suppliers will show prices without a registered wholesale account
+and a tax ID**, which is yours to open, not mine. So the US figure is derived
+from TopDawg's published "40% to 50% below MSRP", not observed. It should be
+checked against a real logged-in price before any decision rests on it.
+
+The wholesale price is the problem, and the derivation is not delicate. TopDawg
+prices at 40% to 50% below MSRP, which sounds generous until you notice that
+MSRP *is* the market price we are competing at. A 45% discount off a $15 toy is
+$8.25, and $8.25 plus $6 of domestic ground shipping is already above what the
+toy sells for. Independent reviews say the same thing from the other direction:
+Spocket's US and EU suppliers deliver **30 to 40% margins against 45 to 55% on
+Chinese sourcing**, and reviewers specifically flag low-ticket items as where
+the model breaks.
 
 Domestic shipping does not rescue it either. USPS Ground Advantage commercial is
 about $5.50 to $8.74 for a 1lb parcel depending on zone. That is not meaningfully
@@ -231,15 +261,20 @@ Concrete platform costs, for the record:
 | TopDawg | $0 browse only, $34.99/mo to sync or order, plus per-order processing | US warehouses, strong pet catalogue, reviewers flag thin low-ticket margins and non-refundable fees |
 | Spocket | $39.99/mo for 25 products, realistically $59.99/mo | US/EU suppliers, 30 to 40% typical margin |
 | Zendrop | $49/mo Pro for US products, $79/mo Plus | Higher base prices than CJ by most comparisons |
-| Essential Pet Products | none | US only, product and shipping only, requires a US/Canada business |
-| Mirage Pet Products | none | US manufacturer since 1957, no minimums, flat-rate shipping |
+| Essential Pet Products | none | US warehouses, product and shipping only, requires a US or Canada business and a tax ID to see prices |
+| Mirage Pet Products | none | No minimums, free shipping over $250. **Closing its US factory and moving operations to Portugal**, so treat as unstable |
 | Shopify Collective | none beyond Shopify Payments fees | US/Canada, Shopify Payments required; sources disagree on whether a $50k trailing revenue test applies |
 
-The two zero-fee options, **Essential Pet Products** and **Mirage Pet Products**,
-are the only ones worth a look, and only for the heavy and bulky items where
-China freight is punitive: beds, blankets, furniture covers, ceramic bowls. On a
-$40 bulky item a US supplier's $8 ground shipping beats our $20 to $26 air
-freight decisively. On a $12 toy it changes nothing.
+**Essential Pet Products** is the only one worth a look, and only for the heavy
+and bulky items where China freight is punitive: beds, blankets, furniture
+covers, ceramic bowls. On a $40 bulky item a US supplier's $8 ground shipping
+beats our $20 to $26 air freight decisively. On a $12 toy it changes nothing.
+Mirage would have been the other candidate, but it is mid-move to Portugal and
+is not a foundation to build on right now.
+
+Opening that account needs your store name and tax ID, so it is a five minute
+job for you and one I cannot do. If you want the comparison made properly, that
+registration is the blocking step.
 
 **Shopify Collective** deserves a separate mention because it costs nothing and
 plugs straight into the existing store. It is worth applying to on those grounds
