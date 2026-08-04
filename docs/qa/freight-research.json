@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-04T20:06:20Z",
+ "generated": "2026-08-04T20:23:42Z",
  "floor_min": 0.15,
  "floor_hard": 0.1,
  "products": {
@@ -5602,10 +5602,10 @@
      "days": 8
     }
    ],
-   "freight_resolved": 4.0,
-   "carrier_resolved": "Yunexpress CN to Multi-Region #4",
-   "aging_resolved": "5-8",
-   "freight_estimated": false
+   "freight_resolved": 6.3376,
+   "carrier_resolved": "Yunexpress CN to US",
+   "aging_resolved": "6-12",
+   "freight_estimated": true
   },
   "CJSP2934696": {
    "title": "Wagvive Paw Washing Cup",
@@ -6623,7 +6623,17 @@
    "of": 36
   },
   {
-   "carrier": "CJPacket Postal",
+   "carrier": "CJPacket Sensitive",
+   "products": 33,
+   "of": 36
+  },
+  {
+   "carrier": "CJPacket USPS Remote",
+   "products": 33,
+   "of": 36
+  },
+  {
+   "carrier": "CJPacket Sensitive Over Length",
    "products": 33,
    "of": 36
   },
@@ -6638,17 +6648,7 @@
    "of": 36
   },
   {
-   "carrier": "CJPacket Sensitive Over Length",
-   "products": 33,
-   "of": 36
-  },
-  {
-   "carrier": "CJPacket Sensitive",
-   "products": 33,
-   "of": 36
-  },
-  {
-   "carrier": "CJPacket USPS Remote",
+   "carrier": "CJPacket Postal",
    "products": 33,
    "of": 36
   },
@@ -6663,22 +6663,17 @@
    "of": 36
   },
   {
-   "carrier": "CJPacket Ordinary Over Length",
-   "products": 28,
-   "of": 36
-  },
-  {
-   "carrier": "CJPacket Fast Ordinary",
-   "products": 28,
-   "of": 36
-  },
-  {
    "carrier": "LuWei Ordinary US",
    "products": 28,
    "of": 36
   },
   {
-   "carrier": "YunExpress Ordinary",
+   "carrier": "CJPacket Ordinary Over Length",
+   "products": 28,
+   "of": 36
+  },
+  {
+   "carrier": "DHL Official",
    "products": 28,
    "of": 36
   },
@@ -6693,7 +6688,12 @@
    "of": 36
   },
   {
-   "carrier": "DHL Official",
+   "carrier": "CJPacket Fast Ordinary",
+   "products": 28,
+   "of": 36
+  },
+  {
+   "carrier": "YunExpress Ordinary",
    "products": 28,
    "of": 36
   },
@@ -7420,41 +7420,41 @@
    }
   },
   {
-   "title": "Wagvive Travel Water Bottle & Bowl",
-   "weight_g": 165.0,
+   "title": "Wagvive Slow Feeder Bowl",
+   "weight_g": 170.0,
    "quantities": {
     "1": {
-     "cheapest": 6.39,
+     "cheapest": 8.01,
      "carrier": "LuWei Ordinary US",
      "carriers_offered": 27
     },
     "2": {
-     "cheapest": 8.01,
-     "carrier": "LuWei Ordinary US",
+     "cheapest": 11.84,
+     "carrier": "CJPacket Eub",
      "carriers_offered": 27,
-     "vs_n_singles": 0.627,
-     "saving_pct": 37.3
+     "vs_n_singles": 0.739,
+     "saving_pct": 26.1
     },
     "3": {
-     "cheapest": 10.15,
-     "carrier": "LuWei Ordinary US",
+     "cheapest": 14.74,
+     "carrier": "CJPacket Eub",
      "carriers_offered": 27,
-     "vs_n_singles": 0.529,
-     "saving_pct": 47.1
+     "vs_n_singles": 0.613,
+     "saving_pct": 38.7
     },
     "5": {
-     "cheapest": 13.51,
-     "carrier": "LuWei Ordinary US",
+     "cheapest": 20.54,
+     "carrier": "CJPacket Eub",
      "carriers_offered": 27,
-     "vs_n_singles": 0.423,
-     "saving_pct": 57.7
+     "vs_n_singles": 0.513,
+     "saving_pct": 48.7
     },
     "10": {
-     "cheapest": 24.21,
-     "carrier": "LuWei Ordinary US",
-     "carriers_offered": 26,
-     "vs_n_singles": 0.379,
-     "saving_pct": 62.1
+     "cheapest": 35.05,
+     "carrier": "CJPacket Eub",
+     "carriers_offered": 25,
+     "vs_n_singles": 0.438,
+     "saving_pct": 56.2
     }
    }
   },
@@ -8126,10 +8126,10 @@
    "CJPT2874164",
    "CJPT2874134",
    "CJPT2874138",
-   "CJPT2874091",
    "CJPT2874139",
    "CJPT2874141",
    "CJPT2874177",
+   "CJPT2874091",
    "CJPT2874146",
    "CJPT2844307",
    "CJPT2844300",
@@ -8865,6 +8865,3162 @@
     {
      "carrier": "DHL Official",
      "price": 30.92,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Dental & Ear Wipes",
+   "spu": "CJYD2449710",
+   "name": "Cat Dog Ear Teeth Cleaning Finger Stall",
+   "category": "Towels",
+   "cost": 0.48,
+   "freight": 5.93,
+   "freight_estimated": false,
+   "carrier": "CJPacket Sensitive Pro",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 90.0,
+   "listed_count": 18,
+   "ceiling": 13.99,
+   "price_for_15pct": 8.55,
+   "price_for_10pct": 8.06,
+   "margin_at_ceiling": 46.9,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 5.93,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 6.46,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 6.77,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 6.85,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 7.3,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 8.16,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 8.6,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 8.68,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 10.39,
+     "aging": "20-60",
+     "days": 60
+    }
+   ]
+  },
+  {
+   "replaces": "Dental & Ear Wipes",
+   "spu": "CJYD2449712",
+   "name": "Pet Supplies Tear Removal Dogs And Cats Tear Wipes",
+   "category": "Towels",
+   "cost": 0.63,
+   "freight": 5.93,
+   "freight_estimated": false,
+   "carrier": "CJPacket Sensitive Pro",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 90.0,
+   "listed_count": 13,
+   "ceiling": 13.99,
+   "price_for_15pct": 8.78,
+   "price_for_10pct": 8.27,
+   "margin_at_ceiling": 45.5,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 5.93,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 6.46,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 6.77,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 6.85,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 7.3,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 8.16,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 8.6,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 8.68,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 10.39,
+     "aging": "20-60",
+     "days": 60
+    }
+   ]
+  },
+  {
+   "replaces": "Dental & Ear Wipes",
+   "spu": "CJYD2428395",
+   "name": "Pet 80-drawer Dog Exclusive For Cats Disposable Disposable Disposable Cleaning Wipes",
+   "category": "Towels",
+   "cost": 0.4,
+   "freight": 7.88,
+   "freight_estimated": false,
+   "carrier": "CJPacket Sensitive Pro",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 180.0,
+   "listed_count": 26,
+   "ceiling": 13.99,
+   "price_for_15pct": 10.88,
+   "price_for_10pct": 10.25,
+   "margin_at_ceiling": 33.2,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 7.88,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 8.26,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 8.53,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 8.87,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 9.76,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 9.99,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 10.68,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 11.46,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 12.42,
+     "aging": "20-60",
+     "days": 60
+    }
+   ]
+  },
+  {
+   "replaces": "Dental & Ear Wipes",
+   "spu": "CJYD2235798",
+   "name": "Pet Wipes Gloves Dog Cleaning Spa Wash-free Deodorant Dry Cleaning",
+   "category": "Towels",
+   "cost": 0.66,
+   "freight": 7.78,
+   "freight_estimated": false,
+   "carrier": "CJPacket Sensitive Pro",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 175.0,
+   "listed_count": 45,
+   "ceiling": 13.99,
+   "price_for_15pct": 11.15,
+   "price_for_10pct": 10.51,
+   "margin_at_ceiling": 31.6,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 7.78,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 8.17,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 8.42,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 8.76,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 9.63,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 9.88,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 10.57,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 11.36,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 12.32,
+     "aging": "20-60",
+     "days": 60
+    }
+   ]
+  },
+  {
+   "replaces": "Dental & Ear Wipes",
+   "spu": "CJYD2260608",
+   "name": "Disposable Bath Supplies Wet Wipes For Pet Disposable Disposable Gloves",
+   "category": "Towels",
+   "cost": 0.63,
+   "freight": 7.88,
+   "freight_estimated": false,
+   "carrier": "CJPacket Sensitive Pro",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 180.0,
+   "listed_count": 31,
+   "ceiling": 13.99,
+   "price_for_15pct": 11.23,
+   "price_for_10pct": 10.58,
+   "margin_at_ceiling": 31.2,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 7.88,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 8.26,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 8.53,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 8.87,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 9.76,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 9.99,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 10.68,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 11.46,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 12.42,
+     "aging": "20-60",
+     "days": 60
+    }
+   ]
+  },
+  {
+   "replaces": "Dental & Ear Wipes",
+   "spu": "CJYD2840955",
+   "name": "Pet No Wash Gloves Cat Bathing Pet Wipes",
+   "category": "Towels",
+   "cost": 0.6,
+   "freight": 10.18,
+   "freight_estimated": false,
+   "carrier": "CJPacket Sensitive Pro",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 261.0,
+   "listed_count": 4,
+   "ceiling": 13.99,
+   "price_for_15pct": 14.07,
+   "price_for_10pct": 13.27,
+   "margin_at_ceiling": 14.5,
+   "viable_at_15": false,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 10.1,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 10.18,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 10.69,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 11.19,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 11.46,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 11.58,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 12.49,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 13.54,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 14.26,
+     "aging": "20-60",
+     "days": 60
+    }
+   ]
+  },
+  {
+   "replaces": "Dental & Ear Wipes",
+   "spu": "CJYD2580924",
+   "name": "Pet Cleaning Tear Wipes Non-woven Fabric Eye Wipes",
+   "category": "Towels",
+   "cost": 0.64,
+   "freight": 11.57,
+   "freight_estimated": false,
+   "carrier": "CJPacket Sensitive Pro",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 320.0,
+   "listed_count": 11,
+   "ceiling": 13.99,
+   "price_for_15pct": 15.88,
+   "price_for_10pct": 14.97,
+   "margin_at_ceiling": 3.9,
+   "viable_at_15": false,
+   "viable_at_10": false,
+   "carrier_menu": [
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 11.25,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 11.31,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 11.57,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 12.26,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 12.65,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 13.19,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 13.8,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 14.87,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 15.6,
+     "aging": "20-60",
+     "days": 60
+    }
+   ]
+  },
+  {
+   "replaces": "Dental & Ear Wipes",
+   "spu": "CJYD2889766",
+   "name": "Pet Odor-removing Wet Wipes For Cats And Dogs",
+   "category": "Towels",
+   "cost": 0.74,
+   "freight": 17.39,
+   "freight_estimated": false,
+   "carrier": "CJPacket Liquid US",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 610.0,
+   "listed_count": 2,
+   "ceiling": 13.99,
+   "price_for_15pct": 23.35,
+   "price_for_10pct": 22.01,
+   "margin_at_ceiling": -39.8,
+   "viable_at_15": false,
+   "viable_at_10": false,
+   "carrier_menu": [
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 16.9,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 17.39,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 18.36,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 18.45,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 18.97,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 20.88,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 21.11,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 22.17,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 22.78,
+     "aging": "4-9",
+     "days": 9
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Snuggle Blanket",
+   "spu": "CJBQ2847112",
+   "name": "Four-leaf clover quilt holder-blue-needle-free-1 piece",
+   "category": "Blankets and quilts",
+   "cost": 0.58,
+   "freight": 4.75,
+   "freight_estimated": false,
+   "carrier": "GOFO+",
+   "aging": "3-8",
+   "us_warehouse": true,
+   "weight_g": 8.0,
+   "listed_count": 0,
+   "ceiling": 29.95,
+   "price_for_15pct": 7.07,
+   "price_for_10pct": 6.66,
+   "margin_at_ceiling": 77.6,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "GOFO+",
+     "price": 4.75,
+     "aging": "3-8",
+     "days": 8
+    },
+    {
+     "carrier": "GOFO GC parcel+",
+     "price": 4.84,
+     "aging": "3-8",
+     "days": 8
+    },
+    {
+     "carrier": "USPS+VIP",
+     "price": 4.91,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "USPS+",
+     "price": 5.04,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "USPS+WSC For VIP",
+     "price": 5.04,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "UniUni+",
+     "price": 5.18,
+     "aging": "3-8",
+     "days": 8
+    },
+    {
+     "carrier": "FedEx Ground+",
+     "price": 19.7,
+     "aging": "3-7",
+     "days": 7
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Snuggle Blanket",
+   "spu": "CJBQ2845875",
+   "name": "Quilt holder-Blue Love [6 packs]*[Patent]",
+   "category": "Blankets and quilts",
+   "cost": 0.77,
+   "freight": 4.88,
+   "freight_estimated": false,
+   "carrier": "GOFO+",
+   "aging": "3-8",
+   "us_warehouse": true,
+   "weight_g": 25.0,
+   "listed_count": 0,
+   "ceiling": 29.95,
+   "price_for_15pct": 7.47,
+   "price_for_10pct": 7.04,
+   "margin_at_ceiling": 76.5,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "GOFO+",
+     "price": 4.88,
+     "aging": "3-8",
+     "days": 8
+    },
+    {
+     "carrier": "GOFO GC parcel+",
+     "price": 4.97,
+     "aging": "3-8",
+     "days": 8
+    },
+    {
+     "carrier": "USPS+VIP",
+     "price": 5.01,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "USPS+",
+     "price": 5.16,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "USPS+WSC For VIP",
+     "price": 5.16,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "UniUni+",
+     "price": 5.3,
+     "aging": "3-8",
+     "days": 8
+    },
+    {
+     "carrier": "FedEx Ground+",
+     "price": 19.86,
+     "aging": "3-7",
+     "days": 7
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Snuggle Blanket",
+   "spu": "CJYD2362497",
+   "name": "Pet Blanket Sleep Warm Dog Pet Bed",
+   "category": "Blankets and quilts",
+   "cost": 0.53,
+   "freight": 5.75,
+   "freight_estimated": false,
+   "carrier": "LuWei Ordinary US",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 120.0,
+   "listed_count": 137,
+   "ceiling": 29.95,
+   "price_for_15pct": 8.4,
+   "price_for_10pct": 7.91,
+   "margin_at_ceiling": 73.9,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 5.75,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 6.11,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 6.17,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "YunExpress Clothing Line",
+     "price": 6.17,
+     "aging": "8-15",
+     "days": 15
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 6.25,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 6.49,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 6.53,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 6.58,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 6.79,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 7.18,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 7.35,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 7.53,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 7.62,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 7.96,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 8.09,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 8.13,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 8.73,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 8.77,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "USPS",
+     "price": 8.94,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 9.34,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 10.18,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 11.07,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 11.69,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 12.14,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 15.64,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 30.92,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Snuggle Blanket",
+   "spu": "CJYD2921474",
+   "name": "Pet Warming Blanket Dog Quilt Cat Mat",
+   "category": "Blankets and quilts",
+   "cost": 1.76,
+   "freight": 6.73,
+   "freight_estimated": false,
+   "carrier": "LuWei Ordinary US",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 190.0,
+   "listed_count": 6,
+   "ceiling": 29.95,
+   "price_for_15pct": 11.49,
+   "price_for_10pct": 10.83,
+   "margin_at_ceiling": 65.5,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 6.73,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 7.11,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 7.17,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 7.3,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 7.51,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 7.74,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 7.89,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 7.97,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 8.1,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 8.43,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 8.72,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 8.92,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 9.1,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 9.29,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 10.04,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 10.19,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "USPS",
+     "price": 10.22,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 10.23,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 10.73,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 10.91,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 11.68,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 12.65,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 13.09,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 13.79,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 17.19,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 30.92,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Snuggle Blanket",
+   "spu": "CJYD2612958",
+   "name": "Flannel Fleece Composite Thickened Pet Pad",
+   "category": "Blankets and quilts",
+   "cost": 2.46,
+   "freight": 6.46,
+   "freight_estimated": false,
+   "carrier": "LuWei Ordinary US",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 170.0,
+   "listed_count": 16,
+   "ceiling": 29.95,
+   "price_for_15pct": 12.2,
+   "price_for_10pct": 11.5,
+   "margin_at_ceiling": 63.5,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 6.46,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 6.78,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 6.88,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 6.96,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 7.15,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 7.39,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 7.49,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 7.63,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 7.66,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 8.08,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 8.33,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 8.54,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 8.65,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 8.94,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 9.48,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 9.57,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 9.78,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "USPS",
+     "price": 9.85,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 10.16,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 10.46,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 11.25,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 12.21,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 12.69,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 13.32,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 16.75,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 30.92,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Snuggle Blanket",
+   "spu": "CJYD2768247",
+   "name": "Flannel Blanket DIY Thickened",
+   "category": "Blankets and quilts",
+   "cost": 4.03,
+   "freight": 11.77,
+   "freight_estimated": false,
+   "carrier": "LuWei Ordinary US",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 620.0,
+   "listed_count": 9,
+   "ceiling": 29.95,
+   "price_for_15pct": 21.25,
+   "price_for_10pct": 20.03,
+   "margin_at_ceiling": 38.8,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 11.77,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 12.52,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "YunExpress Clothing Line",
+     "price": 12.92,
+     "aging": "8-15",
+     "days": 15
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 14.07,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 14.42,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 15.22,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 16.21,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 16.62,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 17.09,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 17.6,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 18.5,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 18.6,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 18.69,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 19.19,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 19.31,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 21.12,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 21.38,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 21.71,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 22.38,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "USPS",
+     "price": 22.6,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 22.92,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 22.99,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 24.01,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 24.1,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 26.68,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 39.6,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Snuggle Blanket",
+   "spu": "CJYD2237302",
+   "name": "Gothic Mysterious Halloween Witch Flannel Blanket",
+   "category": "Blankets and quilts",
+   "cost": 8.96,
+   "freight": 17.73,
+   "freight_estimated": false,
+   "carrier": "LuWei Ordinary US",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 1150.0,
+   "listed_count": 39,
+   "ceiling": 29.95,
+   "price_for_15pct": 36.19,
+   "price_for_10pct": 34.11,
+   "margin_at_ceiling": -2.1,
+   "viable_at_15": false,
+   "viable_at_10": false,
+   "carrier_menu": [
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 17.73,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 18.65,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 21.62,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 21.64,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 23.33,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 25.66,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 27.42,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 27.64,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 28.51,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 29.31,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 29.53,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 29.96,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 29.96,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 31.48,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 32.11,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "USPS",
+     "price": 32.27,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 32.32,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 33.68,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 33.93,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 34.38,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 34.68,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 36.59,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 38.38,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 40.92,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 41.21,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 44.62,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Snuggle Blanket",
+   "spu": "CJYD2620731",
+   "name": "Living Room Carpet Full Coverage Sofa Blanket Home Large Living Room Water-absorbing Coffe",
+   "category": "Blankets and quilts",
+   "cost": 4.39,
+   "freight": 32.78,
+   "freight_estimated": false,
+   "carrier": "CJPacket Ordinary Over Length",
+   "aging": "7-12",
+   "us_warehouse": false,
+   "weight_g": 276.0,
+   "listed_count": 6,
+   "ceiling": 29.95,
+   "price_for_15pct": 48.22,
+   "price_for_10pct": 45.44,
+   "margin_at_ceiling": -35.0,
+   "viable_at_15": false,
+   "viable_at_10": false,
+   "carrier_menu": [
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 32.78,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 37.14,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 38.89,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 94.28,
+     "aging": "3-7",
+     "days": 7
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Sofa & Furniture Cover",
+   "spu": "CJYD2980870",
+   "name": "Pet Feeding Mat Household Splash-proof Placemat",
+   "category": "Pet mats",
+   "cost": 0.64,
+   "freight": 5.46,
+   "freight_estimated": false,
+   "carrier": "CJPacket Super Pure Electricity",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 92.0,
+   "listed_count": 2,
+   "ceiling": 39.99,
+   "price_for_15pct": 8.2,
+   "price_for_10pct": 7.73,
+   "margin_at_ceiling": 80.1,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 5.46,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 5.64,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 5.74,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 5.98,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 6.12,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 6.25,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 6.3,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 6.31,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 6.49,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 6.55,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 6.81,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 6.9,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 7.07,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 7.1,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 7.36,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 7.61,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 7.93,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 8.19,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "USPS",
+     "price": 8.43,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 8.63,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 8.73,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 10.44,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 11.13,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 11.65,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 15.02,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 30.92,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Sofa & Furniture Cover",
+   "spu": "CJYD2957958",
+   "name": "Pet Ice-Silk Non-Slip Cooling Mat",
+   "category": "Pet mats",
+   "cost": 1.19,
+   "freight": 6.57,
+   "freight_estimated": false,
+   "carrier": "LuWei Ordinary US",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 220.0,
+   "listed_count": 0,
+   "ceiling": 39.99,
+   "price_for_15pct": 10.43,
+   "price_for_10pct": 9.83,
+   "margin_at_ceiling": 75.5,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 6.57,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 7.28,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 7.39,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 7.62,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 7.62,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 7.9,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 8.12,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 8.48,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 9.21,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 9.31,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 9.72,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 9.77,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 9.79,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 10.46,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 10.47,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 10.62,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 11.19,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "USPS",
+     "price": 11.3,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 11.57,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 11.95,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 12.61,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 13.33,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 13.69,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 14.51,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 17.85,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 30.92,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Sofa & Furniture Cover",
+   "spu": "CJYD2947927",
+   "name": "Breathable Ice-silk Cat Bed Supplies Dog Mat",
+   "category": "Pet mats",
+   "cost": 1.55,
+   "freight": 6.57,
+   "freight_estimated": false,
+   "carrier": "LuWei Ordinary US",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 220.0,
+   "listed_count": 4,
+   "ceiling": 39.99,
+   "price_for_15pct": 10.97,
+   "price_for_10pct": 10.34,
+   "margin_at_ceiling": 74.4,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 6.57,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 7.28,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 7.39,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 7.62,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 7.62,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 7.9,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 8.12,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 8.48,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 9.21,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 9.31,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 9.72,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 9.77,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 9.79,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 10.46,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 10.47,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 10.62,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 11.19,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "USPS",
+     "price": 11.3,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 11.57,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 11.95,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 12.61,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 13.33,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 13.69,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 14.51,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 17.85,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 30.92,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Sofa & Furniture Cover",
+   "spu": "CJYD2962540",
+   "name": "Summer Cooling Pet Dog Mat",
+   "category": "Pet mats",
+   "cost": 1.93,
+   "freight": 6.79,
+   "freight_estimated": false,
+   "carrier": "LuWei Ordinary US",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 190.0,
+   "listed_count": 2,
+   "ceiling": 39.99,
+   "price_for_15pct": 11.82,
+   "price_for_10pct": 11.14,
+   "margin_at_ceiling": 72.7,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 6.79,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 7.23,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 7.58,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 7.82,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 7.97,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 8.27,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 8.27,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 8.99,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 9.29,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 9.64,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 10.07,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 10.13,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 10.14,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 10.27,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 10.64,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 10.85,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 10.99,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 11.16,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "USPS",
+     "price": 12.02,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 12.45,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 12.65,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 13.09,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 13.79,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 14.22,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 17.19,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 30.92,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Sofa & Furniture Cover",
+   "spu": "CJYD2926858",
+   "name": "Summer Cooling Ice-Silk Pet Mat",
+   "category": "Pet mats",
+   "cost": 1.98,
+   "freight": 7.48,
+   "freight_estimated": false,
+   "carrier": "LuWei Ordinary US",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 290.0,
+   "listed_count": 14,
+   "ceiling": 39.99,
+   "price_for_15pct": 12.76,
+   "price_for_10pct": 12.03,
+   "margin_at_ceiling": 70.8,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 7.48,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 8.32,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 8.56,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 8.8,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 8.8,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 9.13,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 9.53,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 10.17,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 10.67,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 10.86,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 10.98,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 10.99,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 11.34,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 11.72,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 12.05,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 12.38,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "USPS",
+     "price": 12.58,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 13.13,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 13.45,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 14.07,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 14.19,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 14.92,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 15.09,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 16.17,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 19.39,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 30.92,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Sofa & Furniture Cover",
+   "spu": "CJYD2949133",
+   "name": "Cooling Pet Sleeping Mat - Breathable Sofa Cushion for Dogs and Cats - Summer Heat Relief ",
+   "category": "Pet mats",
+   "cost": 2.77,
+   "freight": 6.55,
+   "freight_estimated": false,
+   "carrier": "LuWei Ordinary US",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 218.0,
+   "listed_count": 0,
+   "ceiling": 39.99,
+   "price_for_15pct": 12.78,
+   "price_for_10pct": 12.05,
+   "margin_at_ceiling": 70.7,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 6.55,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 7.25,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 7.36,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 7.58,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 7.58,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 7.87,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 8.09,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 8.45,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 9.16,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 9.26,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 9.69,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 9.72,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 9.76,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 10.41,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 10.42,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 10.58,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 11.13,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "USPS",
+     "price": 11.27,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 11.52,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 11.89,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 12.56,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 13.29,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 13.66,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 14.46,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 17.81,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 30.92,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Sofa & Furniture Cover",
+   "spu": "CJYD2995185",
+   "name": "Filtered Pet Litter Mat With Leak Proof And Odor Control Features",
+   "category": "Pet mats",
+   "cost": 1.96,
+   "freight": 8.73,
+   "freight_estimated": false,
+   "carrier": "CJPacket Ordinary",
+   "aging": "4-9",
+   "us_warehouse": false,
+   "weight_g": 300.0,
+   "listed_count": 3,
+   "ceiling": 39.99,
+   "price_for_15pct": 14.3,
+   "price_for_10pct": 13.48,
+   "margin_at_ceiling": 67.6,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 8.73,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 8.97,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 9.3,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 9.73,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 10.86,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 11.11,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 11.16,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 11.16,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 11.9,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 12.25,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 12.65,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 13.35,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 13.77,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 14.37,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 15.15,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 15.3,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 15.43,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 16.4,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "USPS",
+     "price": 19.23,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 19.61,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 30.92,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 32.65,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Waterproof Sofa & Furniture Cover",
+   "spu": "CJYD2948368",
+   "name": "All-Season Non-Slip Pet Bed Mat",
+   "category": "Pet mats",
+   "cost": 1.45,
+   "freight": 11.02,
+   "freight_estimated": false,
+   "carrier": "LuWei Ordinary US",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 123.0,
+   "listed_count": 2,
+   "ceiling": 39.99,
+   "price_for_15pct": 16.41,
+   "price_for_10pct": 15.47,
+   "margin_at_ceiling": 63.3,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "CJPacket Eub",
+     "price": 8.14,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 11.02,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 11.69,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 13.1,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 13.44,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 14.15,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 14.29,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 15.22,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 17.5,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 17.9,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 18.51,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 19.62,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 19.75,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 19.8,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 20.19,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 20.19,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 20.28,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 21.27,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 21.52,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 21.92,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 22.18,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 23.43,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "USPS",
+     "price": 24.98,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 25.33,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 28.29,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 39.6,
      "aging": "3-7",
      "days": 7
     },
@@ -10902,190 +14058,6 @@
   },
   {
    "replaces": "Woodland Rope-Limb Plush",
-   "spu": "CJPT3017383",
-   "name": "Crunchy Pickle Kicker Cat Toy - Plush Crinkle Toy With Catnip And Dental Mesh",
-   "category": "Plush toys",
-   "cost": 3.56,
-   "freight": 4.73,
-   "freight_estimated": false,
-   "carrier": "CJPacket Postal",
-   "aging": "5-9",
-   "us_warehouse": false,
-   "weight_g": 20.0,
-   "listed_count": 0,
-   "ceiling": 13.0,
-   "price_for_15pct": 11.69,
-   "price_for_10pct": 11.02,
-   "margin_at_ceiling": 23.3,
-   "viable_at_15": true,
-   "viable_at_10": true,
-   "carrier_menu": [
-    {
-     "carrier": "CJPacket Postal",
-     "price": 4.73,
-     "aging": "5-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket Super Pure Electricity",
-     "price": 4.75,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket Pure Electricity",
-     "price": 4.94,
-     "aging": "7-14",
-     "days": 14
-    },
-    {
-     "carrier": "CJPacket Sensitive Pro",
-     "price": 5.07,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "LuWei Ordinary US",
-     "price": 5.16,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket Ordinary",
-     "price": 5.36,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket Eub Special Line",
-     "price": 5.41,
-     "aging": "10-23",
-     "days": 23
-    },
-    {
-     "carrier": "CJPacket Sensitive",
-     "price": 5.47,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "USPS Ordinary",
-     "price": 5.6,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "YunExpress Ordinary",
-     "price": 5.62,
-     "aging": "4-7",
-     "days": 7
-    },
-    {
-     "carrier": "CJPacket Liquid US",
-     "price": 5.73,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "YunExpress Sensitive",
-     "price": 5.78,
-     "aging": "4-7",
-     "days": 7
-    },
-    {
-     "carrier": "Qfulfillment A line",
-     "price": 5.95,
-     "aging": "10-25",
-     "days": 25
-    },
-    {
-     "carrier": "CJPacket Fast Ordinary",
-     "price": 6.13,
-     "aging": "4-6",
-     "days": 6
-    },
-    {
-     "carrier": "CJPacket LX Sensitive Plant",
-     "price": 6.21,
-     "aging": "8-20",
-     "days": 20
-    },
-    {
-     "carrier": "CJPacket Eub",
-     "price": 6.38,
-     "aging": "12-50",
-     "days": 50
-    },
-    {
-     "carrier": "CJPacket USPS Remote",
-     "price": 6.73,
-     "aging": "5-10",
-     "days": 10
-    },
-    {
-     "carrier": "CJPacket Sensitive Pro+",
-     "price": 7.34,
-     "aging": "6-11",
-     "days": 11
-    },
-    {
-     "carrier": "USPS",
-     "price": 7.67,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket Fast Line",
-     "price": 7.73,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket Liquid Line",
-     "price": 8.81,
-     "aging": "20-60",
-     "days": 60
-    },
-    {
-     "carrier": "CJPacket Fast US",
-     "price": 8.9,
-     "aging": "7-12",
-     "days": 12
-    },
-    {
-     "carrier": "CJPacket Ordinary Over Length",
-     "price": 9.69,
-     "aging": "7-12",
-     "days": 12
-    },
-    {
-     "carrier": "CJPacket Sensitive Over Length",
-     "price": 11.65,
-     "aging": "7-12",
-     "days": 12
-    },
-    {
-     "carrier": "CJPacket Sensitive Oversize Line",
-     "price": 13.44,
-     "aging": "8-16",
-     "days": 16
-    },
-    {
-     "carrier": "DHL Official",
-     "price": 30.92,
-     "aging": "3-7",
-     "days": 7
-    },
-    {
-     "carrier": "CJPacket Sea",
-     "price": 82.98,
-     "aging": "25-30",
-     "days": 30
-    }
-   ]
-  },
-  {
-   "replaces": "Woodland Rope-Limb Plush",
    "spu": "CJPT2913504",
    "name": "Squeaky Stuffed Dog Toy Small, No-Stuffing Crinkle Paper Dog Birthday Toy With Dual Squeak",
    "category": "Plush toys",
@@ -11435,6 +14407,190 @@
     {
      "carrier": "CJPacket Sensitive Oversize Line",
      "price": 15.64,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 30.92,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Woodland Rope-Limb Plush",
+   "spu": "CJPT2845374",
+   "name": "Pet Plush Toys-Pickles-Green-1 piece",
+   "category": "Plush toys",
+   "cost": 3.8,
+   "freight": 4.85,
+   "freight_estimated": false,
+   "carrier": "CJPacket Super Pure Electricity",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 56.0,
+   "listed_count": 3,
+   "ceiling": 13.0,
+   "price_for_15pct": 12.2,
+   "price_for_10pct": 11.5,
+   "margin_at_ceiling": 20.0,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 4.85,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 5.04,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 5.2,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 5.24,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 5.47,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 5.58,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 5.7,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 5.7,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 5.85,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 5.89,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 5.9,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 6.09,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 6.11,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 6.38,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 6.43,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 6.9,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 7.0,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 7.46,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "USPS",
+     "price": 7.78,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 7.86,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 7.92,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 9.63,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 10.41,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 11.65,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 14.23,
      "aging": "8-16",
      "days": 16
     },
@@ -12558,119 +15714,161 @@
   },
   {
    "replaces": "Screaming Chicken",
-   "spu": "CJMY1684818",
-   "name": "New Self-Hi Pussy Cat Music Ball Sounds And Bites Toys",
+   "spu": "CJMY1841444",
+   "name": "New Halloween Pet Cat Sound Toy Dinosaur Fishbone Relieving Boredom Molar Long Lasting",
    "category": "Sound toys",
-   "cost": 1.42,
-   "freight": 4.75,
+   "cost": 1.19,
+   "freight": 5.01,
    "freight_estimated": false,
    "carrier": "CJPacket Super Pure Electricity",
    "aging": "5-11",
    "us_warehouse": false,
-   "weight_g": 45.0,
-   "listed_count": 183,
+   "weight_g": 65.0,
+   "listed_count": 170,
    "ceiling": 13.99,
-   "price_for_15pct": 8.48,
-   "price_for_10pct": 8.0,
-   "margin_at_ceiling": 47.2,
+   "price_for_15pct": 8.46,
+   "price_for_10pct": 7.98,
+   "margin_at_ceiling": 47.4,
    "viable_at_15": true,
    "viable_at_10": true,
    "carrier_menu": [
     {
      "carrier": "CJPacket Super Pure Electricity",
-     "price": 4.75,
+     "price": 5.01,
      "aging": "5-11",
      "days": 11
     },
     {
      "carrier": "CJPacket Pure Electricity",
-     "price": 4.94,
+     "price": 5.19,
      "aging": "7-14",
      "days": 14
     },
     {
-     "carrier": "CJPacket Sensitive Pro",
-     "price": 5.07,
+     "carrier": "LuWei Ordinary US",
+     "price": 5.36,
      "aging": "5-11",
      "days": 11
     },
     {
-     "carrier": "CJPacket Sensitive",
-     "price": 5.47,
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 5.4,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 5.63,
      "aging": "4-9",
      "days": 9
     },
     {
-     "carrier": "CJPacket Postal",
-     "price": 5.55,
-     "aging": "5-9",
+     "carrier": "CJPacket Sensitive",
+     "price": 5.77,
+     "aging": "4-9",
      "days": 9
     },
     {
+     "carrier": "YunExpress Ordinary",
+     "price": 5.84,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 5.85,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
      "carrier": "CJPacket Liquid US",
-     "price": 5.73,
+     "price": 6.01,
      "aging": "5-11",
      "days": 11
     },
     {
      "carrier": "YunExpress Sensitive",
-     "price": 5.78,
+     "price": 6.05,
      "aging": "4-7",
      "days": 7
     },
     {
+     "carrier": "CJPacket Postal",
+     "price": 6.19,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
      "carrier": "CJPacket Eub Special Line",
-     "price": 5.89,
+     "price": 6.28,
      "aging": "10-23",
      "days": 23
     },
     {
      "carrier": "Qfulfillment A line",
-     "price": 5.95,
+     "price": 6.3,
      "aging": "10-25",
      "days": 25
     },
     {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 6.59,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
      "carrier": "CJPacket LX Sensitive Plant",
-     "price": 6.21,
+     "price": 6.63,
      "aging": "8-20",
      "days": 20
     },
     {
+     "carrier": "CJPacket Eub",
+     "price": 7.15,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
      "carrier": "CJPacket USPS Remote",
-     "price": 6.73,
+     "price": 7.16,
      "aging": "5-10",
      "days": 10
     },
     {
      "carrier": "CJPacket Sensitive Pro+",
-     "price": 7.34,
+     "price": 7.64,
      "aging": "6-11",
      "days": 11
     },
     {
      "carrier": "USPS",
-     "price": 7.67,
+     "price": 7.94,
      "aging": "4-9",
      "days": 9
     },
     {
      "carrier": "CJPacket Fast Line",
-     "price": 7.73,
+     "price": 8.05,
      "aging": "4-9",
      "days": 9
     },
     {
      "carrier": "CJPacket Fast US",
-     "price": 8.9,
+     "price": 8.12,
      "aging": "7-12",
      "days": 12
     },
     {
      "carrier": "CJPacket Liquid Line",
-     "price": 9.38,
+     "price": 9.83,
      "aging": "20-60",
      "days": 60
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 10.58,
+     "aging": "7-12",
+     "days": 12
     },
     {
      "carrier": "CJPacket Sensitive Over Length",
@@ -12680,9 +15878,15 @@
     },
     {
      "carrier": "CJPacket Sensitive Oversize Line",
-     "price": 13.99,
+     "price": 14.43,
      "aging": "8-16",
      "days": 16
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 30.92,
+     "aging": "3-7",
+     "days": 7
     },
     {
      "carrier": "CJPacket Sea",
@@ -13798,190 +17002,6 @@
   },
   {
    "replaces": "Rope-Limb Puppy Plush",
-   "spu": "CJPT3017383",
-   "name": "Crunchy Pickle Kicker Cat Toy - Plush Crinkle Toy With Catnip And Dental Mesh",
-   "category": "Plush toys",
-   "cost": 3.56,
-   "freight": 4.73,
-   "freight_estimated": false,
-   "carrier": "CJPacket Postal",
-   "aging": "5-9",
-   "us_warehouse": false,
-   "weight_g": 20.0,
-   "listed_count": 0,
-   "ceiling": 15.99,
-   "price_for_15pct": 11.69,
-   "price_for_10pct": 11.02,
-   "margin_at_ceiling": 37.0,
-   "viable_at_15": true,
-   "viable_at_10": true,
-   "carrier_menu": [
-    {
-     "carrier": "CJPacket Postal",
-     "price": 4.73,
-     "aging": "5-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket Super Pure Electricity",
-     "price": 4.75,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket Pure Electricity",
-     "price": 4.94,
-     "aging": "7-14",
-     "days": 14
-    },
-    {
-     "carrier": "CJPacket Sensitive Pro",
-     "price": 5.07,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "LuWei Ordinary US",
-     "price": 5.16,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket Ordinary",
-     "price": 5.36,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket Eub Special Line",
-     "price": 5.41,
-     "aging": "10-23",
-     "days": 23
-    },
-    {
-     "carrier": "CJPacket Sensitive",
-     "price": 5.47,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "USPS Ordinary",
-     "price": 5.6,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "YunExpress Ordinary",
-     "price": 5.62,
-     "aging": "4-7",
-     "days": 7
-    },
-    {
-     "carrier": "CJPacket Liquid US",
-     "price": 5.73,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "YunExpress Sensitive",
-     "price": 5.78,
-     "aging": "4-7",
-     "days": 7
-    },
-    {
-     "carrier": "Qfulfillment A line",
-     "price": 5.95,
-     "aging": "10-25",
-     "days": 25
-    },
-    {
-     "carrier": "CJPacket Fast Ordinary",
-     "price": 6.13,
-     "aging": "4-6",
-     "days": 6
-    },
-    {
-     "carrier": "CJPacket LX Sensitive Plant",
-     "price": 6.21,
-     "aging": "8-20",
-     "days": 20
-    },
-    {
-     "carrier": "CJPacket Eub",
-     "price": 6.38,
-     "aging": "12-50",
-     "days": 50
-    },
-    {
-     "carrier": "CJPacket USPS Remote",
-     "price": 6.73,
-     "aging": "5-10",
-     "days": 10
-    },
-    {
-     "carrier": "CJPacket Sensitive Pro+",
-     "price": 7.34,
-     "aging": "6-11",
-     "days": 11
-    },
-    {
-     "carrier": "USPS",
-     "price": 7.67,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket Fast Line",
-     "price": 7.73,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket Liquid Line",
-     "price": 8.81,
-     "aging": "20-60",
-     "days": 60
-    },
-    {
-     "carrier": "CJPacket Fast US",
-     "price": 8.9,
-     "aging": "7-12",
-     "days": 12
-    },
-    {
-     "carrier": "CJPacket Ordinary Over Length",
-     "price": 9.69,
-     "aging": "7-12",
-     "days": 12
-    },
-    {
-     "carrier": "CJPacket Sensitive Over Length",
-     "price": 11.65,
-     "aging": "7-12",
-     "days": 12
-    },
-    {
-     "carrier": "CJPacket Sensitive Oversize Line",
-     "price": 13.44,
-     "aging": "8-16",
-     "days": 16
-    },
-    {
-     "carrier": "DHL Official",
-     "price": 30.92,
-     "aging": "3-7",
-     "days": 7
-    },
-    {
-     "carrier": "CJPacket Sea",
-     "price": 82.98,
-     "aging": "25-30",
-     "days": 30
-    }
-   ]
-  },
-  {
-   "replaces": "Rope-Limb Puppy Plush",
    "spu": "CJPT2913504",
    "name": "Squeaky Stuffed Dog Toy Small, No-Stuffing Crinkle Paper Dog Birthday Toy With Dual Squeak",
    "category": "Plush toys",
@@ -14331,6 +17351,190 @@
     {
      "carrier": "CJPacket Sensitive Oversize Line",
      "price": 15.64,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 30.92,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Rope-Limb Puppy Plush",
+   "spu": "CJPT2845374",
+   "name": "Pet Plush Toys-Pickles-Green-1 piece",
+   "category": "Plush toys",
+   "cost": 3.8,
+   "freight": 4.85,
+   "freight_estimated": false,
+   "carrier": "CJPacket Super Pure Electricity",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 56.0,
+   "listed_count": 3,
+   "ceiling": 15.99,
+   "price_for_15pct": 12.2,
+   "price_for_10pct": 11.5,
+   "margin_at_ceiling": 34.4,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 4.85,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 5.04,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 5.2,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 5.24,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 5.47,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 5.58,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 5.7,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 5.7,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 5.85,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 5.89,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 5.9,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 6.09,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 6.11,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 6.38,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 6.43,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 6.9,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 7.0,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 7.46,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "USPS",
+     "price": 7.78,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 7.86,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 7.92,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 9.63,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 10.41,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 11.65,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 14.23,
      "aging": "8-16",
      "days": 16
     },
@@ -15822,190 +19026,6 @@
   },
   {
    "replaces": "Lick Bowl with Ball",
-   "spu": "CJFT3002703",
-   "name": "3PCS Cat Treat Spoon, Lickable Cat Treat Dispenser Squeeze, Multi-Function Feeding Spoon F",
-   "category": "Feeding tools",
-   "cost": 2.12,
-   "freight": 5.9,
-   "freight_estimated": false,
-   "carrier": "LuWei Ordinary US",
-   "aging": "5-11",
-   "us_warehouse": false,
-   "weight_g": 130.0,
-   "listed_count": 0,
-   "ceiling": 19.0,
-   "price_for_15pct": 10.99,
-   "price_for_10pct": 10.35,
-   "margin_at_ceiling": 49.5,
-   "viable_at_15": true,
-   "viable_at_10": true,
-   "carrier_menu": [
-    {
-     "carrier": "LuWei Ordinary US",
-     "price": 5.9,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket Super Pure Electricity",
-     "price": 6.1,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket Pure Electricity",
-     "price": 6.28,
-     "aging": "7-14",
-     "days": 14
-    },
-    {
-     "carrier": "YunExpress Ordinary",
-     "price": 6.3,
-     "aging": "4-7",
-     "days": 7
-    },
-    {
-     "carrier": "CJPacket Ordinary",
-     "price": 6.43,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "YunExpress Sensitive",
-     "price": 6.7,
-     "aging": "4-7",
-     "days": 7
-    },
-    {
-     "carrier": "CJPacket Sensitive",
-     "price": 6.7,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket Sensitive Pro",
-     "price": 6.8,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "USPS Ordinary",
-     "price": 6.96,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket Liquid US",
-     "price": 7.35,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket Eub Special Line",
-     "price": 7.55,
-     "aging": "10-23",
-     "days": 23
-    },
-    {
-     "carrier": "Qfulfillment A line",
-     "price": 7.76,
-     "aging": "10-25",
-     "days": 25
-    },
-    {
-     "carrier": "CJPacket Fast Ordinary",
-     "price": 7.8,
-     "aging": "4-6",
-     "days": 6
-    },
-    {
-     "carrier": "CJPacket Eub",
-     "price": 8.26,
-     "aging": "12-50",
-     "days": 50
-    },
-    {
-     "carrier": "CJPacket Postal",
-     "price": 8.28,
-     "aging": "5-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket LX Sensitive Plant",
-     "price": 8.39,
-     "aging": "8-20",
-     "days": 20
-    },
-    {
-     "carrier": "CJPacket Sensitive Pro+",
-     "price": 8.97,
-     "aging": "6-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket USPS Remote",
-     "price": 9.01,
-     "aging": "5-10",
-     "days": 10
-    },
-    {
-     "carrier": "USPS",
-     "price": 9.12,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket Fast US",
-     "price": 9.56,
-     "aging": "7-12",
-     "days": 12
-    },
-    {
-     "carrier": "CJPacket Fast Line",
-     "price": 10.39,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket Liquid Line",
-     "price": 11.3,
-     "aging": "20-60",
-     "days": 60
-    },
-    {
-     "carrier": "CJPacket Ordinary Over Length",
-     "price": 11.88,
-     "aging": "7-12",
-     "days": 12
-    },
-    {
-     "carrier": "CJPacket Sensitive Over Length",
-     "price": 12.37,
-     "aging": "7-12",
-     "days": 12
-    },
-    {
-     "carrier": "CJPacket Sensitive Oversize Line",
-     "price": 15.86,
-     "aging": "8-16",
-     "days": 16
-    },
-    {
-     "carrier": "DHL Official",
-     "price": 30.92,
-     "aging": "3-7",
-     "days": 7
-    },
-    {
-     "carrier": "CJPacket Sea",
-     "price": 82.98,
-     "aging": "25-30",
-     "days": 30
-    }
-   ]
-  },
-  {
-   "replaces": "Lick Bowl with Ball",
    "spu": "CJYD2985999",
    "name": "Multifunctional Solid-Color Silicone Pet Feeding Bowl",
    "category": "Feeding tools",
@@ -16374,177 +19394,177 @@
   },
   {
    "replaces": "Lick Bowl with Ball",
-   "spu": "CJYD2949128",
-   "name": "Portable Hanging Automatic Cat Water And Food Dispenser",
+   "spu": "CJFT3032049",
+   "name": "Licking Mat For Dogs & Cats With Suction Cups, 1 Pack Square Dog Slow Feeder Lick Pat For ",
    "category": "Feeding tools",
-   "cost": 1.65,
-   "freight": 9.27,
+   "cost": 3.12,
+   "freight": 6.53,
    "freight_estimated": false,
    "carrier": "LuWei Ordinary US",
    "aging": "5-11",
    "us_warehouse": false,
-   "weight_g": 396.0,
-   "listed_count": 0,
+   "weight_g": 175.0,
+   "listed_count": 5,
    "ceiling": 19.0,
-   "price_for_15pct": 14.52,
-   "price_for_10pct": 13.68,
-   "margin_at_ceiling": 34.3,
+   "price_for_15pct": 13.29,
+   "price_for_10pct": 12.52,
+   "margin_at_ceiling": 39.6,
    "viable_at_15": true,
    "viable_at_10": true,
    "carrier_menu": [
     {
      "carrier": "LuWei Ordinary US",
-     "price": 9.27,
+     "price": 6.53,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 6.86,
      "aging": "5-11",
      "days": 11
     },
     {
      "carrier": "YunExpress Ordinary",
-     "price": 9.85,
+     "price": 6.95,
      "aging": "4-7",
      "days": 7
     },
     {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 7.04,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
      "carrier": "CJPacket Ordinary",
-     "price": 10.86,
+     "price": 7.24,
      "aging": "4-9",
      "days": 9
     },
     {
      "carrier": "YunExpress Sensitive",
-     "price": 11.47,
+     "price": 7.48,
      "aging": "4-7",
      "days": 7
     },
     {
      "carrier": "CJPacket Sensitive",
-     "price": 12.3,
+     "price": 7.59,
      "aging": "4-9",
      "days": 9
     },
     {
-     "carrier": "CJPacket Eub",
-     "price": 12.79,
-     "aging": "12-50",
-     "days": 50
-    },
-    {
-     "carrier": "CJPacket Fast Ordinary",
-     "price": 13.48,
-     "aging": "4-6",
-     "days": 6
-    },
-    {
-     "carrier": "CJPacket Sensitive Pro+",
-     "price": 14.86,
-     "aging": "6-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket Super Pure Electricity",
-     "price": 15.22,
+     "carrier": "USPS Ordinary",
+     "price": 7.71,
      "aging": "5-11",
      "days": 11
     },
     {
-     "carrier": "CJPacket Pure Electricity",
-     "price": 15.22,
-     "aging": "7-14",
-     "days": 14
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 7.78,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 8.17,
+     "aging": "5-11",
+     "days": 11
     },
     {
      "carrier": "CJPacket Eub Special Line",
-     "price": 16.12,
+     "price": 8.42,
      "aging": "10-23",
      "days": 23
     },
     {
-     "carrier": "CJPacket LX Sensitive Plant",
-     "price": 16.14,
-     "aging": "8-20",
-     "days": 20
-    },
-    {
-     "carrier": "CJPacket Fast US",
-     "price": 16.21,
-     "aging": "7-12",
-     "days": 12
-    },
-    {
-     "carrier": "CJPacket Liquid US",
-     "price": 16.56,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket Ordinary Over Length",
-     "price": 17.22,
-     "aging": "7-12",
-     "days": 12
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 8.63,
+     "aging": "4-6",
+     "days": 6
     },
     {
      "carrier": "Qfulfillment A line",
-     "price": 17.38,
+     "price": 8.76,
      "aging": "10-25",
      "days": 25
     },
     {
-     "carrier": "CJPacket Sensitive Pro",
-     "price": 17.5,
-     "aging": "5-11",
+     "carrier": "CJPacket Eub",
+     "price": 9.02,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 9.63,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 9.73,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 9.88,
+     "aging": "6-11",
      "days": 11
     },
     {
+     "carrier": "USPS",
+     "price": 9.95,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
      "carrier": "CJPacket USPS Remote",
-     "price": 18.24,
+     "price": 10.3,
      "aging": "5-10",
      "days": 10
     },
     {
-     "carrier": "USPS Ordinary",
-     "price": 18.47,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket Sensitive Over Length",
-     "price": 18.69,
+     "carrier": "CJPacket Fast US",
+     "price": 10.57,
      "aging": "7-12",
      "days": 12
     },
     {
      "carrier": "CJPacket Fast Line",
-     "price": 20.35,
+     "price": 11.36,
      "aging": "4-9",
      "days": 9
     },
     {
      "carrier": "CJPacket Liquid Line",
-     "price": 21.26,
+     "price": 12.32,
      "aging": "20-60",
      "days": 60
     },
     {
-     "carrier": "USPS",
-     "price": 21.7,
-     "aging": "4-9",
-     "days": 9
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 12.79,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 13.44,
+     "aging": "7-12",
+     "days": 12
     },
     {
      "carrier": "CJPacket Sensitive Oversize Line",
-     "price": 21.74,
+     "price": 16.85,
      "aging": "8-16",
      "days": 16
     },
     {
-     "carrier": "CJPacket Postal",
-     "price": 22.49,
-     "aging": "5-9",
-     "days": 9
-    },
-    {
      "carrier": "DHL Official",
-     "price": 39.6,
+     "price": 30.92,
      "aging": "3-7",
      "days": 7
     },
@@ -16729,6 +19749,190 @@
     {
      "carrier": "DHL Official",
      "price": 30.92,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
+  },
+  {
+   "replaces": "Lick Bowl with Ball",
+   "spu": "CJYD2935621",
+   "name": "Non-Slip Silicone Pet Slow-Feeding Bowl For Licking",
+   "category": "Feeding tools",
+   "cost": 3.48,
+   "freight": 9.63,
+   "freight_estimated": false,
+   "carrier": "LuWei Ordinary US",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 438.0,
+   "listed_count": 0,
+   "ceiling": 19.0,
+   "price_for_15pct": 17.73,
+   "price_for_10pct": 16.71,
+   "margin_at_ceiling": 20.5,
+   "viable_at_15": true,
+   "viable_at_10": true,
+   "carrier_menu": [
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 9.63,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 10.15,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 11.32,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 11.65,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 12.16,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 13.52,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 15.52,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 15.64,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 15.93,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 15.93,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 16.82,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 16.88,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 17.22,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 17.31,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 18.06,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 18.23,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 18.26,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 18.35,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 19.08,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 19.68,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 20.97,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 22.07,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "USPS",
+     "price": 22.36,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 22.66,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 23.65,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 39.6,
      "aging": "3-7",
      "days": 7
     },
@@ -19502,190 +22706,6 @@
   },
   {
    "replaces": "Anti-Spill Floating Water Bowl",
-   "spu": "CJYD3033674",
-   "name": "Slow-Feeding Anti-Choking Ceramic Food Bowl For Cats",
-   "category": "Pet bowls",
-   "cost": 2.76,
-   "freight": 13.7,
-   "freight_estimated": false,
-   "carrier": "LuWei Ordinary US",
-   "aging": "5-11",
-   "us_warehouse": false,
-   "weight_g": 840.0,
-   "listed_count": 0,
-   "ceiling": 18.0,
-   "price_for_15pct": 21.76,
-   "price_for_10pct": 20.51,
-   "margin_at_ceiling": -2.1,
-   "viable_at_15": false,
-   "viable_at_10": false,
-   "carrier_menu": [
-    {
-     "carrier": "LuWei Ordinary US",
-     "price": 13.7,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "YunExpress Ordinary",
-     "price": 14.28,
-     "aging": "4-7",
-     "days": 7
-    },
-    {
-     "carrier": "CJPacket Ordinary",
-     "price": 16.45,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "YunExpress Sensitive",
-     "price": 16.52,
-     "aging": "4-7",
-     "days": 7
-    },
-    {
-     "carrier": "CJPacket Sensitive",
-     "price": 17.69,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket Eub",
-     "price": 20.37,
-     "aging": "12-50",
-     "days": 50
-    },
-    {
-     "carrier": "CJPacket Eub Special Line",
-     "price": 21.38,
-     "aging": "10-23",
-     "days": 23
-    },
-    {
-     "carrier": "CJPacket Liquid US",
-     "price": 22.13,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket Fast Ordinary",
-     "price": 22.29,
-     "aging": "4-6",
-     "days": 6
-    },
-    {
-     "carrier": "CJPacket Super Pure Electricity",
-     "price": 22.34,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket Pure Electricity",
-     "price": 22.34,
-     "aging": "7-14",
-     "days": 14
-    },
-    {
-     "carrier": "USPS Ordinary",
-     "price": 23.04,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket Sensitive Pro",
-     "price": 24.07,
-     "aging": "5-11",
-     "days": 11
-    },
-    {
-     "carrier": "CJPacket Sensitive Pro+",
-     "price": 24.09,
-     "aging": "6-11",
-     "days": 11
-    },
-    {
-     "carrier": "Qfulfillment A line",
-     "price": 24.41,
-     "aging": "10-25",
-     "days": 25
-    },
-    {
-     "carrier": "CJPacket Ordinary Over Length",
-     "price": 26.11,
-     "aging": "7-12",
-     "days": 12
-    },
-    {
-     "carrier": "CJPacket LX Sensitive Plant",
-     "price": 26.22,
-     "aging": "8-20",
-     "days": 20
-    },
-    {
-     "carrier": "USPS",
-     "price": 26.62,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket Liquid Line",
-     "price": 27.36,
-     "aging": "20-60",
-     "days": 60
-    },
-    {
-     "carrier": "CJPacket Fast Line",
-     "price": 27.43,
-     "aging": "4-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket Fast US",
-     "price": 28.03,
-     "aging": "7-12",
-     "days": 12
-    },
-    {
-     "carrier": "CJPacket Sensitive Over Length",
-     "price": 29.23,
-     "aging": "7-12",
-     "days": 12
-    },
-    {
-     "carrier": "CJPacket Postal",
-     "price": 31.2,
-     "aging": "5-9",
-     "days": 9
-    },
-    {
-     "carrier": "CJPacket USPS Remote",
-     "price": 31.32,
-     "aging": "5-10",
-     "days": 10
-    },
-    {
-     "carrier": "CJPacket Sensitive Oversize Line",
-     "price": 31.54,
-     "aging": "8-16",
-     "days": 16
-    },
-    {
-     "carrier": "DHL Official",
-     "price": 39.6,
-     "aging": "3-7",
-     "days": 7
-    },
-    {
-     "carrier": "CJPacket Sea",
-     "price": 82.98,
-     "aging": "25-30",
-     "days": 30
-    }
-   ]
-  },
-  {
-   "replaces": "Anti-Spill Floating Water Bowl",
    "spu": "CJYD2903138",
    "name": "304 Stainless Steel Floating Pet Splash-Proof Water Bowl Non-Wetting Design Tip-Resistant",
    "category": "Pet bowls",
@@ -19867,6 +22887,190 @@
      "days": 30
     }
    ]
+  },
+  {
+   "replaces": "Anti-Spill Floating Water Bowl",
+   "spu": "CJYD2995512",
+   "name": "Non-slip Pet Licking Slow-feeding Bowl",
+   "category": "Pet bowls",
+   "cost": 5.43,
+   "freight": 13.05,
+   "freight_estimated": false,
+   "carrier": "LuWei Ordinary US",
+   "aging": "5-11",
+   "us_warehouse": false,
+   "weight_g": 790.0,
+   "listed_count": 1,
+   "ceiling": 18.0,
+   "price_for_15pct": 24.97,
+   "price_for_10pct": 23.54,
+   "margin_at_ceiling": -16.7,
+   "viable_at_15": false,
+   "viable_at_10": false,
+   "carrier_menu": [
+    {
+     "carrier": "LuWei Ordinary US",
+     "price": 13.05,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "YunExpress Ordinary",
+     "price": 13.58,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Ordinary",
+     "price": 15.61,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "YunExpress Sensitive",
+     "price": 15.69,
+     "aging": "4-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sensitive",
+     "price": 16.78,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Eub",
+     "price": 19.52,
+     "aging": "12-50",
+     "days": 50
+    },
+    {
+     "carrier": "CJPacket Eub Special Line",
+     "price": 20.41,
+     "aging": "10-23",
+     "days": 23
+    },
+    {
+     "carrier": "CJPacket Liquid US",
+     "price": 21.1,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Super Pure Electricity",
+     "price": 21.14,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Pure Electricity",
+     "price": 21.14,
+     "aging": "7-14",
+     "days": 14
+    },
+    {
+     "carrier": "CJPacket Fast Ordinary",
+     "price": 21.43,
+     "aging": "4-6",
+     "days": 6
+    },
+    {
+     "carrier": "USPS Ordinary",
+     "price": 22.19,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro",
+     "price": 22.88,
+     "aging": "5-11",
+     "days": 11
+    },
+    {
+     "carrier": "CJPacket Sensitive Pro+",
+     "price": 22.97,
+     "aging": "6-11",
+     "days": 11
+    },
+    {
+     "carrier": "Qfulfillment A line",
+     "price": 23.17,
+     "aging": "10-25",
+     "days": 25
+    },
+    {
+     "carrier": "CJPacket LX Sensitive Plant",
+     "price": 24.86,
+     "aging": "8-20",
+     "days": 20
+    },
+    {
+     "carrier": "CJPacket Ordinary Over Length",
+     "price": 25.11,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "USPS",
+     "price": 25.71,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Liquid Line",
+     "price": 26.24,
+     "aging": "20-60",
+     "days": 60
+    },
+    {
+     "carrier": "CJPacket Fast Line",
+     "price": 26.41,
+     "aging": "4-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket Fast US",
+     "price": 26.98,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Sensitive Over Length",
+     "price": 28.04,
+     "aging": "7-12",
+     "days": 12
+    },
+    {
+     "carrier": "CJPacket Postal",
+     "price": 29.58,
+     "aging": "5-9",
+     "days": 9
+    },
+    {
+     "carrier": "CJPacket USPS Remote",
+     "price": 29.77,
+     "aging": "5-10",
+     "days": 10
+    },
+    {
+     "carrier": "CJPacket Sensitive Oversize Line",
+     "price": 30.43,
+     "aging": "8-16",
+     "days": 16
+    },
+    {
+     "carrier": "DHL Official",
+     "price": 39.6,
+     "aging": "3-7",
+     "days": 7
+    },
+    {
+     "carrier": "CJPacket Sea",
+     "price": 82.98,
+     "aging": "25-30",
+     "days": 30
+    }
+   ]
   }
  ],
  "us_warehouse": [
@@ -19894,27 +23098,27 @@
    "us_advantage": 16.85
   },
   {
-   "spu": "CJYD1960642",
-   "name": "Cat Litter Mat Double Layer Filter Anti-bring Out",
+   "spu": "CJJT1006521",
+   "name": "Pet Cooling Pad Bed For Dogs Cats Puppy Kitten Cool Mat Pet Blanket Ice Silk Material Soft",
    "category": "Pet mats",
-   "sku": "CJYD196064210JQ",
-   "cost": 2.28,
-   "weight_g": 300.0,
-   "listed_count": 276,
-   "us_freight": 7.75,
-   "us_carrier": "UniUni+",
+   "sku": "CJJT100652143QJ",
+   "cost": 6.49,
+   "weight_g": 1171.0,
+   "listed_count": 7254,
+   "us_freight": 14.65,
+   "us_carrier": "GOFO+",
    "us_aging": "3-8",
    "us_estimated": false,
-   "cn_freight": 19.83,
+   "cn_freight": 18.0,
    "cn_carrier": "LuWei Ordinary US",
    "cn_aging": "5-11",
    "cn_estimated": false,
    "stock_warehouses": [
     "CN"
    ],
-   "price_for_15pct_us": 12.98,
-   "price_for_15pct_cn": 28.75,
-   "us_advantage": 15.77
+   "price_for_15pct_us": 26.95,
+   "price_for_15pct_cn": 32.8,
+   "us_advantage": 5.85
   },
   {
    "spu": "CJJJCWGY01635",
@@ -19939,29 +23143,6 @@
    "price_for_15pct_us": 23.61,
    "price_for_15pct_cn": 29.35,
    "us_advantage": 5.74
-  },
-  {
-   "spu": "CJYD2159882",
-   "name": "4 In 1 Rotating Catnip Silver Vine Ball Teeth Cleaning Acne Prevention Digestive Health Wa",
-   "category": "Chew toys",
-   "sku": "CJYD215988208HS",
-   "cost": 1.66,
-   "weight_g": 150.0,
-   "listed_count": 142,
-   "us_freight": 6.19,
-   "us_carrier": "GOFO+",
-   "us_aging": "3-8",
-   "us_estimated": false,
-   "cn_freight": 9.38,
-   "cn_carrier": "CJPacket Sensitive Pro+",
-   "cn_aging": "6-11",
-   "cn_estimated": false,
-   "stock_warehouses": [
-    "CN"
-   ],
-   "price_for_15pct_us": 10.24,
-   "price_for_15pct_cn": 14.67,
-   "us_advantage": 4.43
   },
   {
    "spu": "CJMY1615426",
@@ -20017,7 +23198,7 @@
    "sku": "CJYD226496013MN",
    "cost": 4.39,
    "weight_g": 220.0,
-   "listed_count": 898,
+   "listed_count": 899,
    "us_freight": 6.76,
    "us_carrier": "USPS+VIP",
    "us_aging": "3-7",
@@ -20382,28 +23563,27 @@
    "us_advantage": 0.68
   },
   {
-   "spu": "CJYD2009335",
-   "name": "Cat Nail Scissors With Gravity Push Scissors",
-   "category": "Nail polishers",
-   "sku": "CJYD200933501AZ",
-   "cost": 2.72,
-   "weight_g": 80.0,
-   "listed_count": 712,
-   "us_freight": 5.34,
+   "spu": "CJYD2332008",
+   "name": "Pet Hair Remover Mitt Pet Hair Remover Gloves Deshedding Brush Glove For Dog Cat Rabbit Wi",
+   "category": "Hair removers and combs",
+   "sku": "CJYD233200803CX",
+   "cost": 1.98,
+   "weight_g": 111.0,
+   "listed_count": 4862,
+   "us_freight": 5.53,
    "us_carrier": "USPS+VIP",
    "us_aging": "3-7",
    "us_estimated": false,
-   "cn_freight": 5.26,
-   "cn_carrier": "CJPacket Super Pure Electricity",
+   "cn_freight": 5.64,
+   "cn_carrier": "LuWei Ordinary US",
    "cn_aging": "5-11",
    "cn_estimated": false,
    "stock_warehouses": [
-    "CN",
-    "US"
+    "CN"
    ],
-   "price_for_15pct_us": 10.5,
-   "price_for_15pct_cn": 11.09,
-   "us_advantage": 0.59
+   "price_for_15pct_us": 9.81,
+   "price_for_15pct_cn": 10.45,
+   "us_advantage": 0.64
   },
   {
    "spu": "CJJJCWGY00320",
@@ -20477,28 +23657,28 @@
    "us_advantage": 0.34
   },
   {
-   "spu": "CJYD2286521",
-   "name": "Mesh Cat Litter Scoop Lengthened Handle",
-   "category": "Feeding tools",
-   "sku": "CJYD228652101AZ",
-   "cost": 0.9,
-   "weight_g": 160.0,
-   "listed_count": 103,
-   "us_freight": 6.27,
+   "spu": "CJMY1468741",
+   "name": "Laser Pointer Cat Toy, Red Dot LED Light Pointer Interactive Toys Indoor Cats Dogs, Long R",
+   "category": "Toy sets",
+   "sku": "CJMY1468741-11.31.7cm",
+   "cost": 1.9,
+   "weight_g": 24.0,
+   "listed_count": 770,
+   "us_freight": 4.87,
    "us_carrier": "GOFO+",
    "us_aging": "3-8",
    "us_estimated": false,
-   "cn_freight": 6.32,
-   "cn_carrier": "LuWei Ordinary US",
+   "cn_freight": 4.75,
+   "cn_carrier": "CJPacket Super Pure Electricity",
    "cn_aging": "5-11",
    "cn_estimated": false,
    "stock_warehouses": [
     "CN",
     "US"
    ],
-   "price_for_15pct_us": 9.38,
-   "price_for_15pct_cn": 9.67,
-   "us_advantage": 0.29
+   "price_for_15pct_us": 8.88,
+   "price_for_15pct_cn": 9.21,
+   "us_advantage": 0.33
   },
   {
    "spu": "CJJJCWGY02523",
@@ -20570,6 +23750,29 @@
    "price_for_15pct_us": 11.11,
    "price_for_15pct_cn": 11.1,
    "us_advantage": -0.01
+  },
+  {
+   "spu": "CJPM3018694",
+   "name": "Only Self Pickup---Summer Celebration Fountain Pet Fountain Pad",
+   "category": "Pet mats",
+   "sku": "CJPM301869402BY",
+   "cost": 4.73,
+   "weight_g": 400.0,
+   "listed_count": 2,
+   "us_freight": 399600.0,
+   "us_carrier": "USPS US to US #16",
+   "us_aging": "3-5",
+   "us_estimated": false,
+   "cn_freight": 9.24,
+   "cn_carrier": "no quote",
+   "cn_aging": null,
+   "cn_estimated": true,
+   "stock_warehouses": [
+    "US"
+   ],
+   "price_for_15pct_us": 502574.17,
+   "price_for_15pct_cn": 19.13,
+   "us_advantage": -502555.04
   }
  ]
 }
