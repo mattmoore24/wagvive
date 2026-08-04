@@ -46,8 +46,17 @@ FREIGHT_BASE = 4.40         # fixed cost of putting one parcel on a plane
 FREIGHT_PER_GRAM = 0.01211  # $12.11 per kg on top
 
 # The cheapest credible quote in that study was $4.28, for a 6g comb. Nothing
-# real ships from China for less, so anything under this is missing data.
+# real ships from China for less, so anything under this is missing data. Used
+# only when no weight is available.
 MIN_CREDIBLE_FREIGHT = 4.00
+
+# With a weight, a better test than a flat floor: reject anything far below what
+# the fitted line says a parcel of that weight costs. The fit's worst residual
+# anywhere was $1.56, so 75% leaves ample room for a genuinely cheap carrier
+# while still catching a placeholder. It has to be weight-relative, because the
+# Cordless Paw Trimmer's second bogus line quotes $4.00 for 160g - above a flat
+# $4.00 floor, but well under the $6.34 that weight really costs.
+CREDIBLE_FRACTION = 0.75
 
 
 def upper_days(aging):
@@ -62,28 +71,55 @@ def estimate(weight_g=None):
     return FREIGHT_BASE + FREIGHT_PER_GRAM * float(weight_g)
 
 
+def credible_floor(weight_g=None):
+    """Below this, a quote is missing data rather than a bargain."""
+    if weight_g:
+        return CREDIBLE_FRACTION * estimate(weight_g)
+    return MIN_CREDIBLE_FREIGHT
+
+
+def _pick(rows, weight_g):
+    """rows are (price, name, aging, days). Returns the resolve() tuple."""
+    if not rows:
+        return estimate(weight_g), 'no quote', None, True
+
+    inside = [r for r in rows if r[3] <= MAX_DAYS]
+    pool = inside or rows
+
+    # Discard placeholder prices before choosing, so one bogus $3.00 line cannot
+    # win on price against 26 real ones.
+    floor = credible_floor(weight_g)
+    credible = [r for r in pool if r[0] >= floor]
+    if credible:
+        best = min(credible, key=lambda r: r[0])
+        return best[0], best[1], best[2], False
+
+    # Everything on offer was zero or a placeholder.
+    best = min(pool, key=lambda r: r[0])
+    return estimate(weight_g), best[1], best[2], True
+
+
 def resolve(options, sku='', weight_g=None):
     """Pick the cheapest carrier inside the delivery promise.
 
     Returns (freight, carrier_name, aging, estimated) where `estimated` is True
     when the quote was unusable and an estimate was substituted.
     """
-    priced = [o for o in (options or []) if o.get('logisticPrice') is not None]
-    if not priced:
-        return estimate(weight_g), 'no quote', None, True
+    rows = [(float(o['logisticPrice']), str(o.get('logisticName')),
+             o.get('logisticAging'), upper_days(o.get('logisticAging')))
+            for o in (options or []) if o.get('logisticPrice') is not None]
+    return _pick(rows, weight_g)
 
-    inside = [o for o in priced if upper_days(o.get('logisticAging')) <= MAX_DAYS]
-    pool = inside or priced
 
-    # Discard placeholder prices before choosing, so one bogus $3.00 line cannot
-    # win on price against 26 real ones.
-    credible = [o for o in pool if float(o['logisticPrice']) >= MIN_CREDIBLE_FREIGHT]
-    if credible:
-        best = min(credible, key=lambda o: o['logisticPrice'])
-        return (float(best['logisticPrice']), str(best.get('logisticName')),
-                best.get('logisticAging'), False)
+def resolve_from_menu(menu, weight_g=None):
+    """Same decision, applied to a stored carrier menu.
 
-    # Everything on offer was zero or a placeholder.
-    best = min(pool, key=lambda o: o['logisticPrice'])
-    return (estimate(weight_g), str(best.get('logisticName')),
-            best.get('logisticAging'), True)
+    `config/research_freight.py` records every carrier CJ offered for a product,
+    so the choice can be recomputed offline whenever the rule changes, without
+    re-querying CJ. That makes the rule authoritative and the freight figure
+    stored alongside it merely a snapshot.
+    """
+    rows = [(o['price'], o.get('carrier'), o.get('aging'),
+             o.get('days', upper_days(o.get('aging'))))
+            for o in (menu or []) if o.get('price')]
+    return _pick(rows, weight_g)

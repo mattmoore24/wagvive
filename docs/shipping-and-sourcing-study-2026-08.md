@@ -32,12 +32,20 @@ follow, and they are the whole study:
 1. **Adding one more 100g toy to an order the customer is already placing costs
    $1.19 in freight.** Shipping that same toy on its own costs $5.62. The
    difference, 4.7x, is larger than any price change available to us.
-2. **Every cheap single item is a losing proposition and always will be**, at
-   any supplier, because $4.43 of fixed parcel cost cannot be recovered from a
-   $9 toy. This is not a CJ problem. It is arithmetic.
+2. **The fixed cost sets a floor on delivered price of roughly $9 to $12 for a
+   small item.** A product whose market delivered price sits below its own floor
+   cannot be sold at any price, at CJ or anywhere else, because $4.43 of parcel
+   overhead does not care who the supplier is. Six of our 36 products are in
+   that position. See section 3.
 3. **Kits are not a merchandising nicety. They are the mechanism by which this
    catalogue becomes profitable.** A four-item kit pays the $4.43 once instead
    of four times, which is $13.29 of pure saving before anything else happens.
+
+And one finding that came out of doing the arithmetic properly rather than out of
+CJ: **the pricing study understated the catalogue by comparing our item price
+against delivered market prices.** Section 3 redoes that comparison like for
+like. It moves the verdict from nine unsellable products to six, and it changes
+which six.
 
 ---
 
@@ -104,8 +112,8 @@ products within the 12 business-day promise:
 | CJPacket Postal, USPS, YunExpress Sensitive | 33 |
 
 Only two products fall outside the widest carrier: the **Self-Cleaning Slicker
-Brush** and the **Cordless Paw Trimmer**. Both are discussed in section 6,
-because their problem turned out not to be carriers at all.
+Brush** and the **Cordless Paw Trimmer**. Their problem turned out not to be
+carriers at all, and section 7.1 is where that goes.
 
 ### 2.4 Combining can occasionally cost MORE
 
@@ -137,10 +145,10 @@ holds and where it does not:
 |---|---|---|---|---|
 | Bouncy Egg Squeaker x5 | 250 | $7.40 | $6.96 | -$0.44 |
 | Travel Water Bottle x10 | 1,650 | $24.07 | $24.21 | +$0.14 |
-| Live Toy Kit, 4 items | 531 | $10.75 | $10.62 | -$0.13 |
-| Live New Puppy Kit, 3 items | 1,423 | $21.36 | $21.27 | -$0.09 |
-| Live Travel Kit, 3 items | 427 | $9.51 | $11.11 | +$1.60 |
-| Live Enrichment Kit, 3 items | 596 | $11.52 | $14.02 | +$2.50 |
+| Four light plush toys | 531 | $10.75 | $10.62 | -$0.13 |
+| Puppy plush + toothbrush + snuggle blanket | 1,423 | $21.36 | $21.27 | -$0.09 |
+| Water bottle + bag dispenser + bath robe | 427 | $9.51 | $11.11 | +$1.60 |
+| Lick bowl + slow feeder + talk button | 596 | $11.52 | $14.02 | +$2.50 |
 | Wipes + Anti-Spill Bowl | 2,187 | $30.46 | $49.86 | **+$19.40** |
 | Nail Grinder + Anti-Spill Bowl | 2,063 | $28.98 | $36.74 | **+$7.76** |
 
@@ -152,29 +160,33 @@ what `config/research_kits.py` does before recommending anything.
 
 ---
 
-## 3. What this means for the five kits
+## 3. Delivered price: the comparison the pricing study did not make
 
-See section 4 for the redesigns. The measured position today:
+<!-- DELIVERED -->
+
+---
+
+## 4. The five kits as they stand today
 
 <!-- KIT_TABLE -->
 
 ---
 
-## 4. Kit redesigns
+## 5. Kit redesigns
 
 <!-- KIT_DESIGNS -->
 
 ---
 
-## 5. Replacements for the nine unsellable products
+## 6. Replacements for the products that cannot work
 
 <!-- REPLACEMENTS -->
 
 ---
 
-## 6. Two corrections to the money model
+## 7. Three corrections to the money model
 
-### 6.1 A placeholder freight quote was being taken as real
+### 7.1 A placeholder freight quote was being taken as real
 
 `CLAUDE.md` already records that a CJ quote of $0.00 means missing data, never
 free carriage. The study found the same bug wearing different clothes.
@@ -188,9 +200,9 @@ containing the brush, which is not a price any carrier charges for two kilos.
 Both products have been priced on freight that does not exist. `freight_floor.py`
 now discards any quote under $4.00 before choosing, and substitutes the fitted
 weight estimate instead of a flat constant. The corrected numbers are in
-section 4 and section 5.
+section 5 and section 6.
 
-### 6.2 Freight has risen sharply since the last audit
+### 7.2 Freight has risen sharply since the last audit
 
 Same product, same carrier, comparing the July economics against 2026-08-04:
 
@@ -208,19 +220,19 @@ treated as the thing that catches this, not as a formality.
 
 ---
 
-## 7. Non-China options inside CJ
+## 8. Non-China options inside CJ
 
 <!-- US_WAREHOUSE -->
 
 ---
 
-## 8. Should we leave CJ? An honest answer
+## 9. Should we leave CJ? An honest answer
 
 Short version: **no, and the reasoning is not loyalty to CJ.** Every alternative
 raises landed cost, and the one structural fix, buying inventory in bulk, is a
 different business with a different cash requirement.
 
-### 8.1 US dropship wholesalers make cheap goods worse, not better
+### 9.1 US dropship wholesalers make cheap goods worse, not better
 
 The appeal is obvious: goods already in the US, no duty, 2 to 5 day delivery, no
 customs risk. The arithmetic does not survive contact with a $12 dog toy.
@@ -281,7 +293,7 @@ plugs straight into the existing store. It is worth applying to on those grounds
 alone. Treat it as a possible source for the bulky end of the range, not as a
 replacement catalogue.
 
-### 8.2 The structural fix is bulk, and it is a different business
+### 9.2 The structural fix is bulk, and it is a different business
 
 The only way to actually kill the $4.43 fixed parcel cost is to stop shipping
 parcels from China one at a time. Buy in bulk, land it in the US, ship domestic.
@@ -315,6 +327,6 @@ catalogue, and do not sign a 3PL.
 
 ---
 
-## 9. What to do, ranked
+## 10. What to do, ranked
 
 <!-- ACTIONS -->

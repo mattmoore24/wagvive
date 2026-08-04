@@ -1,0 +1,7 @@
+{
+ "_comment": "Touch this file to run the kit design study in GitHub Actions. It reads docs/qa/freight-research.json, ranks every on-theme combination against the fitted freight model, then verifies the leaders with real CJ quotes. Read only.",
+ "run": 1,
+ "requested": "2026-08-04",
+ "reads": "docs/qa/freight-research.json",
+ "writes": "docs/qa/kit-designs.json"
+}

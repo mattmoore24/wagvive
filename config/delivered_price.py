@@ -33,6 +33,7 @@ Usage:
 import json, os, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import freight_floor
 from pricing import DUTY_PCT, FLAT, PCT, SALES_TAX_AVG, landed
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -65,13 +66,19 @@ def main():
             continue
         r = recs.get(p['title'], {})
         mkt = r.get('mkt_high')
-        goods, freight = p['cost'], p['freight_resolved']
+        # Re-decide freight from the stored carrier menu rather than trusting the
+        # figure the study recorded, so a change to the credibility rule applies
+        # without another round trip to CJ.
+        freight, carrier, _aging, est = freight_floor.resolve_from_menu(
+            p.get('carrier_menu'), p.get('weight_g'))
+        goods = p['cost']
         row = {
             'product': p['title'],
             'cost': goods,
-            'freight': freight,
+            'freight': round(freight, 2),
+            'carrier': carrier,
             'weight_g': p.get('weight_g'),
-            'freight_estimated': p.get('freight_estimated'),
+            'freight_estimated': est,
             'current_price': r.get('now'),
             'recommended_price': r.get('rec'),
             'market_delivered': mkt,
