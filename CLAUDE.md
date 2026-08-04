@@ -5,6 +5,14 @@ Dropshipping fulfilment. This file is read automatically at the start of every
 Claude Code session, on any device. Everything here was learned the hard way —
 treat it as binding, not advisory.
 
+## FIRST ACTION in every session
+
+Read `docs/HANDOFF.md`. It carries the current state, open tasks and what the
+previous session (possibly on another device) just did — it is the conversation
+continuity across devices. Before the user switches devices or a work session
+ends, UPDATE it, commit, and push. If working on the home PC, `git pull` first:
+another device may have moved things.
+
 ## Non-negotiables
 
 1. **50% gross margin floor on every variant and every kit**, after ALL costs:
