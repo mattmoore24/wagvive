@@ -6,11 +6,61 @@
 
 **Last updated:** 2026-08-04, from a claude.ai/code web session
 
+---
+
+# START HERE: the PC session works from the implementation plan
+
+Two studies finished on 2026-08-04 and between them they produced a queue of
+changes that need a keyboard, a CJ browser login and theme access. That queue is
+written up as a single runbook:
+
+### → `docs/pc-implementation-plan-2026-08.md`
+
+Eleven ordered steps, each with the reasoning, the exact data, the sequencing
+traps, and how to verify it worked. **Work from that file.** The task table
+further down this document is the index; the plan is the instructions.
+
+The two things that are losing money right now, and should be done first:
+
+1. **Dog Enrichment Kit** is live at $98 returning **24.1%** and needs $137.38
+   to clear 45%. Plan step 1.
+2. **Dental & Ear Wipes** is live at $22.00 against a $13.99 market it cannot
+   reach, after CJ's freight on liquids rose 57% in a month. Plan step 2.
+
+### All research, and what each file is for
+
+| File | Use it for |
+|---|---|
+| `docs/pc-implementation-plan-2026-08.md` | **The runbook.** What to do, in order. |
+| `docs/shipping-and-sourcing-study-2026-08.md` | How CJ charges freight, kit designs with live quotes, replacement products, supplier assessment. Newest and most authoritative. |
+| `docs/pricing-study-2026-08.md` | Observed market prices for every product, and the pricing science. Revised 2026-08-04 with **REVISED** callouts where the shipping study corrected it. |
+| `docs/qa/delivered-price.json` | Per product: measured freight, delivered-price floors, margin at market, and the marginal cost of adding it to a parcel already shipping. **Check here before calling anything unsellable.** |
+| `docs/qa/kit-designs.json` | Every on-theme kit combination scored, with live CJ quotes for the leaders and all five current kits. |
+| `docs/qa/freight-research.json` | Raw study: carrier menus, quantity ladders, multi-item baskets, US-warehouse scan, replacement candidates. |
+| `docs/qa/pricing-recommendations.json` | Recommended price per product. Two rows are wrong; see plan step 3. |
+| `docs/qa/variant-audit-2026-08.md` | The 41 missing size SKUs with CJ costs. |
+| `docs/qa/theme-copy-fixes.md` | Four exact find-and-replace edits for the theme. |
+| `docs/knowledge/` | Durable how-it-works notes, e.g. the CJ inventory sync model. |
+
+Tooling built for this work, all read-only against CJ and runnable from the PC:
+
+| Script | Does |
+|---|---|
+| `config/research_freight.py` | Measures CJ freight end to end. Runs in Actions via `cj-freight-research.yml`. |
+| `config/research_kits.py` | Ranks on-theme kit combinations, then quotes the leaders live. Triggered by touching `config/kit_run.json`. |
+| `config/delivered_price.py` | Offline. Scores every product on delivered price. No CJ calls. |
+| `config/freight_floor.py` | The one place that decides what freight to trust. Now rejects placeholder quotes as well as zeros. |
+
+---
+
 ## Where the business stands
 
 wagvive.com is LIVE and fully operational: 41 active products (36 singles + 5
-variant-selectable bundle kits), all CJ-paired, all margin-verified above the
-50% floor. First real order (#1001) completed the full loop: checkout → CJ →
+variant-selectable bundle kits), all CJ-paired. **Margin status is no longer
+"all above the 50% floor", and has not been since 2026-08-04**: the margin guard
+only ever checked the 147 single variants, never the kits, and the shipping
+study found the Dog Enrichment Kit at 24.1% and the Dental & Ear Wipes below
+water at its live price. See the implementation plan. First real order (#1001) completed the full loop: checkout → CJ →
 paid → shipped → tracking back → branded emails from hello@wagvive.com.
 Storefront password is off, SEO/social cards are set, all 18 notification
 emails are branded.
@@ -124,6 +174,10 @@ A failed run emails the owner — silence means healthy.
 
 ## Open tasks, in priority order
 
+This table is the index. **The instructions are in
+`docs/pc-implementation-plan-2026-08.md`**, which orders these into eleven steps
+with the data and the sequencing traps. Do not work from this table alone.
+
 | # | Task | Status / notes |
 |---|---|---|
 | 59 | GA4 + Meta pixel | NEXT UP, but owner-gated: needs a GA4 measurement ID (G-XXXX) and a Meta pixel ID from the owner's own accounts. Once those exist Claude installs both. Store has zero analytics; blocks #62 and any ad spend. |
@@ -138,7 +192,7 @@ A failed run emails the owner — silence means healthy.
 | 74 | **Apply the price changes** | NEW 2026-08-04, blocked by #73. Per-product recommendations in `docs/qa/pricing-recommendations.json`. Catalogue price sum falls about 23%. Standardise `.99` endings at the same time; keep `.00` for kits only. |
 | 75 | **Drop the two products that cannot be fixed** | REVISED 2026-08-04. Was "nine non-viable"; scored on DELIVERED price rather than item price, 30 of 36 products clear 15% at market and only six fail. Drop the **Crinkle Plush Buddy** (-29.5%, and the cheapest thing in CJ's plush category still lands above its $8 ceiling, so no supplier can fix it) and the **Anti-Spill Floating Water Bowl** (-8.4% as a single and the thing that broke the Enrichment kit). The other four failures are the wipes (#77), the snuggle blanket and the sofa cover (both heavy, need a US-warehouse source, see the study section 8) and the squirrel plush (#81). The five "bundle only" toys all clear 15% as singles on corrected freight. |
 | 71 | **Fix four dashes and the wrong care text on every product page** | NEW 2026-08-04, OWNER ACTION, quick. `templates/product.json` carries two en dashes in the shipping copy, one in a trust badge, one em dash in returns, and a "Care & use" block telling customers to rinse and dry the product before storing, which is wrong for disposable wipes and plush toys and still mentions "older or anxious dogs". Claude CANNOT fix this: live theme writes are refused by policy. Exact find and replace text is in `docs/qa/theme-copy-fixes.md`, about five minutes in the theme editor. Every other theme file was scanned and is clean. |
-| 67 | **Add the 41 missing size variants (HOME PC)** | NEW 2026-08-04. Four products are missing sizes CJ actually sells. **Exact SKU list with CJ costs is in the appendix of `docs/qa/variant-audit-2026-08.md`** so pairing is mechanical: sofa cover 12, snuggle blanket 9, fleece blanket 12, cooling pad 8. Sequence: (1) owner pairs each SKU in the CJ browser app, one product at a time, verifying `matchitem.shopType === 'Shopify'` before confirming; (2) Claude resolves freight via `freight_floor.py` and prices each size to clear the 50% floor, levelling colours as usual; (3) Claude creates the Shopify variants and wires variant images. Freight, not product cost, will decide whether the biggest sizes are viable, so expect some to fail the floor and be dropped. |
+| 67 | **Add the 41 missing size variants (HOME PC)** | NEW 2026-08-04. Four products are missing sizes CJ actually sells. **Exact SKU list with CJ costs is in the appendix of `docs/qa/variant-audit-2026-08.md`** so pairing is mechanical: sofa cover 12, snuggle blanket 9, fleece blanket 12, cooling pad 8. Sequence: (1) owner pairs each SKU in the CJ browser app, one product at a time, verifying `matchitem.shopType === 'Shopify'` before confirming; (2) Claude resolves freight via `freight_floor.py` and prices each size to clear its **tier** floor (#73, not the retired 50% floor), levelling colours as usual; (3) Claude creates the Shopify variants and wires variant images. Freight, not product cost, will decide whether the biggest sizes are viable, so expect some to fail the floor and be dropped. Freight is $4.43 fixed plus $11.90/kg, and the sofa cover is already 1,340g at Medium, so Large is the one to watch. |
 | 67a | Rename the sofa cover's size labels | Depends on #67. Our Small/Medium/Large are CJ's XS/S/M of seven sizes, so the labels stop making sense the moment bigger sizes are added. Rename to the true range at the same time. Renaming option values rewrites variant titles, so do it in one pass with the additions, not before. |
 | 68 | Decide on lifestyle images for the five kits | NEW 2026-08-04. All five kits (New Puppy, Toy, Grooming Essentials, Enrichment, Travel) have a cover plus component shots and no in-use photo. That looked deliberate so nothing was changed. If you want them, the components are already shot and a kit scene is straightforward. |
 | 69 | Real product dimensions for the remaining products | NEW 2026-08-04. Dimensions were added only where CJ states them explicitly. For most toys CJ publishes package dimensions only, which for soft goods are not product dimensions, so nothing was stated. To finish this properly, either measure samples on arrival or ask CJ for product dimensions per SKU. Do NOT infer from `variantLength/Width/Height`. |
@@ -170,83 +224,51 @@ against `config/pricing.py` logic before any write.
 
 ### Prompt to start the PC session
 
-Paste this to pick up everything that was blocked from the web session:
+Paste this. It deliberately points at one document rather than restating it, so
+there is only ever one source of truth for the plan.
 
-> Read `docs/HANDOFF.md`, then `git pull`. We are picking up the owner-gated
-> work from the 2026-08-04 web session, in this order.
+> Read `docs/HANDOFF.md`, then `git pull`, then read
+> `docs/pc-implementation-plan-2026-08.md` in full. That plan is the work for
+> this session. Start at step 1 and go in order.
 >
-> **1. Tasks #76 and #77, the two live problems.** Read
-> `docs/shipping-and-sourcing-study-2026-08.md` first; it has the quotes and the
-> working. (a) The Dog Enrichment Kit is live at $98 returning 24.1% and needs
-> $137.38 to clear 45%. Rebuild it without the Anti-Spill Floating Water Bowl,
-> as Slow Feeder Bowl + Lick Bowl with Ball + Talk Button + Sneaker Chew Buddy
-> at $52.99. Re-quote the exact composition through
-> `config/research_kits.py` before writing, since freight moves. (b) The Dental
-> & Ear Wipes is live at $22.00 with a delivered floor of $18.38 against a
-> $13.99 market. Show me the options (smaller pack, US-warehouse source, or
-> withdraw) and let me choose.
+> Rules for the whole session:
+> - Show me the numbers BEFORE any write, and wait for my approval on anything
+>   that changes a price, a product or a bundle.
+> - Re-quote freight through `config/research_kits.py` or
+>   `config/freight_floor.py` rather than trusting the figures in the plan. They
+>   were measured on 2026-08-04 and freight moved 57% on one product in a month.
+> - Verify every change against the live system by re-fetching it, not against
+>   the tool's return value.
+> - For anything needing the CJ browser app, tell me exactly which SKUs to pair
+>   and wait for me to confirm each product before continuing.
+> - Tell me plainly if something in the plan turns out to be wrong.
 >
-> **2. Task #78.** Recompute the Self-Cleaning Slicker Brush and Cordless Paw
-> Trimmer economics. Both were priced against a $3.00 CJ placeholder quote;
-> `config/freight_floor.py` now rejects it. Fix their rows in
-> `docs/qa/pricing-recommendations.json` BEFORE the repricing pass.
->
-> **3. Task #71, theme copy.** Apply all four find and replace edits in
-> `docs/qa/theme-copy-fixes.md` to `templates/product.json` in the Horizon
-> theme. You can write to the theme from this device. Verify by re-fetching a
-> product page with a cache-busting query param and confirming there are no em
-> or en dashes left and the new "Care & use" text is live.
->
-> **4. Task #67, the 41 missing size variants.** SKU list is the appendix of
-> `docs/qa/variant-audit-2026-08.md`: sofa cover 12, snuggle blanket 9, fleece
-> blanket 12, cooling pad 8. Work one product at a time:
-> (a) tell me exactly which SKUs to pair in the CJ app and wait for me to
-> confirm each product is paired;
-> (b) resolve freight through `config/freight_floor.py` and price every size
-> with `config/pricing.py` so each variant clears its tier floor (#73), levelling
-> colours up to the most expensive variant as usual, then show me the price
-> table BEFORE writing anything;
-> (c) once I approve, create the Shopify variants, wire `variant.image_id`,
-> and set inventory from CJ.
-> Expect freight to kill some of the largest sizes. Drop those and tell me
-> which ones and why, rather than pricing them under the floor.
->
-> **5. Task #67a.** Rename the sofa cover size labels in the same pass, since
-> our Small, Medium and Large are really CJ's XS, S and M of seven sizes.
->
-> **6. Task #70**, optional: larger wipe count variants, same mechanics.
->
-> When the writes are done, run `config/margin_guard.py` and
-> `config/sync_inventory.py --apply`, verify the affected product pages on the
-> live storefront, then update `docs/HANDOFF.md`, commit and push.
-> Confirm with me before anything irreversible.
+> When the writes are done, run `config/margin_guard.py`,
+> `config/kit_margins.py` and `config/sync_inventory.py --apply`, check the
+> affected pages on the live storefront, then update `docs/HANDOFF.md`, commit
+> and push.
 
-**Queued for the next home PC session**, quickest first:
+**The full queue, with reasoning and data, is
+`docs/pc-implementation-plan-2026-08.md`.** In one line each:
 
-1. **#76 and #77, the two live problems.** The Dog Enrichment Kit is live at
-   $98 returning 24.1%, and the Dental & Ear Wipes is live at $22.00 against a
-   $13.99 market it cannot reach. Both are quantified in
-   `docs/shipping-and-sourcing-study-2026-08.md` sections 3 and 5. Do these
-   before the general repricing, because both are losing money now.
-2. **#78 before #74.** The slicker brush and paw trimmer rows in
-   `docs/qa/pricing-recommendations.json` were computed on a placeholder freight
-   quote and are wrong. Recompute them, then reprice.
-3. **#71, theme copy fixes.** About 5 minutes in the theme editor. Four dashes
-   and a wrong "Care & use" block, on every product page. Exact find and
-   replace text: `docs/qa/theme-copy-fixes.md`. Claude is blocked from live
-   theme writes, so this can only be done by hand.
-4. **#73 then #74, the repricing.** Owner approved the tiered margin system on
-   2026-08-04. Swap `margin_guard.py` from the flat 50% floor to the tier table
-   in `docs/pricing-study-2026-08.md`, THEN apply the per-product prices in
-   `docs/qa/pricing-recommendations.json`. Order matters: tiers first, or the
-   guard will fight the new prices. Standardise `.99` endings in the same pass.
-5. **#67 and #67a**, the big one. Pair 41 new size variants in the CJ browser
-   app (SKU list: appendix of `docs/qa/variant-audit-2026-08.md`), then Claude
-   prices them against the 50% floor and creates them, and the sofa cover size
-   labels get renamed in the same pass.
-6. **#70** if wanted, larger wipe counts, same pairing mechanics as #67.
-7. **#57** (NY tax filing) and **#64** (CJ DDP ticket) are owner actions that
-   have been waiting a while and do not depend on being at the PC.
+| Step | What | Task # |
+|---|---|---|
+| 1 | Rebuild the Dog Enrichment Kit, live at 24.1% | #76 |
+| 2 | Fix or withdraw the Dental & Ear Wipes, live above its ceiling | #77 |
+| 3 | Recompute the slicker brush and paw trimmer on real freight | #78 |
+| 4 | Replace the 50% floor with the tier table | #73 |
+| 5 | Apply the price changes | #74 |
+| 6 | Drop two products, swap two others | #75, #81 |
+| 7 | Free-shipping progress bar, and fix the stale threshold constant | #79, #82 |
+| 8 | Launch the Calm & Comfort Kit | #80 |
+| 9 | Theme copy fixes, owner action, about 5 minutes | #71 |
+| 10 | The 41 missing size variants | #67, #67a |
+| 11 | Reviews | #63 |
+
+Steps 1 and 2 are losing money today. Step 3 must precede step 5, and step 4
+must precede step 5. **Owner actions that do not need the PC and have been
+waiting**: #57 (NY tax filing) and #64 (the CJ duty ticket, which is worth 20%
+of product cost on every order).
 
 **Home PC only:** CJ UI work (pairing, sync settings — no API exists),
 theme editor work (Claude's live theme writes are refused by policy),
