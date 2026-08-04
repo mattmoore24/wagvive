@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-04, from the home PC (desktop session)
+**Last updated:** 2026-08-04, from a claude.ai/code web session
 
 ## Where the business stands
 
@@ -21,6 +21,13 @@ A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
 
+- (Web session, 2026-08-04) Confirmed live Shopify access works from
+  claude.ai/code via the Shopify connector; capabilities section below
+  rewritten to match. Added `config/fetch_cj_refs.py` + the `cj-image-refs`
+  dispatch workflow so credential-less sessions can pull CJ reference images.
+  IN FLIGHT: visual QA of the Wagvive Dematting Comb image
+  (`master-dematting.png`) against CJ's real product photos
+  (SKU CJYD275409401AZ) to decide whether the Runway shot needs a re-run.
 - CJ's stock-writing disabled store-wide via the authorization page's Sync
   Settings → "Not Sync" (see docs/knowledge/cj-inventory-sync-model.md, "kill
   switch"). `sync_inventory.py` is now the ONLY inventory writer. Verified: 144
@@ -45,11 +52,17 @@ A failed run emails the owner — silence means healthy.
 
 **Any device (claude.ai/code on the repo):** planning, research, copy, code,
 email templates, audits of committed state, editing the Actions workflow.
-NOTE: the cloud sandbox has NO store credentials — `config/*.env` are
-gitignored. Live API work from a web session requires the owner to provide the
-env values into that session, or route the change through the Actions job.
-Prefer: make changes as code/docs in the repo, run live mutations from the PC
-or via Actions.
+**Live Shopify edits work from web sessions too** when the Shopify MCP
+connector is attached (verified 2026-08-04): products, collections, inventory,
+orders, discounts, plus arbitrary Admin GraphQL reads/writes. A Runway
+connector is typically attached as well. What web sessions still CANNOT do:
+run the repo's Python scripts live (`config/*.env` are gitignored and exist
+only on the PC; the sandbox's network policy also blocks direct calls to
+Shopify/CJ domains — only the connectors get through), and anything CJ-side.
+For CJ API reads without credentials, dispatch the `cj-image-refs` workflow
+(fetches a product's record + images and commits them to the branch), or
+route work through the Actions job. Pricing changes should still be computed
+against `config/pricing.py` logic before any write.
 
 **Home PC only:** CJ UI work (pairing, sync settings — no API exists),
 Shopify admin settings screens (do not render in background tabs), visual
