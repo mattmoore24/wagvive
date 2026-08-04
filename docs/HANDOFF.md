@@ -31,20 +31,18 @@ A failed run emails the owner — silence means healthy.
   collar, thumb shield, tooth count and serration). No Runway re-run needed.
   Only nit: the axle's hex nut is subtler in our shot than in CJ's. References
   live in `docs/qa/dematting/`; owner has the side-by-side for final say.
-- The comb's LIFESTYLE image (`ls-dematting.png`, second on the product page)
-  FAILED QA: the owner spotted it, and a 4-pass review (one adversarial)
-  unanimously confirmed the tool head was invented — a closed oval loop with
-  internal wires and ball caps instead of the real open rake. RESOLVED same
-  day with owner approval: regenerated in Runway (nano-banana-pro; master as
-  product reference + old lifestyle as scene reference, then a targeted
-  retouch pass to fix the axle hinge/hex-nut area), verified by two
-  adversarial review passes, uploaded via Admin GraphQL as
-  `ls-dematting-v2.png` (media 47616876806433, alt "Wagvive Dematting Comb in
-  use"), old media deleted, storefront re-fetch confirmed master first +
-  new image second. Approved copy: `docs/qa/dematting/lifestyle-approved.png`.
-  LESSONS: prompting alone doesn't stop head hallucination — a full re-shoot
-  reproduced the wrong head when the bad image was the scene reference, and
-  one candidate of each batch failed; generate 2, pick, retouch, re-verify.
+- The comb's LIFESTYLE image FAILED QA (owner spotted it; a 4-pass review, one
+  adversarial, confirmed the tool head was invented — a closed hoop instead of
+  the real open rake). Six Runway regeneration rounds across nano-banana-pro,
+  nano-banana-2 and seedream-5 each fixed the named flaw and broke something
+  else on the head; the version that briefly shipped was pulled because the
+  axle bar did not line up with the handle. **OUTCOME: the lifestyle image is
+  REMOVED. The product page now carries only the studio master** (media
+  47588547887393, still featured; verified in Admin and on the live
+  storefront). Owner will revisit creating one another time — everything
+  needed is in `docs/qa/dematting/` with a README: CJ ground truth, the two
+  failed images, the best attempt (`best-attempt-v6.png`, correct
+  collinearity), and the prompt description of the real tool.
   The other 40 products' lifestyle images have NOT been audited (owner
   deferred; likely more of these lurking).
 - CJ's stock-writing disabled store-wide via the authorization page's Sync
