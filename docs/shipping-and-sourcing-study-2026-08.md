@@ -718,14 +718,17 @@ Nothing below has been applied. Ranked by money at stake, not by effort.
 10. **Treat the margin guard as the thing that catches freight drift.** Two
     products moved 57% and 72% in a month. Prices set against a freight quote
     have a shelf life.
+11. **Fix `config/shipping_rates.py`.** Its `FREE_THRESHOLD` constant says $50
+    while the store is set to $60. Running it with `--apply` today would give
+    away $5.95 on every order between $50 and $60.
 
 ### Do not do
 
-11. **Do not switch suppliers.** US dropship wholesalers raise landed cost on
+12. **Do not switch suppliers.** US dropship wholesalers raise landed cost on
     everything except heavy goods, and charge $35 to $60 a month for the
     privilege. The one exception worth a look is a zero-fee US supplier for the
     heavy fabric items, and opening that account needs your tax ID.
-12. **Do not sign a 3PL.** $10 to $14 per order all-in plus a $500-plus monthly
+13. **Do not sign a 3PL.** $10 to $14 per order all-in plus a $500-plus monthly
     minimum, against a store with no order volume to spread it over.
-13. **Do not buy bulk inventory speculatively.** Revisit it for one product
+14. **Do not buy bulk inventory speculatively.** Revisit it for one product
     only, once that product is selling more than about 20 units a month.
