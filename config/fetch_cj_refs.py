@@ -10,6 +10,8 @@ GitHub Actions workflow, which has the credentials.
 Usage:
     python config/fetch_cj_refs.py <productSku> <outdir> [shopify_image_url]
 
+Pass "none" as the SKU to skip CJ and only download the storefront image.
+
 Writes to <outdir>:
     product.json          full CJ product record
     cj-01.jpg, cj-02.jpg  every image URL found in the record
@@ -53,24 +55,25 @@ def main():
     shopify_url = sys.argv[3] if len(sys.argv) > 3 else None
     os.makedirs(outdir, exist_ok=True)
 
-    res = cj_api.call('/product/query', {'productSku': sku})
-    if not res.get('data'):
-        print('no data from CJ:', json.dumps(res)[:400])
-        sys.exit(1)
-    d = res['data']
-    with open(os.path.join(outdir, 'product.json'), 'w', encoding='utf-8') as fh:
-        json.dump(d, fh, indent=1, ensure_ascii=False)
+    if sku and sku.lower() != 'none':
+        res = cj_api.call('/product/query', {'productSku': sku})
+        if not res.get('data'):
+            print('no data from CJ:', json.dumps(res)[:400])
+            sys.exit(1)
+        d = res['data']
+        with open(os.path.join(outdir, 'product.json'), 'w', encoding='utf-8') as fh:
+            json.dump(d, fh, indent=1, ensure_ascii=False)
 
-    urls = image_urls(d)
-    print(f'{sku}: {len(urls)} image urls in record')
-    for i, u in enumerate(urls, 1):
-        ext = os.path.splitext(u)[1].lower() or '.jpg'
-        dest = os.path.join(outdir, f'cj-{i:02d}{ext}')
-        try:
-            size = fetch(u, dest)
-            print(f'  cj-{i:02d}{ext}  {size} bytes  {u}')
-        except Exception as exc:
-            print(f'  FAILED {u}: {exc}')
+        urls = image_urls(d)
+        print(f'{sku}: {len(urls)} image urls in record')
+        for i, u in enumerate(urls, 1):
+            ext = os.path.splitext(u)[1].lower() or '.jpg'
+            dest = os.path.join(outdir, f'cj-{i:02d}{ext}')
+            try:
+                size = fetch(u, dest)
+                print(f'  cj-{i:02d}{ext}  {size} bytes  {u}')
+            except Exception as exc:
+                print(f'  FAILED {u}: {exc}')
 
     if shopify_url:
         ext = os.path.splitext(shopify_url.split('?')[0])[1].lower() or '.png'

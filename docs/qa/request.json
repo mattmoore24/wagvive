@@ -1,6 +1,6 @@
 {
- "run": 2,
- "sku": "CJYD2754094",
- "label": "dematting",
- "shopify_image_url": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/master-dematting.png?v=1785700503"
+ "run": 3,
+ "sku": "none",
+ "label": "dematting-ls",
+ "shopify_image_url": "https://cdn.shopify.com/s/files/1/0994/5114/2433/files/ls-dematting.png?v=1785702218"
 }
