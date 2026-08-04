@@ -25,9 +25,12 @@ A failed run emails the owner — silence means healthy.
   claude.ai/code via the Shopify connector; capabilities section below
   rewritten to match. Added `config/fetch_cj_refs.py` + the `cj-image-refs`
   dispatch workflow so credential-less sessions can pull CJ reference images.
-  IN FLIGHT: visual QA of the Wagvive Dematting Comb image
-  (`master-dematting.png`) against CJ's real product photos
-  (SKU CJYD275409401AZ) to decide whether the Runway shot needs a re-run.
+  Ran that workflow for the Wagvive Dematting Comb (SPU CJYD2754094; note the
+  CJ query endpoint wants the SPU, not the variant SKU): our
+  `master-dematting.png` matches CJ's photos feature for feature (handle,
+  collar, thumb shield, tooth count and serration). No Runway re-run needed.
+  Only nit: the axle's hex nut is subtler in our shot than in CJ's. References
+  live in `docs/qa/dematting/`; owner has the side-by-side for final say.
 - CJ's stock-writing disabled store-wide via the authorization page's Sync
   Settings → "Not Sync" (see docs/knowledge/cj-inventory-sync-model.md, "kill
   switch"). `sync_inventory.py` is now the ONLY inventory writer. Verified: 144
