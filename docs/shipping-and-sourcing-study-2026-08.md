@@ -172,8 +172,9 @@ whatever shipping the customer pays; the floor is the delivered price at which a
 product clears a given margin after real freight, duty, returns and card fees.
 
 **30 of 36 products clear 15% at the market delivered price, and 25 clear 25%.**
-The pricing study's count of nine unsellable products was too harsh, and it named
-the wrong nine.
+Only three of the pricing study's nine write-offs survive the corrected
+comparison. Six of them are fine, and three products it passed are in fact
+failing.
 
 ### The six that genuinely cannot work
 
@@ -215,9 +216,9 @@ The last column of `docs/qa/delivered-price.json` is what each product costs to
 **add to a parcel that is already going out**: goods, duty, returns and the
 weight-share of freight, with no fixed parcel cost at all.
 
-| Product | Alone | Added to an existing parcel | Sells for |
+| Product | Delivered floor alone | Cost to add to an existing parcel | Market delivered |
 |---|---|---|---|
-| Finger Toothbrush | $6.88 floor | **$0.81** | $13.99 |
+| Finger Toothbrush | $6.88 | **$0.81** | $13.99 |
 | LED Waste Bag Dispenser | $8.02 | **$1.82** | $11.99 |
 | Watermelon Rope Frisbee | $8.65 | **$2.31** | $14.99 |
 | Sneaker Chew Buddy | $9.39 | **$2.94** | $16.99 |
