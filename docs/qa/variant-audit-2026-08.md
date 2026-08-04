@@ -100,3 +100,75 @@ Squeaker, Screaming Chicken, LED Nail Clippers.
 One worth a decision rather than dismissal: **Dental & Ear Wipes** currently
 sells 50-count tubs. CJ also offers 100, 150 and 200 count tooth wipes. That is
 a merchandising opportunity rather than a correctness problem.
+
+---
+
+# Appendix: exact SKUs to pair (PC work)
+
+Pair each SKU at CJ, then Claude creates the Shopify variant at a price that
+clears the 50% floor. Costs below are CJ's product cost only; freight is
+resolved separately through `config/freight_floor.py` and is what usually
+decides whether a size is viable.
+
+### Waterproof Sofa & Furniture Cover (CJYD2251860) — 12 new variants
+
+| CJ size | SKU to pair | CJ cost |
+|---|---|---|
+| Black-L 145cm*165cm | `CJYD225186004DW` | $11.28 |
+| Black-XL 145cm*216cm | `CJYD225186005EV` | $14.26 |
+| Black-2XL 200cm*200cm | `CJYD225186006FU` | $16.58 |
+| Brown-L 145cm*165cm | `CJYD225186010JQ` | $11.28 |
+| Brown-XL 145cm*216cm | `CJYD225186011KP` | $14.26 |
+| Brown-2XL 200cm*200cm | `CJYD225186012LO` | $16.58 |
+| Gray-L 145cm*165cm | `CJYD225186016PK` | $11.28 |
+| Gray-XL 145cm*216cm | `CJYD225186017QJ` | $14.26 |
+| Gray-2XL 200cm*200cm | `CJYD225186018RI` | $16.58 |
+| Black-3XL 216x216cm | `CJYD225186019SH` | $17.91 |
+| Brown-3XL 216x216cm | `CJYD225186020TG` | $17.91 |
+| Gray-3XL 216x216cm | `CJYD225186021UF` | $17.91 |
+
+### Waterproof Snuggle Blanket (CJGY1926497) — 9 new variants
+
+| CJ size | SKU to pair | CJ cost |
+|---|---|---|
+| Black-M | `CJGY192649703CX` | $7.56 |
+| Black-L | `CJGY192649704DW` | $10.71 |
+| Black-XL | `CJGY192649705EV` | $13.86 |
+| Gray-M | `CJGY192649708HS` | $7.56 |
+| Gray-L | `CJGY192649709IR` | $10.71 |
+| Gray-XL | `CJGY192649710JQ` | $13.86 |
+| Coffee-M | `CJGY192649713MN` | $7.56 |
+| Coffee-L | `CJGY192649714NM` | $10.71 |
+| Coffee-XL | `CJGY192649715OL` | $13.86 |
+
+### Paw Print Fleece Blanket (CJGY2117113) — 12 new variants
+
+| CJ size | SKU to pair | CJ cost |
+|---|---|---|
+| Camel Dog's Paw-XS | `CJGY211711302BY` | $0.69 |
+| Camel Dog's Paw-L | `CJGY211711305EV` | $3.02 |
+| Camel Dog's Paw-XL | `CJGY211711306FU` | $4.70 |
+| Camel Dog's Paw-XXL | `CJGY211711307GT` | $7.46 |
+| Beige Dog's Paw-XS | `CJGY211711309IR` | $0.69 |
+| Beige Dog's Paw-L | `CJGY211711312LO` | $3.02 |
+| Beige Dog's Paw-XL | `CJGY211711313MN` | $4.70 |
+| Beige Dog's Paw-XXL | `CJGY211711314NM` | $7.46 |
+| Pink Dog's Paw-XS | `CJGY211711316PK` | $0.69 |
+| Pink Dog's Paw-L | `CJGY211711319SH` | $3.02 |
+| Pink Dog's Paw-XL | `CJGY211711320TG` | $4.70 |
+| Pink Dog's Paw-XXL | `CJGY211711321UF` | $7.46 |
+
+### Cooling Comfort Pad (CJPM2920000) — 8 new variants
+
+| CJ size | SKU to pair | CJ cost |
+|---|---|---|
+| Coffee color-XS 40x30cm | `CJPM292000001AZ` | $2.27 |
+| Coffee color-S 50x40cm | `CJPM292000002BY` | $2.69 |
+| Pink-XS 40x30cm | `CJPM292000007GT` | $2.27 |
+| Pink-S 50x40cm | `CJPM292000008HS` | $2.69 |
+| Dark blue-XS 40x30cm | `CJPM292000013MN` | $2.27 |
+| Dark blue-S 50x40cm | `CJPM292000014NM` | $2.69 |
+| Light gray-XS 40x30cm | `CJPM292000019SH` | $2.27 |
+| Light gray-S 50x40cm | `CJPM292000020TG` | $2.69 |
+
+**Total: 41 new variants.**

@@ -84,7 +84,11 @@ A failed run emails the owner — silence means healthy.
 | # | Task | Status / notes |
 |---|---|---|
 | 59 | GA4 + Meta pixel | NEXT UP, but owner-gated: needs a GA4 measurement ID (G-XXXX) and a Meta pixel ID from the owner's own accounts. Once those exist Claude installs both. Store has zero analytics; blocks #62 and any ad spend. |
-| 67 | Stock the missing sizes | NEW 2026-08-04, OWNER-GATED. Four products are missing sizes CJ actually sells, detailed in `docs/qa/variant-audit-2026-08.md`. Biggest is the sofa cover: we sell CJ's three smallest of seven and label them Small/Medium/Large, so "Large" is really a mid-size. Each new size needs CJ pairing in the browser (no API) and must clear the 50% floor at its own cost and freight. Claude can compute the pricing once the owner is ready to pair. |
+| 67 | **Add the 41 missing size variants (HOME PC)** | NEW 2026-08-04. Four products are missing sizes CJ actually sells. **Exact SKU list with CJ costs is in the appendix of `docs/qa/variant-audit-2026-08.md`** so pairing is mechanical: sofa cover 12, snuggle blanket 9, fleece blanket 12, cooling pad 8. Sequence: (1) owner pairs each SKU in the CJ browser app, one product at a time, verifying `matchitem.shopType === 'Shopify'` before confirming; (2) Claude resolves freight via `freight_floor.py` and prices each size to clear the 50% floor, levelling colours as usual; (3) Claude creates the Shopify variants and wires variant images. Freight, not product cost, will decide whether the biggest sizes are viable, so expect some to fail the floor and be dropped. |
+| 67a | Rename the sofa cover's size labels | Depends on #67. Our Small/Medium/Large are CJ's XS/S/M of seven sizes, so the labels stop making sense the moment bigger sizes are added. Rename to the true range at the same time. Renaming option values rewrites variant titles, so do it in one pass with the additions, not before. |
+| 68 | Decide on lifestyle images for the five kits | NEW 2026-08-04. All five kits (New Puppy, Toy, Grooming Essentials, Enrichment, Travel) have a cover plus component shots and no in-use photo. That looked deliberate so nothing was changed. If you want them, the components are already shot and a kit scene is straightforward. |
+| 69 | Real product dimensions for the remaining products | NEW 2026-08-04. Dimensions were added only where CJ states them explicitly. For most toys CJ publishes package dimensions only, which for soft goods are not product dimensions, so nothing was stated. To finish this properly, either measure samples on arrival or ask CJ for product dimensions per SKU. Do NOT infer from `variantLength/Width/Height`. |
+| 70 | Consider larger wipe counts | NEW 2026-08-04, low priority. The Dental & Ear Wipes sells 50-count tubs; CJ also offers 100, 150 and 200 count. Merchandising opportunity, same pairing mechanics as #67. |
 | 66 | Audit ALL lifestyle images against CJ references | PARTLY DONE 2026-08-04: every product now HAS a lifestyle image except the two the owner excluded, and all descriptions were checked for sizing accuracy. Still outstanding: confirming each existing lifestyle image actually depicts the right product, which the owner is doing themselves. Fully unblocked — no owner action, tooling already built (`cj-image-refs` workflow + `config/fetch_cj_refs.py`). The dematting comb's "in use" photo depicted a tool that does not exist and had been live since launch; the rest of the catalogue has never been checked the same way. Misleading imagery drives returns and chargebacks, so do this BEFORE paying for traffic. Method and failure patterns: `docs/qa/dematting/README.md`. |
 | 63 | Post-purchase reviews | Biggest untouched conversion lever. Judge.me free tier or similar; needs app install (owner clicks, Claude configures). |
 | 57 | NY sales tax registration | OWNER ACTION: file DTF-17 at NY Business Express (needs SSN/EIN). Then Claude adds the Certificate of Authority number in Shopify tax settings. |
@@ -109,6 +113,10 @@ For CJ API reads without credentials, dispatch the `cj-image-refs` workflow
 (fetches a product's record + images and commits them to the branch), or
 route work through the Actions job. Pricing changes should still be computed
 against `config/pricing.py` logic before any write.
+
+**Queued for the next home PC session:** #67 and #67a (pair 41 new size
+variants, then price and create them), plus anything in #70 if wanted. #57
+(NY tax filing) and #64 (CJ DDP ticket) are also owner actions waiting.
 
 **Home PC only:** CJ UI work (pairing, sync settings — no API exists),
 Shopify admin settings screens (do not render in background tabs), visual
