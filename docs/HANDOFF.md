@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-05, from a claude.ai/code web session (marketing phase 0: email flows, welcome code, landing page audit)
+**Last updated:** 2026-08-05, home PC (merged the web session; theme copy + SEO applied)
 
 ---
 
@@ -125,6 +125,48 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **PC SESSION 2026-08-05, after merging the web session.** The web branch
+  `claude/project-progress-check-2mb93r` was merged to main; its nine commits
+  had never landed, so from the owner's side none of that work was visible.
+  Then, on the PC:
+
+  1. **Task #71 applied and verified.** `config/fix_product_care_copy.py --apply`.
+     The four wrong text blocks are gone from all 42 product pages, including
+     the "Care & use" accordion that told buyers to rinse a heartbeat plush.
+     Its verifier had TWO false negatives, both fixed: it probed
+     `/products/<handle>?sections=main`, which returns null because Shopify
+     will not render a product's main section standalone, and its dash check
+     scanned raw HTML, which always contains em dashes inside Shopify's own
+     `<style>` comments. **The section rendering API works for footer and
+     homepage sections but NOT for product templates**; use the full page there.
+
+  2. **SEO title and meta description written for all 42 products**
+     (`config/marketing/seo_meta.py`). Every one was null. This directly feeds
+     the two free channels the plan leads with: Google free listings rank
+     partly on it, and Pinterest rich pins read the meta description.
+
+  3. **The en dash is out of every page title.** `snippets/meta-tags.liquid`
+     used `&ndash;` as the `<title>` separator, so it appeared in every browser
+     tab, search result and shared link preview. Now a pipe, matching the
+     homepage SEO title. It survived the 2026-08-04 dash sweep because that
+     sweep read rendered body copy, where `<title>` does not appear.
+
+  **One loose end:** `/products/calm-comfort-kit` still renders the old title
+  and description. Admin is correct, 41 of the 42 pages render both fixes, the
+  response is `cf-cache-status: DYNAMIC` so it is not Cloudflare, and a forced
+  `productUpdate` touch did not clear it. No handle collision, no redirect.
+  It is a stuck render cache on Shopify's side. **This is the phase 1 landing
+  page, so confirm it before spending:**
+
+  ```
+  curl -s "https://wagvive.com/products/calm-comfort-kit" | grep -o "<title>.*</title>"
+  ```
+
+  Expect `Dog Anxiety Kit: Heartbeat Toy, Calming Wrap, Cooling Mat | Wagvive`.
+  If it is still wrong after a day, unpublishing and republishing the product
+  to the Online Store channel will force it, at the cost of a brief 404.
+
 
 - **MARKETING PHASE 0 STARTED (2026-08-05, web session).** Three things.
 
