@@ -8,24 +8,40 @@
 
 ---
 
-# START HERE: the PC session works from the implementation plan
+# START HERE: the 2026-08-04 repricing is DONE. The store runs on the price book.
 
-Two studies finished on 2026-08-04 and between them they produced a queue of
-changes that need a keyboard, a CJ browser login and theme access. That queue is
-written up as a single runbook:
+The whole catalogue was repriced on 2026-08-04 from a per-product demand model,
+and all six kits were rebuilt around freight physics. Everything is applied,
+verified live, and green. What a new session must know:
 
-### → `docs/pc-implementation-plan-2026-08.md`
-
-Eleven ordered steps, each with the reasoning, the exact data, the sequencing
-traps, and how to verify it worked. **Work from that file.** The task table
-further down this document is the index; the plan is the instructions.
-
-The two things that are losing money right now, and should be done first:
-
-1. **Dog Enrichment Kit** is live at $98 returning **24.1%** and needs $137.38
-   to clear 45%. Plan step 1.
-2. **Dental & Ear Wipes** is live at $22.00 against a $13.99 market it cannot
-   reach, after CJ's freight on liquids rose 57% in a month. Plan step 2.
+1. **`config/price_book.json` is the source of truth** for all 144 single
+   variant prices AND each product's `floor_margin_pct`, which
+   `margin_guard.py` now enforces per product. **The flat 50% floor is
+   retired** (owner decision). Floors are denominated in the guard's own cost
+   model (selected carrier + tax-inclusive fee) minus an 8pt drift buffer;
+   recalibrate with `config/calibrate_floors.py --apply` after any deliberate
+   repricing, or the guard false-alarms on model mismatch.
+2. **The pricing pipeline**, if prices ever need rebuilding:
+   `market_bands.py` (observed low/mid/high per product) → `demand_model.py`
+   (logistic share-of-consideration) → `optimise_prices.py` (contribution
+   maximiser, capped at the competitive ceiling) → `build_price_book.py`
+   (per-variant book) → `apply_price_book.py --apply` (write + verify).
+3. **Kits:** `optimise_kits.py` enumerates on-theme candidates on the fitted
+   freight curve, but winners MUST be re-ranked on LIVE combined CJ basket
+   quotes before applying: carrier-eligibility rules are invisible to the
+   curve (any basket holding the Talk Button gets forced onto sensitive
+   lines, nearly +$25 on a 5-item kit). `apply_kits.py --apply` writes
+   compositions, bodies, flat prices and compare_at.
+   **`productBundleUpdate` DOES swap components** - the older note in
+   `rebuild_kits.py` saying composition changes need a rebuild is wrong.
+4. **The old runbook (`docs/pc-implementation-plan-2026-08.md`) is history.**
+   Its steps 1/2/6 were based on costs taken from CJ MULTIPACK variants we do
+   not sell (water bowl "3pcs" 1833g vs our 620g single) and were voided;
+   `config/validate_research.py` now catches that bug class. The same trap
+   applies to freight baskets: quote vids from OUR skus only.
+5. **CJ keyword search is useless for sourcing** (`/product/list` returns
+   newest-first, listedNum ≈ 0 everywhere). Finding proven products needs the
+   CJ trending UI in a browser, not the API.
 
 ### All research, and what each file is for
 
@@ -55,12 +71,12 @@ Tooling built for this work, all read-only against CJ and runnable from the PC:
 
 ## Where the business stands
 
-wagvive.com is LIVE and fully operational: 41 active products (36 singles + 5
-variant-selectable bundle kits), all CJ-paired. **Margin status is no longer
-"all above the 50% floor", and has not been since 2026-08-04**: the margin guard
-only ever checked the 147 single variants, never the kits, and the shipping
-study found the Dog Enrichment Kit at 24.1% and the Dental & Ear Wipes below
-water at its live price. See the implementation plan. First real order (#1001) completed the full loop: checkout → CJ →
+wagvive.com is LIVE and fully operational: 42 active products (36 singles + 6
+variant-selectable bundle kits), all CJ-paired. **Every variant clears its
+price-book floor** (margin_guard green, per-product floors) and **every kit
+clears 30% on live CJ basket quotes**: Puppy 56.5%, Toy 51.0%, Grooming 42.3%,
+Travel 41.6%, Calm & Comfort 39.3%, Enrichment 36.2%. First real order (#1001)
+completed the full loop: checkout → CJ →
 paid → shipped → tracking back → branded emails from hello@wagvive.com.
 Storefront password is off, SEO/social cards are set, all 18 notification
 emails are branded.
@@ -70,6 +86,36 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **FULL CATALOGUE REPRICING + KIT REBUILD (2026-08-04, PC session).** The
+  mega-task is complete and verified live.
+  - **Research:** all 36 products re-costed from the SKUs we actually sell
+    (`config/reprice_catalogue.py`, snapshot in
+    `docs/qa/recost-2026-08-04.json`); live market bands per product from
+    retailer research (`config/market_bands.py` documents the premium-brand
+    vs volume-seller distinction that had inflated the earlier study); CJ
+    listedNum pulled as a demand proxy.
+  - **Model:** constant elasticity rejected (it recommends pricing above
+    market and never decays); replaced by a logistic share-of-consideration
+    curve calibrated on each product's observed band
+    (`config/demand_model.py`), with a hard competitive ceiling of mid x1.15
+    for outcome goods and mid for everything else.
+  - **Applied:** 144 variant prices (headline singles sum $917.86 → ~$615;
+    average modelled win rate 24% → 54%), per-size pricing on sized products,
+    10 sub-5% variants nudged up by `calibrate_floors.py`. All six kits
+    rebuilt IN PLACE via productBundleUpdate with new bodies, covers
+    (`make_kit_covers.py`, now dedupes variant-selectable components), flat
+    prices, honest compare_at, and `custom.kit` cross-links re-pointed
+    (22 components). **Calm & Comfort Kit is NEW** (id 10477056491809,
+    $109: Sloth + Thunder Wrap + Fleece + Cooling Pad XXL + Big Squeak).
+  - **Guards repointed:** margin_guard enforces price-book floors;
+    kit_margins enforces 30%; both green. `shipping_rates.py` constant
+    synced to the live $60 threshold (#82). Storefront spot-checked via
+    public product JSON: all kit and sample single prices correct,
+    available, with images.
+  - **Sourcing scan (#68):** no new product added; CJ API search surfaces
+    only fresh zero-demand listings. Shortlisting proven fillers needs the
+    CJ trending UI.
 
 - **SHIPPING AND SOURCING STUDY (2026-08-04).** Report:
   `docs/shipping-and-sourcing-study-2026-08.md`, data in

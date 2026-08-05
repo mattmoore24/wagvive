@@ -133,10 +133,15 @@ def main():
 
     for k in kits:
         d = gql(BUNDLE_Q, {'id': f'gid://shopify/Product/{k["id"]}'})['data']['product']
-        comps = []
+        comps, seen = [], set()
         for v in d['variants']['nodes']:
             for c in v['productVariantComponents']['nodes']:
                 p = c['productVariant']['product']
+                # variant-selectable bundles repeat every component per parent
+                # variant; one tile per component product, not per combination
+                if p['id'] in seen:
+                    continue
+                seen.add(p['id'])
                 media = (p.get('featuredMedia') or {}).get('preview', {}).get('image', {})
                 if media.get('url'):
                     comps.append((p['title'], media['url']))
@@ -163,7 +168,8 @@ def main():
         api('POST', f'products/{k["id"]}/images.json', {'image': {
             'attachment': b64, 'filename': f'kit-{k["id"]}.jpg',
             'alt': f'{d["title"]} - everything included', 'position': 1}})
-        for n, (title, url) in enumerate(comps[:4], 2):
+        # gallery carries EVERY component, even when the cover grid holds 4
+        for n, (title, url) in enumerate(comps, 2):
             api('POST', f'products/{k["id"]}/images.json',
                 {'image': {'src': url, 'alt': title, 'position': n}})
 

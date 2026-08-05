@@ -4,16 +4,14 @@ Bring Shopify shipping rates in line with what the site actually promises.
 
 Sets the rates that are best for this store rather than whatever was configured.
 
-Product prices already absorb freight and duty at a 50% floor, so shipping revenue
-is upside, not cost recovery - which means the threshold is free to do the job it
-is actually good at: lifting average order value.
+Product prices already absorb freight and duty at their price-book floors, so
+shipping revenue is upside, not cost recovery - which means the threshold is
+free to do the job it is actually good at: lifting average order value.
 
-  Standard $5.95      undercuts the $8.00 that was configured, and is the figure
-                      the site copy already advertised
-  Free over $50       reachable by any two-item order (entry price is $19) and by
-                      the $56 pad, the $64 cover and both $79 kits on their own.
-                      $70 put it out of reach of most single-item carts.
-  Express $15.00      unchanged
+  Standard $5.95      the figure the site copy advertises
+  Free over $60       sits just above the $46/$49/$54 kits in the 2026-08-04
+                      price book, so "add one toy for free shipping" is the
+                      default upsell; the $70/$85/$109 kits clear it alone
 
     python config/shipping_rates.py          # show current
     python config/shipping_rates.py --apply  # rewrite to match the promise
@@ -23,7 +21,7 @@ import json, os, sys, urllib.request, urllib.error
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STANDARD_PRICE = 5.95
-FREE_THRESHOLD = 50.00
+FREE_THRESHOLD = 60.00
 EXPRESS_PRICE = 15.00
 
 env = {}

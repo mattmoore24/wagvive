@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
-"""Hold the 50% margin floor even when CJ's prices move.
+"""Hold each product's margin floor even when CJ's prices move.
 
-Product prices were set against a snapshot of CJ product cost and freight. Both
-drift - CJ posted two shipping price adjustment notices in the last week alone -
-so a price that cleared 50% at launch can quietly fall through it. This re-quotes
-every active variant against live CJ data and reports, or fixes, any breach.
+The flat 50% floor was retired 2026-08-04 (owner decision): prices are now set
+per product by the demand model (optimise_prices.py -> build_price_book.py),
+and each product's floor lives in config/price_book.json as `floor_margin_pct`
+- the worst variant margin the book accepted, minus a drift buffer. The guard's
+job is no longer to police a global number but to catch COST DRIFT against
+whatever the book promised.
+
+Prices were set against a snapshot of CJ product cost and freight. Both drift -
+CJ posted two shipping price adjustment notices in one week - so a price that
+cleared its floor at launch can quietly fall through it. This re-quotes every
+active variant against live CJ data and reports, or fixes, any breach.
 
 Cost model comes from config/pricing.py: product + duty + freight + Shopify
 Payments (2.9% + $0.30). Duty is 20% on China-origin and 0% on US-warehouse
@@ -14,7 +21,7 @@ window, matching what the CJ connections are actually set to ship by.
 
     python config/margin_guard.py            # report only, exits 1 on a breach
     python config/margin_guard.py --apply    # also raise prices to clear the floor
-    python config/margin_guard.py --margin 55  # enforce a higher floor
+    python config/margin_guard.py --margin 55  # override: one global floor
 
 Report mode changes nothing, so it is safe to run unattended. --apply edits live
 retail prices and should only run where that is intended.
@@ -109,6 +116,20 @@ def live_cj_costs(skus):
 with open(os.path.join(ROOT, 'config', 'carriers.json'), encoding='utf-8') as _fh:
     SELECTED_CARRIER = json.load(_fh)['carriers']
 
+# Per-product floors from the price book. Clamped at 2% so a kit-only product
+# (book floor can be near zero after the drift buffer) still alerts BEFORE it
+# sells at an actual loss. Products absent from the book get DEFAULT_FLOOR.
+FLOOR_MIN = 0.02
+DEFAULT_FLOOR = 0.25
+try:
+    with open(os.path.join(ROOT, 'config', 'price_book.json'), encoding='utf-8') as _fh:
+        _BOOK = json.load(_fh)
+    BOOK_FLOOR = {pid: max(v.get('floor_margin_pct', DEFAULT_FLOOR * 100) / 100.0,
+                           FLOOR_MIN)
+                  for pid, v in _BOOK.items()}
+except FileNotFoundError:
+    BOOK_FLOOR = {}
+
 
 def best_freight(vid, start, sku=''):
     """Freight for the carrier CJ will actually book.
@@ -144,11 +165,13 @@ def main():
     # variant still clears the floor after a routine CJ move instead of breaching
     # the moment anything shifts.
     headroom = '--headroom' in sys.argv
-    floor = 0.50
+    override = None
     if '--margin' in sys.argv:
-        floor = float(sys.argv[sys.argv.index('--margin') + 1]) / 100.0
+        override = float(sys.argv[sys.argv.index('--margin') + 1]) / 100.0
 
-    print(f'Margin guard - floor {floor:.0%}, carriers within {MAX_DAYS} days, '
+    src = (f'global {override:.0%}' if override is not None
+           else f'price_book floors ({len(BOOK_FLOOR)} products)')
+    print(f'Margin guard - {src}, carriers within {MAX_DAYS} days, '
           f'{"APPLY" if apply_fix else "report only"}\n')
 
     products = api('GET', 'products.json?limit=250&status=active')['products']
@@ -157,6 +180,8 @@ def main():
 
     for p in products:
         title = p['title']
+        floor = override if override is not None else BOOK_FLOOR.get(
+            str(p['id']), DEFAULT_FLOOR)
         rows = []
         for v in p['variants']:
             sku = v.get('sku')
@@ -194,7 +219,7 @@ def main():
 
         if rows:
             safe = title.encode('ascii', 'replace').decode()
-            print(safe)
+            print(f'{safe}  (floor {floor:.0%})')
             for v, sku, cost, fr, price, need, m, slack, stress in rows:
                 flag = '' if price >= need - 0.005 else f'  <-- needs ${need:.2f}'
                 warn = '' if fr['within_promise'] else '  (no carrier in window)'
@@ -217,9 +242,9 @@ def main():
                   f'stress {stress:.1f}%  freight headroom ${slack:.2f}')
 
     if not breaches:
-        print(f'\nAll variants clear the {floor:.0%} floor.')
+        print('\nAll variants clear their floors.')
     else:
-        print(f'\n{len(breaches)} variant(s) below the {floor:.0%} floor:')
+        print(f'\n{len(breaches)} variant(s) below their floor:')
         for pid, t, v, sku, cost, fr, price, need, m in breaches:
             print(f'  {t[:32]:34} {str(v["title"])[:20]:22} '
                   f'${price:.2f} -> ${retail_round(need):.2f}  ({m:.1f}%)')
@@ -238,7 +263,8 @@ def main():
 
     with open(LOG, 'w', encoding='utf-8') as fh:
         json.dump({'ran_at': time.strftime('%Y-%m-%dT%H:%M:%S'),
-                   'floor': floor, 'applied': apply_fix, 'checked': checked,
+                   'floor': override if override is not None else 'price_book',
+                   'applied': apply_fix, 'checked': checked,
                    'breaches': [{'product': t, 'variant': str(v['title']),
                                  'sku': sku, 'price': price,
                                  'needed': round(need, 2), 'margin': round(m, 1)}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check the two bundle kits against the 50% floor.
+"""Check every bundle kit against the kit margin floor.
 
 margin_guard skips them: a Shopify bundle carries no SKU of its own, so there is
 nothing to look up. Their economics are real though - the kit price is fixed
@@ -18,7 +18,10 @@ import freight_floor
 from pricing import DUTY_PCT, DUTY_PCT_US_WAREHOUSE, landed, FLAT, PCT, SALES_TAX_AVG
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FLOOR = 0.50
+# 30% since 2026-08-04: kits are priced by the demand-model optimiser
+# (optimise_kits.py) for contribution, with 30% as the worth-the-complexity
+# floor. The old flat 50% went with the rest of the flat-floor regime.
+FLOOR = 0.30
 
 env = {}
 with open(os.path.join(ROOT, 'config', 'shopify.env'), encoding='utf-8') as fh:
@@ -154,7 +157,7 @@ def main():
         for t, vid, price, need, m in problems:
             print(f'  {t[:34]:36} ${price:.2f} -> ${need:.2f}  ({m:.1f}%)')
         sys.exit(1)
-    print('Both kits clear the 50% floor.')
+    print(f'All kits clear the {FLOOR:.0%} floor.')
 
 
 if __name__ == '__main__':
