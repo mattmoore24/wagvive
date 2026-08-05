@@ -60,26 +60,26 @@ KITS = {
     'grooming': {
         'bundle': 10470156140833, 'price': '85.00',
         'components': [
-            (10456336990497, {'Colour': ('open', 'Slicker Brush')}),
-            (10456337056033, {'Colour': ('open', 'Hair Mitt')}),
-            (10456337318177, {'Colour': ('open', 'Nail Grinder')}),
-            (10469666062625, {'Colour': ('pin', 'Blue')}),          # toothbrush
+            (10456336990497, {'Color': ('open', 'Slicker Brush')}),
+            (10456337056033, {'Color': ('open', 'Hair Mitt')}),
+            (10456337318177, {'Color': ('open', 'Nail Grinder')}),
+            (10469666062625, {'Color': ('pin', 'Blue')}),          # toothbrush
         ]},
     'enrichment': {
         'bundle': 10470563053857, 'price': '98.00',
         'components': [
-            (10456337613089, {'Colour': ('open', 'Slow Feeder')}),
-            (10456337547553, {'Colour': ('pin', 'Grey'),            # water bowl
+            (10456337613089, {'Color': ('open', 'Slow Feeder')}),
+            (10456337547553, {'Color': ('pin', 'Grey'),            # water bowl
                               'Capacity': ('pin', '1.5L')}),
-            (10470547587361, {'Colour': ('open', 'Lick Bowl')}),
-            (10470547652897, {'Colour': ('open', 'Talk Button')}),
+            (10470547587361, {'Color': ('open', 'Lick Bowl')}),
+            (10470547652897, {'Color': ('open', 'Talk Button')}),
         ]},
     'travel': {
         'bundle': 10470563119393, 'price': '77.00',
         'components': [
-            (10470547489057, {'Colour': ('open', 'Water Bottle')}),
-            (10469666128161, {'Colour': ('open', 'Bag Dispenser')}),
-            (10464689881377, {'Colour': ('open', 'Cooling Pad'),
+            (10470547489057, {'Color': ('open', 'Water Bottle')}),
+            (10469666128161, {'Color': ('open', 'Bag Dispenser')}),
+            (10464689881377, {'Color': ('open', 'Cooling Pad'),
                               'Size': ('pin', 'Medium 24" x 20"')}),
             (10469803819297, {'Title': ('pin', 'Default Title')}),  # frisbee
         ]},
@@ -101,11 +101,11 @@ KITS = {
 # The puppy kit's live component set is read from the bundle itself (its sofa
 # cover id differs from the retired US-warehouse cover). Selections applied:
 PUPPY_RULES = {
-    'Wagvive Waterproof Sofa & Furniture Cover': {'Colour': ('open', 'Sofa Cover'),
+    'Wagvive Waterproof Sofa & Furniture Cover': {'Color': ('open', 'Sofa Cover'),
                                                   'Size': ('pin', 'Small 20" x 26"')},
-    'Wagvive Cooling Comfort Pad': {'Colour': ('open', 'Cooling Pad'),
+    'Wagvive Cooling Comfort Pad': {'Color': ('open', 'Cooling Pad'),
                                     'Size': ('pin', 'Medium 24" x 20"')},
-    'Wagvive LED Waste Bag Dispenser': {'Colour': ('open', 'Bag Dispenser')},
+    'Wagvive LED Waste Bag Dispenser': {'Color': ('open', 'Bag Dispenser')},
     'Wagvive Dental Duck Chew Toy': {'Title': ('pin', 'Default Title')},
 }
 

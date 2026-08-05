@@ -116,7 +116,7 @@ devices and nothing on this site is veterinary advice. If your dog has a medical
 condition, talk to your vet. Supervise your dog with any new product, and stop
 using it if it becomes damaged.</p>
 <h3>Images and descriptions</h3>
-<p>We show supplier photography alongside our own descriptions. Colours can vary
+<p>We show supplier photography alongside our own descriptions. Colors can vary
 slightly between screens, and sizes are given so you can check the fit before
 buying.</p>
 <h3>Returns</h3>

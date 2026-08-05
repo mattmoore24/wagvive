@@ -59,7 +59,7 @@ you chose for the room rather than a mat you tolerate.</p>
 <li>Waterproof backing blocks moisture before it reaches upholstery</li>
 <li>Short plush face with a sherpa border - soft on both sides</li>
 <li>Three sizes, from an armchair seat to a full three-seater</li>
-<li>Machine washable, holds its colour</li>
+<li>Machine washable, holds its color</li>
 <li>Also works on a bed, a crate floor or the back seat of a car</li>
 </ul>
 <p><strong>Arrives in 5-12 business days.</strong></p>"""
@@ -107,7 +107,7 @@ def main():
         'product_type': 'Comfort & Health',
         'tags': 'comfort, dog, furniture, sofa, waterproof, washable',
         'status': 'active',
-        'options': [{'name': 'Colour'}, {'name': 'Size'}],
+        'options': [{'name': 'Color'}, {'name': 'Size'}],
         'variants': variants,
     }}
     p = api('POST', 'products.json', payload)['product']

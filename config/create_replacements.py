@@ -139,7 +139,7 @@ def build_pad():
         'tags': 'comfort, cooling, summer, dog, heat relief, senior pet',
         'status': 'active',
         'options': [
-            {'name': 'Colour', 'values': [c[1] for c in COLOUR_PLAN]},
+            {'name': 'Color', 'values': [c[1] for c in COLOUR_PLAN]},
             {'name': 'Size', 'values': [s[1] for s in SIZE_PLAN]},
         ],
         'variants': variants,

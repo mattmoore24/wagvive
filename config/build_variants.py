@@ -22,12 +22,12 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # product id -> (option name, [(CJ variant key, storefront value, price, freight)])
 PLAN = {
-    10456336990497: ('Colour', 'Self-Cleaning Slicker Brush', [
+    10456336990497: ('Color', 'Self-Cleaning Slicker Brush', [
         ('Green',  'Green',  28.00, 3.00),
         ('Pink',   'Pink',   28.00, 3.00),
         ('Orange', 'Orange', 28.00, 3.00),
     ]),
-    10456337056033: ('Colour', 'Grooming & Shedding Gloves', [
+    10456337056033: ('Color', 'Grooming & Shedding Gloves', [
         ('Dark brown-1PCS',            'Dark Brown',  19.00, 4.94),
         ('Black-1PCS',                 'Black',       19.00, 4.94),
         ('Light Brown-1PCS',           'Light Brown', 19.00, 4.94),
@@ -38,13 +38,13 @@ PLAN = {
         ('Ear Cleaning Wipes 50 Pieces',   'Ear wipes only',     30.00, 7.88),
         ('Tooth Cleaning Wipes 50 Pieces', 'Teeth wipes only',   30.00, 7.88),
     ]),
-    10456337318177: ('Colour', 'Quiet Electric Nail Grinder', [
+    10456337318177: ('Color', 'Quiet Electric Nail Grinder', [
         ('Deep Green', 'Deep Green', 32.00, 7.79),
         ('Pure White', 'Pure White', 32.00, 7.79),
     ]),
     # Two axes: Shopify rejects "/" in an option name, and colour x capacity is
     # a better picker than eight concatenated values anyway.
-    10456337547553: (['Colour', 'Capacity'], 'Anti-Spill Floating Water Bowl', [
+    10456337547553: (['Color', 'Capacity'], 'Anti-Spill Floating Water Bowl', [
         ('Pink',     ['Pink', '1.5L'],  42.00, 11.77),
         ('Blue',     ['Blue', '1.5L'],  42.00, 11.77),
         ('Grey',     ['Grey', '1.5L'],  42.00, 11.77),
@@ -54,7 +54,7 @@ PLAN = {
         ('Grey 2L',  ['Grey', '2L'],    46.00, 12.50),
         ('White 2L', ['White', '2L'],   46.00, 12.50),
     ]),
-    10456337613089: ('Colour', 'Slow Feeder Bowl', [
+    10456337613089: ('Color', 'Slow Feeder Bowl', [
         ('Green',  'Green',  22.00, 8.01),
         ('Pink',   'Pink',   22.00, 8.01),
         ('Orange', 'Orange', 22.00, 8.01),

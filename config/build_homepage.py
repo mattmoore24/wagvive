@@ -269,17 +269,29 @@ faq = [
      '5&ndash;11 business days within the US. Tracking is emailed the moment your parcel '
      'ships. We ship direct rather than paying for domestic warehousing &mdash; that keeps '
      'prices down, and we would rather say so plainly than surprise you at checkout.</p>'),
-    ('f2', 'Are these suitable for senior dogs?',
-     '<p>That is who the range was built around. The grooming tools are quiet and '
-     'low-vibration, and the comfort range targets joint support, hydration, and easier '
-     'mealtimes. They work just as well for younger dogs.</p>'),
+    # Was "Are these suitable for senior dogs?", which answered "that is who the
+    # range was built around" - untrue since the Senior Dog Kit was retired.
+    # Replaced 2026-08-04 with the question a six-kit store actually gets, which
+    # is also the strongest AOV prompt on the page. See config/fix_home_faq.py.
+    ('f2', 'Which kit should I start with?',
+     '<p>Match it to the job in front of you. <strong>New Puppy</strong> covers the '
+     'first month: crate, teething, teeth and first walks. <strong>Grooming '
+     'Essentials</strong> is a full home session, coat to nails to teeth. '
+     '<strong>Calm &amp; Comfort</strong> is for storms, fireworks and being left '
+     'alone. <strong>Enrichment</strong> slows down dinner and gives a bored dog a '
+     'job. <strong>Travel</strong> is the bag by the door, and the <strong>Toy '
+     'Kit</strong> is five different games rather than five versions of the same '
+     'one. Every kit costs less than buying its pieces separately.</p>'),
     ('f3', 'What if it is not right?',
      '<p>You have 30 days from delivery. If it arrived faulty, damaged, or wrong, we cover '
-     'return shipping and send a replacement or full refund &mdash; your choice. Changed your '
+     'return shipping and send a replacement or full refund, your choice. Changed your '
      'mind is fine too; return shipping is on you in that case.</p>'),
+    # No item count here: kits hold four OR five items, and a number in copy
+    # goes stale silently. The saving is computed live on the kit page.
     ('f4', 'Do the kits actually save money?',
-     '<p>Yes. Each kit is priced below the combined cost of its four items, and the exact '
-     'saving is shown on the product page.</p>'),
+     '<p>Yes. Each kit is priced below the combined cost of its items, and the exact '
+     'saving is shown on the kit\'s own page. It also arrives as one parcel rather '
+     'than several.</p>'),
 ]
 add('faq_head', section(
     {'h': text('<h2>Questions worth answering</h2>', 'h2', 'center', FG)},

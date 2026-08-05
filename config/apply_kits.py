@@ -188,7 +188,7 @@ when the noise starts</li>
 #         (short title, parent label[, per-option overrides])).
 #
 # Overrides beat the auto rule where a tie-break lands badly:
-#   {'Colour': ('pin', 'Blue')}          force a pin at a named value
+#   {'Color': ('pin', 'Blue')}          force a pin at a named value
 #   {'Size': ('open', 'Paw Cup Size')}   open a level-priced size (uses a slot)
 # Component ORDER decides which colour choices win the 3 parent-option slots,
 # so the highest-value choices are listed first and the toothbrush (pinned
@@ -205,7 +205,7 @@ KITS = {
         ('Sneaker Chew Buddy', 'Sneaker'),
         ('Paw Print Fleece Blanket', 'Blanket'),
         ('LED Waste Bag Dispenser', 'Bag Dispenser'),
-        ('Finger Toothbrush', 'Toothbrush', {'Colour': ('pin', 'Blue')}),
+        ('Finger Toothbrush', 'Toothbrush', {'Color': ('pin', 'Blue')}),
     ], 'bundle, kit, dog, puppy, new puppy'),
     'Toy Kit': (10469812863265, 49, [
         ('Barnyard Squeaker', 'Squeaker Pal'),
@@ -218,7 +218,7 @@ KITS = {
         ('Self-Cleaning Slicker Brush', 'Slicker Brush'),
         ('Quiet Electric Nail Grinder', 'Nail Grinder'),
         ('Quick-Dry Bath Robe', 'Bath Robe'),
-        ('Finger Toothbrush', 'Toothbrush', {'Colour': ('pin', 'Blue')}),
+        ('Finger Toothbrush', 'Toothbrush', {'Color': ('pin', 'Blue')}),
         ('Paw Washing Cup', 'Paw Cup', {'Size': ('pin', 'M')}),
     ], 'bundle, kit, dog, grooming'),
     'Travel Kit': (10470563119393, 85, [
@@ -226,11 +226,14 @@ KITS = {
         ('Cooling Comfort Pad', 'Cooling Pad'),
         # cup sizes are level-priced, and fit is why sizes exist: open them
         ('Paw Washing Cup', 'Paw Cup', {'Size': ('open', 'Paw Cup Size'),
-                                        'Colour': ('pin', 'Blue')}),
+                                        'Color': ('pin', 'Blue')}),
         ('Quick-Dry Bath Robe', 'Bath Robe'),
         ('Paw Print Fleece Blanket', 'Blanket'),
     ], 'bundle, kit, dog, travel, outdoor'),
-    'Calm & Comfort Kit': (None, 109, [
+    # Created 2026-08-04. The id is filled in so a re-run UPDATES it; leaving
+    # None here would create a second Calm & Comfort Kit and cost this one its
+    # handle.
+    'Calm & Comfort Kit': (10477056491809, 109, [
         ('Heartbeat Soothing Sloth', 'Sloth'),
         ('Calming Thunder Wrap', 'Thunder Wrap'),
         ('Paw Print Fleece Blanket', 'Blanket'),

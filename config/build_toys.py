@@ -59,7 +59,7 @@ SPEC = [
      '<li>Squeaks, which is the entire point as far as they are concerned</li>'
      '<li>Soft latex, kinder on teeth than hard plastic</li></ul>'),
 
-    ('CJST2178342', 'Wagvive Crinkle Plush Buddy', 22.00, 'Colour',
+    ('CJST2178342', 'Wagvive Crinkle Plush Buddy', 22.00, 'Color',
      {'Blue': 'Blue', 'Green': 'Green', 'Orange': 'Orange'},
      'toy, plush, squeaky',
      '<p><strong>Squeak on one end, crinkle on the other.</strong></p><p>Two '
@@ -80,7 +80,7 @@ SPEC = [
      '<li>Squeaker in the body</li>'
      '<li>Six animals to choose from</li></ul>'),
 
-    ('CJST2190132', 'Wagvive Big Squeak Plush', 26.00, 'Colour',
+    ('CJST2190132', 'Wagvive Big Squeak Plush', 26.00, 'Color',
      {'Blue': 'Blue', 'Orange': 'Orange'},
      'toy, plush, squeaky, rope',
      '<p><strong>Long-limbed and built for shaking.</strong></p><p>The dangling '
@@ -108,7 +108,7 @@ SPEC = [
      '<li>Long tail, easy to pick up and carry</li>'
      '<li>Soft plush, for play rather than heavy chewing</li></ul>'),
 
-    ('CJYD2626864', 'Wagvive Finger Toothbrush', 12.00, 'Colour',
+    ('CJYD2626864', 'Wagvive Finger Toothbrush', 12.00, 'Color',
      {'Blue': 'Blue-Boxed', 'Dark Blue': 'Dark Blue-Boxed',
       'Orange': 'Orange-Boxed', 'White': 'White-Boxed'},
      'dental, grooming, teeth',
@@ -120,7 +120,7 @@ SPEC = [
      '<li>Rinses clean, use it daily</li>'
      '<li>Boxed, so it stays clean between uses</li></ul>'),
 
-    ('CJYD2222742', 'Wagvive LED Waste Bag Dispenser', 14.00, 'Colour',
+    ('CJYD2222742', 'Wagvive LED Waste Bag Dispenser', 14.00, 'Color',
      {'Pink': 'Pink Gray-Including Garbage Bag',
       'Blue': 'Blue Gray-Including Garbage Bag',
       'Grey': 'Gray Gray-Including Garbage Bag',

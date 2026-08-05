@@ -62,7 +62,7 @@ PRODUCTS = [
         'type': 'Comfort & Health',
         'tags': 'dog, travel, hydration, outdoor',
         'collection': COLL_COMFORT,
-        'option': 'Colour',
+        'option': 'Color',
         'price': '30.00',
         'body': """<p><strong>Water for the walk, without carrying two things.</strong></p>
 <p>A 10oz stainless bottle where the silicone lid flips open into a drinking
@@ -87,7 +87,7 @@ nothing extra to pack</li>
         'type': 'Comfort & Health',
         'tags': 'dog, enrichment, calming, feeding',
         'collection': COLL_COMFORT,
-        'option': 'Colour',
+        'option': 'Color',
         'price': '32.00',
         'body': """<p><strong>Licking is how dogs calm themselves down. Give it a job.</strong></p>
 <p>Spread something tasty on the textured bowl, and the weighted ball in the
@@ -113,7 +113,7 @@ concentration during storms, guests, nail trims or just a rainy afternoon.</p>
         'type': 'Toys & Play',
         'tags': 'dog, toy, enrichment, training',
         'collection': None,   # toys-play is smart, tag-driven
-        'option': 'Colour',
+        'option': 'Color',
         'price': '16.99',
         'body': """<p><strong>Record a word. Watch them learn to press it.</strong></p>
 <p>Record any short phrase, set the button by the door or the water bowl, and
@@ -139,7 +139,7 @@ word like outside, and build from there.</p>
         'type': 'Toys & Play',
         'tags': 'dog, toy, fetch, squeaky',
         'collection': None,
-        'option': 'Colour',
+        'option': 'Color',
         'price': '16.99',
         'body': """<p><strong>It does not bounce straight, and that is the point.</strong></p>
 <p>A soft latex egg that squeaks on the bite and bounces off at angles no dog

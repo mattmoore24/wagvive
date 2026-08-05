@@ -14,7 +14,7 @@ Reviewed 2026-08-04. Changes from the previous version:
   * Added: shipping cost, cancellations, heavy chewers, washing. Shipping cost
     and cancellations were both answered on the Shipping & Returns page but
     missing here, which is where people look first.
-  * Kit swap answer clarified: colours ARE selectable, products are not
+  * Kit swap answer clarified: colors ARE selectable, products are not
     interchangeable. The old wording read as though nothing could be chosen.
 
 Everything here must stay consistent with the Shipping & Returns page:
@@ -117,8 +117,8 @@ within one business day, and it's a person, not a bot.</p>
 <p>Yes. Each kit is priced below the total of buying its four items separately.
 The saving is shown on the product page.</p>
 
-<h3>Can I choose the colours in a kit?</h3>
-<p>Yes. Each kit lets you pick the colour or character of every item in it,
+<h3>Can I choose the colors in a kit?</h3>
+<p>Yes. Each kit lets you pick the color or character of every item in it,
 using the dropdowns on the product page. What you can't do is swap one product
 for a different one. If you only want part of a kit, buying the individual
 items works out simplest.</p>"""
