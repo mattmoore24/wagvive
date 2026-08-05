@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-05, from the home PC session (repricing, compliance review, marketing plan)
+**Last updated:** 2026-08-05, from a claude.ai/code web session (marketing phase 0: email flows, welcome code, landing page audit)
 
 ---
 
@@ -78,6 +78,8 @@ verified live, and green. What a new session must know:
 | File | Use it for |
 |---|---|
 | `docs/marketing-plan-2026-08.md` | **The active plan.** Channel verdicts, phases, budgets, decision rules. |
+| `docs/marketing/email-flows-2026-08.md` | All five flows, paste-ready, plus the WELCOME10 record and the flow 2 build guide. |
+| `docs/marketing/landing-page-audit-2026-08.md` | Pre-spend audit of the Calm & Comfort Kit page, the phase 1 destination. |
 | `docs/pricing-and-kit-analysis-2026-08.md` | Why every price and kit is what it is. Method, market bands, demand model, full result tables, and what was tried and rejected. |
 | `docs/legal-compliance-review-2026-08.md` | What was fixed, what the owner must decide, what does not apply yet but will. |
 | `config/price_book.json` | Machine-readable source of truth for all 144 variant prices and per-product guard floors. |
@@ -123,6 +125,39 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **MARKETING PHASE 0 STARTED (2026-08-05, web session).** Three things.
+
+  1. **`WELCOME10` is LIVE.** 10% off the entire order, one use per customer, no
+     minimum, no expiry, `discountClass: ORDER`, ACTIVE with 0 uses,
+     `gid://shopify/DiscountCodeNode/1678979858721`. Verified with draft orders
+     (Calm & Comfort $109 to $98.10, free shipping held; 3 toys exactly 10%),
+     both deleted after. **The plan's "10 to 15%" needed correcting:** my first
+     pass said a blanket code sends singles negative, which came from
+     `cac_ceiling.py` excluding the $5.95 shipping the customer pays under $60.
+     Counted properly nothing goes negative at either rate. The real constraint
+     is that 15% drops Grooming Essentials to $59.50, under the free-shipping
+     threshold. Hence 10%.
+
+  2. **All five email flows are drafted:**
+     `docs/marketing/email-flows-2026-08.md`. Paste-ready copy plus a
+     step-by-step flow 2 build guide. **Claude cannot build the automations from
+     any device** and this is now confirmed rather than assumed: Shopify exposes
+     no Admin API for marketing automations, `marketingEvents` is read-only and
+     there is no create mutation. Owner has switched Settings › Checkout ›
+     Abandoned checkouts OFF, so the duplicate-send conflict is resolved and
+     flow 2 is clear to build.
+
+  3. **Pre-spend landing page audit:**
+     `docs/marketing/landing-page-audit-2026-08.md`. **It found that task #71
+     was never applied and had silently fallen out of this file.** The theme's
+     global "Care & use" accordion tells every buyer on all 42 product pages to
+     "rinse or wipe clean after use and let it dry fully", to introduce
+     "grooming tools" gradually, and refers to "older or anxious dogs". On the
+     Calm & Comfort Kit, which is where phase 1's $150 lands, all three are
+     wrong. Exact replacement text has been sitting in
+     `docs/qa/theme-copy-fixes.md` since 2026-08-04. The same four edits clear
+     four live en and em dashes and a hyphenated day range.
 
 - **MARKETING PLAN (2026-08-04).** `docs/marketing-plan-2026-08.md`. Built from
   live contribution figures rather than channel best practice, because at a
@@ -294,13 +329,20 @@ A failed run emails the owner — silence means healthy.
 > list has since reused #73 to #77 for different things. **Trust the
 > descriptions below, not any number you remember.**
 
-### Next up: marketing phase 0. Free, and it gates everything paid.
+### Do these first, both owner-only, both about 10 minutes
+
+| Task | What | Who |
+|---|---|---|
+| **#71** | **Apply the four theme copy fixes in `docs/qa/theme-copy-fixes.md`.** REINSTATED 2026-08-05: this was written 2026-08-04, never applied, and dropped out of this file in a rewrite. The "Care & use" block is wrong on all 42 product pages and the page phase 1 pays for is one of them. Verify with the section rendering API, not the cached page. | Owner, theme editor |
+| **#76a** | **Build flow 2, abandoned checkout**, from the step-by-step guide in `docs/marketing/email-flows-2026-08.md`. Highest-value flow, works with an empty list. The one trap: added steps do not inherit the template's checkout-completed condition, so emails 2 and 3 need it added by hand. | Owner, Marketing › Automations |
+
+### Then: the rest of marketing phase 0. Free, and it gates everything paid.
 
 | Task | What | Who |
 |---|---|---|
 | #75 | GA4 property, Meta pixel + Conversions API (data sharing = Maximum), Google Merchant Center with free listings on, Pinterest business account + tag | **Owner creates the accounts**, Claude configures and verifies |
 | #75a | Declare "these products have no GTIN" in the Google channel, then apply the 42 feed titles from `config/marketing/feed_health.py --titles` | Claude, once the channel exists |
-| #76 | Build the five email flows in Shopify (welcome x3, abandoned checkout x3, browse abandonment, post-purchase + day-21 review request, 60-day winback). Shopify native, NOT Klaviyo, which is unjustified under $500K | Claude drafts, owner approves |
+| #76 | **Copy is DONE** (`docs/marketing/email-flows-2026-08.md`). Remaining: build flows 1, 3, 4 and 5 in Marketing › Automations. Flow 4.2 stays unpublished until a reviews app exists. Shopify native, NOT Klaviyo. | Owner builds, copy is ready |
 | #77 | `marketing/ads_report.py`, `marketing/ad_guardrail.py`, `marketing/weekly_brief.py`. Build once ad accounts exist; wire into `scheduled-ops.yml` | Claude |
 
 **Gate before any spend:** a real test purchase must appear in GA4, Meta and
