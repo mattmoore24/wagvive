@@ -36,7 +36,7 @@ connector used by web sessions blocks writes to the live theme by policy.
     python config/fix_product_care_copy.py            # show the diff
     python config/fix_product_care_copy.py --apply    # write + verify live
 """
-import json, os, sys, time, urllib.parse, urllib.request
+import json, os, re, sys, time, urllib.parse, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 THEME = 187585560865
@@ -193,33 +193,48 @@ def main():
         return 1
     print('admin asset verified: all four blocks correct')
 
-    # Then the rendered page. Use the SECTION RENDERING API, not the cached
-    # page: the cached HTML served pre-change renders for over seven minutes
-    # after a footer write, alternating between two old versions across edge
-    # nodes, and ?nocache= does not help because it is not part of the cache key.
-    url = (f'https://{DOMAIN.replace(".myshopify.com", "")}.myshopify.com'
-           f'/products/{PROBE_HANDLE}?sections=main')
+    # Then the rendered page, fetched IN FULL.
+    #
+    # Do NOT use the section rendering API here. It is the right tool for the
+    # footer and homepage sections, but a product template's main section
+    # returns `null` from `?sections=main` because Shopify will not render it
+    # standalone without product context. An earlier version of this script
+    # probed that endpoint, got null, and reported "still stale" on a write
+    # that had in fact gone live instantly. A verifier that cries wolf is worse
+    # than no verifier, because the next real failure gets ignored.
+    #
+    # Product pages also do not show the footer's cache behaviour: this change
+    # was visible on the full page on the first fetch.
+    url = (f'https://wagvive.com/products/{PROBE_HANDLE}'
+           f'?nocache={int(time.time())}')
     for attempt in range(6):
         try:
             req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
             rendered = urllib.request.urlopen(req, timeout=90).read().decode(
                 'utf-8', 'replace')
         except Exception as exc:
-            print(f'  section fetch failed: {str(exc)[:60]}')
+            print(f'  page fetch failed: {str(exc)[:60]}')
             time.sleep(10)
             continue
         gone = 'Rinse or wipe clean' not in rendered
         there = 'Care depends on the product' in rendered
-        clean = not any(b in rendered for b in ('—', '–'))
+        # Dashes only count in VISIBLE copy. The theme's own <style> blocks
+        # carry em dashes in Shopify's CSS comments on every page, so scanning
+        # raw HTML fails permanently and means nothing.
+        visible = re.sub(r'<(script|style)[^>]*>.*?</\1>', '', rendered,
+                         flags=re.S | re.I)
+        visible = re.sub(r'<[^>]+>', ' ', visible)
+        clean = not any(b in visible for b in ('—', '–'))
         if gone and there and clean:
-            print('section render verified: new care text live, old text gone, '
-                  'no dashes')
+            print(f'live page verified (/products/{PROBE_HANDLE}): new care '
+                  f'text present, old text gone, no dashes')
             return 0
-        print(f'  attempt {attempt + 1}: stale (new={there}, old_gone={gone}, '
+        print(f'  attempt {attempt + 1}: not yet (new={there}, old_gone={gone}, '
               f'no_dashes={clean}), waiting')
         time.sleep(15)
-    print('section render still stale after retries; the ADMIN asset IS correct')
-    return 0
+    print('live page did not confirm; the ADMIN asset IS correct, so this is '
+          'either CDN lag or a changed probe string. Check by hand.')
+    return 1
 
 
 if __name__ == '__main__':
