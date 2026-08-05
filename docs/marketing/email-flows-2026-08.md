@@ -23,7 +23,7 @@ about $500K of revenue and would be a monthly cost against a $300 total budget.
 
 ### The welcome code is LIVE
 
-**`WELCOME10`, 10% off the entire order, one use per customer, no minimum, no
+**`WELCOME10`, 10% off the entire order, minimum $45, one use per customer, no
 expiry.** Created and verified on the live store.
 
 | Field | Value |
@@ -33,26 +33,55 @@ expiry.** Created and verified on the live store.
 | Discount class | `ORDER` (10% off the whole order, not per product) |
 | Applies to | Everything. No collection or product restriction. |
 | Limit | One use per customer. No cap on total redemptions. |
-| Minimum spend | None |
+| Minimum spend | **$45.00** |
 | Starts / ends | 2026-08-05 / never |
 | Combines with | Order, product and shipping discounts all `true` |
 | Status | ACTIVE, 0 uses |
+| Live summary | `10% off entire order • Minimum purchase of $45.00 • One use per customer` |
 | ID | `gid://shopify/DiscountCodeNode/1678979858721` |
 
-**Verified end to end**, not just from the create response. A draft order for the
-Calm & Comfort Kit came back at **$109.00 to $98.10, $10.90 off, shipping
-$0.00**, so the discount applies and the kit stays over the $60 free-shipping
-line as predicted. A three-toy basket came back at $34.97 to $31.48, exactly 10%.
-Both test orders were deleted afterwards; the store has zero draft orders and the
-code shows zero uses.
+**Verified end to end with four draft orders**, not from the create response.
+All four were deleted afterwards; the store has zero draft orders and the code
+shows zero uses.
 
-**Why 10% unrestricted and not 15%, or kits-only.** Full reasoning is in the
-git history of this file. Short version: my first analysis said a blanket code
-sends singles negative, which came from `cac_ceiling.py` excluding the $5.95 the
-customer pays for shipping under $60. Counted properly, nothing goes negative at
-either rate. The real constraint is that **15% drops the Grooming Essentials Kit
-to $59.50, under the free-shipping threshold**, where the customer loses free
-shipping at the payment step. 10% keeps it at $63.00.
+| Test | Result | Meaning |
+|---|---|---|
+| Calm & Comfort Kit, $109 | $98.10, $10.90 off, shipping $0.00 | Applies, and the kit stays over the $60 free-shipping line |
+| Three toys, $34.97 | $31.48, exactly 10% | Applied before the minimum was added |
+| **Dog Enrichment Kit, $46** | **$41.40, $4.60 off** | The cheapest kit still qualifies. This was the boundary case. |
+| **Calming Thunder Wrap, $31.99** | **$31.99, $0.00 off** | A single below $45 gets nothing, which is the point |
+
+**Why 10%, and why a $45 minimum rather than a kits-only restriction.**
+
+The rate is 10% because **15% drops the Grooming Essentials Kit to $59.50, under
+the $60 free-shipping threshold**, where the customer loses free shipping at the
+payment step. 10% keeps it at $63.00. An earlier argument of mine, that a
+blanket code sends singles negative, was wrong: it came from `cac_ceiling.py`
+excluding the $5.95 the customer pays for shipping under $60, and counted
+properly nothing goes negative at either rate.
+
+The **$45 minimum** does the job a kits-only restriction was meant to do, without
+the cost of one:
+
+- **All six kits qualify.** The cheapest, Dog Enrichment, is $46.
+- **No single qualifies.** The most expensive single is $33.99, so a one-item
+  order never carries the discount.
+- **No kit crosses the $60 line** when discounted. Checked all six.
+- The customer sees "spend $45", which is **actionable**, rather than "not valid
+  for these items", which is a dead end at the worst moment.
+
+What it costs, if every first order uses it: about **$6.68 per order, 20% of
+average kit contribution**. For comparison, paid acquisition at the plan's own
+phase 1 assumptions ($0.35 CPC, 0.8% conversion) is **$43.75 per order**, and is
+paid whether or not anyone buys. The discount is roughly six times cheaper and
+only costs anything when an order happens.
+
+**The risk to watch is incrementality, not margin.** The code also reaches people
+who would have bought anyway, and that is unmeasurable at one order and no
+analytics. Trigger for review: **if coded orders exceed about 75% of all orders**,
+it has stopped being an acquisition tool and become a permanent 10% price cut, at
+which point the honest move is to lower prices officially or retire it. This
+belongs in `marketing/weekly_brief.py` when that gets built.
 
 **One thing the draft-order test could not prove.** Draft orders do not evaluate
 automatic discounts, so the three-toy basket showed only WELCOME10's 10%, not the
@@ -103,11 +132,13 @@ specificity of the kit contents.
 
 **Subject:** Your 10% is inside
 **Alt subject to test:** Welcome to Wagvive. Here is your 10%
-**Preview:** Good on anything, and it does not expire quietly.
+**Preview:** Every kit qualifies, and it does not expire quietly.
 
 > Thanks for joining.
 >
-> Here is 10% off your first order. Use **WELCOME10** at checkout.
+> Here is 10% off your first order over $45. Use **WELCOME10** at checkout.
+>
+> Every kit qualifies.
 >
 > A quick word on how we put things together. Most dog gear is sold one piece at
 > a time, which means you find out at home that the brush is wrong for the coat,
@@ -146,7 +177,7 @@ specificity of the kit contents.
 > something to sleep on, something to cuddle, the waste bag dispenser you will
 > use twice a day, and a finger toothbrush to start the habit early.
 >
-> Your 10% is still good. **WELCOME10**
+> Your 10% is still good on any kit. **WELCOME10**
 >
 > [See what is in each kit]
 
@@ -243,7 +274,7 @@ coming back anyway.
 
 > This is the last one about this basket, promise.
 >
-> If price was the sticking point, **WELCOME10** takes 10% off any kit.
+> If price was the sticking point, **WELCOME10** takes 10% off orders over $45.
 >
 > [Finish checking out]
 >
@@ -370,67 +401,91 @@ a shop that does not know what it sold them.
 
 ---
 
-## Flow 2 build guide, step by step
+## Building all five: the complete guide
 
-This is the one to build first. It recovers money that is already most of the
-way to the till, and it is the only flow that works with an empty email list,
-because it triggers on a checkout rather than on a subscriber.
+**Claude cannot do this part.** Shopify has no Admin API for marketing
+automations. `marketingEvents` is a read-only reporting query; there is no
+create mutation, and the setup screens do not render in a background tab. This
+is the same category as Settings › Notifications, which is why the 18
+notification templates were also installed by hand.
 
-**Prerequisite, already done:** Settings › Checkout › Abandoned checkouts is off.
+Everything that could be removed from the job has been: copy is written, delays
+are decided, traps are marked, and the discount it depends on is live and tested.
 
-1. Shopify admin › **Marketing** › **Automations** › **Create automation**.
-2. Choose the **Abandoned checkout** template. It arrives as trigger, wait,
-   condition, email.
-3. Set the first **Wait** to **1 hour**. Open the email, paste subject, preview
-   text and body from flow 2.1 above. Set the button to **Return to checkout**,
-   which the template already wires to the recovery URL. Do not hand-write that
-   link, it is per checkout.
-4. **Add step** › **Wait** › **23 hours** (so 24 hours from abandonment). Then
-   **Add step** › **Send email**, and paste flow 2.2.
-5. **Add step** › **Wait** › **48 hours** (so 72 hours total). Then **Send
-   email**, and paste flow 2.3.
-6. Before each of emails 2 and 3, add a **Condition**: *Checkout completed, is
-   false*. The template includes this on the first email; the added steps do not
-   inherit it. **Miss this and you email people who already bought**, which is
-   worse than not sending at all.
-7. **Send yourself a test** on each of the three.
-8. Turn the automation on.
+**Total time: about 45 minutes for all five.** Build order is by value, so if you
+stop after one you have stopped in the right place.
 
-**Timing summary:** 1 hour, 24 hours, 72 hours from abandonment, each gated on
-the checkout still being incomplete.
+### Prerequisites, both already true
 
----
+- `WELCOME10` is live with a $45 minimum. Flows 1 and 2 reference it.
+- Settings › Checkout › Abandoned checkouts is **off**, so flow 2 will not
+  duplicate.
 
-## How to build these
+### The one trap that applies to every flow
 
-All five live in **Shopify admin › Marketing › Automations**. Shopify ships a
-template for each one, so none of this is built from scratch.
+Shopify's templates put an exit condition on the **first** email only. Steps you
+add do **not** inherit it. On every added email, add a **Condition** before it:
 
-| Flow | Shopify template to start from | Timing to set |
-|---|---|---|
-| 1. Welcome | Welcome new subscriber | 0h, then 2 days, then 5 days |
-| 2. Abandoned checkout | Abandoned checkout | 1h, 24h, 72h |
-| 3. Browse abandonment | Abandoned product browse | 4h |
-| 4. Post-purchase | Post-purchase upsell, repurposed | 1 day after fulfillment, then day 21 |
-| 5. Winback | Win back customers | 60 days |
+| Flow | Condition to add before emails 2 and 3 |
+|---|---|
+| 1. Welcome | *Customer has not placed an order* |
+| 2. Abandoned checkout | *Checkout completed, is false* |
+| 4. Post-purchase | none needed, it is triggered by a real order |
 
-Order to build them in, by value: **2, 1, 4, 3, 5.** Abandoned checkout recovers
-money that is already most of the way to the till; everything else creates
-demand from scratch.
+Miss it and you email people who already bought, which is worse than not sending.
 
-Per flow: Create automation → pick the template → set the delays → open each
-email → paste the subject, preview text and body → set the button link with its
-UTM → **send yourself a test** → turn it on.
+### Flow 2, abandoned checkout. Build this first
 
-The editor is section based, not raw HTML, so the copy above goes in as text
-blocks and the buttons as button blocks. It will inherit the store's email
-branding, which is already the cream and ink palette.
+Recovers money already most of the way to the till, and it is the only flow that
+works with an empty list because it triggers on a checkout, not a subscriber.
 
-**Two things I cannot do from any device**, because there is no Admin API for
-marketing automations: create the automations, and turn off the old abandoned
-checkout notification. Both are UI, and admin settings screens do not render in
-a background tab, so they need you in a foreground window.
+1. Marketing › Automations › **Create automation** › **Abandoned checkout**.
+2. First **Wait**: **1 hour**. Open the email, paste 2.1. Button: **Return to
+   checkout**, which the template already wires to the per-checkout recovery URL.
+   Never hand-write that link.
+3. **Add step** › Wait › **23 hours**. Add Condition *Checkout completed is
+   false*. Add step › Send email, paste 2.2.
+4. **Add step** › Wait › **48 hours**. Add the same Condition. Send email, paste
+   2.3.
+5. Send yourself a test on each. Turn it on.
 
-**What I can do once you say go:** create the WELCOME10 discount code with the
-Bundles & Kits restriction and the one-per-customer limit, and verify it applies
-correctly to each of the six kits and to nothing else.
+### Flow 1, welcome. Build this second
+
+1. Create automation › **Welcome new subscriber**. Trigger is the footer signup,
+   which is already live.
+2. Email 1 immediately, paste 1.1.
+3. Wait **2 days**, Condition *has not placed an order*, email 1.2.
+4. Wait **3 days** (5 from signup), same Condition, email 1.3.
+5. Test, turn on.
+
+### Flow 4, post-purchase. Build this third
+
+1. Create automation › **Order fulfilled** as the trigger.
+2. Wait **1 day**, paste 4.1.
+3. Wait **20 days** (day 21), paste 4.2. **Leave this second email unpublished
+   until a reviews app exists**, because its button has nowhere to point.
+4. Test, turn on.
+
+### Flow 3, browse abandonment. Fourth
+
+1. Create automation › **Abandoned product browse**.
+2. Wait **4 hours**, paste flow 3. One email only.
+3. Test, turn on.
+
+### Flow 5, winback. Last
+
+1. Create automation › **Win back customers** (or a **Customer has not ordered
+   in X days** trigger).
+2. Set to **60 days** since last order.
+3. Paste flow 5. Populate the product blocks from the pairing table, which is
+   checked against live kit composition so nothing suggests an item the customer
+   already owns.
+4. Test, turn on.
+
+### When all five are on
+
+Send yourself one real test purchase end to end. That is the phase 0 gate
+anyway, and it is the only way to confirm two things this session could not:
+that `WELCOME10` stacks with the *"Any 3 toys, 15% off"* automatic discount as
+the `combinesWith` flags say it should, and that the abandoned checkout sequence
+fires exactly once per abandonment.

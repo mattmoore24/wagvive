@@ -128,16 +128,25 @@ A failed run emails the owner — silence means healthy.
 
 - **MARKETING PHASE 0 STARTED (2026-08-05, web session).** Three things.
 
-  1. **`WELCOME10` is LIVE.** 10% off the entire order, one use per customer, no
-     minimum, no expiry, `discountClass: ORDER`, ACTIVE with 0 uses,
-     `gid://shopify/DiscountCodeNode/1678979858721`. Verified with draft orders
-     (Calm & Comfort $109 to $98.10, free shipping held; 3 toys exactly 10%),
-     both deleted after. **The plan's "10 to 15%" needed correcting:** my first
-     pass said a blanket code sends singles negative, which came from
-     `cac_ceiling.py` excluding the $5.95 shipping the customer pays under $60.
-     Counted properly nothing goes negative at either rate. The real constraint
-     is that 15% drops Grooming Essentials to $59.50, under the free-shipping
-     threshold. Hence 10%.
+  1. **`WELCOME10` is LIVE.** 10% off the entire order, **minimum $45**, one use
+     per customer, no expiry, `discountClass: ORDER`, ACTIVE with 0 uses,
+     `gid://shopify/DiscountCodeNode/1678979858721`. Live summary reads
+     `10% off entire order • Minimum purchase of $45.00 • One use per customer`.
+     Verified with four draft orders, all deleted after: Calm & Comfort $109 to
+     $98.10 with free shipping held, Dog Enrichment $46 to $41.40 (the cheapest
+     kit, the boundary case), and a $31.99 single correctly getting **nothing**.
+     **The plan's "10 to 15%" needed correcting twice.** First, my claim that a
+     blanket code sends singles negative was wrong: it came from
+     `cac_ceiling.py` excluding the $5.95 shipping the customer pays under $60,
+     and counted properly nothing goes negative at either rate. Second, the rate
+     is 10% not 15% because 15% drops Grooming Essentials to $59.50, under the
+     free-shipping threshold. The **$45 minimum** then does what a kits-only
+     restriction was meant to do without the "code not valid" experience: all
+     six kits qualify (cheapest $46), no single does (most expensive $33.99).
+     Cost if every first order uses it is $6.68, about 20% of average kit
+     contribution, against $43.75 per order for paid acquisition at the plan's
+     own phase 1 assumptions. **Watch incrementality, not margin:** if coded
+     orders exceed ~75% of all orders it has become a permanent price cut.
 
   2. **All five email flows are drafted:**
      `docs/marketing/email-flows-2026-08.md`. Paste-ready copy plus a
@@ -334,7 +343,7 @@ A failed run emails the owner — silence means healthy.
 | Task | What | Who |
 |---|---|---|
 | **#71** | **Apply the four theme copy fixes in `docs/qa/theme-copy-fixes.md`.** REINSTATED 2026-08-05: this was written 2026-08-04, never applied, and dropped out of this file in a rewrite. The "Care & use" block is wrong on all 42 product pages and the page phase 1 pays for is one of them. Verify with the section rendering API, not the cached page. | Owner, theme editor |
-| **#76a** | **Build flow 2, abandoned checkout**, from the step-by-step guide in `docs/marketing/email-flows-2026-08.md`. Highest-value flow, works with an empty list. The one trap: added steps do not inherit the template's checkout-completed condition, so emails 2 and 3 need it added by hand. | Owner, Marketing › Automations |
+| **#76a** | **Build all five automations**, complete guide in `docs/marketing/email-flows-2026-08.md` section "Building all five". About 45 minutes, ordered by value so stopping early stops in the right place. Copy is written, delays decided, `WELCOME10` live and tested. The one trap, on every flow: Shopify's templates put the exit condition on the FIRST email only, so added steps need it re-added by hand or you email people who already bought. Flow 4.2 stays unpublished until a reviews app exists. | Owner, Marketing › Automations |
 
 ### Then: the rest of marketing phase 0. Free, and it gates everything paid.
 
