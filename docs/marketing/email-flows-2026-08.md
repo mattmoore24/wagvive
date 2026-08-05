@@ -131,15 +131,18 @@ specificity of the kit contents.
 > good in a photo. The 47 piece grooming set. The toy bundle padded out with
 > things no dog has ever chosen.
 >
-> We went the other way. Every kit is three to five items, and each one has to
+> We went the other way. Every kit is four or five items, and each one has to
 > earn its place by being the thing you actually reach for.
 >
-> The Grooming Essentials Kit is the slicker brush, the dematting comb, the
-> quiet nail grinder and the finger toothbrush. That is the whole weekly routine
-> and nothing else.
+> The Grooming Essentials Kit is the self-cleaning slicker brush, the quiet nail
+> grinder, the finger toothbrush, the paw washing cup and the quick-dry bath
+> robe. Wash, dry, brush, nails, teeth. That is the whole routine and nothing
+> else.
 >
-> The New Puppy Kit is the four things the first month genuinely needs, not the
-> twelve a checklist tells you to buy.
+> The New Puppy Kit is five things the first month genuinely needs, not the
+> twelve a checklist tells you to buy: something to chew that is not your shoes,
+> something to sleep on, something to cuddle, the waste bag dispenser you will
+> use twice a day, and a finger toothbrush to start the habit early.
 >
 > Your 10% is still good. **WELCOME10**
 >
@@ -158,13 +161,16 @@ specificity of the kit contents.
 >
 > **The Calm & Comfort Kit, $109**
 >
-> - A heartbeat plush that mimics a resting dog, for crates and first nights
+> - A heartbeat plush sloth that mimics a resting dog, for crates and first
+>   nights
 > - A compression wrap, the same principle as a weighted blanket
 > - A cooling mat, because panting dogs overheat before they settle
-> - A fleece blanket that carries your scent from the sofa to the crate
+> - A paw print fleece blanket that carries your scent from the sofa to the crate
+> - A big squeak plush, for the part of the evening where the answer is
+>   distraction rather than calm
 >
 > Storms, fireworks, car trips, the first week alone in a new house. It is the
-> same problem each time and it responds to the same four things.
+> same problem each time and it responds to the same five things.
 >
 > With **WELCOME10** that is $98.10, and shipping is free.
 >
@@ -346,14 +352,19 @@ bought, the click costs nothing and the single is pure basket.
 
 **Pairing table for whoever builds it:**
 
-| They bought | Suggest |
-|---|---|
-| Grooming Essentials Kit | Dental and ear wipes, paw washing cup, quick-dry bath robe |
-| New Puppy Kit | Talk button, snuggle blanket, dental duck chew |
-| Toy Kit | Barnyard squeaker, jingle plush ball, watermelon rope frisbee |
-| Travel Kit | Paw washing cup, waste bag dispenser, travel water bottle |
-| Calm & Comfort Kit | Fleece blanket, cooling pad in a second size, heartbeat sloth |
-| Dog Enrichment Kit | Lick bowl, slow feeder, bouncy egg squeaker |
+**Every suggestion below is checked against the live kit composition. None of
+them is already inside the kit the customer bought.** That check is the whole
+point of the table: suggesting someone re-buy a thing they already own reads as
+a shop that does not know what it sold them.
+
+| They bought | Suggest | Why |
+|---|---|---|
+| Grooming Essentials Kit | Dematting comb $13.99, dental and ear wipes $13.99, pet hair remover mitt $10.99 | The three grooming jobs the kit does not cover: mats, mouth, and the fur on your sofa |
+| New Puppy Kit | Talk button $16.99, dental duck chew $10.99, slow feeder bowl $13.99 | A puppy that is past the first month is ready to communicate, chew harder and eat slower |
+| Toy Kit | Screaming chicken $12.99, squirrel squeaky plush $15.99, woodland rope-limb plush $12.99 | Rotation. Five toys is about six weeks before boredom |
+| Travel Kit | LED waste bag dispenser $10.99, dematting comb $13.99, waterproof sofa cover $31.99 | What the car and the trail create: mess, mats, and a back seat that needs protecting |
+| Calm & Comfort Kit | Waterproof snuggle blanket $23.99, heartbeat plush for a second room, talk button $16.99 | Anxiety work is per room, not per house |
+| Dog Enrichment Kit | Crinkle plush buddy $11.99, jingle plush ball $12.99, watermelon rope frisbee $10.99 | The kit is all food puzzles. This adds the play half |
 
 ---
 
