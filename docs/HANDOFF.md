@@ -73,18 +73,27 @@ verified live, and green. What a new session must know:
 
 ### All research, and what each file is for
 
+**Current, authoritative:**
+
 | File | Use it for |
 |---|---|
-| `docs/pc-implementation-plan-2026-08.md` | **The runbook.** What to do, in order. |
-| `docs/shipping-and-sourcing-study-2026-08.md` | How CJ charges freight, kit designs with live quotes, replacement products, supplier assessment. Newest and most authoritative. |
-| `docs/pricing-study-2026-08.md` | Observed market prices for every product, and the pricing science. Revised 2026-08-04 with **REVISED** callouts where the shipping study corrected it. |
-| `docs/qa/delivered-price.json` | Per product: measured freight, delivered-price floors, margin at market, and the marginal cost of adding it to a parcel already shipping. **Check here before calling anything unsellable.** |
-| `docs/qa/kit-designs.json` | Every on-theme kit combination scored, with live CJ quotes for the leaders and all five current kits. |
-| `docs/qa/freight-research.json` | Raw study: carrier menus, quantity ladders, multi-item baskets, US-warehouse scan, replacement candidates. |
-| `docs/qa/pricing-recommendations.json` | Recommended price per product. Two rows are wrong; see plan step 3. |
-| `docs/qa/variant-audit-2026-08.md` | The 41 missing size SKUs with CJ costs. |
-| `docs/qa/theme-copy-fixes.md` | Four exact find-and-replace edits for the theme. |
+| `docs/marketing-plan-2026-08.md` | **The active plan.** Channel verdicts, phases, budgets, decision rules. |
+| `docs/pricing-and-kit-analysis-2026-08.md` | Why every price and kit is what it is. Method, market bands, demand model, full result tables, and what was tried and rejected. |
+| `docs/legal-compliance-review-2026-08.md` | What was fixed, what the owner must decide, what does not apply yet but will. |
+| `config/price_book.json` | Machine-readable source of truth for all 144 variant prices and per-product guard floors. |
+| `docs/qa/recost-2026-08-04.json` | Cost, weight, freight and carrier snapshot behind the repricing. |
+| `docs/qa/cj-connection-audit-*.json` | Latest CJ connection audit result. |
 | `docs/knowledge/` | Durable how-it-works notes, e.g. the CJ inventory sync model. |
+
+**Superseded, keep for reference only:**
+
+| File | Status |
+|---|---|
+| `docs/pc-implementation-plan-2026-08.md` | **VOIDED.** Steps 1/2/6 were costed against CJ multipack variants we do not sell. Do not work from it. |
+| `docs/pricing-study-2026-08.md` | Superseded by `pricing-and-kit-analysis-2026-08.md`. Its market figures often captured the premium brand rather than the volume seller. |
+| `docs/qa/pricing-recommendations.json` | Superseded by `config/price_book.json`. |
+| `docs/qa/delivered-price.json`, `docs/qa/kit-designs.json` | Superseded by the 2026-08-04 re-cost and the live kit re-quotes. |
+| `docs/shipping-and-sourcing-study-2026-08.md` | Freight physics and the supplier verdict still hold. Its per-product figures do not. |
 
 Tooling built for this work, all read-only against CJ and runnable from the PC:
 
