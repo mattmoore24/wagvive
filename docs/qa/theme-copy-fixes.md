@@ -1,13 +1,23 @@
 # Theme copy fixes, product page (owner action)
 
-Found 2026-08-04 while checking the wipes product. All four items live in
+Found 2026-08-04 while checking the wipes product. **Still live as of 2026-08-05**, confirmed during the pre-spend landing page audit: the task was written, never applied, and had dropped out of the handoff. All four items live in
 `templates/product.json` in the Horizon theme, and every one of them appears on
 **every product page**, not just the wipes.
 
-**Claude cannot apply these.** Writes to the live theme are refused by policy:
-"This mutation targets the live (published) theme." The options are to edit in
-the theme editor (fastest, these are all text blocks) or to duplicate the theme,
-edit the draft and publish. I scanned every other theme file that carries
+**These are now scripted. Run `python config/fix_product_care_copy.py --apply`
+from the home PC.** Dry run first without the flag to see the diff.
+
+The script refuses to write if any em or en dash survives, **including the HTML
+entities** `&ndash;` and `&mdash;`, which is how they were actually stored and
+why an eyeball check of the rendered page missed them for a day. It verifies the
+admin asset first, then re-renders the Calm & Comfort Kit page through the
+**section rendering API**, not the cached page, because the cached HTML served
+pre-change renders for over seven minutes after the footer write.
+
+Doing it by hand in the theme editor also works and takes about five minutes.
+A web session cannot: the Shopify MCP connector blocks writes to the live theme
+by policy, though the repo's own scripts with `config/shopify.env` write themes
+fine, which is how `fix_home_faq.py` and `build_footer.py` ran. I scanned every other theme file that carries
 Wagvive copy (`index.json`, `page.json`, `collection.json`, `settings_data.json`,
 `kit-callout`, `toy-deal`, `kit-contents`) and they are all clean, so this file
 is the only one that needs touching.

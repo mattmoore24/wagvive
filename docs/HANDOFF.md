@@ -338,12 +338,99 @@ A failed run emails the owner — silence means healthy.
 > list has since reused #73 to #77 for different things. **Trust the
 > descriptions below, not any number you remember.**
 
+## NEXT PC SESSION: the complete plan, about 60 minutes
+
+Everything below needs either `config/shopify.env` (PC only) or the Shopify
+admin UI (no API exists). Work top to bottom. Copy, delays and decisions are all
+settled; none of this needs thinking about, only doing.
+
+### Step 1. Theme copy, task #71. Two minutes.
+
+```
+python config/fix_product_care_copy.py            # read the diff
+python config/fix_product_care_copy.py --apply    # write and verify
+```
+
+Fixes four text blocks that render on **all 42 product pages**, including the
+one phase 1 buys traffic for. The worst is the "Care & use" accordion telling
+every buyer to "rinse or wipe clean after use and let it dry fully" and
+referring to "grooming tools" and "older or anxious dogs" on, for example, a kit
+made of a heartbeat plush, a compression wrap, a fleece blanket and a cooling
+pad.
+
+The script refuses to write if any dash survives, entities included, verifies
+the admin asset, then re-renders through the section rendering API rather than
+the cached page. If it reports "still stale after retries", the admin asset is
+already correct and the CDN will catch up.
+
+### Step 2. Build the five email automations. About 45 minutes.
+
+**Shopify admin › Marketing › Automations.** There is no API for these, so this
+is hands-on-keyboard work on every device. Full copy and the click path per flow
+are in `docs/marketing/email-flows-2026-08.md`, section "Building all five".
+
+Build in this order, which is by value, so stopping early stops in the right
+place:
+
+| # | Flow | Template to start from | Delays | Time |
+|---|---|---|---|---|
+| 1 | **Abandoned checkout** | Abandoned checkout | 1h, 24h, 72h | 15 min |
+| 2 | **Welcome** | Welcome new subscriber | 0, 2 days, 5 days | 12 min |
+| 3 | **Post-purchase** | Order fulfilled trigger | 1 day, 21 days | 8 min |
+| 4 | **Browse abandonment** | Abandoned product browse | 4h | 5 min |
+| 5 | **Winback** | Win back customers | 60 days | 5 min |
+
+**The trap, and it applies to every multi-email flow.** Shopify puts the exit
+condition on the FIRST email only. Steps you add do not inherit it. On every
+added email add a Condition first:
+
+- Abandoned checkout: *Checkout completed, is false*
+- Welcome: *Customer has not placed an order*
+
+Miss it and you email people who already bought.
+
+**Two things to leave alone:**
+
+- Flow 4's second email (the day-21 review request) stays **unpublished** until a
+  reviews app exists. Its button has nowhere to point. Judge.me free tier is the
+  plan's choice.
+- Settings › Checkout › Abandoned checkouts is already **off**. Leave it off, or
+  the first recovery email sends twice.
+
+Send yourself a test on every email before switching each flow on.
+
+### Step 3. The gate test purchase. Ten minutes.
+
+Buy something real, end to end. This is the phase 0 gate in the marketing plan
+and it is the only way to confirm three things nothing else can:
+
+1. `WELCOME10` applies at a real checkout and respects the $45 minimum.
+2. Whether it stacks with the *"Any 3 toys, 15% off"* automatic discount. The
+   `combinesWith` flags say it should, giving about 23.5%. Draft orders do not
+   evaluate automatic discounts so this could not be tested any other way. Worst
+   case across all 455 possible three-toy baskets is $13.07 of contribution, so
+   it is safe either way; this is confirmation, not a risk check.
+3. The abandoned checkout sequence fires exactly once, not twice.
+
+If GA4, the Meta pixel and the Pinterest tag are installed by then, this same
+purchase is the tracking verification too, and phase 1 unlocks.
+
+### Step 4. Whenever you have the accounts
+
+Google (GA4 + Merchant Center), Meta (pixel + CAPI, data sharing Maximum),
+Pinterest (tag + catalogue). Send back the measurement ID, pixel ID and tag ID
+and Claude configures and verifies each. Google first: free listings are the only
+zero-CPC channel and the 42 feed titles are already written in
+`config/marketing/feed_health.py --titles`.
+
+---
+
 ### Do these first, both owner-only, both about 10 minutes
 
 | Task | What | Who |
 |---|---|---|
-| **#71** | **Apply the four theme copy fixes in `docs/qa/theme-copy-fixes.md`.** REINSTATED 2026-08-05: this was written 2026-08-04, never applied, and dropped out of this file in a rewrite. The "Care & use" block is wrong on all 42 product pages and the page phase 1 pays for is one of them. Verify with the section rendering API, not the cached page. | Owner, theme editor |
-| **#76a** | **Build all five automations**, complete guide in `docs/marketing/email-flows-2026-08.md` section "Building all five". About 45 minutes, ordered by value so stopping early stops in the right place. Copy is written, delays decided, `WELCOME10` live and tested. The one trap, on every flow: Shopify's templates put the exit condition on the FIRST email only, so added steps need it re-added by hand or you email people who already bought. Flow 4.2 stays unpublished until a reviews app exists. | Owner, Marketing › Automations |
+| **#71** | **Now scripted:** `python config/fix_product_care_copy.py --apply` from the PC. See NEXT PC SESSION step 1. REINSTATED 2026-08-05: written 2026-08-04, never applied, and dropped out of this file in a rewrite. The "Care & use" block is wrong on all 42 product pages and the page phase 1 pays for is one of them. | Owner runs the script |
+| **#76a** | **Build all five automations.** See NEXT PC SESSION step 2 for the ordered plan and `docs/marketing/email-flows-2026-08.md` for the copy. About 45 minutes. No API exists for marketing automations on any device. | Owner, Marketing › Automations |
 
 ### Then: the rest of marketing phase 0. Free, and it gates everything paid.
 
@@ -424,8 +511,10 @@ immediately:
 Paste this on whichever device you pick up. It points at documents rather than
 restating them, so there is only ever one source of truth.
 
-> Read `docs/HANDOFF.md` first, then `git pull`, then read
-> `docs/marketing-plan-2026-08.md` in full. That plan is the active project.
+> Read `docs/HANDOFF.md` first, then `git pull`. If you are on the home PC,
+> the section "NEXT PC SESSION" is the work: four ordered steps, about an hour,
+> all of it blocked on this device only. Then read
+> `docs/marketing-plan-2026-08.md` for the wider context.
 >
 > Context: the catalogue was fully repriced on 2026-08-04 from a demand model,
 > all six kits were rebuilt around freight physics, a legal compliance review
