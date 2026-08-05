@@ -1,16 +1,21 @@
 ---
 name: wagvive-cost-model
-description: "What the 50% margin floor actually includes, and the three ways CJ freight data lies about it"
+description: "Per-product price-book floors (flat 50% retired 2026-08-04), what the cost model includes, and the three ways CJ freight data lies"
 metadata: 
   node_type: memory
   type: project
   originSessionId: 07b37851-ac47-448b-b4a5-0b479e8e1101
-  modified: 2026-08-01T21:12:24.722Z
+  modified: 2026-08-05T00:23:46.468Z
 ---
 
-The floor is **50% gross margin on every variant and every kit**, enforced by
-`config/margin_guard.py` (variants) and `config/kit_margins.py` (bundles). Cost model
-lives in `config/pricing.py`:
+**The flat 50% floor was retired 2026-08-04 (owner decision).** Prices come from a
+per-product demand model (see [[wagvive-pricing-architecture]]); each product's floor
+lives in `config/price_book.json` as `floor_margin_pct` and is enforced by
+`config/margin_guard.py` (variants; per-product floors) and `config/kit_margins.py`
+(bundles; 30%). **Floors must be denominated in the guard's own cost model** (selected
+carrier + tax-inclusive fee): recalibrate with `config/calibrate_floors.py --apply`
+after any deliberate repricing, or the guard false-alarms on model mismatch, not drift.
+Cost model lives in `config/pricing.py`:
 
     landed = (goods x (1 + duty)) + freight, all x (1 + RETURNS_RATE)
     cost   = landed + PCT x (1 + SALES_TAX_AVG) x price + $0.30
@@ -19,7 +24,7 @@ lives in `config/pricing.py`:
 - `SALES_TAX_AVG = 0.07` — sales tax itself is a pass-through and is NOT a margin cost,
   but Shopify's 2.9% is charged on the whole order *including* tax, and that part is ours
 - `RETURNS_RATE = 0.03` — 30-day returns; we cover return shipping on faulty/wrong items
-- Shipping revenue ($5.95, free over $50) is deliberately excluded, so it is upside
+- Shipping revenue ($5.95, free over $60) is deliberately excluded, so it is upside
 
 **Three ways CJ's freight data misleads — all now handled in `config/freight_floor.py`:**
 
@@ -47,8 +52,9 @@ Puppy Kit works ($13.37 consolidated, one parcel) and why the Grooming kit is de
 four parcels, no single carrier serves all four). **Always check the consolidated quote before
 pricing any multi-item offer**; per-item freight will tell you it is unaffordable when it is not.
 
-**A discount can breach the floor.** Price toys so the *post-discount* price still clears 50%,
-not the sticker price. Check with `config/margin_guard.py` after any discount change.
+**A discount can breach the floor.** Price toys so the *post-discount* price still clears the
+product's price-book floor, not the sticker price. Check with `config/margin_guard.py` after
+any discount change.
 
 **Pricing to headroom, not the knife edge:** `margin_guard.py --headroom` prices against a
 stress case (goods +10%, freight +15%) so a routine CJ move does not breach the floor. Run
@@ -69,10 +75,13 @@ cooling mat and calming bed, both archived months earlier. All six were stripped
 
 **Changing a variant breaks any kit that contains it.** Replacing the wipes variants removed a
 component from the Grooming Essentials Kit, and Shopify silently moved the kit to **DRAFT** —
-invisible on the storefront, discovered only days later. Bundles also cannot have components
-added via API after creation, so a kit whose composition changes has to be rebuilt with
-`productBundleCreate` and the old one archived. **After touching any variant, check every kit
-that uses it is still ACTIVE.** `config/rebuild_kits.py` rebuilds them from a spec.
+invisible on the storefront, discovered only days later. **After touching any variant, check
+every kit that uses it is still ACTIVE.** Note (2026-08-04): the old belief that bundle
+components cannot be swapped via API is **wrong** — `productBundleUpdate` accepts a full
+replacement components array; all six kits were recomposed in place by `config/apply_kits.py`
+with handles, links and history preserved. Expect transient HTTP 409 ("being modified") on the
+product for a few seconds after each bundle operation; retry, don't abort. The rebuild-and
+-retire path (`rebuild_kits.py`) is only needed if an update is rejected outright.
 
 **Rebuilding a kit is four steps, not one.** Shopify keeps a handle reserved even after the
 product is archived, so the outgoing kit must be renamed to `<handle>-retired` *before* the
