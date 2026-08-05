@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-04, from the home PC session (repricing, compliance, marketing plan)
+**Last updated:** 2026-08-05, from the home PC session (repricing, compliance review, marketing plan)
 
 ---
 
@@ -287,132 +287,143 @@ A failed run emails the owner — silence means healthy.
   Sneaker Chew Buddy, and its colour names were wrong). New audit rule: check
   for duplicate source SKUs (`sku[:11]`), not just titles.
 
-## Open tasks, in priority order
+## Open work, in priority order
 
-This table is the index. **The instructions are in
-`docs/pc-implementation-plan-2026-08.md`**, which orders these into eleven steps
-with the data and the sequencing traps. Do not work from this table alone.
+> **Task-number warning.** An earlier version of this file used numbers #73 to
+> #82 for the pricing queue. Those are all DONE or VOIDED, and the live task
+> list has since reused #73 to #77 for different things. **Trust the
+> descriptions below, not any number you remember.**
 
-| # | Task | Status / notes |
+### Next up: marketing phase 0. Free, and it gates everything paid.
+
+| Task | What | Who |
 |---|---|---|
-| 59 | GA4 + Meta pixel | NEXT UP, but owner-gated: needs a GA4 measurement ID (G-XXXX) and a Meta pixel ID from the owner's own accounts. Once those exist Claude installs both. Store has zero analytics; blocks #62 and any ad spend. |
-| 76 | **Rebuild the Dog Enrichment Kit** | NEW 2026-08-04, URGENT, the only live loss-maker of its size. **Sequencing: the $52.99 is 20% off the RECOMMENDED singles, which are not live yet. Against today's prices it reads as 43.6% off and would cannibalise the singles. Either do #74 first, or recompute the kit price against whatever the singles actually are.** It is live at $98 and returns **24.1%**; it needs $137.38 to clear 45%. The Anti-Spill Floating Water Bowl is 1,833g of the kit's 2,429g and takes freight to $45.42, so consolidation saves only $2.71. Replace with Slow Feeder Bowl + Lick Bowl with Ball + Talk Button + Sneaker Chew Buddy at **$52.99** for 47.0%, quoted live at CJ. Full working in `docs/shipping-and-sourcing-study-2026-08.md` section 5. |
-| 77 | **Fix or withdraw the Dental & Ear Wipes** | NEW 2026-08-04, URGENT. Live at $22.00 with a delivered floor of $18.38 against a $13.99 market: -10.7% at market. It was healthy in July and broke because CJ's liquid-carrier freight went from $7.88 to $12.38 in a month. Options, in order: **swap to CJ SPU CJYD2449710** ("Cat Dog Ear Teeth Cleaning Finger Stall", $0.48 at 90g against the incumbent's 354g, **46.9% at the market ceiling**, listed by 18 sellers, and it pairs with the Finger Toothbrush we already sell); or a smaller pack of the same product; or withdraw. Do NOT go to larger counts, see #70. Do not leave it at $22.00. |
-| 78 | **Recompute the slicker brush and paw trimmer prices** | NEW 2026-08-04, blocks #74. Both were costed against a CJ freight quote of exactly $3.00 from a single carrier, which is a placeholder, not a price. `config/freight_floor.py` now rejects it. Corrected: brush $5.37 estimated and still 43.4% at market, so the pricing study's "re-source or drop" verdict is void; trimmer $6.34 estimated and 35.1%. Their rows in `docs/qa/pricing-recommendations.json` are wrong. |
-| 79 | **Add a free-shipping progress bar** | NEW 2026-08-04, highest effort-to-return item in the study. Freight is $4.43 fixed plus $11.90/kg, so an item a customer adds to reach the $60 threshold costs $1 to $3 to ship and sells for $12 to $22. Benchmarks put the bar at an 8 to 14% conversion lift on top of the free-shipping effect. Keep the $60 threshold: it sits inside the $55 to $110 pet AOV band, above every single item and below every kit. |
-| 80 | **Launch the Calm & Comfort Kit** | NEW 2026-08-04. Heartbeat Sloth + Calming Thunder Wrap + Cooling Comfort Pad at **$85.99** for 51.3% and $44.10 of contribution, more than any existing kit. Four of our highest-contribution products are currently in no kit at all. Do NOT add the Waterproof Snuggle Blanket: quoted with it in, freight goes to $32.15 and margin to 33.6%. |
-| 82 | **Fix the stale free-shipping constant in `shipping_rates.py`** | NEW 2026-08-04, small but a live hazard. The script's `FREE_THRESHOLD = 50.00` and its docstring both say $50, while the store is actually set to free over **$60** and the site copy says $60. Running `config/shipping_rates.py --apply` today would silently move the threshold back to $50 and give away $5.95 on every order between $50 and $60. Update the constant and the docstring; do not run it with --apply until then. |
-| 81 | **Swap two products for better-economics equivalents** | NEW 2026-08-04. Squirrel Squeaky Plush (12.6% at market) to CJ SPU CJPT2915091, 70g against 112g, giving 39.6%. Lick Bowl with Ball (19.6%) to the silicone feeding mat CJYD2951433, $0.86 of goods against $5.00, giving 54.6%. Same pairing mechanics as #67; eyeball the images against the CJ reference and check `sku[:11]` for duplicates first. |
-| 73 | **Replace the 50% floor with the tier system** | NEW 2026-08-04. Owner has approved dropping the flat floor. Tiers proposed in `docs/pricing-study-2026-08.md` section 2. Repoint `config/margin_guard.py` at a per-product tier table rather than one global number. Do this BEFORE repricing. |
-| 74 | **Apply the price changes** | NEW 2026-08-04, blocked by #73. Per-product recommendations in `docs/qa/pricing-recommendations.json`. Catalogue price sum falls about 23%. Standardise `.99` endings at the same time; keep `.00` for kits only. |
-| 75 | **Drop the two products that cannot be fixed** | REVISED 2026-08-04. Was "nine non-viable"; scored on DELIVERED price rather than item price, 30 of 36 products clear 15% at market and only six fail. Drop the **Crinkle Plush Buddy** (-29.5%, and the cheapest thing in CJ's plush category still lands above its $8 ceiling, so no supplier can fix it) and the **Anti-Spill Floating Water Bowl** (-8.4% as a single and the thing that broke the Enrichment kit). The other four failures are the wipes (#77), the snuggle blanket and the sofa cover (both heavy, need a US-warehouse source, see the study section 8) and the squirrel plush (#81). The five "bundle only" toys all clear 15% as singles on corrected freight. |
-| 71 | **Fix four dashes and the wrong care text on every product page** | NEW 2026-08-04, OWNER ACTION, quick. `templates/product.json` carries two en dashes in the shipping copy, one in a trust badge, one em dash in returns, and a "Care & use" block telling customers to rinse and dry the product before storing, which is wrong for disposable wipes and plush toys and still mentions "older or anxious dogs". Claude CANNOT fix this: live theme writes are refused by policy. Exact find and replace text is in `docs/qa/theme-copy-fixes.md`, about five minutes in the theme editor. Every other theme file was scanned and is clean. |
-| 67 | **Add the 41 missing size variants (HOME PC)** | NEW 2026-08-04. Four products are missing sizes CJ actually sells. **Exact SKU list with CJ costs is in the appendix of `docs/qa/variant-audit-2026-08.md`** so pairing is mechanical: sofa cover 12, snuggle blanket 9, fleece blanket 12, cooling pad 8. Sequence: (1) owner pairs each SKU in the CJ browser app, one product at a time, verifying `matchitem.shopType === 'Shopify'` before confirming; (2) Claude resolves freight via `freight_floor.py` and prices each size to clear its **tier** floor (#73, not the retired 50% floor), levelling colours as usual; (3) Claude creates the Shopify variants and wires variant images. Freight, not product cost, will decide whether the biggest sizes are viable, so expect some to fail the floor and be dropped. Freight is $4.43 fixed plus $11.90/kg, and the sofa cover is already 1,340g at Medium, so Large is the one to watch. |
-| 67a | Rename the sofa cover's size labels | Depends on #67. Our Small/Medium/Large are CJ's XS/S/M of seven sizes, so the labels stop making sense the moment bigger sizes are added. Rename to the true range at the same time. Renaming option values rewrites variant titles, so do it in one pass with the additions, not before. |
-| 68 | Decide on lifestyle images for the five kits | NEW 2026-08-04. All five kits (New Puppy, Toy, Grooming Essentials, Enrichment, Travel) have a cover plus component shots and no in-use photo. That looked deliberate so nothing was changed. If you want them, the components are already shot and a kit scene is straightforward. |
-| 69 | Real product dimensions for the remaining products | NEW 2026-08-04. Dimensions were added only where CJ states them explicitly. For most toys CJ publishes package dimensions only, which for soft goods are not product dimensions, so nothing was stated. To finish this properly, either measure samples on arrival or ask CJ for product dimensions per SKU. Do NOT infer from `variantLength/Width/Height`. |
-| 70 | ~~Consider larger wipe counts~~ | CLOSED 2026-08-04, researched and rejected. Freight is $4.43 fixed plus $11.90/kg, so every extra wipe is pure weight and larger counts make the economics worse, not better. The 50-count tub at 354g is already why this product fails: $12.38 of freight against a $13.99 market. The move is SMALLER, not larger. See #77 and the study section 6. |
-| 66 | Audit ALL lifestyle images against CJ references | PARTLY DONE 2026-08-04: every product now HAS a lifestyle image except the two the owner excluded, and all descriptions were checked for sizing accuracy. Still outstanding: confirming each existing lifestyle image actually depicts the right product, which the owner is doing themselves. Fully unblocked — no owner action, tooling already built (`cj-image-refs` workflow + `config/fetch_cj_refs.py`). The dematting comb's "in use" photo depicted a tool that does not exist and had been live since launch; the rest of the catalogue has never been checked the same way. Misleading imagery drives returns and chargebacks, so do this BEFORE paying for traffic. Method and failure patterns: `docs/qa/dematting/README.md`. |
-| 63 | Post-purchase reviews | Biggest untouched conversion lever. Judge.me free tier or similar; needs app install (owner clicks, Claude configures). |
-| 57 | NY sales tax registration | OWNER ACTION: file DTF-17 at NY Business Express (needs SSN/EIN). Then Claude adds the Certificate of Authority number in Shopify tax settings. |
-| 64 | DDP/DDU confirmation with CJ | Owner raises a CJ ticket (order-gated; order #1001 exists now). Margin model assumes duties included — DDU would mean surprise customer charges. |
-| 60 | TikTok Shop | RESEARCHED 2026-08-04 and the answer is mostly no. Median pet price there is $15.53 and 69% sell under $20, while all-in costs run 35 to 55% of revenue (referral + affiliate + Shop Ads). Most of the catalogue cannot be profitable there at any price. Only credible candidates are the four high-contribution items (nail grinder, thunder wrap, heartbeat sloth, sofa cover) and kits. Do not open catalogue-wide. |
-| 61 | Short-form video for social-first products | Runway videos for screaming chicken, talk button, paw washing cup, LED clippers. |
-| 65 | Recreate the dematting comb lifestyle image | Deferred by owner 2026-08-04 after six failed regeneration rounds. Product page currently ships master-only, which is accurate, so this is cosmetic not urgent. Start from `docs/qa/dematting/best-attempt-v6.png` (handle/axle collinearity already correct). Prompting alone has not worked — consider compositing the master's tool into a scene, or a photographed sample, before burning more Runway credits. |
-| 62 | Ad-spend guardrails | Blocked on #59. |
+| #75 | GA4 property, Meta pixel + Conversions API (data sharing = Maximum), Google Merchant Center with free listings on, Pinterest business account + tag | **Owner creates the accounts**, Claude configures and verifies |
+| #75a | Declare "these products have no GTIN" in the Google channel, then apply the 42 feed titles from `config/marketing/feed_health.py --titles` | Claude, once the channel exists |
+| #76 | Build the five email flows in Shopify (welcome x3, abandoned checkout x3, browse abandonment, post-purchase + day-21 review request, 60-day winback). Shopify native, NOT Klaviyo, which is unjustified under $500K | Claude drafts, owner approves |
+| #77 | `marketing/ads_report.py`, `marketing/ad_guardrail.py`, `marketing/weekly_brief.py`. Build once ad accounts exist; wire into `scheduled-ops.yml` | Claude |
 
-## Device capabilities — what works where
+**Gate before any spend:** a real test purchase must appear in GA4, Meta and
+Pinterest. Then phase 1 is $150 on Pinterest against the Calm & Comfort Kit
+only. Full reasoning in `docs/marketing-plan-2026-08.md`.
 
-**Any device (claude.ai/code on the repo):** planning, research, copy, code,
-email templates, audits of committed state, editing the Actions workflow.
-**Live Shopify edits work from web sessions too** when the Shopify MCP
-connector is attached (verified 2026-08-04): products, collections, inventory,
-orders, discounts, plus arbitrary Admin GraphQL reads/writes. A Runway
-connector is typically attached as well. What web sessions still CANNOT do:
-run the repo's Python scripts live (`config/*.env` are gitignored and exist
-only on the PC; the sandbox's network policy also blocks direct calls to
-Shopify/CJ domains — only the connectors get through), and anything CJ-side.
-For CJ API reads without credentials, dispatch the `cj-image-refs` workflow
-(fetches a product's record + images and commits them to the branch), or
-route work through the Actions job. Pricing changes should still be computed
-against `config/pricing.py` logic before any write.
+### Owner actions that have been waiting and need no device
 
-### Prompt to start the PC session
+| Task | What |
+|---|---|
+| #57 | **NY sales tax registration.** File DTF-17 at NY Business Express (needs SSN or EIN). Then Claude adds the Certificate of Authority number to Shopify tax settings. |
+| #64 | **CJ duty ticket.** Confirm DDP vs DDU. The margin model assumes duties are included; DDU would mean surprise charges to customers and a policy we would have to rewrite. Order #1001 exists, so the ticket is no longer order-gated. Worth 20% of product cost on every order. |
+| Legal | Three decisions in `docs/legal-compliance-review-2026-08.md` section 3: how far to take Proposition 65, whether to add an arbitration clause, and whether the business is an LLC yet. The entity question is the highest-value one. |
 
-Paste this. It deliberately points at one document rather than restating it, so
-there is only ever one source of truth for the plan.
+### Still open, lower priority
 
-> Read `docs/HANDOFF.md`, then `git pull`, then read
-> `docs/pc-implementation-plan-2026-08.md` in full. That plan is the work for
-> this session. Start at step 1 and go in order.
+These have no reliable task number left (the old numbers were reused). Work
+from the descriptions.
+
+| What | Notes |
+|---|---|
+| **Post-purchase reviews** (#63 in the live list) | Biggest untouched conversion lever. Judge.me free tier; owner installs the app, Claude configures. The request email itself is part of the #76 flows. |
+| **Short-form video** (#61 in the live list) | Screaming chicken, talk button, paw washing cup, LED clippers. Now has a purpose: it is the creative for Pinterest phase 1. See marketing plan section 6. |
+| **Verify lifestyle images against CJ references** | Confirm each existing lifestyle image depicts the right product. Owner was doing this personally. Tooling exists (`cj-image-refs` workflow). Worth finishing BEFORE paying for traffic, since misleading imagery drives returns. |
+| **Dematting comb lifestyle image** | Deferred after six failed generation rounds; the page ships master-only, which is accurate. Cosmetic. |
+| **The 41 missing size variants** | Sofa cover 12, snuggle blanket 9, fleece blanket 12, cooling pad 8, with CJ costs in `docs/qa/variant-audit-2026-08.md`. Needs CJ browser pairing, so home PC only. Price each size through the price-book pipeline, not the retired flat floor, and rename the sofa cover's size labels in the same pass (ours are CJ's XS/S/M of seven). |
+| **Kit lifestyle images** | All six kits have a cover plus component shots, no in-use photo. |
+| **Real product dimensions** | CJ publishes package dimensions only for soft goods; do NOT infer from `variantLength/Width/Height`. Needs samples or a CJ request. |
+
+### Closed this session
+
+Repricing and kit rebuild (all 144 variants, six kits), the flat-50% floor
+retirement and guard repointing, the CJ connection audit, the legal compliance
+review, the homepage FAQ fix, the British-spelling sweep, the marketing plan.
+**TikTok Shop (#60) is closed as not viable**, not deferred: the blocker is the
+fulfillment model, not effort. See marketing plan section 3.1.
+
+## Device capabilities, corrected 2026-08-04
+
+**Home PC (this device).** Everything. `config/shopify.env` and `config/cj.env`
+live only here, so every script in `config/` runs. **Live theme writes DO work
+from here** and were used repeatedly this session (`fix_home_faq.py`,
+`build_footer.py`, `americanize_colour.py`). An older note in this file claimed
+Claude cannot write themes; that was wrong and has been removed. Also the only
+device for CJ browser work (pairing, sync settings) and for Shopify admin
+settings screens, which do not render in background tabs.
+
+**Any other device (claude.ai/code on the repo).** Planning, research, copy,
+code, email templates, audits of committed state, editing the Actions workflow.
+Live Shopify edits work when the Shopify MCP connector is attached: products,
+collections, inventory, orders, discounts, and arbitrary Admin GraphQL. A
+Runway connector is usually attached too.
+
+What a non-PC session CANNOT do: run the repo's Python scripts against live
+Shopify or CJ (the `.env` files are gitignored and the sandbox blocks those
+domains directly, only connectors get through), and anything CJ-side. For CJ
+reads without credentials, dispatch the `cj-image-refs` workflow or route the
+work through GitHub Actions.
+
+**Verifying theme changes from anywhere:** the cached homepage HTML served
+pre-change renders for over seven minutes after a footer write this session,
+alternating between two old versions across edge nodes, and a `?nocache=`
+parameter does not help because it is not part of the cache key. Use the
+section rendering API instead, which re-renders server side and shows the truth
+immediately:
+`https://wagvive.com/?sections=sections--27042989867297__footer_m9NzUG`
+
+## Prompt to start the next session
+
+Paste this on whichever device you pick up. It points at documents rather than
+restating them, so there is only ever one source of truth.
+
+> Read `docs/HANDOFF.md` first, then `git pull`, then read
+> `docs/marketing-plan-2026-08.md` in full. That plan is the active project.
 >
-> Rules for the whole session:
-> - Show me the numbers BEFORE any write, and wait for my approval on anything
->   that changes a price, a product or a bundle.
-> - Re-quote freight through `config/research_kits.py` or
->   `config/freight_floor.py` rather than trusting the figures in the plan. They
->   were measured on 2026-08-04 and freight moved 57% on one product in a month.
+> Context: the catalogue was fully repriced on 2026-08-04 from a demand model,
+> all six kits were rebuilt around freight physics, a legal compliance review
+> was completed, and a marketing plan was written. Everything is applied,
+> verified live and pushed. The store has ONE order (a test), no GA4, no
+> pixels, and no Merchant Center, so marketing phase 0 is next and it is the
+> gate on all paid spend.
+>
+> Start by telling me:
+> 1. What you can and cannot do on THIS device (check whether the Shopify
+>    connector is attached before assuming).
+> 2. Everything you need FROM me across the whole session, as one list, so I
+>    can gather it in one go rather than being interrupted. I expect that to
+>    include the Google, Meta and Pinterest account setups.
+> 3. Which parts of phase 0 you can do right now without any account of mine,
+>    and start on the highest-value one.
+>
+> Rules for the session:
+> - Never advertise a single product. Kits only. The reason is in the plan
+>   section 1 and it is not a preference, it is arithmetic.
+> - Re-run `config/marketing/cac_ceiling.py` before any budget decision, and
+>   after any repricing, because every ceiling moves with prices.
 > - Verify every change against the live system by re-fetching it, not against
->   the tool's return value.
-> - For anything needing the CJ browser app, tell me exactly which SKUs to pair
->   and wait for me to confirm each product before continuing.
-> - Tell me plainly if something in the plan turns out to be wrong.
+>   the tool's return value. For theme changes use the section rendering API,
+>   not the cached homepage.
+> - Show me numbers before any write that changes a price, product or bundle.
 > - Never enter my credentials anywhere. Logins, payment details, tax filings
->   and supplier account registrations are mine to do. Flag and hand off.
+>   and supplier registrations are mine to do. Prepare everything up to the
+>   login and hand off with exact steps.
+> - Tell me plainly if something in the plan turns out to be wrong.
 >
-> Before you start, tell me in one list everything you will need FROM me across
-> the whole session, so I can gather it once instead of being interrupted: which
-> CJ SKUs to pair, the GA4 measurement ID and Meta pixel ID (#59), and whether I
-> want you to prepare anything for #57 (NY tax filing) or #64 (the CJ duty
-> ticket).
->
-> When the writes are done, run `config/margin_guard.py`,
-> `config/kit_margins.py` and `config/sync_inventory.py --apply`, check the
-> affected pages on the live storefront, then update `docs/HANDOFF.md`, commit
-> and push.
+> When you finish, update `docs/HANDOFF.md`, commit and push.
 
-**The full queue, with reasoning and data, is
-`docs/pc-implementation-plan-2026-08.md`.** In one line each:
+## Standing rules (full set in CLAUDE.md, binding)
 
-| Step | What | Task # |
-|---|---|---|
-| 1 | Rebuild the Dog Enrichment Kit, live at 24.1% | #76 |
-| 2 | Fix or withdraw the Dental & Ear Wipes, live above its ceiling | #77 |
-| 3 | Recompute the slicker brush and paw trimmer on real freight | #78 |
-| 4 | Replace the 50% floor with the tier table | #73 |
-| 5 | Apply the price changes | #74 |
-| 6 | Drop two products, swap two others | #75, #81 |
-| 7 | Free-shipping progress bar, and fix the stale threshold constant | #79, #82 |
-| 8 | Launch the Calm & Comfort Kit | #80 |
-| 9 | Theme copy fixes, owner action, about 5 minutes | #71 |
-| 10 | The 41 missing size variants | #67, #67a |
-| 11 | Reviews | #63 |
-
-Steps 1 and 2 are losing money today. Step 3 must precede step 5, and step 4
-must precede step 5. **Owner actions that do not need the PC and have been
-waiting**: #57 (NY tax filing) and #64 (the CJ duty ticket, which is worth 20%
-of product cost on every order).
-
-**Home PC only:** CJ UI work (pairing, sync settings — no API exists),
-theme editor work (Claude's live theme writes are refused by policy),
-Shopify admin settings screens (do not render in background tabs), visual
-storefront QA in the user's logged-in Chrome, and anything needing
-`config/shopify.env` / `config/cj.env` which live only there.
-
-## Standing rules (full set in CLAUDE.md — binding)
-
-50% margin floor after all costs · never enter the owner's credentials ·
-confirm before spending money or irreversible actions · hello@wagvive.com is
-the only customer-facing email · no em-dashes or hyphenated ranges in store
-copy · verify against the live system, never trust a write's return value.
+Per-product price-book floors, NOT the retired flat 50% (`margin_guard.py`
+enforces `floor_margin_pct`; kits floor at 30%) · never enter the owner's
+credentials · confirm before spending money or irreversible actions ·
+hello@wagvive.com is the only customer-facing email · US spelling, no em dashes
+and no hyphenated day ranges in store copy ("5 to 12 business days") · verify
+against the live system by re-fetching, never trust a write's return value ·
+never advertise a single product, kits only.
 
 ## How to hand off
 
 Before ending a session or switching devices:
-1. Update this file (state, open tasks, what changed, anything in flight).
+1. Update this file: state, open work, what changed, anything in flight.
 2. Commit and push everything.
 3. Tell the user the handoff is committed.
 
-On this session's device (home PC) the prior chat history also survives
-locally — but treat THIS FILE as the source of truth for state, because other
-devices may have moved things since.
+Treat THIS FILE as the source of truth for state, because another device may
+have moved things since your local chat history was written.
