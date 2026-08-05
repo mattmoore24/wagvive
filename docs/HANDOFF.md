@@ -4,11 +4,39 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-04, from a claude.ai/code web session
+**Last updated:** 2026-08-04, from the home PC session (repricing, compliance, marketing plan)
 
 ---
 
-# START HERE: the 2026-08-04 repricing is DONE. The store runs on the price book.
+# START HERE
+
+Two things define the current state. Read both before doing anything.
+
+### A. Marketing is the active project → `docs/marketing-plan-2026-08.md`
+
+The store is repriced, compliant and instrumented-ready, and the next work is
+customer acquisition. The plan is built backwards from our own unit economics
+and its single most important conclusion is:
+
+**Never advertise a single product. Kits only.** Average single-product
+contribution is $4.71, which needs a 19% conversion rate to break even on a
+$0.90 Meta click. Kits run $16.76 to $43.06 of contribution. At a realistic
+new-store 1% conversion rate our best offer supports a **$0.43 click**, which
+rules out Google Search ($3.00) and makes Meta marginal. Pinterest ($0.35) is
+the only channel affordable on day one. Run
+`python config/marketing/cac_ceiling.py` for the live table, and re-run it
+after ANY repricing because every ceiling moves.
+
+**TikTok Shop is closed as not viable** (task #60): it restricts overseas
+direct shipping, demands delivery inside about 6 business days against our 5 to
+12, and takes about 30% all-in. TikTok as an ads/organic channel to our own
+site is still open.
+
+Current state: **1 order (the test), no GA4, no pixels, no Merchant Center.**
+Phase 0 of the plan is installing the measurement stack, and nothing paid
+happens before it is verified (tasks #75, #76, #77).
+
+### B. The 2026-08-04 repricing is DONE. The store runs on the price book.
 
 The whole catalogue was repriced on 2026-08-04 from a per-product demand model,
 and all six kits were rebuilt around freight physics. Everything is applied,
@@ -86,6 +114,38 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **MARKETING PLAN (2026-08-04).** `docs/marketing-plan-2026-08.md`. Built from
+  live contribution figures rather than channel best practice, because at a
+  few-hundred-dollar budget the economics rule out most of the best practice.
+  Phased: phase 0 is free (instruments, feed, email flows), phase 1 is $150 on
+  Pinterest against the Calm & Comfort Kit only, phase 2 is conditional on a
+  measured conversion rate, phase 3 gates Google and Meta behind 1.5%
+  conversion and 20 orders of history. New runnable tooling in
+  `config/marketing/`: `cac_ceiling.py` (the affordability table),
+  `feed_health.py` (Merchant Center readiness plus written feed titles for all
+  42 products), `utm.py` (link builder that refuses unknown sources so
+  attribution stays readable).
+
+- **COMPLIANCE REVIEW (2026-08-04).** `docs/legal-compliance-review-2026-08.md`.
+  Found and fixed: the Shipping Policy promised free shipping over $50 while
+  checkout charged it over $60 (write_policies.py now refuses to publish on a
+  mismatch with shipping_rates.py); Terms of Service had none of the clauses
+  that do work (governing law, warranty disclaimer, liability cap, IP, user
+  content, indemnity, severability); no written cancellation right for delayed
+  orders per FTC 16 CFR 435; **the footer had no links at all** because the
+  Footer menu was never wired to a block, so every policy link and the state
+  privacy opt-out rendered nowhere. Added /pages/proposition-65 and
+  /pages/accessibility, and put FTC endorsement disclosure requirements on the
+  Creator programme page. Open owner decisions are in section 3 of that doc,
+  the main one being how far to take Proposition 65 compliance.
+
+- **STOREFRONT COPY (2026-08-04).** The homepage FAQ's senior-dog question
+  (untrue since the Senior Dog Kit was retired) replaced with a which-kit
+  question covering all six. All customer-facing British spellings
+  americanized: 23 product option names read "Colour", plus "fulfilment",
+  "odour" and "centre" in copy. Source scripts fixed so a rebuild cannot
+  reintroduce them.
 
 - **FULL CATALOGUE REPRICING + KIT REBUILD (2026-08-04, PC session).** The
   mega-task is complete and verified live.
