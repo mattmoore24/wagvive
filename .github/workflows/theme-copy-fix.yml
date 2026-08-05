@@ -1,0 +1,68 @@
+name: Theme copy fix
+
+# Runs config/fix_product_care_copy.py against the LIVE theme.
+#
+# Why this exists: the four wrong text blocks on every product page needed
+# config/shopify.env, which lives only on the home PC, so the fix sat unapplied
+# for a day. The Shopify credentials are already repository secrets because
+# scheduled-ops.yml uses them every 6 hours, so any device can run the fix
+# through here instead of waiting for the PC.
+#
+# This WRITES to the live theme, so it is deliberately not automatic. Trigger it
+# by editing config/theme_fix_run.json, or from the Actions tab.
+#
+# The script itself is the safety layer: it refuses to write if any em or en
+# dash survives (entities included), fails loudly if a block path has moved,
+# verifies the admin asset, then re-renders through the section rendering API.
+
+on:
+  push:
+    branches: ['claude/**', 'main']
+    paths: ['config/theme_fix_run.json']
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Write to the live theme (otherwise dry run)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Recreate Shopify credential file from encrypted secrets
+        env:
+          SHOPIFY_ADMIN_API_TOKEN: ${{ secrets.SHOPIFY_ADMIN_API_TOKEN }}
+          SHOPIFY_STORE_DOMAIN:    ${{ secrets.SHOPIFY_STORE_DOMAIN }}
+          SHOPIFY_API_VERSION:     ${{ secrets.SHOPIFY_API_VERSION }}
+        run: |
+          set -euo pipefail
+          for v in SHOPIFY_ADMIN_API_TOKEN SHOPIFY_STORE_DOMAIN SHOPIFY_API_VERSION; do
+            if [ -z "${!v}" ]; then
+              echo "::error::Missing repository secret: $v"; exit 1
+            fi
+          done
+          printf 'SHOPIFY_ADMIN_API_TOKEN=%s\nSHOPIFY_STORE_DOMAIN=%s\nSHOPIFY_API_VERSION=%s\n' \
+            "$SHOPIFY_ADMIN_API_TOKEN" "$SHOPIFY_STORE_DOMAIN" "$SHOPIFY_API_VERSION" \
+            > config/shopify.env
+
+      - name: Dry run, always
+        run: python config/fix_product_care_copy.py
+
+      - name: Apply to the live theme
+        if: github.event_name == 'push' || inputs.apply
+        run: python config/fix_product_care_copy.py --apply
+
+      - name: Remove credential file
+        if: always()
+        run: rm -f config/shopify.env
