@@ -1,0 +1,97 @@
+<!-- Wagvive abandoned checkout, email 1 of 3. Sends 1 hour after abandonment.
+     Shopify Messaging custom Liquid. Required by the editor:
+       {{ unsubscribe_link }}      CAN-SPAM, and Shopify rejects the save without it
+       {{ open_tracking_block }}   open tracking pixel
+     Recovery link is {{ abandoned_checkout.url }}. NEVER hand-write that URL;
+     it is per-checkout and a static link sends the customer to an empty cart.
+     Basket rows come from {{ abandoned_checkout.line_items }} (first five). -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>Your basket is still here</title>
+</head>
+<body style="margin:0; padding:0; width:100%; background-color:#EFE7DA; -webkit-font-smoothing:antialiased;">
+
+<div style="display:none; font-size:1px; color:#EFE7DA; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden;">Still saved, still in stock.</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EFE7DA;">
+<tr><td align="center" style="padding:28px 12px 40px 12px;">
+  <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#F7F2E9; border-radius:14px; overflow:hidden;">
+
+    <tr><td align="center" style="padding:34px 32px 6px 32px;">
+      <a href="{{ shop.url }}" style="text-decoration:none;">
+        <img src="https://cdn.shopify.com/s/files/1/0994/5114/2433/t/1/assets/email-wordmark.png" width="180" alt="Wagvive" style="display:block; border:0; width:180px; max-width:180px; height:auto;">
+      </a>
+    </td></tr>
+
+    <tr><td align="center" style="padding:14px 32px 0 32px;">
+      <h1 style="margin:0; font-family:Georgia,'Times New Roman',serif; font-size:27px; line-height:34px; font-weight:400; color:#3A3026;">Your basket is still here</h1>
+    </td></tr>
+
+    <tr><td style="padding:26px 32px 0 32px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        {% for item in abandoned_checkout.line_items %}
+        <tr>
+          <td width="64" valign="top" style="padding:10px 14px 10px 0;">
+            <img src="{{ item.image_url }}" width="64" height="64" alt="{{ item.product_title }}" style="display:block; border:0; width:64px; height:64px; border-radius:8px; background-color:#EFE7DA;">
+          </td>
+          <td valign="top" style="padding:10px 0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;">
+            <p style="margin:0; font-size:15px; line-height:22px; color:#3A3026; font-weight:600;">{{ item.product_title }}</p>
+            {% if item.variant_title %}<p style="margin:2px 0 0 0; font-size:13px; line-height:20px; color:#8A7B6B;">{{ item.variant_title }}</p>{% endif %}
+            <p style="margin:2px 0 0 0; font-size:13px; line-height:20px; color:#6B5F51;">Qty {{ item.quantity }}</p>
+          </td>
+        </tr>
+        {% endfor %}
+        {% if abandoned_checkout.remaining_products_count > 0 %}
+        <tr><td colspan="2" style="padding:6px 0 0 0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:13px; line-height:20px; color:#8A7B6B;">
+          and {{ abandoned_checkout.remaining_products_count }} more
+        </td></tr>
+        {% endif %}
+      </table>
+    </td></tr>
+
+    <tr><td align="center" style="padding:26px 32px 0 32px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center">
+        <tr><td align="center" bgcolor="#3A3026" style="border-radius:999px;">
+          <a href="{{ abandoned_checkout.url }}" style="display:inline-block; padding:14px 34px; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:15px; font-weight:600; color:#F7F2E9; text-decoration:none; border-radius:999px;">Finish checking out</a>
+        </td></tr>
+      </table>
+    </td></tr>
+
+    <tr><td style="padding:22px 32px 0 32px; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:15px; line-height:24px; color:#3A3026;">
+      <p style="margin:0;">Nothing is reserved, so if it is a kit that is moving we would not leave it too long.</p>
+    </td></tr>
+
+    <tr><td style="padding:26px 32px 0 32px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #E2D8C8;">
+        <tr><td style="padding:20px 0 0 0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:22px; color:#6B5F51;">
+          Any questions before you buy, reply to this email or write to <a href="mailto:hello@wagvive.com" style="color:#3A3026; font-weight:600; text-decoration:underline;">hello@wagvive.com</a> and a real person will get back to you.
+        </td></tr>
+      </table>
+    </td></tr>
+
+    <tr><td align="center" style="padding:26px 32px 34px 32px;">
+      <p style="margin:0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; line-height:19px; color:#8A7B6B;">
+        <a href="{{ shop.url }}" style="color:#8A7B6B; text-decoration:none;">wagvive.com</a> &nbsp;&#183;&nbsp;
+        <a href="{{ shop.url }}/policies/refund-policy" style="color:#8A7B6B; text-decoration:none;">Returns</a> &nbsp;&#183;&nbsp;
+        <a href="{{ shop.url }}/pages/faq" style="color:#8A7B6B; text-decoration:none;">FAQ</a>
+      </p>
+      <!-- Postal address deliberately NOT hardcoded here (owner decision,
+           2026-08-05). CAN-SPAM still requires one on every marketing email,
+           so Shopify's own auto-appended compliance footer must be supplying
+           it. Confirm on the test send before this flow goes live. -->
+      <p style="margin:8px 0 0 0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; line-height:19px; color:#A2957F;">
+        <a href="{{ unsubscribe_link }}" style="color:#8A7B6B; text-decoration:underline;">Unsubscribe</a>
+      </p>
+    </td></tr>
+
+  </table>
+</td></tr>
+</table>
+{{ open_tracking_block }}
+</body>
+</html>
