@@ -21,9 +21,13 @@
     "shopify_channel": "Google & YouTube",
     "shopify_publication_id": "gid://shopify/Publication/307494813985",
     "products_published": 42,
-    "free_listings": "pending confirmation",
+    "free_listings": "enabled via Google & YouTube channel",
     "paid_campaigns": "deliberately NOT enabled: Performance Max needs 30 to 50 conversions a month to learn and wastes budget below roughly $3,000/month. Google paid is phase 3, gated behind a 1.5% site conversion rate. See docs/marketing-plan-2026-08.md section 3.3.",
-    "data_retention": "set to 14 months, the free-tier maximum. Not retroactive."
+    "data_retention": "set to 14 months, the free-tier maximum. Not retroactive.",
+    "google_tag_id": "GT-WPLLWG52",
+    "merchant_center_destination_id": "MC-9SXHKYQZTW",
+    "verified_live": "2026-08-06: confirmed two hits to google-analytics.com/g/collect with tid=G-W6EC4B37P0, gtag present, page_view sending to both G-W6EC4B37P0 and MC-9SXHKYQZTW. Domain verification meta tag present.",
+    "verify_command": "load wagvive.com in a browser and run performance.getEntriesByType('resource') filtered for google-analytics; presence in page HTML alone does NOT prove the tag fires, because Shopify loads pixels in a sandbox"
   },
   "meta": {
     "status": "not started",
