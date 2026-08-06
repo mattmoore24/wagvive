@@ -1,24 +1,6 @@
-<!-- Wagvive abandoned checkout, email 1 of 3. Sends 1 hour after abandonment.
-     Shopify Messaging custom Liquid. Required by the editor:
-       {{ unsubscribe_link }}      CAN-SPAM, and Shopify rejects the save without it
-       {{ open_tracking_block }}   open tracking pixel
-     Recovery link is {{ abandoned_checkout.url }}. NEVER hand-write that URL;
-     it is per-checkout and a static link sends the customer to an empty cart.
-     Basket rows come from {{ abandoned_checkout.line_items }} (first five). -->
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
-<meta name="supported-color-schemes" content="light">
-<title>Your basket is still here</title>
-</head>
-<body style="margin:0; padding:0; width:100%; background-color:#EFE7DA; -webkit-font-smoothing:antialiased;">
-
 <div style="display:none; font-size:1px; color:#EFE7DA; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden;">Still saved, still in stock.</div>
 
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EFE7DA;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EFE7DA; width:100%;">
 <tr><td align="center" style="padding:28px 12px 40px 12px;">
   <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#F7F2E9; border-radius:14px; overflow:hidden;">
 
@@ -80,21 +62,9 @@
         <a href="{{ shop.url }}/policies/refund-policy" style="color:#8A7B6B; text-decoration:none;">Returns</a> &nbsp;&#183;&nbsp;
         <a href="{{ shop.url }}/pages/faq" style="color:#8A7B6B; text-decoration:none;">FAQ</a>
       </p>
-      <!-- CAN-SPAM requires a postal address on every marketing email. Pulled
-           from Shopify settings rather than hardcoded, so changing the address
-           in admin updates every future send. Verify it renders on the first
-           test; if blank, compose it from shop.address.address1 / .city /
-           .province_code / .zip instead. -->
-      <!-- {{ unsubscribe_link }} renders a COMPLETE <a> tag, not a URL. Putting
-           it in an href nests an anchor inside an anchor and the leftover
-           attributes spill out as visible text. Verified live 2026-08-05.
-           Output it bare. Use {{ unsubscribe_url }} only if you need to style
-           the link yourself, and test that it is not empty. -->
     </td></tr>
 
   </table>
 </td></tr>
 </table>
 {{ open_tracking_block }}
-</body>
-</html>
