@@ -1,0 +1,216 @@
+{
+ "ran_at": "2026-08-06T08:12:37",
+ "products": 42,
+ "counts": {
+  "no GTIN on any variant": 42,
+  "title leads with brand": 36
+ },
+ "problems": {
+  "Calm & Comfort Kit": [
+   "no GTIN on any variant"
+  ],
+  "Dog Enrichment Kit": [
+   "no GTIN on any variant"
+  ],
+  "Grooming Essentials Kit": [
+   "no GTIN on any variant"
+  ],
+  "New Puppy Kit": [
+   "no GTIN on any variant"
+  ],
+  "Toy Kit": [
+   "no GTIN on any variant"
+  ],
+  "Travel Kit": [
+   "no GTIN on any variant"
+  ],
+  "Anti-Spill Floating Water Bowl": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Barnyard Squeaker": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Big Squeak Plush": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Bouncy Egg Squeaker": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Calming Thunder Wrap": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Cooling Comfort Pad": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Cordless Paw Trimmer": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Corduroy Squeak Pals": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Crinkle Plush Buddy": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Cuddle Companion Teddy": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Dematting Comb": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Dental & Ear Wipes": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Dental Duck Chew Toy": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Finger Toothbrush": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Heartbeat Soothing Sloth": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Jingle Plush Ball": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "LED Nail Clippers": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "LED Waste Bag Dispenser": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Lick Bowl with Ball": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Paw Print Fleece Blanket": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Paw Washing Cup": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Pet Hair Remover Mitt": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Quick-Dry Bath Robe": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Quiet Electric Nail Grinder": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Rope-Limb Puppy Plush": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Screaming Chicken": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Self-Cleaning Slicker Brush": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Slow Feeder Bowl": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Sneaker Chew Buddy": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Squirrel Squeaky Plush": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Talk Button": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Travel Water Bottle & Bowl": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Watermelon Rope Frisbee": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Waterproof Snuggle Blanket": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Waterproof Sofa & Furniture Cover": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ],
+  "Woodland Rope-Limb Plush": [
+   "no GTIN on any variant",
+   "title leads with brand"
+  ]
+ },
+ "feed_titles": {
+  "Cooling Comfort Pad": "Dog Cooling Mat, Pressure Activated Gel Pad for Crates and Beds",
+  "Calming Thunder Wrap": "Dog Anxiety Vest, Calming Compression Wrap for Thunderstorms and Fireworks",
+  "Heartbeat Soothing Sloth": "Puppy Heartbeat Toy, Calming Sleep Aid Plush for Crate Training",
+  "Waterproof Snuggle Blanket": "Waterproof Dog Blanket, Pet Throw for Sofa and Bed",
+  "Paw Print Fleece Blanket": "Fleece Dog Blanket, Soft Paw Print Pet Throw",
+  "Waterproof Sofa & Furniture Cover": "Waterproof Sofa Cover for Dogs, Pet Furniture Protector",
+  "Quiet Electric Nail Grinder": "Dog Nail Grinder, Quiet Rechargeable Electric Paw Trimmer",
+  "LED Nail Clippers": "Dog Nail Clippers with LED Light and Safety Guard",
+  "Self-Cleaning Slicker Brush": "Self Cleaning Slicker Brush for Dogs, One Click Hair Release",
+  "Dematting Comb": "Dog Dematting Comb, Undercoat Rake for Mats and Tangles",
+  "Pet Hair Remover Mitt": "Dog Grooming Glove, Deshedding Mitt for Short and Long Hair",
+  "Cordless Paw Trimmer": "Dog Paw Trimmer, Cordless Quiet Clipper for Paw Pads",
+  "Quick-Dry Bath Robe": "Dog Drying Robe, Quick Dry Microfiber Bath Towel Coat",
+  "Paw Washing Cup": "Dog Paw Cleaner Cup, Silicone Muddy Paw Washer",
+  "Dental & Ear Wipes": "Dog Dental and Ear Wipes, 50 Count Grooming Wipes",
+  "Finger Toothbrush": "Dog Finger Toothbrush, Soft Silicone Dental Brush Set",
+  "Slow Feeder Bowl": "Slow Feeder Dog Bowl, Anti Gulping Maze Bowl",
+  "Lick Bowl with Ball": "Dog Lick Mat Bowl with Treat Ball, Slow Feeder Calming Mat",
+  "Anti-Spill Floating Water Bowl": "No Spill Dog Water Bowl, Floating Disc Anti Splash Bowl",
+  "Travel Water Bottle & Bowl": "Dog Travel Water Bottle with Built In Bowl, Portable Dispenser",
+  "LED Waste Bag Dispenser": "Dog Poop Bag Dispenser with LED Light, Leash Clip Holder",
+  "Talk Button": "Dog Talking Buttons, Recordable Communication Training Buzzer",
+  "Dental Duck Chew Toy": "Dog Dental Chew Toy, Textured Rubber Duck for Teeth Cleaning",
+  "Crinkle Plush Buddy": "Crinkle Dog Toy, Squeaky Plush for Small and Medium Dogs",
+  "Woodland Rope-Limb Plush": "Rope Limb Dog Toy, Squeaky Plush Animal for Tug and Chew",
+  "Rope-Limb Puppy Plush": "Puppy Rope Toy, Soft Squeaky Plush with Rope Arms",
+  "Squirrel Squeaky Plush": "Squeaky Squirrel Dog Toy, Soft Plush for Fetch and Play",
+  "Big Squeak Plush": "Large Squeaky Dog Toy, Soft Plush Companion for Big Dogs",
+  "Cuddle Companion Teddy": "Puppy Comfort Toy, Soft Teddy for Crate and Sleep",
+  "Jingle Plush Ball": "Jingle Ball Dog Toy, Soft Plush Rattle Ball",
+  "Corduroy Squeak Pals": "Corduroy Dog Toy, Lightweight Squeaky Plush for Small Dogs",
+  "Barnyard Squeaker": "Squeaky Farm Animal Dog Toys, Soft Plush Set",
+  "Screaming Chicken": "Screaming Chicken Dog Toy, Loud Squeaky Rubber Toy",
+  "Sneaker Chew Buddy": "Sneaker Dog Chew Toy, Squeaky Shoe for Teething Puppies",
+  "Bouncy Egg Squeaker": "Wobble Egg Dog Toy, Erratic Bounce Squeaky Ball",
+  "Watermelon Rope Frisbee": "Dog Frisbee Rope Toy, Soft Flying Disc for Fetch",
+  "Calm & Comfort Kit": "Dog Anxiety Calming Kit, Heartbeat Toy Compression Wrap and Cooling Mat",
+  "Travel Kit": "Dog Travel Kit, Water Bottle Cooling Mat Paw Cleaner and Blanket",
+  "Grooming Essentials Kit": "Dog Grooming Kit, Slicker Brush Nail Grinder Toothbrush and Robe",
+  "New Puppy Kit": "New Puppy Starter Kit, Comfort Toy Blanket Chew and Toothbrush",
+  "Toy Kit": "Dog Toy Bundle, 5 Squeaky Plush and Rope Toys Variety Pack",
+  "Dog Enrichment Kit": "Dog Enrichment Kit, Lick Mat Slow Feeder Talking Button and Toy"
+ }
+}

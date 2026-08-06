@@ -1,0 +1,42 @@
+{
+  "_comment": [
+    "Marketing platform IDs for Wagvive. These are PUBLIC identifiers: the GA4",
+    "measurement ID appears in the page source of every page, and the Merchant",
+    "Center ID is visible to anyone who inspects the feed. Safe to commit.",
+    "",
+    "API keys, access tokens and secrets do NOT belong here. Those go in",
+    "config/*.env, which is gitignored. If a platform later needs a secret for",
+    "reporting (Google Ads developer token, Meta system user token), add it to",
+    "an env file and reference it by name here, never the value.",
+    "",
+    "Owner account for all marketing platforms: OWNER_MARKETING_INBOX",
+    "(the dedicated store Gmail behind hello@wagvive.com forwarding, chosen so",
+    "the business can be handed over without handing over a personal account)."
+  ],
+  "google": {
+    "owner_account": "OWNER_MARKETING_INBOX",
+    "ga4_measurement_id": "G-W6EC4B37P0",
+    "ga4_property_name": "Wagvive",
+    "merchant_center_id": "5836776920",
+    "shopify_channel": "Google & YouTube",
+    "shopify_publication_id": "gid://shopify/Publication/307494813985",
+    "products_published": 42,
+    "free_listings": "pending confirmation",
+    "paid_campaigns": "deliberately NOT enabled: Performance Max needs 30 to 50 conversions a month to learn and wastes budget below roughly $3,000/month. Google paid is phase 3, gated behind a 1.5% site conversion rate. See docs/marketing-plan-2026-08.md section 3.3.",
+    "data_retention": "set to 14 months, the free-tier maximum. Not retroactive."
+  },
+  "meta": {
+    "status": "not started",
+    "pixel_id": null,
+    "capi": "data sharing must be set to Maximum so Shopify sends server-side events"
+  },
+  "pinterest": {
+    "status": "not started",
+    "tag_id": null,
+    "note": "phase 1 destination. Cheapest qualified clicks of any channel at about $0.35, the only one under our CAC ceiling on day one."
+  },
+  "tiktok": {
+    "status": "closed as not viable for TikTok SHOP (overseas direct shipping restricted, ~6 business day delivery requirement, ~30% all-in take). TikTok as an ads or organic channel to our own site remains open.",
+    "pixel_id": null
+  }
+}
