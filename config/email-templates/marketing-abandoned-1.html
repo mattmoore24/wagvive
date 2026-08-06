@@ -80,10 +80,14 @@
         <a href="{{ shop.url }}/policies/refund-policy" style="color:#8A7B6B; text-decoration:none;">Returns</a> &nbsp;&#183;&nbsp;
         <a href="{{ shop.url }}/pages/faq" style="color:#8A7B6B; text-decoration:none;">FAQ</a>
       </p>
-      <!-- Postal address deliberately NOT hardcoded here (owner decision,
-           2026-08-05). CAN-SPAM still requires one on every marketing email,
-           so Shopify's own auto-appended compliance footer must be supplying
-           it. Confirm on the test send before this flow goes live. -->
+      <!-- CAN-SPAM requires a postal address on every marketing email. Pulled
+           from Shopify settings rather than hardcoded, so changing the address
+           in admin updates every future send. Verify it renders on the first
+           test; if blank, compose it from shop.address.address1 / .city /
+           .province_code / .zip instead. -->
+      <p style="margin:8px 0 0 0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; line-height:19px; color:#A2957F;">
+        {{ shop.name }}, {{ shop.address.summary }}
+      </p>
       <p style="margin:8px 0 0 0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; line-height:19px; color:#A2957F;">
         <a href="{{ unsubscribe_link }}" style="color:#8A7B6B; text-decoration:underline;">Unsubscribe</a>
       </p>
