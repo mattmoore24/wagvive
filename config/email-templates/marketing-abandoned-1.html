@@ -88,8 +88,13 @@
       <p style="margin:8px 0 0 0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; line-height:19px; color:#A2957F;">
         {{ shop.name }}, {{ shop.address.summary }}
       </p>
+      <!-- {{ unsubscribe_link }} renders a COMPLETE <a> tag, not a URL. Putting
+           it in an href nests an anchor inside an anchor and the leftover
+           attributes spill out as visible text. Verified live 2026-08-05.
+           Output it bare. Use {{ unsubscribe_url }} only if you need to style
+           the link yourself, and test that it is not empty. -->
       <p style="margin:8px 0 0 0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; line-height:19px; color:#A2957F;">
-        <a href="{{ unsubscribe_link }}" style="color:#8A7B6B; text-decoration:underline;">Unsubscribe</a>
+        {{ unsubscribe_link }}
       </p>
     </td></tr>
 

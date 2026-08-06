@@ -68,7 +68,11 @@
       </p>
       <p style="margin:8px 0 0 0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; line-height:19px; color:#A2957F;">
         You are receiving this because you signed up or bought from us.
-        <a href="{{ unsubscribe_link }}" style="color:#8A7B6B; text-decoration:underline;">Unsubscribe</a>
+      </p>
+      <!-- {{ unsubscribe_link }} renders a COMPLETE <a> tag, not a URL. Do not
+           put it inside an href. Verified live 2026-08-05. -->
+      <p style="margin:8px 0 0 0; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:12px; line-height:19px; color:#A2957F;">
+        {{ unsubscribe_link }}
       </p>
     </td></tr>
 
