@@ -126,6 +126,31 @@ A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
 
+- **FIRST EMAIL AUTOMATION IS LIVE (2026-08-05).** Abandoned checkout, three
+  emails at 1h / +23h / +48h, confirmed **Active** in Messaging › Automations.
+  `WELCOME10` appears in email 3 only.
+
+  **This overturned a wrong conclusion.** The flows doc said Claude could not
+  build these because there is no Admin API. The API part is true; the
+  conclusion was not. The Messaging email editor has a **Custom Liquid block**
+  that takes raw HTML with Liquid, so every marketing email is now authored in
+  this repo and pasted in. Paste-ready blocks:
+  `config/email-templates/marketing-abandoned-{1,2,3}-block.html`.
+
+  Six traps, each of which cost an attempt, are written up in
+  **`docs/knowledge/shopify-messaging-custom-liquid.md`. Read it before
+  building any remaining flow.** Most important: do not rebuild the page
+  wrapper inside the block (it overflows), `{{ unsubscribe_link }}` emits a
+  whole anchor so it must never go in an href, and Shopify adds its own Footer
+  block that duplicates the address and unsubscribe unless you leave them out.
+
+  Also confirmed dead ends: **Shopify Flow does not help** (`.flow` files are
+  hash-signed with a proprietary algorithm, and Flow's send-marketing-email
+  action opens the same editor), and **automations are invisible to the API**
+  (`marketingActivities` and `marketingEvents` both return 0), so the only
+  verification is the admin UI or a real send.
+
+
 - **PC SESSION 2026-08-05, after merging the web session.** The web branch
   `claude/project-progress-check-2mb93r` was merged to main; its nine commits
   had never landed, so from the owner's side none of that work was visible.

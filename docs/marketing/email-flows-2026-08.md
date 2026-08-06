@@ -403,14 +403,25 @@ a shop that does not know what it sold them.
 
 ## Building all five: the complete guide
 
-**Claude cannot do this part.** Shopify has no Admin API for marketing
-automations. `marketingEvents` is a read-only reporting query; there is no
-create mutation, and the setup screens do not render in a background tab. This
-is the same category as Settings › Notifications, which is why the 18
-notification templates were also installed by hand.
+**CORRECTED 2026-08-05: Claude CAN author these.** The earlier claim here was
+that no Admin API meant the emails had to be hand-built. The API part is true,
+the conclusion was not: the Messaging email editor has a **Custom Liquid
+block** that accepts raw HTML with Liquid, so every email is written in this
+repo and pasted in. The abandoned checkout flow was built that way and is live.
 
-Everything that could be removed from the job has been: copy is written, delays
-are decided, traps are marked, and the discount it depends on is live and tested.
+Full mechanics, and the six traps that cost an attempt each, are in
+`docs/knowledge/shopify-messaging-custom-liquid.md`. Read it before building
+any remaining flow. The short version:
+
+- Do not rebuild the page wrapper in the block, it overflows the container
+- `{{ unsubscribe_link }}` emits a whole `<a>` tag, never put it in an href
+- `{{ open_tracking_block }}` is required
+- Shopify adds its own Footer block: do not duplicate the address or
+  unsubscribe, and restyle it off black
+- `variant_title` is literally "Default Title" on single-variant products
+- The exit condition is on email 1 only; added steps each need their own
+
+Paste-ready blocks live in `config/email-templates/marketing-abandoned-*-block.html`.
 
 **Total time: about 45 minutes for all five.** Build order is by value, so if you
 stop after one you have stopped in the right place.
