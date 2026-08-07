@@ -41,9 +41,15 @@
     "if_review_fails": "Pinterest is phase 1 anyway and unaffected. Revisit Meta after the business is an LLC with a business bank account, which clears these flags far more reliably than an individual account."
   },
   "pinterest": {
-    "status": "not started",
-    "tag_id": null,
-    "note": "phase 1 destination. Cheapest qualified clicks of any channel at about $0.35, the only one under our CAC ceiling on day one."
+    "status": "tag installed as a Shopify web pixel; transmission to be confirmed in Pinterest tag health",
+    "owner_account": "OWNER_MARKETING_INBOX",
+    "tag_id": "2612708372364",
+    "shopify_web_pixel_id": "2774139169",
+    "runtime_context": "STRICT",
+    "why_it_looks_broken": "A STRICT web pixel runs inside Shopify's sandboxed iframe, so window.pintrk is undefined on the main page and its network calls never appear in the main document's performance resource list. This is expected and is NOT evidence of a broken tag. GA4 and Meta happen to load in the main page context, which is why the same check worked for them.",
+    "how_to_verify": "Pinterest Ads > Conversions > Tag health. It reports whether events are arriving and the time of the last one. There is no way to confirm a STRICT pixel from the storefront DOM.",
+    "catalog": "confirm catalog sync is ON. Product Pins are free organic distribution, the Pinterest equivalent of Google free listings, and the second zero-CPC channel in the plan.",
+    "note": "Phase 1 destination. At about $0.35 a click it is the only channel under our CAC ceiling on day one: the best offer supports a $0.43 click at a realistic 1% conversion rate."
   },
   "tiktok": {
     "status": "closed as not viable for TikTok SHOP (overseas direct shipping restricted, ~6 business day delivery requirement, ~30% all-in take). TikTok as an ads or organic channel to our own site remains open.",
