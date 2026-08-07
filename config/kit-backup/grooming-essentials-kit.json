@@ -1,0 +1,1129 @@
+{
+  "title": "Grooming Essentials Kit",
+  "status": "ACTIVE",
+  "options": [
+    {
+      "name": "Slicker Brush",
+      "optionValues": [
+        {
+          "name": "Green"
+        },
+        {
+          "name": "Pink"
+        },
+        {
+          "name": "Orange"
+        }
+      ]
+    },
+    {
+      "name": "Nail Grinder",
+      "optionValues": [
+        {
+          "name": "Deep Green"
+        },
+        {
+          "name": "Pure White"
+        }
+      ]
+    },
+    {
+      "name": "Bath Robe",
+      "optionValues": [
+        {
+          "name": "Blue"
+        },
+        {
+          "name": "Pink"
+        },
+        {
+          "name": "Green"
+        }
+      ]
+    }
+  ],
+  "variants": {
+    "nodes": [
+      {
+        "id": "gid://shopify/ProductVariant/53187755311393",
+        "title": "Green / Deep Green / Blue",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831118113",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831216417",
+                "title": "Deep Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755344161",
+        "title": "Green / Deep Green / Pink",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831118113",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831216417",
+                "title": "Deep Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667313441",
+                "title": "Pink / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755376929",
+        "title": "Green / Deep Green / Green",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831118113",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831216417",
+                "title": "Deep Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667411745",
+                "title": "Green / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755409697",
+        "title": "Green / Pure White / Blue",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831118113",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597567265",
+                "title": "Pure White",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755442465",
+        "title": "Green / Pure White / Pink",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831118113",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597567265",
+                "title": "Pure White",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667313441",
+                "title": "Pink / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755475233",
+        "title": "Green / Pure White / Green",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831118113",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597567265",
+                "title": "Pure White",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667411745",
+                "title": "Green / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755508001",
+        "title": "Pink / Deep Green / Blue",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597305121",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831216417",
+                "title": "Deep Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755540769",
+        "title": "Pink / Deep Green / Pink",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597305121",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831216417",
+                "title": "Deep Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667313441",
+                "title": "Pink / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755573537",
+        "title": "Pink / Deep Green / Green",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597305121",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831216417",
+                "title": "Deep Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667411745",
+                "title": "Green / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755606305",
+        "title": "Pink / Pure White / Blue",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597305121",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597567265",
+                "title": "Pure White",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755639073",
+        "title": "Pink / Pure White / Pink",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597305121",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597567265",
+                "title": "Pure White",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667313441",
+                "title": "Pink / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755671841",
+        "title": "Pink / Pure White / Green",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597305121",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597567265",
+                "title": "Pure White",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667411745",
+                "title": "Green / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755704609",
+        "title": "Orange / Deep Green / Blue",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597337889",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831216417",
+                "title": "Deep Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755737377",
+        "title": "Orange / Deep Green / Pink",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597337889",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831216417",
+                "title": "Deep Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667313441",
+                "title": "Pink / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755770145",
+        "title": "Orange / Deep Green / Green",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597337889",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831216417",
+                "title": "Deep Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667411745",
+                "title": "Green / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755802913",
+        "title": "Orange / Pure White / Blue",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597337889",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597567265",
+                "title": "Pure White",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755835681",
+        "title": "Orange / Pure White / Pink",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597337889",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597567265",
+                "title": "Pure White",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667313441",
+                "title": "Pink / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755868449",
+        "title": "Orange / Pure White / Green",
+        "price": "70.00",
+        "compareAtPrice": "86.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597337889",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456336990497",
+                  "title": "Wagvive Self-Cleaning Slicker Brush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097597567265",
+                "title": "Pure White",
+                "product": {
+                  "id": "gid://shopify/Product/10456337318177",
+                  "title": "Wagvive Quiet Electric Nail Grinder"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667411745",
+                "title": "Green / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158144803105",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469666062625",
+                  "title": "Wagvive Finger Toothbrush"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

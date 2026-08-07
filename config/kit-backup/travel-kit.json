@@ -1,0 +1,1492 @@
+{
+  "title": "Travel Kit",
+  "status": "ACTIVE",
+  "options": [
+    {
+      "name": "Water Bottle",
+      "optionValues": [
+        {
+          "name": "Blue"
+        },
+        {
+          "name": "Pink"
+        }
+      ]
+    },
+    {
+      "name": "Cooling Pad",
+      "optionValues": [
+        {
+          "name": "Pink"
+        },
+        {
+          "name": "Light Grey"
+        },
+        {
+          "name": "Coffee"
+        },
+        {
+          "name": "Dark Blue"
+        }
+      ]
+    },
+    {
+      "name": "Paw Cup Size",
+      "optionValues": [
+        {
+          "name": "S"
+        },
+        {
+          "name": "M"
+        },
+        {
+          "name": "L"
+        }
+      ]
+    }
+  ],
+  "variants": {
+    "nodes": [
+      {
+        "id": "gid://shopify/ProductVariant/53174552035617",
+        "title": "Blue / Pink / S",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104148769",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582756129",
+                "title": "Pink / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667608353",
+                "title": "Blue / S",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755901217",
+        "title": "Blue / Pink / M",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104148769",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582756129",
+                "title": "Pink / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755933985",
+        "title": "Blue / Pink / L",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104148769",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582756129",
+                "title": "Pink / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667673889",
+                "title": "Blue / L",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174552658209",
+        "title": "Pink / Pink / S",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104181537",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582756129",
+                "title": "Pink / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667608353",
+                "title": "Blue / S",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755966753",
+        "title": "Pink / Pink / M",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104181537",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582756129",
+                "title": "Pink / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187755999521",
+        "title": "Pink / Pink / L",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104181537",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582756129",
+                "title": "Pink / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667673889",
+                "title": "Blue / L",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756032289",
+        "title": "Blue / Light Grey / S",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104148769",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582362913",
+                "title": "Light Grey / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667608353",
+                "title": "Blue / S",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756065057",
+        "title": "Blue / Light Grey / M",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104148769",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582362913",
+                "title": "Light Grey / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756097825",
+        "title": "Blue / Light Grey / L",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104148769",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582362913",
+                "title": "Light Grey / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667673889",
+                "title": "Blue / L",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756130593",
+        "title": "Blue / Coffee / S",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104148769",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582493985",
+                "title": "Coffee / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667608353",
+                "title": "Blue / S",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756163361",
+        "title": "Blue / Coffee / M",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104148769",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582493985",
+                "title": "Coffee / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756196129",
+        "title": "Blue / Coffee / L",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104148769",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582493985",
+                "title": "Coffee / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667673889",
+                "title": "Blue / L",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756228897",
+        "title": "Blue / Dark Blue / S",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104148769",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582625057",
+                "title": "Dark Blue / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667608353",
+                "title": "Blue / S",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756261665",
+        "title": "Blue / Dark Blue / M",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104148769",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582625057",
+                "title": "Dark Blue / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756294433",
+        "title": "Blue / Dark Blue / L",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104148769",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582625057",
+                "title": "Dark Blue / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667673889",
+                "title": "Blue / L",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756327201",
+        "title": "Pink / Light Grey / S",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104181537",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582362913",
+                "title": "Light Grey / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667608353",
+                "title": "Blue / S",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756359969",
+        "title": "Pink / Light Grey / M",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104181537",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582362913",
+                "title": "Light Grey / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756392737",
+        "title": "Pink / Light Grey / L",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104181537",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582362913",
+                "title": "Light Grey / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667673889",
+                "title": "Blue / L",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756425505",
+        "title": "Pink / Coffee / S",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104181537",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582493985",
+                "title": "Coffee / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667608353",
+                "title": "Blue / S",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756458273",
+        "title": "Pink / Coffee / M",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104181537",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582493985",
+                "title": "Coffee / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756491041",
+        "title": "Pink / Coffee / L",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104181537",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582493985",
+                "title": "Coffee / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667673889",
+                "title": "Blue / L",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756523809",
+        "title": "Pink / Dark Blue / S",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104181537",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582625057",
+                "title": "Dark Blue / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667608353",
+                "title": "Blue / S",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756556577",
+        "title": "Pink / Dark Blue / M",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104181537",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582625057",
+                "title": "Dark Blue / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667641121",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53187756589345",
+        "title": "Pink / Dark Blue / L",
+        "price": "85.00",
+        "compareAtPrice": "105.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104181537",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547489057",
+                  "title": "Wagvive Travel Water Bottle & Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582625057",
+                "title": "Dark Blue / XX-Large 59\" x 39\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667673889",
+                "title": "Blue / L",
+                "product": {
+                  "id": "gid://shopify/Product/10471550189857",
+                  "title": "Wagvive Paw Washing Cup"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174667215137",
+                "title": "Blue / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471549927713",
+                  "title": "Wagvive Quick-Dry Bath Robe"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

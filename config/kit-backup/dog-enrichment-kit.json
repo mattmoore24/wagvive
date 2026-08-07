@@ -1,0 +1,2458 @@
+{
+  "title": "Dog Enrichment Kit",
+  "status": "ACTIVE",
+  "options": [
+    {
+      "name": "Talk Button",
+      "optionValues": [
+        {
+          "name": "Green"
+        },
+        {
+          "name": "Pink"
+        },
+        {
+          "name": "Blue"
+        },
+        {
+          "name": "Yellow"
+        }
+      ]
+    },
+    {
+      "name": "Lick Bowl",
+      "optionValues": [
+        {
+          "name": "Blue"
+        },
+        {
+          "name": "Black"
+        },
+        {
+          "name": "Grey"
+        },
+        {
+          "name": "Yellow"
+        }
+      ]
+    },
+    {
+      "name": "Slow Feeder",
+      "optionValues": [
+        {
+          "name": "Green"
+        },
+        {
+          "name": "Pink"
+        },
+        {
+          "name": "Orange"
+        }
+      ]
+    }
+  ],
+  "variants": {
+    "nodes": [
+      {
+        "id": "gid://shopify/ProductVariant/53173110702369",
+        "title": "Green / Blue / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104247073",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104378145",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525296929",
+        "title": "Green / Blue / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104247073",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104378145",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525395233",
+        "title": "Green / Black / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104279841",
+                "title": "Black",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104378145",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525428001",
+        "title": "Green / Black / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104279841",
+                "title": "Black",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104378145",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525526305",
+        "title": "Green / Grey / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104312609",
+                "title": "Grey",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104378145",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525559073",
+        "title": "Green / Grey / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104312609",
+                "title": "Grey",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104378145",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525657377",
+        "title": "Green / Yellow / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104345377",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104378145",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525690145",
+        "title": "Green / Yellow / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104345377",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104378145",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525788449",
+        "title": "Pink / Blue / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104247073",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104410913",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525821217",
+        "title": "Pink / Blue / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104247073",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104410913",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525919521",
+        "title": "Pink / Black / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104279841",
+                "title": "Black",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104410913",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525952289",
+        "title": "Pink / Black / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104279841",
+                "title": "Black",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104410913",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526050593",
+        "title": "Pink / Grey / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104312609",
+                "title": "Grey",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104410913",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526083361",
+        "title": "Pink / Grey / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104312609",
+                "title": "Grey",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104410913",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526181665",
+        "title": "Pink / Yellow / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104345377",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104410913",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526214433",
+        "title": "Pink / Yellow / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104345377",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104410913",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525329697",
+        "title": "Blue / Blue / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104247073",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104443681",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525853985",
+        "title": "Blue / Blue / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104247073",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104443681",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525460769",
+        "title": "Blue / Black / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104279841",
+                "title": "Black",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104443681",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525985057",
+        "title": "Blue / Black / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104279841",
+                "title": "Black",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104443681",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525591841",
+        "title": "Blue / Grey / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104312609",
+                "title": "Grey",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104443681",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526116129",
+        "title": "Blue / Grey / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104312609",
+                "title": "Grey",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104443681",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525722913",
+        "title": "Blue / Yellow / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104345377",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104443681",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526247201",
+        "title": "Blue / Yellow / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104345377",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104443681",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525362465",
+        "title": "Yellow / Blue / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104247073",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104476449",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525886753",
+        "title": "Yellow / Blue / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104247073",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104476449",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525493537",
+        "title": "Yellow / Black / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104279841",
+                "title": "Black",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104476449",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526017825",
+        "title": "Yellow / Black / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104279841",
+                "title": "Black",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104476449",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525624609",
+        "title": "Yellow / Grey / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104312609",
+                "title": "Grey",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104476449",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526148897",
+        "title": "Yellow / Grey / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104312609",
+                "title": "Grey",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104476449",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174525755681",
+        "title": "Yellow / Yellow / Green",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53079831314721",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104345377",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104476449",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526279969",
+        "title": "Yellow / Yellow / Pink",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599009057",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104345377",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104476449",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526312737",
+        "title": "Green / Blue / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104247073",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104378145",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526443809",
+        "title": "Green / Black / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104279841",
+                "title": "Black",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104378145",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526574881",
+        "title": "Green / Grey / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104312609",
+                "title": "Grey",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104378145",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526705953",
+        "title": "Green / Yellow / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104345377",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104378145",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526345505",
+        "title": "Pink / Blue / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104247073",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104410913",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526476577",
+        "title": "Pink / Black / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104279841",
+                "title": "Black",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104410913",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526607649",
+        "title": "Pink / Grey / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104312609",
+                "title": "Grey",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104410913",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526738721",
+        "title": "Pink / Yellow / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104345377",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104410913",
+                "title": "Pink",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526378273",
+        "title": "Blue / Blue / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104247073",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104443681",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526509345",
+        "title": "Blue / Black / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104279841",
+                "title": "Black",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104443681",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526640417",
+        "title": "Blue / Grey / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104312609",
+                "title": "Grey",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104443681",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526771489",
+        "title": "Blue / Yellow / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104345377",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104443681",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526411041",
+        "title": "Yellow / Blue / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104247073",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104476449",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526542113",
+        "title": "Yellow / Black / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104279841",
+                "title": "Black",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104476449",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526673185",
+        "title": "Yellow / Grey / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104312609",
+                "title": "Grey",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104476449",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53174526804257",
+        "title": "Yellow / Yellow / Orange",
+        "price": "46.00",
+        "compareAtPrice": "57.96",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097599041825",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10456337613089",
+                  "title": "Wagvive Slow Feeder Bowl"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104345377",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547587361",
+                  "title": "Wagvive Lick Bowl with Ball"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104476449",
+                "title": "Yellow",
+                "product": {
+                  "id": "gid://shopify/Product/10470547652897",
+                  "title": "Wagvive Talk Button"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53173104509217",
+                "title": "Green",
+                "product": {
+                  "id": "gid://shopify/Product/10470547751201",
+                  "title": "Wagvive Bouncy Egg Squeaker"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

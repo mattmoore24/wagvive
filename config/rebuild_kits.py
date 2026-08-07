@@ -1,36 +1,37 @@
 #!/usr/bin/env python3
-"""Rebuild a kit whose composition has changed.
+"""Rebuild every kit onto the Size + Colorway scheme in kit_colorways.py.
 
-Four kits, four distinct life stages / jobs:
+WHY NOT productBundleUpdate. The existing apply_kits.py derives each parent
+option FROM a component's option, so a parent option can only ever carry one
+component's own values. A shared "Colorway" that means Blue sneaker AND Beige
+blanket AND Blue dispenser cannot be expressed that way, because those are three
+different value vocabularies. So the options and variants are declared directly
+with productSet, and each parent variant's components are then attached by hand
+with productVariantRelationshipBulkUpdate. That mutation takes an explicit list
+of component VARIANT ids per parent variant, which is exactly the control this
+design needs.
 
-  New Puppy Kit        teething, accidents, first walks
-  Senior Dog Kit       joints, hydration, digestion, teeth
-  Grooming Essentials  coat, nails, teeth
-  Toy Kit              play
+ORDER OF OPERATIONS MATTERS. productSet replaces the variant set, which destroys
+the old variants and with them their component relationships. Between that write
+and the relationship write, the kit has variants that contain nothing. So each
+kit is taken through the whole sequence before the next one starts, and the
+relationship write is verified per variant. If the run dies midway, at most one
+kit is in that state and the printed output says which.
 
-A bundle cannot have components added or swapped through the API once it exists,
-so any change of composition means creating a new product and archiving the old
-one. Pass the kit titles to rebuild as arguments; with no arguments it rebuilds
-everything, which is almost never what you want.
+Run config/validate_colorways.py first. This refuses to start otherwise: every
+colour and size string must be known to resolve to a live buyable variant, or
+the store ends up selling a kit that cannot be fulfilled.
 
-Two things this has to get right, both learned the hard way:
-
-  * Shopify keeps a handle reserved even after the product is archived, so the
-    outgoing kit is renamed to `<handle>-retired` BEFORE the replacement is
-    created. Otherwise the new kit lands on `senior-dog-kit-1` and every link,
-    menu entry and metafield that names the clean handle points at a dead page.
-  * Losing a component silently moves a kit to DRAFT. Nothing warns you. Check
-    every kit is still ACTIVE after touching any variant.
-
-Every kit is priced off its live component total, so the advertised saving is
-real. Bundles are created with no media, so run make_kit_covers.py afterwards,
-and link_kits.py to repoint the component pages at the new kit.
+    python config/rebuild_kits.py            # plan only
+    python config/rebuild_kits.py --apply
 """
 import json, os, sys, time, urllib.error, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-COLLECTION_BUNDLES = 516867031329
-PUBLICATION = 'gid://shopify/Publication/306551619873'
+sys.path.insert(0, os.path.join(ROOT, 'config'))
+from kit_colorways import KITS, SIZE_MAP           # noqa: E402
+
+BACKUP = os.path.join(ROOT, 'config', 'kit-backup')
 
 env = {}
 with open(os.path.join(ROOT, 'config', 'shopify.env'), encoding='utf-8') as fh:
@@ -43,283 +44,300 @@ DOMAIN, TOKEN, VERSION = (env['SHOPIFY_STORE_DOMAIN'],
                           env['SHOPIFY_ADMIN_API_TOKEN'],
                           env['SHOPIFY_API_VERSION'])
 
-SENIOR_BODY = """<p><strong>For the dog who has earned an easier life.</strong></p>
-<p>Older dogs need different things, and they need them before anything looks
-wrong. These four cover the parts that quietly get harder with age.</p>
-<ul>
-<li><strong>Cooling comfort pad</strong> - stiff joints and poor heat regulation
-are the two complaints that come with age. A cool, even surface helps both.</li>
-<li><strong>Anti-spill water bowl</strong> - kidney function declines with age and
-steady hydration matters more. The floating disc stops the spillage that makes
-owners put the bowl somewhere inconvenient.</li>
-<li><strong>Slow feeder bowl</strong> - digestion slows down. So should dinner.</li>
-<li><strong>Finger toothbrush</strong>: dental disease is one of the most
-common conditions in older dogs. A soft sleeve over your finger gives you far
-more control than a brush handle, and most dogs tolerate a finger better.</li>
-</ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""
 
-GROOMING_BODY = """<p><strong>Everything for a home grooming session.</strong></p>
-<p>Four tools that cover coat, nails and teeth, so you are not stopping halfway
-through because you are missing the one thing you needed.</p>
-<ul>
-<li><strong>Self-cleaning slicker brush</strong> - one click and the coat lets go
-of the bristles, which is the part everyone hates</li>
-<li><strong>Shedding gloves</strong> - for the dogs who will not tolerate a brush
-but will happily be stroked</li>
-<li><strong>Quiet nail grinder</strong> - no clipper crunch, which is what most
-dogs are actually frightened of</li>
-<li><strong>Finger toothbrush</strong>: the bit that gets skipped, made
-easier by not needing a brush handle</li>
-</ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""
-
-TOY_BODY = """<p><strong>Four toys, four different games.</strong></p>
-<p>Dogs get bored of a toy, not of playing. This is a spread rather than four
-versions of the same thing - something to squeak, something to chew, something to
-shake and something to throw - so there is always one that suits the mood.</p>
-<ul>
-<li><strong>Dental duck</strong> - ridged latex, for chewing that does something</li>
-<li><strong>Barnyard squeaker</strong> - soft plush, for carrying and squeaking</li>
-<li><strong>Woodland rope-limb plush</strong> - rope arms and legs for tugging</li>
-<li><strong>Watermelon rope frisbee</strong> - for throwing, indoors or out</li>
-</ul>
-<p>Cheaper than picking any three separately, and it arrives in one parcel.</p>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""
-
-# The dental slot appears in TWO kits, so it lives in one place here. A bundle
-# cannot have components swapped after creation, and losing a component silently
-# drafts the kit, so changing this means rebuilding both.
-#
-# Was the Dental & Ear Wipes (CJYD216979603CX). Moved to the Finger Toothbrush on
-# 2026-08-01 for one reason: photography. Every image CJ has for that wipes
-# listing is a branded plastic can with a cat printed on the label, and a search
-# of the whole catalogue turned up no wipes product that is genuinely better -
-# the closest alternatives either drop dental entirely or carry another
-# manufacturer's retail packaging in every frame. The toothbrush is clean,
-# brand-neutral, dog-appropriate, cheaper to put in a kit, and reusable rather
-# than a consumable. The wipes stay on the site as a standalone.
-DENTAL = (10469666062625, 'CJYD262686408HS')   # Finger Toothbrush, Blue
+def gql(q, v=None, tries=6):
+    body = json.dumps({'query': q, 'variables': v or {}}).encode()
+    for a in range(tries):
+        req = urllib.request.Request(
+            f'https://{DOMAIN}/admin/api/{VERSION}/graphql.json', data=body,
+            method='POST', headers={'X-Shopify-Access-Token': TOKEN,
+                                    'Content-Type': 'application/json'})
+        try:
+            with urllib.request.urlopen(req, timeout=300) as r:
+                out = json.loads(r.read().decode())
+        except urllib.error.HTTPError as exc:
+            if exc.code in (429, 409) and a < tries - 1:
+                time.sleep(2 ** a)
+                continue
+            raise
+        if out.get('errors'):
+            msg = json.dumps(out['errors'])
+            if 'THROTTLED' in msg and a < tries - 1:
+                time.sleep(2 ** a)
+                continue
+            raise SystemExit('GraphQL: ' + msg[:600])
+        time.sleep(0.4)
+        return out
+    return {}
 
 
-ENRICHMENT_BODY = """<p><strong>A busy dog is a calm dog.</strong></p>
-<p>Four tools that turn meals and quiet time into work a dog actually enjoys:
-eating slower, drinking without mess, licking to settle, and learning to ask
-for things instead of barking at them.</p>
-<ul>
-<li><strong>Slow feeder bowl</strong>: dinner becomes a ten minute puzzle instead
-of a thirty second inhale</li>
-<li><strong>Anti-spill water bowl</strong>: steady hydration without the puddle</li>
-<li><strong>Lick bowl with ball</strong>: spread something tasty on it and licking
-does what licking is for, calming them down</li>
-<li><strong>Talk button</strong>: record a word and let them learn to press it.
-Most dogs surprise their owners inside a week</li>
-</ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""
-
-TRAVEL_BODY = """<p><strong>Everything for a day away from the water bowl.</strong></p>
-<p>Four pieces that live by the door or in the car, so leaving the house with
-the dog stops being a packing exercise.</p>
-<ul>
-<li><strong>Travel bottle and bowl in one</strong>: the lid flips open into a
-drinking bowl, and unfinished water tips straight back inside</li>
-<li><strong>LED waste bag dispenser</strong>: clips to the leash, lights the way
-on late walks</li>
-<li><strong>Cooling comfort pad</strong>: a familiar place to lie down in the car,
-the park or a cafe</li>
-<li><strong>Watermelon rope frisbee</strong>: because a day out should include
-one proper game of fetch</li>
-</ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""
-
-# title -> (components as (product_id, sku), body, tags)
-KITS = {
-    'Senior Dog Kit': (
-        [(10464689881377, 'CJPM292000021UF'),   # cooling pad, LG / Medium
-         (10456337547553, 'CJGY102545403CX'),   # water bowl, Grey / 1.5L
-         (10456337613089, 'CJGY174846501AZ'),   # slow feeder, Green
-         DENTAL],
-        SENIOR_BODY, 'bundle, kit, dog, senior, comfort, health'),
-    'Grooming Essentials Kit': (
-        [(10456336990497, 'CJMY195218501AZ'),   # slicker brush, Green
-         (10456337056033, 'CJYD233200807GT'),   # gloves, Dark Brown
-         (10456337318177, 'CJGY200835701AZ'),   # nail grinder, Deep Green
-         DENTAL],
-        GROOMING_BODY, 'bundle, kit, dog, grooming'),
-    'Dog Enrichment Kit': (
-        [(10456337613089, 'CJGY174846501AZ'),   # slow feeder, Green
-         (10456337547553, 'CJGY102545403CX'),   # water bowl, Grey / 1.5L
-         (10470547587361, 'CJFT286015801AZ'),   # lick bowl, Blue
-         (10470547652897, 'CJYD232561605EV')],  # talk button, Green
-        ENRICHMENT_BODY, 'bundle, kit, dog, enrichment, calming'),
-    'Travel Kit': (
-        [(10470547489057, 'CJDT287487301AZ'),   # travel bottle, Blue
-         (10469666128161, 'CJYD222274205EV'),   # LED dispenser, Grey
-         (10464689881377, 'CJPM292000021UF'),   # cooling pad, LG / Medium
-         (10469803819297, 'CJMY124424501AZ')],  # watermelon frisbee
-        TRAVEL_BODY, 'bundle, kit, dog, travel, outdoor'),
-    'Toy Kit': (
-        [(10469665308961, 'CJST217844101AZ'),   # dental duck
-         (10469665177889, 'CJYD242287801AZ'),   # barnyard squeaker, blue donkey
-         (10469665603873, 'CJST258364603CX'),   # woodland rope-limb, fox
-         (10469803819297, 'CJMY124424501AZ')],  # watermelon frisbee
-        TOY_BODY, 'bundle, kit, dog, toy set, play'),
-}
-
-# kits being replaced -> hand over the handle, then archive once the new one is live
-RETIRE = {'Senior Dog Kit': 10469812142369,
-          'Grooming Essentials Kit': 10469812470049}
-
-
-def api(method, path, payload=None):
-    url = f'https://{DOMAIN}/admin/api/{VERSION}/{path}'
-    data = json.dumps(payload).encode() if payload is not None else None
-    req = urllib.request.Request(url, data=data, method=method, headers={
-        'X-Shopify-Access-Token': TOKEN, 'Content-Type': 'application/json'})
-    with urllib.request.urlopen(req, timeout=180) as r:
-        body = r.read().decode()
-        return json.loads(body) if body.strip() else {}
-
-
-def gql(query, variables=None):
-    body = json.dumps({'query': query, 'variables': variables or {}}).encode()
-    req = urllib.request.Request(
-        f'https://{DOMAIN}/admin/api/{VERSION}/graphql.json', data=body, method='POST',
-        headers={'X-Shopify-Access-Token': TOKEN, 'Content-Type': 'application/json'})
-    with urllib.request.urlopen(req, timeout=120) as r:
-        return json.loads(r.read().decode())
-
-
-PRODUCT_Q = """
-query($id: ID!) {
-  product(id: $id) {
-    title
-    options { id name optionValues { id name } }
-    variants(first: 40) { nodes { id sku price selectedOptions { name value } } }
+KIT_Q = '''
+query($q: String!) {
+  products(first: 20, query: $q) {
+    nodes { id title handle status
+      options { name optionValues { name } }
+      variants(first: 5) { nodes { price compareAtPrice taxable } }
+      bundleComponents(first: 12) { nodes { componentProduct { id title } } } }
   }
-}
-"""
-CREATE = """
-mutation($input: ProductBundleCreateInput!) {
-  productBundleCreate(input: $input) {
-    productBundleOperation { id status }
+}'''
+
+COMP_Q = '''
+query($ids: [ID!]!) {
+  nodes(ids: $ids) {
+    ... on Product { id title
+      variants(first: 100) {
+        nodes { id title sku selectedOptions { name value } } } }
+  }
+}'''
+
+SET = '''
+mutation($input: ProductSetInput!) {
+  productSet(input: $input, synchronous: true) {
+    product { id
+      options { name optionValues { name } }
+      variants(first: 60) { nodes { id title selectedOptions { name value } } } }
+    userErrors { field message code }
+  }
+}'''
+
+REL = '''
+mutation($input: [ProductVariantRelationshipUpdateInput!]!) {
+  productVariantRelationshipBulkUpdate(input: $input) {
+    parentProductVariants { id
+      productVariantComponents(first: 12) {
+        nodes { quantity productVariant { id title product { title } } } } }
+    userErrors { code field message }
+  }
+}'''
+
+REPRICE = '''
+mutation($productId: ID!, $variants: [ProductVariantsBulkInput!]!) {
+  productVariantsBulkUpdate(productId: $productId, variants: $variants) {
+    productVariants { id price compareAtPrice }
     userErrors { field message }
   }
-}
-"""
-POLL = """
+}'''
+
+VERIFY_Q = '''
 query($id: ID!) {
-  productOperation(id: $id) {
-    ... on ProductBundleOperation {
-      status product { id title handle } userErrors { message }
+  product(id: $id) {
+    title status
+    options { name optionValues { name } }
+    variants(first: 60) {
+      nodes { id title price compareAtPrice
+        productVariantComponents(first: 12) {
+          nodes { productVariant { id title product { id title } } } } }
     }
   }
-}
-"""
+}'''
 
 
-def build(title, components, body, tags):
-    parts, retail = [], 0.0
-    for pid, sku in components:
-        d = gql(PRODUCT_Q, {'id': f'gid://shopify/Product/{pid}'})['data']['product']
-        var = next((v for v in d['variants']['nodes'] if v['sku'] == sku), None)
-        if not var:
-            print(f'   !! {sku} missing from {d["title"]}'); return None
-        retail += float(var['price'])
-        chosen = {o['name']: o['value'] for o in var['selectedOptions']}
-        sels = []
-        for opt in d['options']:
-            want = chosen.get(opt['name'])
-            if any(ov['name'] == want for ov in opt['optionValues']):
-                sels.append({'componentOptionId': opt['id'], 'name': opt['name'],
-                             'values': [want]})
-        parts.append({'quantity': 1,
-                      'productId': f'gid://shopify/Product/{pid}',
-                      'optionSelections': sels})
-        print(f'   {d["title"][:38]:40} {sku:20} ${float(var["price"]):.2f}')
+def short(t):
+    return t.replace('Wagvive ', '')
 
-    res = gql(CREATE, {'input': {'title': title, 'components': parts}})
-    d = res.get('data', {}).get('productBundleCreate') or {}
-    if d.get('userErrors'):
-        print('   errors:', json.dumps(d['userErrors'])[:300]); return None
-    op = d['productBundleOperation']['id']
-    product = None
-    for _ in range(30):
-        time.sleep(2)
-        p = gql(POLL, {'id': op})['data']['productOperation']
-        if p['status'] == 'COMPLETE':
-            product = p['product']; break
-        if p['status'] == 'FAILED':
-            print('   FAILED:', json.dumps(p.get('userErrors'))[:200]); return None
-    if not product:
-        print('   timed out'); return None
 
-    pid = int(product['id'].split('/')[-1])
-    # Price so the saving is real and consistent with the other kits.
-    price = round(retail * 0.80)
-    full = api('GET', f'products/{pid}.json')['product']
-    v = full['variants'][0]
-    api('PUT', f'variants/{v["id"]}.json', {'variant': {
-        'id': v['id'], 'price': f'{price:.2f}',
-        'compare_at_price': f'{retail:.2f}'}})
-    api('PUT', f'products/{pid}.json', {'product': {
-        'id': pid, 'body_html': body, 'vendor': 'Wagvive',
-        'product_type': 'Bundles & Kits', 'status': 'active', 'tags': tags}})
-    api('POST', 'collects.json',
-        {'collect': {'product_id': pid, 'collection_id': COLLECTION_BUNDLES}})
-    gql("""mutation($id: ID!, $input: [PublicationInput!]!) {
-             publishablePublish(id: $id, input: $input) { userErrors { message } } }""",
-        {'id': product['id'], 'input': [{'publicationId': PUBLICATION}]})
-    print(f'   -> {pid}  ${price:.2f} (was ${retail:.2f}, save '
-          f'{(1 - price / retail) * 100:.0f}%)\n')
-    return pid
+def build_plan(kit, spec, bundle_names, by_name):
+    """[(variant option values, [component variant ids], label)] for one kit."""
+    sizes = spec['sizes'] or [None]
+    rows = []
+    for size in sizes:
+        for cw_name, cw in spec['values'].items():
+            comp_ids, detail = [], []
+            for comp_name in bundle_names:
+                c = by_name[comp_name]
+                variants = c['variants']['nodes']
+                if len(variants) == 1:
+                    comp_ids.append(variants[0]['id'])
+                    detail.append(f'{comp_name}=only')
+                    continue
+                want = {}
+                if comp_name in cw:
+                    axis = next((o['name'] for o in variants[0]['selectedOptions']
+                                 if o['name'].lower() != 'size'), None)
+                    want[axis] = cw[comp_name]
+                if size and comp_name in SIZE_MAP[size]:
+                    want['Size'] = SIZE_MAP[size][comp_name]
+                match = [v for v in variants
+                         if all(any(o['name'] == n and o['value'] == val
+                                    for o in v['selectedOptions'])
+                                for n, val in want.items())]
+                if len(match) != 1:
+                    raise SystemExit(f'{kit}: {comp_name} {want} -> '
+                                     f'{len(match)} matches (run validate first)')
+                comp_ids.append(match[0]['id'])
+                detail.append(f'{comp_name}={match[0]["title"]}')
+            opts = ([('Size', size), (spec['option'], cw_name)] if size
+                    else [(spec['option'], cw_name)])
+            rows.append((opts, comp_ids, detail))
+    return rows
+
+
+def reprice(product_gid, price, compare):
+    """Force every variant of a kit to the flat kit price."""
+    cur = gql(VERIFY_Q, {'id': product_gid})['data']['product']
+    want = [{'id': v['id'], 'price': price, 'compareAtPrice': compare}
+            for v in cur['variants']['nodes']
+            if v['price'] != price or v['compareAtPrice'] != compare]
+    if not want:
+        return 0
+    for i in range(0, len(want), 25):
+        r = gql(REPRICE, {'productId': product_gid, 'variants': want[i:i + 25]}
+                )['data']['productVariantsBulkUpdate']
+        if r['userErrors']:
+            print(f'  !! reprice: {json.dumps(r["userErrors"])[:300]}')
+    print(f'  repriced {len(want)} variant(s) to {price} / {compare}')
+    return len(want)
 
 
 def main():
-    # Only rebuild what changed. Rebuilding an unchanged kit would create a
-    # duplicate and cost it its handle for nothing.
-    wanted = sys.argv[1:] or list(KITS)
-    made = {}
-    for title in wanted:
-        comps, body, tags = KITS[title]
-        print(title)
-        old = RETIRE.get(title)
-        if old:
-            # Shopify keeps a handle reserved even after archiving, so the
-            # replacement would land on "senior-dog-kit-1" unless the outgoing
-            # kit gives the handle up first.
-            h = api('GET', f'products/{old}.json?fields=handle')['product']['handle']
-            if not h.endswith('-retired'):
-                api('PUT', f'products/{old}.json',
-                    {'product': {'id': old, 'handle': f'{h}-retired'}})
-                print(f'   freed handle /{h}')
-        pid = build(title, comps, body, tags)
-        if pid:
-            made[title] = pid
-        elif old:
-            api('PUT', f'products/{old}.json', {'product': {'id': old, 'handle': h}})
-            print(f'   build failed, handle /{h} given back')
+    apply = '--apply' in sys.argv
+    reprice_only = '--reprice-only' in sys.argv
+    os.makedirs(BACKUP, exist_ok=True)
 
-    for title, old in RETIRE.items():
-        if title in made:
-            api('PUT', f'products/{old}.json',
-                {'product': {'id': old, 'status': 'archived'}})
-            print(f'archived old {title} ({old})')
+    kits = gql(KIT_Q, {'q': "product_type:'Bundles & Kits' AND status:ACTIVE"}
+               )['data']['products']['nodes']
+    by_title = {k['title']: k for k in kits}
+    ids = sorted({c['componentProduct']['id'] for k in kits
+                  for c in k['bundleComponents']['nodes']})
+    comps = {n['id']: n for n in gql(COMP_Q, {'ids': ids})['data']['nodes']}
+    by_name = {short(c['title']): c for c in comps.values()}
 
-    path = os.path.join(ROOT, 'config', 'kit_ids.json')
-    live = {}
-    if os.path.exists(path):
-        with open(path, encoding='utf-8') as fh:
-            live = json.load(fh)
-    live.update(made)
-    with open(path, 'w', encoding='utf-8') as fh:
-        json.dump(live, fh, indent=1)
-    print(f'\n{len(made)} kit(s) built')
+    failures = []
+    for kit_title, spec in KITS.items():
+        kit = by_title.get(kit_title)
+        if not kit:
+            print(f'!! {kit_title}: not an active kit, skipped')
+            failures.append(kit_title)
+            continue
+        bundle_names = [short(c['componentProduct']['title'])
+                        for c in kit['bundleComponents']['nodes']]
+        # Intended price comes from the BACKUP when one exists. After a rebuild
+        # the live price is whatever Shopify derived from the components, so
+        # reading it back would launder that error into the new price.
+        bpath = os.path.join(BACKUP, f'{kit["handle"]}.json')
+        if os.path.exists(bpath):
+            old = json.load(open(bpath, encoding='utf-8'))
+            price = old['variants']['nodes'][0]['price']
+            compare = old['variants']['nodes'][0]['compareAtPrice']
+        else:
+            price = kit['variants']['nodes'][0]['price']
+            compare = kit['variants']['nodes'][0]['compareAtPrice']
+        rows = build_plan(kit_title, spec, bundle_names, by_name)
+
+        old_opts = [o['name'] for o in kit['options']]
+        print(f'\n=== {kit_title} ===')
+        print(f'  options {old_opts} -> '
+              f'{["Size", spec["option"]] if spec["sizes"] else [spec["option"]]}')
+        print(f'  variants {len(kit["variants"]["nodes"])}+ -> {len(rows)}   '
+              f'price {price} / compare {compare}')
+        for opts, cids, detail in rows[:2]:
+            print(f'    {" / ".join(v for _, v in opts):22} {detail}')
+        if len(rows) > 2:
+            print(f'    ... {len(rows) - 2} more')
+
+        if not apply and not reprice_only:
+            continue
+
+        if reprice_only:
+            # Structure is already correct; only the derived prices need
+            # overriding. Deliberately skips productSet, which would destroy and
+            # recreate every variant and with it every component relationship.
+            reprice(kit['id'], price, compare)
+            fresh = gql(VERIFY_Q, {'id': kit['id']})['data']['product']
+            ok = all(v['price'] == price and v['compareAtPrice'] == compare
+                     for v in fresh['variants']['nodes'])
+            print(f'  {"OK " if ok else "BAD"} all {len(fresh["variants"]["nodes"])} '
+                  f'variants at {price} / {compare}')
+            if not ok:
+                failures.append(kit_title)
+            continue
+
+        with open(os.path.join(BACKUP, f'{kit["handle"]}.json'), 'w',
+                  encoding='utf-8') as fh:
+            json.dump(gql(VERIFY_Q, {'id': kit['id']})['data']['product'], fh,
+                      indent=2)
+
+        # 1. options + variants
+        option_names = ([('Size', spec['sizes'])] if spec['sizes'] else []) + \
+                       [(spec['option'], list(spec['values']))]
+        payload = {
+            'id': kit['id'],
+            'productOptions': [{'name': n, 'position': i + 1,
+                                'values': [{'name': v} for v in vals]}
+                               for i, (n, vals) in enumerate(option_names)],
+            'variants': [{
+                'optionValues': [{'optionName': n, 'name': v} for n, v in opts],
+                'price': price, 'compareAtPrice': compare, 'taxable': True,
+                'inventoryPolicy': 'DENY',
+                'inventoryItem': {'tracked': True, 'requiresShipping': True},
+            } for opts, _, _ in rows],
+        }
+        r = gql(SET, {'input': payload})['data']['productSet']
+        if r['userErrors']:
+            print(f'  !! productSet: {json.dumps(r["userErrors"])[:400]}')
+            failures.append(kit_title)
+            continue
+        made = {tuple(sorted((o['name'], o['value'])
+                             for o in v['selectedOptions'])): v['id']
+                for v in r['product']['variants']['nodes']}
+        print(f'  productSet ok: {len(made)} variants')
+
+        # 2. components, per variant
+        batch = []
+        for opts, cids, _ in rows:
+            key = tuple(sorted((n, v) for n, v in opts))
+            vid = made.get(key)
+            if not vid:
+                print(f'  !! no variant created for {opts}')
+                failures.append(kit_title)
+                continue
+            batch.append({'parentProductVariantId': vid,
+                          'removeAllProductVariantRelationships': True,
+                          'productVariantRelationshipsToCreate':
+                              [{'id': c, 'quantity': 1} for c in cids]})
+        for i in range(0, len(batch), 10):
+            rr = gql(REL, {'input': batch[i:i + 10]}
+                     )['data']['productVariantRelationshipBulkUpdate']
+            if rr['userErrors']:
+                print(f'  !! relationships: {json.dumps(rr["userErrors"])[:400]}')
+                failures.append(kit_title)
+        print(f'  components attached to {len(batch)} variant(s)')
+
+        # 3. reprice. This MUST come after the relationships, not before.
+        # productVariantRelationshipBulkUpdate defaults to deriving the parent
+        # price from the sum of its components, so it silently overwrites
+        # whatever productSet just wrote: the first run left New Puppy at 63.95
+        # for Small and 66.95 for Medium instead of a flat 54.00. A kit is sold
+        # at one price regardless of which size or colorway is chosen, so the
+        # price is re-asserted here and then verified.
+        reprice(kit['id'], price, compare)
+
+        # 4. verify this kit before moving to the next
+        fresh = gql(VERIFY_Q, {'id': kit['id']})['data']['product']
+        want_n = len(bundle_names)
+        bad = [v['title'] for v in fresh['variants']['nodes']
+               if len(v['productVariantComponents']['nodes']) != want_n]
+        prices_ok = all(v['price'] == price and v['compareAtPrice'] == compare
+                        for v in fresh['variants']['nodes'])
+        ok = not bad and prices_ok and len(fresh['variants']['nodes']) == len(rows)
+        print(f'  {"OK " if ok else "BAD"} {len(fresh["variants"]["nodes"])} variants, '
+              f'each with {want_n} components, prices consistent={prices_ok}')
+        if bad:
+            print(f'      wrong component count: {bad[:5]}')
+        if not ok:
+            failures.append(kit_title)
+
+    print('\n' + '=' * 66)
+    if not apply and not reprice_only:
+        print('Plan only. Use --apply to rebuild.')
+        return 0
+    if failures:
+        print(f'FAILED: {sorted(set(failures))}')
+        print('Backups of the previous state are in config/kit-backup/')
+        return 1
+    print('all six kits rebuilt and verified')
+    return 0
 
 
 if __name__ == '__main__':
-    try:
-        main()
-    except urllib.error.HTTPError as exc:
-        print('HTTP', exc.code, exc.read().decode()[:500], file=sys.stderr)
-        sys.exit(1)
+    sys.exit(main())
