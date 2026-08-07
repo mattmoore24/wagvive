@@ -21,7 +21,10 @@ apart one at a time:
 
 Plus a fifth, pointing the other way:
 
-  5. `custom.kit` on each component, linking it back to the kit it belongs to.
+  5. `custom.kits` on each component, listing every kit it belongs to. This is a
+     LIST because six of the twenty two components are in two or three kits; the
+     older single `custom.kit` reference could only name one and is kept only as
+     a fallback for the storefront snippet.
 
 This checks all five against the bundle and reports every divergence.
 
@@ -84,7 +87,8 @@ COMPONENT_LINK_Q = '''
 query($q: String!) {
   products(first: 60, query: $q) {
     nodes { id title
-      metafield(namespace: "custom", key: "kit") { value } }
+      kit:  metafield(namespace: "custom", key: "kit")  { value }
+      kits: metafield(namespace: "custom", key: "kits") { value } }
   }
 }'''
 
@@ -193,19 +197,28 @@ def main():
             problems.append(f'{title}: variants priced inconsistently {prices}')
         print(f'  price: {sorted(prices)}  compare_at: {sorted(c for c in cmps if c)}')
 
-        # 5. reverse links
+        # 5. reverse links.
+        # Checked against `custom.kits` (a LIST), not the old single `custom.kit`.
+        # Six components sit in two or three kits, so a single reference could
+        # only ever name one of them and this check used to flag every correct
+        # multi-kit component as wrong. What matters is that THIS kit appears in
+        # the component's list; the component naming other kits as well is the
+        # whole point. See config/link_kits_multi.py.
         wrong = []
         for c in comps:
-            link = (prods.get(c['id']) or {}).get('metafield')
-            if not link:
-                wrong.append(f'{short(c["title"])}: no custom.kit link')
-            elif link['value'] != k['id']:
-                other = prods.get(link['value'], {}).get('title', link['value'])
-                wrong.append(f'{short(c["title"])}: links to {short(str(other))}')
+            p = prods.get(c['id']) or {}
+            mf = p.get('kits')
+            listed = json.loads(mf['value']) if mf else []
+            if not listed:
+                wrong.append(f'{short(c["title"])}: no custom.kits list')
+            elif k['id'] not in listed:
+                named = [short(prods.get(i, {}).get('title', i)) for i in listed]
+                wrong.append(f'{short(c["title"])}: lists {named}, not this kit')
         if wrong:
+            problems.append(f'{title}: broken cross-links {wrong}')
             print(f'  cross-links: !! {wrong}')
         else:
-            print('  cross-links: all components point back here')
+            print(f'  cross-links: all {len(comps)} components list this kit')
 
     print('\n' + '=' * 64)
     if problems:

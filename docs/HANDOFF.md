@@ -126,6 +126,60 @@ A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
 
+- **KIT COVERS AND CROSS-LINKS REBUILT (2026-08-07).** Two things shipped, both
+  verified live.
+
+  **1. Every kit has a real cover photo.** The tiled grid covers are gone.
+  `config/apply_kit_covers.py --apply` published a styled overhead flat-lay for
+  all six kits, generated with Runway from the SAME component photos as tagged
+  references, and confirmed live via `/products/<handle>.js` (`featured_image`
+  now contains `kit-flatlay-`). Only position 1 changed; the per-component
+  gallery shots below it are untouched, which is what `audit_kits.py` reads.
+
+  **Three takes were rejected on inspection, so do not skip that step.** The
+  Sneaker Chew Buddy rendered as an actual child's sneaker with a rubber sole
+  instead of the soft chew toy; the finger toothbrush lost its all-over nubs;
+  and both Calm & Comfort takes reproduced the supplier's embossed brand mark on
+  the sloth's orange module as garbled pseudo-lettering. The fix for the last
+  one is an explicit instruction to render that surface unmarked. Approved
+  source art is in `config/branding/kit-covers/flatlay/`.
+
+  Recentring is done deterministically in `apply_kit_covers.py` by CROPPING to a
+  centred square, never by translating pixels, because a translation leaves a
+  region to fill and any fill seams against the background vignette. New Puppy
+  was 10.4% off centre and is now correct.
+
+  `make_kit_covers.py` (the grid) is kept as the fallback for a new kit with no
+  art. **Never run it with `--force`** or every flat-lay reverts to a grid.
+
+  **2. A component page now names EVERY kit it belongs to.** `custom.kit` was a
+  single product_reference, so the Cooling Pad advertised the Travel Kit and
+  said nothing about Calm & Comfort, the highest-contribution kit at $43.06.
+  `config/link_kits_multi.py --apply` created `custom.kits` (a list) and filled
+  it from live bundle membership; six of the twenty two components are in two or
+  three kits. The snippet promotes the biggest dollar saving and names the rest
+  on a quiet line under it. `config/verify_kit_callout.py` confirms all 22
+  component pages render correctly.
+
+  **The Liquid trap that cost the most time here: Shopify Liquid will not index
+  an array with a variable.** `kit_list[best_idx]` silently evaluates to nil,
+  the entire callout vanishes, and NO Liquid error appears anywhere. A literal
+  index works, which makes it look impossible. Capture the winner with
+  `assign kit = k` inside the loop instead. Proven live with a probe:
+  `{% assign zz = 0 %}{{ kl[zz].title }}` rendered empty while the same list
+  iterated fine in a `for`.
+
+  Also learned: the theme **assets endpoint is eventually consistent**. A GET
+  straight after a PUT can return the pre-write body, so `deploy_snippet.py`
+  polls before reporting failure. And storefront product pages served mixed
+  stale and fresh renders for several minutes: across two verifier runs the SAME
+  pages passed and failed alternately, so `verify_kit_callout.py` retries per
+  page. `?nocache=` does not reliably defeat this.
+
+  Open, low priority: the live product photo for the Heartbeat Soothing Sloth
+  shows a SUPPLIER's brand embossed on the orange module. Not introduced by this
+  work, but it is a third-party mark sitting on a Wagvive product page.
+
 - **FIRST EMAIL AUTOMATION IS LIVE (2026-08-05).** Abandoned checkout, three
   emails at 1h / +23h / +48h, confirmed **Active** in Messaging › Automations.
   `WELCOME10` appears in email 3 only.

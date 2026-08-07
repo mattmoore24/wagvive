@@ -13,6 +13,16 @@ are read from the live bundle, so a rebuilt kit regenerates correctly.
 No text is drawn into the image. Text baked into product photography is exactly
 what this audit was cleaning up elsewhere, and it does not survive being
 rendered at thumbnail size anyway.
+
+SUPERSEDED FOR THE SIX LIVE KITS (2026-08-07). Every current kit now carries a
+styled Runway flat-lay published by `config/apply_kit_covers.py`; the grid read
+as a contact sheet rather than a product. This generator stays because it is the
+fallback for a NEW kit that has no art yet, and because it needs no art director
+when a composition changes.
+
+**Do not run this with `--force`.** Without it the script skips any kit that
+already has images, which is what protects the flat-lays. With it, every cover
+reverts to a grid and the gallery gains a duplicate of every component shot.
 """
 import io, json, os, sys, urllib.error, urllib.request
 

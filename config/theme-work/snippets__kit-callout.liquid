@@ -1,49 +1,98 @@
 {% doc %}
-  "Also in the kit" callout for a product that is part of a bundle.
+  "Also in the kit" callout for a product that is part of one or more bundles.
 
-  The kits are the catalogue's best AOV lever - $109 against $136 of components,
-  $79 against $108 - but a shopper on a component page had no way to know that.
-  This states the saving in dollars and percent, computed from live prices rather
-  than hardcoded, so it can never drift out of date or overstate the discount.
+  The kits are the catalogue's best AOV lever, so a shopper on a component page
+  needs to know the set exists. This states the saving in dollars and percent,
+  computed from live prices rather than hardcoded, so it can never drift out of
+  date or overstate the discount.
 
-  Renders nothing unless the product has a `custom.kit` reference and that kit is
-  genuinely cheaper than its parts, so a pricing change quietly retires the claim
-  instead of turning it into a false one.
+  Reads `custom.kits` (list.product_reference), written from the LIVE bundle
+  membership by config/link_kits_multi.py. It used to read `custom.kit`, a single
+  reference, which could only ever name one kit. Six of the twenty two components
+  sit in two or three, so the Cooling Pad page advertised the Travel Kit and said
+  nothing about Calm & Comfort, the highest-contribution kit in the range. The
+  single reference is still honoured as a fallback if the list is empty.
+
+  The card promotes the kit with the LARGEST dollar saving; any others are named
+  on a quiet line underneath, so the page keeps one clear primary action.
+
+  The winner is captured with `assign kit = k` INSIDE the loop. Do not "find the
+  best index, then read kit_list[best_idx]": Shopify Liquid will not index an
+  array with a variable. `kit_list[best_idx]` silently evaluates to nil, the
+  whole card disappears, and no Liquid error is raised anywhere. A literal index
+  (`kit_list[0]`) works, which makes the failure look impossible until you probe
+  it. Verified live: `{% assign zz = 0 %}{{ kl[zz].title }}` rendered empty while
+  the same list iterated fine in a `for` loop.
+
+  Renders nothing unless a kit is available and genuinely cheaper than its parts,
+  so a pricing change quietly retires the claim instead of turning it into a
+  false one.
 {% enddoc %}
 
 {%- liquid
-  assign kit = product.metafields.custom.kit.value
-  if kit == blank or kit.available == false
-    break
+  assign kit_list = product.metafields.custom.kits.value
+  assign best_saving = 0
+  assign best_handle = ''
+
+  for k in kit_list
+    assign s = k.compare_at_price | minus: k.price
+    if k.available and s > best_saving
+      assign best_saving = s
+      assign best_handle = k.handle
+      assign kit = k
+    endif
+  endfor
+
+  if best_saving <= 0
+    assign kit = product.metafields.custom.kit.value
+    assign best_saving = 0
+    if kit.available
+      assign best_saving = kit.compare_at_price | minus: kit.price
+    endif
   endif
-  assign kit_price = kit.price
-  assign parts_total = kit.compare_at_price
-  assign saving = parts_total | minus: kit_price
 -%}
 
-{%- if kit != blank and saving > 0 -%}
-  {%- assign pct = saving | times: 100 | divided_by: parts_total -%}
-  <a class="wv-kit" href="{{ kit.url }}">
-    {%- if kit.featured_image -%}
-      <img
-        class="wv-kit__img"
-        src="{{ kit.featured_image | image_url: width: 160 }}"
-        alt="{{ kit.title | escape }}"
-        width="80"
-        height="80"
-        loading="lazy"
-      >
-    {%- endif -%}
-    <span class="wv-kit__body">
-      <span class="wv-kit__eyebrow">Also in the {{ kit.title }}</span>
-      <span class="wv-kit__line">
-        Buy the set for <strong>{{ kit_price | money }}</strong>
-        <s>{{ parts_total | money }}</s>
-        <span class="wv-kit__save">Save {{ saving | money }} ({{ pct }}%)</span>
+{%- if kit != blank and best_saving > 0 -%}
+  {%- assign pct = best_saving | times: 100 | divided_by: kit.compare_at_price -%}
+  {%- assign shown = 0 -%}
+  {%- capture more -%}
+    {%- for k in kit_list -%}
+      {%- assign s = k.compare_at_price | minus: k.price -%}
+      {%- if k.handle != best_handle and k.available and s > 0 -%}
+        {%- if shown > 0 %} and {% endif -%}
+        <a href="{{ k.url }}">{{ k.title }}</a>
+        {%- assign shown = shown | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+
+  <div class="wv-kit-wrap">
+    <a class="wv-kit" href="{{ kit.url }}">
+      {%- if kit.featured_image -%}
+        <img
+          class="wv-kit__img"
+          src="{{ kit.featured_image | image_url: width: 160 }}"
+          alt="{{ kit.title | escape }}"
+          width="80"
+          height="80"
+          loading="lazy"
+        >
+      {%- endif -%}
+      <span class="wv-kit__body">
+        <span class="wv-kit__eyebrow">Also in the {{ kit.title }}</span>
+        <span class="wv-kit__line">
+          Buy the set for <strong>{{ kit.price | money }}</strong>
+          <s>{{ kit.compare_at_price | money }}</s>
+          <span class="wv-kit__save">Save {{ best_saving | money }} ({{ pct }}%)</span>
+        </span>
       </span>
-    </span>
-    <span class="wv-kit__chev" aria-hidden="true">&rsaquo;</span>
-  </a>
+      <span class="wv-kit__chev" aria-hidden="true">&rsaquo;</span>
+    </a>
+
+    {%- if shown > 0 -%}
+      <p class="wv-kit__more">Also part of the {{ more }}.</p>
+    {%- endif -%}
+  </div>
 {%- endif -%}
 
 {% stylesheet %}
@@ -109,5 +158,17 @@
     font-size: 1.4rem;
     opacity: 0.4;
     flex: none;
+  }
+
+  .wv-kit__more {
+    margin: 8px 2px 0;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    opacity: 0.7;
+  }
+
+  .wv-kit__more a {
+    color: inherit;
+    text-underline-offset: 2px;
   }
 {% endstylesheet %}
