@@ -89,30 +89,46 @@ def fetch(url):
 
 
 def compose(images):
-    """2x2 grid. Each component gets an equal, square, white tile."""
-    n = min(len(images), 4)
-    cols = 2 if n > 1 else 1
-    rows = 2 if n > 2 else 1
-    cell = (CANVAS - 2 * PAD - (cols - 1) * GAP) // cols
-    cell_h = (CANVAS - 2 * PAD - (rows - 1) * GAP) // rows
-    side = min(cell, cell_h)
+    """Grid covering EVERY component. Each gets an equal, square, white tile.
+
+    This used to be a fixed 2x2 that took images[:4], which was correct when
+    every kit had four components. The 2026-08-04 rebuild moved five of the six
+    kits to FIVE components, so the cover silently dropped one item from each:
+    the Travel Kit advertised four pieces while selling five. A cover that
+    understates the offer is a straight conversion loss on the page we buy
+    traffic for, and nothing flagged it.
+
+    Layout is derived from the count, and the final row is centered so a
+    five-item kit reads as 3 over 2 rather than 3 over 2-shoved-left.
+    """
+    n = len(images)
+    if n <= 1:
+        cols = 1
+    elif n <= 4:
+        cols = 2
+    else:
+        cols = 3
+    rows = (n + cols - 1) // cols
+
+    side = min((CANVAS - 2 * PAD - (cols - 1) * GAP) // cols,
+               (CANVAS - 2 * PAD - (rows - 1) * GAP) // rows)
 
     canvas = Image.new('RGB', (CANVAS, CANVAS), BG)
-    total_w = cols * side + (cols - 1) * GAP
     total_h = rows * side + (rows - 1) * GAP
-    ox = (CANVAS - total_w) // 2
     oy = (CANVAS - total_h) // 2
 
-    for i, im in enumerate(images[:4]):
+    for i, im in enumerate(images):
+        r, c = divmod(i, cols)
+        in_row = min(cols, n - r * cols)          # this row may be short
+        row_w = in_row * side + (in_row - 1) * GAP
+        ox = (CANVAS - row_w) // 2                 # center every row
         tile = Image.new('RGB', (side, side), TILE_BG)
         # contain, not crop - a cropped product photo loses the product
         pic = im.copy()
         pic.thumbnail((side - 40, side - 40), Image.LANCZOS)
         tile.paste(pic, ((side - pic.width) // 2, (side - pic.height) // 2))
         tile = rounded(tile, RADIUS)
-        x = ox + (i % cols) * (side + GAP)
-        y = oy + (i // cols) * (side + GAP)
-        canvas.paste(tile, (x, y))
+        canvas.paste(tile, (ox + c * (side + GAP), oy + r * (side + GAP)))
     return canvas
 
 
@@ -149,7 +165,7 @@ def main():
             print(f'{d["title"]:28} no component images'); continue
 
         images = []
-        for title, url in comps[:4]:
+        for title, url in comps:      # every component, not the first four
             try:
                 images.append(fetch(url))
             except Exception as exc:
