@@ -126,6 +126,51 @@ A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
 
+- **SUPPLIER BRAND MARK REMOVED, AND A WORSE ONE FOUND (2026-08-07).** The
+  Heartbeat Soothing Sloth photo carried a supplier's brand ("FUDI JINTIN" plus a
+  paw logo) embossed on the orange heartbeat module. Retouched with Runway in
+  edit mode, reframed, and published to BOTH places it lived: the product's own
+  position-1 image and the copy inside the Calm & Comfort Kit gallery. Verified
+  live: no image anywhere still resolves to the branded master.
+
+  Two reusable tools came out of it. `config/replace_product_image.py` swaps one
+  image while preserving position, alt and **variant wiring** (deleting an image
+  silently nulls `variant.image_id`, which breaks the cart thumbnail with no
+  error anywhere). `config/match_framing.py` measures the subject's bounding box
+  in the old and new shots and crops the new one to land in the same place at the
+  same scale, because Runway re-renders the whole scene even when asked to
+  retouch one small surface, and the subject drifts.
+
+  **Then a full sweep of all 141 product images turned up something worse.** The
+  **Dental & Ear Wipes** listing shows the SUPPLIER'S TUB PACKAGING, and it is
+  bad on three counts at once: it is not Wagvive branding, it shows CATS on a
+  dog-exclusive store, and the label has visible typos ("Unsented", "Freshman
+  Breath&prevent Bad Breath", "Generate For Cats And Dogs").
+
+  **This one is NOT a straight retouch and was deliberately left for the owner.**
+  Generating Wagvive-branded tubs would show a package the customer will never
+  receive, which is a misleading product image, not a cleanup. The honest options
+  are: photograph the wipes out of the tub, use a plain unbranded tub, or drop
+  the SKU. That is a call about what we are willing to represent, so it is the
+  owner's. See task #83.
+
+  Everything else in the catalogue is clean. The nail grinder's "Grinder" label
+  is a generic functional word, not a brand, and stays.
+
+- **CJ CONNECTION RE-AUDITED AFTER ALL OF THE ABOVE (2026-08-07).** Clean:
+  36 distinct SPUs all resolve to live CJ variants, 144 sellable variants, stock
+  only at the canonical Shop location, every variant buyable on the storefront,
+  all six kits intact, and all 36 products have a carrier inside the 5 to 12
+  business day promise. Log in `docs/qa/cj-connection-audit-2026-08-07.json`.
+
+  **Know what that audit does and does not prove.** It resolves our SKUs against
+  CJ's catalogue via `/product/query`, so it proves the SKUs are real and
+  sellable. It does NOT read the Shopify-to-CJ pairing itself: that binding lives
+  in CJ's Angular app (`cj-platform-web`), which has no public API. Nothing this
+  session touched SKUs or variants, so the pairing could not have been affected,
+  but if you ever need to prove pairing directly it is a browser job or a real
+  test order.
+
 - **KIT COVERS AND CROSS-LINKS REBUILT (2026-08-07).** Two things shipped, both
   verified live.
 
