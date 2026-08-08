@@ -126,6 +126,35 @@ A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
 
+- **HOMEPAGE REBUILT KITS-FIRST (2026-08-08, after the pairing work).** Owner
+  call: before marketing spend, make the homepage sell the kits. Full research,
+  decisions and sources in **`docs/homepage-redesign-2026-08.md`**; applied by
+  `config/homepage_kits_first.py --apply` and verified live.
+
+  The short version: the hero video stays but the H1 now states the offer and
+  the primary CTA goes to the bundles collection; the six-kit grid with live
+  price + compare_at anchoring is the FIRST content section (it used to be
+  seventh, behind eight singles); the old duplicate kit band is now a Calm &
+  Comfort flagship spotlight ("$109.00 together, $26.95 less than apart") over
+  a new Runway banner built from the kit's real component photos
+  (`wagvive-band-calm-kit.jpg` in Files); singles and categories are demoted to
+  secondary paths. Also fixed stale facts ("Five kits", "four essentials") and
+  two British spellings ("ageing", "grey muzzles").
+
+  **Things to know:**
+  - Every dollar figure on the page is computed from the live storefront at
+    apply time and the script REFUSES to write if a savings claim would be
+    false. **Re-run `homepage_kits_first.py --apply` after any kit repricing**
+    to refresh the marquee, band, and FAQ numbers.
+  - Rollback: PUT `config/theme-backup/templates__index__2026-08-08-pre-kit-redesign.json`
+    back to `templates/index.json`.
+  - Deliberately NOT done: no fake reviews (add real stars to kit cards once
+    Judge.me exists), no WELCOME10 on the page (wire the signup incentive into
+    the newsletter block only when welcome flow #76a is live, or it becomes a
+    permanent price cut), no urgency theatre.
+  - When GA4 lands, watch homepage CTR to /collections/bundles-kits, kit share
+    of orders, and AOV against the +20 to 30% bundling benchmark.
+
 - **COLORWAY COVERS FINISHED AND THE WIPES REPLACEMENT IS LIVE (2026-08-08).**
   Two of the three jobs are done and verified against the live system. The third,
   CJ pairing, is **NOT done** and is described in its own section below.
