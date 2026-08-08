@@ -112,7 +112,14 @@ Rules:
 
 ## Things that have NO API (must be done in a browser)
 
-- **CJ product pairing.** CJ's Angular app only. The Sync button validates a
+- **CJ product pairing.** CJ's Angular app only, and **it must be the owner's
+  REAL Chrome (the `claude-in-chrome` tools), never the in-app browser.** The CJ
+  session lives in the real browser; the in-app browser is signed out, so pairing
+  looks impossible there and is not. This has now cost time twice, once by
+  concluding pairing had to be handed to the owner when it did not. Pairing is
+  browser-only, NOT owner-only: Claude can do it, in the owner's Chrome, without
+  ever touching credentials because the session is already signed in.
+  The Sync button validates a
   store held in a JS closure that DOM manipulation cannot reach; call the app's
   own service instead:
   `angular.element(document.body).injector().get('dsp').postFun('cj-platform-web/product/pullPlatformProduct', {shopId:'2607280059043535300'}, cb)`.
@@ -158,12 +165,46 @@ address appearing anywhere customer-facing.
 ```
 config/
   pricing.py freight_floor.py margin_guard.py   money model + enforcement
+  price_book.json market_bands.py               per-product prices and floors
+  demand_model.py optimise_prices.py            how those prices were derived
   sync_inventory.py fix_locations.py            inventory correctness
   cj_api.py scout*.py                           CJ sourcing
+
+  kit_colorways.py                              KIT SOURCE OF TRUTH: the Size +
+                                                Colorway design. Edit this, then
+                                                validate, then rebuild.
+  validate_colorways.py                         proves every colour/size in it
+                                                resolves to a live buyable variant
+  rebuild_kits.py                               applies it (--reprice-only exists
+                                                because bundle pricing overrides)
+  verify_kit_variants.py                        checks all 39 kit variants by
+                                                component IDENTITY, not count
+  apply_kit_covers.py                           kit cover art (one per kit)
+  apply_colorway_covers.py                      per-colorway covers + variant
+                                                image wiring; run with no flags
+                                                to list what is still unshot
+  make_kit_covers.py                            OLD grid fallback. Never --force.
+
+  audit_kits.py audit_cj_connections.py         the two standing audits
+  verify_kit_callout.py                         component pages name their kits
+  replace_product_image.py match_framing.py     swap one photo, keep framing
+                                                and variant wiring
+  remove_wipes.py                               worked example of retiring a SKU
+                                                everywhere it is referenced
+
   build_email_templates.py email-templates/     notification emails
-  branding/                                     logos, kit covers, email assets
+  branding/kit-covers/flatlay/                  one cover per kit
+  branding/kit-covers/colorway/                 <handle>__<Colorway>.jpg
+  branding/retouched/                           photos fixed by hand
+  theme-work/ theme-backup/                     snippets we own, and rollbacks
+docs/HANDOFF.md                                 READ FIRST. Current state.
+docs/knowledge/                                 hard-won platform gotchas
+docs/qa/                                        audit logs, newest wins
 .github/workflows/                              scheduled ops
 ```
+
+Run any audit or verify script with no arguments to see what it checks; they all
+print a plain-English report and exit non-zero on a real problem.
 
 Secrets live in `config/shopify.env` and `config/cj.env` — gitignored, never
 committed. Copy the `.example` files to create them.
