@@ -720,43 +720,51 @@ immediately:
 
 ## Prompt to start the next session
 
-Paste this on whichever device you pick up. It points at documents rather than
-restating them, so there is only ever one source of truth.
+Paste this verbatim. It points at documents rather than restating them, so there
+is only ever one source of truth.
 
-> Read `docs/HANDOFF.md` first, then `git pull`. If you are on the home PC,
-> the section "NEXT PC SESSION" is the work: four ordered steps, about an hour,
-> all of it blocked on this device only. Then read
-> `docs/marketing-plan-2026-08.md` for the wider context.
+> Read `docs/HANDOFF.md` first, then `git pull`. CLAUDE.md is binding.
 >
-> Context: the catalogue was fully repriced on 2026-08-04 from a demand model,
-> all six kits were rebuilt around freight physics, a legal compliance review
-> was completed, and a marketing plan was written. Everything is applied,
-> verified live and pushed. The store has ONE order (a test), no GA4, no
-> pixels, and no Merchant Center, so marketing phase 0 is next and it is the
-> gate on all paid spend.
+> **Use my REAL Chrome (the claude-in-chrome tools) for anything involving CJ,
+> from the very start. Do not use the in-app browser for CJ: it is signed out,
+> which makes pairing look impossible when it is not.** Confirm which browser
+> you are on before you touch CJ.
 >
-> Start by telling me:
-> 1. What you can and cannot do on THIS device (check whether the Shopify
->    connector is attached before assuming).
-> 2. Everything you need FROM me across the whole session, as one list, so I
->    can gather it in one go rather than being interrupted. I expect that to
->    include the Google, Meta and Pinterest account setups.
-> 3. Which parts of phase 0 you can do right now without any account of mine,
->    and start on the highest-value one.
+> Three jobs, in this order.
 >
-> Rules for the session:
-> - Never advertise a single product. Kits only. The reason is in the plan
->   section 1 and it is not a preference, it is arithmetic.
-> - Re-run `config/marketing/cac_ceiling.py` before any budget decision, and
->   after any repricing, because every ceiling moves with prices.
-> - Verify every change against the live system by re-fetching it, not against
->   the tool's return value. For theme changes use the section rendering API,
->   not the cached homepage.
-> - Show me numbers before any write that changes a price, product or bundle.
-> - Never enter my credentials anywhere. Logins, payment details, tax filings
->   and supplier registrations are mine to do. Prepare everything up to the
->   login and hand off with exact steps.
-> - Tell me plainly if something in the plan turns out to be wrong.
+> 1. Shoot the 12 remaining kit colorway covers (task #87). Run
+>    `python config/apply_colorway_covers.py` with no flags first: it names every
+>    missing cover and exits non-zero until all exist. Grooming, Enrichment,
+>    Travel and Calm & Comfort, 3 each. Build each from that colorway's exact
+>    component VARIANT photos, not product defaults, and eyeball every output
+>    against its references before uploading. Save to
+>    `config/branding/kit-covers/colorway/` as `<handle>__<Colorway>.jpg`, then
+>    apply with `--apply`. Every Grooming prompt needs the toothbrush scale
+>    clause or it renders banana-sized: "a finger-sized silicone sleeve about
+>    6 cm long, clearly the SMALLEST object in frame, roughly one third the
+>    length of the sneaker toy. Do not enlarge it."
+>
+> 2. Source and launch a replacement for the retired Dental & Ear Wipes
+>    (task #85). A well-reviewed CJ dental or ear care product with CLEAN
+>    packaging: no supplier branding, no cat imagery, no label typos. Check CJ's
+>    own reference photos at full resolution BEFORE committing to the SKU. That
+>    check is what caught the wipes. Margin against `config/pricing.py` and
+>    `config/freight_floor.py`. It needs a master image AND a lifestyle image,
+>    a description, the Grooming collection, and a slot in the cart cross-sell
+>    pool in `snippets/cart-cross-sell.liquid` where the wipes handle was removed.
+>
+> 3. CJ pairing, in my real Chrome. Pair the new product and un-pair the archived
+>    wipes. Procedure and the exact Angular service call are in CLAUDE.md. One
+>    product at a time; verify `matchitem` before confirming, because a failed
+>    confirm nulls it and every later attempt throws until reload.
+>
+> Then the final gate, all four: `audit_kits.py`, `verify_kit_variants.py`,
+> `audit_cj_connections.py`, and `apply_colorway_covers.py` with no flags.
+>
+> Rules: verify against the live system by re-fetching, never the write's return
+> value. Never enter my credentials. Show me numbers before any write that
+> changes a price, product or bundle. Tell me plainly if something turns out to
+> be wrong or impossible, with the numbers behind it.
 >
 > When you finish, update `docs/HANDOFF.md`, commit and push.
 

@@ -7,3 +7,4 @@
 - [Horizon theme JSON traps](horizon-theme-json-traps.md) - placeholder product cards look real; handles not gids; static block keys; homepage SEO lives in meta-tags.liquid not preferences; check sections with ?sections=
 - [Wagvive email architecture](wagvive-email-architecture.md) - hello@ is Shopify forwarding to a dedicated Gmail; sender verified + DKIM live; check _domainkey existence, not selector guesses
 - [Shopify admin UI automation limits](shopify-admin-ui-automation-limits.md) - notification templates have no API; admin settings never render in a background tab; REST 2/sec limit and the tail-pipe trap
+- [Shopify Liquid and CDN traps](shopify-liquid-and-cdn-traps.md) - Liquid can't index an array with a variable and fails silently; assets GET and storefront HTML both need polling, not one read
