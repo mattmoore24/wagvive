@@ -1,8 +1,8 @@
 {
- "ran_at": "2026-08-04T21:57:46",
+ "ran_at": "2026-08-08T09:10:14",
  "floor": "price_book",
  "applied": false,
- "checked": 144,
+ "checked": 145,
  "breaches": [],
  "unresolved": [],
  "thin": [
@@ -327,24 +327,34 @@
    "freight": 6.17
   },
   {
-   "product": "Wagvive Dental & Ear Wipes",
-   "variant": "Dental wipes (50)",
-   "sku": "CJYD216979603CX",
-   "price": 13.99,
-   "margin": 29.6,
-   "stress_margin": 20.2,
-   "freight_headroom": 9.29,
-   "freight": 7.88
+   "product": "Wagvive Dental Chew Stick",
+   "variant": "Teal",
+   "sku": "CJGY209135802BY",
+   "price": 14.99,
+   "margin": 24.9,
+   "stress_margin": 15.8,
+   "freight_headroom": 7.57,
+   "freight": 6.04
   },
   {
-   "product": "Wagvive Dental & Ear Wipes",
-   "variant": "Ear wipes (50)",
-   "sku": "CJYD216979602BY",
-   "price": 13.99,
-   "margin": 29.6,
-   "stress_margin": 20.2,
-   "freight_headroom": 9.29,
-   "freight": 7.88
+   "product": "Wagvive Dental Chew Stick",
+   "variant": "Yellow",
+   "sku": "CJGY209135803CX",
+   "price": 14.99,
+   "margin": 24.9,
+   "stress_margin": 15.8,
+   "freight_headroom": 7.57,
+   "freight": 6.04
+  },
+  {
+   "product": "Wagvive Dental Chew Stick",
+   "variant": "Green",
+   "sku": "CJGY209135804DW",
+   "price": 14.99,
+   "margin": 24.9,
+   "stress_margin": 15.8,
+   "freight_headroom": 7.57,
+   "freight": 6.04
   },
   {
    "product": "Wagvive Dental Duck Chew Toy",

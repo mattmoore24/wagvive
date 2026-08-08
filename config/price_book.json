@@ -1,398 +1,408 @@
 {
- "10471550320929": {
-  "title": "Wagvive Calming Thunder Wrap",
-  "price": 31.99,
-  "variants": {
-   "CJYD264078601AZ": 31.99,
-   "CJYD264078602BY": 31.99,
-   "CJYD264078603CX": 31.99
+  "10471550320929": {
+    "title": "Wagvive Calming Thunder Wrap",
+    "price": 31.99,
+    "variants": {
+      "CJYD264078601AZ": 31.99,
+      "CJYD264078602BY": 31.99,
+      "CJYD264078603CX": 31.99
+    },
+    "floor_margin_pct": 35.8
   },
-  "floor_margin_pct": 35.8
- },
- "10471550419233": {
-  "title": "Wagvive Heartbeat Soothing Sloth",
-  "price": 33.99,
-  "variants": {
-   "CJYD233940102BY": 33.99
+  "10471550419233": {
+    "title": "Wagvive Heartbeat Soothing Sloth",
+    "price": 33.99,
+    "variants": {
+      "CJYD233940102BY": 33.99
+    },
+    "floor_margin_pct": 29.3
   },
-  "floor_margin_pct": 29.3
- },
- "10464689881377": {
-  "title": "Wagvive Cooling Comfort Pad",
-  "price": 33.99,
-  "variants": {
-   "CJPM292000021UF": 19.99,
-   "CJPM292000022VE": 20.99,
-   "CJPM292000023WD": 25.99,
-   "CJPM292000024XC": 33.99,
-   "CJPM292000003CX": 19.99,
-   "CJPM292000004DW": 20.99,
-   "CJPM292000005EV": 25.99,
-   "CJPM292000006FU": 33.99,
-   "CJPM292000015OL": 19.99,
-   "CJPM292000016PK": 20.99,
-   "CJPM292000017QJ": 25.99,
-   "CJPM292000018RI": 33.99,
-   "CJPM292000009IR": 19.99,
-   "CJPM292000010JQ": 20.99,
-   "CJPM292000011KP": 25.99,
-   "CJPM292000012LO": 33.99
+  "10464689881377": {
+    "title": "Wagvive Cooling Comfort Pad",
+    "price": 33.99,
+    "variants": {
+      "CJPM292000021UF": 19.99,
+      "CJPM292000022VE": 20.99,
+      "CJPM292000023WD": 25.99,
+      "CJPM292000024XC": 33.99,
+      "CJPM292000003CX": 19.99,
+      "CJPM292000004DW": 20.99,
+      "CJPM292000005EV": 25.99,
+      "CJPM292000006FU": 33.99,
+      "CJPM292000015OL": 19.99,
+      "CJPM292000016PK": 20.99,
+      "CJPM292000017QJ": 25.99,
+      "CJPM292000018RI": 33.99,
+      "CJPM292000009IR": 19.99,
+      "CJPM292000010JQ": 20.99,
+      "CJPM292000011KP": 25.99,
+      "CJPM292000012LO": 33.99
+    },
+    "floor_margin_pct": 20.8
   },
-  "floor_margin_pct": 20.8
- },
- "10470547652897": {
-  "title": "Wagvive Talk Button",
-  "price": 16.99,
-  "variants": {
-   "CJYD232561605EV": 16.99,
-   "CJYD232561603CX": 16.99,
-   "CJYD232561606FU": 16.99,
-   "CJYD232561604DW": 16.99
+  "10470547652897": {
+    "title": "Wagvive Talk Button",
+    "price": 16.99,
+    "variants": {
+      "CJYD232561605EV": 16.99,
+      "CJYD232561603CX": 16.99,
+      "CJYD232561606FU": 16.99,
+      "CJYD232561604DW": 16.99
+    },
+    "floor_margin_pct": 41.7
   },
-  "floor_margin_pct": 41.7
- },
- "10471550189857": {
-  "title": "Wagvive Paw Washing Cup",
-  "price": 16.99,
-  "variants": {
-   "CJSP293469601AZ": 16.99,
-   "CJSP293469603CX": 16.99,
-   "CJSP293469605EV": 16.99,
-   "CJSP293469607GT": 16.99,
-   "CJSP293469609IR": 16.99,
-   "CJSP293469611KP": 16.99,
-   "CJSP293469613MN": 16.99,
-   "CJSP293469615OL": 16.99,
-   "CJSP293469617QJ": 16.99
+  "10471550189857": {
+    "title": "Wagvive Paw Washing Cup",
+    "price": 16.99,
+    "variants": {
+      "CJSP293469601AZ": 16.99,
+      "CJSP293469603CX": 16.99,
+      "CJSP293469605EV": 16.99,
+      "CJSP293469607GT": 16.99,
+      "CJSP293469609IR": 16.99,
+      "CJSP293469611KP": 16.99,
+      "CJSP293469613MN": 16.99,
+      "CJSP293469615OL": 16.99,
+      "CJSP293469617QJ": 16.99
+    },
+    "floor_margin_pct": 37.7
   },
-  "floor_margin_pct": 37.7
- },
- "10471550222625": {
-  "title": "Wagvive Waterproof Snuggle Blanket",
-  "price": 23.99,
-  "variants": {
-   "CJGY192649701AZ": 18.99,
-   "CJGY192649702BY": 23.99,
-   "CJGY192649706FU": 18.99,
-   "CJGY192649707GT": 23.99,
-   "CJGY192649711KP": 18.99,
-   "CJGY192649712LO": 23.99
+  "10471550222625": {
+    "title": "Wagvive Waterproof Snuggle Blanket",
+    "price": 23.99,
+    "variants": {
+      "CJGY192649701AZ": 18.99,
+      "CJGY192649702BY": 23.99,
+      "CJGY192649706FU": 18.99,
+      "CJGY192649707GT": 23.99,
+      "CJGY192649711KP": 18.99,
+      "CJGY192649712LO": 23.99
+    },
+    "floor_margin_pct": 25.3
   },
-  "floor_margin_pct": 25.3
- },
- "10471549927713": {
-  "title": "Wagvive Quick-Dry Bath Robe",
-  "price": 18.99,
-  "variants": {
-   "CJGY138841301AZ": 15.99,
-   "CJGY138841302BY": 16.99,
-   "CJGY138841303CX": 18.99,
-   "CJGY138841304DW": 15.99,
-   "CJGY138841305EV": 16.99,
-   "CJGY138841306FU": 18.99,
-   "CJGY138841307GT": 15.99,
-   "CJGY138841308HS": 16.99,
-   "CJGY138841309IR": 18.99
+  "10471549927713": {
+    "title": "Wagvive Quick-Dry Bath Robe",
+    "price": 18.99,
+    "variants": {
+      "CJGY138841301AZ": 15.99,
+      "CJGY138841302BY": 16.99,
+      "CJGY138841303CX": 18.99,
+      "CJGY138841304DW": 15.99,
+      "CJGY138841305EV": 16.99,
+      "CJGY138841306FU": 18.99,
+      "CJGY138841307GT": 15.99,
+      "CJGY138841308HS": 16.99,
+      "CJGY138841309IR": 18.99
+    },
+    "floor_margin_pct": 30.2
   },
-  "floor_margin_pct": 30.2
- },
- "10471550484769": {
-  "title": "Wagvive Paw Print Fleece Blanket",
-  "price": 16.99,
-  "variants": {
-   "CJGY211711303CX": 13.99,
-   "CJGY211711304DW": 16.99,
-   "CJGY211711310JQ": 13.99,
-   "CJGY211711311KP": 16.99,
-   "CJGY211711317QJ": 13.99,
-   "CJGY211711318RI": 16.99
+  "10471550484769": {
+    "title": "Wagvive Paw Print Fleece Blanket",
+    "price": 16.99,
+    "variants": {
+      "CJGY211711303CX": 13.99,
+      "CJGY211711304DW": 16.99,
+      "CJGY211711310JQ": 13.99,
+      "CJGY211711311KP": 16.99,
+      "CJGY211711317QJ": 13.99,
+      "CJGY211711318RI": 16.99
+    },
+    "floor_margin_pct": 34.5
   },
-  "floor_margin_pct": 34.5
- },
- "10468724506913": {
-  "title": "Wagvive Waterproof Sofa & Furniture Cover",
-  "price": 31.99,
-  "variants": {
-   "CJYD225186001AZ": 17.99,
-   "CJYD225186002BY": 23.99,
-   "CJYD225186003CX": 31.99,
-   "CJYD225186007GT": 17.99,
-   "CJYD225186008HS": 23.99,
-   "CJYD225186009IR": 31.99,
-   "CJYD225186013MN": 17.99,
-   "CJYD225186014NM": 23.99,
-   "CJYD225186015OL": 31.99
+  "10468724506913": {
+    "title": "Wagvive Waterproof Sofa & Furniture Cover",
+    "price": 31.99,
+    "variants": {
+      "CJYD225186001AZ": 17.99,
+      "CJYD225186002BY": 23.99,
+      "CJYD225186003CX": 31.99,
+      "CJYD225186007GT": 17.99,
+      "CJYD225186008HS": 23.99,
+      "CJYD225186009IR": 31.99,
+      "CJYD225186013MN": 17.99,
+      "CJYD225186014NM": 23.99,
+      "CJYD225186015OL": 31.99
+    },
+    "floor_margin_pct": 12.1
   },
-  "floor_margin_pct": 12.1
- },
- "10469665800481": {
-  "title": "Wagvive Big Squeak Plush",
-  "price": 18.99,
-  "variants": {
-   "CJST219013201AZ": 18.99,
-   "CJST219013202BY": 18.99
+  "10469665800481": {
+    "title": "Wagvive Big Squeak Plush",
+    "price": 18.99,
+    "variants": {
+      "CJST219013201AZ": 18.99,
+      "CJST219013202BY": 18.99
+    },
+    "floor_margin_pct": 23.7
   },
-  "floor_margin_pct": 23.7
- },
- "10471549731105": {
-  "title": "Wagvive Cuddle Companion Teddy",
-  "price": 14.99,
-  "variants": {
-   "CJYD245411401AZ": 14.99
+  "10471549731105": {
+    "title": "Wagvive Cuddle Companion Teddy",
+    "price": 14.99,
+    "variants": {
+      "CJYD245411401AZ": 14.99
+    },
+    "floor_margin_pct": 28.8
   },
-  "floor_margin_pct": 28.8
- },
- "10471549632801": {
-  "title": "Wagvive Sneaker Chew Buddy",
-  "price": 12.99,
-  "variants": {
-   "CJYD252933701AZ": 12.99,
-   "CJYD252933702BY": 12.99,
-   "CJYD252933703CX": 12.99
+  "10471549632801": {
+    "title": "Wagvive Sneaker Chew Buddy",
+    "price": 12.99,
+    "variants": {
+      "CJYD252933701AZ": 12.99,
+      "CJYD252933702BY": 12.99,
+      "CJYD252933703CX": 12.99
+    },
+    "floor_margin_pct": 26.3
   },
-  "floor_margin_pct": 26.3
- },
- "10471550058785": {
-  "title": "Wagvive Dematting Comb",
-  "price": 13.99,
-  "variants": {
-   "CJYD275409401AZ": 13.99
+  "10471550058785": {
+    "title": "Wagvive Dematting Comb",
+    "price": 13.99,
+    "variants": {
+      "CJYD275409401AZ": 13.99
+    },
+    "floor_margin_pct": 28.4
   },
-  "floor_margin_pct": 28.4
- },
- "10456337318177": {
-  "title": "Wagvive Quiet Electric Nail Grinder",
-  "price": 21.99,
-  "variants": {
-   "CJGY200835701AZ": 21.99,
-   "CJGY200835702BY": 21.99
+  "10456337318177": {
+    "title": "Wagvive Quiet Electric Nail Grinder",
+    "price": 21.99,
+    "variants": {
+      "CJGY200835701AZ": 21.99,
+      "CJGY200835702BY": 21.99
+    },
+    "floor_margin_pct": 14.3
   },
-  "floor_margin_pct": 14.3
- },
- "10469666128161": {
-  "title": "Wagvive LED Waste Bag Dispenser",
-  "price": 10.99,
-  "variants": {
-   "CJYD222274201AZ": 10.99,
-   "CJYD222274203CX": 10.99,
-   "CJYD222274205EV": 10.99,
-   "CJYD222274207GT": 10.99,
-   "CJYD222274209IR": 10.99
+  "10469666128161": {
+    "title": "Wagvive LED Waste Bag Dispenser",
+    "price": 10.99,
+    "variants": {
+      "CJYD222274201AZ": 10.99,
+      "CJYD222274203CX": 10.99,
+      "CJYD222274205EV": 10.99,
+      "CJYD222274207GT": 10.99,
+      "CJYD222274209IR": 10.99
+    },
+    "floor_margin_pct": 29.2
   },
-  "floor_margin_pct": 29.2
- },
- "10470547489057": {
-  "title": "Wagvive Travel Water Bottle & Bowl",
-  "price": 18.99,
-  "variants": {
-   "CJDT287487301AZ": 18.99,
-   "CJDT287487302BY": 18.99
+  "10470547489057": {
+    "title": "Wagvive Travel Water Bottle & Bowl",
+    "price": 18.99,
+    "variants": {
+      "CJDT287487301AZ": 18.99,
+      "CJDT287487302BY": 18.99
+    },
+    "floor_margin_pct": 15.1
   },
-  "floor_margin_pct": 15.1
- },
- "10469665177889": {
-  "title": "Wagvive Barnyard Squeaker",
-  "price": 11.99,
-  "variants": {
-   "CJYD242287802BY": 11.99,
-   "CJYD242287803CX": 11.99,
-   "CJYD242287804DW": 11.99,
-   "CJYD242287805EV": 11.99,
-   "CJYD242287806FU": 11.99,
-   "CJYD242287807GT": 11.99,
-   "CJYD242287801AZ": 11.99
+  "10469665177889": {
+    "title": "Wagvive Barnyard Squeaker",
+    "price": 11.99,
+    "variants": {
+      "CJYD242287802BY": 11.99,
+      "CJYD242287803CX": 11.99,
+      "CJYD242287804DW": 11.99,
+      "CJYD242287805EV": 11.99,
+      "CJYD242287806FU": 11.99,
+      "CJYD242287807GT": 11.99,
+      "CJYD242287801AZ": 11.99
+    },
+    "floor_margin_pct": 16.6
   },
-  "floor_margin_pct": 16.6
- },
- "10469666062625": {
-  "title": "Wagvive Finger Toothbrush",
-  "price": 10.99,
-  "variants": {
-   "CJYD262686408HS": 10.99,
-   "CJYD262686409IR": 10.99,
-   "CJYD262686411KP": 10.99,
-   "CJYD262686412LO": 10.99
+  "10469666062625": {
+    "title": "Wagvive Finger Toothbrush",
+    "price": 10.99,
+    "variants": {
+      "CJYD262686408HS": 10.99,
+      "CJYD262686409IR": 10.99,
+      "CJYD262686411KP": 10.99,
+      "CJYD262686412LO": 10.99
+    },
+    "floor_margin_pct": 29.4
   },
-  "floor_margin_pct": 29.4
- },
- "10469803819297": {
-  "title": "Wagvive Watermelon Rope Frisbee",
-  "price": 10.99,
-  "variants": {
-   "CJMY124424501AZ": 10.99
+  "10469803819297": {
+    "title": "Wagvive Watermelon Rope Frisbee",
+    "price": 10.99,
+    "variants": {
+      "CJMY124424501AZ": 10.99
+    },
+    "floor_margin_pct": 16.9
   },
-  "floor_margin_pct": 16.9
- },
- "10456337613089": {
-  "title": "Wagvive Slow Feeder Bowl",
-  "price": 13.99,
-  "variants": {
-   "CJGY174846501AZ": 13.99,
-   "CJGY174846502BY": 13.99,
-   "CJGY174846503CX": 13.99
+  "10456337613089": {
+    "title": "Wagvive Slow Feeder Bowl",
+    "price": 13.99,
+    "variants": {
+      "CJGY174846501AZ": 13.99,
+      "CJGY174846502BY": 13.99,
+      "CJGY174846503CX": 13.99
+    },
+    "floor_margin_pct": 13.3
   },
-  "floor_margin_pct": 13.3
- },
- "10456337154337": {
-  "title": "Wagvive Dental & Ear Wipes",
-  "price": 13.99,
-  "variants": {
-   "CJYD216979603CX": 13.99,
-   "CJYD216979602BY": 13.99
+  "10456337154337": {
+    "title": "Wagvive Dental & Ear Wipes",
+    "price": 13.99,
+    "variants": {
+      "CJYD216979603CX": 13.99,
+      "CJYD216979602BY": 13.99
+    },
+    "floor_margin_pct": 21.6
   },
-  "floor_margin_pct": 21.6
- },
- "10471549698337": {
-  "title": "Wagvive Jingle Plush Ball",
-  "price": 12.99,
-  "variants": {
-   "CJST257870801AZ": 12.99,
-   "CJST257870802BY": 12.99,
-   "CJST257870803CX": 12.99
+  "10471549698337": {
+    "title": "Wagvive Jingle Plush Ball",
+    "price": 12.99,
+    "variants": {
+      "CJST257870801AZ": 12.99,
+      "CJST257870802BY": 12.99,
+      "CJST257870803CX": 12.99
+    },
+    "floor_margin_pct": 16.9
   },
-  "floor_margin_pct": 16.9
- },
- "10456337056033": {
-  "title": "Wagvive Pet Hair Remover Mitt",
-  "price": 10.99,
-  "variants": {
-   "CJYD233200807GT": 8.99,
-   "CJYD233200837KP": 8.99,
-   "CJYD233200804DW": 10.99,
-   "CJYD233200801AZ": 8.99
+  "10456337056033": {
+    "title": "Wagvive Pet Hair Remover Mitt",
+    "price": 10.99,
+    "variants": {
+      "CJYD233200807GT": 8.99,
+      "CJYD233200837KP": 8.99,
+      "CJYD233200804DW": 10.99,
+      "CJYD233200801AZ": 8.99
+    },
+    "floor_margin_pct": 11.1
   },
-  "floor_margin_pct": 11.1
- },
- "10471549796641": {
-  "title": "Wagvive Corduroy Squeak Pals",
-  "price": 11.99,
-  "variants": {
-   "CJMY126277901AZ": 11.99,
-   "CJMY126277902BY": 11.99,
-   "CJMY126277903CX": 11.99
+  "10471549796641": {
+    "title": "Wagvive Corduroy Squeak Pals",
+    "price": 11.99,
+    "variants": {
+      "CJMY126277901AZ": 11.99,
+      "CJMY126277902BY": 11.99,
+      "CJMY126277903CX": 11.99
+    },
+    "floor_margin_pct": 12.4
   },
-  "floor_margin_pct": 12.4
- },
- "10470547751201": {
-  "title": "Wagvive Bouncy Egg Squeaker",
-  "price": 9.99,
-  "variants": {
-   "CJMY141671004DW": 9.99,
-   "CJMY141671005EV": 9.99,
-   "CJMY141671003CX": 9.99,
-   "CJMY141671006FU": 9.99
+  "10470547751201": {
+    "title": "Wagvive Bouncy Egg Squeaker",
+    "price": 9.99,
+    "variants": {
+      "CJMY141671004DW": 9.99,
+      "CJMY141671005EV": 9.99,
+      "CJMY141671003CX": 9.99,
+      "CJMY141671006FU": 9.99
+    },
+    "floor_margin_pct": 10.7
   },
-  "floor_margin_pct": 10.7
- },
- "10456337547553": {
-  "title": "Wagvive Anti-Spill Floating Water Bowl",
-  "price": 24.99,
-  "variants": {
-   "CJGY102545401AZ": 19.99,
-   "CJGY102545423WD": 21.99,
-   "CJGY102545402BY": 19.99,
-   "CJGY102545426ZA": 21.99,
-   "CJGY102545403CX": 19.99,
-   "CJGY102545425YB": 21.99,
-   "CJGY102545404DW": 21.99,
-   "CJGY102545424XC": 24.99
+  "10456337547553": {
+    "title": "Wagvive Anti-Spill Floating Water Bowl",
+    "price": 24.99,
+    "variants": {
+      "CJGY102545401AZ": 19.99,
+      "CJGY102545423WD": 21.99,
+      "CJGY102545402BY": 19.99,
+      "CJGY102545426ZA": 21.99,
+      "CJGY102545403CX": 19.99,
+      "CJGY102545425YB": 21.99,
+      "CJGY102545404DW": 21.99,
+      "CJGY102545424XC": 24.99
+    },
+    "floor_margin_pct": 2.0
   },
-  "floor_margin_pct": 2.0
- },
- "10471550091553": {
-  "title": "Wagvive Cordless Paw Trimmer",
-  "price": 23.99,
-  "variants": {
-   "CJNP222636501AZ": 23.99
+  "10471550091553": {
+    "title": "Wagvive Cordless Paw Trimmer",
+    "price": 23.99,
+    "variants": {
+      "CJNP222636501AZ": 23.99
+    },
+    "floor_margin_pct": 8.7
   },
-  "floor_margin_pct": 8.7
- },
- "10469665603873": {
-  "title": "Wagvive Woodland Rope-Limb Plush",
-  "price": 12.99,
-  "variants": {
-   "CJST258364603CX": 12.99,
-   "CJST258364602BY": 12.99,
-   "CJST258364601AZ": 12.99,
-   "CJST258364604DW": 12.99,
-   "CJST258364605EV": 12.99,
-   "CJST258364606FU": 12.99
+  "10469665603873": {
+    "title": "Wagvive Woodland Rope-Limb Plush",
+    "price": 12.99,
+    "variants": {
+      "CJST258364603CX": 12.99,
+      "CJST258364602BY": 12.99,
+      "CJST258364601AZ": 12.99,
+      "CJST258364604DW": 12.99,
+      "CJST258364605EV": 12.99,
+      "CJST258364606FU": 12.99
+    },
+    "floor_margin_pct": 3.2
   },
-  "floor_margin_pct": 3.2
- },
- "10469665308961": {
-  "title": "Wagvive Dental Duck Chew Toy",
-  "price": 10.99,
-  "variants": {
-   "CJST217844101AZ": 10.99
+  "10469665308961": {
+    "title": "Wagvive Dental Duck Chew Toy",
+    "price": 10.99,
+    "variants": {
+      "CJST217844101AZ": 10.99
+    },
+    "floor_margin_pct": 2.5
   },
-  "floor_margin_pct": 2.5
- },
- "10469666029857": {
-  "title": "Wagvive Squirrel Squeaky Plush",
-  "price": 15.99,
-  "variants": {
-   "CJST222139701AZ": 15.99
+  "10469666029857": {
+    "title": "Wagvive Squirrel Squeaky Plush",
+    "price": 15.99,
+    "variants": {
+      "CJST222139701AZ": 15.99
+    },
+    "floor_margin_pct": 2.0
   },
-  "floor_margin_pct": 2.0
- },
- "10471549993249": {
-  "title": "Wagvive LED Nail Clippers",
-  "price": 13.99,
-  "variants": {
-   "CJYD226496002BY": 13.99,
-   "CJYD226496003CX": 13.99,
-   "CJYD226496004DW": 13.99
+  "10471549993249": {
+    "title": "Wagvive LED Nail Clippers",
+    "price": 13.99,
+    "variants": {
+      "CJYD226496002BY": 13.99,
+      "CJYD226496003CX": 13.99,
+      "CJYD226496004DW": 13.99
+    },
+    "floor_margin_pct": 2.0
   },
-  "floor_margin_pct": 2.0
- },
- "10469665964321": {
-  "title": "Wagvive Rope-Limb Puppy Plush",
-  "price": 14.99,
-  "variants": {
-   "CJST217558701AZ": 14.99
+  "10469665964321": {
+    "title": "Wagvive Rope-Limb Puppy Plush",
+    "price": 14.99,
+    "variants": {
+      "CJST217558701AZ": 14.99
+    },
+    "floor_margin_pct": 2.0
   },
-  "floor_margin_pct": 2.0
- },
- "10471549862177": {
-  "title": "Wagvive Screaming Chicken",
-  "price": 12.99,
-  "variants": {
-   "CJST258510901AZ": 12.99,
-   "CJST258510902BY": 12.99,
-   "CJST258510903CX": 12.99
+  "10471549862177": {
+    "title": "Wagvive Screaming Chicken",
+    "price": 12.99,
+    "variants": {
+      "CJST258510901AZ": 12.99,
+      "CJST258510902BY": 12.99,
+      "CJST258510903CX": 12.99
+    },
+    "floor_margin_pct": 2.0
   },
-  "floor_margin_pct": 2.0
- },
- "10470547587361": {
-  "title": "Wagvive Lick Bowl with Ball",
-  "price": 16.99,
-  "variants": {
-   "CJFT286015801AZ": 16.99,
-   "CJFT286015802BY": 16.99,
-   "CJFT286015803CX": 16.99,
-   "CJFT286015804DW": 16.99
+  "10470547587361": {
+    "title": "Wagvive Lick Bowl with Ball",
+    "price": 16.99,
+    "variants": {
+      "CJFT286015801AZ": 16.99,
+      "CJFT286015802BY": 16.99,
+      "CJFT286015803CX": 16.99,
+      "CJFT286015804DW": 16.99
+    },
+    "floor_margin_pct": 2.4
   },
-  "floor_margin_pct": 2.4
- },
- "10469665440033": {
-  "title": "Wagvive Crinkle Plush Buddy",
-  "price": 11.99,
-  "variants": {
-   "CJST217834201AZ": 11.99,
-   "CJST217834202BY": 11.99,
-   "CJST217834203CX": 11.99
+  "10469665440033": {
+    "title": "Wagvive Crinkle Plush Buddy",
+    "price": 11.99,
+    "variants": {
+      "CJST217834201AZ": 11.99,
+      "CJST217834202BY": 11.99,
+      "CJST217834203CX": 11.99
+    },
+    "floor_margin_pct": 2.0
   },
-  "floor_margin_pct": 2.0
- },
- "10456336990497": {
-  "title": "Wagvive Self-Cleaning Slicker Brush",
-  "price": 17.99,
-  "variants": {
-   "CJMY195218501AZ": 17.99,
-   "CJMY195218502BY": 17.99,
-   "CJMY195218503CX": 17.99
+  "10456336990497": {
+    "title": "Wagvive Self-Cleaning Slicker Brush",
+    "price": 17.99,
+    "variants": {
+      "CJMY195218501AZ": 17.99,
+      "CJMY195218502BY": 17.99,
+      "CJMY195218503CX": 17.99
+    },
+    "floor_margin_pct": 13.3
   },
-  "floor_margin_pct": 13.3
- }
+  "10487573774625": {
+    "title": "Wagvive Dental Chew Stick",
+    "price": 14.99,
+    "variants": {
+      "CJGY209135802BY": 14.99,
+      "CJGY209135803CX": 14.99,
+      "CJGY209135804DW": 14.99
+    },
+    "floor_margin_pct": 16.9
+  }
 }
