@@ -33,6 +33,9 @@ This checks all five against the bundle and reports every divergence.
 """
 import json, os, re, sys, time, urllib.error, urllib.request
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from kit_colorways import KITS as COLORWAYS      # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TAG = re.compile(r'<[^>]+>')
 
@@ -150,16 +153,42 @@ def main():
                 print(f'  metafield: matches ({len(listed)})')
 
         # 2. images
+        #
+        # A kit's media is now THREE classes, not two: the cover at position 1,
+        # one colorway cover per value of the kit's non-size option, and then one
+        # gallery shot per component. The colorway covers are alt-tagged
+        # "<kit title> - <colorway>" by apply_colorway_covers.py and are wired to
+        # variants, so a shopper picking Pink sees the pink set.
+        #
+        # They used to fail this check as "extra", on all six kits at once, which
+        # is a false alarm loud enough to bury a real one. They are now split out
+        # and checked in their own right: a missing colorway cover is a genuine
+        # problem, because that variant falls back to showing the wrong colours.
+        # Match the suffix against real colorway values, not just the "<title> - "
+        # prefix: the position-1 flat-lay is alt-tagged "<title> - everything
+        # included" and would otherwise be counted as a fourth colorway.
+        want_cws = set(COLORWAYS[title]['values']) if title in COLORWAYS else set()
         alts = [(m.get('alt') or '') for m in k['media']['nodes']]
-        gallery = [short(a) for a in alts[1:]]
+        cw_alts = {a for a in alts
+                   if a.startswith(f'{title} - ') and a[len(title) + 3:] in want_cws}
+        have_cws = {a[len(title) + 3:] for a in cw_alts}
+        rest = [a for a in alts[1:] if a not in cw_alts]
+
+        gallery = [short(a) for a in rest]
         img_missing = [n for n in comp_names if n not in gallery]
         img_extra = [a for a in gallery if a and a not in comp_names]
+        cw_missing = sorted(want_cws - have_cws)
         if img_missing or img_extra:
             problems.append(f'{title}: gallery images off. missing '
                             f'{img_missing}, extra {img_extra}')
+        if cw_missing:
+            problems.append(f'{title}: no colorway cover for {cw_missing}, so '
+                            f'those variants show another colorway\'s photo')
         print(f'  gallery: {len(gallery)} shots'
               + (f'  !! missing {img_missing}' if img_missing else '')
               + (f'  !! extra {img_extra}' if img_extra else ''))
+        print(f'  colorway covers: {len(have_cws)}/{len(want_cws)}'
+              + (f'  !! missing {cw_missing}' if cw_missing else ''))
         # The cover is a grid composed by make_kit_covers.py. It used to be a
         # fixed 2x2 taking the first four images, which silently dropped one
         # item from every five-component kit: the Travel Kit advertised four

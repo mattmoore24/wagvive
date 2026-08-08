@@ -147,6 +147,13 @@ def main():
     print('\n' + '=' * 62)
     if not apply:
         print('Dry run. Use --apply to upload and wire.')
+        # Report mode is used as a release gate, so it has to be able to FAIL.
+        # It used to return 0 unconditionally, which meant a gate that could only
+        # ever pass and would have hidden a missing cover.
+        if missing:
+            print(f'{len(missing)} colorway cover(s) still to shoot: {missing}')
+            return 1
+        print('every colorway of every kit has its own cover')
         return 0
     print(f'wired {total_wired} variant(s)')
     if missing:

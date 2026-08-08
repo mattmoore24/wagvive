@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-05, home PC (merged the web session; theme copy + SEO applied)
+**Last updated:** 2026-08-08, home PC (colorway covers finished; wipes replacement launched; CJ pairing still open)
 
 ---
 
@@ -125,6 +125,132 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **COLORWAY COVERS FINISHED AND THE WIPES REPLACEMENT IS LIVE (2026-08-08).**
+  Two of the three jobs are done and verified against the live system. The third,
+  CJ pairing, is **NOT done** and is described in its own section below.
+
+  **1. All 39 kit variants now carry their own colorway photo.** The last 12
+  covers are shot, wired and live across Grooming, Enrichment, Travel and Calm &
+  Comfort. `/products/<handle>.js` returns 18 distinct `featured_image`s across
+  the six kits with all 39 variants buyable.
+
+  Four takes were rejected on inspection before upload, which is the entire
+  argument for that step:
+  - **Grooming Pink**: the paw washing cup lost its moulded white paw print. The
+    blanket "no logos" ban had deleted a real product feature. Name such
+    features explicitly as part of the product.
+  - **Travel Natural**: the cream backdrop rendered as seamed rectangular panels
+    rather than one sweep; a later take then drew **two** paw cups, which would
+    have misstated the kit contents. Fixed by pinning object COUNT in the prompt
+    ("exactly one cup appears in the whole image").
+  - **Calm Blue**: the sloth's orange module came back with a debossed circular
+    paw badge, the same supplier-brand-mark class the unbranded master exists to
+    avoid.
+  - **Calm Grey**: the plush rendered as a floppy-eared animal, then as a
+    top-down teddy, before the side-on sloth pose held on the third attempt.
+
+  **The toothbrush scale clause needs adapting per kit.** As written it anchors
+  the toothbrush against "the sneaker toy", which is not in the Grooming kit, so
+  naming it risks the model drawing one. Anchored to the nail grinder pen
+  instead, which is in frame; it renders finger-sized in all three.
+
+  **2. The Dental Chew Stick replaces the retired wipes.** Live, verified:
+  3 of 3 variants buyable, 4 images, $14.99, in the Grooming collection, and
+  back in the cart cross-sell pool in the slot the wipes vacated.
+  `config/add_dental_chew.py` is the whole job, re-runnable, with `--finish`.
+
+  CJ SPU **CJGY2091358**, 140g natural rubber, listed by 184 CJ stores (3.3x the
+  next dog-only dental candidate). All ELEVEN of CJ's photos were checked at
+  ORIGINAL resolution: no packaging at all, no text or logo on the product, dogs
+  only. Deliberately not a liquid, since CJ's liquid freight rise is what killed
+  the wipes.
+
+  Cost $3.46 + freight $6.04 (LuWei Ordinary US, 5 to 11 days, chosen by
+  `freight_floor.resolve()` from 27 carriers) = landed $10.50. At $14.99 that is
+  **24.9% margin, $3.73 contribution**, against the wipes' 21.6% on $13.99.
+  `floor_margin_pct` 16.9. 50% would have needed $23.02, which is far above
+  market and no longer the rule: no product carries a floor at or above 50% and
+  the median is 16.6%. Owner picked $14.99 from a costed range.
+
+  **THREE TRAPS WORTH REMEMBERING, all caught by re-fetching rather than
+  trusting a write:**
+
+  - **CJ returns TWO stock row shapes, and CLAUDE.md only describes one.**
+    Summing `inventory + factoryInventory` returned **0** for all three new
+    variants, which would have launched every variant unbuyable. A known-good
+    control SKU returned 0 the same way: for these rows those two fields are
+    **null** and only `totalInventoryNum` is populated.
+    **`sync_inventory.cj_stock()` already handles both shapes. Always call it;
+    never reimplement the sum.** Real stock was 14813 / 13247 / 11116.
+  - **A new product is published to Point of Sale ONLY.** It was ACTIVE, stocked,
+    imaged and in the collection, and still **404'd on the storefront**, because
+    Admin API creation does not publish to Online Store. `add_dental_chew.py` now
+    copies the channel set from a product known to be live.
+  - **`inventory_quantity` in products.json lags and is not evidence.** It read 0
+    straight after a correct write; `inventory_levels` showed the right figures
+    at Shop location and nothing at the legacy CJ location.
+
+  **3. Two audit bugs fixed, both of which were hiding real signal.**
+  - `audit_kits.py` counted every colorway cover as an "extra" gallery image and
+    failed **all six kits at once**, a false alarm loud enough to bury a true
+    one. It now splits colorway covers out by alt tag and checks them in their
+    own right: a MISSING colorway cover is now a reported problem, because that
+    variant would fall back to another colorway's photo. Note it matches the alt
+    suffix against real colorway values, since the position-1 flat-lay is tagged
+    "<title> - everything included" and was being counted as a fourth colorway.
+  - `apply_colorway_covers.py` in report mode returned 0 unconditionally, so as a
+    release gate it **could only ever pass**. It now returns 1 when covers are
+    missing.
+
+- **CJ PAIRING: NOT DONE, AND HERE IS EXACTLY WHERE IT STOPPED (2026-08-08).**
+
+  **Nothing is broken and nothing is half-written.** Verified before stopping:
+  `relevanceStatus` is still 0 (unconnected) and `matchitem` is still an object,
+  so no failed confirm occurred and the page is not in the throwing state. The 36
+  existing pairings are untouched and `audit_cj_connections.py` is green.
+
+  **Two things still to do:**
+  1. Pair **Wagvive Dental Chew Stick** (Shopify product 10487573774625) to CJ
+     SPU **CJGY2091358**.
+  2. Un-pair the archived **Dental & Ear Wipes**. It still shows on the Connected
+     list flagged "The product is no longer available in your store". Cosmetic
+     only: an archived product can never reach an order.
+
+  **What was worked out, so this is quick next time:**
+  - The pairing screen is **`https://www.cjdropshipping.com/mine/products/connection`**
+    (it redirects to `my.html#/products-connection/pending-connection`). It is
+    NOT `#/products-connection/goods`, which is the CJ Fulfillment 3PL list.
+  - **The sync works and is already done.** CLAUDE.md's Angular call is correct:
+    `dsp.postFun('cj-platform-web/product/pullPlatformProduct', {shopId:'2607280059043535300'}, cb)`
+    returned **code 200 in about 90 seconds**. shopId confirmed live from
+    `storeList`. Useful bonus from that record: `syncInventory: 0`, so the
+    store-level "Not Sync" kill switch is still holding.
+  - **CJ has already synced the new product.** Its pending-connection row reads
+    `shopType: "Shopify"`, `platformProductId: 10487573774625`,
+    `platformProductFirstSku: "CJGY209135802BY"`, price 14.99, 3 variants,
+    `relevanceStatus: 0`. So the CLAUDE.md pre-confirm check
+    `matchitem.shopType === 'Shopify'` is already satisfiable.
+  - **The row is left PINNED**, so it sits at the top of the left-hand list ready
+    to connect. Do not re-sync first; it is current.
+  - **The flow is not what the buttons suggest.** The left-hand **"Match"** button
+    only pins the store product. The actual connection is made by finding the CJ
+    product in the RIGHT-hand "Products from CJ Automatic Matching" list and
+    clicking **"Connect"** on it.
+
+  **Why it stopped: the right-hand search box will not take input.** Clicks land
+  on the heading rather than the field, typed keystrokes do not register, and the
+  scope variable is not `souresearchinfo` (setting it and calling `search()`
+  just re-pages the list with unrelated products). The LEFT search does work
+  programmatically:
+  `sc.searchinfoshop = 'Dental Chew'; sc.searchshopcommodity()` on the scope that
+  owns `shop[]`.
+
+  **Deliberately not pushed further.** The confirm step is documented as nulling
+  `matchitem` on failure and throwing until reload, and this is the live
+  fulfilment integration for 36 other products. Guessing at more scope internals
+  to force a connect was not worth that risk. Finish it by hand in the right-hand
+  box, or find the correct right-side search binding first.
 
 - **KITS REBUILT ONTO SIZE + COLORWAY, COVERS PART DONE (2026-08-07).**
 
@@ -637,10 +763,11 @@ zero-CPC channel and the 42 feed titles are already written in
 
 ---
 
-### Do these first, both owner-only, both about 10 minutes
+### Do these first
 
 | Task | What | Who |
 |---|---|---|
+| **CJ pairing** | **The one job carried over from 2026-08-08.** Pair the Dental Chew Stick (10487573774625 to SPU CJGY2091358) and un-pair the archived wipes. Everything already worked out is in the "CJ PAIRING: NOT DONE" section above: correct URL, sync already run, product already synced by CJ, row already pinned. Nothing is half-written. Browser-only, real Chrome, and Claude CAN do it. | Claude, in the owner's Chrome |
 | **#71** | **Now scripted:** `python config/fix_product_care_copy.py --apply` from the PC. See NEXT PC SESSION step 1. REINSTATED 2026-08-05: written 2026-08-04, never applied, and dropped out of this file in a rewrite. The "Care & use" block is wrong on all 42 product pages and the page phase 1 pays for is one of them. | Owner runs the script |
 | **#76a** | **Build all five automations.** See NEXT PC SESSION step 2 for the ordered plan and `docs/marketing/email-flows-2026-08.md` for the copy. About 45 minutes. No API exists for marketing automations on any device. | Owner, Marketing › Automations |
 
@@ -730,36 +857,25 @@ is only ever one source of truth.
 > which makes pairing look impossible when it is not.** Confirm which browser
 > you are on before you touch CJ.
 >
-> Three jobs, in this order.
+> The one job left from last session is **CJ pairing**, and the handoff section
+> "CJ PAIRING: NOT DONE" has everything already worked out: the correct page URL,
+> the sync (already run, code 200), proof CJ has synced the new product, and the
+> fact that the left "Match" button only pins while the real connection is
+> "Connect" on the right-hand CJ product. It stopped because the right-hand
+> search box takes neither clicks nor keystrokes and its scope binding is not
+> `souresearchinfo`. Find that binding, or do the search by hand.
 >
-> 1. Shoot the 12 remaining kit colorway covers (task #87). Run
->    `python config/apply_colorway_covers.py` with no flags first: it names every
->    missing cover and exits non-zero until all exist. Grooming, Enrichment,
->    Travel and Calm & Comfort, 3 each. Build each from that colorway's exact
->    component VARIANT photos, not product defaults, and eyeball every output
->    against its references before uploading. Save to
->    `config/branding/kit-covers/colorway/` as `<handle>__<Colorway>.jpg`, then
->    apply with `--apply`. Every Grooming prompt needs the toothbrush scale
->    clause or it renders banana-sized: "a finger-sized silicone sleeve about
->    6 cm long, clearly the SMALLEST object in frame, roughly one third the
->    length of the sneaker toy. Do not enlarge it."
+> 1. Pair **Wagvive Dental Chew Stick** (product 10487573774625) to CJ SPU
+>    **CJGY2091358**. Its row is already pinned at the top of the left list.
+>    Verify `matchitem.shopType === 'Shopify'` and `first.shopSku === last.SKU`
+>    BEFORE confirming, because a failed confirm nulls `matchitem` and every
+>    later attempt throws until the page is reloaded.
+> 2. Un-pair the archived **Dental & Ear Wipes** from the Connected list.
+> 3. Re-run `audit_cj_connections.py` afterwards.
 >
-> 2. Source and launch a replacement for the retired Dental & Ear Wipes
->    (task #85). A well-reviewed CJ dental or ear care product with CLEAN
->    packaging: no supplier branding, no cat imagery, no label typos. Check CJ's
->    own reference photos at full resolution BEFORE committing to the SKU. That
->    check is what caught the wipes. Margin against `config/pricing.py` and
->    `config/freight_floor.py`. It needs a master image AND a lifestyle image,
->    a description, the Grooming collection, and a slot in the cart cross-sell
->    pool in `snippets/cart-cross-sell.liquid` where the wipes handle was removed.
->
-> 3. CJ pairing, in my real Chrome. Pair the new product and un-pair the archived
->    wipes. Procedure and the exact Angular service call are in CLAUDE.md. One
->    product at a time; verify `matchitem` before confirming, because a failed
->    confirm nulls it and every later attempt throws until reload.
->
-> Then the final gate, all four: `audit_kits.py`, `verify_kit_variants.py`,
-> `audit_cj_connections.py`, and `apply_colorway_covers.py` with no flags.
+> If you have time after that, the highest-value open work is marketing phase 0:
+> the measurement stack (#75) and the five email automations (#76a), both of
+> which gate all paid spend.
 >
 > Rules: verify against the live system by re-fetching, never the write's return
 > value. Never enter my credentials. Show me numbers before any write that

@@ -90,11 +90,26 @@ Rules:
   is report-only** — a silent no-op that has been mistaken for success.
 - CJ's webhook writes to its own location and may recreate the double count at
   any time. That is why the scheduled job re-runs `fix_locations.py`.
-- CJ's true shippable quantity is `inventory + factoryInventory` summed over all
-  stock rows — NOT `totalInventoryNum`, which undercounts.
+- **Never read CJ stock by hand. Call `sync_inventory.cj_stock(sku)`.** CJ returns
+  TWO different row shapes and the right answer depends on which you got. Some
+  SKUs carry nested per-warehouse entries, where the quantity is
+  `inventory + factoryInventory` summed over all rows and `totalInventoryNum`
+  undercounts (the Slicker Brush reads 2097 that way against a real 13505).
+  Others carry only `totalInventoryNum`, with `inventory` and `factoryInventory`
+  **null**, and summing those two returns 0. Getting this wrong publishes a
+  product with every variant unbuyable, which happened to the Dental Chew Stick
+  on 2026-08-08 and was caught only by re-fetching. `sync_inventory.cj_stock`
+  handles both; nothing else should try.
 - **Verify availability with `/products/<handle>.js` and check `available`**, not
   admin inventory numbers. A catalogue once showed thousands in stock while every
-  variant was unbuyable.
+  variant was unbuyable. `inventory_quantity` in the products.json payload also
+  LAGS: it read 0 immediately after a correct write. `inventory_levels` is the
+  admin-side truth, the storefront is the real one.
+- **A newly created product is published to Point of Sale ONLY.** Admin API
+  creation does not add it to Online Store, so it can be ACTIVE, stocked, imaged
+  and in a collection and still 404 on the storefront. Copy the channel set from
+  a product known to be live (`publishablePublish`), as
+  `config/add_dental_chew.py` does.
 
 ## Shopify API gotchas
 
