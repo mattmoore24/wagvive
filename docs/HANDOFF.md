@@ -126,6 +126,52 @@ A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
 
+- **KITS REBUILT ONTO SIZE + COLORWAY, COVERS PART DONE (2026-08-07).**
+
+  **Kits (done, verified).** Full per-component variant choice is impossible on
+  Shopify: products cap at 3 options and 2048 variants, every kit needed 4 or 5
+  option slots, and Travel would have needed 15,552 variants. Confirmed in the
+  API docs, error OPTIONS_OVER_LIMIT. So kits now expose one **Size** that drives
+  every size-varying component at once, plus one curated **Colorway**. 39 variants
+  instead of 234. `config/kit_colorways.py` is the source of truth;
+  `validate_colorways.py` proves every value resolves to a live buyable variant;
+  `verify_kit_variants.py` checks all 39 by component IDENTITY, not count.
+
+  **The trap:** `productVariantRelationshipBulkUpdate` derives the parent price
+  from the sum of its components, silently overwriting what `productSet` wrote.
+  Reprice AFTER relationships. `rebuild_kits.py --reprice-only` fixes it without
+  re-running productSet (which would destroy every variant and relationship).
+
+  **Colorway covers (2 of 6 kits done).** New Puppy and Toy are complete: 9 of 39
+  variants carry their own colorway image, wired via `variant.image_id` (which
+  also drives the cart thumbnail). **12 covers remain**: Grooming, Enrichment,
+  Travel, Calm & Comfort, 3 each. Run `config/apply_colorway_covers.py` with no
+  flags: it names every missing cover and exits non-zero until all exist.
+  `scratchpad colorway_refs.json` logic lives in the same script; regenerate that
+  mapping by re-running the per-kit query if needed.
+
+  Art goes in `config/branding/kit-covers/colorway/` as `<handle>__<Colorway>.jpg`.
+  Size is deliberately NOT in the filename: the three sizes photograph identically,
+  so they share one image. **Every cover must be built from that colorway's exact
+  component VARIANT photos**, and eyeballed before upload. That check has caught a
+  sneaker rendered as a real shoe, a toothbrush with no nubs, and a supplier logo
+  rendered as garbled text.
+
+  **Toothbrush scale is solved.** It rendered banana-sized. The fix is an explicit
+  clause: "a finger-sized silicone sleeve about 6 cm long, clearly the SMALLEST
+  object in frame, roughly one third the length of the sneaker toy. Do not enlarge
+  it." Include it in every Grooming prompt.
+
+  **Wipes are gone.** Archived (not deleted: order #1001 contains them). Removed
+  from the Grooming collection, the FAQ, and the cart cross-sell pool. Storefront
+  404s. The typos were on the REAL supplier packaging, verified against CJ's own
+  photos, so they could not be fixed without misrepresenting the product.
+
+  **Still open:** 12 colorway covers, and a replacement product for the wipes
+  (task #85) needing listing, master + lifestyle imagery, Grooming collection,
+  and CJ pairing. CJ pairing IS doable by me via Claude in Chrome against the
+  owner's logged-in session; it is browser-only, not owner-only.
+
 - **SUPPLIER BRAND MARK REMOVED, AND A WORSE ONE FOUND (2026-08-07).** The
   Heartbeat Soothing Sloth photo carried a supplier's brand ("FUDI JINTIN" plus a
   paw logo) embossed on the orange heartbeat module. Retouched with Runway in
