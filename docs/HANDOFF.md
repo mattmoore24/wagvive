@@ -203,54 +203,53 @@ A failed run emails the owner — silence means healthy.
     release gate it **could only ever pass**. It now returns 1 when covers are
     missing.
 
-- **CJ PAIRING: NOT DONE, AND HERE IS EXACTLY WHERE IT STOPPED (2026-08-08).**
+- **CJ PAIRING: DONE AND VERIFIED (2026-08-08).** Both halves complete, in the
+  owner's real Chrome, following `docs/knowledge/cj-pairing-runbook.md`.
 
-  **Nothing is broken and nothing is half-written.** Verified before stopping:
-  `relevanceStatus` is still 0 (unconnected) and `matchitem` is still an object,
-  so no failed confirm occurred and the page is not in the throwing state. The 36
-  existing pairings are untouched and `audit_cj_connections.py` is green.
+  **1. Dental Chew Stick is paired.** Shopify 10487573774625 to CJ SPU
+  CJGY2091358, all three variants, every one on **LuWei Ordinary US** — the
+  carrier `freight_floor.resolve()` picked for this exact SKU, which is the
+  carrier the $14.99 price was modelled on:
 
-  **Two things still to do:**
-  1. Pair **Wagvive Dental Chew Stick** (Shopify product 10487573774625) to CJ
-     SPU **CJGY2091358**.
-  2. Un-pair the archived **Dental & Ear Wipes**. It still shows on the Connected
-     list flagged "The product is no longer available in your store". Cosmetic
-     only: an archived product can never reach an order.
+  | Store variant | CJ SKU | Carrier | CJ stock |
+  |---|---|---|---|
+  | Teal 53215841190177 | CJGY209135802BY | LuWei Ordinary US | 14813 |
+  | Yellow 53215841222945 | CJGY209135803CX | LuWei Ordinary US | 13247 |
+  | Green 53215841255713 | CJGY209135804DW | LuWei Ordinary US | 11116 |
 
-  **What was worked out, so this is quick next time:**
-  - The pairing screen is **`https://www.cjdropshipping.com/mine/products/connection`**
-    (it redirects to `my.html#/products-connection/pending-connection`). It is
-    NOT `#/products-connection/goods`, which is the CJ Fulfillment 3PL list.
-  - **The sync works and is already done.** CLAUDE.md's Angular call is correct:
-    `dsp.postFun('cj-platform-web/product/pullPlatformProduct', {shopId:'2607280059043535300'}, cb)`
-    returned **code 200 in about 90 seconds**. shopId confirmed live from
-    `storeList`. Useful bonus from that record: `syncInventory: 0`, so the
-    store-level "Not Sync" kill switch is still holding.
-  - **CJ has already synced the new product.** Its pending-connection row reads
-    `shopType: "Shopify"`, `platformProductId: 10487573774625`,
-    `platformProductFirstSku: "CJGY209135802BY"`, price 14.99, 3 variants,
-    `relevanceStatus: 0`. So the CLAUDE.md pre-confirm check
-    `matchitem.shopType === 'Shopify'` is already satisfiable.
-  - **The row is left PINNED**, so it sits at the top of the left-hand list ready
-    to connect. Do not re-sync first; it is current.
-  - **The flow is not what the buttons suggest.** The left-hand **"Match"** button
-    only pins the store product. The actual connection is made by finding the CJ
-    product in the RIGHT-hand "Products from CJ Automatic Matching" list and
-    clicking **"Connect"** on it.
+  Both runbook pre-confirm checks passed before the single Confirm click:
+  `matchitem.shopType === 'Shopify'`, and all 3 pairs satisfying
+  `first.shopSku === last.SKU`. Automatic Connection was left ON (SKUs match
+  exactly on both sides) and inventory sync left OFF, which the dialog itself
+  confirmed with "The inventory sync is off".
 
-  **Why it stopped: the right-hand search box will not take input.** Clicks land
-  on the heading rather than the field, typed keystrokes do not register, and the
-  scope variable is not `souresearchinfo` (setting it and calling `search()`
-  just re-pages the list with unrelated products). The LEFT search does work
-  programmatically:
-  `sc.searchinfoshop = 'Dental Chew'; sc.searchshopcommodity()` on the scope that
-  owns `shop[]`.
+  **2. The archived Dental & Ear Wipes are un-paired.** SPU CJYD2169796 now
+  returns no rows on the Connected list.
 
-  **Deliberately not pushed further.** The confirm step is documented as nulling
-  `matchitem` on failure and throwing until reload, and this is the live
-  fulfilment integration for 36 other products. Guessing at more scope internals
-  to force a connect was not worth that risk. Finish it by hand in the right-hand
-  box, or find the correct right-side search binding first.
+  **What made it work this time, on top of the runbook.** The `iframe#guid-frame`
+  overlay was the real cause of the earlier failure: it silently swallowed clicks
+  on the right-hand search box, which read as "this field will not take input".
+  Removing it after every navigation fixed it. Two details the runbook did not
+  yet name have been added to it: the right-hand search binds to
+  **`searchinfostr`** (not `souresearchinfo`), and the right-hand CJ list is
+  **`shop2`** while the left store list is `shop`.
+
+  **Verified from outside CJ**, which is the check that does not depend on CJ's
+  UI telling the truth:
+  - `audit_cj_connections.py` green.
+  - **New: `config/verify_cj_pairing_sanity.py`.** `audit_cj_connections` proves
+    every SKU RESOLVES; it cannot prove it resolves to the RIGHT thing, which is
+    how the water bowl was once mapped to a cat bed. This resolves all 36 SPUs
+    through CJ and compares the CJ product name against our title. No product
+    resolves to a listing for another animal or category. The Dental Chew Stick
+    scores 100%. Note the alarm only fires on a LOW word overlap: CJ listings
+    name every compatible species, so the Pet Hair Remover Mitt's "For Dog Cat
+    Rabbit" is a correct pairing at 100% overlap, not a mismapping.
+  - **Full live sweep of all 42 active products**: every one on the storefront,
+    fully buyable, imaged, and priced per SKU to the price book. The new product
+    renders, the retired wipes 404, Grooming lists the chew stick and no longer
+    lists the wipes, and the smart Toys & Play collection picked it up via the
+    `toy` tag.
 
 - **KITS REBUILT ONTO SIZE + COLORWAY, COVERS PART DONE (2026-08-07).**
 
@@ -765,9 +764,12 @@ zero-CPC channel and the 42 feed titles are already written in
 
 ### Do these first
 
+Nothing is carried over from 2026-08-08: colorway covers, the wipes replacement
+and CJ pairing are all done and verified. The next work is marketing phase 0,
+below, which gates every dollar of paid spend.
+
 | Task | What | Who |
 |---|---|---|
-| **CJ pairing** | **The one job carried over from 2026-08-08.** Pair the Dental Chew Stick (10487573774625 to SPU CJGY2091358) and un-pair the archived wipes. Everything already worked out is in the "CJ PAIRING: NOT DONE" section above: correct URL, sync already run, product already synced by CJ, row already pinned. Nothing is half-written. Browser-only, real Chrome, and Claude CAN do it. | Claude, in the owner's Chrome |
 | **#71** | **Now scripted:** `python config/fix_product_care_copy.py --apply` from the PC. See NEXT PC SESSION step 1. REINSTATED 2026-08-05: written 2026-08-04, never applied, and dropped out of this file in a rewrite. The "Care & use" block is wrong on all 42 product pages and the page phase 1 pays for is one of them. | Owner runs the script |
 | **#76a** | **Build all five automations.** See NEXT PC SESSION step 2 for the ordered plan and `docs/marketing/email-flows-2026-08.md` for the copy. About 45 minutes. No API exists for marketing automations on any device. | Owner, Marketing › Automations |
 
@@ -857,25 +859,24 @@ is only ever one source of truth.
 > which makes pairing look impossible when it is not.** Confirm which browser
 > you are on before you touch CJ.
 >
-> The one job left from last session is **CJ pairing**, and the handoff section
-> "CJ PAIRING: NOT DONE" has everything already worked out: the correct page URL,
-> the sync (already run, code 200), proof CJ has synced the new product, and the
-> fact that the left "Match" button only pins while the real connection is
-> "Connect" on the right-hand CJ product. It stopped because the right-hand
-> search box takes neither clicks nor keystrokes and its scope binding is not
-> `souresearchinfo`. Find that binding, or do the search by hand.
+> The store is fully built, paired and verified: 42 products live and buyable, 39
+> kit variants each with their own colorway photo, every SKU paired to CJ on the
+> carrier its price was modelled on. Nothing is carried over.
 >
-> 1. Pair **Wagvive Dental Chew Stick** (product 10487573774625) to CJ SPU
->    **CJGY2091358**. Its row is already pinned at the top of the left list.
->    Verify `matchitem.shopType === 'Shopify'` and `first.shopSku === last.SKU`
->    BEFORE confirming, because a failed confirm nulls `matchitem` and every
->    later attempt throws until the page is reloaded.
-> 2. Un-pair the archived **Dental & Ear Wipes** from the Connected list.
-> 3. Re-run `audit_cj_connections.py` afterwards.
+> The next work is **marketing phase 0**, which gates every dollar of paid spend:
 >
-> If you have time after that, the highest-value open work is marketing phase 0:
-> the measurement stack (#75) and the five email automations (#76a), both of
-> which gate all paid spend.
+> 1. **#75 measurement stack.** GA4, Meta pixel + CAPI (data sharing Maximum),
+>    Google Merchant Center with free listings, Pinterest tag. Owner creates the
+>    accounts; I configure and verify. Google first, since free listings are the
+>    only zero-CPC channel and the 42 feed titles are already written in
+>    `config/marketing/feed_health.py --titles`.
+> 2. **#76a the five email automations** in Marketing › Automations. Copy is
+>    written in `docs/marketing/email-flows-2026-08.md`; read
+>    `docs/knowledge/shopify-messaging-custom-liquid.md` first. Watch the exit
+>    condition trap: Shopify puts it on the FIRST email only.
+> 3. Then the phase 0 gate: a real test purchase appearing in all three
+>    analytics tools, after which phase 1 is $150 on Pinterest against the Calm &
+>    Comfort Kit only.
 >
 > Rules: verify against the live system by re-fetching, never the write's return
 > value. Never enter my credentials. Show me numbers before any write that

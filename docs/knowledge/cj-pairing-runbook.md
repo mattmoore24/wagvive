@@ -115,12 +115,49 @@ If auto-match returns nothing (it missed the Talk Button), use the right-hand
 "Enter SPU/SKU/Product Name" box and search the SPU directly. Match on the left
 row still sets the store side.
 
+**The two search boxes bind to different scope variables, and only one is
+guessable.** Left is `searchinfoshop` + `searchshopcommodity()`; right is
+**`searchinfostr`**. Guessing `souresearchinfo` for the right-hand box burns
+time: setting it and calling `search()` silently re-pages the CJ list with
+unrelated products, which looks like a failed search rather than a wrong
+binding. Set the model through ngModel so the binding actually updates, then
+click the Search button next to that input:
+
+```js
+const inp = document.querySelector('input[ng-model="searchinfostr"]');
+const m = angular.element(inp).controller('ngModel');
+m.$setViewValue('CJGY2091358'); m.$render();
+```
+
+The two lists are `shop` (left, your store products) and **`shop2`** (right, CJ
+products). Confirm `shop2[0].sku` is the SPU you intended before connecting.
+
+Coordinate clicking these inputs does not work even with the overlay gone: a
+triple-click lands on the column heading. Drive the DOM.
+
 ## 5. Leave inventory sync OFF
 
 In the connect dialog, leave "Sync CJ's Inventory Levels" **off**. Stock is
 written by `config/sync_inventory.py` into `Shop location`; CJ writing to its own
 legacy location creates the double-count described in CLAUDE.md. The store-level
 "Not Sync" switch is the real guarantee, but leave this off for cleanliness.
+
+## 5b. Un-pairing a product
+
+The row's `...` menu is packaging and fulfilment only — there is no Disconnect in
+it. The control is an unlink icon in the CJ Product column,
+`i[class*=disconnecticon]`. The PRODUCT-level one has a different class suffix
+from the per-variant ones, so take the first and confirm it is the row you mean:
+
+```js
+const ic = [...document.querySelectorAll('i')]
+  .find(e => /disconnecticon/.test(e.className) && e.offsetWidth);
+ic.closest('tr').innerText   // READ THIS before clicking
+```
+
+It raises a popover ("It may remove all the connection of the product") with a
+`Confirm`. Click that once. This page is React, not Angular, so set its search
+input with the native value setter plus an `input` event, not through ngModel.
 
 ## 6. Audit the result, do not trust the dialog
 
