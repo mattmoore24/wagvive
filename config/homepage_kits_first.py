@@ -155,10 +155,9 @@ def main():
         '<p>The whole routine, in one box.</p>', 'h1',
         '{{ settings.color_palette.background }}')
     hero['blocks']['sub'] = text_block(
-        '<p>Complete dog care kits for the jobs you actually face: new puppy, '
-        'grooming, calm, mealtime, travel and play. Every kit costs less than '
-        'its pieces bought apart, and arrives as one parcel.</p>',
-        'paragraph', '{{ settings.color_palette.background }}', '620px')
+        '<p>Six dog care kits. One job each. Less than buying the pieces '
+        'apart.</p>',
+        'paragraph', '{{ settings.color_palette.background }}', '560px')
     hero['blocks']['cta']['settings'].update({
         'label': 'Shop the kits',
         'link': 'shopify://collections/bundles-kits'})
@@ -189,10 +188,9 @@ def main():
     bh = sec['bundle_head']
     bh['blocks']['h'] = text_block('<h2>Start with a kit</h2>', 'h2')
     bh['blocks']['p'] = text_block(
-        f'<p>Six kits, one for every routine. Each bundles 4 or 5 essentials '
-        f'for one job, in colorways you pick, and saves ${min_save:.2f} to '
-        f'${max_save:.2f} against buying the pieces apart.</p>',
-        'paragraph', max_width='620px')
+        f'<p>4 or 5 essentials per kit, in colorways you pick. '
+        f'Save ${min_save:.2f} to ${max_save:.2f}.</p>',
+        'paragraph', max_width='520px')
     bp = sec['bundle_products']
     bp['settings'].update({'columns': 3, 'max_products': 6,
                            'padding-block-end': 72})
@@ -202,11 +200,10 @@ def main():
     kb['blocks']['h'] = text_block(
         '<p>Storm season, handled.</p>', 'h2', '#FFFFFF')
     kb['blocks']['p'] = text_block(
-        f'<p>The {flag["title"]}: a heartbeat plush, a calming wrap, a fleece '
-        f'blanket, a cooling pad and a big squeak toy, chosen to get an anxious '
-        f'dog through storms, fireworks and time alone. '
-        f'${flag["price"]:.2f} together, ${flag["save"]:.2f} less than apart.</p>',
-        'paragraph', '#FFFFFF', '620px')
+        f'<p>Heartbeat plush, calming wrap, fleece, cooling pad, squeak toy. '
+        f'${flag["price"]:.2f} together, ${flag["save"]:.2f} less than '
+        f'apart.</p>',
+        'paragraph', '#FFFFFF', '560px')
     kb['blocks']['b']['settings'].update({
         'label': 'Meet the Calm & Comfort Kit',
         'link': f'shopify://products/{FLAGSHIP}'})
@@ -214,22 +211,38 @@ def main():
         'background_image': f'shopify://shop_images/{BANNER_IMAGE}',
         'overlay_color': '#22301F52'})
 
-    # values v1 prose had a British "grey"; colorway NAMES like "Grey" are
-    # established option values and stay, but prose is US spelling
-    v1p = sec['values']['blocks']['v1']['blocks']['p']['settings']
-    v1p['text'] = v1p['text'].replace('grey muzzles', 'gray muzzles')
+    # Trust row: one-line blurbs (owner call 2026-08-08: fewer words sitewide).
+    # US spelling throughout; colorway NAMES like "Grey" are established option
+    # values and stay, but prose is US.
+    vals = sec['values']['blocks']
+    vals['v1']['blocks']['p'] = text_block(
+        '<p>Puppy to senior, gear that holds up.</p>', 'paragraph',
+        max_width='300px')
+    vals['v2']['blocks']['p'] = text_block(
+        '<p>Tested before it earns a listing.</p>', 'paragraph',
+        max_width='300px')
+    vals['v3']['blocks']['p'] = text_block(
+        '<p>Wrong or damaged? Replaced free.</p>', 'paragraph',
+        max_width='300px')
 
     # ---- 5. Secondary paths: categories, then singles -----------------------
     ch = sec['cats_head']
     ch['blocks']['h'] = text_block('<h2>Prefer to build your own?</h2>', 'h2')
     ch['blocks']['p'] = text_block(
-        '<p>Shop singles by need. Any 3 toys saves 15% automatically.</p>',
+        '<p>Toys, grooming, comfort. Any 3 toys, 15% off.</p>',
         'paragraph', max_width='520px')
 
     fh = sec['featured_head']
     fh['blocks']['p'] = text_block(
-        '<p>Eight singles people reach for first. All of them live inside a '
-        'kit too.</p>', 'paragraph', max_width='520px')
+        '<p>All of them live inside a kit too.</p>', 'paragraph',
+        max_width='520px')
+
+    # Story band: one line instead of two paragraphs
+    st = sec['story']
+    st['blocks']['p'] = text_block(
+        '<p>Built for the dog who flinches at clippers and the senior who '
+        'takes a run-up to stand. Every product earned its place.</p>',
+        'paragraph', '{{ settings.color_palette.background }}', '560px')
 
     # ---- 6. FAQ: put the real numbers in the savings answer -----------------
     faq = sec['faq']['blocks']['acc']['blocks']
@@ -244,8 +257,8 @@ def main():
     # ---- 7. Newsletter: US spelling ----------------------------------------
     nl = sec['newsletter']
     nl['blocks']['p'] = text_block(
-        '<p>New products, care guides for senior dogs, and the odd discount. '
-        'No daily email, we promise.</p>', 'paragraph', max_width='520px')
+        '<p>New gear, senior dog guides, the odd discount.</p>',
+        'paragraph', max_width='520px')
 
     # ---- 8. The order itself: kits before everything ------------------------
     tpl['order'] = ['hero', 'marquee',
@@ -310,7 +323,7 @@ def main():
 
     markers = ['Start with a kit', 'The whole routine, in one box',
                'Storm season, handled', 'Six kits, one for every routine',
-               'senior dogs']
+               'senior dog guides']
     ok = False
     for attempt in range(10):
         u = f'https://wagvive.com/?nocache={int(time.time()*1000)}'

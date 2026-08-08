@@ -30,9 +30,9 @@
         "sub": {
           "type": "text",
           "settings": {
-            "text": "<p>Complete dog care kits for the jobs you actually face: new puppy, grooming, calm, mealtime, travel and play. Every kit costs less than its pieces bought apart, and arrives as one parcel.</p>",
+            "text": "<p>Six dog care kits. One job each. Less than buying the pieces apart.</p>",
             "width": "fit-content",
-            "max_width": "620px",
+            "max_width": "560px",
             "alignment": "center",
             "type_preset": "paragraph",
             "font": "var(--font-body--family)",
@@ -319,7 +319,7 @@
         "p": {
           "type": "text",
           "settings": {
-            "text": "<p>Eight singles people reach for first. All of them live inside a kit too.</p>",
+            "text": "<p>All of them live inside a kit too.</p>",
             "width": "fit-content",
             "max_width": "520px",
             "alignment": "center",
@@ -559,9 +559,9 @@
             "p": {
               "type": "text",
               "settings": {
-                "text": "<p>From teething puppies to gray muzzles: quiet tools, joint-friendly comfort gear and toys that hold up.</p>",
+                "text": "<p>Puppy to senior, gear that holds up.</p>",
                 "width": "fit-content",
-                "max_width": "340px",
+                "max_width": "300px",
                 "alignment": "center",
                 "type_preset": "paragraph",
                 "font": "var(--font-body--family)",
@@ -664,9 +664,9 @@
             "p": {
               "type": "text",
               "settings": {
-                "text": "<p>We test against reviews, ratings and repeat purchase data before anything earns a listing. If it would not survive our own dogs, it is not here.</p>",
+                "text": "<p>Tested before it earns a listing.</p>",
                 "width": "fit-content",
-                "max_width": "340px",
+                "max_width": "300px",
                 "alignment": "center",
                 "type_preset": "paragraph",
                 "font": "var(--font-body--family)",
@@ -769,9 +769,9 @@
             "p": {
               "type": "text",
               "settings": {
-                "text": "<p>If it arrives wrong or damaged we cover return shipping and replace it. No arguing, no restocking fee.</p>",
+                "text": "<p>Wrong or damaged? Replaced free.</p>",
                 "width": "fit-content",
-                "max_width": "340px",
+                "max_width": "300px",
                 "alignment": "center",
                 "type_preset": "paragraph",
                 "font": "var(--font-body--family)",
@@ -862,7 +862,7 @@
         "p": {
           "type": "text",
           "settings": {
-            "text": "<p>Shop singles by need. Any 3 toys saves 15% automatically.</p>",
+            "text": "<p>Toys, grooming, comfort. Any 3 toys, 15% off.</p>",
             "width": "fit-content",
             "max_width": "520px",
             "alignment": "center",
@@ -974,9 +974,9 @@
         "p": {
           "type": "text",
           "settings": {
-            "text": "<p>Six kits, one for every routine. Each bundles 4 or 5 essentials for one job, in colorways you pick, and saves $11.95 to $26.95 against buying the pieces apart.</p>",
+            "text": "<p>4 or 5 essentials per kit, in colorways you pick. Save $11.95 to $26.95.</p>",
             "width": "fit-content",
-            "max_width": "620px",
+            "max_width": "520px",
             "alignment": "center",
             "type_preset": "paragraph",
             "font": "var(--font-body--family)",
@@ -1164,9 +1164,9 @@
         "p": {
           "type": "text",
           "settings": {
-            "text": "<p>Most pet gear is designed for the easy dog, the one who sits still for a nail trim and sleeps anywhere. Wagvive started from the other end: the dog who flinches at clippers, the senior who takes a run-up to stand, the one who drinks too little because the bowl slides across the floor.</p><p>Every product here was picked for a specific, ordinary problem, and every one had to earn its place.</p>",
+            "text": "<p>Built for the dog who flinches at clippers and the senior who takes a run-up to stand. Every product earned its place.</p>",
             "width": "fit-content",
-            "max_width": "660px",
+            "max_width": "560px",
             "alignment": "center",
             "type_preset": "paragraph",
             "font": "var(--font-body--family)",
@@ -1544,7 +1544,7 @@
         "p": {
           "type": "text",
           "settings": {
-            "text": "<p>New products, care guides for senior dogs, and the odd discount. No daily email, we promise.</p>",
+            "text": "<p>New gear, senior dog guides, the odd discount.</p>",
             "width": "fit-content",
             "max_width": "520px",
             "alignment": "center",
@@ -1662,9 +1662,9 @@
         "p": {
           "type": "text",
           "settings": {
-            "text": "<p>The Calm & Comfort Kit: a heartbeat plush, a calming wrap, a fleece blanket, a cooling pad and a big squeak toy, chosen to get an anxious dog through storms, fireworks and time alone. $109.00 together, $26.95 less than apart.</p>",
+            "text": "<p>Heartbeat plush, calming wrap, fleece, cooling pad, squeak toy. $109.00 together, $26.95 less than apart.</p>",
             "width": "fit-content",
-            "max_width": "620px",
+            "max_width": "560px",
             "alignment": "center",
             "type_preset": "paragraph",
             "font": "var(--font-body--family)",

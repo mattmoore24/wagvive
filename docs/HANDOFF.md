@@ -32,9 +32,25 @@ direct shipping, demands delivery inside about 6 business days against our 5 to
 12, and takes about 30% all-in. TikTok as an ads/organic channel to our own
 site is still open.
 
-Current state: **1 order (the test), no GA4, no pixels, no Merchant Center.**
-Phase 0 of the plan is installing the measurement stack, and nothing paid
-happens before it is verified (tasks #75, #76, #77).
+Current state: **1 order (the test). The measurement stack EXISTS (verified
+2026-08-08, superseding the older "no pixels" note):** all three channel
+pixels are registered on the storefront through Shopify's web-pixels-manager
+(they do NOT appear as classic script tags, so grep for the config, not for
+gtag/fbq):
+
+- **GA4** via Google & YouTube channel: measurement id `G-W6EC4B37P0`, tag
+  `GT-WPLLWG52`, events wired including search and begin_checkout
+- **Meta** pixel `1770353747621287`
+- **Pinterest** tag `2612708372364`
+
+Product feeds: every active product is published to Google & YouTube,
+Facebook & Instagram and Pinterest. **One structural limit found: Shopify's
+Pinterest channel REJECTS bundle products** ("Channel Pinterest does not
+support bundle products"), so the six kits cannot enter the Pinterest
+catalogue; their components all can and do. Phase 1's promoted pins linking to
+the kit page still work; Pinterest CATALOGUE/shopping ads for kits are
+impossible. What remains of phase 0 is the gate itself: a real test purchase
+visible in all three tools (#75), plus the email automations (#76a).
 
 ### B. The 2026-08-04 repricing is DONE. The store runs on the price book.
 
@@ -125,6 +141,31 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **HOMEPAGE V2: FEWER WORDS, MORE DOGS (2026-08-08, same day, owner call).**
+  Two changes on top of the kits-first rebuild, both live and verified:
+
+  **1. Copy cut to quick blurbs everywhere.** Hero sub is now "Six dog care
+  kits. One job each. Less than buying the pieces apart."; the trust row runs
+  one-liners; the story band is one sentence; the flagship band lists the five
+  components and two numbers. All still computed at apply time by
+  `homepage_kits_first.py`.
+
+  **2. All six collection tiles are now house-style dogs WITH OUR PRODUCTS**
+  (`config/apply_collection_tiles.py --apply`, art in
+  `config/branding/collection-tiles/<handle>.jpg`). The old tiles were stock
+  photos showing other brands' gear; two collections had no image at all. Four
+  takes needed re-shoots before approval: the Toys tile invented two green
+  creatures we do not sell, and the Travel tile included a LEASH, which is not
+  in the catalogue; a shopping tile must not show unsellable merchandise.
+
+  **Two Shopify traps found and now handled in the scripts:**
+  - `collectionUpdate` SILENTLY keeps the old image if the collection already
+    has one: no userErrors, mutation "succeeds". Clear with `image: null`
+    first, then set. Caught only because verification re-fetches and compares
+    FILENAMES, not image presence.
+  - Homepage HTML still serves mixed stale/fresh CDN renders minutes after a
+    write; the same check failed then passed across two fetches. Poll.
 
 - **HOMEPAGE REBUILT KITS-FIRST (2026-08-08, after the pairing work).** Owner
   call: before marketing spend, make the homepage sell the kits. Full research,
