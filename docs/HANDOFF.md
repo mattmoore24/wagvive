@@ -142,6 +142,46 @@ A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
 
+- **INVENTORY AUDITED END TO END, INCLUDING KITS (2026-08-11).** Answering
+  "is Shopify still tracking everything and matching CJ?". Verdict: yes, with
+  one 4-unit drift corrected. Coverage is **184 variants = 145 singles + 39 kit
+  variants**, and the two halves are guarded by different mechanisms:
+
+  - **145 single variants**, every one carrying a CJ SKU: `sync_inventory.py`
+    found exactly ONE out of step (Pet Hair Remover Mitt / Classic, 8087 vs CJ
+    8083, ordinary CJ movement) and it was applied. `fix_locations.py` reports
+    every variant stocked at the sellable location ONLY, so no double counting.
+  - **39 kit variants**: NEW `config/verify_kit_inventory.py`. All pass.
+
+  **Why kits needed their own check.** `sync_inventory.py` only walks variants
+  that carry a SKU. Kits are bundle parents with no SKU, so it never touches
+  them and its "all in step" verdict says NOTHING about kits. If a kit parent
+  held its own stale stock, Shopify would sell a kit whose component had run
+  out at CJ.
+
+  **A Shopify fact I got wrong first, now in CLAUDE.md.** I assumed a healthy
+  bundle parent must NOT have `tracked: true`, and the first run duly flagged
+  all 39 variants. That assumption was false: bundle parents ARE tracked, just
+  like singles. Comparing a kit against the Sneaker Chew Buddy showed the real
+  distinction: the kit's inventory level exists but carries **no `available`
+  quantity** (`{}`) while a single's carries `available/committed/on_hand`, and
+  `requiresComponents` is true. So the decisive test is arithmetic, and it is
+  what the script now does: recompute `min(component available // qty needed)`
+  independently and require it to equal Shopify's derived
+  `sellableOnlineQuantity`. **All 39 match exactly** (e.g. Calm & Comfort 5104,
+  bound by the Heartbeat Sloth; the Travel and Grooming kits are bound by the
+  Paw Washing Cup). 82 distinct component SKUs all match CJ.
+
+  That is the third audit this week that cried wolf on a healthy store. The
+  pattern is worth remembering: **verify the rule against a known-good control
+  before trusting the alarm.**
+
+  Also green: `audit_cj_connections.py` (36/36 buyable, freight compliant), and
+  `.github/workflows/scheduled-ops.yml` still runs `sync_inventory --apply`,
+  `fix_locations --apply` and report-only `margin_guard` every 6 hours at :17.
+  Run history could not be read from this machine (no `gh`, private repo), but
+  the tiny observed drift is consistent with the job running normally.
+
 - **HOMEPAGE V2: FEWER WORDS, MORE DOGS (2026-08-08, same day, owner call).**
   Two changes on top of the kits-first rebuild, both live and verified:
 

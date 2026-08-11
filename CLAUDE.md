@@ -100,6 +100,15 @@ Rules:
   product with every variant unbuyable, which happened to the Dental Chew Stick
   on 2026-08-08 and was caught only by re-fetching. `sync_inventory.cj_stock`
   handles both; nothing else should try.
+- **Kits hold NO stock of their own, and that is correct.** A bundle parent has
+  `inventoryItem.tracked: true` just like a single, so tracked proves nothing.
+  What identifies a healthy bundle is `requiresComponents: true` plus an
+  inventory level that exists but carries **no `available` quantity**; Shopify
+  derives `sellableOnlineQuantity` from the components. `sync_inventory.py` only
+  walks SKU-carrying variants, so it never touches kits and its "all in step"
+  verdict says nothing about them. `config/verify_kit_inventory.py` is the check
+  that does: it recomputes `min(component available // qty needed)` and requires
+  it to equal Shopify's derived figure for all 39 kit variants.
 - **Verify availability with `/products/<handle>.js` and check `available`**, not
   admin inventory numbers. A catalogue once showed thousands in stock while every
   variant was unbuyable. `inventory_quantity` in the products.json payload also
