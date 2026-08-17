@@ -25,7 +25,12 @@ RULES FOR EDITING THIS FILE
     typo produces a kit variant that maps to no real SKU and cannot be fulfilled.
     `rebuild_kits.py` validates every one against the live catalogue before it
     writes anything.
-  * A component absent from a colorway map is single-variant and needs no choice.
+  * Single-variant components have no choice to express, so they cannot appear in
+    a colorway map. List them in `fixed` instead. `fixed` is NOT optional
+    decoration: composition is derived from this file, so a single-variant
+    component missing from `fixed` is DROPPED from the kit. Inferring them from
+    the live bundle instead is what made the Watermelon Rope Frisbee impossible
+    to remove from the Toy Kit even after CJ stopped being able to ship it.
   * Keep colorways coherent. The whole justification for this design is that the
     curated set looks considered; a mismatched set is worse than a random one.
 """
@@ -55,6 +60,7 @@ KITS = {
     'New Puppy Kit': {
         'option': 'Colorway',
         'sizes': ['Small', 'Medium'],          # only the blanket varies by size
+        'fixed': ['Cuddle Companion Teddy'],
         'values': {
             'Blue': {
                 'Sneaker Chew Buddy':      'Blue',
@@ -77,24 +83,33 @@ KITS = {
         },
     },
 
+    # 2026-08-17: the Watermelon Rope Frisbee was REMOVED from this kit. CJ has
+    # no stock record for it (stock:null) so it cannot be shipped, which is what
+    # broke order #1002's sibling case. Replaced by the Woodland Rope-Limb Plush:
+    # it keeps the rope/tug play the frisbee provided AND has six characters, so
+    # it maps onto the character sets instead of being one fixed item.
     'Toy Kit': {
         'option': 'Character set',
         'sizes': None,                          # nothing in this kit has a size
+        'fixed': [],        # the Watermelon Rope Frisbee used to live here
         'values': {
             'Farmyard': {
                 'Barnyard Squeaker':   'Green Dog',
+                'Woodland Rope-Limb Plush': 'Rabbit',
                 'Sneaker Chew Buddy':  'Blue',
                 'Jingle Plush Ball':   'Monkey',
                 'Corduroy Squeak Pals': 'Fawn',
             },
             'Safari': {
                 'Barnyard Squeaker':   'Giraffe',
+                'Woodland Rope-Limb Plush': 'Tiger',
                 'Sneaker Chew Buddy':  'Black',
                 'Jingle Plush Ball':   'Frog',
                 'Corduroy Squeak Pals': 'Frog',
             },
             'Puppy Pack': {
                 'Barnyard Squeaker':   'Puppy',
+                'Woodland Rope-Limb Plush': 'Fox',
                 'Sneaker Chew Buddy':  'Sea Fog Blue',
                 'Jingle Plush Ball':   'Dog',
                 'Corduroy Squeak Pals': 'Crooked Neck',
@@ -130,6 +145,11 @@ KITS = {
         },
     },
 
+    # 2026-08-17: the Bouncy Egg Squeaker was REMOVED. It is the item that made
+    # order #1002 (CJ DP2608121816000646700) ship short: CJ advertised 44,838
+    # while holding no stock record at all. Replaced by the Dental Chew Stick,
+    # which is verified shippable and does the same job for the kit's promise,
+    # giving a bored dog something self-directed to work at.
     'Dog Enrichment Kit': {
         'option': 'Colorway',
         'sizes': None,
@@ -138,19 +158,19 @@ KITS = {
                 'Slow Feeder Bowl':   'Green',
                 'Lick Bowl with Ball': 'Grey',
                 'Talk Button':        'Green',
-                'Bouncy Egg Squeaker': 'Green',
+                'Dental Chew Stick':  'Green',
             },
             'Pink': {
                 'Slow Feeder Bowl':   'Pink',
                 'Lick Bowl with Ball': 'Black',
                 'Talk Button':        'Pink',
-                'Bouncy Egg Squeaker': 'Purple',
+                'Dental Chew Stick':  'Teal',
             },
             'Sunshine': {
                 'Slow Feeder Bowl':   'Orange',
                 'Lick Bowl with Ball': 'Yellow',
                 'Talk Button':        'Yellow',
-                'Bouncy Egg Squeaker': 'Orange',
+                'Dental Chew Stick':  'Yellow',
             },
         },
     },
@@ -186,6 +206,7 @@ KITS = {
     'Calm & Comfort Kit': {
         'option': 'Colorway',
         'sizes': ['Small', 'Medium', 'Large'],
+        'fixed': ['Heartbeat Soothing Sloth'],
         'values': {
             'Grey': {
                 'Calming Thunder Wrap':     'Grey',

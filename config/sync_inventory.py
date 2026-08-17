@@ -54,24 +54,41 @@ def api(method, path, payload=None):
 
 
 def cj_stock(sku):
-    """What CJ can ship: warehouse + factory, summed across stock rows.
+    """What CJ can actually SHIP, which is not the same as what it advertises.
 
-    `totalInventoryNum` alone counts only the warehouse row and understates it -
-    the Slicker Brush reads 2097 that way against a real 13505.
+    Sum `inventory + factoryInventory` over the entries of each row's `stock`
+    array. A populated `stock` array carries a real `stockId`, i.e. an
+    addressable warehouse record CJ can draw against.
+
+    WHEN `stock` IS null, RETURN 0. Do not fall back to `totalInventoryNum`.
+    That fallback is what caused order #1002 (CJ DP2608121816000646700) to ship
+    short: the Bouncy Egg Squeaker Green advertised
+    totalInventoryNum/factoryInventoryNum of 44,838 with `stock: null`, we wrote
+    44,838 into Shopify, and CJ then had nothing to send. Ten variants across
+    five products were in that state. `totalInventoryNum` mirrors
+    `factoryInventoryNum` on every row we have ever seen, so it is a SUPPLIER
+    CLAIM, not CJ stock; `cjInventoryNum` is 0 across the entire catalogue
+    because CJ warehouses none of it and sources per order.
+
+    The older docstring here claimed totalInventoryNum "understates" the truth
+    and cited the Slicker Brush at 2097 vs 13505. That comparison was between
+    the warehouse row and the factory total; it never established that the
+    factory total is shippable, and #1002 proved it is not.
+
+    `config/audit_cj_shippability.py` reports every SKU in the null state.
     """
     res = cj_api.call('/product/stock/queryBySku', {'sku': sku})
     rows = res.get('data')
     if not rows:
         return None
-    total = 0
+    total, has_record = 0, False
     for w in rows:
         entries = w.get('stock') or []
         if entries:
+            has_record = True
             for s in entries:
                 total += (s.get('inventory') or 0) + (s.get('factoryInventory') or 0)
-        else:
-            total += w.get('totalInventoryNum') or w.get('storageNum') or 0
-    return total
+    return total if has_record else 0
 
 
 def main():

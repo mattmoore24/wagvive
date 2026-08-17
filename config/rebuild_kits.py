@@ -202,6 +202,20 @@ def main():
     comps = {n['id']: n for n in gql(COMP_Q, {'ids': ids})['data']['nodes']}
     by_name = {short(c['title']): c for c in comps.values()}
 
+    # kit_colorways.py is the SOURCE OF TRUTH, including for WHICH components a
+    # kit contains. A component being added by a composition change is not yet
+    # in any bundle, so it is missing from the ids above; pull it from the
+    # catalogue or the rebuild would silently keep planning the old component.
+    wanted = {name for spec in KITS.values()
+              for cw in spec['values'].values() for name in cw}
+    if wanted - set(by_name):
+        extra = gql('''query { products(first: 60, query: "status:ACTIVE") {
+            nodes { id title
+              variants(first: 60) { nodes { id title sku availableForSale
+                selectedOptions { name value } } } } } }''')
+        for p in extra['data']['products']['nodes']:
+            by_name.setdefault(short(p['title']), p)
+
     failures = []
     for kit_title, spec in KITS.items():
         kit = by_title.get(kit_title)
@@ -209,8 +223,25 @@ def main():
             print(f'!! {kit_title}: not an active kit, skipped')
             failures.append(kit_title)
             continue
-        bundle_names = [short(c['componentProduct']['title'])
-                        for c in kit['bundleComponents']['nodes']]
+        # Component set comes from the DESIGN, not the live bundle. Reading it
+        # from live meant a composition change could never be applied: the Toy
+        # Kit kept planning the Watermelon Rope Frisbee and the Enrichment Kit
+        # died on the Bouncy Egg Squeaker, both of which CJ cannot ship.
+        # Single-variant components carry no colorway entry, so union the design
+        # names with any live component the design does not mention by choice.
+        design_names = []
+        for cw in spec['values'].values():
+            for name in cw:
+                if name not in design_names:
+                    design_names.append(name)
+        # Single-variant components carry no colorway entry, so they are declared
+        # explicitly in `fixed`. Inferring them from the live bundle instead made
+        # a single-variant component impossible to REMOVE, which is exactly the
+        # state the Watermelon Rope Frisbee was stuck in.
+        for name in spec.get('fixed', []):
+            if name not in design_names:
+                design_names.append(name)
+        bundle_names = design_names
         # Intended price comes from the BACKUP when one exists. After a rebuild
         # the live price is whatever Shopify derived from the components, so
         # reading it back would launder that error into the new price.
