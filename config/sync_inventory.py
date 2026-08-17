@@ -54,28 +54,31 @@ def api(method, path, payload=None):
 
 
 def cj_stock(sku):
-    """What CJ can actually SHIP, which is not the same as what it advertises.
+    """CJ's stock for one SKU, across both row shapes CJ returns.
 
-    Sum `inventory + factoryInventory` over the entries of each row's `stock`
-    array. A populated `stock` array carries a real `stockId`, i.e. an
-    addressable warehouse record CJ can draw against.
+    Some SKUs carry nested per-warehouse entries in a `stock` array, where the
+    quantity is `inventory + factoryInventory` summed over the entries and
+    `totalInventoryNum` undercounts (the Slicker Brush reads 2097 that way
+    against a real 13505). Others carry only `totalInventoryNum`, with an empty
+    or null `stock` array; summing those two fields returns 0.
 
-    WHEN `stock` IS null, RETURN 0. Do not fall back to `totalInventoryNum`.
-    That fallback is what caused order #1002 (CJ DP2608121816000646700) to ship
-    short: the Bouncy Egg Squeaker Green advertised
-    totalInventoryNum/factoryInventoryNum of 44,838 with `stock: null`, we wrote
-    44,838 into Shopify, and CJ then had nothing to send. Ten variants across
-    five products were in that state. `totalInventoryNum` mirrors
-    `factoryInventoryNum` on every row we have ever seen, so it is a SUPPLIER
-    CLAIM, not CJ stock; `cjInventoryNum` is 0 across the entire catalogue
-    because CJ warehouses none of it and sources per order.
+    AN EMPTY `stock` ARRAY IS NOT A SHIPPING BLOCK. Between 2026-08-17 and
+    2026-08-18 this function returned 0 in that case, on the theory that only a
+    concrete `stockId` proved CJ could ship. That theory was WRONG and it zeroed
+    ten healthy variants across five products. What actually disproved it, in
+    CJ's own UI: the Bouncy Egg Squeaker (the item blamed for order #1002) shows
+    "Inventory: 46587 (CJ: 0, Factory: 46587)" with carrier "LuWei Ordinary US ·
+    Available" and 1 to 3 day processing. Supporting evidence from the API: all
+    five products return status 3, are listed by 48 to 86 other sellers, and
+    quote 27 carrier options each; CJ flags no line of order #1002 abnormal, and
+    CJ's Abnormal Orders tab reads 0.
 
-    The older docstring here claimed totalInventoryNum "understates" the truth
-    and cited the Slicker Brush at 2097 vs 13505. That comparison was between
-    the warehouse row and the factory total; it never established that the
-    factory total is shippable, and #1002 proved it is not.
+    So: fall back to `totalInventoryNum` when there is no stock record. That is
+    the number CJ's own product page displays.
 
-    `config/audit_cj_shippability.py` reports every SKU in the null state.
+    Whether a variant can be FULFILLED is a separate question from how many
+    units exist, and it is answered by asking CJ for a carrier, not by reading
+    this field. `config/guard_unshippable.py` does that.
     """
     res = cj_api.call('/product/stock/queryBySku', {'sku': sku})
     rows = res.get('data')
@@ -88,7 +91,9 @@ def cj_stock(sku):
             has_record = True
             for s in entries:
                 total += (s.get('inventory') or 0) + (s.get('factoryInventory') or 0)
-    return total if has_record else 0
+    if has_record:
+        return total
+    return sum(int(w.get('totalInventoryNum') or 0) for w in rows)
 
 
 def main():

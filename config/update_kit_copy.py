@@ -2,9 +2,12 @@
 """Bring the two changed kits' copy in line with what is actually in the box.
 
 The Toy Kit lost the Watermelon Rope Frisbee and the Dog Enrichment Kit lost the
-Bouncy Egg Squeaker, both because CJ holds no stock record for them and cannot
-ship them (see audit_cj_shippability.py). Copy, SEO description and the
-`wagvive.components` reference list all named the removed item.
+Bouncy Egg Squeaker. NOTE the stated reason at the time ("CJ cannot ship them")
+was later disproved: both are healthy at CJ and back on sale as standalone
+products. The swap itself was kept because the replacements are good products,
+the kits are live and verified on them, and churning back would be pure cost.
+Copy, SEO description and the `wagvive.components` reference list all named the
+removed item.
 
 TWO TRAPS THIS SCRIPT EXISTS TO AVOID:
 

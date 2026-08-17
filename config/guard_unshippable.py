@@ -1,37 +1,33 @@
 #!/usr/bin/env python3
-"""Nothing CJ cannot ship may be orderable on the storefront. Enforced, not hoped.
+"""Nothing CJ refuses to carry may be orderable on the storefront.
 
-Order #1002 (CJ DP2608121816000646700) sold a Bouncy Egg Squeaker inside the
-Enrichment Kit that CJ then could not send. Every audit at the time passed,
-because they all asked whether Shopify MATCHED CJ's number and never whether
-that number meant shippable.
+The point of this guard is the one the owner asked for: scan continuously so a
+product that cannot be fulfilled is never available to order. What changed on
+2026-08-18 is the TEST, not the goal.
 
-WHAT COUNTS AS UNSHIPPABLE, AND HOW SURE WE ARE
+THE TEST THAT WAS WRONG. The first version treated an empty `stock` array from
+/product/stock/queryBySku as proof CJ could not ship, and held ten variants
+across five products at zero. CJ's own UI disproved it: the Bouncy Egg Squeaker,
+the item blamed for order #1002, displays "Inventory: 46587 (CJ: 0, Factory:
+46587)" with carrier "LuWei Ordinary US · Available" and 1 to 3 day processing.
+The API agreed all along and I misread it: those products return status 3, carry
+48 to 86 other sellers' listings, and quote 27 carrier options each, while CJ
+flags no line of #1002 abnormal and its Abnormal Orders tab reads 0.
 
-CJ reports a quantity in `totalInventoryNum` / `factoryInventoryNum` (a supplier
-claim) and, separately, a `stock` array of concrete records each carrying a
-`stockId`. The ten variants that carry NO stock record include the exact item
-that failed, and the nine that shipped fine all carry one.
+THE TEST NOW. Ask CJ to quote carriage for the actual variant, and require at
+least one carrier inside the delivery promise. That is the same question
+fulfilment asks, so a failure here is a real inability to ship rather than an
+inference from a field whose meaning we guessed at. It is also what the
+storefront promise depends on: a carrier that misses 12 business days is no
+better than no carrier.
 
-That correlation is the whole basis of this check, and it is worth being honest
-about its strength: on 2026-08-17 the five affected products were ALSO found to
-be active at CJ (status 3), listed by 48 to 86 other sellers, and quotable for
-freight (27 carrier options each). So `stock: []` is NOT proven to mean
-"discontinued". It is one stable, reproducible signal that happens to separate
-the one item that actually failed from the ones that did not, n=1.
-
-The posture here is therefore deliberately conservative: hold these at zero and
-lose the sales, because a second unfulfillable order costs more than a few days
-of a minor SKU being off sale. If CJ later confirms these are fine, change
-`unshippable()` and nothing else.
-
-NEVER ACT ON A SINGLE EMPTY ANSWER. One run returned empty rows for seven
-healthy SKUs at once, including live kit components. All seven came back with
-real stock records on retry. An unreachable SKU is UNKNOWN and is left alone;
-zeroing on a flaky read would take good products, and their kits, offline.
+NEVER ACT ON A SINGLE BAD ANSWER. Quotes are retried, and a SKU CJ will not
+answer for is UNKNOWN and left alone. An earlier sweep returned empty rows for
+seven healthy SKUs at once, including live kit components; zeroing on that would
+have taken good products, and their kits, offline.
 
     python config/guard_unshippable.py            # report
-    python config/guard_unshippable.py --apply    # zero anything still on sale
+    python config/guard_unshippable.py --apply    # zero anything unfulfillable
 """
 import json
 import os
@@ -43,6 +39,10 @@ import urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'config'))
 import cj_api                                            # noqa: E402
+from freight_floor import upper_days                     # noqa: E402
+
+MAX_DAYS = 12                       # the promise made site-wide and in email
+LOCATION_ID = 113363058977          # Shop location: the only one that can sell
 
 env = {}
 with open(os.path.join(ROOT, 'config', 'shopify.env'), encoding='utf-8') as fh:
@@ -55,7 +55,6 @@ DOMAIN, TOKEN, VERSION = (env['SHOPIFY_STORE_DOMAIN'],
                           env['SHOPIFY_ADMIN_API_TOKEN'],
                           env['SHOPIFY_API_VERSION'])
 SHOP = env.get('SHOPIFY_PUBLIC_DOMAIN', 'wagvive.com')
-LOCATION_ID = 113363058977          # Shop location: the only one that can sell
 
 
 def api(path, method='GET', payload=None):
@@ -78,31 +77,45 @@ def api(path, method='GET', payload=None):
     return {}
 
 
-def cj_rows(sku, tries=3):
-    """(rows, reachable). An empty answer is retried before it is believed."""
+def cj_vids():
+    """{variant sku: vid} for the catalogue, from CJ's product records."""
+    out = {}
+    prods = api('products.json?limit=250&status=active')['products']
+    spus = {v['sku'][:11] for p in prods for v in p['variants'] if v.get('sku')}
+    for spu in sorted(spus):
+        try:
+            d = cj_api.call('/product/query', {'productSku': spu}) or {}
+            data = d.get('data')
+            if isinstance(data, list):
+                data = data[0] if data else {}
+            for cv in ((data or {}).get('variants') or []):
+                out[cv.get('variantSku')] = cv.get('vid')
+        except Exception:
+            pass
+        time.sleep(0.25)
+    return out
+
+
+def carriers(vid, sku, tries=3):
+    """(options inside the promise, reachable). Retried before it is believed."""
+    start = 'US' if str(sku).startswith('CJBQ') else 'CN'
     for attempt in range(tries):
         try:
-            rows = cj_api.call('/product/stock/queryBySku', {'sku': sku}).get('data')
-            if isinstance(rows, list) and rows:
-                return rows, True
+            r = cj_api.call('/logistic/freightCalculate', payload={
+                'startCountryCode': start, 'endCountryCode': 'US',
+                'products': [{'quantity': 1, 'vid': vid}]})
+            opts = r.get('data')
+            if isinstance(opts, list) and opts:
+                inside = [o for o in opts if o.get('logisticPrice') is not None
+                          and upper_days(o.get('logisticAging')) <= MAX_DAYS]
+                return inside, True
         except Exception:
             pass
         time.sleep(1.5 * (attempt + 1))
     return [], False
 
 
-def unshippable(rows):
-    """True when no row carries a concrete stock record. The single predicate."""
-    return not any((r.get('stock') or []) for r in rows)
-
-
-def storefront_available(handles):
-    """{handle: {variant_id: available}} straight from the live storefront.
-
-    Admin inventory numbers lag and have read 0 immediately after a correct
-    write. `available` on /products/<handle>.js is what a customer actually
-    experiences, so that is what this asserts against.
-    """
+def storefront(handles):
     out = {}
     for h in sorted(handles):
         url = f'https://{SHOP}/products/{h}.js?nocache={int(time.time()*1000)}'
@@ -122,6 +135,7 @@ def main():
     prods = api('products.json?limit=250&status=active')['products']
     singles = [p for p in prods
                if p.get('product_type') not in ('Bundles & Kits', 'Kit Bundle')]
+    vids = cj_vids()
 
     bad, unknown, checked = [], [], 0
     for p in sorted(singles, key=lambda x: x['title']):
@@ -130,37 +144,40 @@ def main():
             if not sku:
                 continue
             checked += 1
-            rows, reachable = cj_rows(sku)
-            if not reachable:
-                unknown.append((p['title'], v['title'], sku))
+            vid = vids.get(sku)
+            if not vid:
+                unknown.append((p['title'], v['title'], sku, 'no CJ vid'))
                 continue
-            if unshippable(rows):
+            inside, reachable = carriers(vid, sku)
+            if not reachable:
+                unknown.append((p['title'], v['title'], sku, 'CJ did not answer'))
+                continue
+            if not inside:
                 bad.append({'product': p['title'], 'handle': p['handle'],
                             'variant': v['title'], 'sku': sku,
                             'variant_id': v['id'],
                             'item_id': v['inventory_item_id'],
                             'qty': v['inventory_quantity']})
 
-    print(f'{checked} SKU-carrying variant(s) checked')
+    print(f'{checked} SKU-carrying variant(s) checked against a live CJ freight '
+          f'quote, {MAX_DAYS} business day ceiling')
     if unknown:
-        print(f'\n{len(unknown)} UNKNOWN (CJ would not answer after retries). '
-              f'Left untouched on purpose:')
-        for t, vt, s in unknown:
-            print(f'  ? {t} / {vt}  {s}')
+        print(f'\n{len(unknown)} UNKNOWN, left untouched on purpose:')
+        for t, vt, s, why in unknown:
+            print(f'  ? {t} / {vt}  {s}  ({why})')
 
     if not bad:
-        print('\nEvery variant CJ can ship. Nothing to hold back.')
+        print('\nEvery variant has a carrier inside the promise.')
         return 0
 
     on_sale = [b for b in bad if b['qty'] > 0]
-    print(f'\n{len(bad)} variant(s) CJ cannot ship. '
-          f'{len(on_sale)} of them still carry stock in Shopify:')
+    print(f'\n{len(bad)} variant(s) have NO carrier inside {MAX_DAYS} days. '
+          f'{len(on_sale)} still carry stock:')
     for b in bad:
-        flag = '!!' if b['qty'] > 0 else '  '
-        print(f"  {flag} {b['product']} / {b['variant']}  {b['sku']}  qty={b['qty']}")
+        print(f"  {'!!' if b['qty'] > 0 else '  '} {b['product']} / "
+              f"{b['variant']}  {b['sku']}  qty={b['qty']}")
 
     if on_sale and apply:
-        print(f'\nzeroing {len(on_sale)} variant(s)...')
         for b in on_sale:
             api('inventory_levels/set.json', 'POST',
                 {'location_id': LOCATION_ID, 'inventory_item_id': b['item_id'],
@@ -169,27 +186,17 @@ def main():
     elif on_sale:
         print('\nRun with --apply to zero them.')
 
-    # The real assertion: not the admin number, the customer's experience.
     print('\nstorefront check...')
-    live = storefront_available({b['handle'] for b in bad})
-    still_buyable = []
-    for b in bad:
-        state = live.get(b['handle'], {})
-        if 'error' in state:
-            print(f"  ? {b['handle']}: {state['error']}")
-            continue
-        if state.get(b['variant_id']):
-            still_buyable.append(b)
-    for b in bad:
-        st = live.get(b['handle'], {})
-        if 'error' not in st:
-            print(f"  {'BUYABLE' if st.get(b['variant_id']) else 'off sale'}  "
-                  f"{b['product']} / {b['variant']}")
-
-    if still_buyable:
-        print(f'\n{len(still_buyable)} UNSHIPPABLE VARIANT(S) ARE STILL ORDERABLE.')
+    live = storefront({b['handle'] for b in bad})
+    still = [b for b in bad
+             if 'error' not in live.get(b['handle'], {})
+             and live[b['handle']].get(b['variant_id'])]
+    if still:
+        print(f'\n{len(still)} UNFULFILLABLE VARIANT(S) ARE STILL ORDERABLE.')
+        for b in still:
+            print(f"  ! {b['product']} / {b['variant']}")
         return 1
-    print('\nNothing CJ cannot ship is orderable on the storefront.')
+    print('Nothing unfulfillable is orderable on the storefront.')
     return 0
 
 

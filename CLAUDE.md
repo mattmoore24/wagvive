@@ -90,17 +90,23 @@ Rules:
   is report-only** — a silent no-op that has been mistaken for success.
 - CJ's webhook writes to its own location and may recreate the double count at
   any time. That is why the scheduled job re-runs `fix_locations.py`.
-- **CJ's advertised stock is not shippable stock.** `totalInventoryNum` and
-  `factoryInventoryNum` are a supplier CLAIM. What proves CJ can ship is a
-  populated **`stock` array carrying a `stockId`**; `stock: null` means it
-  cannot, whatever the advertised figure says. Do not use `cjInventoryNum` as
-  the test: it is 0 for the entire catalogue, because CJ warehouses almost
-  nothing and factory-sources on demand. Taking the advertised number literally
-  is what made order #1002 ship short (Bouncy Egg Squeaker, 44,838 advertised,
-  no stock record). `config/audit_cj_shippability.py` sweeps for it.
-  **An EMPTY answer from CJ is not evidence of anything** — retry it. One run
+- **An empty `stock` array is NOT a shipping block.** For two days this repo
+  believed only a concrete `stockId` proved CJ could ship, and zeroed ten
+  healthy variants across five products. CJ's own UI disproved it: the Bouncy
+  Egg Squeaker shows "Inventory: 46587 (CJ: 0, Factory: 46587)", carrier "LuWei
+  Ordinary US · Available", 1 to 3 day processing. Those products also return
+  status 3, carry 48 to 86 other sellers' listings, and quote 27 carriers each;
+  CJ flags no line of order #1002 abnormal and its Abnormal Orders tab reads 0.
+  `cj_stock()` falls back to `totalInventoryNum` when there is no stock record,
+  which is the number CJ's product page displays.
+- **"How many units exist" and "can this be fulfilled" are different questions.**
+  Answer the second by asking CJ for a CARRIER, never by reading a stock field.
+  `config/guard_unshippable.py` quotes freight per variant and requires one
+  option inside the 12-business-day promise; it runs 3-hourly and asserts on the
+  live storefront. All 145 variants currently pass.
+- **An EMPTY answer from CJ is not evidence of anything** — retry it. One run
   came back empty for seven healthy SKUs at once; acting on that would have
-  zeroed live kit components.
+  zeroed live kit components. Treat unanswerable as UNKNOWN, never as a finding.
 - **Never read CJ stock by hand. Call `sync_inventory.cj_stock(sku)`.** CJ returns
   TWO different row shapes and the right answer depends on which you got. Some
   SKUs carry nested per-warehouse entries, where the quantity is

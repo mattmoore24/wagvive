@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-17, home PC (Toy and Enrichment kits rebuilt, repriced and reshot; the "unshippable" verdict on 5 products is NOT proven and needs the owner signed in to CJ, see below)
+**Last updated:** 2026-08-18, home PC (the "unshippable" scare was a FALSE ALARM: all 10 variants restored and buyable; guard now tests freight quotability, all 145 pass)
 
 ---
 
@@ -142,119 +142,58 @@ A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
 
-- **ORDER #1002 ROOT-CAUSED, AND THE TWO AFFECTED KITS REBUILT (2026-08-17).**
-  CJ reported the Bouncy Egg Squeaker out of stock after it sold inside the
-  Enrichment Kit (CJ order DP2608121816000646700).
+- **THE "UNSHIPPABLE" SCARE WAS A FALSE ALARM. RESOLVED 2026-08-18.**
 
-  **Cause.** CJ advertises `totalInventoryNum`/`factoryInventoryNum`, which is a
-  supplier claim, not stock. `sync_inventory.cj_stock()` fell back to that number
-  when the detailed rows were empty, so Shopify was told 44,838 units of an item
-  CJ could not ship. The discriminator is **`stock: null` vs a populated `stock`
-  array carrying a `stockId`**. It is NOT `cjInventoryNum`: that reads 0 for the
-  entire catalogue (216 units across 145 variants) because CJ warehouses almost
-  nothing and factory-sources on demand, so it is 0 for the nine SKUs that
-  shipped fine too. Every earlier audit passed because they all asked whether
-  Shopify MATCHED CJ's number, never whether that number meant shippable.
+  On 2026-08-17 I concluded that ten variants across five products could not be
+  shipped by CJ, because `/product/stock/queryBySku` returned an empty `stock`
+  array for them, and the item blamed for order #1002 was among them. I changed
+  `cj_stock()` to return 0 in that case and held all ten at zero.
 
-  **Fixed.** `cj_stock()` returns 0 when no row carries a stock record. New
-  `config/audit_cj_shippability.py` sweeps the catalogue for the condition; it
-  found **10 variants across 5 products**, now all held at 0.
+  **That was wrong.** CJ's own UI settles it: the Bouncy Egg Squeaker product
+  page shows **"Inventory: 46587 (CJ: 0, Factory: 46587)"**, carrier **"LuWei
+  Ordinary US - Available"**, processing 1 to 3 days, and no sold-out state. The
+  API had been saying the same thing and I misread it: all five products return
+  `status: 3`, carry 48 to 86 other sellers' listings, and quote **27 carrier
+  options each**; CJ flags **no line of order #1002 abnormal**, and CJ's
+  **Abnormal Orders tab reads 0**.
 
-  **This fix must stay committed.** The 6-hourly `scheduled-ops.yml` runs
-  `sync_inventory.py --apply` from the COMMITTED repo. While the fix sat
-  uncommitted the job put all 10 phantom quantities straight back.
+  Also disproved along the way: I had treated order #1002 being stuck as
+  corroboration. Order **#1003 is stuck identically** (both Pending, paid the
+  same second, tracking assigned) and **every one of its five components is
+  healthy**. CJ's own banner explains Pending: it becomes Processing "when a
+  tracking number is generated and products have been well prepared in our
+  warehouses". Both orders are simply awaiting warehouse prep.
 
-  **Kit fallout.** Two kits contained an unshippable component and were rebuilt:
+  **What was reverted:** `cj_stock()` falls back to `totalInventoryNum` again
+  when there is no stock record, which is the figure CJ's product page displays.
+  All ten variants were restored from CJ and are buyable again on the storefront.
+  `audit_cj_shippability.py` and its qa log were DELETED: the predicate was
+  wrong and a misleading audit is worse than none.
 
-  | Kit | Out | In | Price | Compare-at |
-  |---|---|---|---|---|
-  | Toy Kit | Watermelon Rope Frisbee | Woodland Rope-Limb Plush | $49.00 → **$50.00** | $60.95 → **$62.95** |
-  | Dog Enrichment Kit | Bouncy Egg Squeaker | Dental Chew Stick | $46.00 → **$50.00** | $57.96 → **$62.96** |
+  **What was kept, and why.** The Toy Kit and Dog Enrichment Kit stay on their
+  new components (Woodland Rope-Limb Plush, Dental Chew Stick) at $50.00. The
+  replacements are good products, both kits are live at 3/3 with fresh art and
+  verified copy, and churning back would be cost for no gain. The frisbee and
+  egg are simply standalone products again. Reverting is possible if wanted:
+  edit `config/kit_colorways.py`, then validate, rebuild, re-shoot.
 
-  Compare-at is the honest sum of the components at their own live retail and
-  comes out identical for every colorway, so the saving does not depend on which
-  colour is picked. All 39 kit variants are buyable; margins clear their floors.
+  **What replaced the bad check.** `config/guard_unshippable.py` now asks the
+  question that actually matters: it requests a LIVE CJ FREIGHT QUOTE per
+  variant and requires at least one carrier inside the 12 business day promise,
+  then asserts on the live storefront that anything failing is not orderable. It
+  runs 3-hourly in `scheduled-ops.yml` after the sync steps. **All 145 variants
+  currently pass.** Unanswerable SKUs are UNKNOWN and never zeroed.
 
-  Also corrected: the Toy Kit claimed "Cheaper than picking any four separately"
-  when the four cheapest components total $49.96 against a $50.00 kit. It now
-  states the true saving, $62.95 for the five versus $50.00.
+  **The lesson worth keeping:** "how many units exist" and "can this be
+  fulfilled" are different questions. Answer the second by asking CJ for a
+  carrier, never by inferring meaning from a stock field. And a single stable
+  signal correlating with one failure (n=1) is not proof; three cheap checks
+  (product status, other sellers' listings, freight quote) would have caught
+  this before anything was zeroed.
 
-  **`product.bundleComponents` IS STALE AFTER A REBUILD.** 50 minutes after the
-  rebuild it still named both removed items while
-  `variant.productVariantComponents` had switched correctly. Three things
-  trusted it and now read the variant level: `audit_kits.py` (it reported the two
-  FIXED kits as broken and would have "repaired" their metafields back to the old
-  contents), `verify_kit_callout.py`, and `link_kits_multi.py`. The last also
-  never CLEARED `custom.kits` from a product that left a kit, so the frisbee and
-  egg kept advertising kits they were no longer in.
-
-  **Two image traps, both hit.** `apply_kit_covers.py` and
-  `apply_colorway_covers.py` are idempotent BY FILENAME, so reshot art under an
-  unchanged name is skipped and the old covers must be deleted first. But
-  `apply_kit_covers.py` then replaced whatever sat at **position 1**, which after
-  that delete was a component still: it destroyed the Slow Feeder Bowl and
-  Barnyard Squeaker shots. Both restored; the script now finds the cover by ALT.
-
-  **`audit_cj_shippability.py` was hardened after a near miss.** One run returned
-  empty rows for seven SKUs at once, including live kit components, and reported
-  them unshippable. All seven returned real stock records on every retry: it was
-  transient CJ flakiness. Acting on it would have zeroed good stock and taken
-  kits offline. Empty answers are now retried and, if still empty, reported as
-  UNKNOWN rather than as a finding.
-
-  **THE "UNSHIPPABLE" VERDICT IS NOT PROVEN. Read this before acting on it.**
-  I first reported these five products as ones CJ cannot ship. That was
-  overstated. On re-examination the same day:
-
-  - `/product/query` returns **41 scalar fields and NOT ONE separates** the five
-    suspects from healthy controls. Same `status: 3`, comparable `listedNum`
-    (48 to 86 vs 53 to 188), same `productPro: COMMON`.
-  - CJ **quotes freight for every one of them**: 27 carrier options, $5.26 to
-    $6.50, 5 to 11 days.
-  - CJ's order record flags **`abnormalType: null` on every line** of #1002,
-    including the egg.
-  - We have **no evidence they were ever different.** `docs/qa/cj-variants.json`
-    never captured the stock field, so "they suddenly broke" is unsupported;
-    they may always have been this way and nothing looked until now.
-  - **Order #1003 is stuck in exactly the same state** (UNSHIPPED/PENDING since
-    2026-08-12, paid the same second as #1002, tracking assigned,
-    `outWarehouseTime: null`) and **all five of its components have healthy stock
-    records**. So the stall is common to both orders and is NOT evidence about
-    the egg.
-
-  What survives: `stock: []` is stable and reproducible across two endpoints and
-  many retries, and it does separate the one item that actually failed from the
-  nine that shipped. That is a correlation with **n=1**, not a proven mechanism.
-  Note also that all healthy variants share ONE identical
-  `stockId {6709CCD7-0DC7-43B1-B310-17AB499E9B0A}` with `inventory: 0` and the
-  whole quantity in `factoryInventory`, so the "record" looks like a shared
-  factory-sourcing marker rather than real warehouse stock.
-
-  **Current posture: hold all ten at 0.** Deliberate and conservative, because a
-  second unfulfillable order costs more than a few minor SKUs being off sale. It
-  is NOT a finding that they are dead. `config/guard_unshippable.py` enforces it
-  (3-hourly via `scheduled-ops.yml`, asserts on the live storefront, treats
-  unreachable SKUs as UNKNOWN and never zeroes on a flaky read). If CJ confirms
-  they are fine, change `unshippable()` and nothing else.
-
-  **NEXT SESSION, START HERE.** The decisive evidence is in the CJ UI and needs
-  the owner signed in: CJ threw a bot-verification challenge and bounced to a
-  login page. Claude must not complete CAPTCHAs or submit the login. Once the
-  owner is signed in to CJ in their real Chrome:
-  1. Read CJ's actual notice on order **#1002** (`DP2608121816000646700`) and on
-     **#1003** (`DP2608121819070656300`) — why are BOTH stuck 5+ days?
-  2. Check the CJ product page for SPU `CJMY1416710` (egg) and `CJST2178342`
-     (Crinkle) for a real availability state.
-  3. Ask CJ support: why do these SPUs return no stock record while CJ still
-     quotes freight for them?
-
-  Then decide the three standalone products (Crinkle Plush Buddy, Dental Duck
-  Chew Toy, Rope-Limb Puppy Plush): restore if healthy, or replace. The two kit
-  components are already replaced and both kits are live at 3/3.
-
-  Note we do NOT hold inventory: stock mirrors CJ, so "increase inventory" means
-  sourcing SKUs CJ holds records for. `cjInventoryNum` is 0 across the whole
-  catalogue (216 units over 145 variants), so every product carries this risk.
+  Still genuinely unexplained: why CJ notified about #1002 at all. Both orders
+  remain Pending at CJ, which is worth chasing with CJ support if they do not
+  move.
 
 - **INVENTORY AUDITED END TO END, INCLUDING KITS (2026-08-11).** Answering
   "is Shopify still tracking everything and matching CJ?". Verdict: yes, with

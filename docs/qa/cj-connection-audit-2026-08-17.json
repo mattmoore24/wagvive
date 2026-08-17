@@ -1,26 +1,9 @@
 {
- "ran_at": "2026-08-17T14:51:27",
+ "ran_at": "2026-08-17T19:11:57",
  "products": 36,
  "bundles": 6,
  "variants": 145,
  "spus": 36,
- "problems": [
-  "Wagvive Bouncy Egg Squeaker: ENTIRE product unbuyable",
-  "Wagvive Crinkle Plush Buddy: ENTIRE product unbuyable",
-  "Wagvive Dental Duck Chew Toy: ENTIRE product unbuyable",
-  "Wagvive Rope-Limb Puppy Plush: ENTIRE product unbuyable",
-  "Wagvive Watermelon Rope Frisbee: ENTIRE product unbuyable"
- ],
- "warnings": [
-  "Wagvive Bouncy Egg Squeaker / Green: stock 0",
-  "Wagvive Bouncy Egg Squeaker / Blue: stock 0",
-  "Wagvive Bouncy Egg Squeaker / Orange: stock 0",
-  "Wagvive Bouncy Egg Squeaker / Purple: stock 0",
-  "Wagvive Crinkle Plush Buddy / Blue: stock 0",
-  "Wagvive Crinkle Plush Buddy / Green: stock 0",
-  "Wagvive Crinkle Plush Buddy / Orange: stock 0",
-  "Wagvive Dental Duck Chew Toy / Default Title: stock 0",
-  "Wagvive Rope-Limb Puppy Plush / Default Title: stock 0",
-  "Wagvive Watermelon Rope Frisbee / Default Title: stock 0"
- ]
+ "problems": [],
+ "warnings": []
 }
