@@ -122,13 +122,30 @@ def main():
             json.dump(log, fh, indent=2)
         print(f'log -> {os.path.relpath(out, ROOT)}')
 
-    if bad:
-        print(f'\n{len(bad)} VARIANT(S) CJ CANNOT SHIP but Shopify sells:')
-        for e in bad:
+    # Having no CJ stock record is not by itself an incident. It only becomes
+    # one when Shopify is still offering the thing for sale. Failing on every
+    # unshippable SKU regardless of its Shopify quantity would mean this audit
+    # could never go green while those products exist, and an audit that always
+    # fails is one that stops being read.
+    exposed = [e for e in bad if e['shopify'] > 0]
+    contained = [e for e in bad if e['shopify'] <= 0]
+
+    if contained:
+        print(f'\n{len(contained)} variant(s) CJ cannot ship, correctly held at '
+              f'0 in Shopify so they cannot be ordered:')
+        for e in contained:
+            print(f"  - {e['product']} / {e['variant']}  {e['sku']}")
+
+    if exposed:
+        print(f'\n{len(exposed)} VARIANT(S) CJ CANNOT SHIP but Shopify SELLS:')
+        for e in exposed:
             print(f"  ! {e['product']} / {e['variant']}  {e['sku']}  "
                   f"shopify={e['shopify']}  {e['verdict']}")
         print('\nZero these in Shopify now: they will fail at fulfilment.')
         return 1
+    if contained:
+        print('\nNothing unshippable is on sale.')
+        return 0
     print('\nEvery SKU-carrying variant has a real CJ stock record.')
     return 0
 

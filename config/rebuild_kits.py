@@ -242,17 +242,14 @@ def main():
             if name not in design_names:
                 design_names.append(name)
         bundle_names = design_names
-        # Intended price comes from the BACKUP when one exists. After a rebuild
-        # the live price is whatever Shopify derived from the components, so
-        # reading it back would launder that error into the new price.
-        bpath = os.path.join(BACKUP, f'{kit["handle"]}.json')
-        if os.path.exists(bpath):
-            old = json.load(open(bpath, encoding='utf-8'))
-            price = old['variants']['nodes'][0]['price']
-            compare = old['variants']['nodes'][0]['compareAtPrice']
-        else:
-            price = kit['variants']['nodes'][0]['price']
-            compare = kit['variants']['nodes'][0]['compareAtPrice']
+        # Intended price comes from the DESIGN. It cannot be read back from the
+        # live product, because after a rebuild that is whatever Shopify derived
+        # from the components. It can no longer be read from the backup either:
+        # a composition change makes the previous kit's price simply wrong, and
+        # the backup is by definition the kit as it was BEFORE the change, so the
+        # Toy Kit would have been rebuilt at the frisbee-era $49.00.
+        price = spec['price']
+        compare = spec['compare_at']
         rows = build_plan(kit_title, spec, bundle_names, by_name)
 
         old_opts = [o['name'] for o in kit['options']]

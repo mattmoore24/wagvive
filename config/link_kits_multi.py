@@ -65,12 +65,20 @@ def gql(query, variables=None, tries=5):
     return {}
 
 
+# Membership is read at the VARIANT level, never from product.bundleComponents.
+# That product-level field is STALE after a kit rebuild: following the 2026-08-17
+# composition change it still named the Watermelon Rope Frisbee and the Bouncy
+# Egg Squeaker as components long after productVariantComponents had switched to
+# their replacements. Trusting it here would have written "Also in the Toy Kit"
+# onto a product no longer in the Toy Kit, and left the real component with no
+# callout at all.
 KITS_Q = '''
 query($q: String!) {
   products(first: 20, query: $q) {
     nodes { id title
-      bundleComponents(first: 12) {
-        nodes { componentProduct { id title } } } }
+      variants(first: 30) { nodes {
+        productVariantComponents(first: 12) {
+          nodes { productVariant { product { id title } } } } } } }
   }
 }'''
 
@@ -98,6 +106,19 @@ query($q: String!) {
   }
 }'''
 
+# Dropping out of a kit has to remove the callout, not just stop refreshing it.
+# When the Watermelon Rope Frisbee left the Toy Kit its custom.kits metafield
+# survived, so its page kept advertising "Also in the Toy Kit" for a kit that no
+# longer contained it. The value is DELETED rather than set to an empty list,
+# because the snippet renders on presence.
+CLEAR_MF = '''
+mutation($mf: [MetafieldIdentifierInput!]!) {
+  metafieldsDelete(metafields: $mf) {
+    deletedMetafields { key }
+    userErrors { field message }
+  }
+}'''
+
 
 def main():
     apply = '--apply' in sys.argv
@@ -108,11 +129,12 @@ def main():
     names = {}
     for k in kits:
         names[k['id']] = k['title']
-        for c in k['bundleComponents']['nodes']:
-            cp = c['componentProduct']
-            names[cp['id']] = cp['title'].replace('Wagvive ', '')
-            if k['id'] not in membership[cp['id']]:
-                membership[cp['id']].append(k['id'])
+        for v in k['variants']['nodes']:
+            for c in v['productVariantComponents']['nodes']:
+                cp = c['productVariant']['product']
+                names[cp['id']] = cp['title'].replace('Wagvive ', '')
+                if k['id'] not in membership[cp['id']]:
+                    membership[cp['id']].append(k['id'])
 
     multi = {c: ks for c, ks in membership.items() if len(ks) > 1}
     print(f'{len(kits)} kits, {len(membership)} components, '
@@ -136,6 +158,21 @@ def main():
         return 1
     print('  ok' if not errs else '  already exists')
 
+    stale = [n for n in gql(READ_BACK, {'q': 'status:ACTIVE'}
+                            )['data']['products']['nodes']
+             if n.get('metafield') and n['id'] not in membership]
+    if stale:
+        print(f'clearing custom.kits from {len(stale)} product(s) no longer in '
+              f'any kit:')
+        for n in stale:
+            print(f"  - {n['title'].replace('Wagvive ', '')}")
+        r = gql(CLEAR_MF, {'mf': [{'ownerId': n['id'], 'namespace': 'custom',
+                                   'key': 'kits'} for n in stale]})
+        e = r['data']['metafieldsDelete']['userErrors']
+        if e:
+            print('  FAILED:', json.dumps(e)[:250])
+            return 1
+
     payload = [{'ownerId': cid, 'namespace': 'custom', 'key': 'kits',
                 'type': 'list.product_reference', 'value': json.dumps(kids)}
                for cid, kids in membership.items()]
@@ -157,11 +194,16 @@ def main():
         got = json.loads(mf['value']) if mf else []
         if sorted(got) != sorted(kids):
             bad.append(names[cid])
+    # A leftover callout is as wrong as a missing one, so the clear is verified
+    # too rather than trusted from the mutation's return value.
+    for n in stale:
+        if (fresh.get(n['id']) or {}).get('metafield'):
+            bad.append(f"{n['title']} (stale callout survived)")
     if bad:
         print(f'\nVERIFY FAILED on {len(bad)}: {bad}')
         return 1
     print(f'verified: all {len(membership)} components list every kit they '
-          f'belong to')
+          f'belong to, and {len(stale)} ex-component(s) list none')
     return 0
 
 

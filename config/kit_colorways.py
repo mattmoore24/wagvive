@@ -33,6 +33,14 @@ RULES FOR EDITING THIS FILE
     to remove from the Toy Kit even after CJ stopped being able to ship it.
   * Keep colorways coherent. The whole justification for this design is that the
     curated set looks considered; a mismatched set is worse than a random one.
+  * `price` and `compare_at` live here too, because a composition change IS a
+    price change and the two must move together. `compare_at` is the honest sum
+    of buying every component separately at its own live retail price, and it has
+    to come out the SAME for every colorway or the advertised saving would depend
+    on which colour the shopper picked. `verify_kit_compare_at.py` proves both.
+    Previously the price was read back from `config/kit-backup/`, which meant a
+    rebuild after a composition change re-applied the OLD kit's price to the new
+    kit.
 """
 
 # Kit size -> the size value to use on each size-varying component.
@@ -59,6 +67,7 @@ SIZE_MAP = {
 KITS = {
     'New Puppy Kit': {
         'option': 'Colorway',
+        'price': '54.00', 'compare_at': '66.95',
         'sizes': ['Small', 'Medium'],          # only the blanket varies by size
         'fixed': ['Cuddle Companion Teddy'],
         'values': {
@@ -90,6 +99,9 @@ KITS = {
     # it maps onto the character sets instead of being one fixed item.
     'Toy Kit': {
         'option': 'Character set',
+        # $49.00/$60.95 before the swap. The plush retails $1.00 above the
+        # frisbee, so both numbers move by that and the saving stays 20.6%.
+        'price': '50.00', 'compare_at': '62.95',
         'sizes': None,                          # nothing in this kit has a size
         'fixed': [],        # the Watermelon Rope Frisbee used to live here
         'values': {
@@ -119,6 +131,7 @@ KITS = {
 
     'Grooming Essentials Kit': {
         'option': 'Colorway',
+        'price': '70.00', 'compare_at': '86.95',
         'sizes': ['Small', 'Medium', 'Large'],
         'values': {
             'Green': {
@@ -152,6 +165,10 @@ KITS = {
     # giving a bored dog something self-directed to work at.
     'Dog Enrichment Kit': {
         'option': 'Colorway',
+        # $46.00/$57.96 before the swap. The Dental Chew Stick retails $5.00
+        # above the egg it replaces, so the kit rises $4.00 and the saving
+        # improves slightly, from 20.6% to 20.6% on a bigger basket.
+        'price': '50.00', 'compare_at': '62.96',
         'sizes': None,
         'values': {
             'Green': {
@@ -177,6 +194,7 @@ KITS = {
 
     'Travel Kit': {
         'option': 'Colorway',
+        'price': '85.00', 'compare_at': '105.95',
         'sizes': ['Small', 'Medium', 'Large'],
         'values': {
             'Blue': {
@@ -205,6 +223,7 @@ KITS = {
 
     'Calm & Comfort Kit': {
         'option': 'Colorway',
+        'price': '109.00', 'compare_at': '135.95',
         'sizes': ['Small', 'Medium', 'Large'],
         'fixed': ['Heartbeat Soothing Sloth'],
         'values': {

@@ -3,44 +3,27 @@
   "status": "ACTIVE",
   "options": [
     {
-      "name": "Thunder Wrap",
+      "name": "Size",
+      "optionValues": [
+        {
+          "name": "Small"
+        },
+        {
+          "name": "Medium"
+        },
+        {
+          "name": "Large"
+        }
+      ]
+    },
+    {
+      "name": "Colorway",
       "optionValues": [
         {
           "name": "Grey"
         },
         {
-          "name": "Dark Blue"
-        },
-        {
-          "name": "Grey and Blue"
-        }
-      ]
-    },
-    {
-      "name": "Blanket",
-      "optionValues": [
-        {
-          "name": "Camel"
-        },
-        {
-          "name": "Beige"
-        },
-        {
-          "name": "Pink"
-        }
-      ]
-    },
-    {
-      "name": "Cooling Pad",
-      "optionValues": [
-        {
-          "name": "Light Grey"
-        },
-        {
-          "name": "Coffee"
-        },
-        {
-          "name": "Dark Blue"
+          "name": "Blue"
         },
         {
           "name": "Pink"
@@ -51,12 +34,22 @@
   "variants": {
     "nodes": [
       {
-        "id": "gid://shopify/ProductVariant/53187756622113",
-        "title": "Grey / Camel / Light Grey",
+        "id": "gid://shopify/ProductVariant/53213188718881",
+        "title": "Small / Grey",
         "price": "109.00",
         "compareAtPrice": "135.95",
         "productVariantComponents": {
           "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668198177",
+                "title": "Default Title",
+                "product": {
+                  "id": "gid://shopify/Product/10471550419233",
+                  "title": "Wagvive Heartbeat Soothing Sloth"
+                }
+              }
+            },
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174668099873",
@@ -69,8 +62,8 @@
             },
             {
               "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668263713",
-                "title": "Camel / M",
+                "id": "gid://shopify/ProductVariant/53174668296481",
+                "title": "Beige / S",
                 "product": {
                   "id": "gid://shopify/Product/10471550484769",
                   "title": "Wagvive Paw Print Fleece Blanket"
@@ -79,21 +72,11 @@
             },
             {
               "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582362913",
-                "title": "Light Grey / XX-Large 59\" x 39\"",
+                "id": "gid://shopify/ProductVariant/53097582264609",
+                "title": "Light Grey / Medium 24\" x 20\"",
                 "product": {
                   "id": "gid://shopify/Product/10464689881377",
                   "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
                 }
               }
             },
@@ -111,16 +94,26 @@
         }
       },
       {
-        "id": "gid://shopify/ProductVariant/53187756654881",
-        "title": "Grey / Camel / Coffee",
+        "id": "gid://shopify/ProductVariant/53213188751649",
+        "title": "Small / Blue",
         "price": "109.00",
         "compareAtPrice": "135.95",
         "productVariantComponents": {
           "nodes": [
             {
               "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668099873",
-                "title": "Grey",
+                "id": "gid://shopify/ProductVariant/53174668198177",
+                "title": "Default Title",
+                "product": {
+                  "id": "gid://shopify/Product/10471550419233",
+                  "title": "Wagvive Heartbeat Soothing Sloth"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668132641",
+                "title": "Dark Blue",
                 "product": {
                   "id": "gid://shopify/Product/10471550320929",
                   "title": "Wagvive Calming Thunder Wrap"
@@ -129,8 +122,8 @@
             },
             {
               "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668263713",
-                "title": "Camel / M",
+                "id": "gid://shopify/ProductVariant/53174668230945",
+                "title": "Camel / S",
                 "product": {
                   "id": "gid://shopify/Product/10471550484769",
                   "title": "Wagvive Paw Print Fleece Blanket"
@@ -139,21 +132,11 @@
             },
             {
               "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582493985",
-                "title": "Coffee / XX-Large 59\" x 39\"",
+                "id": "gid://shopify/ProductVariant/53097582526753",
+                "title": "Dark Blue / Medium 24\" x 20\"",
                 "product": {
                   "id": "gid://shopify/Product/10464689881377",
                   "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
                 }
               }
             },
@@ -171,42 +154,12 @@
         }
       },
       {
-        "id": "gid://shopify/ProductVariant/53187756687649",
-        "title": "Grey / Camel / Dark Blue",
+        "id": "gid://shopify/ProductVariant/53213188784417",
+        "title": "Small / Pink",
         "price": "109.00",
         "compareAtPrice": "135.95",
         "productVariantComponents": {
           "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668099873",
-                "title": "Grey",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668263713",
-                "title": "Camel / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582625057",
-                "title": "Dark Blue / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174668198177",
@@ -219,8 +172,38 @@
             },
             {
               "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
+                "id": "gid://shopify/ProductVariant/53174668165409",
+                "title": "Grey and Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10471550320929",
+                  "title": "Wagvive Calming Thunder Wrap"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668362017",
+                "title": "Pink / S",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582657825",
+                "title": "Pink / Medium 24\" x 20\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158143820065",
+                "title": "Orange",
                 "product": {
                   "id": "gid://shopify/Product/10469665800481",
                   "title": "Wagvive Big Squeak Plush"
@@ -231,42 +214,12 @@
         }
       },
       {
-        "id": "gid://shopify/ProductVariant/53187756720417",
-        "title": "Grey / Camel / Pink",
+        "id": "gid://shopify/ProductVariant/53213188817185",
+        "title": "Medium / Grey",
         "price": "109.00",
         "compareAtPrice": "135.95",
         "productVariantComponents": {
           "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668099873",
-                "title": "Grey",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668263713",
-                "title": "Camel / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582756129",
-                "title": "Pink / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174668198177",
@@ -277,26 +230,6 @@
                 }
               }
             },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187756753185",
-        "title": "Grey / Beige / Light Grey",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174668099873",
@@ -319,21 +252,11 @@
             },
             {
               "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582362913",
-                "title": "Light Grey / XX-Large 59\" x 39\"",
+                "id": "gid://shopify/ProductVariant/53097582297377",
+                "title": "Light Grey / Large 28\" x 22\"",
                 "product": {
                   "id": "gid://shopify/Product/10464689881377",
                   "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
                 }
               }
             },
@@ -351,12 +274,142 @@
         }
       },
       {
-        "id": "gid://shopify/ProductVariant/53187756785953",
-        "title": "Grey / Beige / Coffee",
+        "id": "gid://shopify/ProductVariant/53213188849953",
+        "title": "Medium / Blue",
         "price": "109.00",
         "compareAtPrice": "135.95",
         "productVariantComponents": {
           "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668198177",
+                "title": "Default Title",
+                "product": {
+                  "id": "gid://shopify/Product/10471550419233",
+                  "title": "Wagvive Heartbeat Soothing Sloth"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668132641",
+                "title": "Dark Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10471550320929",
+                  "title": "Wagvive Calming Thunder Wrap"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668263713",
+                "title": "Camel / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582559521",
+                "title": "Dark Blue / Large 28\" x 22\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158143787297",
+                "title": "Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10469665800481",
+                  "title": "Wagvive Big Squeak Plush"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53213188882721",
+        "title": "Medium / Pink",
+        "price": "109.00",
+        "compareAtPrice": "135.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668198177",
+                "title": "Default Title",
+                "product": {
+                  "id": "gid://shopify/Product/10471550419233",
+                  "title": "Wagvive Heartbeat Soothing Sloth"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668165409",
+                "title": "Grey and Blue",
+                "product": {
+                  "id": "gid://shopify/Product/10471550320929",
+                  "title": "Wagvive Calming Thunder Wrap"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668394785",
+                "title": "Pink / M",
+                "product": {
+                  "id": "gid://shopify/Product/10471550484769",
+                  "title": "Wagvive Paw Print Fleece Blanket"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53097582690593",
+                "title": "Pink / Large 28\" x 22\"",
+                "product": {
+                  "id": "gid://shopify/Product/10464689881377",
+                  "title": "Wagvive Cooling Comfort Pad"
+                }
+              }
+            },
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53158143820065",
+                "title": "Orange",
+                "product": {
+                  "id": "gid://shopify/Product/10469665800481",
+                  "title": "Wagvive Big Squeak Plush"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/53213188915489",
+        "title": "Large / Grey",
+        "price": "109.00",
+        "compareAtPrice": "135.95",
+        "productVariantComponents": {
+          "nodes": [
+            {
+              "productVariant": {
+                "id": "gid://shopify/ProductVariant/53174668198177",
+                "title": "Default Title",
+                "product": {
+                  "id": "gid://shopify/Product/10471550419233",
+                  "title": "Wagvive Heartbeat Soothing Sloth"
+                }
+              }
+            },
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174668099873",
@@ -379,21 +432,11 @@
             },
             {
               "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582493985",
-                "title": "Coffee / XX-Large 59\" x 39\"",
+                "id": "gid://shopify/ProductVariant/53097582330145",
+                "title": "Light Grey / X-Large 39\" x 28\"",
                 "product": {
                   "id": "gid://shopify/Product/10464689881377",
                   "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
                 }
               }
             },
@@ -411,42 +454,12 @@
         }
       },
       {
-        "id": "gid://shopify/ProductVariant/53187756818721",
-        "title": "Grey / Beige / Dark Blue",
+        "id": "gid://shopify/ProductVariant/53213188948257",
+        "title": "Large / Blue",
         "price": "109.00",
         "compareAtPrice": "135.95",
         "productVariantComponents": {
           "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668099873",
-                "title": "Grey",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668329249",
-                "title": "Beige / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582625057",
-                "title": "Dark Blue / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174668198177",
@@ -457,326 +470,6 @@
                 }
               }
             },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187756851489",
-        "title": "Grey / Beige / Pink",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668099873",
-                "title": "Grey",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668329249",
-                "title": "Beige / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582756129",
-                "title": "Pink / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187756884257",
-        "title": "Grey / Pink / Light Grey",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668099873",
-                "title": "Grey",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668394785",
-                "title": "Pink / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582362913",
-                "title": "Light Grey / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187756917025",
-        "title": "Grey / Pink / Coffee",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668099873",
-                "title": "Grey",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668394785",
-                "title": "Pink / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582493985",
-                "title": "Coffee / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187756949793",
-        "title": "Grey / Pink / Dark Blue",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668099873",
-                "title": "Grey",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668394785",
-                "title": "Pink / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582625057",
-                "title": "Dark Blue / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187756982561",
-        "title": "Grey / Pink / Pink",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668099873",
-                "title": "Grey",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668394785",
-                "title": "Pink / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582756129",
-                "title": "Pink / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757015329",
-        "title": "Dark Blue / Camel / Light Grey",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174668132641",
@@ -799,21 +492,11 @@
             },
             {
               "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582362913",
-                "title": "Light Grey / XX-Large 59\" x 39\"",
+                "id": "gid://shopify/ProductVariant/53097582592289",
+                "title": "Dark Blue / X-Large 39\" x 28\"",
                 "product": {
                   "id": "gid://shopify/Product/10464689881377",
                   "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
                 }
               }
             },
@@ -831,42 +514,12 @@
         }
       },
       {
-        "id": "gid://shopify/ProductVariant/53187757048097",
-        "title": "Dark Blue / Camel / Coffee",
+        "id": "gid://shopify/ProductVariant/53213188981025",
+        "title": "Large / Pink",
         "price": "109.00",
         "compareAtPrice": "135.95",
         "productVariantComponents": {
           "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668132641",
-                "title": "Dark Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668263713",
-                "title": "Camel / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582493985",
-                "title": "Coffee / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174668198177",
@@ -877,1106 +530,6 @@
                 }
               }
             },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757080865",
-        "title": "Dark Blue / Camel / Dark Blue",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668132641",
-                "title": "Dark Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668263713",
-                "title": "Camel / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582625057",
-                "title": "Dark Blue / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757113633",
-        "title": "Dark Blue / Camel / Pink",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668132641",
-                "title": "Dark Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668263713",
-                "title": "Camel / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582756129",
-                "title": "Pink / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757146401",
-        "title": "Dark Blue / Beige / Light Grey",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668132641",
-                "title": "Dark Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668329249",
-                "title": "Beige / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582362913",
-                "title": "Light Grey / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757179169",
-        "title": "Dark Blue / Beige / Coffee",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668132641",
-                "title": "Dark Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668329249",
-                "title": "Beige / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582493985",
-                "title": "Coffee / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757211937",
-        "title": "Dark Blue / Beige / Dark Blue",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668132641",
-                "title": "Dark Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668329249",
-                "title": "Beige / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582625057",
-                "title": "Dark Blue / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757244705",
-        "title": "Dark Blue / Beige / Pink",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668132641",
-                "title": "Dark Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668329249",
-                "title": "Beige / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582756129",
-                "title": "Pink / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757277473",
-        "title": "Dark Blue / Pink / Light Grey",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668132641",
-                "title": "Dark Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668394785",
-                "title": "Pink / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582362913",
-                "title": "Light Grey / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757310241",
-        "title": "Dark Blue / Pink / Coffee",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668132641",
-                "title": "Dark Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668394785",
-                "title": "Pink / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582493985",
-                "title": "Coffee / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757343009",
-        "title": "Dark Blue / Pink / Dark Blue",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668132641",
-                "title": "Dark Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668394785",
-                "title": "Pink / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582625057",
-                "title": "Dark Blue / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757375777",
-        "title": "Dark Blue / Pink / Pink",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668132641",
-                "title": "Dark Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668394785",
-                "title": "Pink / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582756129",
-                "title": "Pink / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757408545",
-        "title": "Grey and Blue / Camel / Light Grey",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668165409",
-                "title": "Grey and Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668263713",
-                "title": "Camel / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582362913",
-                "title": "Light Grey / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757441313",
-        "title": "Grey and Blue / Camel / Coffee",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668165409",
-                "title": "Grey and Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668263713",
-                "title": "Camel / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582493985",
-                "title": "Coffee / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757474081",
-        "title": "Grey and Blue / Camel / Dark Blue",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668165409",
-                "title": "Grey and Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668263713",
-                "title": "Camel / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582625057",
-                "title": "Dark Blue / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757506849",
-        "title": "Grey and Blue / Camel / Pink",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668165409",
-                "title": "Grey and Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668263713",
-                "title": "Camel / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582756129",
-                "title": "Pink / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757539617",
-        "title": "Grey and Blue / Beige / Light Grey",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668165409",
-                "title": "Grey and Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668329249",
-                "title": "Beige / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582362913",
-                "title": "Light Grey / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757572385",
-        "title": "Grey and Blue / Beige / Coffee",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668165409",
-                "title": "Grey and Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668329249",
-                "title": "Beige / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582493985",
-                "title": "Coffee / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757605153",
-        "title": "Grey and Blue / Beige / Dark Blue",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668165409",
-                "title": "Grey and Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668329249",
-                "title": "Beige / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582625057",
-                "title": "Dark Blue / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757637921",
-        "title": "Grey and Blue / Beige / Pink",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668165409",
-                "title": "Grey and Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668329249",
-                "title": "Beige / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582756129",
-                "title": "Pink / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757670689",
-        "title": "Grey and Blue / Pink / Light Grey",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174668165409",
@@ -1999,8 +552,8 @@
             },
             {
               "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582362913",
-                "title": "Light Grey / XX-Large 59\" x 39\"",
+                "id": "gid://shopify/ProductVariant/53097582723361",
+                "title": "Pink / X-Large 39\" x 28\"",
                 "product": {
                   "id": "gid://shopify/Product/10464689881377",
                   "title": "Wagvive Cooling Comfort Pad"
@@ -2009,198 +562,8 @@
             },
             {
               "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757703457",
-        "title": "Grey and Blue / Pink / Coffee",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668165409",
-                "title": "Grey and Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668394785",
-                "title": "Pink / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582493985",
-                "title": "Coffee / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757736225",
-        "title": "Grey and Blue / Pink / Dark Blue",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668165409",
-                "title": "Grey and Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668394785",
-                "title": "Pink / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582625057",
-                "title": "Dark Blue / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10469665800481",
-                  "title": "Wagvive Big Squeak Plush"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "id": "gid://shopify/ProductVariant/53187757768993",
-        "title": "Grey and Blue / Pink / Pink",
-        "price": "109.00",
-        "compareAtPrice": "135.95",
-        "productVariantComponents": {
-          "nodes": [
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668165409",
-                "title": "Grey and Blue",
-                "product": {
-                  "id": "gid://shopify/Product/10471550320929",
-                  "title": "Wagvive Calming Thunder Wrap"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668394785",
-                "title": "Pink / M",
-                "product": {
-                  "id": "gid://shopify/Product/10471550484769",
-                  "title": "Wagvive Paw Print Fleece Blanket"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53097582756129",
-                "title": "Pink / XX-Large 59\" x 39\"",
-                "product": {
-                  "id": "gid://shopify/Product/10464689881377",
-                  "title": "Wagvive Cooling Comfort Pad"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53174668198177",
-                "title": "Default Title",
-                "product": {
-                  "id": "gid://shopify/Product/10471550419233",
-                  "title": "Wagvive Heartbeat Soothing Sloth"
-                }
-              }
-            },
-            {
-              "productVariant": {
-                "id": "gid://shopify/ProductVariant/53158143787297",
-                "title": "Blue",
+                "id": "gid://shopify/ProductVariant/53158143820065",
+                "title": "Orange",
                 "product": {
                   "id": "gid://shopify/Product/10469665800481",
                   "title": "Wagvive Big Squeak Plush"

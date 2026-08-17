@@ -31,14 +31,19 @@ DOMAIN, TOKEN, VERSION = (env['SHOPIFY_STORE_DOMAIN'],
                           env['SHOPIFY_API_VERSION'])
 SHOP = env.get('SHOPIFY_PUBLIC_DOMAIN', 'wagvive.com')
 
+# Membership comes from the VARIANT level. product.bundleComponents is stale
+# after a rebuild: on 2026-08-17 it kept naming the Watermelon Rope Frisbee and
+# the Bouncy Egg Squeaker as components of kits they had already left, so this
+# check passed while asserting the composition the store no longer sells.
 Q = '''
 query($q: String!) {
   products(first: 20, query: $q) {
     nodes {
       id title
-      variants(first: 1) { nodes { price compareAtPrice } }
-      bundleComponents(first: 12) {
-        nodes { componentProduct { id title handle } } }
+      variants(first: 30) { nodes {
+        price compareAtPrice
+        productVariantComponents(first: 12) {
+          nodes { productVariant { product { id title handle } } } } } }
     }
   }
 }'''
@@ -76,12 +81,13 @@ def main():
         cap = float(v['compareAtPrice'] or 0)
         saving[k['id']] = round(cap - float(v['price']), 2)
         names[k['id']] = k['title']
-        for c in k['bundleComponents']['nodes']:
-            cp = c['componentProduct']
-            handles[cp['id']] = cp['handle']
-            names[cp['id']] = cp['title'].replace('Wagvive ', '')
-            if k['id'] not in membership[cp['id']]:
-                membership[cp['id']].append(k['id'])
+        for var in k['variants']['nodes']:
+            for c in var['productVariantComponents']['nodes']:
+                cp = c['productVariant']['product']
+                handles[cp['id']] = cp['handle']
+                names[cp['id']] = cp['title'].replace('Wagvive ', '')
+                if k['id'] not in membership[cp['id']]:
+                    membership[cp['id']].append(k['id'])
 
     def check(cid, kids):
         """Fetch one page and grade it. Returns (errors, shown, more_txt)."""
