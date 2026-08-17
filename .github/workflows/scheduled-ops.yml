@@ -6,14 +6,25 @@ name: Scheduled store operations
 #   * Only the two provably-safe repairs run with --apply:
 #       sync_inventory.py  copies CJ stock to the sellable location
 #       fix_locations.py   strips service-location levels (double-count fix)
+#       guard_unshippable.py  holds at 0 anything CJ has no stock record for,
+#                             then asserts on the STOREFRONT that none of them
+#                             is orderable. This is the order #1002 guard: that
+#                             order sold an item CJ could not send, and every
+#                             check at the time passed because they all asked
+#                             whether Shopify MATCHED CJ's number, never whether
+#                             that number meant shippable.
 #   * margin_guard.py runs REPORT-ONLY. It never changes prices unattended.
 #     If any variant is under the 50% floor the job FAILS, which emails you.
 #     Repricing stays a human decision.
-#   * CJ rate-limits token creation, so this runs every 6 hours, not hourly.
+#   * CJ rate-limits token creation (1 per 300s) and the token is cached, so
+#     cadence is bounded by call VOLUME, not by auth. 145 variants per sweep at
+#     3-hourly is ~1,160 stock calls a day, which is comfortable. It was 6-hourly
+#     until 2026-08-17; halving the window halves how long a newly unshippable
+#     item can sit on sale.
 
 on:
   schedule:
-    - cron: '17 */6 * * *'   # every 6 hours, offset off the hour
+    - cron: '17 */3 * * *'   # every 3 hours, offset off the hour
   workflow_dispatch:          # lets you run it on demand from the Actions tab
 
 concurrency:
@@ -58,6 +69,12 @@ jobs:
 
       - name: Repair inventory locations (undo any CJ double-count)
         run: python config/fix_locations.py --apply
+
+      # Runs AFTER the two writes above, so it grades the state customers see
+      # rather than the state we intended. Fails the job if anything CJ cannot
+      # ship is still orderable.
+      - name: Hold back anything CJ cannot ship, and prove it is off sale
+        run: python config/guard_unshippable.py --apply
 
       - name: Margin floor check (report only — fails the job on a breach)
         run: python config/margin_guard.py
