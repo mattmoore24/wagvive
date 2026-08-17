@@ -14,7 +14,16 @@ because every automated check that looks at the bundle passes.
 There are FOUR independent descriptions of what is in a kit, and they can drift
 apart one at a time:
 
-  1. `bundleComponents`        the truth. What the customer is actually sold.
+  1. the variant components    the truth. What the customer is actually sold.
+                               Read from `variant.productVariantComponents`, NOT
+                               from `product.bundleComponents`. The product-level
+                               field does not track a composition change: 50
+                               minutes after the 2026-08-17 rebuild it still
+                               named the Watermelon Rope Frisbee and the Bouncy
+                               Egg Squeaker, so this audit reported the two kits
+                               that HAD been fixed as broken and would have
+                               "repaired" their metafields back to the old
+                               contents.
   2. `wagvive.components`      metafield driving the on-page contents section.
   3. the product images        cover grid plus one gallery shot per component.
   4. `bodyHtml`                the prose description naming each item.
@@ -77,11 +86,11 @@ query($q: String!) {
   products(first: 20, query: $q) {
     nodes {
       id title handle bodyHtml
-      variants(first: 100) { nodes { price compareAtPrice } }
+      variants(first: 100) { nodes { price compareAtPrice
+        productVariantComponents(first: 12) {
+          nodes { productVariant { product { id title status } } } } } }
       media(first: 30) { nodes { ... on MediaImage { alt } } }
       metafields(first: 25) { nodes { namespace key type value } }
-      bundleComponents(first: 12) {
-        nodes { componentProduct { id title status } } }
     }
   }
 }'''
@@ -104,6 +113,23 @@ mutation($mf: [MetafieldsSetInput!]!) {
 }'''
 
 
+def components_of(kit):
+    """Distinct component products of a kit, in first-seen order.
+
+    Walks every variant because that is where a bundle's composition actually
+    lives. Different colorways point at different VARIANTS of the same component
+    product, so de-duplicating by product id gives the set the kit is built from.
+    """
+    seen, out = set(), []
+    for v in kit['variants']['nodes']:
+        for c in v['productVariantComponents']['nodes']:
+            p = c['productVariant']['product']
+            if p['id'] not in seen:
+                seen.add(p['id'])
+                out.append(p)
+    return out
+
+
 def short(t):
     return t.replace('Wagvive ', '')
 
@@ -119,7 +145,7 @@ def main():
 
     for k in kits:
         title = k['title']
-        comps = [c['componentProduct'] for c in k['bundleComponents']['nodes']]
+        comps = components_of(k)
         comp_ids = [c['id'] for c in comps]
         comp_names = [short(c['title']) for c in comps]
         print(f"\n=== {title} ===")
@@ -274,8 +300,7 @@ def main():
                     )['data']['products']['nodes']
         bad = 0
         for k in fresh:
-            comp_ids = [c['componentProduct']['id']
-                        for c in k['bundleComponents']['nodes']]
+            comp_ids = [c['id'] for c in components_of(k)]
             mf = next((m for m in k['metafields']['nodes']
                        if m['namespace'] == 'wagvive'
                        and m['key'] == 'components'), None)

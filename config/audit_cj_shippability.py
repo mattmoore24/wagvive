@@ -55,6 +55,30 @@ def api(path):
     return out
 
 
+def stock_rows(sku, tries=3):
+    """CJ's rows for a SKU, retried, because an empty answer is usually a lie.
+
+    A single empty/failed response is NOT evidence that CJ cannot ship. On
+    2026-08-17 one run came back empty for seven SKUs at once, including live kit
+    components that had synced real quantities minutes earlier; all seven
+    returned a populated stock record on every retry. Acting on that would have
+    zeroed good stock and taken two kits offline, which is the opposite of what
+    this audit is for.
+
+    Returns (rows, ok). `ok` is False when every attempt failed or came back
+    empty, and the caller reports UNKNOWN rather than accusing the SKU.
+    """
+    for attempt in range(tries):
+        try:
+            rows = cj_api.call('/product/stock/queryBySku', {'sku': sku}).get('data')
+            if isinstance(rows, list) and rows:
+                return rows, True
+        except Exception:
+            pass
+        time.sleep(1.5 * (attempt + 1))
+    return [], False
+
+
 def classify(rows):
     """(shippable_qty, factory_qty, cj_on_hand, verdict) for one SKU's rows."""
     if not isinstance(rows, list) or not rows:
@@ -91,9 +115,10 @@ def main():
             if not sku:
                 continue
             checked += 1
-            rows = cj_api.call('/product/stock/queryBySku',
-                               {'sku': sku}).get('data')
+            rows, reachable = stock_rows(sku)
             ship, factory, hand, verdict = classify(rows)
+            if not reachable:
+                verdict = 'UNKNOWN (CJ did not answer)'
             shopify_qty = v['inventory_quantity']
             entry = {'product': p['title'], 'variant': v['title'], 'sku': sku,
                      'shopify': shopify_qty, 'shippable': ship,
@@ -127,6 +152,16 @@ def main():
     # unshippable SKU regardless of its Shopify quantity would mean this audit
     # could never go green while those products exist, and an audit that always
     # fails is one that stops being read.
+    # An UNKNOWN is a gap in evidence, not a finding. It is surfaced so the run
+    # is not silently partial, but it never zeroes anything.
+    unknown = [e for e in bad if e['verdict'].startswith('UNKNOWN')]
+    bad = [e for e in bad if not e['verdict'].startswith('UNKNOWN')]
+    if unknown:
+        print(f'\n{len(unknown)} variant(s) CJ would not answer for after '
+              f'retries. Not treated as unshippable:')
+        for e in unknown:
+            print(f"  ? {e['product']} / {e['variant']}  {e['sku']}")
+
     exposed = [e for e in bad if e['shopify'] > 0]
     contained = [e for e in bad if e['shopify'] <= 0]
 

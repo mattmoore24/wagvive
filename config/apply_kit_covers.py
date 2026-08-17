@@ -18,9 +18,14 @@ The grid generator stays in the repo and stays correct: it is still the fallback
 for a newly built kit that has no art yet, and it is what regenerates a cover when
 a kit's composition changes before anyone has time to shoot a new flat-lay.
 
-Only the cover (position 1) is replaced. The per-component gallery shots below it
+Only the cover is replaced, and it is found by its ALT (`<title> - everything
+included`), never by being position 1. The per-component gallery shots below it
 are left exactly as they are, because those are what `audit_kits.py` reads to
-prove the gallery still matches the bundle.
+prove the gallery still matches the bundle. Trusting position 1 destroyed the
+Slow Feeder Bowl and Barnyard Squeaker stills on 2026-08-17: reshooting a cover
+means deleting the old one first (these scripts are idempotent by filename, so
+an unchanged name is otherwise skipped), which promotes a component still into
+position 1 for exactly as long as it takes this script to overwrite it.
 
     python config/apply_kit_covers.py            # report what would change
     python config/apply_kit_covers.py --apply
@@ -159,19 +164,26 @@ def main():
         k = kits.get(handle)
         if not k:
             continue
-        old = k['images'][0] if k['images'] else None
+        # The old cover is identified by ALT, not by being position 1. Taking
+        # whatever sits at position 1 destroyed two component stills on
+        # 2026-08-17: the previous cover had been deleted so the reshoot would
+        # re-upload, which promoted a component still into position 1, and this
+        # then consumed it. When no image carries the cover alt there is nothing
+        # to replace and the new cover is simply inserted.
+        alt = f"{k['title']} - everything included"
+        old = next((i for i in k['images'] if (i.get('alt') or '') == alt), None)
         blob, note = prep(path)
         print(f"\n{k['title']}")
         print(f"   {note}, {len(blob)//1024} KB")
         print(f"   gallery now: {len(k['images'])} image(s), "
-              f"replacing #{old['id'] if old else '(none)'}")
+              + (f"replacing #{old['id']}" if old
+                 else 'no existing cover, inserting'))
         if not apply:
             continue
 
         # Upload FIRST, delete the old cover second. The reverse order leaves a
         # kit with no cover at all if the upload fails, and a blank product card
         # is worse than a dated one.
-        alt = f"{k['title']} - everything included"
         new = api('POST', f"products/{k['id']}/images.json", {'image': {
             'attachment': base64.b64encode(blob).decode(),
             'filename': f'kit-flatlay-{handle}.jpg',
@@ -181,8 +193,10 @@ def main():
 
         fresh = api('GET', f"products/{k['id']}.json")['product']
         first = fresh['images'][0]
+        # Gallery size holds steady on a replace and grows by one on an insert.
+        want_n = len(k['images']) + (0 if old else 1)
         ok = (first['id'] == new['id']
-              and len(fresh['images']) == len(k['images'])
+              and len(fresh['images']) == want_n
               and (first.get('alt') or '') == alt)
         print(f"   {'OK ' if ok else 'BAD'} cover={first['id']} "
               f"gallery={len(fresh['images'])} alt={first.get('alt')!r}")

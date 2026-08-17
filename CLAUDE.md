@@ -90,6 +90,17 @@ Rules:
   is report-only** — a silent no-op that has been mistaken for success.
 - CJ's webhook writes to its own location and may recreate the double count at
   any time. That is why the scheduled job re-runs `fix_locations.py`.
+- **CJ's advertised stock is not shippable stock.** `totalInventoryNum` and
+  `factoryInventoryNum` are a supplier CLAIM. What proves CJ can ship is a
+  populated **`stock` array carrying a `stockId`**; `stock: null` means it
+  cannot, whatever the advertised figure says. Do not use `cjInventoryNum` as
+  the test: it is 0 for the entire catalogue, because CJ warehouses almost
+  nothing and factory-sources on demand. Taking the advertised number literally
+  is what made order #1002 ship short (Bouncy Egg Squeaker, 44,838 advertised,
+  no stock record). `config/audit_cj_shippability.py` sweeps for it.
+  **An EMPTY answer from CJ is not evidence of anything** — retry it. One run
+  came back empty for seven healthy SKUs at once; acting on that would have
+  zeroed live kit components.
 - **Never read CJ stock by hand. Call `sync_inventory.cj_stock(sku)`.** CJ returns
   TWO different row shapes and the right answer depends on which you got. Some
   SKUs carry nested per-warehouse entries, where the quantity is
@@ -128,6 +139,15 @@ Rules:
   tracebacks.
 - Collection product order needs the GraphQL `collectionReorderProducts`; the
   REST collect approach 422s.
+- **`product.bundleComponents` is STALE after a kit rebuild** and stayed wrong
+  for at least 50 minutes, naming components the kit no longer had. A bundle's
+  real composition is `variant.productVariantComponents`. Anything that reads
+  the product-level field will assert the OLD contents and may write them back.
+- **Kit art scripts are idempotent BY FILENAME**, so reshot art under the same
+  name is skipped: delete the old image first. But then do NOT let anything
+  replace "position 1" blindly — with the cover gone, position 1 is a component
+  still, and `apply_kit_covers.py` ate two of them that way. It now matches the
+  cover by alt text.
 - Auto-managed policies reject `shopPolicyUpdate`; disable with
   `privacyFeaturesDisable(featuresToDisable:[PRIVACY_POLICY])` first.
 - Shopify's CDN serves **mixed stale/fresh renders for minutes** after a theme or

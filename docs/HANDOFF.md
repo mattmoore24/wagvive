@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-08, home PC (colorway covers finished; wipes replacement launched; CJ pairing still open)
+**Last updated:** 2026-08-17, home PC (order #1002 root-caused: CJ's advertised stock is not shippable stock; Toy and Enrichment kits rebuilt, repriced and reshot)
 
 ---
 
@@ -141,6 +141,72 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **ORDER #1002 ROOT-CAUSED, AND THE TWO AFFECTED KITS REBUILT (2026-08-17).**
+  CJ reported the Bouncy Egg Squeaker out of stock after it sold inside the
+  Enrichment Kit (CJ order DP2608121816000646700).
+
+  **Cause.** CJ advertises `totalInventoryNum`/`factoryInventoryNum`, which is a
+  supplier claim, not stock. `sync_inventory.cj_stock()` fell back to that number
+  when the detailed rows were empty, so Shopify was told 44,838 units of an item
+  CJ could not ship. The discriminator is **`stock: null` vs a populated `stock`
+  array carrying a `stockId`**. It is NOT `cjInventoryNum`: that reads 0 for the
+  entire catalogue (216 units across 145 variants) because CJ warehouses almost
+  nothing and factory-sources on demand, so it is 0 for the nine SKUs that
+  shipped fine too. Every earlier audit passed because they all asked whether
+  Shopify MATCHED CJ's number, never whether that number meant shippable.
+
+  **Fixed.** `cj_stock()` returns 0 when no row carries a stock record. New
+  `config/audit_cj_shippability.py` sweeps the catalogue for the condition; it
+  found **10 variants across 5 products**, now all held at 0.
+
+  **This fix must stay committed.** The 6-hourly `scheduled-ops.yml` runs
+  `sync_inventory.py --apply` from the COMMITTED repo. While the fix sat
+  uncommitted the job put all 10 phantom quantities straight back.
+
+  **Kit fallout.** Two kits contained an unshippable component and were rebuilt:
+
+  | Kit | Out | In | Price | Compare-at |
+  |---|---|---|---|---|
+  | Toy Kit | Watermelon Rope Frisbee | Woodland Rope-Limb Plush | $49.00 → **$50.00** | $60.95 → **$62.95** |
+  | Dog Enrichment Kit | Bouncy Egg Squeaker | Dental Chew Stick | $46.00 → **$50.00** | $57.96 → **$62.96** |
+
+  Compare-at is the honest sum of the components at their own live retail and
+  comes out identical for every colorway, so the saving does not depend on which
+  colour is picked. All 39 kit variants are buyable; margins clear their floors.
+
+  Also corrected: the Toy Kit claimed "Cheaper than picking any four separately"
+  when the four cheapest components total $49.96 against a $50.00 kit. It now
+  states the true saving, $62.95 for the five versus $50.00.
+
+  **`product.bundleComponents` IS STALE AFTER A REBUILD.** 50 minutes after the
+  rebuild it still named both removed items while
+  `variant.productVariantComponents` had switched correctly. Three things
+  trusted it and now read the variant level: `audit_kits.py` (it reported the two
+  FIXED kits as broken and would have "repaired" their metafields back to the old
+  contents), `verify_kit_callout.py`, and `link_kits_multi.py`. The last also
+  never CLEARED `custom.kits` from a product that left a kit, so the frisbee and
+  egg kept advertising kits they were no longer in.
+
+  **Two image traps, both hit.** `apply_kit_covers.py` and
+  `apply_colorway_covers.py` are idempotent BY FILENAME, so reshot art under an
+  unchanged name is skipped and the old covers must be deleted first. But
+  `apply_kit_covers.py` then replaced whatever sat at **position 1**, which after
+  that delete was a component still: it destroyed the Slow Feeder Bowl and
+  Barnyard Squeaker shots. Both restored; the script now finds the cover by ALT.
+
+  **`audit_cj_shippability.py` was hardened after a near miss.** One run returned
+  empty rows for seven SKUs at once, including live kit components, and reported
+  them unshippable. All seven returned real stock records on every retry: it was
+  transient CJ flakiness. Acting on it would have zeroed good stock and taken
+  kits offline. Empty answers are now retried and, if still empty, reported as
+  UNKNOWN rather than as a finding.
+
+  **Open decision for the owner.** Five products are permanently unshippable and
+  now sit at 0, showing as sold out: Bouncy Egg Squeaker, Watermelon Rope
+  Frisbee, Crinkle Plush Buddy, Dental Duck Chew Toy, Rope-Limb Puppy Plush.
+  They still appear in collections as sold-out cards. Archive them (as
+  `remove_wipes.py` did) or re-source replacements.
 
 - **INVENTORY AUDITED END TO END, INCLUDING KITS (2026-08-11).** Answering
   "is Shopify still tracking everything and matching CJ?". Verdict: yes, with
