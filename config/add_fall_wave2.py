@@ -42,7 +42,8 @@ TAG_INTO_FALL = ['wagvive-squirrel-squeaky-plush']
 SPECS = [
  {'handle': 'wagvive-ball-launcher', 'spu': 'CJCT2567740',
   'title': 'Wagvive Automatic Ball Launcher',
-  'price': '94.99', 'floor': 19.6, 'type': 'Toys',
+  'price': '94.99', 'floor': 19.6, 'type': 'Toys & Play',
+  'seasonal': False,          # viral-products brief, not the fall lineup
   'tags': 'dog, fetch, interactive, toy, viral',
   'options': None,
   'seo_title': 'Automatic Dog Ball Launcher with 6 Tennis Balls',
@@ -104,7 +105,7 @@ stretching across the shoulders.</p>
 
  {'handle': 'wagvive-pumpkin-snuffle-mat', 'spu': 'CJGY2110859',
   'title': 'Wagvive Pumpkin Snuffle Mat',
-  'price': '26.99', 'floor': 35.8, 'type': 'Toys',
+  'price': '26.99', 'floor': 35.8, 'type': 'Toys & Play',
   'tags': 'dog, enrichment, fall, halloween, puzzle, seasonal, toy',
   'options': None,
   'seo_title': 'Pumpkin Dog Snuffle Mat with Non-Slip Base',
@@ -123,7 +124,7 @@ which is the difference between a good snuffle mat and a frustrating one.</p>
 
  {'handle': 'wagvive-roast-turkey-sniff-toy', 'spu': 'CJGY1276264',
   'title': 'Wagvive Roast Turkey Sniff Toy',
-  'price': '22.99', 'floor': 33.3, 'type': 'Toys',
+  'price': '22.99', 'floor': 33.3, 'type': 'Toys & Play',
   'tags': 'dog, enrichment, fall, puzzle, seasonal, thanksgiving, toy',
   'options': None,
   'seo_title': 'Thanksgiving Roast Turkey Dog Snuffle Toy',
@@ -142,7 +143,7 @@ and the legs are sturdy enough for a proper tug afterwards.</p>
 
  {'handle': 'wagvive-pumpkin-chew-toy', 'spu': 'CJGY2138215',
   'title': 'Wagvive Pumpkin Chew Toy',
-  'price': '16.99', 'floor': 18.6, 'type': 'Toys',
+  'price': '16.99', 'floor': 18.6, 'type': 'Toys & Play',
   'tags': 'chew, dog, fall, halloween, seasonal, toy',
   'options': None,
   'seo_title': 'Tough Pumpkin Dog Chew Toy for Strong Chewers',
@@ -228,7 +229,10 @@ def create_one(spec, seasonal_id):
              'type': 'single_line_text_field', 'value': spec['seo_title']},
             {'namespace': 'global', 'key': 'description_tag',
              'type': 'multi_line_text_field', 'value': spec['seo_desc']}]}})
-    if seasonal_id:
+    # `seasonal: False` opts out. The Automatic Ball Launcher belongs to the
+    # separate "viral products" brief and is a year round fetch toy; it only
+    # ended up in the fall collection because this used to add everything.
+    if seasonal_id and spec.get('seasonal', True):
         api('POST', 'collects.json',
             {'collect': {'product_id': pid, 'collection_id': seasonal_id}})
     for i, url in enumerate(cj_photos(spec['spu'])):

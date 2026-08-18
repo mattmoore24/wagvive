@@ -62,11 +62,27 @@ def api(path):
     return out
 
 
+# Products shot in the fall batch that have since left the fall collection.
+# Scoping this audit to the collection alone was fine until the Ball Launcher
+# and the Steam Grooming Brush were moved to Toys & Play and Grooming, where
+# they belong: they silently dropped out of the gate while still carrying art
+# from this batch. Membership of a marketing collection is the wrong thing to
+# hang an imagery check on, so they are named here.
+ALSO_CHECK = ['wagvive-ball-launcher', 'wagvive-steam-grooming-brush']
+
+
 def fall_products():
+    out = []
     for c in api('custom_collections.json?limit=250')['custom_collections']:
         if c['handle'] == SEASONAL_HANDLE:
-            return api(f"collections/{c['id']}/products.json?limit=250")['products']
-    return []
+            out = api(f"collections/{c['id']}/products.json?limit=250")['products']
+            break
+    seen = {p['id'] for p in out}
+    for handle in ALSO_CHECK:
+        for p in api(f'products.json?handle={handle}&limit=1')['products']:
+            if p['id'] not in seen:
+                out.append(p)
+    return out
 
 
 def classify(fname, handle):

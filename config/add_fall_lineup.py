@@ -81,7 +81,7 @@ the evening walk, which is exactly when everyone is out looking at dogs.</p>
 
  {'handle': 'wagvive-halloween-snuffle-mat',
   'title': 'Wagvive Halloween Snuffle Mat',
-  'spu': 'CJYD2183039', 'price': '32.99', 'floor': 44.9, 'type': 'Toys',
+  'spu': 'CJYD2183039', 'price': '32.99', 'floor': 44.9, 'type': 'Toys & Play',
   'tags': 'dog, enrichment, fall, halloween, puzzle, seasonal, toy',
   'options': ['Size'],
   'variants': [(('50 x 60 cm',), 'CJYD218303901AZ', 270)],
@@ -141,7 +141,7 @@ photos.</p>
 
  {'handle': 'wagvive-halloween-squeaky-bones',
   'title': 'Wagvive Halloween Squeaky Bones',
-  'spu': 'CJYD2146653', 'price': '15.99', 'floor': 46.3, 'type': 'Toys',
+  'spu': 'CJYD2146653', 'price': '15.99', 'floor': 46.3, 'type': 'Toys & Play',
   'tags': 'dog, fall, halloween, seasonal, squeaky, toy',
   'options': ['Design'],
   'variants': [(('Witch Hat Bone',), 'CJYD214665301AZ', 56),
@@ -193,6 +193,7 @@ buying twice. Warm enough to be the real coat on a cold walk.</p>
  {'handle': 'wagvive-steam-grooming-brush',
   'title': 'Wagvive 3-in-1 Steam Grooming Brush',
   'spu': 'CJYD2256797', 'price': '26.99', 'floor': 45.5, 'type': 'Grooming',
+  'seasonal': False,          # viral-products brief, not the fall lineup
   'tags': 'brush, dog, grooming, shedding, steam',
   'options': ['Color'],
   'variants': [(('Pink',), 'CJYD225679701AZ', 200),
@@ -317,7 +318,14 @@ def create_one(spec, seasonal_id):
              'type': 'multi_line_text_field', 'value': spec['seo_desc']}]}})
     print('  SEO set')
 
-    for cid in filter(None, [seasonal_id,
+    # `seasonal: False` opts a product OUT of the fall collection. Not every
+    # product added in this batch was a fall product: the 3-in-1 Steam Grooming
+    # Brush and the Automatic Ball Launcher came from the separate "viral
+    # products" brief and were swept into the seasonal collection purely
+    # because this loop used to add everything unconditionally. That cost two
+    # of the eight slots on the homepage fall row. The tags are the tell, a
+    # real member carries `fall` or `seasonal`.
+    for cid in filter(None, [seasonal_id if spec.get('seasonal', True) else None,
                              GROOMING_ID if spec['type'] == 'Grooming' else None]):
         api('POST', 'collects.json',
             {'collect': {'product_id': pid, 'collection_id': cid}})

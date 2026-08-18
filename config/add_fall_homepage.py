@@ -119,8 +119,12 @@ def main():
         if 'Dressed for fall' in html:
             i = html.index('Dressed for fall')
             after = html[i:i + 6000]
+            # Ball Launcher was in this list and should never have been: it is
+            # a year round fetch toy from the viral-products brief that got
+            # swept into the seasonal collection, and it was taking one of the
+            # eight slots this row has. See fix_fall_membership.py.
             names = [n for n in ('Pumpkin Hoodie', 'Skeleton Suit', 'Big Dog',
-                                 'Turkey', 'Ball Launcher', 'Snuffle')
+                                 'Turkey', 'Jack-o-Lantern', 'Snuffle')
                      if n in after]
             print(f'LIVE: heading rendered, fall products visible after it: {names}')
             return 0

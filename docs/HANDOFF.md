@@ -142,6 +142,33 @@ A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
 
+- **FALL COLLECTION IS SEASONAL ONLY AGAIN (2026-08-18).** The Automatic Ball
+  Launcher and the 3-in-1 Steam Grooming Brush were sitting in
+  `fall-halloween`. They came from the separate "viral products" brief, and
+  both `add_fall_lineup.py` and `add_fall_wave2.py` added every product they
+  created to the seasonal collection unconditionally. Neither carries a `fall`
+  or `seasonal` tag, which is the tell.
+
+  This was costing money, not just tidiness: the homepage "Dressed for fall"
+  row is a `product-list` bound to that collection with `max_products: 8`, so
+  two year round products were taking two of the eight slots from the costumes
+  in the weeks they have to sell in. Removed with
+  `config/fix_fall_membership.py`, which refuses to remove a product that is
+  not already in another collection. The launcher keeps `toys-play` (smart,
+  rule tag=toy), the brush keeps `grooming`. Both verified buyable and listed
+  on the live storefront.
+
+  Also normalised `product_type`: 4 products used `Toys` against 15 using
+  `Toys & Play`, all four from the fall batch. Nothing reads product_type
+  except the kit filters, which match `Bundles & Kits`. Two ARCHIVED products
+  (Halloween Squeaky Bones, Halloween Snuffle Mat) are still collects on the
+  fall collection; they do not render and were left alone.
+
+  `audit_fall_imagery.py` was scoped to the collection, so the two moved
+  products silently fell out of the gate. It now names them in `ALSO_CHECK`:
+  collection membership is a marketing decision and the wrong thing to hang an
+  imagery check on. Back to 11 products, 27 images, 0 CJ.
+
 - **SIZE GUIDES ON ALL 15 SIZE PRODUCTS, AND A 2x SIZING ERROR FIXED
   (2026-08-18).** Every product with a Size option now carries a per-size table
   of real dog measurements. Nine had nothing at all, including every costume
