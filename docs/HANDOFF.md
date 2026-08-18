@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-18, home PC (fall lineup LIVE, 6 products/47 variants; CJ pairing and house art still open on them)
+**Last updated:** 2026-08-18, home PC (fall lineup live: 11 products/124 variants + homepage band + nav; CJ PAIRING STILL OPEN and its runbook is obsolete, house art still open)
 
 ---
 
@@ -141,6 +141,51 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **FALL LINEUP COMPLETE AT 11 PRODUCTS, 124 VARIANTS, ALL BUYABLE (2026-08-18).**
+  Wave 1 (`add_fall_lineup.py`) then wave 2 (`add_fall_wave2.py`).
+
+  **Wave 2 fixed three real weaknesses in wave 1:**
+  * Squeaky Bones and the first Snuffle Mat were ARCHIVED. Cheap cartoon prints,
+    and CJ's own snuffle-mat copy is a template calling it an "Odor pad".
+  * **Size coverage.** The Glow Skeleton Suit is kept but its own CJ copy says
+    "your small dog", so its S-XL is SMALL BREED and the description now says so.
+    The **Pumpkin Hoodie runs XS to 9XL** and the **Big Dog Costume 3XL to 8XL**,
+    so every size is covered between them.
+  * Better enrichment twice: **Pumpkin Snuffle Mat** (non-slip base) and
+    **Roast Turkey Sniff Toy** (treats hide in removable vegetables).
+  * **Automatic Ball Launcher $94.99** on US warehouse stock.
+
+  Live: Skeleton Suit 4, Jack-o-Lantern Sweater 20, Turkey Coat 12, Steam Brush
+  2, Ball Launcher 1, Pumpkin Hoodie 65, Big Dog Costume 16, Pumpkin Snuffle 1,
+  Roast Turkey 1, Pumpkin Chew 1, Squirrel Plush 1 = **124/124 buyable**.
+
+  Homepage: "Dressed for fall" band sits directly under "Start with a kit" with
+  all 11. Nav: "Fall & Halloween" is 2nd in main menu and in footer-shop.
+  Collection `fall-halloween` (517682135329).
+
+  **HORIZON TRAP, cost avoided:** product-list takes a BARE collection handle
+  ("bundles-kits"). Writing "collections/fall-halloween" renders an EMPTY band
+  that still looks like a real section. Also `max_products` had to go to 12; at
+  the inherited 6 the band cut off at 8 and the hero costume was missing.
+
+- **STILL OPEN ON THE FALL LINEUP. Both matter.**
+
+  1. **CJ PAIRING IS NOT DONE, AND THE RUNBOOK IS OBSOLETE.** None of the 10 new
+     products is connected to CJ, so **orders for them will not reach
+     fulfilment**. CJ has REBUILT `/mine/products/connection` in React: there is
+     no `angular` object on the page any more, so the runbook's
+     `injector().get('dsp').postFun('...pullPlatformProduct')` sync hook does not
+     exist. The new page has Connected / Unconnected tabs and an
+     "+Add Sourcing Connection" button. The new products are NOT yet in CJ's
+     cache, so the first job is finding what replaced the sync call.
+     `docs/knowledge/cj-pairing-runbook.md` needs rewriting against the new UI.
+
+  2. **House-style imagery not shot.** All 10 launched on CJ's own (verified
+     clean) photography, not cream #F7F2E9, and no per-variant `image_id` wiring,
+     so colour swatches do not swap photos. Deliberate trade for the Halloween
+     deadline, but it is the biggest remaining quality gap.
+
 
 - **FALL LINEUP LIVE, 6 PRODUCTS, 47 VARIANTS (2026-08-18).** Sourced from a
   5,535 product CJ sweep (`config/scout_fall.py`), costed on live freight,
