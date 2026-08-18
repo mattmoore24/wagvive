@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-18, home PC (house art on ALL 10 fall products and leading; open decision on 10 sweater variants CJ never photographed)
+**Last updated:** 2026-08-18, home PC (fall lineup COMPLETE: 114/114 variants buyable, all 10 products lead with house art, CJ audit green)
 
 ---
 
@@ -158,15 +158,15 @@ A failed run emails the owner — silence means healthy.
   on the REAL product is described precisely; supplier marketing text burnt into
   a CJ photo (the Steam Brush's "Daily cleaning kit") is banned explicitly.
 
-  **OPEN DECISION, 10 variants.** The Jack-o-Lantern Sweater sells four
-  colourways but **CJ photographs only two**. "Black Embroidered" and "Black
-  Jacquard" have NO reference image anywhere in CJ's nine photos, so they cannot
-  be depicted and currently fall back to the Orange Stripe photo. That is the
-  same failure the image gate exists to prevent, the one that caught the cat
-  head hood sold as a dog vest. Recommendation: DELETE those 10 variants
-  (2 colourways x 5 sizes), leaving 10. I attempted it and the destructive-action
-  guard blocked it, correctly, so it needs the owner. The alternative is to keep
-  selling a colourway represented by a photo of a different colourway.
+  **RESOLVED: the 10 unphotographed sweater variants are gone.** The
+  Jack-o-Lantern Sweater sold four colourways while CJ photographs only two.
+  "Black Embroidered" and "Black Jacquard" had NO reference image in any of CJ's
+  nine photos, so they fell back to the Orange Stripe photo, meaning a customer
+  picking Black Jacquard saw an orange striped sweater. Owner approved removal
+  and `config/drop_unphotographed_colorways.py` deleted those 10 variants. The
+  sweater now sells 10 variants across Orange Stripe and Orange Pumpkin, every
+  one with its own photograph. The script refuses to run if art later appears
+  for a retired colourway, and refuses to empty a product.
 
   Lead images default to the alphabetically first look (Black hoodie, Dinosaur
   costume, Boo sweater). Fine seasonally; reorder one image each if you want
