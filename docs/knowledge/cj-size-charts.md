@@ -105,3 +105,34 @@ all house art now. Worth remembering if that SPU is ever re-imaged from source.
   transcribed.
 * `config/audit_size_guides.py` is the gate. Run it after any product or option
   change.
+
+## Postscript: the SEO description is a separate field, and its cache is stubborn
+
+Fixing the Skeleton Suit's stretch claim in `body_html` did not fix the page
+head. The SEO description is its own field (`global.description_tag`, or
+`product.seo.description` in GraphQL) and it feeds `<meta name="description">`,
+`og:description` and `twitter:description`. It carried the same wrong wording
+and had to be corrected separately. **Grep both fields whenever a product claim
+changes.**
+
+Worse, the corrected value would not appear on the storefront. Confirmed
+correct at source through the metafield endpoint AND GraphQL
+`product.seo.description`, while the live page kept serving the old text in all
+three head tags and the fresh text in the body of the same response. The
+response etag names the culprit:
+
+```
+etag: W/"page_cache:99451142433:ProductDetailsController:<hash>"
+```
+
+Shopify's own server side page cache, not Cloudflare (`cf-cache-status:
+DYNAMIC`). Neither of the two usual levers clears it:
+
+* a unique query string (`?v=<ms>`) does not miss the cache
+* forcing `updated_at` to bump does not invalidate it, and note that writing an
+  identical value is a silent no-op that does not bump it at all, so a
+  two step write is needed even to move the timestamp
+
+Left to age out. The lesson for verification is that "the body is fresh"
+does not mean the head is: check the specific tag you changed, in the same
+response, which is the rule this repo already had for theme and policy writes.

@@ -1210,6 +1210,22 @@ below, which gates every dollar of paid spend.
 Pinterest. Then phase 1 is $150 on Pinterest against the Calm & Comfort Kit
 only. Full reasoning in `docs/marketing-plan-2026-08.md`.
 
+### Watch: skeleton suit SEO head tags
+
+The Glow in the Dark Skeleton Suit's SEO description was corrected on
+2026-08-18 (the maker's chart says the fabric does not stretch, so the copy no
+longer claims it). Verified correct at source through BOTH the metafield
+endpoint and GraphQL `product.seo.description`, but Shopify's server side page
+cache was still serving the old wording in `meta description`, `og:description`
+and `twitter:description` half an hour later. The body copy on the same page
+response was already fresh. Re-check with:
+
+    curl -s "https://wagvive.com/products/wagvive-glow-skeleton-suit" | grep -c "stretch knit"
+
+Expect 0. If it still reads 3 after a day it is not a cache and needs a real
+look. Mechanism and the levers that did NOT work are in
+`docs/knowledge/cj-size-charts.md`.
+
 ### Owner actions that have been waiting and need no device
 
 | Task | What |
