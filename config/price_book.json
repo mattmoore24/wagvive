@@ -405,34 +405,187 @@
   },
   "floor_margin_pct": 16.9
  },
- "wagvive-glow-skeleton-suit": {
-  "floor_margin_pct": 46.4
+ "10508797739297": {
+  "title": "Wagvive 3-in-1 Steam Grooming Brush",
+  "price": 26.99,
+  "variants": {
+   "CJYD225679701AZ": 16.99,
+   "CJYD225679702BY": 26.99
+  },
+  "floor_margin_pct": 19.9
  },
- "wagvive-jack-o-lantern-sweater": {
-  "floor_margin_pct": 37.5
+ "10508797149473": {
+  "title": "Wagvive Glow in the Dark Skeleton Suit",
+  "price": 24.99,
+  "variants": {
+   "CJGD214316401AZ": 15.99,
+   "CJGD214316402BY": 24.99,
+   "CJGD214316403CX": 24.99,
+   "CJGD214316404DW": 15.99
+  },
+  "floor_margin_pct": 19.8
  },
- "wagvive-thanksgiving-turkey-coat": {
-  "floor_margin_pct": 31.7
+ "10508801638689": {
+  "title": "Wagvive Pumpkin Hoodie",
+  "price": 21.99,
+  "variants": {
+   "CJGD182844301AZ": 15.99,
+   "CJGD182844302BY": 21.99,
+   "CJGD182844303CX": 21.99,
+   "CJGD182844304DW": 15.99,
+   "CJGD182844305EV": 15.99,
+   "CJGD182844306FU": 15.99,
+   "CJGD182844307GT": 15.99,
+   "CJGD182844308HS": 15.99,
+   "CJGD182844309IR": 15.99,
+   "CJGD182844310JQ": 15.99,
+   "CJGD182844311KP": 21.99,
+   "CJGD182844312LO": 15.99,
+   "CJGD182844313MN": 15.99,
+   "CJGD182844314NM": 15.99,
+   "CJGD182844315OL": 15.99,
+   "CJGD182844316PK": 15.99,
+   "CJGD182844317QJ": 15.99,
+   "CJGD182844318RI": 15.99,
+   "CJGD182844319SH": 15.99,
+   "CJGD182844320TG": 15.99,
+   "CJGD182844321UF": 21.99,
+   "CJGD182844322VE": 15.99,
+   "CJGD182844323WD": 15.99,
+   "CJGD182844324XC": 15.99,
+   "CJGD182844325YB": 15.99,
+   "CJGD182844326ZA": 15.99,
+   "CJGD182844327AZ": 15.99,
+   "CJGD182844328BY": 15.99,
+   "CJGD182844329CX": 15.99,
+   "CJGD182844330DW": 15.99,
+   "CJGD182844331EV": 15.99,
+   "CJGD182844332FU": 15.99,
+   "CJGD182844333GT": 15.99,
+   "CJGD182844334HS": 15.99,
+   "CJGD182844335IR": 21.99,
+   "CJGD182844336JQ": 15.99,
+   "CJGD182844337KP": 15.99,
+   "CJGD182844338LO": 21.99,
+   "CJGD182844339MN": 15.99,
+   "CJGD182844340NM": 21.99,
+   "CJGD182844341OL": 15.99,
+   "CJGD182844342PK": 15.99,
+   "CJGD182844343QJ": 15.99,
+   "CJGD182844344RI": 21.99,
+   "CJGD182844345SH": 15.99,
+   "CJGD182844346TG": 21.99,
+   "CJGD182844347UF": 15.99,
+   "CJGD182844348VE": 21.99,
+   "CJGD182844349WD": 15.99,
+   "CJGD182844350XC": 15.99,
+   "CJGD182844351YB": 21.99,
+   "CJGD182844352ZA": 15.99,
+   "CJGD182844353AZ": 15.99,
+   "CJGD182844354BY": 15.99,
+   "CJGD182844355CX": 21.99,
+   "CJGD182844356DW": 15.99,
+   "CJGD182844357EV": 21.99,
+   "CJGD182844358FU": 15.99,
+   "CJGD182844359GT": 15.99,
+   "CJGD182844360HS": 15.99,
+   "CJGD182844361IR": 15.99,
+   "CJGD182844362JQ": 15.99,
+   "CJGD182844363KP": 15.99,
+   "CJGD182844364LO": 15.99,
+   "CJGD182844365MN": 21.99
+  },
+  "floor_margin_pct": 21.3
  },
- "wagvive-steam-grooming-brush": {
-  "floor_margin_pct": 45.5
+ "10508803342625": {
+  "title": "Wagvive Roast Turkey Sniff Toy",
+  "price": 17.99,
+  "variants": {
+   "CJGY127626401AZ": 17.99
+  },
+  "floor_margin_pct": 17.8
  },
- "wagvive-ball-launcher": {
+ "10508797280545": {
+  "title": "Wagvive Jack-o-Lantern Sweater",
+  "price": 17.99,
+  "variants": {
+   "CJGD180981301AZ": 12.99,
+   "CJGD180981302BY": 12.99,
+   "CJGD180981303CX": 17.99,
+   "CJGD180981304DW": 17.99,
+   "CJGD180981305EV": 12.99,
+   "CJGD180981316PK": 12.99,
+   "CJGD180981317QJ": 12.99,
+   "CJGD180981318RI": 12.99,
+   "CJGD180981319SH": 17.99,
+   "CJGD180981320TG": 12.99
+  },
+  "floor_margin_pct": 17.7
+ },
+ "10508797542689": {
+  "title": "Wagvive Thanksgiving Turkey Sweater",
+  "price": 19.99,
+  "variants": {
+   "CJGD184104005EV": 15.99,
+   "CJGD184104006FU": 19.99,
+   "CJGD184104007GT": 15.99,
+   "CJGD184104008HS": 19.99,
+   "CJGD184104009IR": 15.99,
+   "CJGD184104010JQ": 15.99,
+   "CJGD184104011KP": 19.99,
+   "CJGD184104012LO": 15.99,
+   "CJGD184104001AZ": 15.99,
+   "CJGD184104002BY": 15.99,
+   "CJGD184104003CX": 19.99,
+   "CJGD184104004DW": 19.99
+  },
+  "floor_margin_pct": 17.4
+ },
+ "10508801540385": {
+  "title": "Wagvive Automatic Ball Launcher",
+  "price": 94.99,
+  "variants": {
+   "CJCT25677400001": 94.99
+  },
   "floor_margin_pct": 19.6
  },
- "wagvive-pumpkin-hoodie": {
-  "floor_margin_pct": 39.8
+ "10508803178785": {
+  "title": "Wagvive Big Dog Costume",
+  "price": 29.99,
+  "variants": {
+   "CJGD189483101AZ": 29.99,
+   "CJGD189483102BY": 29.99,
+   "CJGD189483103CX": 29.99,
+   "CJGD189483104DW": 29.99,
+   "CJGD189483105EV": 29.99,
+   "CJGD189483106FU": 29.99,
+   "CJGD189483107GT": 29.99,
+   "CJGD189483108HS": 29.99,
+   "CJGD189483109IR": 29.99,
+   "CJGD189483110JQ": 29.99,
+   "CJGD189483111KP": 29.99,
+   "CJGD189483112LO": 29.99,
+   "CJGD189483114NM": 29.99,
+   "CJGD189483115OL": 29.99,
+   "CJGD189483116PK": 29.99,
+   "CJGD189483117QJ": 29.99
+  },
+  "floor_margin_pct": 36.7
  },
- "wagvive-big-dog-costume": {
-  "floor_margin_pct": 40.3
- },
- "wagvive-pumpkin-snuffle-mat": {
+ "10508803309857": {
+  "title": "Wagvive Pumpkin Snuffle Mat",
+  "price": 26.99,
+  "variants": {
+   "CJGY211085901AZ": 26.99
+  },
   "floor_margin_pct": 35.8
  },
- "wagvive-roast-turkey-sniff-toy": {
-  "floor_margin_pct": 33.3
- },
- "wagvive-pumpkin-chew-toy": {
+ "10508803375393": {
+  "title": "Wagvive Pumpkin Chew Toy",
+  "price": 16.99,
+  "variants": {
+   "CJGY213821501AZ": 16.99
+  },
   "floor_margin_pct": 18.6
  }
 }

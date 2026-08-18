@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-18, home PC (6 fall/viral prices cut to market low, size guides live, fall lineup COMPLETE — one follow-up open, see below)
+**Last updated:** 2026-08-18, home PC (fall/viral pricing fully done: 6 prices cut, all 10 in price_book.json with real floors, size guides live, fall lineup COMPLETE)
 
 ---
 
@@ -142,15 +142,16 @@ A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
 
-- **6 FALL/VIRAL PRODUCTS REPRICED TO MARKET LOW; ONE FOLLOW-UP STILL OPEN
-  (2026-08-18).** None of the 10 fall-lineup/viral-launch products were ever in
-  `price_book.json` — they launched priced against cost alone (margins came out
-  40-53%, roughly triple the catalogue median) and were never checked against
-  what a real competitor charges. Live market research (Walmart marketplace,
-  the unbranded/volume-seller comparison this store needs, matching
-  `market_bands.py`'s own methodology) found 6 were priced well above their
-  category and cut them to the market low (or the price needed to clear 25%
-  margin, whichever binds), all `.99`-rounded UP so nothing crosses the floor:
+- **ALL 10 FALL/VIRAL PRODUCTS REPRICED AND FULLY IN `price_book.json`
+  (2026-08-18).** None of the 10 fall-lineup/viral-launch products were ever
+  really in the book — they launched priced against cost alone (margins came
+  out 40-53%, roughly triple the catalogue median) and were never checked
+  against what a real competitor charges. Live market research (Walmart
+  marketplace, the unbranded/volume-seller comparison this store needs,
+  matching `market_bands.py`'s own methodology) found 6 were priced well above
+  their category and cut them to the market low (or the price needed to clear
+  25% margin, whichever binds), all `.99`-rounded UP so nothing crosses the
+  floor:
 
   | Product | Was | Now |
   |---|---:|---:|
@@ -175,29 +176,53 @@ A failed run emails the owner — silence means healthy.
   storefront `.js`, and a repeat pass). Script:
   `config/reprice_fall_lineup.py` (dry-run by default).
 
-  **OPEN FOLLOW-UP: none of the 10 are in `price_book.json` yet.**
-  `config/book_fall_lineup.py` is written and ready (`--apply` to run) but
-  CJ's daily API points quota hit zero mid-session (`Used today: 104890,
-  Remaining: 0`) before it could finish — only the Steam Grooming Brush got a
-  complete read. **This is not a code problem, it needs the quota to
-  replenish first.** Points trickle back roughly once a minute (daily total /
-  1440), not at a fixed reset time; practically, retry after an hour of light
-  CJ usage or the next day. Until this runs, all 10 fall/viral products are
-  governed by `margin_guard.DEFAULT_FLOOR` (25%) rather than a calibrated
-  floor — a safe fallback, just not tuned to each product. See
-  `docs/knowledge/cj-api-points-quota.md` for the full finding, including a
-  real risk this poses to the next scheduled 6-hourly job if the quota is
-  still down when it fires.
+  **All 10 are now correctly in `price_book.json` with real calibrated
+  floors**, each replacing the 25% `DEFAULT_FLOOR` they'd been silently
+  running on:
 
-  Two unrelated things found and fixed along the way, both documented in
-  `docs/knowledge/`: Shopify's Admin API `products.json?handle=X` list
-  endpoint served a stale embedded `variants` array for several minutes after
-  a fully-successful write, which looked exactly like a partial price-cut
-  failure and was not one (`shopify-liquid-and-cdn-traps.md`, trap 4) — and
-  CJ's daily points quota is a separate limit from the documented 1 req/sec
-  throttle, with no handling anywhere in this repo yet
-  (`cj-api-points-quota.md`, plus a flagged follow-up `task_ffc85935` to
-  harden `cj_api.call()` itself).
+  | Product | floor_margin_pct |
+  |---|---:|
+  | Glow Skeleton Suit | 19.8% |
+  | Jack-o-Lantern Sweater | 17.7% |
+  | Thanksgiving Turkey Sweater | 17.4% |
+  | Steam Grooming Brush | 19.9% |
+  | Ball Launcher | 19.6% |
+  | Pumpkin Hoodie | 21.3% |
+  | Big Dog Costume | 36.7% |
+  | Pumpkin Snuffle Mat | 35.8% |
+  | Roast Turkey Sniff Toy | 17.8% |
+  | Pumpkin Chew Toy | 18.6% |
+
+  Getting there took CJ's daily API points quota running out mid-session — not
+  a code problem, a real budget CJ enforces separately from its documented
+  1 req/sec throttle, and this session's pricing sweeps plus the quota's own
+  natural drain from the 6-hourly scheduled job emptied it. `config/
+  book_fall_lineup.py` was made RESUMABLE so each retry banks whatever it
+  resolves before hitting the wall again rather than discarding it, and it
+  took four short runs, spaced a few minutes apart, to get all ten booked.
+  Full finding, including a real risk this poses to the next scheduled
+  6-hourly job if the quota is down when it fires, in
+  `docs/knowledge/cj-api-points-quota.md`.
+
+  That investigation also surfaced a genuine 8-month-old bug: `add_fall_lineup
+  .py` and `add_fall_wave2.py` had been writing floor entries keyed by product
+  HANDLE instead of numeric ID, which every reader (`margin_guard.py`,
+  `calibrate_floors.py`) looks up by ID — so all ten fall/wave2 products had
+  been silently running on `DEFAULT_FLOOR` since launch despite the code
+  visibly "setting" a floor each time. Fixed in both scripts for future
+  launches; the ten dead stub entries were removed from `price_book.json`
+  once the real ones existed to replace them.
+
+  One more unrelated thing found and fixed along the way: Shopify's Admin API
+  `products.json?handle=X` list endpoint served a stale embedded `variants`
+  array for several minutes after a fully-successful write, which looked
+  exactly like a partial price-cut failure and was not one
+  (`docs/knowledge/shopify-liquid-and-cdn-traps.md`, trap 4).
+
+  Still flagged as background tasks, not yet done: hardening `cj_api.call()`
+  itself to detect quota exhaustion once rather than per-caller
+  (`task_ffc85935`), and the freight-model uncertainty behind the held Ball
+  Launcher price (`task_6d9443f0`).
 
 - **FALL COLLECTION IS SEASONAL ONLY AGAIN (2026-08-18).** The Automatic Ball
   Launcher and the 3-in-1 Steam Grooming Brush were sitting in
@@ -1177,12 +1202,6 @@ A failed run emails the owner — silence means healthy.
   for duplicate source SKUs (`sku[:11]`), not just titles.
 
 ## Open work, in priority order
-
-**Run once CJ's API points quota has replenished:**
-`python config/book_fall_lineup.py --apply` — adds the 10 fall/viral products
-to `price_book.json` with calibrated floors. Blocked 2026-08-18 by CJ's daily
-points quota hitting zero, not a code problem. See "What just happened" above
-and `docs/knowledge/cj-api-points-quota.md`.
 
 > **Task-number warning.** An earlier version of this file used numbers #73 to
 > #82 for the pricing queue. Those are all DONE or VOIDED, and the live task

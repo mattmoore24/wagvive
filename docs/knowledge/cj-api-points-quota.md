@@ -47,8 +47,18 @@ prevent.
 This session hit `Used today: 104890, Remaining: 0` after a normal, heavy day
 of work: several full-catalogue cost/freight sweeps for a pricing review, on
 top of whatever the 6-hourly scheduled job (`sync_inventory.py`,
-`guard_unshippable.py`, `margin_guard.py`, all CJ-heavy) already spent. Nothing
-was misbehaving; the account simply ran out.
+`guard_unshippable.py`, `margin_guard.py`, all CJ-heavy) already spent.
+**Retrying a couple of hours later worked** - a single cheap probe call
+succeeded, confirming the trickle-back model rather than a fixed reset. But the
+budget was thin enough that day that even ONE more full 10-product pass
+re-exhausted it within a few minutes; getting all ten products booked took
+four separate `--apply` runs spaced minutes apart, each one permanently
+banking whatever it resolved before hitting the wall again (see "resumability"
+below). **A dry run and an `--apply` run cost the SAME CJ calls for the same
+data** - running one right before the other (to "check the plan first") just
+pays for the same information twice and was directly why the quota died a
+second time this session. If the numbers are already trusted, skip straight to
+`--apply`.
 
 ## The operational risk this creates
 
@@ -58,9 +68,7 @@ was misbehaving; the account simply ran out.
 querying CJ into the same wall. None of them currently distinguish
 "quota exhausted" from "CJ returned nothing," so a run in this state risks the
 exact failure mode `guard_unshippable.py`'s own docstring warns against:
-treating an unanswerable SKU as a finding instead of as UNKNOWN. Worth checking
-the next scheduled run's log if it reports anything unusual rather than
-assuming a genuine cost/inventory problem.
+treating an unanswerable SKU as a finding instead of as UNKNOWN.
 
 ## How to apply
 
@@ -71,24 +79,55 @@ assuming a genuine cost/inventory problem.
 - **Stop, don't retry.** Retrying into an exhausted quota cannot succeed and
   burns the retry budget that would otherwise catch CJ's genuine transient
   empty-answer behaviour. `config/book_fall_lineup.py`'s `cj_query()` wrapper
-  raises `QuotaExhausted` immediately on this signal so the whole run aborts
-  with a clear message instead of finishing and printing plausible-looking
-  numbers built on partial data.
-- **Don't trust a partial result as a worst case.** A "worst margin" computed
-  from however many variants happened to resolve before the wall was hit is
-  not the worst case - it is whatever subset got lucky. Treat any run that hit
-  this wall as having produced NO usable number for the products it touched.
+  raises `QuotaExhausted` immediately on this signal so the run aborts with a
+  clear message instead of finishing and printing plausible-looking numbers
+  built on partial data.
+- **Don't trust a partial result as a worst case** - UNLESS enough of the
+  weight/cost tier that actually produces the worst margin resolved anyway.
+  In practice apparel variants of the same SIZE share cost and freight across
+  colours, so if even one colour of the heaviest size resolves, the true worst
+  case is still captured even when most other variants of that product timed
+  out. Confirmed by cross-checking every number this session's partial runs
+  produced against fully-resolved runs computed hours earlier: all matched
+  exactly. Still, treat a run with many `unresolved` variants as lower
+  confidence than a clean one, and re-verify against a complete read when the
+  quota allows it.
+- **Make the caller resumable, not just safe.** The real fix that got all ten
+  products booked despite a thin, repeatedly-exhausted budget was restructuring
+  `book_fall_lineup.py` so a `QuotaExhausted` mid-run does not discard already-
+  resolved entries: it books whatever succeeded and stops, and because every
+  entry point already skips `if str(p['id']) in book`, the NEXT run only pays
+  for what is still missing. Four short, cheap runs (banking 4, then 2, then 3,
+  then the last 1 product) finished what one long run repeatedly could not.
 - **Recovery is gradual, not a fixed time.** Points trickle back roughly once a
-  minute; there is no single "wait until midnight" moment. Practically: wait
-  at least an hour of light CJ usage, or resume the next day.
+  minute; there is no single "wait until midnight" moment, but a real recovery
+  IS available within a couple of hours of lighter usage, not just "tomorrow."
+
+## One more real bug this surfaced, unrelated to CJ
+
+While cleaning up around this, found that `config/add_fall_lineup.py` and
+`config/add_fall_wave2.py`'s `finish()` steps had been writing floor entries
+into `price_book.json` keyed by **product HANDLE**
+(`book.setdefault(spec['handle'], {})['floor_margin_pct'] = ...`) instead of by
+**numeric product ID**, which is what every reader
+(`margin_guard.py`'s `BOOK_FLOOR`, `calibrate_floors.py`) actually looks up by.
+Ten handle-keyed stub entries - containing only `floor_margin_pct`, no title,
+price or variants - sat in the book for 8 months, completely inert: every
+lookup by `str(product['id'])` missed them, so all ten fall/wave2 products ran
+on `margin_guard.DEFAULT_FLOOR` (25%) the entire time despite the code visibly
+"setting" a real floor at launch. This is the SAME root cause this whole
+pricing review exists to fix, just with a code bug behind it rather than a
+missing step. Fixed in both scripts (now keys by `str(p['id'])` and writes the
+full entry shape), and the ten dead stubs were removed from `price_book.json`
+once the real, numeric-ID-keyed entries existed to replace them.
 
 ## Still open
 
-`cj_api.call()` itself does not yet distinguish this condition from any other
-response shape - every OTHER script in this repo that calls it
+`cj_api.call()` itself does not yet distinguish the quota-exhaustion condition
+from any other response shape - every OTHER script in this repo that calls it
 (`margin_guard.py`, `guard_unshippable.py`, `sync_inventory.py`,
 `calibrate_floors.py`, and more) has the same blind spot `book_fall_lineup.py`
 had before this was found. Hardening `cj_api.call()` itself to raise on this
 signal, once, rather than fixing each caller individually, is flagged as a
 follow-up task rather than done here - it touches the module every CJ-facing
-script imports, and the quota is at zero, so it cannot be tested live today.
+script imports.

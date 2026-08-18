@@ -382,7 +382,25 @@ def finish(apply):
                  publishablePublish(id: $id, input: $input) {
                    userErrors { field message } } }''',
             {'id': f"gid://shopify/Product/{p['id']}", 'input': pubs})
-        book.setdefault(spec['handle'], {})['floor_margin_pct'] = spec['floor']
+        # KEY BY THE NUMERIC PRODUCT ID, never the handle. Every reader
+        # (margin_guard.py's BOOK_FLOOR, calibrate_floors.py) looks entries up
+        # by str(product['id']); a handle-keyed entry never matches anything
+        # and is silently inert forever. This is exactly what happened here
+        # for 8 months: this line wrote floor_margin_pct under
+        # spec['handle'], margin_guard never saw it, and all ten fall/wave2
+        # products ran on DEFAULT_FLOOR (25%) instead of their real floor the
+        # entire time, discovered and fixed 2026-08-18 by
+        # config/book_fall_lineup.py. Also write title/price/variants, not
+        # just the floor, so the entry is actually usable rather than another
+        # partial stub.
+        entry = book.setdefault(str(p['id']), {})
+        entry['title'] = spec['title']
+        entry['floor_margin_pct'] = spec['floor']
+        variant_prices = {v.get('sku'): float(v['price']) for v in p['variants']
+                          if v.get('sku')}
+        if variant_prices:
+            entry['variants'] = variant_prices
+            entry['price'] = max(variant_prices.values())
         print(f"  {spec['handle']}: active, published, floor {spec['floor']}%")
 
     if apply:

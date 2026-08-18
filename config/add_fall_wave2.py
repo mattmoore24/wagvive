@@ -316,7 +316,18 @@ def finish(apply):
                  publishablePublish(id: $id, input: $input) {
                    userErrors { field message } } }''',
             {'id': f"gid://shopify/Product/{p['id']}", 'input': pubs})
-        book.setdefault(spec['handle'], {})['floor_margin_pct'] = spec['floor']
+        # KEY BY THE NUMERIC PRODUCT ID, never the handle - see the identical
+        # comment in add_fall_lineup.py's finish(), which is where this bug
+        # was found and traced. A handle-keyed entry never matches
+        # margin_guard.py's str(product['id']) lookup and is silently inert.
+        entry = book.setdefault(str(p['id']), {})
+        entry['title'] = spec['title']
+        entry['floor_margin_pct'] = spec['floor']
+        variant_prices = {v.get('sku'): float(v['price']) for v in p['variants']
+                          if v.get('sku')}
+        if variant_prices:
+            entry['variants'] = variant_prices
+            entry['price'] = max(variant_prices.values())
         print(f"  {spec['handle']}: active + published, floor {spec['floor']}%")
     if apply:
         for h in RETIRE:
