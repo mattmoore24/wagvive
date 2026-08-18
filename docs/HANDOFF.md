@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-18, home PC (Pumpkin Hoodie art done 65/65 wired; 4 design shots + 7 masters still to shoot; 2 wrong descriptions fixed)
+**Last updated:** 2026-08-18, home PC (house art on 7 of 10 fall products, 106 variants wired and leading; 3 products still on CJ photos)
 
 ---
 
@@ -141,6 +141,33 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **HOUSE ART: 7 OF 10 FALL PRODUCTS DONE, 106 VARIANTS WIRED (2026-08-18).**
+  Cream #F7F2E9 masters shot with `nano-banana-pro`, recoloured per look so
+  pose, framing, lighting and shadow stay locked, uploaded and wired by
+  `config/apply_fall_art.py`, then led by `config/promote_fall_art.py`.
+
+  Done: Pumpkin Hoodie (5 colours, 65 var), Big Dog Costume (Tiger/Rabbit/
+  Dinosaur, 16 var), Turkey Sweater (Turkey/Boo/Plaid, 12 var), Skeleton Suit,
+  Ball Launcher, Pumpkin Snuffle Mat, Roast Turkey Sniff Toy.
+
+  **STILL ON CJ PHOTOGRAPHY, 3 products:** Jack-o-Lantern Sweater (4 colours,
+  20 variants), 3-in-1 Steam Grooming Brush (2 colours, NOTE its CJ references
+  carry burnt-in English marketing text so ban text explicitly), Pumpkin Chew
+  Toy (1). Drop files into `config/branding/fall/` as
+  `<handle>__<option value>.jpg` and rerun both scripts; they are idempotent.
+
+  **TWO TRAPS WORTH KEEPING.** Uploading art is NOT enough: a new image lands
+  LAST, so the CJ photo stays position 1 and remains the COLLECTION CARD and
+  product hero. Every swatch was correct while every product card still showed
+  the old photo. `promote_fall_art.py` fixes that and verifies position 1 on the
+  live product. Second, `variant.image_id` drives the CART THUMBNAIL, not just
+  the gallery, so an unwired variant shows the wrong colour at the moment of
+  purchase.
+
+  Lead image is currently the alphabetically first look (Dinosaur, Black, Boo).
+  Fine for now; if you want Tiger leading the costume, reorder that one image.
+
 
 - **HOUSE-STYLE ART STARTED. Pumpkin Hoodie DONE, 65/65 variants wired
   (2026-08-18).** `config/apply_fall_art.py` uploads from
