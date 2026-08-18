@@ -408,19 +408,31 @@
  "wagvive-glow-skeleton-suit": {
   "floor_margin_pct": 46.4
  },
- "wagvive-halloween-snuffle-mat": {
-  "floor_margin_pct": 44.9
- },
  "wagvive-jack-o-lantern-sweater": {
   "floor_margin_pct": 37.5
- },
- "wagvive-halloween-squeaky-bones": {
-  "floor_margin_pct": 46.3
  },
  "wagvive-thanksgiving-turkey-coat": {
   "floor_margin_pct": 31.7
  },
  "wagvive-steam-grooming-brush": {
   "floor_margin_pct": 45.5
+ },
+ "wagvive-ball-launcher": {
+  "floor_margin_pct": 19.6
+ },
+ "wagvive-pumpkin-hoodie": {
+  "floor_margin_pct": 39.8
+ },
+ "wagvive-big-dog-costume": {
+  "floor_margin_pct": 40.3
+ },
+ "wagvive-pumpkin-snuffle-mat": {
+  "floor_margin_pct": 35.8
+ },
+ "wagvive-roast-turkey-sniff-toy": {
+  "floor_margin_pct": 33.3
+ },
+ "wagvive-pumpkin-chew-toy": {
+  "floor_margin_pct": 18.6
  }
 }
