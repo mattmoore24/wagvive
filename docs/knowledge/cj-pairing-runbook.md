@@ -166,6 +166,66 @@ products). Confirm `shop2[0].sku` is the SPU you intended before connecting.
 Coordinate clicking these inputs does not work even with the overlay gone: a
 triple-click lands on the column heading. Drive the DOM.
 
+## 4b. THE EXACT WORKING SEQUENCE, verified 2026-08-18
+
+Every step below was run end to end against the Glow in the Dark Skeleton Suit
+(SPU CJGD2143164, 4 variants) and it paired first time. Drive the DOM and the
+scope; do not coordinate-click.
+
+```js
+// helper: the scope that owns the pairing UI
+function s7(){let f=null;document.querySelectorAll('*').forEach(el=>{
+  const s=angular.element(el).scope&&angular.element(el).scope();
+  if(s&&s.$id===7&&!f)f=s;});return f;}
+```
+
+1. **Filter the left list to ONE row.** Set through `$apply` or the digest never
+   runs:
+   ```js
+   const sc=s7(); sc.$apply(()=>{sc.searchinfoshop='Glow in the Dark';});
+   sc.searchshopcommodity();
+   ```
+   Confirm `sc.shop.length === 1` before continuing.
+
+2. **Click Match** (`button.newMediaMatch`, the one whose text is exactly
+   "Match"). Then check `sc.matchitem.shopType === 'Shopify'` and that
+   `sc.shop2[0].sku` is the SPU you intended.
+
+3. **Click the FIRST Connect button.** The Connect buttons map 1:1 onto `shop2`,
+   so index 0 is `shop2[0]`. `sc.arr` then fills with one entry per variant.
+
+4. **THE SHIPPING SELECT IS THE ONLY REAL TRAP LEFT.** It is
+   `ng-options="item as showLogisticName(item.nameEn) for item in wuliulist"`
+   with `ng-change="getwuliuway(wuliuway)"`, so its option values are Angular
+   object hashes like `object:389`. Setting `select.value`, dispatching
+   `change`, or calling `$setViewValue` on the ngModel controller ALL silently
+   fail: the select stays on "Please select" and Confirm stays `disabledBtn`.
+   Set the model object on the select's OWN scope and call the change handler:
+   ```js
+   const sel=[...document.querySelectorAll('select')]
+     .find(s=>s.getAttribute('ng-model')==='wuliuway');
+   const ss=angular.element(sel).scope();
+   const carrier=ss.wuliulist.find(x=>x.nameEn.trim()==='CJPacket Super Pure Electricity');
+   ss.$apply(()=>{ ss.wuliuway=carrier; ss.getwuliuway(carrier); });
+   ```
+   Use the carrier `freight_floor.resolve()` picked for THAT SKU, matched on
+   `nameEn` exactly. Confirm goes from `new-btn confirm-btn disabledBtn` to
+   `new-btn confirm-btn` once it takes.
+
+5. **Verify, then Confirm exactly once.**
+   ```js
+   const ok = sc.matchitem.shopType==='Shopify' &&
+     sc.arr.length>0 && sc.arr.every(p=>p.first.shopSku===p.last.SKU);
+   if(ok) document.querySelector('span.new-btn.confirm-btn:not(.disabledBtn)').click();
+   ```
+
+6. **Verify it landed** by re-searching the same name in the left list. An empty
+   result (`storeProTotalNum === 0`) means it moved to Connected. Do not trust
+   a toast; there often is not one.
+
+Repeat from step 1 for the next product. Between products, re-read the scope
+with `s7()`; the old reference goes stale after a digest.
+
 ## 5. Leave inventory sync OFF
 
 In the connect dialog, leave "Sync CJ's Inventory Levels" **off**. Stock is
