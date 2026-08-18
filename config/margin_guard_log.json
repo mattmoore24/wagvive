@@ -1,8 +1,8 @@
 {
- "ran_at": "2026-08-17T19:00:58",
+ "ran_at": "2026-08-18T07:50:58",
  "floor": "price_book",
  "applied": false,
- "checked": 145,
+ "checked": 258,
  "breaches": [],
  "unresolved": [],
  "thin": [
@@ -85,6 +85,16 @@
    "stress_margin": -3.2,
    "freight_headroom": 17.83,
    "freight": 15.47
+  },
+  {
+   "product": "Wagvive Automatic Ball Launcher",
+   "variant": "Default Title",
+   "sku": "CJCT25677400001",
+   "price": 94.99,
+   "margin": 27.6,
+   "stress_margin": 20.1,
+   "freight_headroom": 15.6,
+   "freight": 11.0
   },
   {
    "product": "Wagvive Barnyard Squeaker",
@@ -557,14 +567,14 @@
    "freight": 7.97
   },
   {
-   "product": "Wagvive Pet Hair Remover Mitt",
-   "variant": "Dark Brown",
-   "sku": "CJYD233200807GT",
-   "price": 8.99,
-   "margin": 19.1,
-   "stress_margin": 8.6,
-   "freight_headroom": 6.29,
-   "freight": 5.36
+   "product": "Wagvive Pumpkin Chew Toy",
+   "variant": "Default Title",
+   "sku": "CJGY213821501AZ",
+   "price": 16.99,
+   "margin": 26.6,
+   "stress_margin": 17.7,
+   "freight_headroom": 7.23,
+   "freight": 6.59
   },
   {
    "product": "Wagvive Quiet Electric Nail Grinder",

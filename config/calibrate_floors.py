@@ -25,6 +25,7 @@ import json, os, sys, time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'config'))
+import freight_floor
 import margin_guard as mg
 from pricing import DUTY_PCT, DUTY_PCT_US_WAREHOUSE
 
@@ -58,7 +59,10 @@ def main():
             if not sku or sku not in entry['variants'] or sku not in costs:
                 continue
             vid, cost = costs[sku]
-            start = 'US' if str(sku).startswith('CJBQ') else 'CN'
+            # Same origin fix as margin_guard: floors calibrated against a
+            # China quote for a US-warehoused SKU are calibrated against a
+            # freight figure that does not exist.
+            start = freight_floor.origin_for(sku)
             duty = DUTY_PCT_US_WAREHOUSE if start == 'US' else DUTY_PCT
             fr = mg.best_freight(vid, start, sku)
             price = entry['variants'][sku]

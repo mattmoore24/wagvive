@@ -192,7 +192,12 @@ def main():
                 unresolved.append((title, v['title'], sku, 'no CJ record'))
                 continue
             vid, cost = entry
-            start = 'US' if str(sku).startswith('CJBQ') else 'CN'
+            # Origin from the STOCK ROWS, never the SKU prefix. The CJBQ
+            # heuristic quoted the CJCT-prefixed, US-warehoused Ball Launcher
+            # from China, got no carriers, substituted a ~$21.50 estimate
+            # against a real $11.00 domestic rate, and failed this job every
+            # three hours on a breach that did not exist.
+            start = freight_floor.origin_for(sku)
             duty = DUTY_PCT_US_WAREHOUSE if start == 'US' else DUTY_PCT
             fr = best_freight(vid, start, sku)
             if not fr:

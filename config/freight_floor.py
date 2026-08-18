@@ -123,3 +123,51 @@ def resolve_from_menu(menu, weight_g=None):
              o.get('days', upper_days(o.get('aging'))))
             for o in (menu or []) if o.get('price')]
     return _pick(rows, weight_g)
+
+
+# --- where a SKU actually ships FROM -----------------------------------------
+# Added 2026-08-18 after the scheduled job failed every 3 hours for a day.
+#
+# Ten scripts decided shipping origin with `sku.startswith('CJBQ')`. That
+# heuristic is WRONG and it cost real money in false alarms: the Automatic Ball
+# Launcher is `CJCT25677400001`, and it IS US-warehoused, so margin_guard quoted
+# it from China, got zero carrier options back, substituted an estimate of about
+# $21.50 against a real domestic rate of $11.00, and reported a margin breach
+# that did not exist. The job is designed to fail on a breach, so the owner got
+# a failure notification every three hours.
+#
+# Origin lives in the STOCK ROWS, which is the only place that actually knows.
+# `countryCode == 'US'` on any row means CJ holds it in a US warehouse: no duty,
+# and flat domestic freight instead of weight-scaled international.
+_ORIGIN_CACHE = {}
+
+
+def origin_for(sku, default='CN'):
+    """'US' or 'CN' for a variant SKU, read from CJ's stock rows.
+
+    Cached per process because a catalogue sweep asks the same question 145
+    times. On any error the answer is the conservative one, `default='CN'`,
+    which prices freight HIGHER rather than lower: a wrong guess that way costs
+    margin headroom, the other way silently sells under the floor.
+    """
+    sku = str(sku or '')
+    if not sku:
+        return default
+    # Cached by SPU (sku[:11]), not by variant sku. A warehouse is a property of
+    # the PRODUCT, so all its variants share the answer, and margin_guard walks
+    # 258 variants across about 38 SPUs. Keying per variant made this one stock
+    # call each and pushed the scheduled job toward its 30 minute timeout.
+    spu = sku[:11]
+    if spu in _ORIGIN_CACHE:
+        return _ORIGIN_CACHE[spu]
+    origin = default
+    try:
+        import cj_api
+        rows = cj_api.call('/product/stock/queryBySku', {'sku': sku}).get('data')
+        if isinstance(rows, list) and rows:
+            origin = ('US' if any((r.get('countryCode') or '').upper() == 'US'
+                                  for r in rows) else 'CN')
+    except Exception:
+        pass
+    _ORIGIN_CACHE[spu] = origin
+    return origin

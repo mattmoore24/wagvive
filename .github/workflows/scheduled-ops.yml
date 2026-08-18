@@ -16,15 +16,17 @@ name: Scheduled store operations
 #   * margin_guard.py runs REPORT-ONLY. It never changes prices unattended.
 #     If any variant is under the 50% floor the job FAILS, which emails you.
 #     Repricing stays a human decision.
-#   * CJ rate-limits token creation (1 per 300s) and the token is cached, so
-#     cadence is bounded by call VOLUME, not by auth. 145 variants per sweep at
-#     3-hourly is ~1,160 stock calls a day, which is comfortable. It was 6-hourly
-#     until 2026-08-17; halving the window halves how long a newly unshippable
-#     item can sit on sale.
+#   * CADENCE IS BACK TO 6-HOURLY (2026-08-18). It was moved to 3-hourly the day
+#     before, which was a mistake once the job's real cost was measured: a full
+#     run is about 22 minutes (guard_unshippable ~8, margin_guard ~8,
+#     sync_inventory ~4, fix_locations ~2), because both guards ask CJ for a live
+#     freight quote on all 258 variants. At 3-hourly the job would be running
+#     roughly an eighth of the day and every failure notifies twice as often, for
+#     a risk window that only halves.
 
 on:
   schedule:
-    - cron: '17 */3 * * *'   # every 3 hours, offset off the hour
+    - cron: '17 */6 * * *'   # every 6 hours, offset off the hour
   workflow_dispatch:          # lets you run it on demand from the Actions tab
 
 concurrency:
@@ -34,7 +36,11 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # 50, not 30. A measured run is about 22 minutes and the 30 minute ceiling
+    # left almost no headroom, so a slow spell at CJ timed the job out and
+    # notified a failure that was not a real problem. This grows with the
+    # catalogue, so measure again if products are added in bulk.
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
 

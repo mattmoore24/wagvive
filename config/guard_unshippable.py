@@ -39,6 +39,7 @@ import urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'config'))
 import cj_api                                            # noqa: E402
+import freight_floor                                    # noqa: E402
 from freight_floor import upper_days                     # noqa: E402
 
 MAX_DAYS = 12                       # the promise made site-wide and in email
@@ -98,7 +99,9 @@ def cj_vids():
 
 def carriers(vid, sku, tries=3):
     """(options inside the promise, reachable). Retried before it is believed."""
-    start = 'US' if str(sku).startswith('CJBQ') else 'CN'
+    # Origin from the stock rows, not the SKU prefix: a US-warehoused item
+    # quoted from China returns no carrier at all and reads as unshippable.
+    start = freight_floor.origin_for(sku)
     for attempt in range(tries):
         try:
             r = cj_api.call('/logistic/freightCalculate', payload={
