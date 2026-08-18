@@ -1408,29 +1408,51 @@ is only ever one source of truth.
 > which makes pairing look impossible when it is not.** Confirm which browser
 > you are on before you touch CJ.
 >
-> The store is fully built, paired and verified: 42 products live and buyable, 39
-> kit variants each with their own colorway photo, every SKU paired to CJ on the
-> carrier its price was modelled on. Nothing is carried over.
+> The store is fully built, paired and verified: 46 single products (258
+> variants) plus 6 kits (39 kit variants), every SKU paired to CJ on the
+> carrier its price was modelled on. The fall/Halloween/Thanksgiving lineup and
+> the viral-products launch are both complete and live, all house-art imagery
+> (zero CJ photography), all 15 size-taking products carry real per-size dog
+> measurement tables, and every product's price is calibrated in
+> `price_book.json` (47 entries) rather than running on the 25% default floor.
+> All four standing audits are green as of 2026-08-18
+> (`audit_kits.py`, `audit_cj_connections.py`, `audit_fall_imagery.py`,
+> `audit_size_guides.py` — run any with no arguments for a fresh check).
+> Nothing is carried over as unfinished.
+>
+> Two small things flagged but not blocking, both filed as background tasks:
+> the Automatic Ball Launcher's price is HELD, not cut, pending real freight
+> confirmation for its weight class (`task_6d9443f0`); and CJ's daily API
+> points quota (separate from its documented 1 req/sec throttle — see
+> `docs/knowledge/cj-api-points-quota.md`) can exhaust mid-session on
+> CJ-heavy work, which `cj_api.call()` itself does not yet detect
+> (`task_ffc85935`). Neither needs action unless you're touching that
+> specific area.
 >
 > The next work is **marketing phase 0**, which gates every dollar of paid spend:
 >
 > 1. **#75 measurement stack.** GA4, Meta pixel + CAPI (data sharing Maximum),
 >    Google Merchant Center with free listings, Pinterest tag. Owner creates the
 >    accounts; I configure and verify. Google first, since free listings are the
->    only zero-CPC channel and the 42 feed titles are already written in
->    `config/marketing/feed_health.py --titles`.
+>    only zero-CPC channel. Feed titles need re-checking against the current
+>    52-product catalogue (`config/marketing/feed_health.py --titles`) since the
+>    fall lineup launched after they were last written.
 > 2. **#76a the five email automations** in Marketing › Automations. Copy is
 >    written in `docs/marketing/email-flows-2026-08.md`; read
 >    `docs/knowledge/shopify-messaging-custom-liquid.md` first. Watch the exit
 >    condition trap: Shopify puts it on the FIRST email only.
 > 3. Then the phase 0 gate: a real test purchase appearing in all three
 >    analytics tools, after which phase 1 is $150 on Pinterest against the Calm &
->    Comfort Kit only.
+>    Comfort Kit only. Re-run `config/marketing/cac_ceiling.py` first — every
+>    ceiling moves after today's repricing.
 >
 > Rules: verify against the live system by re-fetching, never the write's return
-> value. Never enter my credentials. Show me numbers before any write that
-> changes a price, product or bundle. Tell me plainly if something turns out to
-> be wrong or impossible, with the numbers behind it.
+> value — and for a variant-level write specifically, re-fetch the SPECIFIC
+> variant by ID, not the product's embedded variant list, which can lag for
+> minutes (`docs/knowledge/shopify-liquid-and-cdn-traps.md`, trap 4). Never enter
+> my credentials. Show me numbers before any write that changes a price, product
+> or bundle. Tell me plainly if something turns out to be wrong or impossible,
+> with the numbers behind it.
 >
 > When you finish, update `docs/HANDOFF.md`, commit and push.
 
