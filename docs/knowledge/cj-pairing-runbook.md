@@ -15,6 +15,14 @@ before you start:
 - Load `https://www.cjdropshipping.com/mine/products/connection` and confirm you
   see the connection table, not a login screen.
 
+A **cookie consent panel** may open and flood the DOM, which makes label
+scraping return cookie names instead of buttons. Dismiss it with the
+privacy-preserving option (`Reject All`) before anything else.
+
+CJ may also throw a **bot-verification interstitial** that bounces to a login
+page with credentials prefilled. Stop there. Completing a CAPTCHA or submitting
+that login is the owner's to do, never Claude's.
+
 If Chrome is not connected, say so and stop. Do not fall back to the in-app
 browser and do not ask for credentials — the owner never hands those over.
 
@@ -34,13 +42,36 @@ python -c "import sys; sys.path.insert(0,'config'); import freight_floor; print(
 then resolve the specific SKU and use exactly that carrier. If freight comes back
 `$0.00` that is MISSING DATA, never free carriage — stop and investigate.
 
-## 1. Navigate correctly
+## 1. Navigate correctly. CJ NOW RUNS TWO APPS AND ONLY ONE CAN PAIR.
 
-Go to `https://www.cjdropshipping.com/mine/products/connection`.
+Corrected 2026-08-18 after this cost a session.
+
+`https://www.cjdropshipping.com/mine/products/connection` is now a **React**
+rebuild. It shows the Connected table and it is fine for *reading* what is
+already paired, but **there is no `angular` object on it**, so every technique
+below (the `dsp` sync call, the `$id===7` scope checks) throws or silently does
+nothing. Testing for Angular there and concluding "the runbook is obsolete" is
+the wrong conclusion, and I drew it once.
+
+**Pairing still happens in the OLD Angular app.** Get there by clicking the
+**Unconnected** tab, which routes to:
+
+```
+https://www.cjdropshipping.com/my.html#/products-connection/pending-connection
+```
+
+Confirm you are in the right app before doing anything else:
+
+```js
+typeof angular !== 'undefined'      // must be true
+angular.element(document.body).injector().has('dsp')   // must be true
+```
+
+If `angular` is undefined you are on the React page. Click Unconnected.
 
 Do **not** use the hash route `/my.html#/products-connection/goods`. It renders
 the 3PL "Add Service Product" screen, shows "No product yet", and looks exactly
-like an empty catalogue.
+like an empty catalogue. The working hash route is `pending-connection`.
 
 ## 2. Kill the chat overlay, every time
 
