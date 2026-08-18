@@ -124,10 +124,25 @@ def main():
                     f'DUPLICATE SOURCE {spu}: "{spu_owner[spu]}" and "{p["title"]}"')
             spu_owner.setdefault(spu, p['title'])
             if spu not in cj_variants:
-                d = cj_api.call('/product/query', {'productSku': spu}) or {}
-                data = d.get('data') or {}
+                # RETRY. A single empty answer from CJ is not evidence the SPU
+                # is gone: on 2026-08-18 this reported the LED Waste Bag
+                # Dispenser and the Lick Bowl as "not found in CJ" while both
+                # returned their full variant list on all three retries. An
+                # audit that cries wolf about live products stops being read.
+                data = {}
+                for attempt in range(3):
+                    try:
+                        d = cj_api.call('/product/query', {'productSku': spu}) or {}
+                        data = d.get('data') or {}
+                        if isinstance(data, list):
+                            data = data[0] if data else {}
+                        if data.get('variants'):
+                            break
+                    except Exception:
+                        pass
+                    time.sleep(1.2 * (attempt + 1))
                 cj_variants[spu] = {v.get('variantSku'): v
-                                    for v in (data.get('variants') or [])}
+                                    for v in ((data or {}).get('variants') or [])}
                 time.sleep(0.3)
 
     unresolved = []
@@ -261,16 +276,40 @@ def main():
             cv = cj_variants.get(str(sku)[:11], {}).get(sku)
             if not cv:
                 continue
+            # Origin comes from the STOCK ROWS, not the SKU prefix. The CJBQ
+            # heuristic is wrong: the Automatic Ball Launcher is CJCT-prefixed
+            # and US-warehoused, so quoting it from CN returns no carrier at all
+            # and the product reads as unshippable when it ships next-day
+            # domestically.
+            try:
+                rows = cj_api.call('/product/stock/queryBySku',
+                                   {'sku': sku}).get('data') or []
+            except Exception:
+                rows = []
+            origin = ('US' if any((x.get('countryCode') or '').upper() == 'US'
+                                  for x in rows) else 'CN')
             r = cj_api.call('/logistic/freightCalculate', payload={
-                'startCountryCode': 'US' if str(sku).startswith('CJBQ') else 'CN',
+                'startCountryCode': origin,
                 'endCountryCode': 'US',
                 'products': [{'quantity': 1, 'vid': cv.get('vid')}]})
             opts = r.get('data') or []
-            inside = [o for o in opts if o.get('logisticPrice')
-                      and upper_days(o.get('logisticAging')) <= MAX_DAYS]
-            if not inside:
+            # A $0.00 quote is MISSING DATA, never free carriage, so it must not
+            # be priced from. But it is NOT the same as having no carrier, and
+            # conflating the two is wrong: the Automatic Ball Launcher ships
+            # Fedex US to US in 3 to 7 days and quotes $0.00, which read as
+            # "NO carrier within 12 days" on a product that ships domestically.
+            # pricing.py already covers this with US_DOMESTIC_FREIGHT_FALLBACK.
+            timely = [o for o in opts
+                      if upper_days(o.get('logisticAging')) <= MAX_DAYS]
+            priced = [o for o in timely if o.get('logisticPrice')]
+            if not timely:
                 nofreight.append(p['title'])
                 problems.append(f'{p["title"]}: NO carrier within {MAX_DAYS} days')
+            elif not priced:
+                warnings.append(
+                    f'{p["title"]}: carrier {timely[0].get("logisticName")} is '
+                    f'inside {MAX_DAYS} days but quotes $0.00 (missing data); '
+                    f'priced from the US domestic fallback')
             time.sleep(0.35)
         print(f'  {len(singles) - len(nofreight)}/{len(singles)} products have a '
               f'compliant carrier')

@@ -1,9 +1,11 @@
 {
- "ran_at": "2026-08-17T19:11:57",
- "products": 36,
+ "ran_at": "2026-08-17T21:51:42",
+ "products": 46,
  "bundles": 6,
- "variants": 145,
- "spus": 36,
+ "variants": 268,
+ "spus": 46,
  "problems": [],
- "warnings": []
+ "warnings": [
+  "Wagvive Automatic Ball Launcher: carrier Fedex US to US is inside 12 days but quotes $0.00 (missing data); priced from the US domestic fallback"
+ ]
 }
