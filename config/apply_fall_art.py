@@ -53,7 +53,10 @@ LOOK_OPTION = {
     'wagvive-big-dog-costume': 'Design',
     'wagvive-thanksgiving-turkey-coat': 'Design',
     'wagvive-jack-o-lantern-sweater': 'Color',
-    'wagvive-steam-grooming-brush': 'Color',
+    # Both colourways differ only by a small button accent and CJ photographs
+    # only one, so a single shared master is honest here rather than inventing
+    # a pink-button render nobody has seen.
+    'wagvive-steam-grooming-brush': None,
     'wagvive-glow-skeleton-suit': None,
     'wagvive-ball-launcher': None,
     'wagvive-pumpkin-snuffle-mat': None,

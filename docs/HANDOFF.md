@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-18, home PC (house art on 7 of 10 fall products, 106 variants wired and leading; 3 products still on CJ photos)
+**Last updated:** 2026-08-18, home PC (house art on ALL 10 fall products and leading; open decision on 10 sweater variants CJ never photographed)
 
 ---
 
@@ -141,6 +141,37 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **HOUSE ART DONE ON ALL 10 FALL PRODUCTS (2026-08-18).** Every one now LEADS
+  with a cream #F7F2E9 studio shot, and 116 of 126 variants point at their own
+  art. Scripts: `apply_fall_art.py` (upload + wire) then `promote_fall_art.py`
+  (make it position 1).
+
+  Multi-look products were shot as ONE master and recoloured so pose, framing,
+  lighting and shadow stay locked: Pumpkin Hoodie 5 colours, Big Dog Costume
+  Tiger/Rabbit/Dinosaur, Turkey Sweater Turkey/Boo/Plaid, Jack-o-Lantern Sweater
+  Orange Stripe/Orange Pumpkin. Singles: Skeleton Suit, Ball Launcher, Snuffle
+  Mat, Roast Turkey, Pumpkin Chew, Steam Brush.
+
+  Both text-bearing garments reproduced faithfully rather than avoided: the
+  embroidered "Happy Thanksgiving" and the "BOO" with its purple witch hat. Text
+  on the REAL product is described precisely; supplier marketing text burnt into
+  a CJ photo (the Steam Brush's "Daily cleaning kit") is banned explicitly.
+
+  **OPEN DECISION, 10 variants.** The Jack-o-Lantern Sweater sells four
+  colourways but **CJ photographs only two**. "Black Embroidered" and "Black
+  Jacquard" have NO reference image anywhere in CJ's nine photos, so they cannot
+  be depicted and currently fall back to the Orange Stripe photo. That is the
+  same failure the image gate exists to prevent, the one that caught the cat
+  head hood sold as a dog vest. Recommendation: DELETE those 10 variants
+  (2 colourways x 5 sizes), leaving 10. I attempted it and the destructive-action
+  guard blocked it, correctly, so it needs the owner. The alternative is to keep
+  selling a colourway represented by a photo of a different colourway.
+
+  Lead images default to the alphabetically first look (Black hoodie, Dinosaur
+  costume, Boo sweater). Fine seasonally; reorder one image each if you want
+  different heroes.
+
 
 - **HOUSE ART: 7 OF 10 FALL PRODUCTS DONE, 106 VARIANTS WIRED (2026-08-18).**
   Cream #F7F2E9 masters shot with `nano-banana-pro`, recoloured per look so
