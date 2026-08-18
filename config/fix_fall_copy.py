@@ -44,7 +44,7 @@ argyle for every day in between</li>
 <p>A black four leg suit with a bone print that charges in daylight and glows on
 the evening walk, which is exactly when everyone is out looking at dogs.</p>
 <ul>
-<li>Soft stretch knit, pulls on over the head</li>
+<li>Soft brushed knit, pulls on over the head</li>
 <li>Ribbed neck and cuffs so it stays put</li>
 <li><strong>Cut for small dogs.</strong> Sizes S to XL here run small, so this
 suits chihuahuas, dachshunds, terriers and similar. For anything bigger see the

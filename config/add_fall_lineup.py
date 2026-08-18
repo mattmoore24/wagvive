@@ -68,12 +68,12 @@ SPECS = [
                (('L',), 'CJGD214316403CX', 75), (('XL',), 'CJGD214316404DW', 86)],
   'seo_title': 'Glow in the Dark Dog Skeleton Costume, 4 Sizes',
   'seo_desc': 'A black four leg suit with a skeleton that glows after dark. '
-              'Soft stretch knit, four sizes from small to extra large.',
+              'Soft brushed knit, four sizes from small to extra large.',
   'body': """<p><strong>It glows once the sun goes down.</strong></p>
 <p>A black four leg suit with a bone print that charges in daylight and glows on
 the evening walk, which is exactly when everyone is out looking at dogs.</p>
 <ul>
-<li>Soft stretch knit, pulls on over the head</li>
+<li>Soft brushed knit, pulls on over the head</li>
 <li>Ribbed neck and cuffs so it stays put</li>
 <li>Four sizes, small through extra large</li>
 </ul>
