@@ -1,0 +1,182 @@
+[
+ {
+  "product": "Calm & Comfort Kit",
+  "handle": "calm-comfort-kit",
+  "sizes": [
+   "Small",
+   "Medium",
+   "Large"
+  ],
+  "faults": [],
+  "exempt": null
+ },
+ {
+  "product": "Grooming Essentials Kit",
+  "handle": "grooming-essentials-kit",
+  "sizes": [
+   "Small",
+   "Medium",
+   "Large"
+  ],
+  "faults": [],
+  "exempt": null
+ },
+ {
+  "product": "New Puppy Kit",
+  "handle": "new-puppy-kit",
+  "sizes": [
+   "Small",
+   "Medium"
+  ],
+  "faults": [],
+  "exempt": null
+ },
+ {
+  "product": "Travel Kit",
+  "handle": "travel-kit",
+  "sizes": [
+   "Small",
+   "Medium",
+   "Large"
+  ],
+  "faults": [],
+  "exempt": null
+ },
+ {
+  "product": "Wagvive Big Dog Costume",
+  "handle": "wagvive-big-dog-costume",
+  "sizes": [
+   "3XL",
+   "4XL",
+   "5XL",
+   "6XL",
+   "7XL",
+   "8XL"
+  ],
+  "faults": [],
+  "exempt": null
+ },
+ {
+  "product": "Wagvive Cooling Comfort Pad",
+  "handle": "wagvive-cooling-comfort-pad",
+  "sizes": [
+   "Medium 24\" x 20\"",
+   "Large 28\" x 22\"",
+   "X-Large 39\" x 28\"",
+   "XX-Large 59\" x 39\""
+  ],
+  "faults": [],
+  "exempt": null
+ },
+ {
+  "product": "Wagvive Glow in the Dark Skeleton Suit",
+  "handle": "wagvive-glow-skeleton-suit",
+  "sizes": [
+   "S",
+   "M",
+   "L",
+   "XL"
+  ],
+  "faults": [],
+  "exempt": null
+ },
+ {
+  "product": "Wagvive Jack-o-Lantern Sweater",
+  "handle": "wagvive-jack-o-lantern-sweater",
+  "sizes": [
+   "XS",
+   "S",
+   "M",
+   "L",
+   "XL"
+  ],
+  "faults": [],
+  "exempt": null
+ },
+ {
+  "product": "Wagvive Paw Print Fleece Blanket",
+  "handle": "wagvive-paw-print-fleece-blanket",
+  "sizes": [
+   "S",
+   "M"
+  ],
+  "faults": [],
+  "exempt": null
+ },
+ {
+  "product": "Wagvive Paw Washing Cup",
+  "handle": "wagvive-paw-washing-cup",
+  "sizes": [
+   "S",
+   "M",
+   "L"
+  ],
+  "faults": [],
+  "exempt": "sized to the paw, not the body"
+ },
+ {
+  "product": "Wagvive Pumpkin Hoodie",
+  "handle": "wagvive-pumpkin-hoodie",
+  "sizes": [
+   "XS",
+   "S",
+   "M",
+   "L",
+   "XL",
+   "2XL",
+   "3XL",
+   "4XL",
+   "5XL",
+   "6XL",
+   "7XL",
+   "8XL",
+   "9XL"
+  ],
+  "faults": [],
+  "exempt": null
+ },
+ {
+  "product": "Wagvive Quick-Dry Bath Robe",
+  "handle": "wagvive-quick-dry-bath-robe",
+  "sizes": [
+   "XS",
+   "S",
+   "M"
+  ],
+  "faults": [],
+  "exempt": null
+ },
+ {
+  "product": "Wagvive Thanksgiving Turkey Sweater",
+  "handle": "wagvive-thanksgiving-turkey-coat",
+  "sizes": [
+   "S",
+   "M",
+   "L",
+   "XL"
+  ],
+  "faults": [],
+  "exempt": null
+ },
+ {
+  "product": "Wagvive Waterproof Snuggle Blanket",
+  "handle": "wagvive-waterproof-snuggle-blanket",
+  "sizes": [
+   "XS",
+   "S"
+  ],
+  "faults": [],
+  "exempt": null
+ },
+ {
+  "product": "Wagvive Waterproof Sofa & Furniture Cover",
+  "handle": "wagvive-waterproof-sofa-furniture-cover",
+  "sizes": [
+   "Small 20\" x 28\"",
+   "Medium 28\" x 39\"",
+   "Large 39\" x 57\""
+  ],
+  "faults": [],
+  "exempt": "sized to the furniture"
+ }
+]

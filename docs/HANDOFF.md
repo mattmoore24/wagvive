@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-18, home PC (fall lineup COMPLETE: 114/114 variants buyable, all 10 products lead with house art, CJ audit green)
+**Last updated:** 2026-08-18, home PC (size guides live on all 15 size products; Bath Robe 2x sizing error corrected; fall lineup COMPLETE)
 
 ---
 
@@ -141,6 +141,31 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **SIZE GUIDES ON ALL 15 SIZE PRODUCTS, AND A 2x SIZING ERROR FIXED
+  (2026-08-18).** Every product with a Size option now carries a per-size table
+  of real dog measurements. Nine had nothing at all, including every costume
+  and jumper. `config/apply_size_guides.py` writes them,
+  `config/audit_size_guides.py` is the standing gate, and all 15 verified on
+  the storefront, not on the write's return value.
+
+  **The Quick-Dry Bath Robe was telling customers the wrong size.** Its old
+  table said XS fits a 9 to 16 lb dog and named the Chihuahua. The maker's
+  chart says XS is 8 to 15 **kg**, which is 18 to 33 lb: someone read an
+  unlabelled weight column as pounds and converted it again, halving every row.
+  The chest column proves it (XS is graded for a 45 to 55 cm chest, a Chihuahua
+  is about 35 cm). Anyone who bought by that table got a robe about two sizes
+  too big. Corrected, and the Grooming and Travel kits inherit the fix because
+  their Size drives the robe.
+
+  Why it went unnoticed: **CJ hides its size charts in `<img>` tags inside the
+  product `description` HTML.** They are not in the API, not in
+  `productImageSet`, and `variantLength/Width/Height` are the postage carton
+  (the hoodie reports the same 300x200x30mm for XS and 9XL). Every earlier
+  script stripped the description to plain text first and so threw the charts
+  away. Full write-up, including the Jack-o-Lantern label offset and the
+  Skeleton Suit's stretch contradiction, in
+  `docs/knowledge/cj-size-charts.md`.
 
 - **HOUSE ART DONE ON ALL 10 FALL PRODUCTS (2026-08-18).** Every one now LEADS
   with a cream #F7F2E9 studio shot, and 116 of 126 variants point at their own

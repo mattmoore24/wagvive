@@ -237,6 +237,12 @@ config/
 
   audit_kits.py audit_cj_connections.py         the two standing audits
   verify_kit_callout.py                         component pages name their kits
+  apply_size_guides.py audit_size_guides.py     per-size dog measurement tables.
+                                                CJ hides its size charts in
+                                                <img> tags INSIDE the product
+                                                description, not in the API and
+                                                not in productImageSet. See
+                                                docs/knowledge/cj-size-charts.md
   replace_product_image.py match_framing.py     swap one photo, keep framing
                                                 and variant wiring
   remove_wipes.py                               worked example of retiring a SKU
