@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-18, home PC (fall lineup live AND fully CJ-paired, connection audit green; house-style imagery is the only item left)
+**Last updated:** 2026-08-18, home PC (Pumpkin Hoodie art done 65/65 wired; 4 design shots + 7 masters still to shoot; 2 wrong descriptions fixed)
 
 ---
 
@@ -141,6 +141,41 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **HOUSE-STYLE ART STARTED. Pumpkin Hoodie DONE, 65/65 variants wired
+  (2026-08-18).** `config/apply_fall_art.py` uploads from
+  `config/branding/fall/<handle>__<option value>.jpg` and points
+  `variant.image_id` at the matching colour, which is what drives the CART
+  THUMBNAIL as well as the swatch.
+
+  Pipeline that works: shoot ONE master per product on cream #F7F2E9 with
+  `nano-banana-pro` from the CJ reference, eyeball it, then RECOLOUR the
+  approved master for each colourway so pose, framing, print and shadow stay
+  locked. The Black/Blue/Red/Pink hoodies are recolours of the Grey master and
+  are pixel-consistent with it.
+
+  | Product | Art done | Variants wired |
+  |---|---|---|
+  | Pumpkin Hoodie | 5 of 5 colours | **65/65** |
+  | Big Dog Costume | Tiger only | 6/16 |
+  | Turkey Sweater | Plaid only | 4/12 |
+  | other 7 fall products | none yet | on CJ photos |
+
+  **REMAINING ART, 4 design shots then 7 single masters:** Big Dog Costume needs
+  Rabbit and Dinosaur; Turkey Sweater needs Turkey and Boo (the Boo design is
+  black knit with orange trim and an embroidered BOO in orange, purple and green
+  with a witch hat on the B, see CJ image 5 of CJGD1841040). Then single masters
+  for Skeleton Suit, Ball Launcher, Snuffle Mat, Roast Turkey, Pumpkin Chew,
+  Steam Brush (2 colours) and Jack-o-Lantern Sweater (4 colours).
+
+- **TWO DESCRIPTIONS WERE WRONG AND ARE FIXED.** Both caught by opening the CJ
+  photography at full size, which the option values and listing titles did not
+  reveal. The "Thanksgiving Turkey Coat" is a KNIT SWEATER with a mock neck, not
+  a lapel coat; renamed to **Wagvive Thanksgiving Turkey Sweater** and rewritten.
+  The Glow Skeleton Suit now states plainly that its sizes are SMALL BREED and
+  points large-dog buyers at the Pumpkin Hoodie (XS-9XL) and Big Dog Costume
+  (3XL-8XL). `config/fix_fall_copy.py`.
+
 
 - **FALL LINEUP COMPLETE AT 11 PRODUCTS, 124 VARIANTS, ALL BUYABLE (2026-08-18).**
   Wave 1 (`add_fall_lineup.py`) then wave 2 (`add_fall_wave2.py`).
