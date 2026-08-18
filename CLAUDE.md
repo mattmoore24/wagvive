@@ -107,6 +107,20 @@ Rules:
 - **An EMPTY answer from CJ is not evidence of anything** — retry it. One run
   came back empty for seven healthy SKUs at once; acting on that would have
   zeroed live kit components. Treat unanswerable as UNKNOWN, never as a finding.
+- **But retrying does not help if the empty answer is the daily API points
+  quota, not a hiccup.** CJ enforces a separate points budget on top of the
+  1 req/sec throttle `cj_api.py` already handles; a heavy day of scripting can
+  exhaust it. It shows up as an ordinary 200 response,
+  `result: false, code: 16900500, message: "Insufficient API points..."`,
+  which every retry loop in this repo currently reads as "nothing found" and
+  retries pointlessly. Confirmed live 2026-08-18: a partial read under this
+  condition reported a product's margin at 53.4% when a complete read the same
+  session found 27.8%. If you see this message, STOP — do not trust any number
+  computed while it was happening, and do not retry into it. Points trickle
+  back roughly once a minute; wait at least an hour of light CJ usage, or
+  resume the next day. See `docs/knowledge/cj-api-points-quota.md`. This also
+  means the scheduled 6-hourly job can hit the same wall — if it fails or logs
+  something odd, check for this before assuming a real cost/inventory problem.
 - **Never read CJ stock by hand. Call `sync_inventory.cj_stock(sku)`.** CJ returns
   TWO different row shapes and the right answer depends on which you got. Some
   SKUs carry nested per-warehouse entries, where the quantity is
@@ -270,3 +284,10 @@ committed. Copy the `.example` files to create them.
 Verify against the live system, not the tool's return value: re-fetch the object,
 load the storefront, check the rendered HTML. Several "successful" writes in this
 project's history did nothing.
+
+For a variant-level write (price, inventory), re-fetch the SPECIFIC variant by
+ID (`variants/{id}.json`), not the product's embedded variant list
+(`products.json?handle=X`). The list endpoint can serve a stale embedded
+`variants` array for minutes after a write that already landed correctly on the
+variant resource itself - this looks exactly like a partial failure and is not
+one. See `docs/knowledge/shopify-liquid-and-cdn-traps.md`, trap 4.

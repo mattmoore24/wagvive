@@ -34,9 +34,31 @@ A single fetch proves nothing either way.
 **How to apply:** retry per page before reporting a failure. Only a failure that
 survives several spaced fetches is real. See `config/verify_kit_callout.py`.
 
+**4. The ADMIN API's product-list endpoint can serve stale embedded variants for
+MINUTES after a successful write - this is not a storefront/CDN issue, it is the
+Admin REST API itself.** Found 2026-08-18 repricing the fall lineup: six variant
+PUTs all returned 200 immediately (`X-Shopify-Shop-Api-Call-Limit: 1/40`, proof
+each request landed). A `products.json?handle=X` re-fetch straight after showed
+some variants on the OLD price and some on the NEW one - looked exactly like a
+partial write. It was not: fetching the SAME variant IDs directly via
+`variants/{id}.json` showed every single one already correct, with an
+`updated_at` timestamp from the moment of the original write. The embedded
+`variants` array on the product LIST/SHOW endpoint was the only thing lagging;
+the variant resource itself was never wrong. Confirmed the other direction too:
+re-issuing "corrective" PUTs based on the stale list read were harmless no-ops.
+**How to apply:** never trust `products.json?handle=X` (or the equivalent
+GraphQL product query) to verify a variant-level write you just made. Re-fetch
+the SPECIFIC variant(s) by ID with `variants/{id}.json`, or wait and retry the
+list endpoint several times before concluding a write failed. This is exactly
+the same shape as traps 2 and 3 above (read the fastest/most convenient endpoint
+first, believe a single miss) applied to the Admin API instead of the storefront
+or theme assets endpoint - the fix is the same discipline: retry before
+believing, and know which endpoint is actually the source of truth.
+
 The general lesson, and the reason CLAUDE.md insists on live verification: when a
 Shopify write "did nothing", suspect the READ before rewriting the logic. Probe
-the actual values with a temporary HTML comment rather than reasoning about what
-Liquid ought to do.
+the actual values with a temporary HTML comment (storefront) or the specific
+resource ID (Admin API) rather than reasoning about what ought to be true, and
+rather than trusting the first convenient endpoint you already had open.
 
 Related: [[horizon-theme-json-traps]], [[shopify-admin-ui-automation-limits]]

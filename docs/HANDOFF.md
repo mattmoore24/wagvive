@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-18, home PC (size guides live on all 15 size products; Bath Robe 2x sizing error corrected; fall lineup COMPLETE)
+**Last updated:** 2026-08-18, home PC (6 fall/viral prices cut to market low, size guides live, fall lineup COMPLETE — one follow-up open, see below)
 
 ---
 
@@ -141,6 +141,63 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **6 FALL/VIRAL PRODUCTS REPRICED TO MARKET LOW; ONE FOLLOW-UP STILL OPEN
+  (2026-08-18).** None of the 10 fall-lineup/viral-launch products were ever in
+  `price_book.json` — they launched priced against cost alone (margins came out
+  40-53%, roughly triple the catalogue median) and were never checked against
+  what a real competitor charges. Live market research (Walmart marketplace,
+  the unbranded/volume-seller comparison this store needs, matching
+  `market_bands.py`'s own methodology) found 6 were priced well above their
+  category and cut them to the market low (or the price needed to clear 25%
+  margin, whichever binds), all `.99`-rounded UP so nothing crosses the floor:
+
+  | Product | Was | Now |
+  |---|---:|---:|
+  | 3-in-1 Steam Grooming Brush | $26.99 | $16.99 |
+  | Glow Skeleton Suit | $24.99 | $15.99 |
+  | Pumpkin Hoodie | $21.99 | $15.99 |
+  | Roast Turkey Sniff Toy | $22.99 | $17.99 |
+  | Jack-o-Lantern Sweater | $17.99 | $12.99 |
+  | Thanksgiving Turkey Sweater | $19.99 | $15.99 |
+
+  Held at current price: **Big Dog Costume** and **Pumpkin Snuffle Mat** are
+  already at/under their direct market comps; **Pumpkin Chew Toy** is already
+  at its margin floor; **Ball Launcher** ($94.99) is held deliberately despite
+  the formula saying $91.99 — its freight comes from a CJ $0.00 domestic quote
+  falling back to an $11 flat estimate calibrated on a 450g reference item, and
+  this SKU is 1800g. A different call pattern elsewhere in the repo would price
+  the same $0 quote at $26.20, which would put TODAY's price at ~11% margin,
+  not 27.6%. Do not cut this one until real freight is confirmed against an
+  actual order. Task flagged: `task_6d9443f0`.
+
+  All 6 cuts verified correct three ways (direct per-variant Admin API reads,
+  storefront `.js`, and a repeat pass). Script:
+  `config/reprice_fall_lineup.py` (dry-run by default).
+
+  **OPEN FOLLOW-UP: none of the 10 are in `price_book.json` yet.**
+  `config/book_fall_lineup.py` is written and ready (`--apply` to run) but
+  CJ's daily API points quota hit zero mid-session (`Used today: 104890,
+  Remaining: 0`) before it could finish — only the Steam Grooming Brush got a
+  complete read. **This is not a code problem, it needs the quota to
+  replenish first.** Points trickle back roughly once a minute (daily total /
+  1440), not at a fixed reset time; practically, retry after an hour of light
+  CJ usage or the next day. Until this runs, all 10 fall/viral products are
+  governed by `margin_guard.DEFAULT_FLOOR` (25%) rather than a calibrated
+  floor — a safe fallback, just not tuned to each product. See
+  `docs/knowledge/cj-api-points-quota.md` for the full finding, including a
+  real risk this poses to the next scheduled 6-hourly job if the quota is
+  still down when it fires.
+
+  Two unrelated things found and fixed along the way, both documented in
+  `docs/knowledge/`: Shopify's Admin API `products.json?handle=X` list
+  endpoint served a stale embedded `variants` array for several minutes after
+  a fully-successful write, which looked exactly like a partial price-cut
+  failure and was not one (`shopify-liquid-and-cdn-traps.md`, trap 4) — and
+  CJ's daily points quota is a separate limit from the documented 1 req/sec
+  throttle, with no handling anywhere in this repo yet
+  (`cj-api-points-quota.md`, plus a flagged follow-up `task_ffc85935` to
+  harden `cj_api.call()` itself).
 
 - **FALL COLLECTION IS SEASONAL ONLY AGAIN (2026-08-18).** The Automatic Ball
   Launcher and the 3-in-1 Steam Grooming Brush were sitting in
@@ -1120,6 +1177,12 @@ A failed run emails the owner — silence means healthy.
   for duplicate source SKUs (`sku[:11]`), not just titles.
 
 ## Open work, in priority order
+
+**Run once CJ's API points quota has replenished:**
+`python config/book_fall_lineup.py --apply` — adds the 10 fall/viral products
+to `price_book.json` with calibrated floors. Blocked 2026-08-18 by CJ's daily
+points quota hitting zero, not a code problem. See "What just happened" above
+and `docs/knowledge/cj-api-points-quota.md`.
 
 > **Task-number warning.** An earlier version of this file used numbers #73 to
 > #82 for the pricing queue. Those are all DONE or VOIDED, and the live task
