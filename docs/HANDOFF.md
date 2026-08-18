@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-18, home PC (the "unshippable" scare was a FALSE ALARM: all 10 variants restored and buyable; guard now tests freight quotability, all 145 pass)
+**Last updated:** 2026-08-18, home PC (fall lineup LIVE, 6 products/47 variants; CJ pairing and house art still open on them)
 
 ---
 
@@ -141,6 +141,44 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **FALL LINEUP LIVE, 6 PRODUCTS, 47 VARIANTS (2026-08-18).** Sourced from a
+  5,535 product CJ sweep (`config/scout_fall.py`), costed on live freight,
+  created by `config/add_fall_lineup.py`. All active, published to all five
+  channels, stocked, and verified buyable. New "Fall and Halloween" collection
+  (517682135329).
+
+  | Product | Price | Var | Floor | SPU |
+  |---|---|---|---|---|
+  | Glow in the Dark Skeleton Suit | $24.99 | 4 | 46.4% | CJGD2143164 |
+  | Halloween Snuffle Mat | $32.99 | 1 | 44.9% | CJYD2183039 |
+  | Jack-o-Lantern Sweater | $17.99 | 20 | 37.5% | CJGD1809813 |
+  | Halloween Squeaky Bones | $15.99 | 8 | 46.3% | CJYD2146653 |
+  | Thanksgiving Turkey Coat | $19.99 | 12 | 31.7% | CJGD1841040 |
+  | 3-in-1 Steam Grooming Brush | $26.99 | 2 | 45.5% | CJYD2256797 |
+
+  **TWO THINGS STILL OPEN ON THESE, both needed:**
+  1. **CJ PAIRING.** None of the six is connected to CJ yet, so orders will NOT
+     flow to fulfilment. Browser only, owner's real Chrome, one product at a
+     time per `docs/knowledge/cj-pairing-runbook.md`.
+  2. **House-style art.** They launched on CJ's own (verified clean) photos, not
+     cream #F7F2E9. Deliberate: Halloween is 31 October and orders must land by
+     about 10 October, so early beat perfect. Reshoot and swap with
+     `replace_product_image.py`.
+
+- **US WAREHOUSE: available, and it does fix freight, but not cost.**
+  446 US-stocked pet products found (`config/scout_us_warehouse.json`); the
+  signal is `shippingCountryCodes` containing a bare "US" on the product list
+  row, NOT the CJBQ sku prefix and NOT a stock-row country you assumed. US stock
+  pays no duty and flat $11 Fedex regardless of weight, so an 1,800g launcher
+  and a 350g toy cost the same to ship. But US wholesale runs 4 to 10x China
+  ($19-52 vs $1-5), because someone already imported and stored it. At the
+  catalogue's median 16.6% floor two clear market: the **automatic ball launcher**
+  (CJCT2567740, $52.59, floor price $82 against a $80-130 market, 167 units,
+  337 listings) and the **7pc grooming kit** (CJHR2665670, floor $40 against
+  $40-70, but only **30 units**). Neither is built yet; the launcher is the
+  better bet and is genuinely demo-able.
+
 
 - **THE "UNSHIPPABLE" SCARE WAS A FALSE ALARM. RESOLVED 2026-08-18.**
 
