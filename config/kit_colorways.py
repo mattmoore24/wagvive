@@ -47,18 +47,18 @@ RULES FOR EDITING THIS FILE
 # The blanket only comes in S and M, so Large reuses M: that is the largest the
 # supplier makes, not an oversight.
 SIZE_MAP = {
-    'Small':  {'Paw Print Fleece Blanket': 'S',
-               'Quick-Dry Bath Robe':      'XS',
-               'Paw Washing Cup':          'S',
-               'Cooling Comfort Pad':      'Medium 24" x 20"'},
-    'Medium': {'Paw Print Fleece Blanket': 'M',
-               'Quick-Dry Bath Robe':      'S',
-               'Paw Washing Cup':          'M',
-               'Cooling Comfort Pad':      'Large 28" x 22"'},
-    'Large':  {'Paw Print Fleece Blanket': 'M',
-               'Quick-Dry Bath Robe':      'M',
-               'Paw Washing Cup':          'L',
-               'Cooling Comfort Pad':      'X-Large 39" x 28"'},
+    'S': {'Paw Print Fleece Blanket': 'S',
+          'Quick-Dry Bath Robe':      'S',
+          'Paw Washing Cup':          'S',
+          'Cooling Comfort Pad':      'M'},
+    'M': {'Paw Print Fleece Blanket': 'L',
+          'Quick-Dry Bath Robe':      'M',
+          'Paw Washing Cup':          'M',
+          'Cooling Comfort Pad':      'L'},
+    'L': {'Paw Print Fleece Blanket': 'L',
+          'Quick-Dry Bath Robe':      'L',
+          'Paw Washing Cup':          'L',
+          'Cooling Comfort Pad':      'XL'},
 }
 
 # Per kit: the option that is NOT size, and what each of its values fixes.
@@ -68,7 +68,7 @@ KITS = {
     'New Puppy Kit': {
         'option': 'Colorway',
         'price': '54.00', 'compare_at': '66.95',
-        'sizes': ['Small', 'Medium'],          # only the blanket varies by size
+        'sizes': ['S', 'M'],          # only the blanket varies by size
         'fixed': ['Cuddle Companion Teddy'],
         'values': {
             'Blue': {
@@ -132,7 +132,7 @@ KITS = {
     'Grooming Essentials Kit': {
         'option': 'Colorway',
         'price': '70.00', 'compare_at': '86.95',
-        'sizes': ['Small', 'Medium', 'Large'],
+        'sizes': ['S', 'M', 'L'],
         'values': {
             'Green': {
                 'Self-Cleaning Slicker Brush': 'Green',
@@ -195,7 +195,7 @@ KITS = {
     'Travel Kit': {
         'option': 'Colorway',
         'price': '85.00', 'compare_at': '105.95',
-        'sizes': ['Small', 'Medium', 'Large'],
+        'sizes': ['S', 'M', 'L'],
         'values': {
             'Blue': {
                 'Travel Water Bottle & Bowl': 'Blue',
@@ -224,7 +224,7 @@ KITS = {
     'Calm & Comfort Kit': {
         'option': 'Colorway',
         'price': '109.00', 'compare_at': '135.95',
-        'sizes': ['Small', 'Medium', 'Large'],
+        'sizes': ['S', 'M', 'L'],
         'fixed': ['Heartbeat Soothing Sloth'],
         'values': {
             'Grey': {
