@@ -67,10 +67,33 @@ triggers, so forks cannot reach secrets or trigger runs.
    public now, but customer names, emails, order details, or anything from the
    Shopify admin about actual PEOPLE must never be committed - that was true
    before, and is now enforced by the whole internet.
-4. **The live token is over-scoped** (183 scopes on Wagvive Ops, including
-   read_all_orders and customer data). It lives only in gitignored .env +
-   GitHub Secrets, but narrowing it to what the scripts actually use is now
-   worth doing. Open follow-up.
+4. **The live token is over-scoped. OPEN FOLLOW-UP, deliberately deferred
+   2026-08-19.** Wagvive Ops grants **183 scopes**, including `read_all_orders`
+   and full customer data, against roughly 29 the automation actually uses
+   (`config/verify_scopes.py` lists the real requirement in `NEEDED`, and
+   currently reports all four capability groups READY with every endpoint probe
+   passing - nothing is broken, it is purely excess privilege).
+
+   **Why it was NOT done at the same time as going public:** the exposure did
+   not change. The token was never in the repo and still is not - it lives only
+   in gitignored `.env` and GitHub Secrets, both of which stay private on a
+   public repo. Going public raised the cost of a FUTURE mistake, not the
+   current risk on this token.
+
+   **Why it is not a five minute job.** Wagvive Ops is an admin-created custom
+   app, and per Shopify's docs those cannot have credentials or scopes changed
+   in place: you must UNINSTALL AND REINSTALL, which issues a NEW access token
+   and interrupts requests and webhooks until the new value is in place. So the
+   real sequence is: narrow scopes -> reinstall -> new token -> update the
+   `SHOPIFY_ADMIN_API_TOKEN` GitHub Secret AND `config/shopify.env` -> re-run
+   `config/verify_scopes.py` -> confirm the scheduled job passes. Live
+   automation is down in between.
+
+   **When to actually do it:** bundle it with other Shopify admin work so the
+   interruption is taken once. The trigger that should force it regardless is
+   **real order volume** - `read_all_orders` plus customer scopes on an
+   over-broad token is a theoretical liability at 1 test order and a genuine
+   one once real customer data exists. Do it BEFORE volume arrives, not after.
 5. **Actions minutes are unlimited; CJ points are not.** The scheduled job is
    back at 6-hourly. If cadence pressure ever returns it will come from CJ's
    points budget, and the fix there is deduplicating the two guards' identical

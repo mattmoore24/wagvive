@@ -1264,6 +1264,18 @@ A failed run emails the owner — silence means healthy.
 
 ## Open work, in priority order
 
+**SECURITY, deferred by design 2026-08-19: narrow the Shopify token's scopes.**
+The live Wagvive Ops token grants 183 scopes (incl. `read_all_orders` and full
+customer data) against ~29 actually used. NOT urgent and NOT caused by going
+public: the token was never in the repo and still is not. It is deferred
+because Wagvive Ops is an admin-created custom app, which Shopify cannot
+re-scope in place - it needs uninstall/reinstall, which issues a NEW token and
+takes the automation down until `SHOPIFY_ADMIN_API_TOKEN` is updated in BOTH
+GitHub Secrets and `config/shopify.env`.
+**Do it before real order volume arrives**, bundled with other Shopify admin
+work so the interruption is taken once. Full sequence and rationale in
+`docs/knowledge/going-public-2026-08.md`, rule 4.
+
 > **Task-number warning.** An earlier version of this file used numbers #73 to
 > #82 for the pricing queue. Those are all DONE or VOIDED, and the live task
 > list has since reused #73 to #77 for different things. **Trust the
