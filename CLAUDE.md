@@ -279,6 +279,14 @@ print a plain-English report and exit non-zero on a real problem.
 Secrets live in `config/shopify.env` and `config/cj.env` — gitignored, never
 committed. Copy the `.example` files to create them.
 
+**THE REPO IS PUBLIC (2026-08-19), so every push is world-readable instantly.**
+Full account and rules in `docs/knowledge/going-public-2026-08.md`; the short
+version: never commit `.claude/settings.local.json` (it records approved Bash
+commands verbatim, which is exactly how a Shopify client_secret leaked into
+history and forced a scrub), never commit anything about actual customers, and
+leave GitHub's secret scanning + push protection ON. Costs and margins being
+visible is an accepted, deliberate trade for unlimited Actions minutes.
+
 ## Before saying something is done
 
 Verify against the live system, not the tool's return value: re-fetch the object,

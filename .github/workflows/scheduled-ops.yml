@@ -16,34 +16,25 @@ name: Scheduled store operations
 #   * margin_guard.py runs REPORT-ONLY. It never changes prices unattended.
 #     If any variant is under the 50% floor the job FAILS, which emails you.
 #     Repricing stays a human decision.
-#   * CADENCE IS NOW 12-HOURLY (2026-08-19), down from 6-hourly, which was
-#     itself down from 3-hourly. A full run is about 22 minutes
-#     (guard_unshippable ~8, margin_guard ~8, sync_inventory ~4,
-#     fix_locations ~2), because both guards ask CJ for a live freight quote on
-#     all 258 variants. TWO separate budgets forced this down again:
+#   * CADENCE IS 6-HOURLY AGAIN (2026-08-19, later the same day it was cut to
+#     12-hourly). The 12-hourly cut existed because this was a PRIVATE repo on
+#     the Free plan's 2,000 Actions minutes/month, and at 6-hourly the job
+#     needed ~2,675. The repo went PUBLIC on 2026-08-19 (owner decision, after
+#     a full history scrub and deletion of the Shopify app whose client_secret
+#     had leaked into history - see docs/knowledge/going-public-2026-08.md), and
+#     public repos get unlimited standard-runner minutes, so the Actions budget
+#     no longer constrains cadence.
 #
-#       GitHub Actions. This is a PRIVATE repo, so the Free plan includes 2,000
-#       minutes/month. At 6-hourly: 4 runs/day x 30.4 days x 22 min = ~2,675
-#       min/month, roughly 34% OVER the allowance before any other workflow
-#       runs. At 12-hourly it is ~1,340, comfortably inside it. (Making the repo
-#       public would also lift the limit, but this repo holds supplier costs,
-#       margins and the whole pricing model - that is competitive intelligence
-#       and is not worth free minutes.)
-#
-#       CJ API points. CJ enforces a DAILY POINTS BUDGET separate from its
-#       1 req/sec throttle (docs/knowledge/cj-api-points-quota.md). This job is
-#       one of the largest consumers on the account: ~300 CJ calls per run
-#       across the two guards. Halving the cadence halves that drain and leaves
-#       more headroom for interactive work, which is what exhausted the quota on
-#       2026-08-18.
-#
-#     The cost of 12-hourly is a risk window that doubles, from 6 to 12 hours,
-#     for cost drift and inventory double-counts. With current order volume that
-#     is an easy trade. Revisit if volume grows.
+#     What still DOES constrain it: CJ's daily API points budget
+#     (docs/knowledge/cj-api-points-quota.md). This job makes ~300 CJ calls per
+#     run across the two guards (~600/day at 6-hourly), and the two guards
+#     duplicate the same freight quotes - deduplicating them would halve that.
+#     If interactive CJ-heavy work exhausts the quota again, cut cadence or do
+#     the dedupe rather than letting margin_guard's coverage gate fail runs.
 
 on:
   schedule:
-    - cron: '17 */12 * * *'  # every 12 hours, offset off the hour
+    - cron: '17 */6 * * *'   # every 6 hours, offset off the hour
   workflow_dispatch:          # lets you run it on demand from the Actions tab
 
 concurrency:

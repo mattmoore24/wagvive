@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-19, home PC (scheduled-job failure fixed: false breach from an un-retried CJ quote; cadence halved to fit the Actions free tier; price_book stale-price bug corrected)
+**Last updated:** 2026-08-19, home PC (REPO IS NOW PUBLIC: secret found in history, its app deleted, history scrubbed, force-pushed, verified clean; Actions unlimited, cadence back to 6-hourly)
 
 ---
 
@@ -141,6 +141,22 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **THE REPO IS PUBLIC (2026-08-19).** Owner decision, to get unlimited GitHub
+  Actions minutes after the private-repo allowance proved too small for the
+  scheduled job. Before flipping: a live Shopify app client_secret was found in
+  git history (in `.claude/settings.local.json`, tracked since the initial
+  commit), the app it belonged to ("Wagvive Automation", a setup-era leftover
+  the automation never used - the live token is "Wagvive Ops") was DELETED by
+  the owner, killing the secret permanently, and the full history was scrubbed
+  with git filter-repo and force-pushed. A fresh-clone verification caught a
+  stale remote branch still serving the old history; it was deleted and a
+  second fresh clone verified zero occurrences across every ref. Secret
+  scanning + push protection are ON. Scheduled-ops cadence is back to
+  6-HOURLY. Full account and the new public-repo rules:
+  `docs/knowledge/going-public-2026-08.md`. The pre-scrub backup bundle sits
+  at `../wagvive-pre-scrub-backup.bundle` (local only, SENSITIVE - it contains
+  the unscrubbbed history).
 
 - **SCHEDULED JOB FAILURE FIXED, AND IT WAS A FALSE ALARM (2026-08-19).** The
   owner got a `Scheduled store operations` failure email. **No price was ever
