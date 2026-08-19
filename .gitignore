@@ -41,3 +41,9 @@ venv/
 Thumbs.db
 desktop.ini
 *.swp
+
+# Claude Code local settings. NEVER commit: this file records the exact
+# Bash commands approved during a session, and one of them embedded a live
+# Shopify app client_secret (found 2026-08-19 while auditing whether this
+# repo could safely be made public). The "local" in the name means local.
+.claude/settings.local.json
