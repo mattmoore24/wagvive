@@ -288,11 +288,25 @@ def main():
                 rows = []
             origin = ('US' if any((x.get('countryCode') or '').upper() == 'US'
                                   for x in rows) else 'CN')
-            r = cj_api.call('/logistic/freightCalculate', payload={
-                'startCountryCode': origin,
-                'endCountryCode': 'US',
-                'products': [{'quantity': 1, 'vid': cv.get('vid')}]})
-            opts = r.get('data') or []
+            # RETRY before believing CJ has no carriers. An empty answer from CJ
+            # is not evidence of anything (CLAUDE.md) and this call had no retry,
+            # so one transient empty response reported a live, perfectly
+            # shippable product as "NO carrier within 12 days". Confirmed
+            # 2026-08-19: a run flagged the Steam Grooming Brush, Thanksgiving
+            # Turkey Sweater and Sofa Cover, and an immediate manual retry
+            # returned 27 carriers with 19 inside the promise for all three.
+            # Same defect class as the one that failed the scheduled job in
+            # margin_guard.best_freight the same week.
+            opts = []
+            for attempt in range(3):
+                r = cj_api.call('/logistic/freightCalculate', payload={
+                    'startCountryCode': origin,
+                    'endCountryCode': 'US',
+                    'products': [{'quantity': 1, 'vid': cv.get('vid')}]})
+                opts = r.get('data') or []
+                if opts:
+                    break
+                time.sleep(1.5 * (attempt + 1))
             # A $0.00 quote is MISSING DATA, never free carriage, so it must not
             # be priced from. But it is NOT the same as having no carrier, and
             # conflating the two is wrong: the Automatic Ball Launcher ships
