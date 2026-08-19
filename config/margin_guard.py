@@ -48,6 +48,27 @@ LOG = os.path.join(ROOT, 'config', 'margin_guard_log.json')
 STRESS_COST = 0.10
 STRESS_FREIGHT = 0.15
 
+# Fraction of variants that must get a REAL CJ answer for a run to mean
+# anything. Below this the job fails as "could not verify" rather than
+# reporting either a breach or an all-clear, both of which would be fiction.
+# 0.80 leaves room for CJ's normal per-call flakiness (a handful of empty
+# responses per sweep is routine) while still catching a genuine outage or an
+# exhausted points budget, where nearly everything comes back empty.
+MIN_COVERAGE = 0.80
+
+# Stop the sweep once this many variants in a row come back unanswered. Without
+# it, retrying 258 variants x 3 attempts with backoff takes ~36 minutes for the
+# freight step alone and blows the workflow's 50 minute timeout, converting a
+# clean "could not verify" into an opaque timeout that burns the full 50
+# minutes of Actions time and says nothing. 15 in a row is far past normal
+# flakiness (routine is a handful scattered through a sweep) and means CJ is
+# down or the points budget is gone.
+OUTAGE_STREAK = 15
+
+
+class CJUnavailable(Exception):
+    """CJ cannot answer at all right now. Not a margin finding."""
+
 env = {}
 with open(os.path.join(ROOT, 'config', 'shopify.env'), encoding='utf-8') as fh:
     for line in fh:
@@ -139,10 +160,29 @@ def best_freight(vid, start, sku=''):
     Falls back to the cheapest promise-compliant option only when the selected
     carrier is unavailable for that variant.
     """
-    r = cj_api.call('/logistic/freightCalculate', payload={
-        'startCountryCode': start, 'endCountryCode': 'US',
-        'products': [{'quantity': 1, 'vid': vid}]})
-    opts = r.get('data') or []
+    # RETRY before believing CJ has nothing. An empty answer from CJ is not
+    # evidence of anything (CLAUDE.md), and this function had no retry at all:
+    # one transient empty response was enough to substitute an estimate and,
+    # via the caller, report a margin breach that did not exist. Confirmed
+    # live 2026-08-19: four identical calls for the same vid returned 27 real
+    # carriers three times and zero on the fourth.
+    opts = []
+    for attempt in range(3):
+        r = cj_api.call('/logistic/freightCalculate', payload={
+            'startCountryCode': start, 'endCountryCode': 'US',
+            'products': [{'quantity': 1, 'vid': vid}]})
+        # Quota exhaustion is not flakiness and cannot be retried through: CJ
+        # returns an ordinary 200 with result:false and this message, and no
+        # number of attempts will change it until points replenish. Bail out
+        # of the whole run immediately rather than burning ~36 minutes
+        # retrying every remaining variant into the same wall.
+        if r.get('result') is False and 'Insufficient API points' in str(r.get('message')):
+            raise CJUnavailable(str(r.get('message'))[:200])
+        opts = r.get('data') or []
+        if opts:
+            break
+        time.sleep(1.5 * (attempt + 1))
+
     inside = [o for o in opts if o.get('logisticPrice') is not None
               and upper_days(o.get('logisticAging')) <= MAX_DAYS]
 
@@ -152,11 +192,22 @@ def best_freight(vid, start, sku=''):
             p = o.get('logisticPrice')
             if p and p > 0:
                 return {'price': float(p), 'name': want, 'aging': o.get('logisticAging'),
-                        'within_promise': bool(inside), 'estimated': False}
+                        'within_promise': bool(inside), 'estimated': False,
+                        'answered': True}
 
     price, name, aging, estimated = freight_floor.resolve(opts)
+    # `answered` separates two very different situations that both set
+    # `estimated`:
+    #   opts non-empty but all $0/placeholder -> CJ ANSWERED with missing data.
+    #     Stable and known (the US-warehoused Ball Launcher does this on every
+    #     call), so the documented fallback stands in and the variant is still
+    #     judged.
+    #   opts empty after retries -> CJ did NOT answer. Unknowable right now,
+    #     and judging it means inventing a cost. The caller treats this as
+    #     UNRESOLVED instead of as a breach.
     return {'price': price, 'name': f'{name} (selected carrier unavailable)',
-            'aging': aging, 'within_promise': bool(inside), 'estimated': estimated}
+            'aging': aging, 'within_promise': bool(inside),
+            'estimated': estimated, 'answered': bool(opts)}
 
 
 def main():
@@ -177,6 +228,7 @@ def main():
     products = api('GET', 'products.json?limit=250&status=active')['products']
     costs = live_cj_costs([v.get('sku') for p in products for v in p['variants']])
     breaches, unresolved, thin, checked = [], [], [], 0
+    streak, outage = 0, None
 
     for p in products:
         title = p['title']
@@ -199,9 +251,36 @@ def main():
             # three hours on a breach that did not exist.
             start = freight_floor.origin_for(sku)
             duty = DUTY_PCT_US_WAREHOUSE if start == 'US' else DUTY_PCT
-            fr = best_freight(vid, start, sku)
-            if not fr:
-                unresolved.append((title, v['title'], sku, 'no carrier'))
+            try:
+                fr = best_freight(vid, start, sku)
+            except CJUnavailable as exc:
+                outage = str(exc)
+                break
+            if fr.get('answered'):
+                streak = 0
+            else:
+                streak += 1
+                if streak >= OUTAGE_STREAK:
+                    outage = (f'{streak} variants in a row returned no carrier; '
+                              f'CJ is not answering')
+                    unresolved.append((title, v['title'], sku,
+                                       'CJ returned no carrier after 3 tries'))
+                    break
+            # `if not fr` was dead code: best_freight ALWAYS returns a dict, so
+            # this never fired and a variant CJ would not quote fell through
+            # with an invented freight figure and got judged on it. That is how
+            # this job failed on 2026-08-19 with a breach that did not exist:
+            # the Pumpkin Hoodie 9XL reads 29.3% on a real $7.10 quote and 4.2%
+            # on the $11.00 no-quote fallback, against a 21.3% floor.
+            #
+            # An unanswered quote is UNKNOWN, never a finding - the same rule
+            # guard_unshippable.py already follows and CLAUDE.md states
+            # outright. A $0/placeholder answer is different: CJ did respond,
+            # the condition is stable and documented, so the fallback stands
+            # and the variant is still judged.
+            if not fr.get('answered'):
+                unresolved.append((title, v['title'], sku,
+                                   'CJ returned no carrier after 3 tries'))
                 continue
             checked += 1
             price = float(v['price'])
@@ -222,6 +301,8 @@ def main():
                 thin.append((title, str(v['title']), sku, price, m, stress, slack,
                              fr['price']))
 
+        if outage:
+            break
         if rows:
             safe = title.encode('ascii', 'replace').decode()
             print(f'{safe}  (floor {floor:.0%})')
@@ -245,6 +326,31 @@ def main():
         for t, vt, sku, price, m, stress, slack, frt in sorted(thin, key=lambda r: r[5]):
             print(f'  {t[:32]:34} {vt[:18]:20} ${price:.2f}  now {m:.1f}%  '
                   f'stress {stress:.1f}%  freight headroom ${slack:.2f}')
+
+    # A guard that verified almost nothing must not report success. Treating an
+    # unanswered quote as UNKNOWN (rather than as a breach) is correct, but it
+    # opens the opposite failure: if CJ is down or its daily points budget is
+    # exhausted, every variant becomes UNKNOWN and the job would exit 0 having
+    # checked nothing at all. So a run that could not grade most of the
+    # catalogue fails loudly, and says clearly that it is a COVERAGE problem,
+    # not a margin problem - the two need completely different responses.
+    total_seen = checked + len(unresolved)
+    coverage = checked / total_seen if total_seen else 0.0
+    if total_seen and coverage < MIN_COVERAGE:
+        print(f'\nCOULD NOT VERIFY: only {checked}/{total_seen} variants '
+              f'({coverage:.0%}) got a real answer from CJ, below the '
+              f'{MIN_COVERAGE:.0%} minimum.')
+        print('This is NOT a margin breach. Nothing is known to be wrong with '
+              'any price. CJ did not answer often enough for this run to mean '
+              'anything - most likely its daily API points budget '
+              '(docs/knowledge/cj-api-points-quota.md) or a transient outage. '
+              'Re-run once it recovers.')
+        with open(LOG, 'w', encoding='utf-8') as fh:
+            json.dump({'ran_at': time.strftime('%Y-%m-%dT%H:%M:%S'),
+                       'result': 'insufficient_coverage',
+                       'checked': checked, 'unresolved': len(unresolved),
+                       'coverage': round(coverage, 3)}, fh, indent=1)
+        return 1
 
     if not breaches:
         print('\nAll variants clear their floors.')

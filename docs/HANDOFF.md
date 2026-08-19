@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-18, home PC (fall/viral pricing fully done: 6 prices cut, all 10 in price_book.json with real floors, size guides live, fall lineup COMPLETE)
+**Last updated:** 2026-08-19, home PC (scheduled-job failure fixed: false breach from an un-retried CJ quote; cadence halved to fit the Actions free tier; price_book stale-price bug corrected)
 
 ---
 
@@ -141,6 +141,51 @@ into Shopify, repairs inventory locations, and checks margins **every 6 hours**.
 A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
+
+- **SCHEDULED JOB FAILURE FIXED, AND IT WAS A FALSE ALARM (2026-08-19).** The
+  owner got a `Scheduled store operations` failure email. **No price was ever
+  wrong and nothing customer-facing was affected.** `margin_guard.py` reported
+  a margin breach that did not exist, because `best_freight()` had no retry:
+  one transient empty response from CJ fell through to the $11.00 no-quote
+  fallback, and the Pumpkin Hoodie 9XL reads 29.3% on its real $7.10 quote but
+  4.2% on that fallback, against a 21.3% floor. A full run the next morning
+  with CJ healthy returned **258 checked, 0 breaches, all variants clear**.
+
+  The trigger was CJ's daily API points quota, which the previous day's pricing
+  work had drained — the exact risk written up in
+  `docs/knowledge/cj-api-points-quota.md` the day before it happened.
+
+  Four fixes in `margin_guard.py`: retry before believing CJ has nothing;
+  distinguish **"CJ did not answer"** (UNKNOWN, never a finding) from
+  **"CJ answered $0/placeholder"** (stable and documented, still judged);
+  abort immediately on quota exhaustion rather than retrying ~36 minutes into a
+  wall and blowing the 50 minute timeout; and a `MIN_COVERAGE` gate that fails
+  the job as **"COULD NOT VERIFY"** if under 80% of variants got a real answer,
+  so a total outage can never produce a silent all-clear. Simulated outage now
+  exits in 0.6s with an explicit "this is NOT a margin breach".
+
+  `guard_unshippable.py` was checked and already handles this correctly (it
+  treats unreachable as UNKNOWN and will not zero inventory), so no change
+  there.
+
+  **Cadence halved, 6-hourly to 12-hourly.** Two budgets forced it, and the
+  owner's instinct about billing was half right: this is a PRIVATE repo, so
+  Actions gives 2,000 free minutes/month, and at 6-hourly the job needed
+  ~2,675 — about 34% over. It was NOT the cause of this failure (an exhausted
+  minute allowance stops workflows running; it does not make a step exit
+  non-zero), but it was a real problem sitting underneath. 12-hourly costs
+  ~1,340 min/month and also halves this job's ~300-CJ-calls-per-run drain on
+  the points budget that broke it. **Going public was rejected** as the fix:
+  the repo holds supplier costs, margins and the full pricing model.
+
+  Also fixed while in there: `book_fall_lineup.py` had recorded STALE prices
+  into `price_book.json` for 5 of the 6 products repriced on 2026-08-18 (the
+  Hoodie went in as 51 variants at $15.99 and 14 at the old $21.99) because it
+  read `products.json?handle=X`, the endpoint documented as unreliable in
+  `shopify-liquid-and-cdn-traps.md` trap 4 the same day. The live store was
+  correct throughout; only the book was wrong, but `apply_price_book.py` would
+  have pushed those old prices back. The book is corrected from authoritative
+  per-variant reads and the script now uses them.
 
 - **ALL 10 FALL/VIRAL PRODUCTS REPRICED AND FULLY IN `price_book.json`
   (2026-08-18).** None of the 10 fall-lineup/viral-launch products were ever

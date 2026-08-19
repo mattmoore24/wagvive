@@ -62,6 +62,31 @@ def api(path):
     return out
 
 
+def authoritative_prices(p):
+    """{variant_id: price} re-read one variant at a time, NOT from `p`.
+
+    The embedded `variants` array on products.json?handle=X can serve a STALE
+    price for minutes after a write that already landed
+    (docs/knowledge/shopify-liquid-and-cdn-traps.md, trap 4). The first version
+    of this script trusted it and baked the pre-repricing prices straight into
+    price_book.json for five of the six products repriced that day: the
+    Pumpkin Hoodie went in as 51 variants at the new $15.99 and 14 at the old
+    $21.99, which is the exact stale mix observed live minutes earlier. The
+    store itself was correct throughout; only the book was wrong.
+
+    The book is the source of truth for what a price SHOULD be, so a stale
+    value in it is not cosmetic: apply_price_book.py would happily push those
+    old prices back onto the store. Re-reading per variant costs one Shopify
+    call each (no CJ points), which is cheap insurance for the one file that
+    is supposed to be authoritative.
+    """
+    out = {}
+    for v in p['variants']:
+        real = api(f"variants/{v['id']}.json")['variant']
+        out[v['id']] = float(real['price'])
+    return out
+
+
 class QuotaExhausted(Exception):
     pass
 
@@ -97,6 +122,7 @@ def resolve_product(p):
     budget dies partway through - the caller decides what to do with whatever
     OTHER products already succeeded before this one."""
     margins, unresolved, spu_cache = {}, {}, {}
+    prices = authoritative_prices(p)   # never trust p['variants'][*]['price']
     for v in p['variants']:
         sku = v.get('sku')
         if not sku:
@@ -152,7 +178,7 @@ def resolve_product(p):
             unresolved[sku] = 'no freight quote after 4 tries'
             continue
         frt, _, _, _ = freight_floor.resolve(opts)   # matches margin_guard's own call
-        price = float(v['price'])
+        price = prices[v['id']]
         margins[sku] = margin(price, cost, frt, duty) * 100
         time.sleep(0.2)
 
@@ -165,7 +191,7 @@ def resolve_product(p):
 
     worst = min(margins.values())
     floor_pct = max(round(worst - BUFFER, 1), FLOOR_MIN)
-    variants = {v.get('sku'): float(v['price']) for v in p['variants']
+    variants = {v.get('sku'): prices[v['id']] for v in p['variants']
                if v.get('sku')}
     print(f"  {p['title']:44} worst margin today {worst:5.1f}%   "
           f"floor -> {floor_pct}%")

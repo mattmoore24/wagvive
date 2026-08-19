@@ -1,11 +1,31 @@
 {
- "ran_at": "2026-08-18T07:50:58",
+ "ran_at": "2026-08-19T10:03:39",
  "floor": "price_book",
  "applied": false,
  "checked": 258,
  "breaches": [],
  "unresolved": [],
  "thin": [
+  {
+   "product": "Wagvive 3-in-1 Steam Grooming Brush",
+   "variant": "Pink",
+   "sku": "CJYD225679701AZ",
+   "price": 16.99,
+   "margin": 27.9,
+   "stress_margin": 19.1,
+   "freight_headroom": 8.6,
+   "freight": 6.87
+  },
+  {
+   "product": "Wagvive 3-in-1 Steam Grooming Brush",
+   "variant": "Red",
+   "sku": "CJYD225679702BY",
+   "price": 16.99,
+   "margin": 27.9,
+   "stress_margin": 19.1,
+   "freight_headroom": 8.6,
+   "freight": 6.87
+  },
   {
    "product": "Wagvive Anti-Spill Floating Water Bowl",
    "variant": "Pink / 1.5L",
@@ -85,16 +105,6 @@
    "stress_margin": -3.2,
    "freight_headroom": 17.83,
    "freight": 15.47
-  },
-  {
-   "product": "Wagvive Automatic Ball Launcher",
-   "variant": "Default Title",
-   "sku": "CJCT25677400001",
-   "price": 94.99,
-   "margin": 27.6,
-   "stress_margin": 20.1,
-   "freight_headroom": 15.6,
-   "freight": 11.0
   },
   {
    "product": "Wagvive Barnyard Squeaker",
@@ -417,6 +427,36 @@
    "freight": 5.62
   },
   {
+   "product": "Wagvive Glow in the Dark Skeleton Suit",
+   "variant": "XL",
+   "sku": "CJGD214316404DW",
+   "price": 15.99,
+   "margin": 27.8,
+   "stress_margin": 19.3,
+   "freight_headroom": 6.97,
+   "freight": 5.35
+  },
+  {
+   "product": "Wagvive Jack-o-Lantern Sweater",
+   "variant": "Orange Stripe / XL",
+   "sku": "CJGD180981305EV",
+   "price": 12.99,
+   "margin": 25.7,
+   "stress_margin": 16.5,
+   "freight_headroom": 7.17,
+   "freight": 5.84
+  },
+  {
+   "product": "Wagvive Jack-o-Lantern Sweater",
+   "variant": "Orange Pumpkin / XL",
+   "sku": "CJGD180981320TG",
+   "price": 12.99,
+   "margin": 25.7,
+   "stress_margin": 16.5,
+   "freight_headroom": 7.17,
+   "freight": 5.84
+  },
+  {
    "product": "Wagvive Jingle Plush Ball",
    "variant": "Monkey",
    "sku": "CJST257870801AZ",
@@ -573,8 +613,58 @@
    "price": 16.99,
    "margin": 26.6,
    "stress_margin": 17.7,
-   "freight_headroom": 7.23,
+   "freight_headroom": 8.32,
    "freight": 6.59
+  },
+  {
+   "product": "Wagvive Pumpkin Hoodie",
+   "variant": "Blue / 9XL",
+   "sku": "CJGD182844313MN",
+   "price": 15.99,
+   "margin": 29.3,
+   "stress_margin": 20.5,
+   "freight_headroom": 8.72,
+   "freight": 7.1
+  },
+  {
+   "product": "Wagvive Pumpkin Hoodie",
+   "variant": "Black / 9XL",
+   "sku": "CJGD182844326ZA",
+   "price": 15.99,
+   "margin": 29.3,
+   "stress_margin": 20.5,
+   "freight_headroom": 8.72,
+   "freight": 7.1
+  },
+  {
+   "product": "Wagvive Pumpkin Hoodie",
+   "variant": "Red / 9XL",
+   "sku": "CJGD182844339MN",
+   "price": 15.99,
+   "margin": 29.3,
+   "stress_margin": 20.5,
+   "freight_headroom": 8.72,
+   "freight": 7.1
+  },
+  {
+   "product": "Wagvive Pumpkin Hoodie",
+   "variant": "Grey / 9XL",
+   "sku": "CJGD182844352ZA",
+   "price": 15.99,
+   "margin": 29.3,
+   "stress_margin": 20.5,
+   "freight_headroom": 8.72,
+   "freight": 7.1
+  },
+  {
+   "product": "Wagvive Pumpkin Hoodie",
+   "variant": "Pink / 9XL",
+   "sku": "CJGD182844365MN",
+   "price": 15.99,
+   "margin": 29.3,
+   "stress_margin": 20.5,
+   "freight_headroom": 8.72,
+   "freight": 7.1
   },
   {
    "product": "Wagvive Quiet Electric Nail Grinder",
@@ -595,6 +685,16 @@
    "stress_margin": 13.1,
    "freight_headroom": 10.35,
    "freight": 8.08
+  },
+  {
+   "product": "Wagvive Roast Turkey Sniff Toy",
+   "variant": "Default Title",
+   "sku": "CJGY127626401AZ",
+   "price": 17.99,
+   "margin": 25.8,
+   "stress_margin": 17.1,
+   "freight_headroom": 7.95,
+   "freight": 6.11
   },
   {
    "product": "Wagvive Rope-Limb Puppy Plush",
@@ -735,6 +835,36 @@
    "stress_margin": -1.8,
    "freight_headroom": 7.56,
    "freight": 6.05
+  },
+  {
+   "product": "Wagvive Thanksgiving Turkey Sweater",
+   "variant": "Turkey / XL",
+   "sku": "CJGD184104008HS",
+   "price": 15.99,
+   "margin": 25.4,
+   "stress_margin": 16.6,
+   "freight_headroom": 7.39,
+   "freight": 5.75
+  },
+  {
+   "product": "Wagvive Thanksgiving Turkey Sweater",
+   "variant": "Boo / XL",
+   "sku": "CJGD184104012LO",
+   "price": 15.99,
+   "margin": 25.4,
+   "stress_margin": 16.6,
+   "freight_headroom": 7.39,
+   "freight": 5.75
+  },
+  {
+   "product": "Wagvive Thanksgiving Turkey Sweater",
+   "variant": "Plaid / XL",
+   "sku": "CJGD184104004DW",
+   "price": 15.99,
+   "margin": 25.4,
+   "stress_margin": 16.6,
+   "freight_headroom": 7.39,
+   "freight": 5.75
   },
   {
    "product": "Wagvive Travel Water Bottle & Bowl",

@@ -60,7 +60,7 @@ pays for the same information twice and was directly why the quota died a
 second time this session. If the numbers are already trusted, skip straight to
 `--apply`.
 
-## The operational risk this creates
+## The operational risk this creates — CONFIRMED, it happened the next day
 
 **The scheduled job depends on CJ too.** If the quota is exhausted when
 `scheduled-ops.yml` next fires, `sync_inventory.py --apply`,
@@ -69,6 +69,52 @@ querying CJ into the same wall. None of them currently distinguish
 "quota exhausted" from "CJ returned nothing," so a run in this state risks the
 exact failure mode `guard_unshippable.py`'s own docstring warns against:
 treating an unanswerable SKU as a finding instead of as UNKNOWN.
+
+**2026-08-19: this is no longer hypothetical.** `Scheduled store operations`
+failed and emailed the owner. `margin_guard.py` was the step that failed, and
+the breach it reported was fiction:
+
+* `best_freight()` had **no retry at all**. One transient empty response was
+  enough to fall through to `freight_floor.resolve([])`, which substitutes the
+  $11.00 no-quote fallback.
+* The Pumpkin Hoodie 9XL reads **29.3%** margin on its real $7.10 quote and
+  **4.2%** on that fallback, against a 21.3% floor. Instant "breach."
+* `main()` set an `estimated` flag on every freight result and then **never
+  read it**, and its one guard, `if not fr:`, was dead code, because
+  `best_freight()` always returns a dict.
+
+A full `margin_guard.py` run the following morning, with CJ healthy, returned
+`258 variants checked, 0 breaches, All variants clear their floors` — proving
+no price was ever actually wrong.
+
+Fixed in `margin_guard.py`:
+
+1. `best_freight()` retries three times before believing CJ has nothing, and
+   returns `answered` alongside `estimated`. These are different questions:
+   **empty after retries** = CJ did not answer, unknowable, treat as UNRESOLVED;
+   **`$0`/placeholder** = CJ answered with missing data, a stable documented
+   condition (the US-warehoused Ball Launcher does it every call), so the
+   fallback stands and the variant is still judged.
+2. Quota exhaustion raises `CJUnavailable` immediately rather than being
+   retried into — it cannot succeed and retrying every remaining variant costs
+   ~36 minutes, which would blow the workflow's 50 minute timeout and turn a
+   clean diagnosis into an opaque timeout.
+3. `OUTAGE_STREAK` (15 unanswered in a row) aborts the sweep for generic
+   outages that do not announce themselves.
+4. `MIN_COVERAGE` (80%) fails the job as **"COULD NOT VERIFY"** if too few
+   variants got a real answer. This closes the hole the other fixes would
+   otherwise open: treating unanswered as UNKNOWN is right, but without a
+   coverage floor a total outage would make every variant UNKNOWN and the job
+   would exit 0 having checked nothing. The message says explicitly that it is
+   a coverage problem, not a margin problem — they need opposite responses.
+
+Verified by simulation: with CJ mocked as fully quota-exhausted the job now
+exits 1 in **0.6 seconds** with "COULD NOT VERIFY … This is NOT a margin
+breach", instead of grinding for 36 minutes and reporting invented breaches.
+
+**Cadence was also halved, 6-hourly to 12-hourly**, partly for this: the job
+makes ~300 CJ calls per run and was one of the largest consumers on the
+account, so it was contributing to the very exhaustion that broke it.
 
 ## How to apply
 
