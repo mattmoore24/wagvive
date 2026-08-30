@@ -112,3 +112,154 @@ required for margin anyway).
   feeders, cooling mats, calming wraps. Those categories either stay dropship
   (census pending), get retired, or wait.
 * CJ can remain live during any transition without technical conflict.
+
+---
+
+# FINAL SYNTHESIS (census workflow complete, 2026-08-30)
+
+The 7-agent census (51 dropship partners + 26 POD providers + reliability
+evidence + architecture) converged with the direct verification above.
+Corrections and completions to the interim findings:
+
+## Corrections to the interim read
+
+* **Gooten is DISQUALIFIED on reliability despite its unique catalogue.**
+  Trustpilot 3.1/226 with 22% one-star; Shopify 3.4/139. Acquired by Taylor
+  Corp Oct 2025; post-acquisition reviews: "almost every single order placed
+  has been wrong" (Jul 2026). It has CJ's disease in POD form. The safe route
+  to the same Taylor production capacity is **Printify's Taylor provider**
+  (9.1/10 provider score, verified).
+* **Printed Mint DIRECT (Phoenix AZ) beats its own Printify listings by
+  $3-8/SKU** - public pricelist verified: bandana $11.50 (vs $14.53 via
+  Printify), tag $7.00 (vs $11.49), bowl $17.50 (vs $25.21), tank $16.50 (vs
+  $23.15), small-breed hoodie $14.00, lap blanket $13.50. Ship $5.79 first +
+  **$0.99 each additional item** - the ONLY cheap multi-item/kit play in all
+  of POD. Own Shopify app. SLA 2-4 days production + 2-5 ship.
+* **Dreamship** has the cheapest US ceramic pet bowl: $12.49 + $6.99 ship,
+  clears at $29.99 (29%) where Printful/Printify bowls need $45-53.
+* **TopDawg partially rehabilitated by the reliability lane**: zero one-star
+  reviews anywhere (though only ~25 reviews total). Pricing structure is
+  still spread-based; earns a small paid PILOT with per-SKU margin math, not
+  trust.
+* **PetDropShipper is $399/mo** (live Shopify app listing; the $19 blog
+  figure circulating is wrong). Dead at 3 orders/month.
+
+## The reliability tiers (evidence-based, cited in the census output)
+
+* **TIER 1 build on**: Printful (Shopify 4.8/3,804; 97% ship <=5 days;
+  US-region SKUs ONLY - its collar/leash/sweater are China-fulfilled), and
+  Printify as hedge (4.7/4,435; quality varies BY PROVIDER - pin US
+  providers, sample every SKU).
+* **TIER 2 pilot**: TopDawg (clean but thin record), Printed Mint direct.
+* **TIER 3 - CJ's disease, named and evidenced**: Spocket ("most of the stuff
+  you sell will never ship"), Syncee ("60% of orders don't get fulfilled"),
+  Doba (44% one-star), Zendrop (documented fictitious stock), USAdrop
+  (rating suppressed), Sellvia (Trustpilot removed rating for fake reviews),
+  AutoDS (orders unfulfilled a year later), EPROLO (40% of orders 2+ weeks
+  late), Dropshipman, Gooten. **Every general aggregator fails on exactly the
+  phantom-inventory/never-ships axis that motivated the exit.**
+
+## Category coverage - the honest limit of POD
+
+| Wagvive category | POD coverage |
+|---|---|
+| Apparel (5) | **5/5, better than CJ** (4 bandana forms, tank, small-breed hoodie + collar/leash/tag upgrades) |
+| Comfort & Health (12) | ~half (beds, blankets, mats, bowls; NOT slow feeders, dental, calming, molded goods) |
+| Toys & Play (19) | **0/19 - no POD provider prints a plush, squeaker, rope or chew** |
+| Grooming (10) | **0/10 - POD cannot make a nail grinder or brush** |
+| Kits (6) | derivative - survive only if every component does |
+
+Toys and grooming therefore stay dropship (CJ, or a phone-verified US
+specialist: Mirage #1 candidate, Pet Life $5/order own-brand, Essential Pet
+zero-fee) or retire. There is no third option under the no-inventory
+constraint.
+
+## Artwork: the real migration cost
+
+Nothing existing transfers as PRINT files - the Runway photos depict CJ's
+physical goods. POD needs (1) print-ready surface art: the unit of design is
+the PATTERN, not the SKU - one strong repeat deploys across bandana + mat +
+blanket + tank; a 16-SKU line needs ~6-8 original patterns; and (2) product
+mockups restyled through the existing Runway pipeline (~1 hr/SKU, proven
+workflow). Engraved SKUs (tags, leather collar) need only a vector template
+each - the personalization engine does per-order work free.
+
+## The viable POD shelf (verified numbers, both pricing models)
+
+16 SKUs, all US-made, all clearing 20%; charging shipping separately softens
+entry prices dramatically:
+
+| SKU | Source | Free-ship price | Ship-charged price |
+|---|---|---|---|
+| Small-breed bandana | Printed Mint | $22.99 (24.8%) | $15.99 + $5.79 (28.4%) |
+| Pet bandana | Printed Mint | $24.99 (24.4%) | $17.99 + $5.79 (27.4%) |
+| Personalized tag | Printed Mint | $19.99 (29.5%) | $12.99 + $5.79 (36.4%) |
+| Engraved alu tag | Printify/Taylor | $21.99 (28.0%) | $14.99 + $5.69 (32.7%) |
+| Collar bandana | Printed Mint | $25.99 (23.3%) | $18.99 + $5.79 (25.7%) |
+| Small-breed hoodie | Printed Mint | $28.99 (25.5%) | $20.99 + $5.79 (25.1%) |
+| Lap blanket | Printed Mint | $28.99 (27.3%) | $20.99 + $5.79 (27.5%) |
+| Ceramic bowl | Dreamship | $29.99 (29.0%) | ~$21.99 + $6.99 |
+| Pet tank top | Printed Mint | $31.99 (24.2%) | $23.99 + $5.79 (23.3%) |
+| Feeding mats (bone/rect) | Printed Mint | $34.99 (24.8-26.3%) | $22.99-23.99 + $8.19 |
+| Engraved leather collar | Printify/Fulfill Engine | $39.99 (21.7%) | - |
+| AOP bandana / throw blankets / bowl 18oz | Printful US-3 | $20.99-50.99 | - |
+
+Plus 2 recomposed kits (apparel + accessory + mat) once patterns exist.
+Printed Mint's $0.99 additional-item rate makes IT the kit supplier for POD
+kits.
+
+## Multi-supplier architecture - completions from the census
+
+Beyond the interim findings (order auto-split per location, Printful's
+documented mixed-store support, Split Shipping):
+
+* **Printful can LINK to existing Shopify products** ("Import existing
+  products" + per-variant linking; Ecommerce Platform Sync API does it
+  programmatically). Titles, descriptions, SEO, handles and reviews survive;
+  only imagery needs replacing per the artwork section. Printify's
+  equivalent exists but only unpublished Printify products can connect to an
+  existing listing - clunkier.
+* **Shipping-rate trap**: Shopify SUMS matching rates across shipping
+  profiles ONLY when rate names are identical; differently-named rates
+  collapse to a generic "Shipping". Name Printful-profile rates identically
+  to the general profile - or run free-shipping in both and bake freight in.
+* **Zero SKU overlap is the one hard rule** - every documented multi-app
+  fight is two apps managing the same SKU. Extend the sku[:11] duplicate
+  audit to cover POD SKUs.
+* **FOUR REPO SCRIPTS MUST BE SCOPED TO CJ SKUS FIRST** (verified by reading
+  the code): fix_locations.py would stamp available=0 onto every Printful
+  variant 3-hourly; sync_inventory.py burns CJ API points quota on foreign
+  SKUs; guard_unshippable.py would page on every POD variant (no CJ carrier
+  quote exists); the margin/catalog audits assume CJ SKU shape. One scoping
+  PR is the prerequisite for installing ANY second supplier app.
+* **Kits stay single-supplier** pending one live test: native Bundles route
+  components by location and nothing forbids mixed-service components, but
+  mixed-supplier native kits are UNPROVEN anywhere. Printful's documented
+  bundle path is the Simple Bundles & Kits app.
+
+## The recommended shape (three lanes + bridge)
+
+1. **POD core (install now)**: Printed Mint direct + Printify (pinned US
+   providers: Taylor, Printed Mint, MWW, Fulfill Engine) + Printful (its 3
+   US-region SKUs only). Covers Apparel outright and half of Comfort at
+   $19.99-$50.99, 20-29% margins, 1.7-4 day US production.
+2. **US specialists (phone-verify, owner)**: Mirage Pet Products (best find:
+   US manufacturer, no fees, min retail ~$14 - but site broken, confirm it
+   trades), Pet Life ($5/order, own-brand $25-90 goods), Essential Pet
+   (zero-fee, $26+ retail). These are the only dropship path for
+   toys/grooming above $20.
+3. **Shopify Collective (apply, browse)**: the only route to real premium
+   brands; viable only where a supplier grants ~50% margin above $35 retail.
+   Zero app-conflict surface (Shopify-native).
+4. **CJ stays as bridge**, product by product, until each is replaced or
+   retired. Its sub-$20 toys either stay on CJ knowingly (with honest
+   delivery copy) or retire - no US supplier can carry them at any price.
+
+## Still unverified (the short list)
+
+* Mirage Pet Products: is it trading? (site 403/404s; owner phone call)
+* Printed Mint direct-app reliability at order volume (its 8.6/10 Printify
+  provider score is the best proxy)
+* One live mixed CJ+POD order end-to-end (place a small test order)
+* A native bundle with mixed-supplier components (draft product test)
+* TopDawg real shipped-vs-quoted freight (the $6.75-to-$13 blowout reports)
