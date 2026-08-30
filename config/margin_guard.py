@@ -141,7 +141,7 @@ with open(os.path.join(ROOT, 'config', 'carriers.json'), encoding='utf-8') as _f
 # (book floor can be near zero after the drift buffer) still alerts BEFORE it
 # sells at an actual loss. Products absent from the book get DEFAULT_FLOOR.
 FLOOR_MIN = 0.02
-DEFAULT_FLOOR = 0.25
+DEFAULT_FLOOR = 0.20   # owner standard 2026-08-30; was 0.25
 try:
     with open(os.path.join(ROOT, 'config', 'price_book.json'), encoding='utf-8') as _fh:
         _BOOK = json.load(_fh)

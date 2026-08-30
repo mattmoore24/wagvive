@@ -15,9 +15,23 @@ another device may have moved things.
 
 ## Non-negotiables
 
-1. **50% gross margin floor on every variant and every kit**, after ALL costs:
-   product + shipping + duties + payment fees + returns allowance. It must hold
-   even when CJ prices drift. `config/margin_guard.py` is the enforcement.
+1. **20% gross margin floor on every variant and every kit**, after ALL costs:
+   product + shipping + duties + payment fees + returns allowance.
+   `config/margin_guard.py` is the enforcement.
+
+   **This said 50% until 2026-08-30 and that number was STALE AND WRONG.** The
+   flat 50% was retired on 2026-08-04 when the store moved to per-product floors
+   from the demand model, and the live `price_book.json` has run at a median
+   17.7% floor ever since, with 29 of 46 products under 20%. The sentence here
+   was never updated, so the repo stated one rule and enforced another.
+
+   That contradiction is not academic: it silently invalidated a full supplier
+   study on 2026-08-30. Optimising against the phantom 50% made US sourcing look
+   arithmetically impossible (8 of 35 singles viable, branded wholesale
+   "impossible at any price"). At the real 20% the same maths gives 29 of 35
+   singles viable and branded wholesale viable above $35 retail - the opposite
+   conclusion. **Whenever a number here governs a decision, check it against
+   what the code actually enforces before trusting it.**
 2. **Never enter the user's credentials anywhere.** Logins, payment details and
    identity steps are the user's to perform. Flag and hand off.
 3. **Confirm before spending money or taking irreversible actions.**

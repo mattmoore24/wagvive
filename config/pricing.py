@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
 """
-Wagvive margin rule: no order type ever returns less than 50% margin after
+Wagvive margin rule: no order type ever returns less than 20% margin after
 every cost - product, freight, payment processing, and duty.
+
+FLOOR WAS 0.50 UNTIL 2026-08-30 AND THAT WAS STALE. The flat 50% was retired
+2026-08-04 in favour of per-product floors in price_book.json, which have run at
+a median of 17.7%. This constant was never updated, and the mismatch invalidated
+a whole supplier study: at a phantom 50% floor, US sourcing computes as
+impossible; at the real 20% it is comfortably viable. FLOOR is the DEFAULT for
+ad-hoc `min_price()` calls only - margin_guard.py enforces the per-product
+floors from the book and does not read this value.
 
     margin = (price - product - freight - duty - fee) / price >= FLOOR
 
@@ -21,7 +29,7 @@ CLI:
 """
 import sys
 
-FLOOR = 0.50          # required margin
+FLOOR = 0.20          # required margin (owner decision 2026-08-30)
 PCT = 0.029           # Shopify Payments percentage
 FLAT = 0.30           # Shopify Payments per-transaction
 FREIGHT_BUFFER = 6.00  # absorb an unquoted/underquoted freight surprise

@@ -5,7 +5,7 @@ Re-price against carriers that can actually meet the published delivery promise.
 Earlier margins used the cheapest carrier of any speed, and some of those run
 10-23 or 25-30 days - which the site's "5-11 business days" claim cannot honour.
 This picks the cheapest carrier whose upper transit bound is within MAX_DAYS and
-re-checks every variant against the 50% floor.
+re-checks every variant against the floor in config/pricing.py (20%).
 """
 import json, os, re, sys, urllib.request, urllib.error
 
@@ -100,7 +100,7 @@ def main():
             price = float(v['price'])
             m = margin(price, cost, f['price'], duty) * 100
             floor = min_price(cost, f['price'], duty)
-            flag = '' if price >= floor else '  <-- BELOW 50% FLOOR'
+            flag = '' if price >= floor else '  <-- BELOW FLOOR'
             note = '' if f['within_promise'] else '  (no carrier within promise)'
             print(f'   {str(v["title"])[:30]:32} ${price:<7.2f} cost ${cost:<6.2f} '
                   f'frt ${f["price"]:<6.2f} duty ${cost*duty:<5.2f} {m:5.1f}%  '
@@ -114,7 +114,7 @@ def main():
         for pid, pt, vt, price, floor, cost, fr in problems:
             print(f'  {pt[:34]:36} {vt[:22]:24} ${price:.2f} -> needs ${floor:.2f}')
     else:
-        print('All variants clear the 50% floor using promise-compliant carriers.')
+        print('All variants clear the floor using promise-compliant carriers.')
 
 
 if __name__ == '__main__':
