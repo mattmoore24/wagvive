@@ -41,6 +41,30 @@ import sync_inventory  # noqa: E402  (the ONLY sanctioned reader of CJ stock)
 
 CANONICAL = 'Shop location'
 
+
+def cj_stock_retried(sku, tries=3):
+    """sync_inventory.cj_stock, but an empty answer is retried before belief.
+
+    CJ returns empty for healthy SKUs under load, and every audit in this repo
+    that trusted a single empty read has produced a false finding: margin_guard
+    reported a phantom breach, audit_cj_connections reported false
+    unshippables, and this file reported ten kit components as having no stock
+    on 2026-09-01 while sync_inventory was reading every one of them
+    successfully in the same session (re-querying returned 9120, 13163 and
+    38986 units against a healthy points budget).
+
+    Unanswerable is UNKNOWN, never a finding.
+    """
+    for attempt in range(tries):
+        try:
+            n = sync_inventory.cj_stock(sku)
+            if n is not None:
+                return n
+        except Exception:
+            pass
+        time.sleep(1.5 * (attempt + 1))
+    return None
+
 env = {}
 with open(os.path.join(ROOT, 'config', 'shopify.env'), encoding='utf-8') as fh:
     for line in fh:
@@ -127,7 +151,7 @@ def main():
     kits = [gql(Q, {'id': s['id']})['product'] for s in stubs]
     print(f'{len(kits)} active kits\n')
 
-    problems, cj_cache = [], {}
+    problems, unknown, cj_cache = [], [], {}
     total_variants = 0
 
     for k in kits:
@@ -182,11 +206,17 @@ def main():
 
                 sku = pv['sku']
                 if sku not in cj_cache:
-                    cj_cache[sku] = sync_inventory.cj_stock(sku)
+                    cj_cache[sku] = cj_stock_retried(sku)
                 cj = cj_cache[sku]
                 if cj is None:
-                    problems.append(f"{k['title']} / {v['title']}: component "
-                                    f"{name} sku {sku} returns NO CJ stock")
+                    # UNKNOWN, not a finding. CLAUDE.md: "An EMPTY answer from CJ
+                    # is not evidence of anything." On 2026-09-01 this reported
+                    # ten components as having NO CJ stock while sync_inventory
+                    # had just read every one of them successfully in the same
+                    # session; re-querying returned 9120, 13163 and 38986 units
+                    # against a healthy points budget. Reporting that as a
+                    # problem is how healthy variants get zeroed.
+                    unknown.append(f"{k['title']} / {v['title']}: {name} ({sku})")
                 elif c_here != cj:
                     problems.append(f"{k['title']} / {v['title']}: component "
                                     f"{name} Shopify {c_here} != CJ {cj}")
@@ -218,6 +248,15 @@ def main():
     print('=' * 70)
     print(f'{total_variants} kit variants checked across {len(kits)} kits')
     print(f'{len(cj_cache)} distinct component SKUs resolved against CJ')
+    if unknown:
+        # Printed, but deliberately does NOT fail the run. CJ declining to
+        # answer is not evidence that anything is wrong, and failing on it
+        # trains the owner to ignore the alarm that matters.
+        print(f'\n{len(unknown)} component(s) CJ would not answer for '
+              f'(UNKNOWN, not a finding, re-run to resolve):')
+        for u in unknown:
+            print('  ? ' + u)
+
     if problems:
         print(f'\n{len(problems)} PROBLEM(S):')
         for p in problems:
