@@ -82,9 +82,15 @@ FLOOR = 0.25   # margin_guard.DEFAULT_FLOOR - already governs these SKUs today
 # handle -> (market low, note, hold). `hold=True` means show the analysis but
 # do not write, for the reasons in the module docstring.
 PLAN = {
- 'wagvive-steam-grooming-brush': (9.99, False,
-   'Walmart marketplace 3-in-1 steam grooming brushes, real transacted prices: '
-   'TIJITY $13.98, generic $9.99, Steamy Pet Brush $12.59.'),
+ 'wagvive-steam-grooming-brush': (9.99, True,
+   'HELD 2026-08-31. Walmart marketplace 3-in-1 steam grooming brushes, real '
+   'transacted prices: TIJITY $13.98, generic $9.99, Steamy Pet Brush $12.59. '
+   'CJ has since moved this SPU onto sensitive-goods carriers only, taking '
+   'freight from $6.87 to $8.31, and the price was raised to $17.99 to clear '
+   'the 19.9% floor. This entry is now a CUT-BACK RISK rather than a plan: if '
+   'freight ever eases, `rec` recomputes below $17.99 and an --apply run would '
+   'write the old price straight back and re-breach the guard. Held so it '
+   'cannot. See docs/knowledge/cj-carrier-eligibility-changes.md.'),
  'wagvive-glow-skeleton-suit': (11.99, False,
    'Flat bone-print skeleton suits (non-3D), Walmart marketplace: $11.18-11.99 '
    'basic; 3D/dinosaur-style runs $20-33. Ours is a flat bone-print jumpsuit.'),

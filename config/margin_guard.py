@@ -25,6 +25,20 @@ window, matching what the CJ connections are actually set to ship by.
 
 Report mode changes nothing, so it is safe to run unattended. --apply edits live
 retail prices and should only run where that is intended.
+
+EXIT CODES. These are not interchangeable and the difference is the whole point:
+
+    0  every graded variant clears its floor
+    1  a real BREACH - a live price is under its floor, and a price must move
+    2  Shopify itself failed (HTTP error)
+    3  COULD NOT VERIFY - too little of the catalogue got a real answer from CJ,
+       or the sweep aborted. NOTHING is known to be wrong with any price.
+
+3 was split out of 1 on 2026-08-31. While both meant "exit 1", a five-day CJ
+outage and a five-day pricing error were indistinguishable in the failure email,
+and they need opposite responses: one is "wait for CJ", the other is "change a
+price now". GitHub Actions fails the job on any non-zero, so the workflow did
+not need changing.
 """
 import json, os, re, sys, time, urllib.error, urllib.request
 
@@ -227,6 +241,10 @@ def main():
 
     products = api('GET', 'products.json?limit=250&status=active')['products']
     costs = live_cj_costs([v.get('sku') for p in products for v in p['variants']])
+    # How many variants SHOULD be graded, counted before a single CJ call. The
+    # coverage gate below is denominated in this and nothing else. See the long
+    # comment there for the bug that made the gate defeat itself.
+    expected = sum(1 for p in products for v in p['variants'] if v.get('sku'))
     breaches, unresolved, thin, checked = [], [], [], 0
     streak, outage = 0, None
 
@@ -315,9 +333,14 @@ def main():
                       f'frt headroom ${slack:5.2f}{flag}{warn}{zero}')
             print()
 
-    print(f'{checked} variants checked')
+    print(f'{checked} of {expected} variants checked')
     for t, vt, sku, why in unresolved:
         print(f'  UNRESOLVED  {t[:30]:32} {str(vt)[:20]:22} {sku}  ({why})')
+    # The abort reason was recorded and then never read: not printed, not
+    # logged, not in the exit code. A run that stopped at variant 5 looked
+    # exactly like a run that finished.
+    if outage:
+        print(f'\nSWEEP ABORTED: {outage}')
 
     if thin:
         print(f'\n{len(thin)} variant(s) compliant today but with no room - these '
@@ -334,12 +357,26 @@ def main():
     # checked nothing at all. So a run that could not grade most of the
     # catalogue fails loudly, and says clearly that it is a COVERAGE problem,
     # not a margin problem - the two need completely different responses.
-    total_seen = checked + len(unresolved)
-    coverage = checked / total_seen if total_seen else 0.0
-    if total_seen and coverage < MIN_COVERAGE:
-        print(f'\nCOULD NOT VERIFY: only {checked}/{total_seen} variants '
-              f'({coverage:.0%}) got a real answer from CJ, below the '
-              f'{MIN_COVERAGE:.0%} minimum.')
+    # DENOMINATED IN `expected`, NOT IN WHAT THE SWEEP HAPPENED TO REACH.
+    #
+    # This gate defeated itself until 2026-08-31. It read
+    #     total_seen = checked + len(unresolved)
+    # and both abort paths break out of the loop WITHOUT appending to
+    # `unresolved` (the CJUnavailable branch appends nothing at all; the
+    # OUTAGE_STREAK branch appends exactly one row). So a quota wall at variant
+    # 5 gave total_seen = 4, coverage = 100%, the gate passed, and the job
+    # printed "All variants clear their floors" and exited 0 having graded 4 of
+    # 193. That is precisely the silent all-clear MIN_COVERAGE was written to
+    # make impossible, reintroduced through the denominator.
+    #
+    # Counting against `expected` cannot be gamed by stopping early: variants
+    # never reached are missing coverage, which is what they are.
+    coverage = checked / expected if expected else 0.0
+    if expected and (coverage < MIN_COVERAGE or outage):
+        why = ('the sweep aborted' if outage else
+               f'only {coverage:.0%} of variants got a real answer from CJ')
+        print(f'\nCOULD NOT VERIFY: {checked}/{expected} variants graded '
+              f'({coverage:.0%}) - {why}, below the {MIN_COVERAGE:.0%} minimum.')
         print('This is NOT a margin breach. Nothing is known to be wrong with '
               'any price. CJ did not answer often enough for this run to mean '
               'anything - most likely its daily API points budget '
@@ -348,9 +385,14 @@ def main():
         with open(LOG, 'w', encoding='utf-8') as fh:
             json.dump({'ran_at': time.strftime('%Y-%m-%dT%H:%M:%S'),
                        'result': 'insufficient_coverage',
-                       'checked': checked, 'unresolved': len(unresolved),
+                       'checked': checked, 'expected': expected,
+                       'unresolved': len(unresolved), 'aborted': outage,
                        'coverage': round(coverage, 3)}, fh, indent=1)
-        return 1
+        # 3, not 1. Exit 1 means "a price is wrong"; this means "we could not
+        # tell". They need opposite responses, and conflating them is how a
+        # five-day outage gets mistaken for a five-day pricing problem. Actions
+        # fails on any non-zero, so the workflow needs no change.
+        return 3
 
     if not breaches:
         print('\nAll variants clear their floors.')
@@ -376,6 +418,7 @@ def main():
         json.dump({'ran_at': time.strftime('%Y-%m-%dT%H:%M:%S'),
                    'floor': override if override is not None else 'price_book',
                    'applied': apply_fix, 'checked': checked,
+                   'expected': expected, 'coverage': round(coverage, 3),
                    'breaches': [{'product': t, 'variant': str(v['title']),
                                  'sku': sku, 'price': price,
                                  'needed': round(need, 2), 'margin': round(m, 1)}

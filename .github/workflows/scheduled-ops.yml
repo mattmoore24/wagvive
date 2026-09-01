@@ -14,8 +14,17 @@ name: Scheduled store operations
 #                             whether Shopify MATCHED CJ's number, never whether
 #                             that number meant shippable.
 #   * margin_guard.py runs REPORT-ONLY. It never changes prices unattended.
-#     If any variant is under the 50% floor the job FAILS, which emails you.
-#     Repricing stays a human decision.
+#     If any variant is under ITS OWN floor from config/price_book.json the job
+#     FAILS, which emails you. Repricing stays a human decision.
+#     (This comment said "the 50% floor" until 2026-08-31. The flat 50% was
+#     retired on 2026-08-04 and floors have been per-product ever since - median
+#     17.5%, range 2.0% to 41.7%. Exactly the stale-number trap CLAUDE.md
+#     non-negotiable #1 exists to warn about, sitting in the workflow that
+#     enforces it.)
+#   * margin_guard exit codes are NOT interchangeable: 1 = a real breach, a
+#     price must move; 3 = COULD NOT VERIFY, CJ did not answer enough for the
+#     run to mean anything and no price is known to be wrong. Actions fails the
+#     job on either, so READ THE LOG before reacting to a failure email.
 #   * CADENCE IS 6-HOURLY AGAIN (2026-08-19, later the same day it was cut to
 #     12-hourly). The 12-hourly cut existed because this was a PRIVATE repo on
 #     the Free plan's 2,000 Actions minutes/month, and at 6-hourly the job

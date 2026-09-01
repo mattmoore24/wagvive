@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-19, home PC (REPO IS NOW PUBLIC: secret found in history, its app deleted, history scrubbed, force-pushed, verified clean; Actions unlimited, cadence back to 6-hourly)
+**Last updated:** 2026-08-31, home PC (the 6-hourly job had been RED for 14 runs since 2026-08-26: one real margin breach on the Steam Grooming Brush after CJ moved it onto sensitive-goods carriers only. Price fix prepared but NOT yet written to Shopify — see below.)
 
 ---
 
@@ -142,6 +142,193 @@ A failed run emails the owner — silence means healthy.
 
 ## What just happened (most recent work)
 
+- **THE SCHEDULED JOB HAD BEEN FAILING FOR FIVE DAYS, AND THIS TIME IT WAS REAL
+  (2026-08-31).** Runs #94 (2026-08-26 13:25 UTC) through #107 all failed; #93
+  six hours earlier was green, and **there is no commit between them** — the
+  repo had not changed since 2026-08-19. Every failure is the same step:
+  `margin_guard.py`. The stock sync, location repair and unshippable guard pass
+  on every one of the 14 runs, so **nothing was ever wrong with inventory**.
+
+  **The breach is genuine, not the 2026-08-19 false alarm repeating.** A local
+  run reproduced it exactly: `193 checked, 0 unresolved` — 100% coverage, so the
+  `COULD NOT VERIFY` path is not involved and this is not the API points quota.
+
+  **Wagvive 3-in-1 Steam Grooming Brush**, Pink and Red, $16.99 at **19.2%**
+  against its 19.9% book floor. Cost is unchanged at $3.51; **freight went
+  $6.87 to $8.31**. The mechanism is carrier *eligibility*, not carrier pricing:
+  CJ now quotes this SPU **9 carriers instead of the usual 27**, and every
+  compliant one is a Sensitive or Liquid line. It is a steam brush with a water
+  reservoir, so treat the reclassification as permanent. Full write-up, with the
+  carrier list and the method for telling this apart from the failure modes that
+  look identical: `docs/knowledge/cj-carrier-eligibility-changes.md`.
+
+  **It is exactly one product.** Diffing the `thin` list in the committed
+  `margin_guard_log.json` from 2026-08-19 against a fresh run: 94 SKUs in common,
+  **freight changed on 0 of them**. Nothing else in the catalogue moved.
+
+  **STATE RIGHT NOW — the store and the book DISAGREE, on purpose. Finish this.**
+  `config/price_book.json` has been updated to **$17.99** (23.5% margin, ~3.6pt
+  of headroom; $17.14 is the arithmetic minimum and would re-breach immediately).
+  **The live Shopify price is still $16.99 and the job will keep failing until it
+  is written.** Nothing runs `apply_price_book.py` automatically so the mismatch
+  is inert, but it must be closed:
+
+      python config/apply_price_book.py            # dry run, expect 2 changes
+      python config/apply_price_book.py --apply    # write + verify
+
+  Then re-run `python config/margin_guard.py` and expect 0 breaches. Verify the
+  two variants (53263128527137 Pink, 53263128559905 Red) by direct per-variant
+  re-fetch, never the product's embedded list.
+
+  **The commercial fact behind the arithmetic, which is an OWNER decision.** The
+  observed market for this product, recorded in `reprice_fall_lineup.py`, is
+  **$9.99 to $13.98**. $16.99 was never a market price — it was the price needed
+  to clear 25% on the old freight. Raising to $17.99 puts it 29% above the
+  dearest competitor found. It stops the alarm; it does not make the product
+  sellable. Re-sourcing or retiring it is the real question.
+
+- **THE COVERAGE GATE DEFEATED ITSELF, AND THAT IS THE WORST THING FOUND TODAY
+  (2026-08-31).** `margin_guard.py`'s `MIN_COVERAGE` gate exists so a CJ outage
+  can never produce a silent all-clear. It was denominated in
+  `checked + len(unresolved)` — and **both abort paths break out of the loop
+  without appending to `unresolved`**. So a quota wall at variant 5 gave
+  `total_seen = 4`, coverage **100%**, the gate passed, and the job printed
+  **"All variants clear their floors" and exited 0 having graded 4 of 193.**
+  The abort reason was recorded in `outage` and then never printed, never
+  logged, never in the exit code.
+
+  This is the 2026-08-19 lesson coming back through a different door: that fix
+  added the gate, and the gate's own arithmetic let the failure through.
+
+  Fixed: `expected` is counted from the Shopify payload BEFORE any CJ call and
+  is now the only denominator; an abort prints `SWEEP ABORTED:` with its reason
+  and forces the could-not-verify branch; `expected`, `coverage` and `aborted`
+  go into `margin_guard_log.json`.
+
+  **Exit codes are now split, and the difference matters:** `0` clear, `1` a
+  REAL BREACH (a price must move), `2` Shopify HTTP failure, `3` COULD NOT
+  VERIFY (nothing is known to be wrong). Previously a five-day CJ outage and a
+  five-day pricing error were the same exit 1 in the same failure email.
+  Actions fails on any non-zero so no workflow change was needed.
+  `freight_check.py` uses the same four codes.
+
+  **Proved offline, no CJ points spent.** The replay harness monkeypatches
+  `cj_api.call`, Shopify's `api()` and `origin_for()`, and asserts four
+  scenarios: healthy (exit 0, 50/50 graded), quota wall after 5 (exit 3 —
+  **and it prints what the pre-fix gate would have concluded: coverage 100%,
+  exit 0, all-clear**), a genuine breach (exit 1, not masked), and an
+  OUTAGE_STREAK abort (exit 3). 4/4 pass. Rebuild it in the scratchpad from the
+  recipe in this entry rather than spending a live run — a real
+  `margin_guard.py` sweep costs ~285 CJ calls and proves less.
+
+- **`freight_check.py` WAS LYING, AND HAS BEEN REWRITTEN (2026-08-31).** It
+  printed a confident eight-variant BELOW FLOOR verdict having actually priced
+  **32 of 193 variants**. Four bugs, all of which made it mislead rather than
+  fail:
+  1. It read sku to vid and cost from `config/cj_variants.json`, a static cache
+     checked in with the INITIAL COMMIT holding 8 SPUs / 74 variants. 161
+     variants printed "not resolvable" and were silently skipped. Now resolved
+     live via `margin_guard.live_cj_costs`, which derives SPUs from the SKUs
+     actually on the store and cannot go stale.
+  2. `main()` returned None, so the script **exited 0 whether or not it found
+     breaches** — as a gate it could only ever pass. Same bug
+     `apply_colorway_covers.py` had. Now 0 clean / 1 below floor / 2 could not
+     verify.
+  3. No coverage gate: with CJ down it would print "All variants clear the
+     floor". Now mirrors `margin_guard.MIN_COVERAGE` at 80%.
+  4. Origin guessed from a `CJBQ` SKU prefix — the heuristic this repo has
+     already documented as wrong twice. Now `freight_floor.origin_for()`.
+
+  It also now retries empty answers and aborts on the API points quota. **It is
+  a diagnostic, not the standard**: it asks a blunter question (cheapest
+  compliant carrier vs a flat 20%) and will disagree with `margin_guard`, which
+  is the enforcement and uses per-product book floors. Its 8 "breaches" today
+  were all the Anti-Spill Floating Water Bowl, whose book floor is 2.0% — it
+  passes enforcement and is not a finding.
+
+- **TWO REGRESSION PATHS THAT WOULD HAVE UNDONE THE FIX, BOTH CLOSED
+  (2026-08-31).** Neither is hypothetical; both write live.
+  * `reprice_fall_lineup.py` had the brush as `(9.99, False, ...)` — `hold`
+    FALSE. Its `--apply` writes `rec` straight to Shopify. At today's freight
+    `rec` is $18.99 so it holds by luck, but if freight ever eased, `rec` would
+    recompute to $16.99 and put the old breaching price back. Now `hold=True`.
+  * `add_fall_lineup.py`'s SPEC still carried `'price': '26.99', 'floor': 45.5`
+    and `finish()` stamps `floor_margin_pct` **unconditionally** while price
+    and variants self-heal from live — so `--finish --apply` would have written
+    a 45.5% floor and re-breached at any price under about $28. Now 17.99/19.9.
+
+  Same bug class as the 8-month-old handle-vs-id floor bug: a launch script
+  keeps stamping its launch-day constants over numbers that have since moved on.
+  **When a price or floor changes, grep the whole repo for the old number.**
+
+- **STILL OPEN FROM THE 2026-08-31 AUDIT, in rough priority order.** All of
+  these were found by reading the code, not by running it, and none is fixed:
+  1. **`cj_api.call()` collapses three different answers into one.** Quota
+     exhaustion (`code 16900500`), an HTTP error (`{'httpError': ...}`) and a
+     genuine empty result all reach callers as falsy `data`. Only
+     `margin_guard.py` pulls them apart, and it had to reimplement the check
+     itself. Raising `CJUnavailable` from inside `cj_api` would fix every caller
+     at once. This is the deferred `task_ffc85935`, and it is the root cause
+     under most of what follows. Land it WITH the callers, since it converts
+     today's silent skips into tracebacks.
+  2. **`guard_unshippable.py` has no coverage gate and runs 6-hourly with
+     `--apply`.** It is safe in the dangerous direction — unknown is UNKNOWN and
+     it will not zero stock on an outage — but with CJ partly down it prints
+     "Every variant has a carrier inside the promise" and returns 0 having
+     checked very little. It can MISS an unshippable product; it will not
+     create one.
+  3. **`sync_inventory.py` cannot fail.** `main()` never calls `sys.exit`, so it
+     exits 0 on every path, and `cj_stock()` returning `None` (quota included)
+     is neither drift nor a warning nor printed — the row looks identical to a
+     match. It also has no retry, against the CLAUDE.md rule.
+  4. **`kit_margins.py` flatters a kit when a component fails to resolve** — it
+     `continue`s, dropping the component from BOTH the goods total and the
+     freight parcel, so the margin comes out too high. It is the ONLY economic
+     check covering kits (margin_guard walks SKU-carrying variants and so skips
+     all 39 kit variants) and it is not in any workflow.
+  5. **`verify_cj_pairing_sanity.py` scores 100% during a total CJ outage** —
+     `cj_name` is `''`, so the word-overlap alarm is empty by construction.
+  6. **Six products sit at the `FLOOR_MIN = 2.0` clamp** (Anti-Spill Water Bowl,
+     LED Nail Clippers, Crinkle Plush Buddy, Rope-Limb Puppy Plush, Squirrel
+     Squeaky Plush, Screaming Chicken) earning 5.3 to 9.2%. They cannot trip the
+     guard at any realistic margin. The Anti-Spill 2L breaches on a **+8.2%**
+     freight move — smaller than the +21% that just happened. Wants a repricing
+     or delisting decision, NOT a floor adjustment.
+  7. **TWO PRODUCTS ARE PRICED ON FREIGHT THIS REPO'S OWN CODE CALLS FAKE.**
+     Verified, not theoretical. `freight_floor.py`'s docstring names the
+     Self-Cleaning Slicker Brush's single "Yunexpress CN to US" line at exactly
+     **$3.00** and the Cordless Paw Trimmer's at **$4.00** as placeholders that
+     "had both products looking profitable on freight that does not exist" —
+     and `margin_guard_log.json` shows the guard using exactly those two
+     figures today (`"freight": 3.0` and `"freight": 4.0`).
+
+     The credibility test built to catch this **cannot fire**: it is
+     weight-relative (`CREDIBLE_FRACTION`), and `best_freight` calls
+     `freight_floor.resolve(opts)` with no `weight_g`, so only the flat
+     `MIN_CREDIBLE_FREIGHT = 4.00` applies — which $4.00 passes exactly.
+     On the fitted line ($4.40 + $12.11/kg) the real figures are about **$5.37**
+     (80g) and **$6.34** (160g), so both margins are overstated by roughly
+     $2.35 of freight and both may be breaches.
+
+     **Fix it properly: carry `variantWeight` through `live_cj_costs` and pass
+     `weight_g` into `resolve()`.** Do NOT just switch on the credible-floor
+     check without a weight — `resolve()` would then reject the $3.00 line,
+     find no credible rows, and fall through to `estimate(None)` =
+     `US_DOMESTIC_FREIGHT_FALLBACK` = **$11.00** on an 80g China parcel, which
+     is the exact phantom-breach shape that failed this job every three hours
+     in commit `889a990`. Expect this change to surface real breaches; it was
+     deliberately NOT landed on 2026-08-31 alongside the brush fix, so that a
+     job just returned to green is not immediately reddened by unvalidated
+     numbers. If the Slicker Brush's real freight is $5.37, the Grooming
+     Essentials Kit's 42.3% is wrong too — and `kit_margins.py` is not in any
+     workflow, so nothing scheduled would catch it.
+  8. **`carriers.json` covers 19 of 46 SPUs** and was last written in the
+     initial commit. For the other 27 — including all ten fall products —
+     `margin_guard` prices on the CHEAPEST compliant carrier and prints
+     "(selected carrier unavailable)", which is false: the carrier was never
+     recorded, not unavailable. Per CLAUDE.md the margin is fiction until the
+     real selection is read out of the CJ connection UI. Browser-only work.
+
 - **THE REPO IS PUBLIC (2026-08-19).** Owner decision, to get unlimited GitHub
   Actions minutes after the private-repo allowance proved too small for the
   scheduled job. Before flipping: a live Shopify app client_secret was found in
@@ -216,7 +403,7 @@ A failed run emails the owner — silence means healthy.
 
   | Product | Was | Now |
   |---|---:|---:|
-  | 3-in-1 Steam Grooming Brush | $26.99 | $16.99 |
+  | 3-in-1 Steam Grooming Brush | $26.99 | $16.99 (raised again to $17.99 on 2026-08-31, see top) |
   | Glow Skeleton Suit | $24.99 | $15.99 |
   | Pumpkin Hoodie | $21.99 | $15.99 |
   | Roast Turkey Sniff Toy | $22.99 | $17.99 |
@@ -548,7 +735,7 @@ A failed run emails the owner — silence means healthy.
   | Jack-o-Lantern Sweater | $17.99 | 20 | 37.5% | CJGD1809813 |
   | Halloween Squeaky Bones | $15.99 | 8 | 46.3% | CJYD2146653 |
   | Thanksgiving Turkey Coat | $19.99 | 12 | 31.7% | CJGD1841040 |
-  | 3-in-1 Steam Grooming Brush | $26.99 | 2 | 45.5% | CJYD2256797 |
+  | 3-in-1 Steam Grooming Brush | $26.99 | 2 | 45.5% (DEAD - real floor is 19.9%) | CJYD2256797 |
 
   **TWO THINGS STILL OPEN ON THESE, both needed:**
   1. **CJ PAIRING.** None of the six is connected to CJ yet, so orders will NOT

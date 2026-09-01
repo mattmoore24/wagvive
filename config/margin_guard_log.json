@@ -1,8 +1,10 @@
 {
- "ran_at": "2026-08-19T10:03:39",
+ "ran_at": "2026-08-31T16:56:11",
  "floor": "price_book",
  "applied": false,
- "checked": 258,
+ "checked": 193,
+ "expected": 193,
+ "coverage": 1.0,
  "breaches": [],
  "unresolved": [],
  "thin": [
@@ -10,21 +12,21 @@
    "product": "Wagvive 3-in-1 Steam Grooming Brush",
    "variant": "Pink",
    "sku": "CJYD225679701AZ",
-   "price": 16.99,
-   "margin": 27.9,
-   "stress_margin": 19.1,
-   "freight_headroom": 8.6,
-   "freight": 6.87
+   "price": 17.99,
+   "margin": 23.5,
+   "stress_margin": 14.0,
+   "freight_headroom": 9.38,
+   "freight": 8.31
   },
   {
    "product": "Wagvive 3-in-1 Steam Grooming Brush",
    "variant": "Red",
    "sku": "CJYD225679702BY",
-   "price": 16.99,
-   "margin": 27.9,
-   "stress_margin": 19.1,
-   "freight_headroom": 8.6,
-   "freight": 6.87
+   "price": 17.99,
+   "margin": 23.5,
+   "stress_margin": 14.0,
+   "freight_headroom": 9.38,
+   "freight": 8.31
   },
   {
    "product": "Wagvive Anti-Spill Floating Water Bowl",
@@ -237,46 +239,6 @@
    "freight": 4.75
   },
   {
-   "product": "Wagvive Cooling Comfort Pad",
-   "variant": "Light Grey / XX-Large 59\" x 39\"",
-   "sku": "CJPM292000024XC",
-   "price": 33.99,
-   "margin": 28.8,
-   "stress_margin": 20.2,
-   "freight_headroom": 16.41,
-   "freight": 12.94
-  },
-  {
-   "product": "Wagvive Cooling Comfort Pad",
-   "variant": "Coffee / XX-Large 59\" x 39\"",
-   "sku": "CJPM292000006FU",
-   "price": 33.99,
-   "margin": 28.8,
-   "stress_margin": 20.2,
-   "freight_headroom": 16.41,
-   "freight": 12.94
-  },
-  {
-   "product": "Wagvive Cooling Comfort Pad",
-   "variant": "Dark Blue / XX-Large 59\" x 39\"",
-   "sku": "CJPM292000018RI",
-   "price": 33.99,
-   "margin": 28.8,
-   "stress_margin": 20.2,
-   "freight_headroom": 16.41,
-   "freight": 12.94
-  },
-  {
-   "product": "Wagvive Cooling Comfort Pad",
-   "variant": "Pink / XX-Large 59\" x 39\"",
-   "sku": "CJPM292000012LO",
-   "price": 33.99,
-   "margin": 28.8,
-   "stress_margin": 20.2,
-   "freight_headroom": 16.41,
-   "freight": 12.94
-  },
-  {
    "product": "Wagvive Cordless Paw Trimmer",
    "variant": "Default Title",
    "sku": "CJNP222636501AZ",
@@ -427,18 +389,8 @@
    "freight": 5.62
   },
   {
-   "product": "Wagvive Glow in the Dark Skeleton Suit",
-   "variant": "XL",
-   "sku": "CJGD214316404DW",
-   "price": 15.99,
-   "margin": 27.8,
-   "stress_margin": 19.3,
-   "freight_headroom": 6.97,
-   "freight": 5.35
-  },
-  {
    "product": "Wagvive Jack-o-Lantern Sweater",
-   "variant": "Orange Stripe / XL",
+   "variant": "Orange Stripe / M",
    "sku": "CJGD180981305EV",
    "price": 12.99,
    "margin": 25.7,
@@ -448,7 +400,7 @@
   },
   {
    "product": "Wagvive Jack-o-Lantern Sweater",
-   "variant": "Orange Pumpkin / XL",
+   "variant": "Orange Pumpkin / M",
    "sku": "CJGD180981320TG",
    "price": 12.99,
    "margin": 25.7,
@@ -618,7 +570,7 @@
   },
   {
    "product": "Wagvive Pumpkin Hoodie",
-   "variant": "Blue / 9XL",
+   "variant": "Blue / XL",
    "sku": "CJGD182844313MN",
    "price": 15.99,
    "margin": 29.3,
@@ -628,7 +580,7 @@
   },
   {
    "product": "Wagvive Pumpkin Hoodie",
-   "variant": "Black / 9XL",
+   "variant": "Black / XL",
    "sku": "CJGD182844326ZA",
    "price": 15.99,
    "margin": 29.3,
@@ -638,7 +590,7 @@
   },
   {
    "product": "Wagvive Pumpkin Hoodie",
-   "variant": "Red / 9XL",
+   "variant": "Red / XL",
    "sku": "CJGD182844339MN",
    "price": 15.99,
    "margin": 29.3,
@@ -648,7 +600,7 @@
   },
   {
    "product": "Wagvive Pumpkin Hoodie",
-   "variant": "Grey / 9XL",
+   "variant": "Grey / XL",
    "sku": "CJGD182844352ZA",
    "price": 15.99,
    "margin": 29.3,
@@ -658,7 +610,7 @@
   },
   {
    "product": "Wagvive Pumpkin Hoodie",
-   "variant": "Pink / 9XL",
+   "variant": "Pink / XL",
    "sku": "CJGD182844365MN",
    "price": 15.99,
    "margin": 29.3,
@@ -838,7 +790,7 @@
   },
   {
    "product": "Wagvive Thanksgiving Turkey Sweater",
-   "variant": "Turkey / XL",
+   "variant": "Turkey / S",
    "sku": "CJGD184104008HS",
    "price": 15.99,
    "margin": 25.4,
@@ -848,7 +800,7 @@
   },
   {
    "product": "Wagvive Thanksgiving Turkey Sweater",
-   "variant": "Boo / XL",
+   "variant": "Boo / S",
    "sku": "CJGD184104012LO",
    "price": 15.99,
    "margin": 25.4,
@@ -858,7 +810,7 @@
   },
   {
    "product": "Wagvive Thanksgiving Turkey Sweater",
-   "variant": "Plaid / XL",
+   "variant": "Plaid / S",
    "sku": "CJGD184104004DW",
    "price": 15.99,
    "margin": 25.4,
@@ -898,7 +850,7 @@
   },
   {
    "product": "Wagvive Waterproof Snuggle Blanket",
-   "variant": "Black / S",
+   "variant": "Black / L",
    "sku": "CJGY192649702BY",
    "price": 23.99,
    "margin": 33.3,
@@ -908,7 +860,7 @@
   },
   {
    "product": "Wagvive Waterproof Snuggle Blanket",
-   "variant": "Gray / S",
+   "variant": "Gray / L",
    "sku": "CJGY192649707GT",
    "price": 23.99,
    "margin": 33.3,
@@ -918,7 +870,7 @@
   },
   {
    "product": "Wagvive Waterproof Snuggle Blanket",
-   "variant": "Coffee / S",
+   "variant": "Coffee / L",
    "sku": "CJGY192649712LO",
    "price": 23.99,
    "margin": 33.3,
@@ -928,7 +880,7 @@
   },
   {
    "product": "Wagvive Waterproof Sofa & Furniture Cover",
-   "variant": "Black / Large 39\" x 57\"",
+   "variant": "Black / Three seat sofa",
    "sku": "CJYD225186003CX",
    "price": 31.99,
    "margin": 20.1,
@@ -938,7 +890,7 @@
   },
   {
    "product": "Wagvive Waterproof Sofa & Furniture Cover",
-   "variant": "Brown / Large 39\" x 57\"",
+   "variant": "Brown / Three seat sofa",
    "sku": "CJYD225186009IR",
    "price": 31.99,
    "margin": 20.1,
@@ -948,7 +900,7 @@
   },
   {
    "product": "Wagvive Waterproof Sofa & Furniture Cover",
-   "variant": "Grey / Large 39\" x 57\"",
+   "variant": "Grey / Three seat sofa",
    "sku": "CJYD225186015OL",
    "price": 31.99,
    "margin": 20.1,
