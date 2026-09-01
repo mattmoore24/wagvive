@@ -27,6 +27,8 @@ and runs in the same atomic mutation as the creates, so the zone is never ratele
 import json, os, sys, urllib.request, urllib.error
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, 'config'))
+import delivery_promise  # noqa: E402  the single source of the delivery numbers
 
 STANDARD = 5.95
 # Raised from $50 on 2026-08-01. Two reasons. The price ladder moved up when the
@@ -39,9 +41,16 @@ STANDARD = 5.95
 # from a measured AOV: at $60 almost no single item qualifies, while almost any
 # two-item basket does. REVISIT once ~100 orders exist and a real AOV is known.
 THRESHOLD = 60.00
-# Delivery window quoted at checkout. Matches the FAQ and Shipping & Returns
-# pages, and is honest against the slowest carrier any active variant has.
-WINDOW = '5-12 business days'
+# Delivery window quoted at checkout. Imported, never typed: this string used
+# to be a literal here AND in the policies AND in 40 product bodies, and they
+# drifted into two contradictory promises. It was also hyphenated, which breaks
+# CLAUDE.md non-negotiable #4 (no hyphenated day ranges) on the single most
+# legally-visible surface in the store.
+#
+# It is now a door-to-door figure that includes CJ's handling step. The old
+# "5-12" was a transit-only carrier number and never covered the 4.9 to 11 day
+# gap before a parcel gets its first scan.
+WINDOW = delivery_promise.WINDOW
 
 env = {}
 with open(os.path.join(ROOT, 'config', 'shopify.env'), encoding='utf-8') as fh:

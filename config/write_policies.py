@@ -34,6 +34,8 @@ Shipping & Returns page.
 import json, os, sys, urllib.error, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, 'config'))
+import delivery_promise  # noqa: E402  the single source of the delivery numbers
 
 env = {}
 with open(os.path.join(ROOT, 'config', 'shopify.env'), encoding='utf-8') as fh:
@@ -111,9 +113,12 @@ reasons (ear and dental wipes).</li>
 <li>Items returned after 30 days, or without their original packaging.</li>
 </ul>
 <h3>Cancellations</h3>
-<p>Orders can be cancelled for a full refund any time before they are
-dispatched. Email us as soon as possible, because once a parcel has left the
-warehouse it has to be handled as a return.</p>
+<p>Orders can be cancelled for a full refund any time before the parcel is
+handed to the carrier. That is usually several days after you order, and it is
+later than the point where your order is marked fulfilled, so it is worth
+asking even if you have already had a confirmation email. Email us as soon as
+you can. Once the parcel is genuinely on its way it has to be handled as a
+return.</p>
 <h3>If your order is delayed</h3>
 <p>If we cannot ship within the time stated in our Shipping Policy, we will
 contact you, and you may either agree to the new date or cancel for a full
@@ -134,11 +139,11 @@ estimate we cannot keep.</p>
 </ul>
 <h3>How long it takes</h3>
 <ul>
-<li><strong>Processing:</strong> 1 to 3 business days.</li>
-<li><strong>Delivery:</strong> typically 5 to 12 business days after
-dispatch.</li>
-<li><strong>Tracking:</strong> emailed as soon as your parcel leaves the
-warehouse.</li>
+<li><strong>Dispatch:</strong> {dispatch}. Most orders leave sooner.</li>
+<li><strong>Delivery:</strong> {window} from the day you order.</li>
+<li><strong>Tracking:</strong> emailed when your parcel is handed to the
+carrier. It can be quiet for the first week or so while your order is being
+packed, which is normal and not a sign anything is wrong.</li>
 </ul>
 <h3>Where your order ships from</h3>
 <p>Your order is packed and dispatched by our overseas fulfillment partner and
@@ -156,8 +161,10 @@ rather not wait, we refund you in full without you having to ask.</p>
 own tracking. You are not charged twice, because the shipping you paid at
 checkout covers the whole order.</p>
 <h3>If something goes wrong</h3>
-<p>If tracking has not moved for 7 days, or your parcel is late beyond the
-window above, email <a href="mailto:{email}">{email}</a> and we will chase it.
+<p>Tracking that has not moved for a few days is normal while your order is
+being packed, so please do not worry about that on its own. If your parcel is
+late beyond the window above, or tracking has not moved for 10 days after you
+received it, email <a href="mailto:{email}">{email}</a> and we will chase it.
 If it is lost we will replace or refund it.</p>
 <h3>Wrong address</h3>
 <p>Please check your address at checkout. If you spot a mistake, email us
@@ -457,9 +464,16 @@ def gql(query, variables=None):
 
 
 def fill(body):
+    # The delivery numbers come from config/delivery_promise.py, never from a
+    # literal typed here. That module carries the reasoning and the sample the
+    # numbers were derived from; a literal in this file would drift from it the
+    # way "1 to 3 business days" drifted from a dispatch step measured at 4.9,
+    # 8.8 and 11 days.
     return (body.replace('{email}', SUPPORT_EMAIL)
                 .replace('{address}', BUSINESS_ADDRESS)
-                .replace('{free}', str(FREE_THRESHOLD)))
+                .replace('{free}', str(FREE_THRESHOLD))
+                .replace('{window}', delivery_promise.WINDOW)
+                .replace('{dispatch}', delivery_promise.DISPATCH_WINDOW))
 
 
 def main():

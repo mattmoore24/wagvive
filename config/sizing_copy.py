@@ -15,7 +15,16 @@ Dog weights are guidance for choosing a size, not a fit guarantee: coat and
 build vary, so every guide says what to do when a dog falls between sizes.
 """
 
-DELIVERY = '<p><strong>Arrives in 5 to 12 business days.</strong></p>'
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from delivery_promise import DELIVERY, DELIVERY_BLOCK  # noqa: E402,F401
+
+# DELIVERY is re-exported so the nine product-creation scripts that imported it
+# from here keep working. It is DEFINED in config/delivery_promise.py, which
+# carries the measurements the numbers came from. Do not type the promise as a
+# literal in this file or any other.
 
 SIZING_CSS = (
     '<style>.wv-size{width:100%;border-collapse:collapse;margin:0 0 1em;'
