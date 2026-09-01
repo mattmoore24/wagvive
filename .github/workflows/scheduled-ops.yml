@@ -99,6 +99,15 @@ jobs:
       - name: Hold back anything CJ cannot ship, and prove it is off sale
         run: python config/guard_unshippable.py --apply
 
+      # sync_inventory only walks SKU-carrying variants, so it never touches
+      # kits and its "all in step" verdict says NOTHING about them. A kit can
+      # be silently unbuyable, or claim stock it cannot build, while every
+      # check above passes. This is that check: it recomputes
+      # min(component available // qty needed) and requires it to equal
+      # Shopify's derived figure for all 39 kit variants.
+      - name: Verify kit bundles derive the right sellable quantity
+        run: python config/verify_kit_inventory.py
+
       - name: Margin floor check (report only — fails the job on a breach)
         run: python config/margin_guard.py
 
