@@ -25,6 +25,11 @@ without imagery. House-style cream art is shot afterwards and swapped in, then
     python config/add_fall_lineup.py --apply    # create drafts
     python config/add_fall_lineup.py --finish --apply
 """
+# DELIVERY PROMISE LITERAL. The canonical text lives in
+# config/delivery_promise.py; the literal below is a copy because it sits
+# inside plain triple-quoted HTML. If they diverge, config/audit_claims.py
+# fails against the LIVE store and config/apply_delivery_promise.py repairs
+# every product body in one pass.
 import json
 import os
 import sys
@@ -77,7 +82,7 @@ the evening walk, which is exactly when everyone is out looking at dogs.</p>
 <li>Ribbed neck and cuffs so it stays put</li>
 <li>Four sizes, small through extra large</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""},
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""},
 
  {'handle': 'wagvive-halloween-snuffle-mat',
   'title': 'Wagvive Halloween Snuffle Mat',
@@ -97,7 +102,7 @@ ten minutes of sniffing, which is what actually tires a dog out.</p>
 <li>Drawstring pumpkin pouch for the harder finds</li>
 <li>50 by 60 cm, machine washable</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""},
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""},
 
  {'handle': 'wagvive-jack-o-lantern-sweater',
   'title': 'Wagvive Jack-o-Lantern Sweater',
@@ -137,7 +142,7 @@ photos.</p>
 <li>Four colourways, five sizes from XS to XL</li>
 <li>Pulls on over the head, legs stay free</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""},
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""},
 
  {'handle': 'wagvive-halloween-squeaky-bones',
   'title': 'Wagvive Halloween Squeaky Bones',
@@ -163,7 +168,7 @@ small dog to carry around the house all day, which they will.</p>
 <li>Soft enough for gentle chewers, squeaks the whole time</li>
 <li>Light and easy to carry</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""},
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""},
 
  {'handle': 'wagvive-thanksgiving-turkey-coat',
   'title': 'Wagvive Thanksgiving Turkey Coat',
@@ -188,11 +193,16 @@ buying twice. Warm enough to be the real coat on a cold walk.</p>
 <li>Retro lapel collar with contrast trim</li>
 <li>Four sizes, small through extra large</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""},
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""},
 
  {'handle': 'wagvive-steam-grooming-brush',
   'title': 'Wagvive 3-in-1 Steam Grooming Brush',
-  'spu': 'CJYD2256797', 'price': '26.99', 'floor': 45.5, 'type': 'Grooming',
+  # Was price 26.99 / floor 45.5, the launch figures. finish() stamps
+  # `floor` into price_book.json UNCONDITIONALLY while price and variants
+  # self-heal from the live store, so a later --finish --apply would have
+  # restored a 45.5% floor and re-breached the guard at any price under ~$28.
+  # Kept in step with the book by hand on 2026-08-31.
+  'spu': 'CJYD2256797', 'price': '17.99', 'floor': 19.9, 'type': 'Grooming',
   'seasonal': False,          # viral-products brief, not the fall lineup
   'tags': 'brush, dog, grooming, shedding, steam',
   'options': ['Color'],
@@ -210,7 +220,7 @@ between proper washes.</p>
 <li>Soft silicone bristles that will not scratch</li>
 <li>Lifts loose hair rather than spreading it round the room</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""},
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""},
 ]
 
 
