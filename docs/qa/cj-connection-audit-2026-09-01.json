@@ -1,11 +1,13 @@
 {
- "ran_at": "2026-09-01T13:16:07",
- "products": 46,
+ "ran_at": "2026-09-01T19:35:43",
+ "products": 48,
  "bundles": 6,
- "variants": 193,
- "spus": 46,
+ "variants": 214,
+ "spus": 48,
  "problems": [],
  "warnings": [
-  "Wagvive Automatic Ball Launcher: carrier Fedex US to US is inside 12 days but quotes $0.00 (missing data); priced from the US domestic fallback"
+  "Wagvive 3-in-1 Travel Bowl: carrier DHL US to US #5 is inside 12 days but quotes $0.00 (missing data); priced from the US domestic fallback",
+  "Wagvive Automatic Ball Launcher: carrier Fedex US to US is inside 12 days but quotes $0.00 (missing data); priced from the US domestic fallback",
+  "Wagvive LED Safety Halo Collar: carrier DHL US to US #5 is inside 12 days but quotes $0.00 (missing data); priced from the US domestic fallback"
  ]
 }

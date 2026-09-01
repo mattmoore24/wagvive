@@ -1,9 +1,9 @@
 {
- "ran_at": "2026-08-31T16:56:11",
+ "ran_at": "2026-09-01T19:53:52",
  "floor": "price_book",
  "applied": false,
- "checked": 193,
- "expected": 193,
+ "checked": 214,
+ "expected": 214,
  "coverage": 1.0,
  "breaches": [],
  "unresolved": [],
@@ -27,6 +27,66 @@
    "stress_margin": 14.0,
    "freight_headroom": 9.38,
    "freight": 8.31
+  },
+  {
+   "product": "Wagvive 3-in-1 Travel Bowl",
+   "variant": "Green / 450 ml",
+   "sku": "CJPB26582870002",
+   "price": 31.99,
+   "margin": 21.1,
+   "stress_margin": 11.8,
+   "freight_headroom": 12.1,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive 3-in-1 Travel Bowl",
+   "variant": "Blue / 450 ml",
+   "sku": "CJPB26582870003",
+   "price": 31.99,
+   "margin": 21.1,
+   "stress_margin": 11.8,
+   "freight_headroom": 12.1,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive 3-in-1 Travel Bowl",
+   "variant": "Green / 650 ml",
+   "sku": "CJPB26582870006",
+   "price": 31.99,
+   "margin": 21.1,
+   "stress_margin": 11.8,
+   "freight_headroom": 12.1,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive 3-in-1 Travel Bowl",
+   "variant": "Blue / 650 ml",
+   "sku": "CJPB26582870007",
+   "price": 31.99,
+   "margin": 21.1,
+   "stress_margin": 11.8,
+   "freight_headroom": 12.1,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive 3-in-1 Travel Bowl",
+   "variant": "Pink / 650 ml",
+   "sku": "CJPB26582870005",
+   "price": 31.99,
+   "margin": 21.1,
+   "stress_margin": 11.8,
+   "freight_headroom": 12.1,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive 3-in-1 Travel Bowl",
+   "variant": "Yellow / 650 ml",
+   "sku": "CJPB26582870008",
+   "price": 31.99,
+   "margin": 21.1,
+   "stress_margin": 11.8,
+   "freight_headroom": 12.1,
+   "freight": 11.0
   },
   {
    "product": "Wagvive Anti-Spill Floating Water Bowl",
@@ -467,6 +527,156 @@
    "stress_margin": -6.5,
    "freight_headroom": 8.47,
    "freight": 7.62
+  },
+  {
+   "product": "Wagvive LED Safety Halo Collar",
+   "variant": "Red / M",
+   "sku": "CJTR230171401AZ",
+   "price": 32.99,
+   "margin": 21.0,
+   "stress_margin": 11.7,
+   "freight_headroom": 12.11,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive LED Safety Halo Collar",
+   "variant": "Red / L",
+   "sku": "CJTR230171403CX",
+   "price": 32.99,
+   "margin": 21.0,
+   "stress_margin": 11.7,
+   "freight_headroom": 12.11,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive LED Safety Halo Collar",
+   "variant": "Red / XL",
+   "sku": "CJTR230171404DW",
+   "price": 32.99,
+   "margin": 21.0,
+   "stress_margin": 11.7,
+   "freight_headroom": 12.11,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive LED Safety Halo Collar",
+   "variant": "Blue / M",
+   "sku": "CJTR230171405EV",
+   "price": 32.99,
+   "margin": 21.0,
+   "stress_margin": 11.7,
+   "freight_headroom": 12.11,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive LED Safety Halo Collar",
+   "variant": "Blue / L",
+   "sku": "CJTR230171407GT",
+   "price": 32.99,
+   "margin": 21.0,
+   "stress_margin": 11.7,
+   "freight_headroom": 12.11,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive LED Safety Halo Collar",
+   "variant": "Blue / XL",
+   "sku": "CJTR230171408HS",
+   "price": 32.99,
+   "margin": 21.0,
+   "stress_margin": 11.7,
+   "freight_headroom": 12.11,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive LED Safety Halo Collar",
+   "variant": "Orange / M",
+   "sku": "CJTR230171409IR",
+   "price": 32.99,
+   "margin": 21.0,
+   "stress_margin": 11.7,
+   "freight_headroom": 12.11,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive LED Safety Halo Collar",
+   "variant": "Orange / L",
+   "sku": "CJTR230171411KP",
+   "price": 32.99,
+   "margin": 21.0,
+   "stress_margin": 11.7,
+   "freight_headroom": 12.11,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive LED Safety Halo Collar",
+   "variant": "Orange / XL",
+   "sku": "CJTR230171412LO",
+   "price": 32.99,
+   "margin": 21.0,
+   "stress_margin": 11.7,
+   "freight_headroom": 12.11,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive LED Safety Halo Collar",
+   "variant": "Hot Pink / M",
+   "sku": "CJTR230171413MN",
+   "price": 32.99,
+   "margin": 21.0,
+   "stress_margin": 11.7,
+   "freight_headroom": 12.11,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive LED Safety Halo Collar",
+   "variant": "Hot Pink / L",
+   "sku": "CJTR230171415OL",
+   "price": 32.99,
+   "margin": 21.0,
+   "stress_margin": 11.7,
+   "freight_headroom": 12.11,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive LED Safety Halo Collar",
+   "variant": "Hot Pink / XL",
+   "sku": "CJTR230171416PK",
+   "price": 32.99,
+   "margin": 21.0,
+   "stress_margin": 11.7,
+   "freight_headroom": 12.11,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive LED Safety Halo Collar",
+   "variant": "Green / M",
+   "sku": "CJTR230171417QJ",
+   "price": 32.99,
+   "margin": 21.0,
+   "stress_margin": 11.7,
+   "freight_headroom": 12.11,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive LED Safety Halo Collar",
+   "variant": "Green / L",
+   "sku": "CJTR230171419SH",
+   "price": 32.99,
+   "margin": 21.0,
+   "stress_margin": 11.7,
+   "freight_headroom": 12.11,
+   "freight": 11.0
+  },
+  {
+   "product": "Wagvive LED Safety Halo Collar",
+   "variant": "Green / XL",
+   "sku": "CJTR230171420TG",
+   "price": 32.99,
+   "margin": 21.0,
+   "stress_margin": 11.7,
+   "freight_headroom": 12.11,
+   "freight": 11.0
   },
   {
    "product": "Wagvive LED Waste Bag Dispenser",

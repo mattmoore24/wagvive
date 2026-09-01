@@ -46,23 +46,50 @@ LED Safety Halo Collar $25.99 (15 variants), 3-in-1 Travel Bowl $24.99 (6),
 GPS Pet Tracker $27.99 (1). Every variant verified to hold real US stock with a
 3 to 7 day domestic carrier. In price_book at a 20% floor.
 
+## 2026-09-01 (later): both US-warehouse products are LIVE and CJ-paired
+
+LED Safety Halo Collar (15 variants) and 3-in-1 Travel Bowl (6) are active on
+all five sales channels, every variant available, every variant wired to its
+colour image, house-style Runway photography, size guide rendering, current
+delivery promise. audit_cj_connections: NO PROBLEMS, 48/48 compliant.
+margin_guard: all variants clear their floors.
+
+CJ pairing done in the browser. Both connections were verified BEFORE
+confirming, per the rule in CLAUDE.md: shopType "Shopify", and every pair
+SKU-identical (15/15 and 6/6), checked by reading the rendered dialog and
+splitting the two columns by screen position. Shipping From is US Warehouse and
+the carrier is USPS US to US #7 on both, chosen because USPS is one of the few
+carriers Shopify polls natively for shipment status, which helps the tracking
+gap. The retired CJ MEDIUM collar sizes are correctly excluded.
+
+**PRICES HAD TO RISE, AND THE REASON IS A FREIGHT UNKNOWN.** I priced these at
+$25.99 and $24.99 on a $5.50 US domestic freight assumption. margin_guard
+rejected both. CJ returns **$0.00 for US domestic freight on every
+US-warehouse product tested** (14 products, 41g to 1000g, all eight carriers),
+which freight_floor correctly treats as missing data, so pricing falls back to
+`US_DOMESTIC_FREIGHT_FALLBACK = $11.00`. At $11 the floor needs $32.99 and
+$31.99, and that is what they are now priced at (21.0% and 21.1%).
+
+That fallback is documented as a planning figure derived from ONE bulky 450g
+item where dimensional weight gave 3 to 4 lb billable. It is very likely too
+high for a 132g folding bowl. The only real US domestic observations on this
+account are from the Pet Hair Remover Mitt: GOFO+ $4.98, USPS+ $5.10 to $5.26.
+**One real order settles it**, and if freight lands near $5.50 these can drop to
+about $25.99 and $24.99, which is much closer to market (comparable LED collars
+sell around $15 to $20). Do NOT lower the constant to make a price work; get the
+observation first.
+
 ## Blocked on the owner (nothing else can finish without these)
 
-1. **Reconnect the Runway connector.** It is disconnected, so no imagery could
-   be generated and the three products must stay DRAFT: activating without
-   photos puts blank cards on the collection page. Prompts are written and
-   ready in `config/reshoot_manifests/us-wave1-prompts.json`, composed after
-   LOOKING at each CJ reference, with the cream background, no-props clause,
-   master-then-recolour order and a per-product QC checklist.
-2. **Grant the Chrome extension host permission for cjdropshipping.com**, and
-   sign in to CJ. Pairing the three new products is browser-only and currently
-   returns "Cannot access contents of the page".
-3. **Decide on the shock collar.** The fourth product requested, CJ's "Dog
+1. DONE 2026-09-01: Runway reconnected, imagery shot and live.
+2. DONE 2026-09-01: CJ access granted, both products paired.
+3. **The shock collar stays out, at the owner's instruction.** The fourth product requested, CJ's "Dog
    Training Collar", is a REMOTE SHOCK COLLAR: the handset has a lightning-bolt
    static button and nine intensity levels. It was recommended off a seller
    count without anyone looking at the photo, which was this session's error.
-   Not created. It is aversive, contested in mainstream training advice, and
-   sits oddly beside a catalogue built on calming wraps and comfort toys.
+   Never created. The GPS Pet Tracker was also DROPPED at the owner's
+   instruction and its draft deleted: it required a $28.99 to $74.99 paid
+   subscription to the device maker, which the store cannot support.
 
 **Also unresolved:** OneDrive was actively reverting files mid-edit for part of
 this session (a written marker vanished within 5 seconds, and two files were
