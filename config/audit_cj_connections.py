@@ -21,8 +21,13 @@ store was correct:
   6. KIT INTEGRITY. Every bundle must be ACTIVE with all components ACTIVE and
      each component's chosen variant still present: losing a component moves a
      kit to DRAFT with no warning.
-  7. FREIGHT. Every product must still have a carrier inside the 5 to 12
-     business day promise.
+  7. FREIGHT. Every product must still have a carrier inside the 12 business
+     day TRANSIT ceiling (freight_floor.MAX_DAYS). That ceiling is a CARRIER
+     limit, not the published promise: the promise is 10 to 16 business days
+     door to door and includes CJ's 5 to 11 day handling step, which no carrier
+     quote covers. Conflating the two is how this audit could certify every
+     variant "inside the promise" on orders that breached it. See
+     config/delivery_promise.py.
 
     python config/audit_cj_connections.py             # full audit
     python config/audit_cj_connections.py --quick     # skip freight quotes
@@ -269,7 +274,7 @@ def main():
 
     # ---- 7: freight ------------------------------------------------------
     if not quick:
-        print('\n=== 6. Freight inside the 5 to 12 business day promise ===')
+        print('\n=== 6. Freight inside the 12 business day carrier ceiling ===')
         nofreight = []
         for p in singles:
             sku = next((v['sku'] for v in p['variants'] if v.get('sku')), None)
