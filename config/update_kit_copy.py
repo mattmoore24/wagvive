@@ -26,6 +26,11 @@ TWO TRAPS THIS SCRIPT EXISTS TO AVOID:
 
 Run with no flags for a diff. --apply writes.
 """
+# DELIVERY PROMISE LITERAL. The canonical text lives in
+# config/delivery_promise.py; the literal below is a copy because it sits
+# inside plain triple-quoted HTML. If they diverge, config/audit_claims.py
+# fails against the LIVE store and config/apply_delivery_promise.py repairs
+# every product body in one pass.
 import json
 import os
 import sys
@@ -66,7 +71,7 @@ around all day</li>
 </ul>
 <p>The five cost $62.95 bought separately. Together they are $50.00, and they
 arrive in one parcel.</p>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>""",
+<p><strong>Arrives in 10 to 16 business days.</strong></p>""",
 
     'dog-enrichment-kit': """<p><strong>A busy dog is a calm dog.</strong></p>
 <p>Four tools that turn meals and quiet time into work a dog actually enjoys:
@@ -88,7 +93,7 @@ cleans their teeth while they do it</li>
 </ul>
 <p>The four cost $62.96 bought separately. Together they are $50.00, and they
 arrive in one parcel.</p>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>""",
+<p><strong>Arrives in 10 to 16 business days.</strong></p>""",
 }
 
 META_DESC = {

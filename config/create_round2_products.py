@@ -16,6 +16,11 @@ Variant SKUs are the CJ SKUs so CJ automatic matching can pair them. Stock
 starts at Shop location (Shopify default); connect to the CJ location after
 pairing, per config/fix_locations.py.
 """
+# DELIVERY PROMISE LITERAL. The canonical text lives in
+# config/delivery_promise.py; the literal below is a copy because it sits
+# inside plain triple-quoted HTML. If they diverge, config/audit_claims.py
+# fails against the LIVE store and config/apply_delivery_promise.py repairs
+# every product body in one pass.
 import json, os, sys, time, urllib.error, urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -75,7 +80,7 @@ nothing extra to pack</li>
 <li><strong>No waste</strong>: unfinished water tips straight back inside</li>
 <li><strong>Clips to a leash or bag</strong> with the carry loop</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>""",
+<p><strong>Arrives in 10 to 16 business days.</strong></p>""",
         'variants': [
             ('CJDT287487301AZ', 'Blue', 165),
             ('CJDT287487302BY', 'Pink', 165),
@@ -99,7 +104,7 @@ concentration during storms, guests, nail trims or just a rainy afternoon.</p>
 <li><strong>Anti-slip base</strong> stays put on hard floors</li>
 <li><strong>Dishwasher safe</strong></li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>""",
+<p><strong>Arrives in 10 to 16 business days.</strong></p>""",
         'variants': [
             ('CJFT286015801AZ', 'Blue', 328),
             ('CJFT286015802BY', 'Black', 328),
@@ -125,7 +130,7 @@ word like outside, and build from there.</p>
 <li><strong>Non-slip base</strong> stays where you put it</li>
 <li><strong>Batteries included</strong></li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>""",
+<p><strong>Arrives in 10 to 16 business days.</strong></p>""",
         'variants': [
             ('CJYD232561605EV', 'Green', 98),
             ('CJYD232561603CX', 'Pink', 98),
@@ -151,7 +156,7 @@ behaves itself.</p>
 <li><strong>Built-in squeaker</strong> rewards every catch</li>
 <li><strong>Light enough for indoor play</strong></li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>""",
+<p><strong>Arrives in 10 to 16 business days.</strong></p>""",
         'variants': [
             ('CJMY141671004DW', 'Green', 50),
             ('CJMY141671005EV', 'Blue', 50),

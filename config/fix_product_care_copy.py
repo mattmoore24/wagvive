@@ -48,20 +48,30 @@ PROBE_HANDLE = 'calm-comfort-kit'   # the page phase 1 buys traffic for
 # place.
 DETAILS = ['sections', 'main', 'blocks', 'product-details', 'blocks']
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import delivery_promise as DP  # noqa: E402
+
+# These strings are built from config/delivery_promise.py, NOT typed here.
+# This file is wired to CI (.github/workflows/theme-copy-fix.yml) and rewrites
+# these JSON paths UNCONDITIONALLY, without comparing current content. When the
+# promise moved to "10 to 16 business days" on 2026-09-01 the literals below
+# still said "1 to 3" and "5 to 12", so the next push to main would have
+# silently restored the retired promise to every product page in the store.
 EDITS = [
     {
         'name': 'trust badge, dispatch time',
         'path': DETAILS + ['wagvive_trust', 'blocks', 't3', 'blocks', 'l',
                            'settings', 'text'],
-        'new': '<p>Ships in 1 to 3 business days</p>',
+        'new': f'<p>Ships within {DP.DISPATCH_DAYS} business days</p>',
     },
     {
         'name': 'accordion, Shipping & delivery',
         'path': DETAILS + ['wagvive_details', 'blocks', 'r1', 'blocks', 'a',
                            'settings', 'text'],
-        'new': ('<p>Dispatched in 1 to 3 business days. Typical US delivery is '
-                '5 to 12 business days after dispatch, with tracking emailed as '
-                'soon as it ships. Free over $60, otherwise $5.95 flat.</p>'),
+        'new': (f'<p>Dispatched within {DP.DISPATCH_DAYS} business days. Typical '
+                f'US delivery is {DP.WINDOW} from the day you order, with '
+                'tracking emailed when your parcel is handed to the carrier. '
+                'Free over $60, otherwise $5.95 flat.</p>'),
     },
     {
         'name': 'accordion, Returns',

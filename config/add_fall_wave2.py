@@ -24,6 +24,11 @@ colour.
     python config/add_fall_wave2.py --apply
     python config/add_fall_wave2.py --finish --apply
 """
+# DELIVERY PROMISE LITERAL. The canonical text lives in
+# config/delivery_promise.py; the literal below is a copy because it sits
+# inside plain triple-quoted HTML. If they diverge, config/audit_claims.py
+# fails against the LIVE store and config/apply_delivery_promise.py repairs
+# every product body in one pass.
 import json
 import os
 import sys
@@ -58,7 +63,7 @@ afternoon. Ships from inside the US.</p>
 <li>Six tennis balls included</li>
 <li>Runs on mains power or batteries</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""},
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""},
 
  {'handle': 'wagvive-pumpkin-hoodie', 'spu': 'CJGD1828443',
   'title': 'Wagvive Pumpkin Hoodie',
@@ -80,7 +85,7 @@ size of a small terrier.</p>
 <li>Five colours, hood that actually stays up</li>
 <li>Brushed fleece inside, warm enough for an October walk</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""},
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""},
 
  {'handle': 'wagvive-big-dog-costume', 'spu': 'CJGD1894831',
   'title': 'Wagvive Big Dog Costume',
@@ -101,7 +106,7 @@ stretching across the shoulders.</p>
 <li>Tiger, dinosaur or rabbit, all with ears and a tail</li>
 <li>Soft flannel, steps in and fastens along the back</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""},
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""},
 
  {'handle': 'wagvive-pumpkin-snuffle-mat', 'spu': 'CJGY2110859',
   'title': 'Wagvive Pumpkin Snuffle Mat',
@@ -120,7 +125,7 @@ which is the difference between a good snuffle mat and a frustrating one.</p>
 <li>Non-slip backing so it stays put</li>
 <li>Machine washable</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""},
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""},
 
  {'handle': 'wagvive-roast-turkey-sniff-toy', 'spu': 'CJGY1276264',
   'title': 'Wagvive Roast Turkey Sniff Toy',
@@ -139,7 +144,7 @@ and the legs are sturdy enough for a proper tug afterwards.</p>
 <li>Squeaks, and the legs hold up to tugging</li>
 <li>Soft enough to carry around after</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""},
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""},
 
  {'handle': 'wagvive-pumpkin-chew-toy', 'spu': 'CJGY2138215',
   'title': 'Wagvive Pumpkin Chew Toy',
@@ -157,7 +162,7 @@ and textured enough to do something useful for their gums on the way.</p>
 <li>Ridged surface that works at the gums</li>
 <li>Bounces oddly, which keeps solo play interesting</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""},
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""},
 ]
 
 

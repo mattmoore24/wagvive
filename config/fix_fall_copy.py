@@ -14,6 +14,11 @@ were both consistent with what I wrote.
     sizes, small through extra large" invites a labrador owner to buy it. The
     Pumpkin Hoodie (XS-9XL) and Big Dog Costume (3XL-8XL) are pointed at instead.
 """
+# DELIVERY PROMISE LITERAL. The canonical text lives in
+# config/delivery_promise.py; the literal below is a copy because it sits
+# inside plain triple-quoted HTML. If they diverge, config/audit_claims.py
+# fails against the LIVE store and config/apply_delivery_promise.py repairs
+# every product body in one pass.
 import json, os, sys, time, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,7 +43,7 @@ argyle for every day in between</li>
 <li>Ribbed collar, cuffs and hem in contrast colour</li>
 <li>Four sizes, small through extra large</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""},
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""},
  'wagvive-glow-skeleton-suit': {
   'body': """<p><strong>It glows once the sun goes down.</strong></p>
 <p>A black four leg suit with a bone print that charges in daylight and glows on
@@ -50,7 +55,7 @@ the evening walk, which is exactly when everyone is out looking at dogs.</p>
 suits chihuahuas, dachshunds, terriers and similar. For anything bigger see the
 Pumpkin Hoodie, which runs XS to 9XL, or the Big Dog Costume at 3XL to 8XL</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""},
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""},
 }
 
 

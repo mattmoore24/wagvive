@@ -28,6 +28,11 @@ of the components' new single prices.
     python config/apply_kits.py            # dry run: show plans
     python config/apply_kits.py --apply    # write + verify
 """
+# DELIVERY PROMISE LITERAL. The canonical text lives in
+# config/delivery_promise.py; the literal below is a copy because it sits
+# inside plain triple-quoted HTML. If they diverge, config/audit_claims.py
+# fails against the LIVE store and config/apply_delivery_promise.py repairs
+# every product body in one pass.
 import json, os, sys, time, urllib.error, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -101,7 +106,7 @@ car and the vet smell like home</li>
 walks, lights the way on the late one</li>
 </ul>
 <p>Cheaper than picking the pieces separately, and it arrives in one parcel.</p>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""
 
 BODY['Toy Kit'] = """<p><strong>Five toys, five different games.</strong></p>
 <p>Dogs get bored of a toy, not of playing. This is a spread rather than five
@@ -116,7 +121,7 @@ answer to sound</li>
 around all day</li>
 </ul>
 <p>Cheaper than picking any four separately, and it arrives in one parcel.</p>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""
 
 BODY['Grooming Essentials Kit'] = """<p><strong>Everything for a home grooming session.</strong></p>
 <p>Five tools that cover coat, nails, teeth, bath and the walk home, so you are
@@ -133,7 +138,7 @@ lap of the house</li>
 <li><strong>Paw washing cup</strong> - soft silicone fins clean four muddy paws
 before they reach the carpet</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""
 
 BODY['Dog Enrichment Kit'] = """<p><strong>A busy dog is a calm dog.</strong></p>
 <p>Four tools that turn meals and quiet time into work a dog actually enjoys:
@@ -149,7 +154,7 @@ instead of a thirty second inhale</li>
 <li><strong>Bouncy egg squeaker</strong> - bounces off at angles a ball never
 would, so solo play stays interesting</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""
 
 BODY['Travel Kit'] = """<p><strong>Everything for a day away from the water bowl.</strong></p>
 <p>Five pieces that live by the door or in the car, so leaving the house with
@@ -165,7 +170,7 @@ back seat</li>
 <li><strong>Paw print fleece blanket</strong> - a bed that smells like home,
 wherever the day ends</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""
 
 BODY['Calm & Comfort Kit'] = """<p><strong>For the dog who finds the world a bit much.</strong></p>
 <p>Storms, fireworks, guests, being left: five pieces that work on the same
@@ -182,7 +187,7 @@ to lie changes the mood</li>
 <li><strong>Big squeak plush</strong> - a soft companion big enough to lean on
 when the noise starts</li>
 </ul>
-<p><strong>Arrives in 5 to 12 business days.</strong></p>"""
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""
 
 # kit -> (bundle product id or None to create, price, components as
 #         (short title, parent label[, per-option overrides])).

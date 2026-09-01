@@ -17,6 +17,11 @@ brand.
 Curated to 3 colours x 3 sizes. The larger sizes are all over 1kg, where China
 freight stops being viable per the sourcing rule.
 """
+# DELIVERY PROMISE LITERAL. The canonical text lives in
+# config/delivery_promise.py; the literal below is a copy because it sits
+# inside plain triple-quoted HTML. If they diverge, config/audit_claims.py
+# fails against the LIVE store and config/apply_delivery_promise.py repairs
+# every product body in one pass.
 import base64, json, os, sys, urllib.error, urllib.parse, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -62,7 +67,7 @@ you chose for the room rather than a mat you tolerate.</p>
 <li>Machine washable, holds its color</li>
 <li>Also works on a bed, a crate floor or the back seat of a car</li>
 </ul>
-<p><strong>Arrives in 5-12 business days.</strong></p>"""
+<p><strong>Arrives in 10 to 16 business days.</strong></p>"""
 
 
 def api(method, path, payload=None):

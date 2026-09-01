@@ -37,9 +37,10 @@ EDITS = [
     ('free shipping over $60', 'free shipping over $70'),
     ('over $60', 'over $70'),
     ('$5.95', '$8.00'),
-    ('5&ndash;11 business days', '5&ndash;12 business days'),
-    ('5–11 business days', '5–12 business days'),
-    ('5-11 business days', '5-12 business days'),
+    # The three 5-11 -> 5-12 rewrites that used to live here are GONE. Both
+    # numbers are retired (config/delivery_promise.RETIRED) and this script
+    # would have re-stamped "5-12" over the current promise wherever it ran.
+    # Delivery wording is now owned by config/apply_delivery_promise.py.
 ]
 
 

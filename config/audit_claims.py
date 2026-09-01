@@ -14,13 +14,20 @@ Three drifted:
 import json, os, re, sys, urllib.request, urllib.error
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, 'config'))
+import delivery_promise as DP  # noqa: E402
 
 PATTERNS = {
     'supplier': re.compile(r'(one vetted supplier|single (audited|vetted) (partner|supplier)|'
                            r'one (audited|vetted) partner|same supplier|single supplier)', re.I),
     'shipping': re.compile(r'(\$5\.95|\$8\.00|free (?:US )?shipping over \$\d+|over \$60|over \$70)', re.I),
-    'transit': re.compile(r'(5\s*[-–]\s*11|1\s*[-–]\s*3 business days|'
-                          r'\d+\s*[-–]\s*\d+\s*business days)', re.I),
+    # Every promise this store has retired, built from delivery_promise.RETIRED
+    # so a future change adds one line there instead of editing a regex here.
+    # The old pattern hunted a hard-coded "5-11" and ALSO matched any hyphenated
+    # "N-N business days", so it flagged the current wording as a violation
+    # while missing the "1 to 3" spelled with the word "to".
+    'transit': re.compile('|'.join(re.escape(r) for r in DP.RETIRED)
+                          + r'|\d+\s*[-–]\s*\d+\s*business days', re.I),
     'archived': re.compile(r'(calming comfort bed|orthopedic comfort bed|cooling comfort mat|'
                            r'comfort-health-kit|comfort & health kit)', re.I),
 }

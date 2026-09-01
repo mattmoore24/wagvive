@@ -8,7 +8,7 @@
   - 600px max width, single column: the safest width across Gmail/Apple Mail/Outlook.
   - Palette: cream #F7F2E9 surface, ink #3A3026 text, matching the storefront.
   - A light card on a light page survives dark-mode inversion far better than dark-on-dark.
-  - Delivery promise wording matches the site and policies exactly ("5 to 12 business days").
+  - Delivery promise wording matches the site and policies exactly ("10 to 16 business days"). Source: config/delivery_promise.py.
 {% endcomment %}
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +22,7 @@
 <body style="margin:0; padding:0; width:100%; background-color:#EFE7DA; -webkit-font-smoothing:antialiased;">
 
 <div style="display:none; font-size:1px; color:#EFE7DA; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden;">
-  Thanks {{ customer.first_name }} — order {{ order_name }} is confirmed and arrives in 5 to 12 business days.
+  Thanks {{ customer.first_name }} — order {{ order_name }} is confirmed and arrives in 10 to 16 business days.
 </div>
 
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#EFE7DA;">
@@ -58,7 +58,7 @@
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
              style="background-color:#EFE7DA; border-radius:10px;">
         <tr><td align="center" style="padding:16px 20px; font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif; font-size:14px; line-height:21px; color:#3A3026;">
-          <strong style="font-weight:600;">Arrives in 5 to 12 business days.</strong><br>
+          <strong style="font-weight:600;">Arrives in 10 to 16 business days.</strong><br>
           <span style="color:#6B5F51;">Tracking lands in your inbox as soon as it leaves the warehouse.</span>
         </td></tr>
       </table>

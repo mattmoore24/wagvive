@@ -8,6 +8,11 @@ collections (toy -> Toys & Play, travel/outdoor -> Travel & Outdoor,
 calming/enrichment -> Calming & Enrichment); Grooming and Comfort & Health
 are manual collections handled via collects here.
 """
+# DELIVERY PROMISE LITERAL. The canonical text lives in
+# config/delivery_promise.py; the literal below is a copy because it sits
+# inside plain triple-quoted HTML. If they diverge, config/audit_claims.py
+# fails against the LIVE store and config/apply_delivery_promise.py repairs
+# every product body in one pass.
 import json, os, sys, time, urllib.request, urllib.error
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -53,7 +58,7 @@ def gql(query, variables=None):
         return json.loads(r.read().decode())
 
 
-ARRIVES = '<p><strong>Arrives in 5 to 12 business days.</strong></p>'
+ARRIVES = '<p><strong>Arrives in 10 to 16 business days.</strong></p>'
 
 META = {
  'sneaker': dict(handle='sneaker-chew-buddy', type='Toys & Play',

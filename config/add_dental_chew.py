@@ -29,6 +29,11 @@ less the 8pt drift buffer the other floors use.
     python config/add_dental_chew.py            # report
     python config/add_dental_chew.py --apply
 """
+# DELIVERY PROMISE LITERAL. The canonical text lives in
+# config/delivery_promise.py; the literal below is a copy because it sits
+# inside plain triple-quoted HTML. If they diverge, config/audit_claims.py
+# fails against the LIVE store and config/apply_delivery_promise.py repairs
+# every product body in one pass.
 import json, os, sys, time, urllib.error, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -71,7 +76,7 @@ BODY = (
     'when you are done. '
     'Chew toys are not indestructible: replace it once the nubs are chewed flat, '
     'and take it away if pieces come loose.</p>'
-    '<p><strong>Arrives in 5 to 12 business days.</strong></p>'
+    '<p><strong>Arrives in 10 to 16 business days.</strong></p>'
 )
 
 SEO_TITLE = 'Dog Dental Chew Stick, Rubber Toothbrush Toy'

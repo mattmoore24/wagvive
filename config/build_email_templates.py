@@ -20,9 +20,12 @@ config/email-templates/order-confirmation.liquid):
 Run:  python config/build_email_templates.py
 """
 import os
+import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'config', 'email-templates')
+sys.path.insert(0, os.path.join(ROOT, 'config'))
+import delivery_promise as DP  # noqa: E402  the single source of the promise
 WORDMARK = ('https://cdn.shopify.com/s/files/1/0994/5114/2433/'
             't/1/assets/email-wordmark.png')
 
@@ -245,7 +248,7 @@ TEMPLATES = {
    subcopy='Your cart is still saved. Pick up where you left off whenever you are ready.',
    body=items_block('line_items', 'line', 'Still in your cart')
         + cta('{{ url }}', 'Return to cart')
-        + note(f'<strong style="font-weight:600;">Free US shipping over $60.</strong><br><span style="color:{MUTED};">Everything arrives in 5 to 12 business days.</span>')),
+        + note(f'<strong style="font-weight:600;">Free US shipping over $60.</strong><br><span style="color:{MUTED};">Everything arrives in {DP.WINDOW}.</span>')),
  'payment-error': dict(
    title='Payment issue with your Wagvive order', show_order_name=True,
    preheader='We could not process payment for your Wagvive order.',
@@ -257,7 +260,7 @@ TEMPLATES = {
    preheader='Your payment cleared and your Wagvive order is confirmed.',
    heading='Payment received.',
    subcopy='Your payment has cleared and your order is confirmed. We are getting it ready now.',
-   body=note(f'<strong style="font-weight:600;">Arrives in 5 to 12 business days.</strong><br><span style="color:{MUTED};">Tracking lands in your inbox as soon as it ships.</span>')
+   body=note(f'<strong style="font-weight:600;">Arrives in {DP.WINDOW}.</strong><br><span style="color:{MUTED};">Tracking is emailed when your parcel is handed to the carrier.</span>')
         + cta('{{ order_status_url }}', 'View your order')),
  'pending-payment-error': dict(
    title='Payment issue with your Wagvive order', show_order_name=True,
@@ -272,7 +275,7 @@ TEMPLATES = {
    heading='Welcome to Wagvive.',
    subcopy='Your account is ready. Checkout will be faster from here, and your orders live in one place.',
    body=cta('{{ shop.url }}/account', 'View your account')
-        + note(f'<strong style="font-weight:600;">Free US shipping over $60.</strong><br><span style="color:{MUTED};">Every order arrives in 5 to 12 business days.</span>')),
+        + note(f'<strong style="font-weight:600;">Free US shipping over $60.</strong><br><span style="color:{MUTED};">Every order arrives in {DP.WINDOW}.</span>')),
  'customer-account-invite': dict(
    title='Activate your Wagvive account', show_order_name=False,
    preheader='Activate your Wagvive account.',

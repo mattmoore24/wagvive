@@ -18,6 +18,11 @@ four parcels at $28.38 and is priced accordingly.
 productBundleCreate is asynchronous, so this polls the ProductBundleOperation
 until it resolves rather than assuming success.
 """
+# DELIVERY PROMISE LITERAL. The canonical text lives in
+# config/delivery_promise.py; the literal below is a copy because it sits
+# inside plain triple-quoted HTML. If they diverge, config/audit_claims.py
+# fails against the LIVE store and config/apply_delivery_promise.py repairs
+# every product body in one pass.
 import json, os, sys, time, urllib.error, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -60,7 +65,7 @@ may as well go somewhere useful</li>
 the walks you will be doing in the dark</li>
 </ul>
 <p>Bought separately these come to $96. Together they are $79.</p>
-<p><strong>Arrives in 5-12 business days, in one parcel.</strong></p>"""
+<p><strong>Arrives in 10 to 16 business days, in one parcel.</strong></p>"""
 
 
 def api(method, path, payload=None):
