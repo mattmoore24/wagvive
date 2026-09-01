@@ -4,7 +4,76 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-08-31, home PC (the 6-hourly job had been RED for 14 runs since 2026-08-26: one real margin breach on the Steam Grooming Brush after CJ moved it onto sensitive-goods carriers only. Price fix prepared but NOT yet written to Shopify — see below.)
+**Last updated:** 2026-09-01. Delivery promise rewritten store-wide to 10 to 16 business days, stock sync verified and hardened, three CJ US-warehouse products created as DRAFT. THREE HAND-OFFS BLOCK COMPLETION, see "Blocked on the owner" below.
+
+## 2026-09-01 session
+
+**The delivery promise is now 10 to 16 business days, dispatch within 10.**
+`config/delivery_promise.py` is the single source of truth; everything imports
+it. Measured from the three real orders: all delivered (~10, ~13, ~14 business
+days), and the time is lost in CJ's 5 to 11 day PRE-SHIPMENT handling, not in
+transit. The retired "1 to 3 business days" dispatch claim had no reasonable
+basis and was breached on at least two of three orders.
+
+Live and verified with cache-busting fetches: all 52 active product bodies (12
+of which had NO delivery line at all), both theme templates including the
+product-page trust badge, the FAQ and Shipping & Returns pages, all four shop
+policies, both checkout rate descriptions, all 18 notification emails, and six
+archived products. `audit_claims.py` is clean; `audit_cj_connections.py`
+reports NO PROBLEMS, 46/46 compliant.
+
+Three statements were corrected because they were FALSE, not merely stale: the
+shipping email said the order "has left the warehouse" (CJ fulfils at label
+generation, up to 11 days early) and that tracking updates in "a day or two"
+(one order took 11 days); and two pages said orders could be cancelled "before
+dispatch", which would have wrongly refused a customer cancelling on day two.
+
+`config/delay_notice.py` is NEW and closes an outright FTC gap. 16 CFR 435.2(b)
+requires a delay option notice with a revised definite date and a
+cancel-for-refund option before the stated date passes. None existed. Shopify
+has no delay trigger, so it generates the text for Contact customer.
+
+**Stock sync verified working**: sync_inventory matches CJ on every variant,
+fix_locations reports the sellable location only, and all 39 kit variants pass.
+`verify_kit_inventory.py` had the same no-retry defect already fixed twice
+elsewhere and reported ten healthy components as having NO CJ stock; it now
+retries and treats an unanswerable SKU as UNKNOWN rather than a finding. It is
+now also part of the 6-hourly job, which never checked kits before.
+
+**Three US-warehouse products created as DRAFT** (see
+`docs/cj-us-sourcing-shortlist-2026-09.md` for the sweep that found them):
+LED Safety Halo Collar $25.99 (15 variants), 3-in-1 Travel Bowl $24.99 (6),
+GPS Pet Tracker $27.99 (1). Every variant verified to hold real US stock with a
+3 to 7 day domestic carrier. In price_book at a 20% floor.
+
+## Blocked on the owner (nothing else can finish without these)
+
+1. **Reconnect the Runway connector.** It is disconnected, so no imagery could
+   be generated and the three products must stay DRAFT: activating without
+   photos puts blank cards on the collection page. Prompts are written and
+   ready in `config/reshoot_manifests/us-wave1-prompts.json`, composed after
+   LOOKING at each CJ reference, with the cream background, no-props clause,
+   master-then-recolour order and a per-product QC checklist.
+2. **Grant the Chrome extension host permission for cjdropshipping.com**, and
+   sign in to CJ. Pairing the three new products is browser-only and currently
+   returns "Cannot access contents of the page".
+3. **Decide on the shock collar.** The fourth product requested, CJ's "Dog
+   Training Collar", is a REMOTE SHOCK COLLAR: the handset has a lightning-bolt
+   static button and nine intensity levels. It was recommended off a seller
+   count without anyone looking at the photo, which was this session's error.
+   Not created. It is aversive, contested in mainstream training advice, and
+   sits oddly beside a catalogue built on calming wraps and comfort toys.
+
+**Also unresolved:** OneDrive was actively reverting files mid-edit for part of
+this session (a written marker vanished within 5 seconds, and two files were
+rolled back while still being imported by others). It settled, but the repo
+living inside OneDrive alongside a second active session is a real hazard.
+Consider moving the working copy outside OneDrive; git already provides the
+sync.
+
+---
+
+**Previous:** 2026-08-31, home PC (the 6-hourly job had been RED for 14 runs since 2026-08-26: one real margin breach on the Steam Grooming Brush after CJ moved it onto sensitive-goods carriers only. Price fix prepared but NOT yet written to Shopify — see below.)
 
 ---
 
