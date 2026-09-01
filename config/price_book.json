@@ -513,5 +513,48 @@
    "CJGY213821501AZ": 16.99
   },
   "floor_margin_pct": 18.6
+ },
+ "10525621453089": {
+  "title": "Wagvive 3-in-1 Travel Bowl",
+  "price": 24.99,
+  "variants": {
+   "CJPB26582870002": 24.99,
+   "CJPB26582870003": 24.99,
+   "CJPB26582870006": 24.99,
+   "CJPB26582870007": 24.99,
+   "CJPB26582870005": 24.99,
+   "CJPB26582870008": 24.99
+  },
+  "floor_margin_pct": 20.0
+ },
+ "10525621682465": {
+  "title": "Wagvive GPS Pet Tracker",
+  "price": 27.99,
+  "variants": {
+   "CJBC265305702BY": 27.99
+  },
+  "floor_margin_pct": 20.0
+ },
+ "10525621289249": {
+  "title": "Wagvive LED Safety Halo Collar",
+  "price": 25.99,
+  "variants": {
+   "CJTR230171401AZ": 25.99,
+   "CJTR230171403CX": 25.99,
+   "CJTR230171404DW": 25.99,
+   "CJTR230171405EV": 25.99,
+   "CJTR230171407GT": 25.99,
+   "CJTR230171408HS": 25.99,
+   "CJTR230171409IR": 25.99,
+   "CJTR230171411KP": 25.99,
+   "CJTR230171412LO": 25.99,
+   "CJTR230171413MN": 25.99,
+   "CJTR230171415OL": 25.99,
+   "CJTR230171416PK": 25.99,
+   "CJTR230171417QJ": 25.99,
+   "CJTR230171419SH": 25.99,
+   "CJTR230171420TG": 25.99
+  },
+  "floor_margin_pct": 20.0
  }
 }

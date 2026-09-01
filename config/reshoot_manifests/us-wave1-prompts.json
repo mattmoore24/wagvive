@@ -1,0 +1,44 @@
+{
+  "_why": "Runway prompts for the three CJ US-warehouse products created 2026-09-01. Written after LOOKING at each CJ reference image, per the house rule that describing from the product NAME produces plausible-but-wrong goods (the five-finger glove and the quilted sofa cover). Generation was blocked because the Runway connector was disconnected; reconnect it and run these, master first.",
+  "_house_style": "Every product on the brand cream #F7F2E9, seamless studio sweep, soft even light, gentle contact shadow, product centred and filling roughly 70 percent of frame, square 1:1, photographic not illustrative.",
+  "_no_props_clause": "No props, no display stands, no packaging, no boxes, no text, no logos, no embossed branding, no watermarks, no hands, no people or animals unless the shot is explicitly a lifestyle shot. Nothing in frame but the product and its shadow.",
+  "_model": "nano-banana-2 for all of these. None carries label text, so nano-banana-pro is not needed.",
+  "_order": "Shoot the MASTER first, approve it, then recolour THE APPROVED MASTER for each remaining colour. Recolouring the master is the only way to keep the pose locked across swatches.",
+  "_qc": "Eyeball every output against the CJ reference in scratchpad/ref/ before upload. Check specifically: the halo collar must have ONE continuous light strip and a black side-release buckle plus a metal D-ring; the bowl must have TWO ear-shaped tabs on the rim and a raised sunburst pattern in the base; the tracker must be a rounded rectangle with side clips, not a round tag.",
+
+  "wagvive-led-safety-halo-collar": {
+    "cj_reference": "scratchpad/ref/halo_0.png",
+    "master_colour": "Blue",
+    "master_prompt": "Studio product photograph of a single dog collar lying on a seamless cream #F7F2E9 background. The collar is bright blue flat nylon webbing about 2.5 cm wide, laid in a relaxed open loop. Running down the exact centre of the webbing for its whole length is a narrow translucent light-guide strip in a paler blue, slightly glossy, clearly a separate inset band. Fitted to the strap: a matte black plastic side-release buckle, a matte black plastic slider adjuster, and a small brushed silver metal D-ring. Soft even studio light from above, gentle contact shadow beneath, product centred and filling about 70 percent of the square frame, sharp focus, photographic realism. No props, no display stand, no packaging, no text, no logos, no embossed branding, no hands, no dog. Nothing in frame but the collar and its shadow.",
+    "recolours": [
+      {"colour": "Red", "prompt": "@master Recolour the nylon webbing to a strong true red and the central light strip to a paler translucent red. Keep the pose, framing, lighting, shadow, buckle, slider and D-ring EXACTLY as they are. Change nothing but the colour."},
+      {"colour": "Orange", "prompt": "@master Recolour the nylon webbing to a vivid safety orange and the central light strip to a paler translucent orange. Keep the pose, framing, lighting, shadow, buckle, slider and D-ring EXACTLY as they are. Change nothing but the colour."},
+      {"colour": "Hot Pink", "prompt": "@master Recolour the nylon webbing to a hot pink and the central light strip to a paler translucent pink. Keep the pose, framing, lighting, shadow, buckle, slider and D-ring EXACTLY as they are. Change nothing but the colour."},
+      {"colour": "Green", "prompt": "@master Recolour the nylon webbing to a bright grass green and the central light strip to a paler translucent green. Keep the pose, framing, lighting, shadow, buckle, slider and D-ring EXACTLY as they are. Change nothing but the colour."}
+    ],
+    "lifestyle_prompt": "A medium mixed-breed dog photographed from the side at dusk on a quiet path, wearing a blue nylon collar whose central light strip glows softly. Natural low evening light, background softly out of focus, warm and calm, photographic realism. The glow is gentle and believable, not a lens flare. No text, no logos, no packaging, no other props.",
+    "variant_mapping": "One image per COLOUR, wired to all three size variants of that colour (M, L, XL). 5 colours x 3 sizes = 15 variants, 5 colour images."
+  },
+
+  "wagvive-3-in-1-travel-bowl": {
+    "cj_reference": "scratchpad/ref/bowl_0.jpg",
+    "master_colour": "Green",
+    "master_prompt": "Studio product photograph of a single collapsible silicone dog bowl on a seamless cream #F7F2E9 background, shown open and upright at a slight three-quarter angle. The bowl is soft matte pastel green food-grade silicone with concertina ribbed collapsible sides. Moulded into the flat inner base is a raised rounded sunburst pattern, a small circle at the centre with short rounded petal shapes radiating outward, forming a slow-feeder maze. Two small rounded ear-shaped tabs rise from opposite sides of the rim. Soft even studio light from above, gentle contact shadow beneath, product centred and filling about 70 percent of the square frame, sharp focus, photographic realism. No props, no display stand, no packaging, no food, no water, no text, no logos, no hands, no dog. Nothing in frame but the bowl and its shadow.",
+    "recolours": [
+      {"colour": "Blue", "prompt": "@master Recolour the silicone to a soft pastel blue. Keep the pose, angle, framing, lighting, shadow, ribbed sides, ear tabs and the raised sunburst base pattern EXACTLY as they are. Change nothing but the colour."},
+      {"colour": "Pink", "prompt": "@master Recolour the silicone to a soft pastel pink. Keep the pose, angle, framing, lighting, shadow, ribbed sides, ear tabs and the raised sunburst base pattern EXACTLY as they are. Change nothing but the colour."},
+      {"colour": "Yellow", "prompt": "@master Recolour the silicone to a soft pastel butter yellow. Keep the pose, angle, framing, lighting, shadow, ribbed sides, ear tabs and the raised sunburst base pattern EXACTLY as they are. Change nothing but the colour."}
+    ],
+    "second_angle_prompt": "@master Same bowl, same cream background and lighting, shown COLLAPSED and flat from a three-quarter angle so its folded profile and the suction cups on the underside are visible. Keep the colour and material identical. No props, no text, no logos, no hands.",
+    "variant_mapping": "One image per COLOUR, wired to every capacity variant of that colour. Green and Blue have 450 ml and 650 ml; Pink and Yellow are 650 ml only. 4 colour images, 6 variants."
+  },
+
+  "wagvive-gps-pet-tracker": {
+    "cj_reference": "scratchpad/ref/gps_0.jpg",
+    "master_colour": "Blue and white",
+    "master_prompt": "Studio product photograph of a single small pet GPS tracker on a seamless cream #F7F2E9 background, at a three-quarter angle. It is a rounded-rectangular plastic module roughly 64 by 38 by 19 mm, glossy mid-blue on top and sides with a white lower housing. On the top face is a debossed circular paw-print emblem. On one long side is a small white round button, and near it a row of four tiny amber indicator lights behind the casing. Two pairs of moulded blue clips project from the long sides, the kind that clamp onto a collar strap. Soft even studio light from above, gentle contact shadow beneath, product centred and filling about 60 percent of the square frame, sharp focus, photographic realism. No props, no display stand, no packaging, no collar, no phone, no text, no QR code, no logos, no hands, no dog. Nothing in frame but the tracker and its shadow.",
+    "recolours": [],
+    "second_angle_prompt": "@master Same tracker, same cream background and lighting, shown clipped onto a plain flat black nylon collar strap that runs out of frame on both sides, photographed from above. Keep the tracker identical. No text, no logos, no QR code, no packaging, no dog.",
+    "variant_mapping": "Single variant. One master image is enough; the second angle is a nice-to-have that shows how it attaches."
+  }
+}
