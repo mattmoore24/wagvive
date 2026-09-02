@@ -269,7 +269,8 @@
    "CJMY141671003CX": 9.99,
    "CJMY141671006FU": 9.99
   },
-  "floor_margin_pct": 10.7
+  "floor_margin_pct": 10.7,
+  "below_standard_by_choice": "DELIBERATE. Owner decision 2026-09-02: this price stays where it is even though the margin is under the 20% standard. These are cheap items where freight dominates (a $4 plush carrying $8 of shipping), and raising them to clear 20% would price them out of the catalogue entirely. floor_margin_pct is set BELOW the achieved margin on purpose so the 6-hourly job stays green and keeps signalling real cost drift; it is NOT an oversight and must not be \"corrected\" to 20. Revisit only if the freight economics change."
  },
  "10456337547553": {
   "title": "Wagvive Anti-Spill Floating Water Bowl",
@@ -284,7 +285,8 @@
    "CJGY102545404DW": 21.99,
    "CJGY102545424XC": 24.99
   },
-  "floor_margin_pct": 2.0
+  "floor_margin_pct": 2.0,
+  "below_standard_by_choice": "DELIBERATE. Owner decision 2026-09-02: this price stays where it is even though the margin is under the 20% standard. These are cheap items where freight dominates (a $4 plush carrying $8 of shipping), and raising them to clear 20% would price them out of the catalogue entirely. floor_margin_pct is set BELOW the achieved margin on purpose so the 6-hourly job stays green and keeps signalling real cost drift; it is NOT an oversight and must not be \"corrected\" to 20. Revisit only if the freight economics change."
  },
  "10471550091553": {
   "title": "Wagvive Cordless Paw Trimmer",
@@ -292,7 +294,8 @@
   "variants": {
    "CJNP222636501AZ": 23.99
   },
-  "floor_margin_pct": 8.7
+  "floor_margin_pct": 8.7,
+  "below_standard_by_choice": "DELIBERATE. Owner decision 2026-09-02: this price stays where it is even though the margin is under the 20% standard. These are cheap items where freight dominates (a $4 plush carrying $8 of shipping), and raising them to clear 20% would price them out of the catalogue entirely. floor_margin_pct is set BELOW the achieved margin on purpose so the 6-hourly job stays green and keeps signalling real cost drift; it is NOT an oversight and must not be \"corrected\" to 20. Revisit only if the freight economics change."
  },
  "10469665603873": {
   "title": "Wagvive Woodland Rope-Limb Plush",
@@ -305,7 +308,8 @@
    "CJST258364605EV": 12.99,
    "CJST258364606FU": 12.99
   },
-  "floor_margin_pct": 3.2
+  "floor_margin_pct": 3.2,
+  "below_standard_by_choice": "DELIBERATE. Owner decision 2026-09-02: this price stays where it is even though the margin is under the 20% standard. These are cheap items where freight dominates (a $4 plush carrying $8 of shipping), and raising them to clear 20% would price them out of the catalogue entirely. floor_margin_pct is set BELOW the achieved margin on purpose so the 6-hourly job stays green and keeps signalling real cost drift; it is NOT an oversight and must not be \"corrected\" to 20. Revisit only if the freight economics change."
  },
  "10469665308961": {
   "title": "Wagvive Dental Duck Chew Toy",
@@ -313,7 +317,8 @@
   "variants": {
    "CJST217844101AZ": 10.99
   },
-  "floor_margin_pct": 2.5
+  "floor_margin_pct": 2.5,
+  "below_standard_by_choice": "DELIBERATE. Owner decision 2026-09-02: this price stays where it is even though the margin is under the 20% standard. These are cheap items where freight dominates (a $4 plush carrying $8 of shipping), and raising them to clear 20% would price them out of the catalogue entirely. floor_margin_pct is set BELOW the achieved margin on purpose so the 6-hourly job stays green and keeps signalling real cost drift; it is NOT an oversight and must not be \"corrected\" to 20. Revisit only if the freight economics change."
  },
  "10469666029857": {
   "title": "Wagvive Squirrel Squeaky Plush",
@@ -321,7 +326,8 @@
   "variants": {
    "CJST222139701AZ": 15.99
   },
-  "floor_margin_pct": 2.0
+  "floor_margin_pct": 2.0,
+  "below_standard_by_choice": "DELIBERATE. Owner decision 2026-09-02: this price stays where it is even though the margin is under the 20% standard. These are cheap items where freight dominates (a $4 plush carrying $8 of shipping), and raising them to clear 20% would price them out of the catalogue entirely. floor_margin_pct is set BELOW the achieved margin on purpose so the 6-hourly job stays green and keeps signalling real cost drift; it is NOT an oversight and must not be \"corrected\" to 20. Revisit only if the freight economics change."
  },
  "10471549993249": {
   "title": "Wagvive LED Nail Clippers",
@@ -331,7 +337,8 @@
    "CJYD226496003CX": 13.99,
    "CJYD226496004DW": 13.99
   },
-  "floor_margin_pct": 2.0
+  "floor_margin_pct": 2.0,
+  "below_standard_by_choice": "DELIBERATE. Owner decision 2026-09-02: this price stays where it is even though the margin is under the 20% standard. These are cheap items where freight dominates (a $4 plush carrying $8 of shipping), and raising them to clear 20% would price them out of the catalogue entirely. floor_margin_pct is set BELOW the achieved margin on purpose so the 6-hourly job stays green and keeps signalling real cost drift; it is NOT an oversight and must not be \"corrected\" to 20. Revisit only if the freight economics change."
  },
  "10469665964321": {
   "title": "Wagvive Rope-Limb Puppy Plush",
@@ -339,7 +346,8 @@
   "variants": {
    "CJST217558701AZ": 14.99
   },
-  "floor_margin_pct": 2.0
+  "floor_margin_pct": 2.0,
+  "below_standard_by_choice": "DELIBERATE. Owner decision 2026-09-02: this price stays where it is even though the margin is under the 20% standard. These are cheap items where freight dominates (a $4 plush carrying $8 of shipping), and raising them to clear 20% would price them out of the catalogue entirely. floor_margin_pct is set BELOW the achieved margin on purpose so the 6-hourly job stays green and keeps signalling real cost drift; it is NOT an oversight and must not be \"corrected\" to 20. Revisit only if the freight economics change."
  },
  "10471549862177": {
   "title": "Wagvive Screaming Chicken",
@@ -349,7 +357,8 @@
    "CJST258510902BY": 12.99,
    "CJST258510903CX": 12.99
   },
-  "floor_margin_pct": 2.0
+  "floor_margin_pct": 2.0,
+  "below_standard_by_choice": "DELIBERATE. Owner decision 2026-09-02: this price stays where it is even though the margin is under the 20% standard. These are cheap items where freight dominates (a $4 plush carrying $8 of shipping), and raising them to clear 20% would price them out of the catalogue entirely. floor_margin_pct is set BELOW the achieved margin on purpose so the 6-hourly job stays green and keeps signalling real cost drift; it is NOT an oversight and must not be \"corrected\" to 20. Revisit only if the freight economics change."
  },
  "10470547587361": {
   "title": "Wagvive Lick Bowl with Ball",
@@ -360,7 +369,8 @@
    "CJFT286015803CX": 16.99,
    "CJFT286015804DW": 16.99
   },
-  "floor_margin_pct": 2.4
+  "floor_margin_pct": 2.4,
+  "below_standard_by_choice": "DELIBERATE. Owner decision 2026-09-02: this price stays where it is even though the margin is under the 20% standard. These are cheap items where freight dominates (a $4 plush carrying $8 of shipping), and raising them to clear 20% would price them out of the catalogue entirely. floor_margin_pct is set BELOW the achieved margin on purpose so the 6-hourly job stays green and keeps signalling real cost drift; it is NOT an oversight and must not be \"corrected\" to 20. Revisit only if the freight economics change."
  },
  "10469665440033": {
   "title": "Wagvive Crinkle Plush Buddy",
@@ -370,7 +380,8 @@
    "CJST217834202BY": 11.99,
    "CJST217834203CX": 11.99
   },
-  "floor_margin_pct": 2.0
+  "floor_margin_pct": 2.0,
+  "below_standard_by_choice": "DELIBERATE. Owner decision 2026-09-02: this price stays where it is even though the margin is under the 20% standard. These are cheap items where freight dominates (a $4 plush carrying $8 of shipping), and raising them to clear 20% would price them out of the catalogue entirely. floor_margin_pct is set BELOW the achieved margin on purpose so the 6-hourly job stays green and keeps signalling real cost drift; it is NOT an oversight and must not be \"corrected\" to 20. Revisit only if the freight economics change."
  },
  "10456336990497": {
   "title": "Wagvive Self-Cleaning Slicker Brush",
