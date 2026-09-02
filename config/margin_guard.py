@@ -271,10 +271,11 @@ def main():
         by_val = {}
         for sku, val in BOOK_US_FREIGHT.items():
             by_val.setdefault(val, []).append(sku)
-        print('ASSUMED US DOMESTIC FREIGHT (CJ quotes $0.00; not yet billed):')
+        print('US DOMESTIC FREIGHT FROM price_book (CJ quotes $0.00 on every '
+              'carrier):')
         for val, skus in sorted(by_val.items()):
             print(f'   ${val:.2f} on {len(skus)} variant(s) - see us_freight_assumed '
-                  f'in price_book.json for the evidence and the review trigger')
+                  f'in price_book.json for the invoice it rests on')
         print()
 
     products = api('GET', 'products.json?limit=250&status=active')['products']
