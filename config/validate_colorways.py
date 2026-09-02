@@ -23,7 +23,7 @@ COMPOSITION_CHANGE = '--composition-change' in sys.argv
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'config'))
-from kit_colorways import KITS, SIZE_MAP           # noqa: E402
+from kit_colorways import KITS, SIZE_MAP, COMPONENT_OPTIONS   # noqa: E402
 
 env = {}
 with open(os.path.join(ROOT, 'config', 'shopify.env'), encoding='utf-8') as fh:
@@ -168,6 +168,8 @@ def main():
                         want[axis] = cw[comp_name]
                     if size and comp_name in SIZE_MAP[size]:
                         want['Size'] = SIZE_MAP[size][comp_name]
+                    want.update(COMPONENT_OPTIONS.get(kit_title, {})
+                                .get(comp_name, {}))
                     matches = [v for v in variants
                                if all(any(o['name'] == n and o['value'] == val
                                           for o in v['selectedOptions'])

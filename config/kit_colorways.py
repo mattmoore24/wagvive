@@ -64,10 +64,30 @@ SIZE_MAP = {
 # Per kit: the option that is NOT size, and what each of its values fixes.
 # 'option' is the customer-facing option name. The Toy Kit's components vary by
 # character rather than color, so its option is named accordingly.
+
+# Per-kit, per-component option values that are neither the Size axis nor the
+# colorway axis, pinned to one choice.
+#
+# WHY THIS EXISTS. Component matching resolves two axes: 'Size' from SIZE_MAP,
+# and the first non-Size option from the colorway map. A component with THREE
+# meaningful states breaks that. The 3-in-1 Travel Bowl has Color AND Capacity,
+# and Capacity is deliberately not called 'Size' because it is sized by volume,
+# not by dog. Without pinning it, Green and Blue each match two variants
+# (450 ml and 650 ml) and rebuild_kits raises "2 matches".
+#
+# 650 ml is the right pin for a travel kit: it is the useful size on a hike, and
+# it is the only capacity that exists in all four colours, so no colorway is
+# forced onto a bowl colour it did not choose.
+COMPONENT_OPTIONS = {
+    'Travel Kit': {
+        '3-in-1 Travel Bowl': {'Capacity': '650 ml'},
+    },
+}
+
 KITS = {
     'New Puppy Kit': {
         'option': 'Colorway',
-        'price': '54.00', 'compare_at': '66.95',
+        'price': '30.00', 'compare_at': '54.95',
         'sizes': ['S', 'M'],          # only the blanket varies by size
         'fixed': ['Cuddle Companion Teddy'],
         'values': {
@@ -101,7 +121,7 @@ KITS = {
         'option': 'Character set',
         # $49.00/$60.95 before the swap. The plush retails $1.00 above the
         # frisbee, so both numbers move by that and the saving stays 20.6%.
-        'price': '50.00', 'compare_at': '62.95',
+        'price': '35.00', 'compare_at': '60.95',
         'sizes': None,                          # nothing in this kit has a size
         'fixed': [],        # the Watermelon Rope Frisbee used to live here
         'values': {
@@ -131,7 +151,7 @@ KITS = {
 
     'Grooming Essentials Kit': {
         'option': 'Colorway',
-        'price': '70.00', 'compare_at': '86.95',
+        'price': '46.00', 'compare_at': '75.95',
         'sizes': ['S', 'M', 'L'],
         'values': {
             'Green': {
@@ -168,7 +188,7 @@ KITS = {
         # $46.00/$57.96 before the swap. The Dental Chew Stick retails $5.00
         # above the egg it replaces, so the kit rises $4.00 and the saving
         # improves slightly, from 20.6% to 20.6% on a bigger basket.
-        'price': '50.00', 'compare_at': '62.96',
+        'price': '40.00', 'compare_at': '56.96',
         'sizes': None,
         'values': {
             'Green': {
@@ -194,7 +214,7 @@ KITS = {
 
     'Travel Kit': {
         'option': 'Colorway',
-        'price': '85.00', 'compare_at': '105.95',
+        'price': '63.00', 'compare_at': '97.94',
         'sizes': ['S', 'M', 'L'],
         'values': {
             'Blue': {
@@ -203,6 +223,7 @@ KITS = {
                 'Paw Washing Cup':            'Blue',
                 'Quick-Dry Bath Robe':        'Blue',
                 'Paw Print Fleece Blanket':   'Beige',
+                '3-in-1 Travel Bowl':         'Blue',
             },
             'Pink': {
                 'Travel Water Bottle & Bowl': 'Pink',
@@ -210,6 +231,7 @@ KITS = {
                 'Paw Washing Cup':            'Orange',
                 'Quick-Dry Bath Robe':        'Pink',
                 'Paw Print Fleece Blanket':   'Pink',
+                '3-in-1 Travel Bowl':         'Pink',
             },
             'Natural': {
                 'Travel Water Bottle & Bowl': 'Blue',
@@ -217,13 +239,14 @@ KITS = {
                 'Paw Washing Cup':            'Green',
                 'Quick-Dry Bath Robe':        'Green',
                 'Paw Print Fleece Blanket':   'Camel',
+                '3-in-1 Travel Bowl':         'Green',
             },
         },
     },
 
     'Calm & Comfort Kit': {
         'option': 'Colorway',
-        'price': '109.00', 'compare_at': '135.95',
+        'price': '69.00', 'compare_at': '101.95',
         'sizes': ['S', 'M', 'L'],
         'fixed': ['Heartbeat Soothing Sloth'],
         'values': {

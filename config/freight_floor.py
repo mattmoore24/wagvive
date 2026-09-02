@@ -59,6 +59,32 @@ MIN_CREDIBLE_FREIGHT = 4.00
 CREDIBLE_FRACTION = 0.75
 
 
+# --- what CJ actually BILLED, as opposed to what it quotes -------------------
+# Fitted 2026-09-02 against the four real invoices on this account:
+#
+#     420g  $11.42      646g  $14.85      530g  $11.23     1640g  $25.58
+#
+# giving about $6.14 fixed plus $0.0119/g. The slope matches the quote-derived
+# line above almost exactly; the intercept is ~$1.74 higher, i.e. the cheapest
+# QUOTE is consistently a little optimistic against the invoice.
+#
+# WHY THIS EXISTS AT ALL. `estimate()` models ONE item in ONE parcel. A kit is
+# several items in ONE parcel, and modelling it by summing per-item estimates
+# charges the fixed parcel cost once per item. For the Dog Enrichment Kit that
+# was $25.42 of modelled freight against $14.85 actually billed - a 71%
+# overstatement that made a 45% margin kit look like an 11% breach and would
+# have RAISED its price. Use this for any multi-item parcel.
+BILLED_BASE = 6.14
+BILLED_PER_GRAM = 0.0119
+
+
+def combined_estimate(total_weight_g):
+    """Freight for ONE parcel carrying several items, from real invoices."""
+    if not total_weight_g:
+        return None
+    return BILLED_BASE + BILLED_PER_GRAM * float(total_weight_g)
+
+
 def upper_days(aging):
     nums = re.findall(r'\d+', str(aging or ''))
     return int(nums[-1]) if nums else 999

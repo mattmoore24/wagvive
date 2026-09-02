@@ -6,13 +6,13 @@
       "name": "Size",
       "optionValues": [
         {
-          "name": "Small"
+          "name": "S"
         },
         {
-          "name": "Medium"
+          "name": "M"
         },
         {
-          "name": "Large"
+          "name": "L"
         }
       ]
     },
@@ -35,7 +35,7 @@
     "nodes": [
       {
         "id": "gid://shopify/ProductVariant/53213188227361",
-        "title": "Small / Blue",
+        "title": "S / Blue",
         "price": "85.00",
         "compareAtPrice": "105.95",
         "productVariantComponents": {
@@ -53,7 +53,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53097582526753",
-                "title": "Dark Blue / Medium 24\" x 20\"",
+                "title": "Dark Blue / M",
                 "product": {
                   "id": "gid://shopify/Product/10464689881377",
                   "title": "Wagvive Cooling Comfort Pad"
@@ -73,7 +73,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174667149601",
-                "title": "Blue / XS",
+                "title": "Blue / S",
                 "product": {
                   "id": "gid://shopify/Product/10471549927713",
                   "title": "Wagvive Quick-Dry Bath Robe"
@@ -95,7 +95,7 @@
       },
       {
         "id": "gid://shopify/ProductVariant/53213188260129",
-        "title": "Small / Pink",
+        "title": "S / Pink",
         "price": "85.00",
         "compareAtPrice": "105.95",
         "productVariantComponents": {
@@ -113,7 +113,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53097582657825",
-                "title": "Pink / Medium 24\" x 20\"",
+                "title": "Pink / M",
                 "product": {
                   "id": "gid://shopify/Product/10464689881377",
                   "title": "Wagvive Cooling Comfort Pad"
@@ -133,7 +133,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174667247905",
-                "title": "Pink / XS",
+                "title": "Pink / S",
                 "product": {
                   "id": "gid://shopify/Product/10471549927713",
                   "title": "Wagvive Quick-Dry Bath Robe"
@@ -155,7 +155,7 @@
       },
       {
         "id": "gid://shopify/ProductVariant/53213188292897",
-        "title": "Small / Natural",
+        "title": "S / Natural",
         "price": "85.00",
         "compareAtPrice": "105.95",
         "productVariantComponents": {
@@ -173,7 +173,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53097582395681",
-                "title": "Coffee / Medium 24\" x 20\"",
+                "title": "Coffee / M",
                 "product": {
                   "id": "gid://shopify/Product/10464689881377",
                   "title": "Wagvive Cooling Comfort Pad"
@@ -193,7 +193,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174667346209",
-                "title": "Green / XS",
+                "title": "Green / S",
                 "product": {
                   "id": "gid://shopify/Product/10471549927713",
                   "title": "Wagvive Quick-Dry Bath Robe"
@@ -215,7 +215,7 @@
       },
       {
         "id": "gid://shopify/ProductVariant/53213188325665",
-        "title": "Medium / Blue",
+        "title": "M / Blue",
         "price": "85.00",
         "compareAtPrice": "105.95",
         "productVariantComponents": {
@@ -233,7 +233,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53097582559521",
-                "title": "Dark Blue / Large 28\" x 22\"",
+                "title": "Dark Blue / L",
                 "product": {
                   "id": "gid://shopify/Product/10464689881377",
                   "title": "Wagvive Cooling Comfort Pad"
@@ -253,7 +253,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174667182369",
-                "title": "Blue / S",
+                "title": "Blue / M",
                 "product": {
                   "id": "gid://shopify/Product/10471549927713",
                   "title": "Wagvive Quick-Dry Bath Robe"
@@ -263,7 +263,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174668329249",
-                "title": "Beige / M",
+                "title": "Beige / L",
                 "product": {
                   "id": "gid://shopify/Product/10471550484769",
                   "title": "Wagvive Paw Print Fleece Blanket"
@@ -275,7 +275,7 @@
       },
       {
         "id": "gid://shopify/ProductVariant/53213188358433",
-        "title": "Medium / Pink",
+        "title": "M / Pink",
         "price": "85.00",
         "compareAtPrice": "105.95",
         "productVariantComponents": {
@@ -293,7 +293,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53097582690593",
-                "title": "Pink / Large 28\" x 22\"",
+                "title": "Pink / L",
                 "product": {
                   "id": "gid://shopify/Product/10464689881377",
                   "title": "Wagvive Cooling Comfort Pad"
@@ -313,7 +313,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174667280673",
-                "title": "Pink / S",
+                "title": "Pink / M",
                 "product": {
                   "id": "gid://shopify/Product/10471549927713",
                   "title": "Wagvive Quick-Dry Bath Robe"
@@ -323,7 +323,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174668394785",
-                "title": "Pink / M",
+                "title": "Pink / L",
                 "product": {
                   "id": "gid://shopify/Product/10471550484769",
                   "title": "Wagvive Paw Print Fleece Blanket"
@@ -335,7 +335,7 @@
       },
       {
         "id": "gid://shopify/ProductVariant/53213188391201",
-        "title": "Medium / Natural",
+        "title": "M / Natural",
         "price": "85.00",
         "compareAtPrice": "105.95",
         "productVariantComponents": {
@@ -353,7 +353,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53097582428449",
-                "title": "Coffee / Large 28\" x 22\"",
+                "title": "Coffee / L",
                 "product": {
                   "id": "gid://shopify/Product/10464689881377",
                   "title": "Wagvive Cooling Comfort Pad"
@@ -373,7 +373,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174667378977",
-                "title": "Green / S",
+                "title": "Green / M",
                 "product": {
                   "id": "gid://shopify/Product/10471549927713",
                   "title": "Wagvive Quick-Dry Bath Robe"
@@ -383,7 +383,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174668263713",
-                "title": "Camel / M",
+                "title": "Camel / L",
                 "product": {
                   "id": "gid://shopify/Product/10471550484769",
                   "title": "Wagvive Paw Print Fleece Blanket"
@@ -395,7 +395,7 @@
       },
       {
         "id": "gid://shopify/ProductVariant/53213188423969",
-        "title": "Large / Blue",
+        "title": "L / Blue",
         "price": "85.00",
         "compareAtPrice": "105.95",
         "productVariantComponents": {
@@ -413,7 +413,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53097582592289",
-                "title": "Dark Blue / X-Large 39\" x 28\"",
+                "title": "Dark Blue / XL",
                 "product": {
                   "id": "gid://shopify/Product/10464689881377",
                   "title": "Wagvive Cooling Comfort Pad"
@@ -433,7 +433,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174667215137",
-                "title": "Blue / M",
+                "title": "Blue / L",
                 "product": {
                   "id": "gid://shopify/Product/10471549927713",
                   "title": "Wagvive Quick-Dry Bath Robe"
@@ -443,7 +443,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174668329249",
-                "title": "Beige / M",
+                "title": "Beige / L",
                 "product": {
                   "id": "gid://shopify/Product/10471550484769",
                   "title": "Wagvive Paw Print Fleece Blanket"
@@ -455,7 +455,7 @@
       },
       {
         "id": "gid://shopify/ProductVariant/53213188456737",
-        "title": "Large / Pink",
+        "title": "L / Pink",
         "price": "85.00",
         "compareAtPrice": "105.95",
         "productVariantComponents": {
@@ -473,7 +473,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53097582723361",
-                "title": "Pink / X-Large 39\" x 28\"",
+                "title": "Pink / XL",
                 "product": {
                   "id": "gid://shopify/Product/10464689881377",
                   "title": "Wagvive Cooling Comfort Pad"
@@ -493,7 +493,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174667313441",
-                "title": "Pink / M",
+                "title": "Pink / L",
                 "product": {
                   "id": "gid://shopify/Product/10471549927713",
                   "title": "Wagvive Quick-Dry Bath Robe"
@@ -503,7 +503,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174668394785",
-                "title": "Pink / M",
+                "title": "Pink / L",
                 "product": {
                   "id": "gid://shopify/Product/10471550484769",
                   "title": "Wagvive Paw Print Fleece Blanket"
@@ -515,7 +515,7 @@
       },
       {
         "id": "gid://shopify/ProductVariant/53213188489505",
-        "title": "Large / Natural",
+        "title": "L / Natural",
         "price": "85.00",
         "compareAtPrice": "105.95",
         "productVariantComponents": {
@@ -533,7 +533,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53097582461217",
-                "title": "Coffee / X-Large 39\" x 28\"",
+                "title": "Coffee / XL",
                 "product": {
                   "id": "gid://shopify/Product/10464689881377",
                   "title": "Wagvive Cooling Comfort Pad"
@@ -553,7 +553,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174667411745",
-                "title": "Green / M",
+                "title": "Green / L",
                 "product": {
                   "id": "gid://shopify/Product/10471549927713",
                   "title": "Wagvive Quick-Dry Bath Robe"
@@ -563,7 +563,7 @@
             {
               "productVariant": {
                 "id": "gid://shopify/ProductVariant/53174668263713",
-                "title": "Camel / M",
+                "title": "Camel / L",
                 "product": {
                   "id": "gid://shopify/Product/10471550484769",
                   "title": "Wagvive Paw Print Fleece Blanket"

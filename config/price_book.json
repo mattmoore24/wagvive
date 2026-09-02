@@ -516,43 +516,43 @@
  },
  "10525621453089": {
   "title": "Wagvive 3-in-1 Travel Bowl",
-  "price": 24.99,
+  "price": 17.99,
   "variants": {
-   "CJPB26582870002": 24.99,
-   "CJPB26582870003": 24.99,
-   "CJPB26582870006": 24.99,
-   "CJPB26582870007": 24.99,
-   "CJPB26582870005": 24.99,
-   "CJPB26582870008": 24.99
+   "CJPB26582870002": 17.99,
+   "CJPB26582870003": 17.99,
+   "CJPB26582870006": 17.99,
+   "CJPB26582870007": 17.99,
+   "CJPB26582870005": 17.99,
+   "CJPB26582870008": 17.99
   },
   "floor_margin_pct": 20.0,
-  "us_freight_assumed": 5.0,
-  "us_freight_assumed_note": "CJ returns $0.00 for US domestic freight on every US-warehouse product on this account (14 tested, 41g to 1000g, all 8 carriers), so the quote is unusable. $5.00 is the OBSERVED cheap-carrier rate from CJ itself on the Pet Hair Remover Mitt: GOFO+ $4.98, USPS+VIP $5.10, USPS+ $5.26. The global US_DOMESTIC_FREIGHT_FALLBACK stays at $11 because it is a dimensional-weight figure for one bulky 450g textile, which is right for bulky goods and wrong for a small dense one.",
-  "us_freight_assumed_review": "Read the real freight off the first order that ships. If it lands near $5, delete this field and nothing changes. If it lands near $11, RAISE THE PRICE or drop the product. Do NOT edit US_DOMESTIC_FREIGHT_FALLBACK to make a price work."
+  "us_freight_assumed": 0.0,
+  "us_freight_assumed_note": "$0.00, and it is REAL, not missing data. CJ order #1004 split into two rows: the China row (Jinhua ZJ) was billed postage $11.23, and the US Warehouse row was billed postageAmount 0.0 with orderAmount equal to productAmount. BOTH rows were UNSHIPPED at the time, so \"not calculated yet\" does not explain it - CJ prices postage at order time, as the China row proves. US-warehouse freight is included in the goods price, so the total outlay for the item IS the goods figure. This supersedes the $5.00 assumed on 2026-09-01 from GOFO+/USPS+ quotes, which were the China-origin lane for a dual-stocked SKU, not the US-to-US lane.",
+  "us_freight_assumed_review": "Settled by invoice, not assumption. Re-check only if a future US Warehouse order shows a non-zero postageAmount."
  },
  "10525621289249": {
   "title": "Wagvive LED Safety Halo Collar",
-  "price": 24.99,
+  "price": 18.99,
   "variants": {
-   "CJTR230171401AZ": 24.99,
-   "CJTR230171403CX": 24.99,
-   "CJTR230171404DW": 24.99,
-   "CJTR230171405EV": 24.99,
-   "CJTR230171407GT": 24.99,
-   "CJTR230171408HS": 24.99,
-   "CJTR230171409IR": 24.99,
-   "CJTR230171411KP": 24.99,
-   "CJTR230171412LO": 24.99,
-   "CJTR230171413MN": 24.99,
-   "CJTR230171415OL": 24.99,
-   "CJTR230171416PK": 24.99,
-   "CJTR230171417QJ": 24.99,
-   "CJTR230171419SH": 24.99,
-   "CJTR230171420TG": 24.99
+   "CJTR230171401AZ": 18.99,
+   "CJTR230171403CX": 18.99,
+   "CJTR230171404DW": 18.99,
+   "CJTR230171405EV": 18.99,
+   "CJTR230171407GT": 18.99,
+   "CJTR230171408HS": 18.99,
+   "CJTR230171409IR": 18.99,
+   "CJTR230171411KP": 18.99,
+   "CJTR230171412LO": 18.99,
+   "CJTR230171413MN": 18.99,
+   "CJTR230171415OL": 18.99,
+   "CJTR230171416PK": 18.99,
+   "CJTR230171417QJ": 18.99,
+   "CJTR230171419SH": 18.99,
+   "CJTR230171420TG": 18.99
   },
   "floor_margin_pct": 20.0,
-  "us_freight_assumed": 5.0,
-  "us_freight_assumed_note": "CJ returns $0.00 for US domestic freight on every US-warehouse product on this account (14 tested, 41g to 1000g, all 8 carriers), so the quote is unusable. $5.00 is the OBSERVED cheap-carrier rate from CJ itself on the Pet Hair Remover Mitt: GOFO+ $4.98, USPS+VIP $5.10, USPS+ $5.26. The global US_DOMESTIC_FREIGHT_FALLBACK stays at $11 because it is a dimensional-weight figure for one bulky 450g textile, which is right for bulky goods and wrong for a small dense one.",
-  "us_freight_assumed_review": "Read the real freight off the first order that ships. If it lands near $5, delete this field and nothing changes. If it lands near $11, RAISE THE PRICE or drop the product. Do NOT edit US_DOMESTIC_FREIGHT_FALLBACK to make a price work."
+  "us_freight_assumed": 0.0,
+  "us_freight_assumed_note": "$0.00, and it is REAL, not missing data. CJ order #1004 split into two rows: the China row (Jinhua ZJ) was billed postage $11.23, and the US Warehouse row was billed postageAmount 0.0 with orderAmount equal to productAmount. BOTH rows were UNSHIPPED at the time, so \"not calculated yet\" does not explain it - CJ prices postage at order time, as the China row proves. US-warehouse freight is included in the goods price, so the total outlay for the item IS the goods figure. This supersedes the $5.00 assumed on 2026-09-01 from GOFO+/USPS+ quotes, which were the China-origin lane for a dual-stocked SKU, not the US-to-US lane.",
+  "us_freight_assumed_review": "Settled by invoice, not assumption. Re-check only if a future US Warehouse order shows a non-zero postageAmount."
  }
 }

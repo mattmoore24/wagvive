@@ -29,7 +29,7 @@ import json, os, sys, time, urllib.error, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'config'))
-from kit_colorways import KITS, SIZE_MAP           # noqa: E402
+from kit_colorways import KITS, SIZE_MAP, COMPONENT_OPTIONS   # noqa: E402
 
 BACKUP = os.path.join(ROOT, 'config', 'kit-backup')
 
@@ -157,6 +157,10 @@ def build_plan(kit, spec, bundle_names, by_name):
                     want[axis] = cw[comp_name]
                 if size and comp_name in SIZE_MAP[size]:
                     want['Size'] = SIZE_MAP[size][comp_name]
+                # A component with a THIRD axis (the Travel Bowl has Color and
+                # Capacity) is pinned here. Without it Green and Blue each match
+                # two variants and the build dies on "2 matches".
+                want.update(COMPONENT_OPTIONS.get(kit, {}).get(comp_name, {}))
                 match = [v for v in variants
                          if all(any(o['name'] == n and o['value'] == val
                                     for o in v['selectedOptions'])
@@ -192,6 +196,19 @@ def reprice(product_gid, price, compare):
 def main():
     apply = '--apply' in sys.argv
     reprice_only = '--reprice-only' in sys.argv
+    # --kit "Travel Kit" restricts the run to one kit.
+    #
+    # WHY THIS EXISTS. This script rebuilds EVERY kit from the design on every
+    # run, and on 2026-09-02 two kit designs had drifted from their live bundles
+    # in both directions at once: the Toy Kit design named a Woodland Rope-Limb
+    # Plush the bundle did not carry, and the Dog Enrichment Kit design named a
+    # Dental Chew Stick while the live bundle carried a Bouncy Egg Squeaker the
+    # design had no entry for. A full rebuild would have silently changed what
+    # is IN two kits the owner had not asked to touch, which is a product
+    # decision and not a refactor.
+    only = None
+    if '--kit' in sys.argv:
+        only = sys.argv[sys.argv.index('--kit') + 1]
     os.makedirs(BACKUP, exist_ok=True)
 
     kits = gql(KIT_Q, {'q': "product_type:'Bundles & Kits' AND status:ACTIVE"}
@@ -218,6 +235,8 @@ def main():
 
     failures = []
     for kit_title, spec in KITS.items():
+        if only and kit_title != only:
+            continue
         kit = by_title.get(kit_title)
         if not kit:
             print(f'!! {kit_title}: not an active kit, skipped')

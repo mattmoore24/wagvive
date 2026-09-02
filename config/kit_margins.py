@@ -18,10 +18,16 @@ import freight_floor
 from pricing import DUTY_PCT, DUTY_PCT_US_WAREHOUSE, landed, FLAT, PCT, SALES_TAX_AVG
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# 30% since 2026-08-04: kits are priced by the demand-model optimiser
-# (optimise_kits.py) for contribution, with 30% as the worth-the-complexity
-# floor. The old flat 50% went with the rest of the flat-floor regime.
-FLOOR = 0.30
+# 20% since 2026-09-02, matching the store-wide floor. It was 30% from
+# 2026-08-04, on the reasoning that a kit is more work to assemble and should
+# earn more for the complexity.
+#
+# That reasoning was retired by the owner for a plain commercial reason: at 30%
+# the kits price themselves out of the basket. A kit only earns its complexity
+# if somebody buys it, and a store with no traction cannot afford a premium on
+# its highest-consideration items. Kits are still free to run ABOVE 20% where
+# the demand model says the price holds; this is the floor, not the target.
+FLOOR = 0.20
 
 env = {}
 with open(os.path.join(ROOT, 'config', 'shopify.env'), encoding='utf-8') as fh:
@@ -68,13 +74,23 @@ def api(path):
 
 
 def cj_lookup(sku):
-    """sku -> (vid, cost) via the parent SPU."""
+    """sku -> (vid, cost, weight_g) via the parent SPU.
+
+    Weight is returned because a kit ships as ONE parcel and its freight has to
+    be estimated from the COMBINED weight; without it the only fallback is
+    summing per-item parcels, which overstated the Dog Enrichment Kit's freight
+    by 71% against the real invoice.
+    """
     r = cj_api.call('/product/query', {'productSku': str(sku)[:11]})
     for v in ((r.get('data') or {}).get('variants') or []):
         if v.get('variantSku') == sku:
             raw = str(v.get('variantSellPrice') or '').split('-')[0]
-            return v.get('vid'), float(raw)
-    return None, None
+            try:
+                wt = float(v.get('variantWeight') or 0)
+            except (TypeError, ValueError):
+                wt = 0.0
+            return v.get('vid'), float(raw), wt
+    return None, None, 0.0
 
 
 def main():
@@ -98,15 +114,16 @@ def main():
                 print(f'{pv["title"]}: variant has no components'); continue
 
             print(f'{pv["title"].encode("ascii", "replace").decode()}  ${price:.2f}')
-            goods, items, china = 0.0, [], False
+            goods, items, china, weights = 0.0, [], False, []
             for c in comps:
                 sku = c['productVariant']['sku']
-                vid, cost = cj_lookup(sku)
+                vid, cost, wt = cj_lookup(sku)
                 if cost is None:
                     print(f'   {sku}  NOT RESOLVED'); continue
                 qty = c['quantity']
                 goods += cost * qty
                 items.append({'quantity': qty, 'vid': vid})
+                weights.append((wt or 0) * qty)
                 if not str(sku).startswith('CJBQ'):
                     china = True
                 print(f'   x{qty} {c["productVariant"]["product"]["title"][:34]:36} '
@@ -126,18 +143,33 @@ def main():
                 freight, carrier, aging, estimated = freight_floor.resolve(combined)
                 split = False
             else:
-                freight, estimated, split = 0.0, False, True
-                names = []
-                for it in items:
-                    ri = cj_api.call('/logistic/freightCalculate', payload={
-                        'startCountryCode': start, 'endCountryCode': 'US',
-                        'products': [it]})
-                    f, n, a, est = freight_floor.resolve(ri.get('data'))
-                    freight += f
-                    estimated = estimated or est
-                    names.append(str(n)[:14])
-                carrier = f'{len(items)} separate parcels'
-                aging = ' + '.join(names)
+                # CJ would not quote the basket. It does NOT follow that the kit
+                # ships as separate parcels, and assuming so was a real and
+                # expensive error: summing per-item estimates charges the fixed
+                # parcel cost once PER ITEM. For the Dog Enrichment Kit that gave
+                # $25.42 of modelled freight against $14.85 CJ actually billed on
+                # order #1002, turning a 45% margin kit into an 11% "breach" that
+                # would have had its price RAISED.
+                #
+                # A kit ships as one parcel, so estimate it as one parcel, from
+                # the combined weight, against the line fitted to real invoices.
+                split = False
+                estimated = True
+                grams = sum(float(w or 0) for w in weights)
+                freight = freight_floor.combined_estimate(grams)
+                if freight is None:
+                    freight, split = 0.0, True
+                    for it in items:
+                        ri = cj_api.call('/logistic/freightCalculate', payload={
+                            'startCountryCode': start, 'endCountryCode': 'US',
+                            'products': [it]})
+                        f, _n, _a, _e = freight_floor.resolve(ri.get('data'))
+                        freight += f
+                    carrier = f'{len(items)} parcels (no weights)'
+                    aging = ''
+                else:
+                    carrier = f'one parcel, {grams:.0f}g (invoice-fitted)'
+                    aging = ''
 
             duty = DUTY_PCT if china else DUTY_PCT_US_WAREHOUSE
             cost_total = landed(goods, freight, duty) + fee_rate * price + FLAT
