@@ -1,0 +1,64 @@
+54 active products in admin. Checking each on the PUBLIC storefront...
+
+product                                     admin     live   avail   img promise
+----------------------------------------------------------------------------------
+Calm & Comfort Kit                          69.00    69.00   9/9    9/9   ok
+Dog Enrichment Kit                          40.00    40.00   3/3    3/3   ok
+Grooming Essentials Kit                     46.00    46.00   9/9    9/9   ok
+New Puppy Kit                               30.00    30.00   6/6    6/6   ok
+Toy Kit                                     35.00    35.00   3/3    3/3   ok
+Travel Kit                                  63.00    63.00   9/9    9/9   ok
+Wagvive 3-in-1 Steam Grooming Brush         17.99    17.99   2/2    2/2   ok
+Wagvive 3-in-1 Travel Bowl                  17.99    17.99   6/6    6/6   ok
+Wagvive Anti-Spill Floating Water Bowl      19.99    19.99   8/8    8/8   ok
+Wagvive Automatic Ball Launcher             87.99    87.99   1/1    1/1   ok
+Wagvive Barnyard Squeaker                   11.99    11.99   7/7    7/7   ok
+Wagvive Big Dog Costume                     20.99    20.99   7/7    7/7   ok
+Wagvive Big Squeak Plush                    16.99    16.99   2/2    2/2   ok
+Wagvive Bouncy Egg Squeaker                  9.99     9.99   4/4    4/4   ok
+Wagvive Calming Thunder Wrap                22.99    22.99   3/3    3/3   ok
+Wagvive Cooling Comfort Pad                 20.99    20.99  12/12  12/12  ok
+Wagvive Cordless Paw Trimmer                23.99    23.99   1/1    1/1   ok
+Wagvive Corduroy Squeak Pals                11.99    11.99   3/3    3/3   ok
+Wagvive Crinkle Plush Buddy                 11.99    11.99   3/3    3/3   ok
+Wagvive Cuddle Companion Teddy              12.99    12.99   1/1    1/1   ok
+Wagvive Dematting Comb                      11.99    11.99   1/1    1/1   ok
+Wagvive Dental Chew Stick                   14.99    14.99   3/3    3/3   ok
+Wagvive Dental Duck Chew Toy                10.99    10.99   1/1    1/1   ok
+Wagvive Finger Toothbrush                    8.99     8.99   4/4    4/4   ok
+Wagvive Glow in the Dark Skeleton Suit      14.99    14.99   2/2    2/2   ok
+Wagvive Heartbeat Soothing Sloth            27.99    27.99   1/1    1/1   ok
+Wagvive Jack-o-Lantern Sweater              12.99    12.99   6/6    6/6   ok
+Wagvive Jingle Plush Ball                   12.99    12.99   3/3    3/3   ok
+Wagvive LED Nail Clippers                   13.99    13.99   3/3    3/3   ok
+Wagvive LED Safety Halo Collar              18.99    18.99  15/15  15/15  ok
+Wagvive LED Waste Bag Dispenser              8.99     8.99   5/5    5/5   ok
+Wagvive Lick Bowl with Ball                 16.99    16.99   4/4    4/4   ok
+Wagvive Paw Print Fleece Blanket            12.99    12.99   6/6    6/6   ok
+Wagvive Paw Washing Cup                     11.99    11.99   9/9    9/9   ok
+Wagvive Pet Hair Remover Mitt                9.99     9.99   4/4    4/4   ok
+Wagvive Pumpkin Chew Toy                    15.99    15.99   1/1    1/1   ok
+Wagvive Pumpkin Hoodie                      14.99    14.99  25/25  25/25  ok
+Wagvive Pumpkin Snuffle Mat                 19.99    19.99   1/1    1/1   ok
+Wagvive Quick-Dry Bath Robe                 14.99    14.99   9/9    9/9   ok
+Wagvive Quiet Electric Nail Grinder         21.99    21.99   2/2    2/2   ok
+Wagvive Roast Turkey Sniff Toy              17.99    17.99   1/1    1/1   ok
+Wagvive Rope-Limb Puppy Plush               14.99    14.99   1/1    1/1   ok
+Wagvive Screaming Chicken                   12.99    12.99   3/3    3/3   ok
+Wagvive Self-Cleaning Slicker Brush         17.99    17.99   3/3    3/3   ok
+Wagvive Slow Feeder Bowl                    13.99    13.99   3/3    3/3   ok
+Wagvive Sneaker Chew Buddy                  10.99    10.99   3/3    3/3   ok
+Wagvive Squirrel Squeaky Plush              15.99    15.99   1/1    1/1   ok
+Wagvive Talk Button                         10.99    10.99   4/4    4/4   ok
+Wagvive Thanksgiving Turkey Sweater         15.99    15.99   6/6    6/6   ok
+Wagvive Travel Water Bottle & Bowl          18.99    18.99   2/2    2/2   ok
+Wagvive Watermelon Rope Frisbee             10.99    10.99   1/1    1/1   ok
+Wagvive Waterproof Snuggle Blanket          20.99    20.99   6/6    6/6   ok
+Wagvive Waterproof Sofa & Furniture Co      17.99    17.99   9/9    9/9   ok
+Wagvive Woodland Rope-Limb Plush            12.99    12.99   6/6    6/6   ok
+
+54 of 54 products fetched from the storefront
+
+==================================================================================
+Every active product is live, correctly priced, fully buyable, has an
+image on every variant, and carries the current delivery promise.

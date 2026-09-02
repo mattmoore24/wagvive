@@ -46,18 +46,36 @@ def admin(path):
     return out
 
 
+# The storefront rate-limits too, and it answers 429 exactly like a real
+# failure. The first version of this script fetched two pages per product with
+# no pause and reported EIGHTEEN products as "NOT LIVE" when every one of them
+# was fine - a false alarm indistinguishable from a real outage. Throttle, and
+# retry a 429 rather than believing it.
+THROTTLE = 0.7
+
+
+def _fetch(url, tries=4):
+    for attempt in range(tries):
+        time.sleep(THROTTLE)
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=90) as r:
+                return r.read().decode('utf-8', 'replace')
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < tries - 1:
+                time.sleep(3 * (attempt + 1))
+                continue
+            raise
+    raise urllib.error.HTTPError(url, 429, 'rate limited', None, None)
+
+
 def live_json(handle):
-    url = f'https://{SHOP}/products/{handle}.js?nocache={int(time.time()*1000)}'
-    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-    with urllib.request.urlopen(req, timeout=90) as r:
-        return json.loads(r.read().decode())
+    return json.loads(
+        _fetch(f'https://{SHOP}/products/{handle}.js?nocache={int(time.time()*1000)}'))
 
 
 def live_html(path):
-    url = f'https://{SHOP}{path}?nocache={int(time.time()*1000)}'
-    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-    with urllib.request.urlopen(req, timeout=90) as r:
-        return r.read().decode('utf-8', 'replace')
+    return _fetch(f'https://{SHOP}{path}?nocache={int(time.time()*1000)}')
 
 
 def main():
