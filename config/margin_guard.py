@@ -168,8 +168,13 @@ try:
     # the price it justifies instead of hiding in a global constant, and so
     # lowering it for a small dense item cannot silently flatter a bulky one.
     # Printed on every run; see the banner in main().
+    # `is not None`, NOT a truth test. The invoice-confirmed US-warehouse
+    # freight is 0.00, and 0.00 is falsy: a truth test silently dropped every
+    # entry, fell back to the $11 bulky-item constant, and reported the Travel
+    # Bowl at -37.9% margin on a price that is really +25%.
     BOOK_US_FREIGHT = {sku: float(v['us_freight_assumed'])
-                       for v in _BOOK.values() if v.get('us_freight_assumed')
+                       for v in _BOOK.values()
+                       if v.get('us_freight_assumed') is not None
                        for sku in (v.get('variants') or {})}
 except FileNotFoundError:
     BOOK_FLOOR = {}
