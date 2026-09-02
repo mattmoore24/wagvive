@@ -53,6 +53,26 @@ RETURNS_RATE = 0.03
 # it. Applied by config/freight_floor.py wherever a quote comes back at zero.
 US_DOMESTIC_FREIGHT_FALLBACK = 11.00
 
+# The $11 above is a DIMENSIONAL-WEIGHT figure: it came from one bulky 450g
+# textile that packs to a mailer billing at 3-4 lb. It is the right default for
+# anything bulky, and demonstrably wrong for a small dense item.
+#
+# For light, compact US-warehouse goods the only REAL observations on this
+# account are, on the Pet Hair Remover Mitt (300g), from CJ's own quotes:
+#
+#     GOFO+        $4.98    3-8 days
+#     USPS+VIP     $5.10    3-7 days
+#     USPS+        $5.26    3-7 days
+#     FedEx Ground $20.01   3-7 days   (outlier, not the cheapest option)
+#
+# so $5.00 is the observed cheap-carrier rate, not a guess. It is NOT applied
+# automatically by weight, because CJ's per-variant weights are unreliable (the
+# LED collar reports 800g, which is the carton, for a ~60g nylon collar). It is
+# opted into PER PRODUCT via `us_freight_assumed` in config/price_book.json, so
+# every use of it is visible next to the price it justifies and margin_guard
+# prints it on every run.
+US_DOMESTIC_FREIGHT_LIGHT = 5.00
+
 # US import duty, checked against Zonos postal tariff guidance as of 2026-07-24.
 # De minimis is permanently suspended, so every parcel is dutiable regardless of
 # value. For China-origin postal parcels the stack is:

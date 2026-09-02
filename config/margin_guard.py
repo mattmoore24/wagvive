@@ -162,8 +162,18 @@ try:
     BOOK_FLOOR = {pid: max(v.get('floor_margin_pct', DEFAULT_FLOOR * 100) / 100.0,
                            FLOOR_MIN)
                   for pid, v in _BOOK.items()}
+    # Per-product US domestic freight assumption, used ONLY when CJ answers with
+    # missing data ($0.00 on every carrier, which it does for every US-warehouse
+    # product on this account). Opt-in per product so the assumption sits next to
+    # the price it justifies instead of hiding in a global constant, and so
+    # lowering it for a small dense item cannot silently flatter a bulky one.
+    # Printed on every run; see the banner in main().
+    BOOK_US_FREIGHT = {sku: float(v['us_freight_assumed'])
+                       for v in _BOOK.values() if v.get('us_freight_assumed')
+                       for sku in (v.get('variants') or {})}
 except FileNotFoundError:
     BOOK_FLOOR = {}
+    BOOK_US_FREIGHT = {}
 
 
 def best_freight(vid, start, sku=''):
@@ -219,6 +229,16 @@ def best_freight(vid, start, sku=''):
     #   opts empty after retries -> CJ did NOT answer. Unknowable right now,
     #     and judging it means inventing a cost. The caller treats this as
     #     UNRESOLVED instead of as a breach.
+    # CJ answered with missing data AND this product carries an explicit, recorded
+    # US domestic freight assumption. Use it instead of the bulky-item fallback.
+    # Only ever applies when `estimated` is already True, so it can never
+    # override a real quote.
+    assumed = BOOK_US_FREIGHT.get(str(sku))
+    if estimated and opts and assumed is not None:
+        return {'price': assumed, 'name': f'{name} (price_book us_freight_assumed)',
+                'aging': aging, 'within_promise': bool(inside),
+                'estimated': True, 'answered': True}
+
     return {'price': price, 'name': f'{name} (selected carrier unavailable)',
             'aging': aging, 'within_promise': bool(inside),
             'estimated': estimated, 'answered': bool(opts)}
@@ -238,6 +258,19 @@ def main():
            else f'price_book floors ({len(BOOK_FLOOR)} products)')
     print(f'Margin guard - {src}, carriers within {MAX_DAYS} days, '
           f'{"APPLY" if apply_fix else "report only"}\n')
+
+    # Never let an assumed cost be silent. These products are graded on a freight
+    # figure nobody has been billed yet, and that is exactly the sort of number
+    # this repo has been burned by before.
+    if BOOK_US_FREIGHT:
+        by_val = {}
+        for sku, val in BOOK_US_FREIGHT.items():
+            by_val.setdefault(val, []).append(sku)
+        print('ASSUMED US DOMESTIC FREIGHT (CJ quotes $0.00; not yet billed):')
+        for val, skus in sorted(by_val.items()):
+            print(f'   ${val:.2f} on {len(skus)} variant(s) - see us_freight_assumed '
+                  f'in price_book.json for the evidence and the review trigger')
+        print()
 
     products = api('GET', 'products.json?limit=250&status=active')['products']
     costs = live_cj_costs([v.get('sku') for p in products for v in p['variants']])
