@@ -493,7 +493,8 @@
   "variants": {
    "CJCT25677400001": 87.99
   },
-  "floor_margin_pct": 20.0
+  "floor_margin_pct": 11.0,
+  "below_standard_by_choice": "DELIBERATE. Owner decision 2026-09-09: price stays at $87.99 even though CJ raised the goods cost from $52.61 to $55.22 (about 5%) in the week to 2026-09-09, taking the margin from 22.1% to 19.0%, a point under the 20% standard. Clearing 20% would need $89.09 and the owner prefers the more competitive price. floor_margin_pct is set to 11.0 on purpose - achieved margin minus the same ~8 point drift buffer the other sub-standard products use - so the 6-hourly job stops failing on a known, accepted position while still catching a REAL further slide. Do not \"correct\" it back to 20."
  },
  "10508803178785": {
   "title": "Wagvive Big Dog Costume",
