@@ -6,6 +6,104 @@
 
 **Last updated:** 2026-09-10. The DELISTED Calming Thunder Wrap is replaced, live, kit-rewired and paired to CJ. Two long-standing audit blind spots fixed. The Travel Kit stays at 12.5% BY DECISION and that is now recorded in code, so the guard stops treating it as a failure.
 
+## OPEN ITEMS as of 2026-09-10
+
+Found by a six-lens read-only sweep of the repo, docs, scheduled jobs and recent
+commits, with every candidate adversarially verified before it was written down.
+62 candidates survived that check; deduplicated they come to the following. The
+numbers below were re-derived by hand from the files named, not taken on trust.
+
+### 1. Two live prices rest on freight this repo's own code calls a placeholder
+
+`freight_floor.py` lines 10-17 document it: on 2026-08-04 the Slicker Brush (80g)
+and the Cordless Paw Trimmer (160g) were the only two products in the catalogue
+returning a single carrier, "Yunexpress CN to US", at exactly $3.00, while every
+other product was offered 19 to 27 carriers starting at $4.28. The same $3.00 came
+back for a 1913g basket. It is not a price any carrier charges.
+
+`resolve()` was given `MIN_CREDIBLE_FREIGHT = 4.00` to reject exactly this. Both
+products still slip past it, by two DIFFERENT holes:
+
+* **Slicker Brush** - `carriers.json['carriers']` maps `CJMY1952185` to
+  "Yunexpress CN to US", the placeholder line itself. `margin_guard.best_freight()`
+  returns a named selected carrier at lines 218-225 and **never calls
+  `freight_floor.resolve()`**, so the credibility floor is bypassed completely.
+* **Cordless Paw Trimmer** - not in `carriers.json`, so it does reach `resolve()`,
+  but `resolve()` is called with NO WEIGHT. `credible_floor` therefore uses the flat
+  $4.00 instead of `0.75 x estimate(160g) = $4.75`, and the $4.00 line clears by
+  exactly $0.00.
+
+What it costs, computed from `docs/qa/freight-research.json` (real weights and
+menus, no CJ call spent):
+
+    Slicker Brush   $17.99  logged 21.3% on $3.00  ->   7.7% on $5.37   floor 20.0%
+    Paw Trimmer     $23.99  logged 16.7% on $4.00  ->   6.7% on $6.34   floor  8.7%
+
+Both breach their OWN recorded floors, and `margin_guard` reports "All variants
+clear their floors" while they do. THE FIX IS TWO PARTS, and doing only the first
+leaves the brush exactly as it is: carry `variantWeight` through `live_cj_costs`
+into `resolve()`, AND apply the credibility check to the selected-carrier branch.
+Guard the weight: `pricing.py` lines 60-70 records that CJ per-variant weights are
+unreliable (the LED collar reports 800g, the carton, for a ~60g nylon collar).
+
+**This needs a PRICE DECISION once fixed**, exactly like the Travel Kit: correcting
+the measurement turns two silent breaches into two loud ones, and the 6-hourly job
+will start failing until they are either repriced or recorded as accepted.
+
+### 2. `config/track_watch.py` was never built, so the FTC delay notice has no trigger
+
+`delay_notice.py` line 25 says "WHAT TRIGGERS IT: `config/track_watch.py` alarm
+condition A". `docs/delivery-promise-and-tracking-plan.md` line 222 calls it "the
+instrument that made three delivered orders look like lost ones" and says to ship
+it "before the next order arrives, not after". The file does not exist. So the
+generator for the 16 CFR 435.2(b) notice exists, and nothing detects the delay that
+would require sending one.
+
+### 3. CLAUDE.md non-negotiable #4 still teaches the RETIRED promise
+
+Line 40 still reads `"5 to 12 business days", which is the promise used site-wide
+and in emails`. The live promise has been **10 to 16 business days** since
+2026-09-01 and `config/delivery_promise.py` is the source of truth. This is the
+exact failure mode CLAUDE.md itself devotes non-negotiable #1 to: the repo stating
+one number while the code enforces another. Anything written from that line will be
+wrong.
+
+### 4. `apply_kits.py` is a landmine
+
+Its Travel Kit definition (line 229) still lists FIVE components and does not
+include the 3-in-1 Travel Bowl, and it recomputes every kit price from
+`price_book.json`. Running it would strip the bowl and revert the kit prices,
+including the Travel Kit decision recorded above. Either bring it in step with
+`kit_colorways.py` or mark it voided at the top of the file.
+
+### 5. Smaller, all verified
+
+* `carriers.json` records a booked carrier for **19 of 48 SPUs**; `_updated` is
+  2026-08-01. The new Anxiety Vest is not in it, though its carrier is known
+  (LuWei Ordinary US). Pricing against the cheapest carrier understates freight
+  whenever a faster one was actually booked.
+* **Nothing scheduled checks kit economics.** `kit_margins.py` is in no workflow,
+  and `margin_guard.py` skips kits because a bundle carries no SKU.
+* `sync_inventory.py` cannot fail and has no CJ retry, and it is the first
+  `--apply` step of the 6-hourly job.
+* `guard_unshippable.py` has no coverage gate, so a CJ outage reads as an all-clear.
+* `cj_api.call()` still collapses quota exhaustion, HTTP error and empty result
+  into one falsy answer, which is the condition CLAUDE.md says to STOP on.
+* Two knowledge docs still state the retired **30%** kit floor.
+* HANDOFF never recorded the 2026-09-02 session.
+
+### Owner-only, cannot be done by Claude
+
+* **Google Workspace migration for hello@wagvive.com.** Re-verified live on
+  2026-09-10: nothing has changed since the runbook was written. MX still on
+  Shopify's forwarder, SPF still hostedemail-only, no Google DKIM. The Workspace
+  account and the `hello` user must EXIST before any MX change or every customer
+  reply to an order confirmation hard-bounces. See
+  `docs/knowledge/google-workspace-migration.md`.
+* **CJ duty ticket #64**, confirming DDP vs DDU.
+* The marketing phase-0 email automations.
+* Narrowing the Shopify token's scopes before order volume arrives.
+
 ## 2026-09-09 session
 
 **The Calming Thunder Wrap was DELISTED at CJ and is now replaced.** CJ answers
