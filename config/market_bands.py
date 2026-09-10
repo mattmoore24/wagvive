@@ -47,7 +47,7 @@ markup  p* = c * e / (e - 1)  over variable cost c. That is what
 BANDS = {
     # --- outcome goods: cooling, anxiety, sleep -------------------------------
     'Cooling Comfort Pad':            dict(low=12.00, mid=29.99, high=59.99, e=1.6, conf='live'),
-    'Calming Thunder Wrap':           dict(low=14.99, mid=27.99, high=44.95, e=1.6, conf='live'),
+    'Calming Hooded Anxiety Vest':    dict(low=14.99, mid=27.99, high=44.95, e=1.6, conf='live'),
     'Heartbeat Soothing Sloth':       dict(low=19.99, mid=29.99, high=49.95, e=1.6, conf='category'),
     'Waterproof Snuggle Blanket':     dict(low=14.99, mid=24.99, high=39.99, e=2.0, conf='category'),
     'Paw Print Fleece Blanket':       dict(low=11.99, mid=17.99, high=29.99, e=2.5, conf='category'),

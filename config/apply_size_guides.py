@@ -86,6 +86,15 @@ FIT = {
  'wagvive-cooling-comfort-pad': ('Pad size', {
     'M': '24 x 20 in (60 x 50 cm)', 'L': '28 x 22 in (70 x 55 cm)',
     'XL': '39 x 28 in (100 x 70 cm)'}),
+ 'wagvive-calming-hooded-anxiety-vest': ('Chest', {
+    'XS': LR(33, 43), 'S': LR(45, 54), 'M': LR(56, 68), 'L': LR(78, 90)}),
+ # Sized by NECK, not chest. Transcribed from CJ's description text. Its guide
+ # was written inline by add_us_warehouse_wave1.py and never added here, so
+ # this script - which REQUIRES an entry for every sized product - exited 1 on
+ # the whole catalogue from the day that product went live.
+ 'wagvive-led-safety-halo-collar': ('Adjusts to fit a neck of', {
+    'M': '14 to 16.5 in (36 to 42 cm)', 'L': '16 to 21 in (41 to 53 cm)',
+    'XL': '17 to 23 in (43 to 58 cm)'}),
 }
 
 KIT_HANDLES = ['calm-comfort-kit', 'grooming-essentials-kit', 'new-puppy-kit',
@@ -115,6 +124,18 @@ NOTE = {
  'wagvive-cooling-comfort-pad':
     'A cooling pad only works where the dog is touching it, so it should be '
     'long enough to lie out on.',
+ 'wagvive-led-safety-halo-collar':
+    "Sized by your dog's NECK rather than the chest, because it is a collar. "
+    'Run a soft tape around the neck where a collar sits. It starts at M: the '
+    'smallest size only closes down to a 14 in (36 cm) neck, which is larger '
+    'than most toy and small breeds, so it is not the right buy for a '
+    'chihuahua or a shih tzu.',
+ 'wagvive-calming-hooded-anxiety-vest':
+    'A calming vest has to be SNUG to do anything, so this is the one product '
+    'in the store where measuring is worth the two minutes. It runs XS to L '
+    'and there is no XL: the largest size fits a chest of 35 in (90 cm) and a '
+    'dog of about 88 lb, so it does not suit giant breeds. The belly strap '
+    'adjusts, which takes up the slack if your dog sits between two sizes.',
 }
 SIZE_UP = ('If your dog is between two sizes, choose the larger. Every size on '
            'this page means the same dog it means everywhere else on Wagvive.')
@@ -207,6 +228,11 @@ def api(path, method='GET', payload=None, tries=6):
     return {}
 
 
+def squash(html):
+    """Whitespace-insensitive form, for COMPARISON only. Never written back."""
+    return re.sub(r'\s+', ' ', re.sub(r'>\s+<', '><', html or '')).strip()
+
+
 def strip_old(html):
     html = re.sub(rf'<div class="{MARK}">.*?</div>', '', html, flags=re.S)
     html = re.sub(rf'<h3[^>]*>\s*{HEAD}\s*</h3>.*?(?=<p><strong>Arrives in)',
@@ -238,7 +264,13 @@ def main():
             print(f'  ! no guide defined for {h}')
             return 1
         new = insert(p['body_html'], blk)
-        if new.strip() != (p['body_html'] or '').strip():
+        # Compare with whitespace collapsed. Shopify re-indents body_html when
+        # it saves, inserting newlines between tags, so a byte comparison says
+        # EVERY sized product changed on every run - 17 of 17, all but two of
+        # them identical once rendered. A report that always cries wolf is
+        # worse than no report, and it also rewrote 15 live products for
+        # nothing each time it ran.
+        if squash(new) != squash(p['body_html']):
             changed.append((p, new))
         print(f"  {p['title'][:44]:46} {sorted(offered, key=lambda s: ORDER.index(s) if s in ORDER else 99)}")
 

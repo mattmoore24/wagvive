@@ -157,6 +157,28 @@ MAP = {
            'X-Large 39" x 28"': 'XL'},
      retire=['XX-Large 59" x 39"'],
      note='The 150 cm pad is furniture-scale, not dog-scale, and duplicated XL.'),
+
+ # Calming Hooded Anxiety Vest: supplier chest 33-43, 40-48, 45-54, 50-60,
+ # 56-68, 65-78, 78-90 cm for XS to XXXL. Read off the maker's size chart,
+ # which CJ hides in a GALLERY image rather than the description or the API.
+ #
+ # `keep` IS AN IDENTITY MAP AND MUST STAY ONE. This product was created
+ # already on the canonical scale, so its live option values are XS/S/M/L. A
+ # supplier-letter mapping here would be read by apply_size_scale.py as a
+ # rename instruction against those live values: 'M'->'S' would mislabel a
+ # variant and 'S'/'L' appearing in `retire` would DELETE two of them. The
+ # supplier letters each of ours came from are recorded in `supplier` instead,
+ # which nothing executes.
+ 'wagvive-calming-hooded-anxiety-vest': dict(
+     basis='chest girth cm from the maker chart in the CJ gallery images',
+     keep={'XS': 'XS', 'S': 'S', 'M': 'M', 'L': 'L'},
+     retire=[],
+     supplier={'XS': 'XS', 'S': 'M', 'M': 'XL', 'L': 'XXXL'},
+     supplier_retired=['S', 'L', 'XXL'],
+     note='Built on the scale, so no rename is needed. Offers XS to L and no '
+          'XL: the largest size CJ makes stops at 88 lb and a 35 in chest, '
+          'which is the top of our L. Selling it as XL would break the one '
+          'promise the scale makes.'),
 }
 
 # The Sofa & Furniture Cover is deliberately NOT on this scale. It is sized to

@@ -11,8 +11,21 @@ CJ exposes no size data through the API at all. Specifically:
 * `variant.variantLength / variantWidth / variantHeight` are the **postage
   carton**, not the garment. The Pumpkin Hoodie reports `300x200x30mm` for XS
   and for 9XL alike, so anything derived from them is fiction.
-* `productImageSet` does **not** contain the chart. For the Pumpkin Hoodie all
-  seven entries are colourway product shots.
+* `productImageSet` **sometimes DOES contain the chart, so check it.** This
+  line used to read "does not contain the chart", generalised from one product:
+  the Pumpkin Hoodie, whose seven entries are all colourway shots. That was
+  wrong as a rule and it cost real work on 2026-09-09. The Calming Hooded
+  Anxiety Vest (`CJPC2963124`) keeps a **full chart, with chest, back, neck and
+  weight for all seven sizes, as gallery image 4 of 8** and has nothing in its
+  description. Following this file's advice literally produced the conclusion
+  "CJ publishes no dog measurements for this product at all", which was stated
+  to the owner and used to withdraw a sourcing recommendation before the
+  gallery was opened and the chart found sitting in it.
+
+  **So: pull BOTH the description `<img>` tags AND `productImageSet`, and LOOK
+  at the images before concluding anything is absent.** Neither location is
+  reliable on its own. "I did not find it" is not "it does not exist", which is
+  the same mistake this repo already documents for CJ's empty API answers.
 * `variantKey` sometimes carries a dimension for non apparel, and when it does
   it is reliable: `Coffee color-M 60x50cm`, `Black-S 71cm*100cm`. This is the
   cheapest source for pads, blankets and covers, and it agreed exactly with our

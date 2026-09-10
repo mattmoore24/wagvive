@@ -69,7 +69,7 @@ THEMES = {
               'Paw Print Fleece Blanket']),
     'Calm & Comfort Kit': dict(
         core=['Heartbeat Soothing Sloth'],
-        pool=['Calming Thunder Wrap', 'Paw Print Fleece Blanket',
+        pool=['Calming Hooded Anxiety Vest', 'Paw Print Fleece Blanket',
               'Waterproof Snuggle Blanket', 'Cooling Comfort Pad',
               'Cuddle Companion Teddy', 'Big Squeak Plush']),
 }

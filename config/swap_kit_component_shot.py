@@ -44,6 +44,12 @@ DOMAIN, TOKEN, VERSION = (env['SHOPIFY_STORE_DOMAIN'],
 # kit handle -> (alt of the stale shot, source product handle, source image alt)
 # The source image is picked to match the kit's FIRST colorway, which is the
 # convention the rest of each gallery already follows.
+#
+# `stale_alt: None` means the component was ADDED with nothing removed, so
+# there is no stale shot to replace and the still is appended to the end of the
+# component block instead. Without this the Travel Kit could not be fixed at
+# all: it gained the 3-in-1 Travel Bowl on 2026-09-08 and its gallery has been
+# advertising five pieces while the box holds six.
 SWAPS = {
     'toy-kit': {
         'stale_alt': 'Wagvive Watermelon Rope Frisbee',
@@ -56,6 +62,22 @@ SWAPS = {
         'source_handle': 'wagvive-dental-chew-stick',
         'source_alt': 'Wagvive Dental Chew Stick - Green',
         'new_alt': 'Wagvive Dental Chew Stick',
+    },
+    # 2026-09-09: the Calming Thunder Wrap is delisted at CJ and archived. The
+    # kit page was still showing a photo of it, and the wrap was a folded
+    # blanket while the replacement is a worn vest, so this is a real change of
+    # subject and the alt must change with it.
+    'calm-comfort-kit': {
+        'stale_alt': 'Wagvive Calming Thunder Wrap',
+        'source_handle': 'wagvive-calming-hooded-anxiety-vest',
+        'source_alt': 'Wagvive Calming Hooded Anxiety Vest, Dark Grey',
+        'new_alt': 'Wagvive Calming Hooded Anxiety Vest',
+    },
+    'travel-kit': {
+        'stale_alt': None,                      # added, nothing removed
+        'source_handle': 'wagvive-3-in-1-travel-bowl',
+        'source_alt': 'Wagvive 3-in-1 Travel Bowl, Blue',
+        'new_alt': 'Wagvive 3-in-1 Travel Bowl',
     },
 }
 
@@ -97,12 +119,15 @@ def main():
             continue
 
         stale = next((i for i in kit['images']
-                      if (i.get('alt') or '') == spec['stale_alt']), None)
+                      if spec['stale_alt']
+                      and (i.get('alt') or '') == spec['stale_alt']), None)
         already = next((i for i in kit['images']
                         if (i.get('alt') or '') == spec['new_alt']), None)
-        if not stale:
-            print(f"  nothing to do: no image alt {spec['stale_alt']!r}"
-                  + (f"; {spec['new_alt']!r} already present" if already else ''))
+        if already:
+            print(f"  nothing to do: {spec['new_alt']!r} already present")
+            continue
+        if not stale and spec['stale_alt']:
+            print(f"  nothing to do: no image alt {spec['stale_alt']!r}")
             continue
 
         source = next((i for i in src['images']
@@ -113,13 +138,25 @@ def main():
                   f"{spec['source_handle']}")
             continue
 
-        pos = stale['position']
-        print(f"  position {pos}")
-        print(f"    - {stale['src'].split('/')[-1].split('?')[0]}  "
-              f"alt={spec['stale_alt']!r}")
+        if stale:
+            pos = stale['position']
+            print(f"  position {pos}")
+            print(f"    - {stale['src'].split('/')[-1].split('?')[0]}  "
+                  f"alt={spec['stale_alt']!r}")
+        else:
+            # Append to the END of the component block, which is everything
+            # after position 1 that is not a "<kit title> - <colorway>" cover.
+            # Appending blindly at the end would put a component still AFTER
+            # the colorway covers and break the gallery's reading order.
+            prefix = f"{kit['title']} - "
+            comp_pos = [i['position'] for i in kit['images']
+                        if i['position'] > 1
+                        and not (i.get('alt') or '').startswith(prefix)]
+            pos = (max(comp_pos) if comp_pos else 1) + 1
+            print(f"  appending at position {pos} (nothing to replace)")
         print(f"    + {source['src'].split('/')[-1].split('?')[0]}  "
               f"alt={spec['new_alt']!r}   (from {src['title']})")
-        if stale.get('variant_ids'):
+        if stale and stale.get('variant_ids'):
             print(f"    !! stale image is wired to {len(stale['variant_ids'])} "
                   f"variant(s); they would be orphaned")
             problems.append(kit_handle)
@@ -140,9 +177,10 @@ def main():
             print('    !! upload did not take the alt; leaving the old image')
             continue
 
-        # 3. now the old one can go
-        rest(f"products/{kit['id']}/images/{stale['id']}.json", 'DELETE')
-        print(f"    deleted image {stale['id']}")
+        # 3. now the old one can go, if there was one
+        if stale:
+            rest(f"products/{kit['id']}/images/{stale['id']}.json", 'DELETE')
+            print(f"    deleted image {stale['id']}")
 
     # verify against the live product, not the writes above
     print('\n' + '=' * 72)

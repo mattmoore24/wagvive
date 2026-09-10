@@ -78,14 +78,35 @@ def api(path, method='GET', payload=None):
     return {}
 
 
+# CJ's codes for "this product is gone", as distinct from "I have no answer".
+# 1602002 is "Product has been removed from shelves"; 1602001 is "Product not
+# found". Both are DEFINITIVE NEGATIVES and must not be filed under unknown.
+DELISTED_CODES = {1602002, 1602001}
+
+
 def cj_vids():
-    """{variant sku: vid} for the catalogue, from CJ's product records."""
-    out = {}
+    """({variant sku: vid}, {spu: message}) from CJ's product records.
+
+    THE SECOND RETURN VALUE IS THE WHOLE POINT. This used to swallow every
+    exception and return vids alone, so a DELISTED product produced no vids,
+    every one of its variants fell through to "no CJ vid", and "no CJ vid" is
+    filed under `unknown`, which prints and returns 0. The repo's rule that an
+    empty answer from CJ is not evidence is right, but it was being applied to
+    an answer that is not empty: CJ says, explicitly, code 1602002 "Product has
+    been removed from shelves".
+
+    That is how the Calming Thunder Wrap stayed live, in stock and inside all
+    nine Calm & Comfort Kit variants for weeks while being unbuyable at source.
+    This guard ran every three hours throughout and reported it as unknown.
+    """
+    out, delisted = {}, {}
     prods = api('products.json?limit=250&status=active')['products']
     spus = {v['sku'][:11] for p in prods for v in p['variants'] if v.get('sku')}
     for spu in sorted(spus):
         try:
             d = cj_api.call('/product/query', {'productSku': spu}) or {}
+            if d.get('code') in DELISTED_CODES and not d.get('result'):
+                delisted[spu] = d.get('message') or f"CJ code {d.get('code')}"
             data = d.get('data')
             if isinstance(data, list):
                 data = data[0] if data else {}
@@ -94,7 +115,7 @@ def cj_vids():
         except Exception:
             pass
         time.sleep(0.25)
-    return out
+    return out, delisted
 
 
 def carriers(vid, sku, tries=3):
@@ -138,7 +159,12 @@ def main():
     prods = api('products.json?limit=250&status=active')['products']
     singles = [p for p in prods
                if p.get('product_type') not in ('Bundles & Kits', 'Kit Bundle')]
-    vids = cj_vids()
+    vids, delisted = cj_vids()
+    if delisted:
+        print(f'{len(delisted)} SPU(s) DELISTED at CJ:')
+        for spu, why in sorted(delisted.items()):
+            print(f'  !! {spu}  {why}')
+        print()
 
     bad, unknown, checked = [], [], 0
     for p in sorted(singles, key=lambda x: x['title']):
@@ -147,6 +173,17 @@ def main():
             if not sku:
                 continue
             checked += 1
+            # A delisting is a finding, not an unknown. No carrier can be
+            # quoted for a product CJ has taken off the shelf, so falling
+            # through to the quote below would only report "CJ did not answer".
+            if sku[:11] in delisted:
+                bad.append({'product': p['title'], 'handle': p['handle'],
+                            'variant': v['title'], 'sku': sku,
+                            'variant_id': v['id'],
+                            'item_id': v['inventory_item_id'],
+                            'qty': v['inventory_quantity'],
+                            'why': 'delisted at CJ'})
+                continue
             vid = vids.get(sku)
             if not vid:
                 unknown.append((p['title'], v['title'], sku, 'no CJ vid'))
@@ -174,11 +211,12 @@ def main():
         return 0
 
     on_sale = [b for b in bad if b['qty'] > 0]
-    print(f'\n{len(bad)} variant(s) have NO carrier inside {MAX_DAYS} days. '
+    print(f'\n{len(bad)} variant(s) cannot be shipped. '
           f'{len(on_sale)} still carry stock:')
     for b in bad:
         print(f"  {'!!' if b['qty'] > 0 else '  '} {b['product']} / "
-              f"{b['variant']}  {b['sku']}  qty={b['qty']}")
+              f"{b['variant']}  {b['sku']}  qty={b['qty']}"
+              f"  ({b.get('why', f'no carrier inside {MAX_DAYS} days')})")
 
     if on_sale and apply:
         for b in on_sale:

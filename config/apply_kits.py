@@ -240,7 +240,7 @@ KITS = {
     # handle.
     'Calm & Comfort Kit': (10477056491809, 109, [
         ('Heartbeat Soothing Sloth', 'Sloth'),
-        ('Calming Thunder Wrap', 'Thunder Wrap'),
+        ('Calming Hooded Anxiety Vest', 'Anxiety Vest'),
         ('Paw Print Fleece Blanket', 'Blanket'),
         ('Cooling Comfort Pad', 'Cooling Pad'),
         ('Big Squeak Plush', 'Squeak Plush'),

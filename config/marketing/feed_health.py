@@ -53,7 +53,7 @@ DOMAIN, TOKEN, VERSION = (env['SHOPIFY_STORE_DOMAIN'],
 # Format Google rewards: <what it is> for Dogs, <key attribute>, <variant axis>
 FEED_TITLES = {
     'Cooling Comfort Pad': 'Dog Cooling Mat, Pressure Activated Gel Pad for Crates and Beds',
-    'Calming Thunder Wrap': 'Dog Anxiety Vest, Calming Compression Wrap for Thunderstorms and Fireworks',
+    'Calming Hooded Anxiety Vest': 'Dog Anxiety Vest with Hood, Calming Thunder Jacket for Fireworks and Storms',
     'Heartbeat Soothing Sloth': 'Puppy Heartbeat Toy, Calming Sleep Aid Plush for Crate Training',
     'Waterproof Snuggle Blanket': 'Waterproof Dog Blanket, Pet Throw for Sofa and Bed',
     'Paw Print Fleece Blanket': 'Fleece Dog Blanket, Soft Paw Print Pet Throw',

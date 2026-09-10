@@ -4,7 +4,96 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-09-01. Delivery promise rewritten store-wide to 10 to 16 business days, stock sync verified and hardened, three CJ US-warehouse products created as DRAFT. THREE HAND-OFFS BLOCK COMPLETION, see "Blocked on the owner" below.
+**Last updated:** 2026-09-09. The DELISTED Calming Thunder Wrap is replaced, live, kit-rewired and paired to CJ. Two long-standing audit blind spots fixed. ONE THING NEEDS A DECISION: the Travel Kit is under floor at 12.5%, see below.
+
+## 2026-09-09 session
+
+**The Calming Thunder Wrap was DELISTED at CJ and is now replaced.** CJ answers
+`code 1602002, "Product has been removed from shelves"` for SPU CJYD2640786.
+That is a definitive negative, not the empty answer this repo rightly tells you
+to retry. The product was ACTIVE, stocked, buyable, and a component of all nine
+Calm & Comfort Kit variants, so it was order #1002's failure mode waiting to
+happen.
+
+Replaced by **Wagvive Calming Hooded Anxiety Vest**, `CJPC2963124`, $20.99,
+8 variants, live and CJ-paired. Not a like-for-like: the old item was a folded
+dimpled BLANKET (its own copy said 81 x 61cm), the new one is a worn vest with
+an ear-covering snood. Searching CJ on the product NAME returned jackets and
+vests, none of them the same category, which is the same trap the imagery rules
+warn about. So the title changed with the product rather than calling a vest a
+wrap. The old product is ARCHIVED, not deleted.
+
+**Sizing was NOT guessed.** CJ publishes a full chart (chest, back, neck and
+weight for 7 sizes) but hides it in a GALLERY image, so the first sweep reported
+"no measurements published" and that was WRONG. `docs/knowledge/cj-size-charts.md`
+said `productImageSet` never holds the chart, generalised from one product;
+that line is now corrected. Mapped on chest girth, cross-checked on weight:
+
+    ours  supplier    garment chest    supplier weight
+    XS    CJ XS       33 to 43 cm      7 to 11 lb
+    S     CJ M        45 to 54 cm      17 to 24 lb
+    M     CJ XL       56 to 68 cm      29 to 44 lb
+    L     CJ XXXL     78 to 90 cm      66 to 88 lb
+    XL    NOT OFFERED
+
+There is no XL because CJ's largest size stops at 88 lb and a 35 in chest, which
+is the top of our L. Offering it anyway would break the one promise the scale
+makes. CJ S, L and XXL are retired. `size_scale.MAP`'s `keep` for this handle is
+an IDENTITY map and must stay one: it was built on the scale, so a supplier
+letter mapping there would be read by `apply_size_scale.py` as a rename and
+would DELETE two live variants.
+
+**$20.99 holds the 20% floor on every variant** (worst 22.3% at L, best 44.1% at
+XS) on real quoted CN freight of $5.05 to $6.84. $19.99 puts L at 18.5%. Paired
+on **LuWei Ordinary US**, which is the carrier three of the four sizes including
+the binding one were priced against.
+
+**Calm & Comfort Kit rebuilt**, $69.00 -> **$64.00**, compare_at $101.95 ->
+$99.95. Pink takes Dark Grey because the vest comes in two colours; the wrap it
+replaces already put "Grey and Blue" in the Pink colorway.
+
+### Two audit blind spots fixed, both of which hid this problem
+
+1. `guard_unshippable.py` swallowed the delisting. It ran every three hours
+   throughout and filed the wrap under "unknown", which prints and returns 0.
+   `cj_vids()` now returns delisted SPUs and a delisting is a FINDING.
+2. `apply_size_guides.py` **exited 1 on the whole catalogue** from the day the
+   LED Safety Halo Collar went live, because that product's guide was written
+   inline by its creation script and never added to the shared `FIT` table. It
+   is in there now. Its change-detection also compared HTML byte for byte, so
+   Shopify's own re-indentation made it report 17 of 17 guides changed on every
+   run and rewrite 15 live products for nothing; it now compares with
+   whitespace collapsed and reports the 2 that really changed.
+
+### Also fixed while in there, both pre-existing
+
+* The **3-in-1 Travel Bowl** was added to the Travel Kit on 2026-09-08 but never
+  got its kit callout, its contents metafield entry or its gallery still. The
+  kit page advertised five pieces while the box holds six.
+* Every Calm & Comfort Kit cover also showed an orange **Talk Button**, which
+  belongs to the Dog Enrichment Kit and has never been in this kit. `audit_kits`
+  cannot catch that: it checks gallery ALT TEXT, and nothing can count objects
+  inside a flattened JPEG. All four covers were re-shot from the originals so
+  the four correct components stay pixel-accurate.
+
+### NEEDS A DECISION: the Travel Kit is under floor
+
+`kit_reprice.py` puts the **Travel Kit at 12.5%**, needing **$71.00** against
+its live **$63.00**. This is NOT from this session's work: it dates from the
+3-in-1 Travel Bowl being added as a sixth component. It was left alone because
+the standing instruction is not to raise prices on under-floor items without
+being asked. Every other kit clears: Calm & Comfort 24.8%, New Puppy 24.1%,
+Toy 23.6%, Enrichment 22.9%, Grooming 22.5%.
+
+### Verified live, not from return values
+
+219/219 variants clear their floors. 219/219 have a carrier inside the promise.
+54/54 products live, correctly priced, fully buyable, imaged on every variant
+and carrying the current promise. All 39 kit variants hold exactly the designed
+components and the right derived stock. 23/23 component pages render their kit
+callout. 17/17 sized products on the one scale. `audit_kits`: no problems.
+`audit_cj_connections`: no problems. CJ's own Connected list shows all 8 pairs
+with the intended size mapping.
 
 ## 2026-09-01 session
 

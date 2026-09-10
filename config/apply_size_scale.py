@@ -58,7 +58,9 @@ KIT_HANDLES = ['calm-comfort-kit', 'grooming-essentials-kit', 'new-puppy-kit',
 COMPONENT_HANDLE = {'Paw Print Fleece Blanket': 'wagvive-paw-print-fleece-blanket',
                     'Quick-Dry Bath Robe': 'wagvive-quick-dry-bath-robe',
                     'Paw Washing Cup': 'wagvive-paw-washing-cup',
-                    'Cooling Comfort Pad': 'wagvive-cooling-comfort-pad'}
+                    'Cooling Comfort Pad': 'wagvive-cooling-comfort-pad',
+                    'Calming Hooded Anxiety Vest':
+                        'wagvive-calming-hooded-anxiety-vest'}
 
 
 def api(path, method='GET', payload=None, tries=6):

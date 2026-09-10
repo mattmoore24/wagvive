@@ -1,14 +1,4 @@
 {
- "10471550320929": {
-  "title": "Wagvive Calming Thunder Wrap",
-  "price": 22.99,
-  "variants": {
-   "CJYD264078601AZ": 22.99,
-   "CJYD264078602BY": 22.99,
-   "CJYD264078603CX": 22.99
-  },
-  "floor_margin_pct": 20.0
- },
  "10471550419233": {
   "title": "Wagvive Heartbeat Soothing Sloth",
   "price": 27.99,
@@ -566,5 +556,20 @@
   "us_freight_assumed": 0.0,
   "us_freight_assumed_note": "$0.00, and it is REAL, not missing data. CJ order #1004 split into two rows: the China row (Jinhua ZJ) was billed postage $11.23, and the US Warehouse row was billed postageAmount 0.0 with orderAmount equal to productAmount. BOTH rows were UNSHIPPED at the time, so \"not calculated yet\" does not explain it - CJ prices postage at order time, as the China row proves. US-warehouse freight is included in the goods price, so the total outlay for the item IS the goods figure. This supersedes the $5.00 assumed on 2026-09-01 from GOFO+/USPS+ quotes, which were the China-origin lane for a dual-stocked SKU, not the US-to-US lane.",
   "us_freight_assumed_review": "Settled by invoice, not assumption. Re-check only if a future US Warehouse order shows a non-zero postageAmount."
+ },
+ "10534855508257": {
+  "title": "Wagvive Calming Hooded Anxiety Vest",
+  "floor_margin_pct": 20.0,
+  "variants": {
+   "CJPC296312401AZ": 20.99,
+   "CJPC296312403CX": 20.99,
+   "CJPC296312405EV": 20.99,
+   "CJPC296312407GT": 20.99,
+   "CJPC296312408HS": 20.99,
+   "CJPC296312410JQ": 20.99,
+   "CJPC296312412LO": 20.99,
+   "CJPC296312414NM": 20.99
+  },
+  "price": 20.99
  }
 }

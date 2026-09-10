@@ -1,9 +1,9 @@
 {
- "ran_at": "2026-09-02T15:30:32",
+ "ran_at": "2026-09-09T20:21:56",
  "floor": "price_book",
  "applied": false,
- "checked": 214,
- "expected": 214,
+ "checked": 219,
+ "expected": 219,
  "coverage": 1.0,
  "breaches": [],
  "unresolved": [],
@@ -173,9 +173,9 @@
    "variant": "Default Title",
    "sku": "CJCT25677400001",
    "price": 87.99,
-   "margin": 22.1,
-   "stress_margin": 14.0,
-   "freight_headroom": 14.95,
+   "margin": 19.0,
+   "stress_margin": 10.6,
+   "freight_headroom": 20.24,
    "freight": 11.0
   },
   {
@@ -329,34 +329,24 @@
    "freight": 4.75
   },
   {
-   "product": "Wagvive Calming Thunder Wrap",
-   "variant": "Grey",
-   "sku": "CJYD264078601AZ",
-   "price": 22.99,
-   "margin": 23.0,
-   "stress_margin": 13.7,
-   "freight_headroom": 10.66,
-   "freight": 9.43
+   "product": "Wagvive Calming Hooded Anxiety Vest",
+   "variant": "Dark Blue / L",
+   "sku": "CJPC296312407GT",
+   "price": 20.99,
+   "margin": 22.3,
+   "stress_margin": 13.3,
+   "freight_headroom": 7.81,
+   "freight": 6.84
   },
   {
-   "product": "Wagvive Calming Thunder Wrap",
-   "variant": "Dark Blue",
-   "sku": "CJYD264078602BY",
-   "price": 22.99,
-   "margin": 23.0,
-   "stress_margin": 13.7,
-   "freight_headroom": 10.66,
-   "freight": 9.43
-  },
-  {
-   "product": "Wagvive Calming Thunder Wrap",
-   "variant": "Grey and Blue",
-   "sku": "CJYD264078603CX",
-   "price": 22.99,
-   "margin": 23.0,
-   "stress_margin": 13.7,
-   "freight_headroom": 10.66,
-   "freight": 9.43
+   "product": "Wagvive Calming Hooded Anxiety Vest",
+   "variant": "Dark Grey / L",
+   "sku": "CJPC296312414NM",
+   "price": 20.99,
+   "margin": 22.3,
+   "stress_margin": 13.3,
+   "freight_headroom": 7.81,
+   "freight": 6.84
   },
   {
    "product": "Wagvive Cooling Comfort Pad",
@@ -593,10 +583,10 @@
    "variant": "Default Title",
    "sku": "CJYD233940102BY",
    "price": 27.99,
-   "margin": 24.5,
-   "stress_margin": 15.5,
+   "margin": 26.4,
+   "stress_margin": 17.7,
    "freight_headroom": 11.98,
-   "freight": 10.08
+   "freight": 9.56
   },
   {
    "product": "Wagvive Jack-o-Lantern Sweater",

@@ -46,19 +46,25 @@ RULES FOR EDITING THIS FILE
 # Kit size -> the size value to use on each size-varying component.
 # The blanket only comes in S and M, so Large reuses M: that is the largest the
 # supplier makes, not an oversight.
+# The Calming Hooded Anxiety Vest maps one-to-one because it was built on the
+# canonical scale rather than relabelled onto it: kit S is a small dog, and the
+# vest's S is the same small dog. It offers no XL, which no kit asks for.
 SIZE_MAP = {
     'S': {'Paw Print Fleece Blanket': 'S',
           'Quick-Dry Bath Robe':      'S',
           'Paw Washing Cup':          'S',
-          'Cooling Comfort Pad':      'M'},
+          'Cooling Comfort Pad':      'M',
+          'Calming Hooded Anxiety Vest': 'S'},
     'M': {'Paw Print Fleece Blanket': 'L',
           'Quick-Dry Bath Robe':      'M',
           'Paw Washing Cup':          'M',
-          'Cooling Comfort Pad':      'L'},
+          'Cooling Comfort Pad':      'L',
+          'Calming Hooded Anxiety Vest': 'M'},
     'L': {'Paw Print Fleece Blanket': 'L',
           'Quick-Dry Bath Robe':      'L',
           'Paw Washing Cup':          'L',
-          'Cooling Comfort Pad':      'XL'},
+          'Cooling Comfort Pad':      'XL',
+          'Calming Hooded Anxiety Vest': 'L'},
 }
 
 # Per kit: the option that is NOT size, and what each of its values fixes.
@@ -244,26 +250,39 @@ KITS = {
         },
     },
 
+    # 2026-09-09: the Calming Thunder Wrap was REPLACED by the Calming Hooded
+    # Anxiety Vest. CJ answers code 1602002, "Product has been removed from
+    # shelves", for the wrap's SPU - a definitive negative, not an empty answer
+    # to retry - so all nine variants of this kit contained something nobody
+    # could ship. See config/replace_thunder_wrap.py.
+    #
+    # The vest comes in two colours, not three, so Pink takes Dark Grey. That
+    # is not a compromise: the wrap it replaces put "Grey and Blue" in the Pink
+    # colorway already, because a calming vest is worn over fur and a neutral
+    # is what actually looks right next to a pink blanket.
     'Calm & Comfort Kit': {
         'option': 'Colorway',
-        'price': '69.00', 'compare_at': '101.95',
+        # was $69.00/$101.95. The vest retails $2.00 under the wrap, so the
+        # honest compare_at drops by exactly that; the kit price is set from
+        # config/kit_reprice.py against the new component cost.
+        'price': '64.00', 'compare_at': '99.95',
         'sizes': ['S', 'M', 'L'],
         'fixed': ['Heartbeat Soothing Sloth'],
         'values': {
             'Grey': {
-                'Calming Thunder Wrap':     'Grey',
+                'Calming Hooded Anxiety Vest': 'Dark Grey',
                 'Paw Print Fleece Blanket': 'Beige',
                 'Cooling Comfort Pad':      'Light Grey',
                 'Big Squeak Plush':         'Blue',
             },
             'Blue': {
-                'Calming Thunder Wrap':     'Dark Blue',
+                'Calming Hooded Anxiety Vest': 'Dark Blue',
                 'Paw Print Fleece Blanket': 'Camel',
                 'Cooling Comfort Pad':      'Dark Blue',
                 'Big Squeak Plush':         'Blue',
             },
             'Pink': {
-                'Calming Thunder Wrap':     'Grey and Blue',
+                'Calming Hooded Anxiety Vest': 'Dark Grey',
                 'Paw Print Fleece Blanket': 'Pink',
                 'Cooling Comfort Pad':      'Pink',
                 'Big Squeak Plush':         'Orange',

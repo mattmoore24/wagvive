@@ -85,11 +85,11 @@ SEO = {
         'Dog Cooling Mat, Pressure Activated Gel Pad',
         'No water, no power, no freezer. Your dog lies down and the gel starts '
         'working. Four sizes for crates, beds and car seats, wipe clean.'),
-    'Calming Thunder Wrap': (
-        'Dog Anxiety Vest, Calming Compression Wrap',
-        'Gentle, even pressure that feels like being held, for thunderstorms, '
-        'fireworks and vet visits. Dimpled minky fabric, machine washable, '
-        'three colors.'),
+    'Calming Hooded Anxiety Vest': (
+        'Dog Anxiety Vest with Hood, Calming Thunder Jacket',
+        'Gentle, even pressure plus a hood that covers the ears, for '
+        'thunderstorms, fireworks and vet visits. Breathable knit, adjustable '
+        'belly strap, machine washable.'),
     'Heartbeat Soothing Sloth': (
         'Puppy Heartbeat Toy, Calming Sleep Aid Plush',
         'A pulsing heartbeat to sleep against, which is what settled them in '
