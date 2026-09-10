@@ -50,6 +50,7 @@ def main():
     print(f"{'kit':28}{'now':>8}{'needs':>9}{'->set':>8}{'compare_at':>12}"
           f"{'worst margin now':>18}")
     print('-' * 84)
+    blocked = []
 
     for k in sorted(kits, key=lambda x: x['title']):
         d = KM.gql(KM.BUNDLE_Q, {'id': f"gid://shopify/Product/{k['id']}"})
@@ -64,10 +65,20 @@ def main():
             if not comps:
                 continue
             goods, items, china, grams = 0.0, [], False, 0.0
+            unresolved = []
             for c in comps:
                 sku = c['productVariant']['sku']
                 vid, cost, wt = KM.cj_lookup(sku)
                 if cost is None:
+                    # NEVER SKIP. Dropping an unresolved component takes its
+                    # cost and its weight out of the totals, so the kit reads
+                    # cheaper and lighter than it is and this tool recommends a
+                    # price that is too LOW. That is exactly what happened on
+                    # 2026-09-09: run minutes after the Calm & Comfort rebuild,
+                    # with the swapped component not yet resolving, it advised
+                    # $64.00 for a kit whose true margin at that price is 19.2%
+                    # against a 20% floor.
+                    unresolved.append(sku)
                     continue
                 goods += cost * c['quantity']
                 grams += (wt or 0) * c['quantity']
@@ -76,13 +87,28 @@ def main():
                                .replace('Wagvive ', ''))
                 if not str(sku).startswith('CJBQ'):
                     china = True
+            if unresolved:
+                # Refuse to advise a price from a partial bill of materials.
+                # The recommendation would be too LOW, and this tool's whole
+                # output is a price somebody then sets.
+                blocked.append((k['title'], unresolved))
+                continue
             start = 'CN' if china else 'US'
             r = cj_api.call('/logistic/freightCalculate', payload={
                 'startCountryCode': start, 'endCountryCode': 'US',
                 'products': items})
             combined = r.get('data') or []
             if combined:
-                freight, _, _, _ = freight_floor.resolve(combined)
+                # Weight passed, for the same reason kit_margins.py passes it:
+                # without it resolve() cannot run its weight-relative
+                # placeholder test and falls back to the flat $11.00 bulky-item
+                # constant, which flatters the kit. And when the quote IS
+                # rejected, a kit falls back to the invoice-fitted ONE-PARCEL
+                # line, not resolve()'s single-item estimate - otherwise the two
+                # branches below model the same box two different ways.
+                freight, _, _, est = freight_floor.resolve(combined, '', grams)
+                if est:
+                    freight = freight_floor.combined_estimate(grams) or freight
             else:
                 # ONE parcel, estimated from combined weight against the line
                 # fitted to real CJ invoices. Summing per-item parcels charges
@@ -103,6 +129,13 @@ def main():
         missing = [n for n in comp_names if n not in retail]
         if missing:
             print(f"    ! no live retail for {missing} - compare_at is short")
+
+    if blocked:
+        print('\nNOT PRICED, a component would not resolve at CJ. A price')
+        print('advised from a partial bill of materials would be too LOW:')
+        for t, miss in blocked:
+            print(f'  ? {t[:34]:36} unresolved: {miss}')
+        print('Re-run once CJ answers for them.')
 
     print('\nEdit config/kit_colorways.py with the ->set and compare_at columns,')
     print('then: python config/rebuild_kits.py --reprice-only --apply')

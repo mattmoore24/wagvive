@@ -32,13 +32,42 @@ those two, and nothing else:
     Slicker Brush   $17.99   was "21.3%" on $3.00 freight   really 7.7% on $5.37
     Paw Trimmer     $23.99   was "16.7%" on $4.00 freight   really 6.7% on $6.34
 
+### The kit tools had the SAME bug, twice over
+
+Adding `kit_margins.py` to the 6-hourly job made it fail, and chasing that found
+two more instances of the same root cause:
+
+1. **Both kit tools silently DROPPED a component CJ would not price**
+   (`if cost is None: continue`), taking its cost AND its weight out of the
+   totals. The kit reads cheaper and lighter, so the margin comes out flattered
+   and `kit_reprice` advises a price that is too LOW. That is precisely how the
+   Calm & Comfort Kit came to be priced at $64.00 on 2026-09-10: kit_reprice ran
+   minutes after the rebuild while the swapped component had not resolved. Its
+   true margin at $64.00 was 19.2%. Both tools now refuse to grade or price a
+   kit with an unresolved component. **Corrected to $65.00**, live and verified.
+
+2. **The kit tools were weight-blind too.** When `resolve()` rejected a
+   placeholder quote with no weight it fell back to `estimate(None)`, which is
+   `US_DOMESTIC_FREIGHT_FALLBACK` = **$11.00** - a US domestic constant, applied
+   to a CHINA-origin kit. The symptom was one kit modelled two ways in a single
+   run: three Grooming Essentials Kit variants graded 23.0% on that $11.00 while
+   the other two, whose combined quote came back empty and so took the correct
+   path, graded 14.0% on the invoice-fitted $14.83 for the SAME box. Both tools
+   now pass the combined weight, and a rejected quote falls back to
+   `combined_estimate` (fitted to four real CJ invoices), so both branches model
+   a kit as what it is: one parcel. All five Grooming variants now agree.
+
 ### NEEDS A PRICE DECISION
 
-    product            now      true margin   its floor   to clear floor   to reach 20%
-    Slicker Brush      $17.99      7.7%         20.0%         $20.86          $20.86
-    Cordless Trimmer   $23.99      6.7%          8.7%         $24.53          $28.14
+    product              now      true margin   its floor   clear floor   reach 20%
+    Slicker Brush        $17.99      7.7%         20.0%        $20.86       $20.86
+    Cordless Trimmer     $23.99      6.7%          8.7%        $24.53       $28.14
+    Grooming Essentials  $46.00     14.0%         20.0%        $49.60       $49.60
 
-They are NOT the same case:
+The Grooming Kit is a THIRD, independent decision. Raising the Slicker Brush's
+retail does not fix it: a kit's cost is component GOODS, not component retail.
+
+The singles are NOT the same case as each other:
 
   * The **Cordless Paw Trimmer was already one of the twelve
     `below_standard_by_choice` products**, at an accepted 8.7%. The owner has

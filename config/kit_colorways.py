@@ -290,9 +290,16 @@ KITS = {
     'Calm & Comfort Kit': {
         'option': 'Colorway',
         # was $69.00/$101.95. The vest retails $2.00 under the wrap, so the
-        # honest compare_at drops by exactly that; the kit price is set from
-        # config/kit_reprice.py against the new component cost.
-        'price': '64.00', 'compare_at': '99.95',
+        # honest compare_at drops by exactly that.
+        #
+        # $65.00, NOT the $64.00 first set on 2026-09-10. That figure came from
+        # kit_reprice.py run minutes after the rebuild, while the swapped
+        # component had not yet resolved at CJ - and BOTH kit tools used to
+        # silently DROP an unresolved component from goods and weight, which
+        # flatters the margin and advises a price that is too low. kit_margins
+        # then measured the true figure at 19.2%, under the floor. Both tools
+        # now refuse to grade or price a kit with an unresolved component.
+        'price': '65.00', 'compare_at': '99.95',
         'sizes': ['S', 'M', 'L'],
         'fixed': ['Heartbeat Soothing Sloth'],
         'values': {

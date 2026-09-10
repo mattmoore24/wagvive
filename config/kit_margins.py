@@ -101,7 +101,7 @@ def main():
         print('no bundle products found'); return
 
     fee_rate = PCT * (1 + SALES_TAX_AVG)
-    problems = []
+    problems, ungraded = [], []
 
     for k in kits:
         d = gql(BUNDLE_Q, {'id': f'gid://shopify/Product/{k["id"]}'})
@@ -116,11 +116,26 @@ def main():
 
             print(f'{pv["title"].encode("ascii", "replace").decode()}  ${price:.2f}')
             goods, items, china, weights = 0.0, [], False, []
+            missing = []
             for c in comps:
                 sku = c['productVariant']['sku']
                 vid, cost, wt = cj_lookup(sku)
                 if cost is None:
-                    print(f'   {sku}  NOT RESOLVED'); continue
+                    # A COMPONENT CJ WILL NOT PRICE MUST NOT BE SKIPPED.
+                    # `continue` dropped its cost AND its weight out of the
+                    # totals, so the kit looked cheaper to make and lighter to
+                    # ship, and the margin came out FLATTERED - wrong in the
+                    # one direction that stops a breach being reported.
+                    #
+                    # This is not hypothetical. kit_reprice.py has the same
+                    # hole, and running it minutes after the 2026-09-09 Calm &
+                    # Comfort rebuild (while the swapped component had not yet
+                    # resolved) produced a comfortable number, on the strength
+                    # of which the kit was priced at $64.00. Its true margin
+                    # was 19.2%, under the 20% floor.
+                    print(f'   {sku}  NOT RESOLVED')
+                    missing.append(sku)
+                    continue
                 qty = c['quantity']
                 goods += cost * qty
                 items.append({'quantity': qty, 'vid': vid})
@@ -137,11 +152,29 @@ def main():
             # back to an estimate there would flatter the margin badly - the real
             # cost is the sum of the individual shipments.
             start = 'CN' if china else 'US'
+            grams = sum(float(w or 0) for w in weights)
             r = cj_api.call('/logistic/freightCalculate', payload={
                 'startCountryCode': start, 'endCountryCode': 'US', 'products': items})
             combined = r.get('data') or []
             if combined:
-                freight, carrier, aging, estimated = freight_floor.resolve(combined)
+                # PASS THE WEIGHT. Without it resolve() cannot apply its
+                # weight-relative placeholder test and, when it rejects a quote,
+                # falls back to estimate(None) - the flat $11.00 bulky-item
+                # constant. Three Grooming Essentials Kit variants were graded
+                # 23.0% on that $11.00 while the other two, whose combined quote
+                # came back empty, were graded 14.0% on the invoice-fitted
+                # $14.83 for the SAME box. Same kit, two freight models,
+                # 9 points of margin apart.
+                freight, carrier, aging, estimated = freight_floor.resolve(
+                    combined, '', grams)
+                if estimated:
+                    # The quote was unusable. A kit is ONE parcel, so fall back
+                    # to the line fitted to real kit INVOICES rather than
+                    # resolve()'s single-item estimate, which is what the
+                    # no-quote branch below already does.
+                    ce = freight_floor.combined_estimate(grams)
+                    if ce:
+                        freight, carrier = ce, f'one parcel, {grams:.0f}g (invoice-fitted)'
                 split = False
             else:
                 # CJ would not quote the basket. It does NOT follow that the kit
@@ -156,7 +189,6 @@ def main():
                 # the combined weight, against the line fitted to real invoices.
                 split = False
                 estimated = True
-                grams = sum(float(w or 0) for w in weights)
                 freight = freight_floor.combined_estimate(grams)
                 if freight is None:
                     freight, split = 0.0, True
@@ -173,6 +205,16 @@ def main():
                     aging = ''
 
             duty = DUTY_PCT if china else DUTY_PCT_US_WAREHOUSE
+            if missing:
+                # Unknown is neither a pass nor a finding. Grading a kit on a
+                # partial bill of materials produces a confident number that is
+                # wrong in the flattering direction, which is worse than saying
+                # nothing.
+                ungraded.append((pv['title'], price, missing))
+                print(f'   NOT GRADED: {len(missing)} component(s) '
+                      f'unresolved at CJ')
+                print()
+                continue
             cost_total = landed(goods, freight, duty) + fee_rate * price + FLAT
             m = (price - cost_total) / price * 100
             need = (landed(goods, freight, duty) + FLAT) / (1 - fee_rate - FLOOR)
@@ -189,21 +231,48 @@ def main():
     # still printed, and still named, so it can never quietly disappear - but it
     # does not fail the run, because an alarm that fires forever on a settled
     # decision is the thing this repo already learned to stop doing.
+    if ungraded:
+        print('NOT GRADED, a component would not resolve at CJ:')
+        for t, price, miss in ungraded:
+            print(f'  ? {t[:34]:36} ${price:.2f}  unresolved: {miss}')
+        print()
+
     accepted = [p for p in problems
                 if p[0].replace('Wagvive ', '') in BELOW_STANDARD_BY_CHOICE]
     real = [p for p in problems if p not in accepted]
 
     if accepted:
+        # ONE LINE PER KIT, not per breaching variant. A kit breaches on several
+        # variants at once, so printing the full recorded reason for each meant
+        # the same paragraph four times, which buries the real finding
+        # underneath it. Show the worst variant, and the reason once.
         print('BELOW FLOOR BY CHOICE, not a failure:')
+        by_kit = {}
         for t, vid, price, need, m in accepted:
+            prev = by_kit.get(t)
+            if prev is None or m < prev[2]:
+                by_kit[t] = (price, need, m)
+        for t, (price, need, m) in sorted(by_kit.items()):
             spec = BELOW_STANDARD_BY_CHOICE[t.replace('Wagvive ', '')]
-            print(f'  {t[:34]:36} ${price:.2f} ({m:.1f}%), 20% would be '
-                  f'${need:.2f}   decided {spec["decided"]}')
+            n = sum(1 for a in accepted if a[0] == t)
+            print(f'  {t[:34]:36} ${price:.2f}, worst variant {m:.1f}% of '
+                  f'{n}, {FLOOR:.0%} would be ${need:.2f}   '
+                  f'decided {spec["decided"]}')
             print(f'      {spec["reason"]}')
     if real:
+        # One line per kit here too, showing the worst variant and how many
+        # breach. Repeating an identical line per variant made a single kit look
+        # like several findings.
         print('BELOW FLOOR:')
+        worst = {}
         for t, vid, price, need, m in real:
-            print(f'  {t[:34]:36} ${price:.2f} -> ${need:.2f}  ({m:.1f}%)')
+            prev = worst.get(t)
+            if prev is None or m < prev[2]:
+                worst[t] = (price, need, m)
+        for t, (price, need, m) in sorted(worst.items()):
+            n = sum(1 for x in real if x[0] == t)
+            print(f'  {t[:34]:36} ${price:.2f} -> ${need:.2f}  '
+                  f'(worst variant {m:.1f}% of {n})')
         sys.exit(1)
     if accepted:
         print(f'Every other kit clears the {FLOOR:.0%} floor.')
