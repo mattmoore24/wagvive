@@ -40,7 +40,9 @@ BUNDLES = """
   products(first: 50, query: "status:active") {
     nodes {
       id title handle
-      variants(first: 5) {
+      # 60, not 5: three kits carry nine variants, so a 5-variant read
+      # sees an incomplete component set. Same fix as kit_margins.py.
+      variants(first: 60) {
         nodes {
           price
           productVariantComponents(first: 20) {

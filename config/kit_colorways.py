@@ -103,8 +103,33 @@ COMPONENT_OPTIONS = {
 # and still names the kit; it just stops treating it as a failure, which is the
 # same bargain price_book.json makes. Remove the entry and the guard bites again.
 BELOW_STANDARD_BY_CHOICE = {
+    'Calm & Comfort Kit': {
+        'accepted_margin_pct': 15.4,
+        'price': '65.00',
+        'decided': '2026-09-10',
+        'reason': (
+            'Priced at $64.00 and then $65.00 on 2026-09-10 to clear 20%, both '
+            'times from an understated cost: first because both kit tools '
+            'silently dropped a component CJ would not price, then because '
+            'kit_margins queried variants(first: 5) against a NINE variant kit '
+            'and never graded the three thinnest. The true worst variant is '
+            '15.4%; 20% would need $68.86. The owner chose to hold $65.00 '
+            'rather than raise it a third time.'),
+    },
+    'Grooming Essentials Kit': {
+        'accepted_margin_pct': 10.4,
+        'price': '46.00',
+        'decided': '2026-09-10',
+        'reason': (
+            'Two separate defects hid this. kit_margins was weight-blind, so '
+            'some variants were graded on a $11.00 US-domestic fallback applied '
+            'to a China-origin kit; and it queried variants(first: 5) against a '
+            'NINE variant kit, so the thin end was never graded at all. Worst '
+            'variant is 10.4%, not the 14.0% first reported. 20% would need '
+            '$51.77. The owner chose to hold $46.00.'),
+    },
     'Travel Kit': {
-        'accepted_margin_pct': 12.5,
+        'accepted_margin_pct': 4.2,
         'price': '63.00',
         'decided': '2026-09-10',
         'reason': (
@@ -113,7 +138,12 @@ BELOW_STANDARD_BY_CHOICE = {
             '$71.00. The owner chose to hold $63.00 rather than put $8.00 on the '
             'most expensive thing in the range, on the same reasoning that '
             'retired the 30% kit floor: a kit only earns its complexity if '
-            'somebody actually buys it. Revisit if component costs move again.'),
+            'somebody actually buys it. Revisit if component costs move again. '
+            'CORRECTED 2026-09-10: the worst variant is 4.2%, not the 12.5% '
+            'first reported - kit_margins queried variants(first: 5) against a '
+            'nine variant kit, so the three thinnest were never graded. 20% '
+            'would need $75.96. The decision to hold $63.00 stands on the '
+            'corrected number.'),
     },
 }
 

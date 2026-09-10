@@ -284,8 +284,10 @@
   "variants": {
    "CJNP222636501AZ": 23.99
   },
-  "floor_margin_pct": 8.7,
-  "below_standard_by_choice": "DELIBERATE. Owner decision 2026-09-02: this price stays where it is even though the margin is under the 20% standard. These are cheap items where freight dominates (a $4 plush carrying $8 of shipping), and raising them to clear 20% would price them out of the catalogue entirely. floor_margin_pct is set BELOW the achieved margin on purpose so the 6-hourly job stays green and keeps signalling real cost drift; it is NOT an oversight and must not be \"corrected\" to 20. Revisit only if the freight economics change."
+  "floor_margin_pct": 6.0,
+  "below_standard_by_choice": "Already an accepted low-margin item at an 8.7% floor. The same 2026-09-10 freight correction ($4.00 placeholder to a real $6.34) moved the true margin to 6.7%, so the recorded floor is brought down to match reality rather than the price being raised. The decision itself is unchanged.",
+  "true_margin_pct_at_decision": 6.7,
+  "decided": "2026-09-10"
  },
  "10469665603873": {
   "title": "Wagvive Woodland Rope-Limb Plush",
@@ -381,7 +383,10 @@
    "CJMY195218502BY": 17.99,
    "CJMY195218503CX": 17.99
   },
-  "floor_margin_pct": 20.0
+  "floor_margin_pct": 7.0,
+  "below_standard_by_choice": "Freight was corrected from a $3.00 placeholder to the real $5.37 on 2026-09-10, which moved the true margin from a reported 21.3% to 7.7%. The owner chose to hold $17.99 rather than raise it to $20.86. It is a Grooming Essentials Kit component, so its retail also sets part of that kit's compare_at.",
+  "true_margin_pct_at_decision": 7.7,
+  "decided": "2026-09-10"
  },
  "10487573774625": {
   "title": "Wagvive Dental Chew Stick",

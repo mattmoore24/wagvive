@@ -4,7 +4,49 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-09-10. Every code bug from the 2026-09-10 sweep is FIXED and verified against live CJ. Two products are now correctly shown as under floor and need a PRICE DECISION: the Slicker Brush and the Cordless Paw Trimmer. Email migration is next and is owner-only.
+**Last updated:** 2026-09-10. All bugs fixed and BOTH guards exit 0, so the 6-hourly job passes. All prices held by owner decision, with the TRUE margins recorded. Email migration is the live task and is blocked on three owner steps.
+
+## 2026-09-10, part 3: prices held, and two more coverage holes
+
+The owner chose to HOLD every price. Nothing on the storefront moved. What
+changed is that the recorded floors now carry the TRUE margin, so the 6-hourly
+job stops failing on settled decisions while still catching a real slide.
+`margin_guard` and `kit_margins` both exit 0.
+
+    Slicker Brush        $17.99   floor 20.0% -> 7.0%    true 7.7%
+    Cordless Trimmer     $23.99   floor  8.7% -> 6.0%    true 6.7%   already by-choice
+    Travel Kit           $63.00   kit exception          true 4.2%   20% needs $75.96
+    Grooming Essentials  $46.00   kit exception          true 10.4%  20% needs $51.77
+    Calm & Comfort       $65.00   kit exception          true 15.4%  20% needs $68.86
+
+### Two more holes, both found by making the guards honest
+
+* **`kit_margins` queried `variants(first: 5)` against NINE variant kits.** It
+  graded 5 of 9 and left 13 of the range's 39 kit variants never checked. The
+  unchecked ones were the thin end every time: the Travel Kit's true worst is
+  4.2%, not the 12.5% first reported; Grooming 10.4% not 14.0%; Calm & Comfort
+  15.4% not 19.2%. Raised to 60. `kit_reprice` imports the same query so it was
+  blind too, and `link_kits.py` carried an identical `first: 5`.
+  `audit_kits.py` was already on `first: 100`, which is why it always saw nine.
+
+* **A REGRESSION I INTRODUCED, caught by the guard.** Passing the weight to
+  `resolve()` is right for China and WRONG for US stock.
+  `freight_floor.estimate()` is `FREIGHT_BASE + FREIGHT_PER_GRAM * g`, a line
+  fitted to CHINA to US quotes; `estimate(None)` deliberately returns the US
+  domestic fallback instead, which is why the no-weight path was accidentally
+  correct for US-warehouse items. Passing weight unconditionally re-priced the
+  US-warehoused Ball Launcher (1800g, CJ quotes $0.00 as it always does for US
+  stock) from the $11.00 US fallback to `estimate(1800)` = $26.20 of Chinese
+  airfreight, turning an accepted 19.0% into a phantom 1.2% breach.
+  `best_freight` now passes the weight only when origin is CN, for both
+  `resolve()` and `credible_floor()`.
+
+### The Travel Kit is worth revisiting
+
+Held at $63.00 on a 4.2% worst variant, about $2.60 of contribution. The stress
+column takes it negative on any realistic cost drift. The owner has held it
+twice, the second time on the corrected number, so this is a recorded decision
+and not an oversight - but it is the thinnest position in the range.
 
 ## 2026-09-10, part 2: the sweep's bugs are fixed
 

@@ -245,7 +245,10 @@ def best_freight(vid, start, sku='', weight_g=None):
     #
     # Booking a carrier says WHICH carrier, not that any number attached to it is
     # real. A placeholder is missing data whoever quotes it.
-    floor = freight_floor.credible_floor(weight_g)
+    # Weight-relative only for China, for the same reason as the resolve() call
+    # below: 0.75 x a China airfreight line is not a credible floor for a US
+    # domestic shipment, and would reject real US quotes as placeholders.
+    floor = freight_floor.credible_floor(weight_g if start != 'US' else None)
     want = SELECTED_CARRIER.get(str(sku)[:11])
     for o in opts:
         if want and str(o.get('logisticName')).strip() == want:
@@ -257,7 +260,21 @@ def best_freight(vid, start, sku='', weight_g=None):
                         'within_promise': bool(inside), 'estimated': False,
                         'answered': True}
 
-    price, name, aging, estimated = freight_floor.resolve(opts, sku, weight_g)
+    # WEIGHT IS ONLY MEANINGFUL FOR A CHINA-ORIGIN PARCEL.
+    #
+    # freight_floor.estimate() is `FREIGHT_BASE + FREIGHT_PER_GRAM * g`, a line
+    # fitted to CHINA to US quotes. For a US-warehouse item it is not a worse
+    # estimate, it is the wrong model entirely - and estimate(None) deliberately
+    # returns the US domestic fallback instead, which is why the no-weight path
+    # was accidentally correct for US stock.
+    #
+    # Passing the weight unconditionally re-priced the US-warehoused Automatic
+    # Ball Launcher (1800g, CJ quotes $0.00 as it always does for US stock) from
+    # the $11.00 US fallback to estimate(1800) = $26.20 of Chinese airfreight,
+    # turning an accepted 19.0% into a phantom 1.2% breach. So: China gets the
+    # weight, US does not.
+    price, name, aging, estimated = freight_floor.resolve(
+        opts, sku, weight_g if start != 'US' else None)
     # `answered` separates two very different situations that both set
     # `estimated`:
     #   opts non-empty but all $0/placeholder -> CJ ANSWERED with missing data.

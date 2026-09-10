@@ -45,7 +45,13 @@ BUNDLE_Q = """
 query($id: ID!) {
   product(id: $id) {
     title
-    variants(first: 5) {
+    # 60, not 5. Three kits carry NINE variants (3 sizes x 3 colorways) and the
+    # New Puppy Kit carries six, so `first: 5` silently graded 5 of 9 and left
+    # 13 of the range's 39 kit variants never checked at all. A kit's margin
+    # varies by variant - the Travel Kit spans 12.5% to 23.3% - so the ones
+    # beyond the fifth are exactly where a breach could hide. kit_reprice.py
+    # imports this same query, so it was blind to them too.
+    variants(first: 60) {
       nodes {
         id price
         productVariantComponents(first: 20) {
