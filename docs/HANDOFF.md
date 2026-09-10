@@ -4,7 +4,7 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-09-09. The DELISTED Calming Thunder Wrap is replaced, live, kit-rewired and paired to CJ. Two long-standing audit blind spots fixed. ONE THING NEEDS A DECISION: the Travel Kit is under floor at 12.5%, see below.
+**Last updated:** 2026-09-10. The DELISTED Calming Thunder Wrap is replaced, live, kit-rewired and paired to CJ. Two long-standing audit blind spots fixed. The Travel Kit stays at 12.5% BY DECISION and that is now recorded in code, so the guard stops treating it as a failure.
 
 ## 2026-09-09 session
 
@@ -76,14 +76,27 @@ replaces already put "Grey and Blue" in the Pink colorway.
   inside a flattened JPEG. All four covers were re-shot from the originals so
   the four correct components stay pixel-accurate.
 
-### NEEDS A DECISION: the Travel Kit is under floor
+### DECIDED 2026-09-10: the Travel Kit stays at $63.00
 
-`kit_reprice.py` puts the **Travel Kit at 12.5%**, needing **$71.00** against
-its live **$63.00**. This is NOT from this session's work: it dates from the
-3-in-1 Travel Bowl being added as a sixth component. It was left alone because
-the standing instruction is not to raise prices on under-floor items without
-being asked. Every other kit clears: Calm & Comfort 24.8%, New Puppy 24.1%,
-Toy 23.6%, Enrichment 22.9%, Grooming 22.5%.
+`kit_reprice.py` puts the **Travel Kit at 12.5%**, needing **$71.00** against its
+live **$63.00**. It went under floor when it gained the 3-in-1 Travel Bowl as a
+sixth component on 2026-09-08. **The owner chose to hold $63.00** rather than put
+$8.00 on the most expensive thing in the range, on the same reasoning that retired
+the 30% kit floor: a kit only earns its complexity if somebody actually buys it.
+
+That decision is now RECORDED IN CODE, not just here.
+`kit_colorways.BELOW_STANDARD_BY_CHOICE` carries the kit, the accepted margin, the
+date and the reason, and `kit_margins.py` reads it: the kit is still printed and
+still named on every run, but it no longer exits 1. Kits previously had no
+equivalent of the `below_standard_by_choice` key that twelve single products carry
+in price_book.json, so an under-floor kit looked exactly like one nobody had
+noticed, and the next session to run the guard would have "fixed" a price the owner
+had deliberately set. Remove the entry and the guard bites again.
+
+No scheduled job was ever affected: `kit_margins.py` is not in
+`.github/workflows/scheduled-ops.yml`, and `margin_guard.py` skips kits because a
+bundle carries no SKU. Every other kit clears: Calm & Comfort 24.8%, New Puppy
+24.1%, Toy 23.6%, Enrichment 22.9%, Grooming 22.5%.
 
 ### Verified live, not from return values
 

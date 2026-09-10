@@ -15,6 +15,7 @@ import json, os, sys, urllib.error, urllib.request
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cj_api
 import freight_floor
+from kit_colorways import BELOW_STANDARD_BY_CHOICE
 from pricing import DUTY_PCT, DUTY_PCT_US_WAREHOUSE, landed, FLAT, PCT, SALES_TAX_AVG
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -184,11 +185,29 @@ def main():
             if price < need - 0.005:
                 problems.append((pv['title'], var['id'], price, need, m))
 
-    if problems:
+    # An under-floor kit the owner has DECIDED to keep is not a failure. It is
+    # still printed, and still named, so it can never quietly disappear - but it
+    # does not fail the run, because an alarm that fires forever on a settled
+    # decision is the thing this repo already learned to stop doing.
+    accepted = [p for p in problems
+                if p[0].replace('Wagvive ', '') in BELOW_STANDARD_BY_CHOICE]
+    real = [p for p in problems if p not in accepted]
+
+    if accepted:
+        print('BELOW FLOOR BY CHOICE, not a failure:')
+        for t, vid, price, need, m in accepted:
+            spec = BELOW_STANDARD_BY_CHOICE[t.replace('Wagvive ', '')]
+            print(f'  {t[:34]:36} ${price:.2f} ({m:.1f}%), 20% would be '
+                  f'${need:.2f}   decided {spec["decided"]}')
+            print(f'      {spec["reason"]}')
+    if real:
         print('BELOW FLOOR:')
-        for t, vid, price, need, m in problems:
+        for t, vid, price, need, m in real:
             print(f'  {t[:34]:36} ${price:.2f} -> ${need:.2f}  ({m:.1f}%)')
         sys.exit(1)
+    if accepted:
+        print(f'Every other kit clears the {FLOOR:.0%} floor.')
+        return
     print(f'All kits clear the {FLOOR:.0%} floor.')
 
 

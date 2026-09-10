@@ -90,6 +90,33 @@ COMPONENT_OPTIONS = {
     },
 }
 
+# Kits the owner has DECIDED to sell under the 20% floor, with the reason.
+#
+# WHY THIS EXISTS. Single products already had this: twelve of them carry
+# `below_standard_by_choice` in price_book.json, which is how the store records
+# "this is a decision, not an oversight". Kits had no equivalent, so a kit under
+# floor looked identical to a kit nobody had noticed. `kit_margins.py` would
+# print BELOW FLOOR and exit 1 forever, and the next session to run it would
+# quite reasonably "fix" a price the owner had deliberately set.
+#
+# An accepted exception is NOT a pass. kit_margins.py still prints the margin
+# and still names the kit; it just stops treating it as a failure, which is the
+# same bargain price_book.json makes. Remove the entry and the guard bites again.
+BELOW_STANDARD_BY_CHOICE = {
+    'Travel Kit': {
+        'accepted_margin_pct': 12.5,
+        'price': '63.00',
+        'decided': '2026-09-10',
+        'reason': (
+            'The kit went under floor when it gained the 3-in-1 Travel Bowl as a '
+            'sixth component on 2026-09-08. kit_reprice.py puts the 20% price at '
+            '$71.00. The owner chose to hold $63.00 rather than put $8.00 on the '
+            'most expensive thing in the range, on the same reasoning that '
+            'retired the 30% kit floor: a kit only earns its complexity if '
+            'somebody actually buys it. Revisit if component costs move again.'),
+    },
+}
+
 KITS = {
     'New Puppy Kit': {
         'option': 'Colorway',
