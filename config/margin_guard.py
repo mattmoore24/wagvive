@@ -126,13 +126,21 @@ def margin_at(price, product, freight, duty_pct):
 
 
 def live_cj_costs(skus):
-    """sku -> (vid, cost) straight from CJ rather than any cached matrix, so a
-    supplier price change is picked up.
+    """sku -> (vid, cost, weight_g) straight from CJ rather than any cached
+    matrix, so a supplier price change is picked up.
 
     The SPU list is derived from the SKUs actually on the store - a CJ variant SKU
     is its 11-character parent SPU plus a suffix. Reading it from a checked-in
     matrix instead meant every newly added product came back "no CJ record" and
     was silently skipped by the floor check.
+
+    THE WEIGHT IS THE THIRD ELEMENT BECAUSE FREIGHT CREDIBILITY DEPENDS ON IT.
+    `freight_floor.resolve()` has always accepted a weight and has always been
+    called without one, so its weight-relative placeholder test could never fire
+    and it fell back to the flat $4.00 floor. That is how the Cordless Paw
+    Trimmer kept a $4.00 quote for 160g, which really costs $6.34: above a flat
+    $4.00 by a cent, below the weight-relative floor of $4.75 by a lot.
+    `kit_margins.cj_lookup` already returned a 3-tuple for the same reason.
     """
     out = {}
     spus = {str(s)[:11] for s in skus if s}
@@ -142,7 +150,11 @@ def live_cj_costs(skus):
             sku = v.get('variantSku')
             raw = str(v.get('variantSellPrice') or '').split('-')[0]
             try:
-                out[sku] = (v.get('vid'), float(raw))
+                weight = float(v.get('variantWeight') or 0) or None
+            except (TypeError, ValueError):
+                weight = None
+            try:
+                out[sku] = (v.get('vid'), float(raw), weight)
             except ValueError:
                 continue
     return out
@@ -181,7 +193,7 @@ except FileNotFoundError:
     BOOK_US_FREIGHT = {}
 
 
-def best_freight(vid, start, sku=''):
+def best_freight(vid, start, sku='', weight_g=None):
     """Freight for the carrier CJ will actually book.
 
     Pricing against the cheapest available carrier understates cost whenever a
@@ -197,16 +209,21 @@ def best_freight(vid, start, sku=''):
     # carriers three times and zero on the fourth.
     opts = []
     for attempt in range(3):
-        r = cj_api.call('/logistic/freightCalculate', payload={
-            'startCountryCode': start, 'endCountryCode': 'US',
-            'products': [{'quantity': 1, 'vid': vid}]})
         # Quota exhaustion is not flakiness and cannot be retried through: CJ
-        # returns an ordinary 200 with result:false and this message, and no
+        # returns an ordinary 200 with result:false and code 16900500, and no
         # number of attempts will change it until points replenish. Bail out
         # of the whole run immediately rather than burning ~36 minutes
         # retrying every remaining variant into the same wall.
-        if r.get('result') is False and 'Insufficient API points' in str(r.get('message')):
-            raise CJUnavailable(str(r.get('message'))[:200])
+        #
+        # cj_api.call() now raises this for EVERY caller, not just this one, so
+        # here it is only translated into the local type the callers below
+        # already handle.
+        try:
+            r = cj_api.call('/logistic/freightCalculate', payload={
+                'startCountryCode': start, 'endCountryCode': 'US',
+                'products': [{'quantity': 1, 'vid': vid}]})
+        except cj_api.CJQuotaExhausted as exc:
+            raise CJUnavailable(str(exc)) from exc
         opts = r.get('data') or []
         if opts:
             break
@@ -215,16 +232,32 @@ def best_freight(vid, start, sku=''):
     inside = [o for o in opts if o.get('logisticPrice') is not None
               and upper_days(o.get('logisticAging')) <= MAX_DAYS]
 
+    # THE SELECTED CARRIER IS STILL SUBJECT TO THE CREDIBILITY FLOOR.
+    #
+    # This branch used to return the booked carrier's quote unconditionally, and
+    # because it returns BEFORE freight_floor.resolve(), it skipped the
+    # placeholder test entirely. The Self-Cleaning Slicker Brush is mapped in
+    # carriers.json to "Yunexpress CN to US" - which for that product is the
+    # single bogus $3.00 line freight_floor's own docstring describes - so the
+    # brush was priced on $3.00 freight against a real $5.37, and reported 21.3%
+    # margin on a true 7.7% against its own 20% floor. margin_guard said "All
+    # variants clear their floors" the whole time.
+    #
+    # Booking a carrier says WHICH carrier, not that any number attached to it is
+    # real. A placeholder is missing data whoever quotes it.
+    floor = freight_floor.credible_floor(weight_g)
     want = SELECTED_CARRIER.get(str(sku)[:11])
     for o in opts:
         if want and str(o.get('logisticName')).strip() == want:
             p = o.get('logisticPrice')
-            if p and p > 0:
+            if p and float(p) > 0:
+                if float(p) < floor:
+                    break          # placeholder: fall through to resolve()
                 return {'price': float(p), 'name': want, 'aging': o.get('logisticAging'),
                         'within_promise': bool(inside), 'estimated': False,
                         'answered': True}
 
-    price, name, aging, estimated = freight_floor.resolve(opts)
+    price, name, aging, estimated = freight_floor.resolve(opts, sku, weight_g)
     # `answered` separates two very different situations that both set
     # `estimated`:
     #   opts non-empty but all $0/placeholder -> CJ ANSWERED with missing data.
@@ -279,7 +312,12 @@ def main():
         print()
 
     products = api('GET', 'products.json?limit=250&status=active')['products']
-    costs = live_cj_costs([v.get('sku') for p in products for v in p['variants']])
+    try:
+        costs = live_cj_costs([v.get('sku') for p in products for v in p['variants']])
+    except cj_api.CJQuotaExhausted as exc:
+        print(f'CJ API points exhausted while reading costs: {exc}')
+        print('COULD NOT VERIFY. No price is known to be wrong.')
+        return 3
     # How many variants SHOULD be graded, counted before a single CJ call. The
     # coverage gate below is denominated in this and nothing else. See the long
     # comment there for the bug that made the gate defeat itself.
@@ -300,7 +338,7 @@ def main():
             if not entry:
                 unresolved.append((title, v['title'], sku, 'no CJ record'))
                 continue
-            vid, cost = entry
+            vid, cost, weight_g = entry
             # Origin from the STOCK ROWS, never the SKU prefix. The CJBQ
             # heuristic quoted the CJCT-prefixed, US-warehoused Ball Launcher
             # from China, got no carriers, substituted a ~$21.50 estimate
@@ -309,7 +347,7 @@ def main():
             start = freight_floor.origin_for(sku)
             duty = DUTY_PCT_US_WAREHOUSE if start == 'US' else DUTY_PCT
             try:
-                fr = best_freight(vid, start, sku)
+                fr = best_freight(vid, start, sku, weight_g)
             except CJUnavailable as exc:
                 outage = str(exc)
                 break

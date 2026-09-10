@@ -57,6 +57,11 @@ def words(s):
             if len(w) > 3 and w not in STOP}
 
 
+# Fraction of SPUs that must return a NAME for a run to mean anything, matching
+# margin_guard.MIN_COVERAGE.
+MIN_COVERAGE = 0.80
+
+
 def main():
     rq = urllib.request.Request(
         f'https://{D}/admin/api/{V}/products.json?limit=250&status=active',
@@ -64,7 +69,7 @@ def main():
     with urllib.request.urlopen(rq, timeout=120) as r:
         prods = json.loads(r.read().decode())['products']
 
-    seen, rows = set(), []
+    seen, rows, silent = set(), [], []
     for p in prods:
         sku = next((v.get('sku') for v in p['variants'] if v.get('sku')), None)
         if not sku:
@@ -76,6 +81,14 @@ def main():
 
         d = (cj_api.call('/product/query', {'productSku': spu}).get('data') or {})
         cj_name = str(d.get('productNameEn') or '')
+        if not cj_name:
+            # NO NAME IS NOT A CLEAN PAIRING. An empty CJ name scores 0% overlap
+            # and produces an empty alarm list, which is indistinguishable from
+            # a correctly paired product whose title we deliberately rewrote.
+            # So a total CJ outage ended on "No product resolves to a CJ listing
+            # for a different animal or category" and exited 0.
+            silent.append((p['title'], spu))
+            continue
         ours = p['title']
         ow, cw = words(ours), words(cj_name)
         overlap = ow & cw
@@ -99,6 +112,18 @@ def main():
                 print(f'        !! CJ name mentions {alarm}, a different animal '
                       f'or category')
     print('\n' + '=' * 66)
+    checked = len(rows) + len(silent)
+    coverage = len(rows) / checked if checked else 0.0
+    print(f'coverage {coverage:.0%}  ({len(rows)}/{checked} SPUs returned a name)')
+    if silent:
+        print(f'{len(silent)} SPU(s) CJ would not name:')
+        for t, spu in silent[:12]:
+            print(f'  ? {t[:36]:38} {spu}')
+    if checked and coverage < MIN_COVERAGE:
+        print(f'COULD NOT VERIFY: coverage {coverage:.0%} is below '
+              f'{MIN_COVERAGE:.0%}. No pairing is known to be wrong; CJ simply '
+              f'did not answer.')
+        return 3
     if bad:
         print(f'{bad} product(s) resolve to a CJ listing for another animal or '
               f'category. Read them above.')

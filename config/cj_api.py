@@ -92,11 +92,33 @@ MIN_INTERVAL = 1.3       # CJ enforces 1 request/second
 MAX_RETRIES = 4
 
 
+class CJQuotaExhausted(Exception):
+    """CJ's daily API points budget is gone. Not a result, and not retryable.
+
+    CLAUDE.md is explicit that this must STOP a run: CJ answers an ordinary HTTP
+    200 carrying `result: false, code: 16900500`, so every caller that only
+    looked at `data` read it as "nothing found" and retried into the same wall.
+    A partial read under this condition once reported a product's margin as
+    53.4% when a complete read the same session found 27.8%.
+
+    Raising it HERE rather than in each caller is the point. best_freight()
+    grew its own check on 2026-08-19, but that only protected the freight step:
+    live_cj_costs(), sync_inventory.cj_stock() and every scout script still
+    turned quota exhaustion into a silent empty answer.
+    """
+
+
+QUOTA_CODE = 16900500
+
+
 def call(path, params=None, payload=None):
     """GET when params given, POST when payload given.
 
     CJ caps throughput at one request per second and answers 429 past that, so
     space calls out and back off rather than losing the response.
+
+    Raises CJQuotaExhausted when CJ reports the points budget is gone, because
+    that is not an answer and no amount of retrying changes it.
     """
     h = {'CJ-Access-Token': token()}
     for attempt in range(MAX_RETRIES):
@@ -105,12 +127,18 @@ def call(path, params=None, payload=None):
             time.sleep(MIN_INTERVAL - gap)
         _last_call[0] = time.time()
         try:
-            return _post(path, payload, h) if payload is not None else _get(path, params or {}, h)
+            out = (_post(path, payload, h) if payload is not None
+                   else _get(path, params or {}, h))
         except urllib.error.HTTPError as exc:
             if exc.code == 429 and attempt < MAX_RETRIES - 1:
                 time.sleep(2 ** attempt)
                 continue
             return {'httpError': exc.code, 'body': exc.read().decode()[:400]}
+        if isinstance(out, dict) and out.get('result') is False and (
+                out.get('code') == QUOTA_CODE
+                or 'Insufficient API points' in str(out.get('message'))):
+            raise CJQuotaExhausted(str(out.get('message') or 'quota')[:200])
+        return out
     return {'httpError': 429, 'body': 'retries exhausted'}
 
 

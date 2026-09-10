@@ -35,4 +35,4 @@ means the CJ trending/hot-products UI in a browser session, never an API scan.
 
 Kit policy: price = charm00(0.80 x sum of NEW single prices), compare_at = that singles
 sum (colour never changes price; sizes pinned at the costed dearest variant, except
-level-priced fit sizes like the Paw Cup, which open). Kit floor 30% (`kit_margins.py`).
+level-priced fit sizes like the Paw Cup, which open). Kit floor **20%** (`kit_margins.py`), lowered from 30% on 2026-09-02 because at 30% the kits priced themselves out of the basket. A kit the owner has deliberately chosen to sell under that floor is recorded in `kit_colorways.BELOW_STANDARD_BY_CHOICE` and is printed but not failed.

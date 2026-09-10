@@ -58,8 +58,8 @@ def main():
             sku = v['sku']
             if sku not in costs:
                 continue
-            vid, cost = costs[sku]
-            fr = MG.best_freight(vid, freight_floor.origin_for(sku), sku)
+            vid, cost, weight_g = costs[sku]
+            fr = MG.best_freight(vid, freight_floor.origin_for(sku), sku, weight_g)
             if not fr.get('answered'):
                 continue
             duty = (pricing.DUTY_PCT_US_WAREHOUSE

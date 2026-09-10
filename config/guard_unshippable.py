@@ -43,6 +43,12 @@ import freight_floor                                    # noqa: E402
 from freight_floor import upper_days                     # noqa: E402
 
 MAX_DAYS = 12                       # the promise made site-wide and in email
+
+# Fraction of variants that must get a REAL answer from CJ for a run to mean
+# anything, matching margin_guard.MIN_COVERAGE. Below this the run reports
+# "could not verify" (exit 3) rather than an all-clear that CJ never
+# actually supported.
+MIN_COVERAGE = 0.80
 LOCATION_ID = 113363058977          # Shop location: the only one that can sell
 
 env = {}
@@ -112,6 +118,12 @@ def cj_vids():
                 data = data[0] if data else {}
             for cv in ((data or {}).get('variants') or []):
                 out[cv.get('variantSku')] = cv.get('vid')
+        except cj_api.CJQuotaExhausted:
+            # Must NOT be swallowed. A blanket `except Exception: pass` here
+            # would turn an exhausted points budget into "this SPU has no
+            # vids", which reads downstream as unknown, and the run would end
+            # on a cheerful all-clear built from nothing.
+            raise
         except Exception:
             pass
         time.sleep(0.25)
@@ -133,6 +145,8 @@ def carriers(vid, sku, tries=3):
                 inside = [o for o in opts if o.get('logisticPrice') is not None
                           and upper_days(o.get('logisticAging')) <= MAX_DAYS]
                 return inside, True
+        except cj_api.CJQuotaExhausted:
+            raise                       # never retry into an exhausted budget
         except Exception:
             pass
         time.sleep(1.5 * (attempt + 1))
@@ -206,6 +220,23 @@ def main():
         for t, vt, s, why in unknown:
             print(f'  ? {t} / {vt}  {s}  ({why})')
 
+    # A COVERAGE GATE, because "no findings" and "no answers" looked identical.
+    #
+    # `unknown` was printed and then ignored, so a run in which CJ answered for
+    # nothing at all still ended on "Every variant has a carrier inside the
+    # promise" and exited 0. That sentence is only true if CJ actually spoke.
+    # margin_guard learned this on 2026-08-31 and split exit code 3 out of 1 for
+    # exactly this reason; this guard, which runs every three hours, never got
+    # the same treatment.
+    coverage = (checked - len(unknown)) / checked if checked else 0.0
+    print(f'\ncoverage {coverage:.0%}  ({checked - len(unknown)}/{checked} '
+          f'variants got a real answer from CJ)')
+    if checked and coverage < MIN_COVERAGE:
+        print(f'\nCOULD NOT VERIFY: coverage {coverage:.0%} is below '
+              f'{MIN_COVERAGE:.0%}. No variant is known to be unshippable; CJ '
+              f'simply did not answer. Nothing was zeroed.')
+        return 3
+
     if not bad:
         print('\nEvery variant has a carrier inside the promise.')
         return 0
@@ -242,4 +273,12 @@ def main():
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except cj_api.CJQuotaExhausted as exc:
+        # CJ's daily points budget is gone. Not a shippability finding, and
+        # retrying cannot help. Never zero stock on the strength of a run that
+        # happened while this was true.
+        print(f'CJ API points exhausted: {exc}', file=sys.stderr)
+        print('COULD NOT VERIFY. Nothing was zeroed.', file=sys.stderr)
+        sys.exit(3)

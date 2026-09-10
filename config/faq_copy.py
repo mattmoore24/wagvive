@@ -1,6 +1,23 @@
 #!/usr/bin/env python3
 """
-FAQ page copy.
+FAQ page copy. SUPERSEDED 2026-09-10 - DO NOT COPY THE TIMINGS OUT OF THIS FILE.
+
+It has zero importers (`fix_page_delivery_copy.py` records the same finding), so
+nothing here reaches the storefront and the LIVE FAQ page is correct. It is kept
+for the copy decisions recorded below, not for its numbers, and two of those
+numbers are now wrong in ways that were corrected on the live site for a reason:
+
+  * "1 to 3 business days processing, 5 to 12 business days delivery" is the
+    RETIRED promise. It is 10 to 16 business days door to door, dispatch within
+    10, and `config/delivery_promise.py` is the single source of truth. The old
+    1 to 3 day dispatch claim had no reasonable basis and was breached on at
+    least two of the first three real orders.
+  * "cancel before dispatch" was WITHDRAWN as customer-facing copy. CJ fulfils
+    at label generation, up to 11 days before anything moves, so that wording
+    would have wrongly refused a customer cancelling on day two.
+
+If the FAQ ever needs regenerating, take the timings from delivery_promise.py
+and nothing else.
 
 Reviewed 2026-08-04. Changes from the previous version:
   * "Are these suitable for senior dogs?" removed. It claimed the range was

@@ -58,13 +58,13 @@ def main():
             sku = v.get('sku')
             if not sku or sku not in entry['variants'] or sku not in costs:
                 continue
-            vid, cost = costs[sku]
+            vid, cost, weight_g = costs[sku]
             # Same origin fix as margin_guard: floors calibrated against a
             # China quote for a US-warehoused SKU are calibrated against a
             # freight figure that does not exist.
             start = freight_floor.origin_for(sku)
             duty = DUTY_PCT_US_WAREHOUSE if start == 'US' else DUTY_PCT
-            fr = mg.best_freight(vid, start, sku)
+            fr = mg.best_freight(vid, start, sku, weight_g)
             price = entry['variants'][sku]
             m = mg.margin_at(price, cost, fr['price'], duty) * 100
             if m < MIN_SINGLE:

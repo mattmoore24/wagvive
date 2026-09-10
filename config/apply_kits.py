@@ -1,5 +1,31 @@
 #!/usr/bin/env python3
-"""Apply the 2026-08-04 kit optimisation to the live store.
+"""SUPERSEDED 2026-09-10. This script will refuse to run. Read why before using it.
+
+It applied a ONE-OFF migration on 2026-08-04 and was never retired, so it sat
+armed with a snapshot of the store as it was on that day. Everything below is
+now wrong, and running it would quietly undo months of decisions:
+
+  * Its PRICES are the pre-reprice ones ($54/$49/$70/$46/$85/$109). Every kit
+    was repriced on 2026-09-02 to $30/$35/$46/$40/$63 and the Calm & Comfort Kit
+    to $64 on 2026-09-10. Running this restores the old numbers, including the
+    Travel Kit price the owner deliberately chose to hold.
+  * Its COMPOSITIONS name three retired products: the Watermelon Rope Frisbee
+    and Bouncy Egg Squeaker (both removed 2026-08-17 as unshippable) and the
+    Calming Thunder Wrap (delisted at CJ, replaced 2026-09-09).
+  * Its Travel Kit lists FIVE components and omits the 3-in-1 Travel Bowl, added
+    2026-09-08. Running it strips the bowl back out of the box.
+
+THE SOURCE OF TRUTH IS `config/kit_colorways.py`. Edit that, validate with
+`validate_colorways.py`, apply with `rebuild_kits.py`. That path derives
+composition from one file instead of a frozen list, which is the whole reason
+this one was replaced.
+
+The original docstring follows, kept because it records how the 2026-08-04
+migration was done.
+
+---
+
+Apply the 2026-08-04 kit optimisation to the live store.
 
 Compositions come from the freight-physics optimiser (optimise_kits.py) after
 live CJ basket re-quotes; prices are charm00(0.80 x sum of NEW single prices)
@@ -429,6 +455,14 @@ def main():
 
 
 if __name__ == '__main__':
+    # A refusal, not a warning. This script writes live kit composition and
+    # price through productBundleUpdate, so "it printed a caution and carried
+    # on" is not a safe failure mode. --i-know-this-is-superseded exists only so
+    # the historical path can still be exercised deliberately.
+    if '--i-know-this-is-superseded' not in sys.argv:
+        print(__doc__.split('---')[0].strip(), file=sys.stderr)
+        print('\nRefusing to run. Use config/rebuild_kits.py.', file=sys.stderr)
+        sys.exit(2)
     try:
         sys.exit(main())
     except urllib.error.HTTPError as exc:

@@ -71,6 +71,18 @@ US_DOMESTIC_FREIGHT_FALLBACK = 11.00
 # opted into PER PRODUCT via `us_freight_assumed` in config/price_book.json, so
 # every use of it is visible next to the price it justifies and margin_guard
 # prints it on every run.
+#
+# 2026-09-10: THIS CONSTANT IS UNUSED, AND THE $5.00 FIGURE WAS OVERTAKEN BY AN
+# INVOICE. It has exactly one reference in the repo - this line. Both products
+# that opt into `us_freight_assumed` record **0.00**, not 5.00, because CJ order
+# #1004 billed the US Warehouse line at $0.00 while billing the China line on
+# the same order $11.23, with both rows UNSHIPPED. So "not calculated yet" does
+# not explain it: US-warehouse carriage on this account is genuinely free.
+#
+# Kept, not deleted, because the carrier observations above are the only record
+# of what US domestic rates were quoted at, and a future US-warehouse product
+# may well need a non-zero assumption. Treat it as a reference figure to justify
+# a per-product `us_freight_assumed`, never as a default.
 US_DOMESTIC_FREIGHT_LIGHT = 5.00
 
 # US import duty, checked against Zonos postal tariff guidance as of 2026-07-24.

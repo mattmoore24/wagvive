@@ -37,6 +37,7 @@ import json, os, sys, time, urllib.error, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'config'))
+import cj_api          # noqa: E402  (for CJQuotaExhausted only)
 import sync_inventory  # noqa: E402  (the ONLY sanctioned reader of CJ stock)
 
 CANONICAL = 'Shop location'
@@ -60,6 +61,11 @@ def cj_stock_retried(sku, tries=3):
             n = sync_inventory.cj_stock(sku)
             if n is not None:
                 return n
+        except cj_api.CJQuotaExhausted:
+            # An exhausted points budget is not an unanswerable SKU. Swallowing
+            # it here would file every remaining component under UNKNOWN, and
+            # UNKNOWN does not fail, so the kit check would pass on no data.
+            raise
         except Exception:
             pass
         time.sleep(1.5 * (attempt + 1))

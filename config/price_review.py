@@ -79,8 +79,8 @@ def main():
                 if sku:
                     unknown.append((p['title'], v['title'], sku))
                 continue
-            vid, cost = costs[sku]
-            fr = MG.best_freight(vid, freight_floor.origin_for(sku), sku)
+            vid, cost, weight_g = costs[sku]
+            fr = MG.best_freight(vid, freight_floor.origin_for(sku), sku, weight_g)
             if not fr.get('answered'):
                 unknown.append((p['title'], v['title'], sku))
                 continue

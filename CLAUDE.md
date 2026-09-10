@@ -37,7 +37,22 @@ another device may have moved things.
 3. **Confirm before spending money or taking irreversible actions.**
 4. **Plain language in all customer-facing copy.** No em/en dashes anywhere on
    the site (`config/dedash.py`), and no hyphenated day ranges — write
-   "5 to 12 business days", which is the promise used site-wide and in emails.
+   "10 to 16 business days", which is the promise used site-wide and in emails.
+
+   **This said "5 to 12 business days" until 2026-09-10 and that was STALE.**
+   The promise was rewritten store-wide on 2026-09-01 after measuring three real
+   orders: the time goes in CJ's 5 to 11 day PRE-SHIPMENT handling, not in
+   transit. `config/delivery_promise.py` is the single source of truth and
+   everything imports it — never retype the window, and never trust a day count
+   quoted in prose here or anywhere else in the repo over that file. Rule #1
+   above exists because this repo has stated one number while enforcing another
+   before; this line was itself an instance of it for nine days.
+
+   Do not confuse the promise with the **carrier ceiling**. `MAX_DAYS = 12` in
+   `freight_floor.py` and `guard_unshippable.py` is the maximum TRANSIT time a
+   carrier may quote and still be selectable. It is not what the customer is
+   told, and it is smaller than the promise because the promise also covers
+   CJ's handling.
 
 ## Money model
 
@@ -116,8 +131,13 @@ Rules:
 - **"How many units exist" and "can this be fulfilled" are different questions.**
   Answer the second by asking CJ for a CARRIER, never by reading a stock field.
   `config/guard_unshippable.py` quotes freight per variant and requires one
-  option inside the 12-business-day promise; it runs 3-hourly and asserts on the
-  live storefront. All 145 variants currently pass.
+  option inside the 12-business-day CARRIER TRANSIT ceiling (not the customer
+  promise, which is longer — see non-negotiable #4). It runs on the 6-HOURLY
+  job in `.github/workflows/scheduled-ops.yml` and asserts on the live
+  storefront. All 219 variants currently pass. It also now reports coverage and
+  exits 3 ("could not verify") rather than an all-clear when too few variants
+  got a real answer from CJ, and treats an explicit CJ delisting (code 1602002)
+  as a finding rather than an unknown.
 - **An EMPTY answer from CJ is not evidence of anything** — retry it. One run
   came back empty for seven healthy SKUs at once; acting on that would have
   zeroed live kit components. Treat unanswerable as UNKNOWN, never as a finding.

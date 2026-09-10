@@ -111,6 +111,19 @@ jobs:
       - name: Margin floor check (report only — fails the job on a breach)
         run: python config/margin_guard.py
 
+      # margin_guard CANNOT see kits. A Shopify bundle carries no SKU of its
+      # own, so that step walks straight past all 39 kit variants, and nothing
+      # else checked their economics at all: kit_margins.py existed but was in
+      # no workflow. The Travel Kit sat under floor from 2026-09-08 without a
+      # single job noticing, and it was found by a manual sweep.
+      #
+      # A kit the owner has deliberately chosen to sell under floor is listed in
+      # kit_colorways.BELOW_STANDARD_BY_CHOICE, and is printed here but does not
+      # fail the job — so this step goes red for a NEW problem, not a settled
+      # decision.
+      - name: Kit margin floor check (kits are invisible to margin_guard)
+        run: python config/kit_margins.py
+
       - name: Remove credential files
         if: always()
         run: rm -f config/shopify.env config/cj.env config/cj_token.json

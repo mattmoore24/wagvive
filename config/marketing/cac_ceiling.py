@@ -79,7 +79,48 @@ def singles():
     return out
 
 
+def _assert_prices_current():
+    """Refuse to run on stale kit prices.
+
+    THE FIGURES IN `KITS` ARE A 2026-08-04 SNAPSHOT AND THIS SCRIPT SETS AD
+    BUDGETS. Every kit except Grooming was repriced on 2026-09-02, and Calm &
+    Comfort again on 2026-09-10, so by 2026-09-10 this file still had Calm &
+    Comfort at $109 against a live $64 and the Travel Kit at $85 against $63.
+    Contribution scales with price, so it was authorising roughly 70% more
+    acquisition spend per order than the kits can actually fund - the exact
+    failure the module docstring above warns about, committed by the tool meant
+    to prevent it.
+
+    Failing loudly is the only safe behaviour here: a silently wrong CAC ceiling
+    looks exactly like a right one and is only discovered by losing money.
+    """
+    import sys as _sys, os as _os
+    _sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+    from kit_colorways import KITS as LIVE          # the kit source of truth
+    drift = []
+    for name, (price, _g, _f) in KITS.items():
+        live = LIVE.get(name)
+        if live is None:
+            drift.append(f'{name}: no longer a kit')
+        elif abs(float(live['price']) - float(price)) > 0.005:
+            drift.append(f'{name}: this file says ${price:.2f}, live is ${float(live["price"]):.2f}')
+    if drift:
+        print('REFUSING TO RUN: the kit economics in this file are stale.\n')
+        for d in drift:
+            print('  ! ' + d)
+        print('\nPrice alone is not enough to repair it: the goods and freight '
+              'figures\nare from the 2026-08-04 rebuild, and the compositions '
+              'have changed since\n(the Travel Kit gained the 3-in-1 Travel Bowl, '
+              'Calm & Comfort swapped the\nThunder Wrap for the Anxiety Vest).')
+        print('\nRe-derive all three columns with:  python config/kit_reprice.py')
+        print('then update KITS above, then re-run.')
+        return False
+    return True
+
+
 def main():
+    if not _assert_prices_current():
+        return 1
     rows = []
     for name, (p, g, f) in KITS.items():
         c = contribution(p, g, f)

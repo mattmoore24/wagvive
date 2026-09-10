@@ -23,10 +23,15 @@ the double-counted figures.
     python config/sync_inventory.py            # report drift
     python config/sync_inventory.py --apply    # write CJ's numbers in
 """
-import json, os, sys, urllib.error, urllib.request
+import json, os, sys, time, urllib.error, urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cj_api
+
+# Fraction of SKUs that must get a REAL answer from CJ for a run to mean
+# anything, matching margin_guard.MIN_COVERAGE. Below this the run reports
+# "could not verify" (exit 3) instead of an all-clear.
+MIN_COVERAGE = 0.80
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CANONICAL = 'Shop location'
@@ -80,8 +85,19 @@ def cj_stock(sku):
     units exist, and it is answered by asking CJ for a carrier, not by reading
     this field. `config/guard_unshippable.py` does that.
     """
-    res = cj_api.call('/product/stock/queryBySku', {'sku': sku})
-    rows = res.get('data')
+    # RETRY BEFORE BELIEVING CJ HAS NOTHING. CLAUDE.md: "An EMPTY answer from
+    # CJ is not evidence of anything - retry it. One run came back empty for
+    # seven healthy SKUs at once." This function had no retry at all, and it is
+    # the FIRST --apply step of the 6-hourly job, so a transient empty answer
+    # here is a silent no-op on real stock. Quota exhaustion is different and
+    # must not be retried into: cj_api.call raises for that, and it propagates.
+    rows = None
+    for attempt in range(3):
+        res = cj_api.call('/product/stock/queryBySku', {'sku': sku})
+        rows = res.get('data')
+        if rows:
+            break
+        time.sleep(1.5 * (attempt + 1))
     if not rows:
         return None
     total, has_record = 0, False
@@ -103,7 +119,7 @@ def main():
     if not canon:
         print(f'no {CANONICAL!r} location'); sys.exit(1)
 
-    drift = []
+    drift, unanswered, asked = [], [], 0
     for p in api('GET', 'products.json?limit=250&status=active')['products']:
         printed = False
         for v in p['variants']:
@@ -115,7 +131,10 @@ def main():
                          )['inventory_levels']
             here = next((l['available'] for l in levels
                          if str(l['location_id']) == str(canon['id'])), None)
+            asked += 1
             theirs = cj_stock(sku)
+            if theirs is None:
+                unanswered.append((p['title'], sku))
             off = theirs is not None and here != theirs
             if not printed:
                 print(p['title'].encode('ascii', 'replace').decode()); printed = True
@@ -139,10 +158,38 @@ def main():
         for t, vt, sku, here, theirs in drift[:12]:
             print(f'  {t[:30]:32} {str(vt)[:18]:20} {here} -> {theirs}')
 
+    # THIS SCRIPT COULD NOT FAIL, AND IT IS THE FIRST --apply STEP OF THE
+    # 6-HOURLY JOB. main() returned None whatever happened, so a run in which
+    # CJ answered for nothing at all exited 0 and read in the job log exactly
+    # like a run where every variant already matched. The sibling guards each
+    # learned this separately: margin_guard has MIN_COVERAGE and exit code 3,
+    # guard_unshippable treats an unanswerable SKU as UNKNOWN. Same bargain
+    # here - a thin run is "could not verify", never an all-clear.
+    coverage = (asked - len(unanswered)) / asked if asked else 0.0
+    print(f'\ncoverage {coverage:.0%}  ({asked - len(unanswered)}/{asked} SKUs '
+          f'got a real answer from CJ)')
+    if unanswered:
+        print(f'{len(unanswered)} SKU(s) CJ would not answer, left untouched:')
+        for t, sku in unanswered[:12]:
+            print(f'  ? {t[:34]:36} {sku}')
+    if asked and coverage < MIN_COVERAGE:
+        print(f'\nCOULD NOT VERIFY: coverage {coverage:.0%} is below '
+              f'{MIN_COVERAGE:.0%}. Nothing is known to be wrong with any '
+              f'stock figure; CJ simply did not answer.')
+        return 3
+    return 0
+
 
 if __name__ == '__main__':
     try:
-        main()
+        sys.exit(main() or 0)
+    except cj_api.CJQuotaExhausted as exc:
+        # Not flakiness and not a stock finding: CJ's daily points budget is
+        # gone. Stop, and say so distinctly, rather than writing figures
+        # computed while it was happening.
+        print(f'CJ API points exhausted: {exc}', file=sys.stderr)
+        print('COULD NOT VERIFY. No stock figure was written.', file=sys.stderr)
+        sys.exit(3)
     except urllib.error.HTTPError as exc:
         print('HTTP', exc.code, exc.read().decode()[:400], file=sys.stderr)
         sys.exit(1)

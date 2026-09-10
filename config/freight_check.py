@@ -148,7 +148,7 @@ def main():
         print(f'{title}')
         for v in p['variants']:
             sku = v.get('sku')
-            vid, cost = resolved.get(sku, (None, None))
+            vid, cost, _weight_g = resolved.get(sku, (None, None, None))
             if not vid or cost is None:
                 print(f'   {str(v["title"])[:30]:32} sku {sku} - no CJ record')
                 unresolved.append((p['title'], v['title'], sku, 'no CJ record'))

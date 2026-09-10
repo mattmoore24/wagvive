@@ -12,7 +12,7 @@ metadata:
 per-product demand model (see [[wagvive-pricing-architecture]]); each product's floor
 lives in `config/price_book.json` as `floor_margin_pct` and is enforced by
 `config/margin_guard.py` (variants; per-product floors) and `config/kit_margins.py`
-(bundles; 30%). **Floors must be denominated in the guard's own cost model** (selected
+(bundles; **20%** since 2026-09-02, and it was 30% before that). **Floors must be denominated in the guard's own cost model** (selected
 carrier + tax-inclusive fee): recalibrate with `config/calibrate_floors.py --apply`
 after any deliberate repricing, or the guard false-alarms on model mismatch, not drift.
 Cost model lives in `config/pricing.py`:

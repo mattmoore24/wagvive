@@ -1,12 +1,52 @@
 {
- "ran_at": "2026-09-09T20:21:56",
+ "ran_at": "2026-09-10T07:36:20",
  "floor": "price_book",
  "applied": false,
- "checked": 219,
+ "checked": 218,
  "expected": 219,
- "coverage": 1.0,
- "breaches": [],
- "unresolved": [],
+ "coverage": 0.995,
+ "breaches": [
+  {
+   "product": "Wagvive Cordless Paw Trimmer",
+   "variant": "Default Title",
+   "sku": "CJNP222636501AZ",
+   "price": 23.99,
+   "needed": 24.53,
+   "margin": 6.7
+  },
+  {
+   "product": "Wagvive Self-Cleaning Slicker Brush",
+   "variant": "Green",
+   "sku": "CJMY195218501AZ",
+   "price": 17.99,
+   "needed": 20.86,
+   "margin": 7.7
+  },
+  {
+   "product": "Wagvive Self-Cleaning Slicker Brush",
+   "variant": "Pink",
+   "sku": "CJMY195218502BY",
+   "price": 17.99,
+   "needed": 20.86,
+   "margin": 7.7
+  },
+  {
+   "product": "Wagvive Self-Cleaning Slicker Brush",
+   "variant": "Orange",
+   "sku": "CJMY195218503CX",
+   "price": 17.99,
+   "needed": 20.86,
+   "margin": 7.7
+  }
+ ],
+ "unresolved": [
+  {
+   "product": "Wagvive Automatic Ball Launcher",
+   "variant": "Default Title",
+   "sku": "CJCT25677400001",
+   "why": "CJ returned no carrier after 3 tries"
+  }
+ ],
  "thin": [
   {
    "product": "Wagvive 3-in-1 Steam Grooming Brush",
@@ -167,16 +207,6 @@
    "stress_margin": -3.2,
    "freight_headroom": 17.83,
    "freight": 15.47
-  },
-  {
-   "product": "Wagvive Automatic Ball Launcher",
-   "variant": "Default Title",
-   "sku": "CJCT25677400001",
-   "price": 87.99,
-   "margin": 19.0,
-   "stress_margin": 10.6,
-   "freight_headroom": 20.24,
-   "freight": 11.0
   },
   {
    "product": "Wagvive Barnyard Squeaker",
@@ -387,16 +417,6 @@
    "stress_margin": 14.3,
    "freight_headroom": 9.88,
    "freight": 8.64
-  },
-  {
-   "product": "Wagvive Cordless Paw Trimmer",
-   "variant": "Default Title",
-   "sku": "CJNP222636501AZ",
-   "price": 23.99,
-   "margin": 16.7,
-   "stress_margin": 8.0,
-   "freight_headroom": 6.53,
-   "freight": 4.0
   },
   {
    "product": "Wagvive Corduroy Squeak Pals",
@@ -1229,36 +1249,6 @@
    "freight": 6.87
   },
   {
-   "product": "Wagvive Self-Cleaning Slicker Brush",
-   "variant": "Green",
-   "sku": "CJMY195218501AZ",
-   "price": 17.99,
-   "margin": 21.3,
-   "stress_margin": 13.0,
-   "freight_headroom": 3.66,
-   "freight": 3.0
-  },
-  {
-   "product": "Wagvive Self-Cleaning Slicker Brush",
-   "variant": "Pink",
-   "sku": "CJMY195218502BY",
-   "price": 17.99,
-   "margin": 21.3,
-   "stress_margin": 13.0,
-   "freight_headroom": 3.66,
-   "freight": 3.0
-  },
-  {
-   "product": "Wagvive Self-Cleaning Slicker Brush",
-   "variant": "Orange",
-   "sku": "CJMY195218503CX",
-   "price": 17.99,
-   "margin": 21.3,
-   "stress_margin": 13.0,
-   "freight_headroom": 3.66,
-   "freight": 3.0
-  },
-  {
    "product": "Wagvive Slow Feeder Bowl",
    "variant": "Green",
    "sku": "CJGY174846501AZ",
@@ -1293,30 +1283,30 @@
    "variant": "Blue",
    "sku": "CJYD252933701AZ",
    "price": 10.99,
-   "margin": 23.0,
-   "stress_margin": 12.9,
+   "margin": 26.9,
+   "stress_margin": 17.5,
    "freight_headroom": 6.75,
-   "freight": 6.17
+   "freight": 5.75
   },
   {
    "product": "Wagvive Sneaker Chew Buddy",
    "variant": "Black",
    "sku": "CJYD252933702BY",
    "price": 10.99,
-   "margin": 23.0,
-   "stress_margin": 12.9,
+   "margin": 26.9,
+   "stress_margin": 17.5,
    "freight_headroom": 6.75,
-   "freight": 6.17
+   "freight": 5.75
   },
   {
    "product": "Wagvive Sneaker Chew Buddy",
    "variant": "Sea Fog Blue",
    "sku": "CJYD252933703CX",
    "price": 10.99,
-   "margin": 23.0,
-   "stress_margin": 12.9,
+   "margin": 26.9,
+   "stress_margin": 17.5,
    "freight_headroom": 6.75,
-   "freight": 6.17
+   "freight": 5.75
   },
   {
    "product": "Wagvive Squirrel Squeaky Plush",
