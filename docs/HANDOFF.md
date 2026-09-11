@@ -21,6 +21,15 @@
 * Owner-only: TikTok Shop Seller Center registration, business and identity
   verification, bank details. Installing Shopify's TikTok app is an OAuth grant
   and needs the owner's explicit go-ahead at the moment of install.
+* **Re-verified against TikTok's own pages (2026-09-11):** the China-shipped
+  catalogue CANNOT go on TikTok Shop US ("U.S.-based sellers cannot use
+  international third-party suppliers"; 2 business days to carrier scan, 6 to
+  deliver, auto-cancel at 5). The full store needs US-warehouse stock. TikTok
+  ADS to wagvive.com (pixel, Events API, catalog ads) need no TikTok Shop and
+  have no delivery deadline. Full findings with sources:
+  `docs/knowledge/tiktok-shop-us-2026-09.md`. One real US-warehouse order
+  (#1004) got tracking 2 business days after ordering, right at TikTok's limit
+  (and Shopify's fulfilled time is CJ's label time, not the carrier scan).
 
 ## 2026-09-10, part 4: the email migration is done
 

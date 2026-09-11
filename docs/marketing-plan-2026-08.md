@@ -91,6 +91,8 @@ fantasy. The first job is to build the instruments.
 
 ### 3.1 TikTok Shop: not viable yet, and this is a real finding
 
+**Re-verified 2026-09-11 against TikTok's own US seller pages: see `docs/knowledge/tiktok-shop-us-2026-09.md`.** The conclusion stands for the China-shipped catalogue. Reason 1's "whitelist" could not be found on any TikTok page; the binding rule is "U.S.-based sellers cannot use international third-party suppliers". Reasons 2 and 3 are confirmed, with the 6% referral fee shown to replace Shopify Payments rather than stack on it.
+
 The plan asked for TikTok Shop. On the current fulfillment model it does not
 work, for three independent reasons:
 
