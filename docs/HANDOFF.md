@@ -4,7 +4,37 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-09-10. All bugs fixed and BOTH guards exit 0, so the 6-hourly job passes. All prices held by owner decision, with the TRUE margins recorded. Email migration is the live task and is blocked on three owner steps.
+**Last updated:** 2026-09-10. The email migration is DONE: hello@wagvive.com is a Google Workspace mailbox and all six DNS layers verify live. Both margin guards exit 0 with every price held by owner decision.
+
+## 2026-09-10, part 4: the email migration is done
+
+hello@wagvive.com is now a real Google Workspace mailbox. The owner created the
+account and the `hello` user and made the DNS edits by hand. Verified at all four
+authoritative nameservers and at 8.8.8.8 / 1.1.1.1:
+
+    MX       1 smtp.google.com
+    SPF      v=spf1 include:_spf.google.com ~all      (exactly one)
+    DMARC    v=DMARC1; p=none
+    verify   google-site-verification TXT present
+    DKIM     google._domainkey published; Shopify's 05n/05n2 CNAMEs intact
+
+`python config/verify_email_dns.py` exits 0, all six OK.
+
+What went wrong on the way, and was fixed the same day: the SPF record was
+DELETED instead of edited, and DMARC went with it. MX and DKIM were right, so
+nothing looked broken until the verifier flagged "no SPF" and "no DMARC". Both
+were re-added.
+
+STILL OPEN, and owner-only:
+* Switch off Shopify email forwarding for hello@ (Settings -> Domains -> Email
+  forwarding). Mail already bypasses it, but leaving it on invites a future
+  "repair" of MX back to the old forwarder.
+* Send a mail from an outside address to hello@wagvive.com and confirm it lands
+  in Workspace.
+* Place a test order, open the confirmation, Show original, confirm
+  `DKIM: PASS` signed-by wagvive.com and `DMARC: PASS`.
+* Later: remove the old Gmail's "Send mail as" path for hello@, and consider
+  DMARC p=quarantine only after a few weeks of clean order volume.
 
 ## 2026-09-10, part 3: prices held, and two more coverage holes
 

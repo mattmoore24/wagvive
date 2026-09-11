@@ -1,5 +1,7 @@
 # Moving hello@wagvive.com from Shopify forwarding to a real Google Workspace mailbox
 
+**DONE 2026-09-10.** MX, SPF, DMARC, domain verification and Google DKIM all verified live at the four authoritative nameservers; `verify_email_dns.py` exits 0. Still open: switch off Shopify email forwarding for hello@ (step 6), and the two human checks under Verification. The step that went wrong: step 5 deleted the old SPF instead of editing it, and DMARC went with it. Both were re-added the same day.
+
 **Written 2026-09-01, before any change.** Every "current state" line below was
 queried live, not remembered.
 

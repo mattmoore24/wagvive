@@ -254,8 +254,11 @@ products need it too, for the cart thumbnail.
 ## Brand
 
 Cream `#F7F2E9` / page `#EFE7DA` / ink `#3A3026`. Support address is
-**hello@wagvive.com** (Shopify domain forwarding into a dedicated Gmail; it is
-the verified notification sender and is DKIM-signed). It must be the only email
+**hello@wagvive.com**, a real Google Workspace mailbox since 2026-09-10 (it was
+Shopify forwarding into a dedicated Gmail before that). It is the verified
+notification sender, and order confirmations are DKIM-signed by Shopify's
+CNAME selectors, which must never be deleted. Live records and the cutover's
+traps are in `docs/knowledge/wagvive-email-architecture.md`. It must be the only email
 address appearing anywhere customer-facing.
 
 ## Layout of this repo
