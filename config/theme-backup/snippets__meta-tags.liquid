@@ -148,3 +148,19 @@
     content="{{ seo_description | escape }}"
   >
 {% endif %}
+
+{%- comment -%}wv-social-jsonld{%- endcomment -%}
+{%- if request.page_type == 'index' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Wagvive",
+  "url": "https://wagvive.com",
+  "sameAs": [
+    "https://www.instagram.com/wagvive/",
+    "https://www.pinterest.com/wagvive/"
+  ]
+}
+</script>
+{%- endif -%}

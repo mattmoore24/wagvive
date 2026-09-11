@@ -52,7 +52,12 @@
     "note": "Phase 1 destination. At about $0.35 a click it is the only channel under our CAC ceiling on day one: the best offer supports a $0.43 click at a realistic 1% conversion rate."
   },
   "tiktok": {
-    "status": "closed as not viable for TikTok SHOP (overseas direct shipping restricted, ~6 business day delivery requirement, ~30% all-in take). TikTok as an ads or organic channel to our own site remains open.",
+    "profile_url": "https://www.tiktok.com/@wagvive",
+    "handle": "@wagvive",
+    "account_type": "personal (as of 2026-09-11)",
+    "linked_on_site": "footer icon + homepage Organization sameAs, 2026-09-11 via config/connect_socials.py",
+    "tiktok_shop": "OWNER DECISION 2026-09-11: open TikTok Shop with the FULL catalogue. This reverses the 2026-08 \"not viable\" verdict (marketing plan 3.1), which was made from third-party blogs; TikTok's current rules are being re-verified against primary sources. Seller Center registration, business and identity verification and bank details are owner-only.",
+    "previous_status": "closed as not viable for TikTok SHOP (overseas direct shipping restricted, ~6 business day delivery requirement, ~30% all-in take). TikTok as an ads or organic channel to our own site remains open.",
     "pixel_id": null
   }
 }

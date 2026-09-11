@@ -4,7 +4,23 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-09-10. The email migration is DONE: hello@wagvive.com is a Google Workspace mailbox and all six DNS layers verify live. Both margin guards exit 0 with every price held by owner decision.
+**Last updated:** 2026-09-11. TikTok profile @wagvive linked on the site. OWNER DECISION: open TikTok Shop with the full catalogue; TikTok's current rules are being re-verified before anything is connected.
+
+## 2026-09-11: TikTok
+
+* Profile **https://www.tiktok.com/@wagvive** (a PERSONAL account as of today)
+  is linked from the footer social icons and the homepage Organization
+  `sameAs`, verified live. `config/connect_socials.py` gained `--tiktok <url>`,
+  and now REPLACES a stale sameAs block instead of skipping it forever, which
+  is why a later profile could never have reached the structured data before.
+* **OWNER DECISION: open TikTok Shop with the FULL catalogue.** This reverses
+  the 2026-08 "not viable" verdict (marketing plan 3.1, task #60), which rested
+  on third-party blogs. TikTok's current cross-border shipping rules, dispatch
+  and delivery deadlines, pet-supplies fees and the Shopify TikTok app's order
+  sync are being re-verified against primary sources before anything connects.
+* Owner-only: TikTok Shop Seller Center registration, business and identity
+  verification, bank details. Installing Shopify's TikTok app is an OAuth grant
+  and needs the owner's explicit go-ahead at the moment of install.
 
 ## 2026-09-10, part 4: the email migration is done
 

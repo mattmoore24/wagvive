@@ -32,7 +32,7 @@ SOURCES = {
     'pinterest': 'Pinterest',
     'meta': 'Facebook and Instagram ads (never "facebook" or "fb")',
     'google': 'Google Ads and Merchant Center',
-    'tiktok': 'TikTok organic and ads (NOT TikTok Shop, see the plan)',
+    'tiktok': 'TikTok organic, ads and TikTok Shop (@wagvive)',
     'instagram': 'Instagram organic posts and bio link',
     'email': 'Shopify email flows and campaigns',
     'creator': 'Seeded creators and affiliates',

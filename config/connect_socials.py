@@ -11,8 +11,9 @@ platform homepage.
 
 Three writes, all idempotent:
 
-  1. footer social block  -> Instagram + Pinterest only. A placeholder icon is
-     worse than a missing one.
+  1. footer social block  -> every profile that really exists: Instagram and
+     Pinterest, plus TikTok once --tiktok supplies its URL. A placeholder icon
+     is worse than a missing one.
   2. Organization JSON-LD -> `sameAs` in snippets/meta-tags.liquid, homepage
      only. This is the machine-readable association between wagvive.com and its
      profiles, which is what search engines actually use.
@@ -25,6 +26,7 @@ Three writes, all idempotent:
     python config/connect_socials.py            # report
     python config/connect_socials.py --apply
     python config/connect_socials.py --apply --claim abc123...
+    python config/connect_socials.py --apply --tiktok https://www.tiktok.com/@wagvive
 """
 import json, os, re, sys, time, urllib.error, urllib.parse, urllib.request
 
@@ -36,6 +38,12 @@ PINTEREST = 'https://www.pinterest.com/wagvive/'
 
 JSONLD_MARK = 'wv-social-jsonld'
 CLAIM_MARK = 'wv-pinterest-claim'
+
+# A TikTok profile URL, https://www.tiktok.com/@handle. Handles are 2 to 24
+# characters of letters, numbers, underscores and full stops. There is no
+# TikTok constant beside INSTAGRAM and PINTEREST on purpose: the handle comes
+# from the owner via --tiktok, so nothing here can invent one.
+TIKTOK_RE = r'https://www\.tiktok\.com/@[A-Za-z0-9._]{2,24}/?'
 
 env = {}
 with open(os.path.join(ROOT, 'config', 'shopify.env'), encoding='utf-8') as fh:
@@ -110,6 +118,22 @@ def main():
                   f'value of the p:domain_verify meta tag from Pinterest.')
             return 2
 
+    tiktok = None
+    if '--tiktok' in sys.argv:
+        tiktok = sys.argv[sys.argv.index('--tiktok') + 1].strip()
+        if not re.fullmatch(TIKTOK_RE, tiktok):
+            print(f'--tiktok value looks wrong: {tiktok!r}. Expected the profile '
+                  f'URL, like https://www.tiktok.com/@wagvive')
+            return 2
+
+    # Only profiles that really exist. TikTok joins the list when its real
+    # profile URL is supplied, never before: Horizon shipped a live placeholder
+    # tiktok.com icon once, and an icon pointing at a platform homepage is
+    # worse than no icon.
+    profiles = {'instagram_url': INSTAGRAM, 'pinterest_url': PINTEREST}
+    if tiktok:
+        profiles['tiktok_url'] = tiktok
+
     tid = next(t for t in api('GET', 'themes.json')['themes']
                if t['role'] == 'main')['id']
 
@@ -131,7 +155,7 @@ def main():
     for b in fixed:
         cur = {k: v for k, v in b['settings'].items() if k.endswith('_url') and v}
         keep = {k: v for k, v in b['settings'].items() if not k.endswith('_url')}
-        want = dict(keep, instagram_url=INSTAGRAM, pinterest_url=PINTEREST)
+        want = dict(keep, **profiles)
         placeholders = [f'{k}={v}' for k, v in cur.items()
                         if v.rstrip('/') in ('https://www.facebook.com',
                                              'https://www.instagram.com',
@@ -141,13 +165,14 @@ def main():
         print(f'   now : {cur}')
         if placeholders:
             print(f'   !! {len(placeholders)} PLACEHOLDER link(s) live: {placeholders}')
-        print(f'   want: instagram + pinterest only')
+        print(f"   want: {' + '.join(k[:-4] for k in profiles)} only")
         if apply and b['settings'] != want:
             b['settings'] = want
 
     # ---- 2. Organization sameAs JSON-LD -------------------------------------
     key2 = 'snippets/meta-tags.liquid'
     meta = get_asset(tid, key2)
+    same_as = ',\n'.join(f'    "{u}"' for u in profiles.values())
     jsonld = (
         '\n{%- comment -%}' + JSONLD_MARK + '{%- endcomment -%}\n'
         "{%- if request.page_type == 'index' -%}\n"
@@ -158,14 +183,28 @@ def main():
         '  "name": "Wagvive",\n'
         '  "url": "https://wagvive.com",\n'
         '  "sameAs": [\n'
-        f'    "{INSTAGRAM}",\n'
-        f'    "{PINTEREST}"\n'
+        f'{same_as}\n'
         '  ]\n'
         '}\n'
         '</script>\n'
         '{%- endif -%}\n')
+    # The block used to be added once and then skipped forever, so a profile
+    # created later (TikTok, 2026-09-11) could never reach sameAs. Find the
+    # existing block and replace it when its profile list is out of date.
     has_jsonld = JSONLD_MARK in meta
-    print(f'\nmeta-tags: sameAs JSON-LD {"already present" if has_jsonld else "to add"}')
+    old_block = None
+    if has_jsonld:
+        start = meta.index('{%- comment -%}' + JSONLD_MARK)
+        if start > 0 and meta[start - 1] == '\n':
+            start -= 1
+        end = meta.index('{%- endif -%}', start) + len('{%- endif -%}')
+        if meta[end:end + 1] == '\n':
+            end += 1
+        old_block = meta[start:end]
+    jsonld_stale = has_jsonld and old_block != jsonld
+    print(f'\nmeta-tags: sameAs JSON-LD '
+          + ('to add' if not has_jsonld else
+             'out of date, will be replaced' if jsonld_stale else 'current'))
 
     # ---- 3. Pinterest claim tag ----------------------------------------------
     has_claim = CLAIM_MARK in meta
@@ -187,6 +226,8 @@ def main():
     new_meta = meta
     if not has_jsonld:
         new_meta = new_meta + jsonld
+    elif jsonld_stale:
+        new_meta = new_meta.replace(old_block, jsonld, 1)
     if claim and not has_claim:
         new_meta = ('{%- comment -%}' + CLAIM_MARK + '{%- endcomment -%}\n'
                     f'<meta name="p:domain_verify" content="{claim}">\n'
@@ -209,6 +250,8 @@ def main():
     }
     if claim:
         checks['pinterest claim tag'] = f'content="{claim}"'
+    if tiktok:
+        checks['tiktok profile link'] = f'href="{tiktok}"'
 
     ok_all = False
     for attempt in range(8):
