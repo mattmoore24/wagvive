@@ -10,7 +10,7 @@ CLI:
     python config/cj_api.py auth                  # show token status
     python config/cj_api.py product <productSku>  # product + variant dump
 """
-import json, os, sys, time, urllib.parse, urllib.request, urllib.error
+import http.client, json, os, sys, time, urllib.parse, urllib.request, urllib.error
 from datetime import datetime, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -110,17 +110,34 @@ class CJQuotaExhausted(Exception):
 
 QUOTA_CODE = 16900500
 
+# 2026-09-11: a dropped connection used to escape call() as an exception.
+# margin_guard died on `http.client.RemoteDisconnected` halfway through a
+# freight quote, with no verdict, and the 6-hourly job runs the same code. A
+# disconnect is a transport hiccup, so it is retried like a 429 and, if it
+# persists, returned as an unanswered result that callers already treat as
+# UNKNOWN. HTTPError is a subclass of URLError, so it is caught first.
+_TRANSIENT = (urllib.error.URLError, ConnectionError, TimeoutError,
+              http.client.HTTPException)
+
+# Never blind-retry a call that CREATES or CHANGES something: if the request
+# landed before the connection dropped, a retry could place a second order.
+# Nothing in the repo sends one today; this is so a future caller cannot.
+_UNSAFE_TO_RETRY = ('create', 'confirm', 'pay', 'delete', 'add', 'update',
+                    'submit', 'cancel')
+
 
 def call(path, params=None, payload=None):
     """GET when params given, POST when payload given.
 
     CJ caps throughput at one request per second and answers 429 past that, so
-    space calls out and back off rather than losing the response.
+    space calls out and back off rather than losing the response. A dropped
+    connection is retried the same way, except on write endpoints.
 
     Raises CJQuotaExhausted when CJ reports the points budget is gone, because
     that is not an answer and no amount of retrying changes it.
     """
     h = {'CJ-Access-Token': token()}
+    retry_transport = not any(w in path.lower() for w in _UNSAFE_TO_RETRY)
     for attempt in range(MAX_RETRIES):
         gap = time.time() - _last_call[0]
         if gap < MIN_INTERVAL:
@@ -134,6 +151,13 @@ def call(path, params=None, payload=None):
                 time.sleep(2 ** attempt)
                 continue
             return {'httpError': exc.code, 'body': exc.read().decode()[:400]}
+        except _TRANSIENT as exc:
+            if not retry_transport:
+                raise
+            if attempt < MAX_RETRIES - 1:
+                time.sleep(2 ** (attempt + 1))
+                continue
+            return {'httpError': 'connection', 'body': repr(exc)[:400]}
         if isinstance(out, dict) and out.get('result') is False and (
                 out.get('code') == QUOTA_CODE
                 or 'Insufficient API points' in str(out.get('message'))):

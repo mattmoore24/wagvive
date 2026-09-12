@@ -238,7 +238,10 @@
    "CJYD233200804DW": 9.99,
    "CJYD233200801AZ": 9.99
   },
-  "floor_margin_pct": 20.0
+  "floor_margin_pct": 17.0,
+  "below_standard_by_choice": "Priced for eight months on US domestic freight with 0% duty because 12 of its units sit in a US warehouse, while CJ books it on CJPacket Ordinary from China. On the lane it really ships, variant CJYD233200804DW is 17.1% (reported 25.0%); the other three stay 26.9% to 31.6%. The owner chose to hold $9.99 on 2026-09-11 rather than raise it. The recorded floor sits just under the true figure so the guard still catches any further slide.",
+  "true_margin_pct_at_decision": 17.1,
+  "decided": "2026-09-11"
  },
  "10471549796641": {
   "title": "Wagvive Corduroy Squeak Pals",

@@ -61,9 +61,10 @@ DISPATCH_WINDOW = f'within {DISPATCH_DAYS} business days'
 # The product-page anchor. KEEP THE TAG SHAPE (see above).
 DELIVERY = f'<p><strong>Arrives in {WINDOW}.</strong></p>'
 
-# The honesty line that follows it. Deliberately says "fulfilment partner", not
-# "our overseas warehouse": the warehouse is CJ's, not ours, and claiming it as
-# ours would be the kind of small untruth this whole exercise exists to remove.
+# The honesty line that follows it, which depends on WHERE the parcel ships
+# from. Deliberately "fulfilment partner" and "a US warehouse", never "our
+# warehouse": the warehouses are CJ's, not ours, and claiming them as ours
+# would be the kind of small untruth this whole exercise exists to remove.
 DELIVERY_NOTE = (
     '<p>We ship direct from our overseas fulfilment partner rather than holding '
     'stock in the US, which is how the price stays where it is. Your tracking '
@@ -71,8 +72,34 @@ DELIVERY_NOTE = (
     'quiet for the first week or so while your order is being packed.</p>'
 )
 
-# What a product body gets. Both parts, in this order.
-DELIVERY_BLOCK = DELIVERY + DELIVERY_NOTE
+# For the few products CJ stocks in its US warehouse. Until 2026-09-11 these
+# carried the overseas note too, so the Automatic Ball Launcher's page said
+# "Ships from inside the US" and, two lines later, "We ship direct from our
+# overseas fulfilment partner rather than holding stock in the US". It makes NO
+# speed claim: one measured US-warehouse order is not a reasonable basis for
+# one, so these keep the store-wide window above.
+DELIVERY_NOTE_US = (
+    '<p>This one ships from a US warehouse. Your tracking link is emailed when '
+    'the parcel is handed to the carrier.</p>'
+)
+
+# How each note begins. apply_delivery_promise.py builds its strip pattern from
+# these, so a re-run removes whichever note is present before writing the right
+# one, and a product that changes warehouse converges instead of carrying both.
+NOTE_OPENINGS = ('We ship direct from our overseas',
+                 'This one ships from a US warehouse')
+
+
+def delivery_block(origin='CN'):
+    """The promise plus the honesty line for a product shipping from `origin`.
+    Anything other than 'US' gets the overseas note, which is the conservative
+    default: it never tells a customer a parcel is closer than it is."""
+    return DELIVERY + (DELIVERY_NOTE_US if origin == 'US' else DELIVERY_NOTE)
+
+
+# What a China-shipped product body gets. The product-creation scripts import
+# this name, so it keeps meaning exactly what it always meant.
+DELIVERY_BLOCK = delivery_block('CN')
 
 # Checkout rate descriptions (config/shipping_apply.py).
 CHECKOUT_FREE = f'{WINDOW}. Free on orders over $60.'

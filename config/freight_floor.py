@@ -162,14 +162,47 @@ def resolve_from_menu(menu, weight_g=None):
 # that did not exist. The job is designed to fail on a breach, so the owner got
 # a failure notification every three hours.
 #
-# Origin lives in the STOCK ROWS, which is the only place that actually knows.
-# `countryCode == 'US'` on any row means CJ holds it in a US warehouse: no duty,
-# and flat domestic freight instead of weight-scaled international.
+# 2026-09-11: THE BOOKED CARRIER DECIDES, NOT "ANY US ROW".
+#
+# This used to say a single `countryCode == 'US'` stock row meant the product
+# ships from the US. It does not. The Pet Hair Remover Mitt holds about 6,450
+# units in China and 12 in the US on one variant, and CJ books it on CJPacket
+# Ordinary from China. By the any-US-row test margin_guard priced it on GOFO+
+# US domestic freight with 0% duty, and graded one variant at 25.0% when on the
+# lane CJ actually ships it is 17.1%, under the 20% standard: a false pass in
+# the guard that exists to catch exactly that. It was the only one of 48 SPUs
+# the test got wrong, which is why nothing looked broken.
+#
+# So: the carrier CJ actually books for the SPU, recorded in carriers.json from
+# CJ's own connection table, decides. US only if it is a US-to-US service. With
+# no booked carrier, fall back to the stock rows but require EVERY row to be US.
 _ORIGIN_CACHE = {}
+_CARRIERS = None
+
+
+def _booked_lane(spu):
+    """'US' or 'CN' from the carrier CJ books for this SPU, or None if none is
+    recorded. CJ names its US domestic services "... US to US ..." (USPS US to
+    US #7, Fedex US to US); China services never contain that phrase, including
+    ones that END in "US" such as "LuWei Ordinary US" and "Yunexpress CN to US"."""
+    global _CARRIERS
+    if _CARRIERS is None:
+        import json
+        import os
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carriers.json')
+        try:
+            with open(path, encoding='utf-8') as fh:
+                _CARRIERS = json.load(fh).get('carriers', {})
+        except (OSError, ValueError):
+            _CARRIERS = {}
+    booked = _CARRIERS.get(spu)
+    if not booked:
+        return None
+    return 'US' if 'us to us' in booked.lower() else 'CN'
 
 
 def origin_for(sku, default='CN'):
-    """'US' or 'CN' for a variant SKU, read from CJ's stock rows.
+    """'US' or 'CN' for a variant SKU: the lane CJ actually ships it on.
 
     Cached per process because a catalogue sweep asks the same question 145
     times. On any error the answer is the conservative one, `default='CN'`,
@@ -186,13 +219,19 @@ def origin_for(sku, default='CN'):
     spu = sku[:11]
     if spu in _ORIGIN_CACHE:
         return _ORIGIN_CACHE[spu]
+    lane = _booked_lane(spu)
+    if lane:
+        _ORIGIN_CACHE[spu] = lane
+        return lane
+    import cj_api
     origin = default
     try:
-        import cj_api
         rows = cj_api.call('/product/stock/queryBySku', {'sku': sku}).get('data')
         if isinstance(rows, list) and rows:
-            origin = ('US' if any((r.get('countryCode') or '').upper() == 'US'
+            origin = ('US' if all((r.get('countryCode') or '').upper() == 'US'
                                   for r in rows) else 'CN')
+    except cj_api.CJQuotaExhausted:
+        raise       # an answer computed on no data must not be cached or trusted
     except Exception:
         pass
     _ORIGIN_CACHE[spu] = origin

@@ -56,7 +56,8 @@
     "handle": "@wagvive",
     "account_type": "personal (as of 2026-09-11)",
     "linked_on_site": "footer icon + homepage Organization sameAs, 2026-09-11 via config/connect_socials.py",
-    "tiktok_shop": "OWNER DECISION 2026-09-11: open TikTok Shop with the FULL catalogue. This reverses the 2026-08 \"not viable\" verdict (marketing plan 3.1), which was made from third-party blogs; TikTok's current rules are being re-verified against primary sources. Seller Center registration, business and identity verification and bank details are owner-only.",
+    "tiktok_shop": "NOT OPENED. The first ask (2026-09-11) was the full catalogue on TikTok Shop; TikTok's own pages forbid China-shipped orders for US sellers, so the owner chose ADS to wagvive.com instead. See docs/knowledge/tiktok-shop-us-2026-09.md. Do not click the Shop 'Connect' step in the Shopify TikTok app, and do not install CJ's TikTok Shop US Local app.",
+    "ads": "OWNER DECISION 2026-09-11: TikTok ads to wagvive.com via Shopify's free TikTok app. Data sharing Enhanced (not Maximum). Pixel set to Always on under Settings > Customer events. Only singles at or above the 20% standard go to the TikTok channel; kits cannot sync. App install (OAuth), TikTok for Business sign-in, Business Account switch and budgets are owner-only.",
     "previous_status": "closed as not viable for TikTok SHOP (overseas direct shipping restricted, ~6 business day delivery requirement, ~30% all-in take). TikTok as an ads or organic channel to our own site remains open.",
     "pixel_id": null
   }

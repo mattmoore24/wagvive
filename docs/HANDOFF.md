@@ -4,7 +4,44 @@
 > (plus commits and pushes) before the user switches devices or ends a work
 > session. This file IS the conversation continuity between devices.
 
-**Last updated:** 2026-09-11. TikTok profile @wagvive linked on the site. OWNER DECISION: open TikTok Shop with the full catalogue; TikTok's current rules are being re-verified before anything is connected.
+**Last updated:** 2026-09-11. TikTok Shop is OUT for the China catalogue (TikTok's rule); OWNER DECISION: TikTok ADS to wagvive.com instead. Three US-warehouse pages corrected. Origin bug fixed for all pricing; Mitt held at $9.99 by decision.
+
+## 2026-09-11, part 2: warehouse notes, and the origin bug behind them
+
+* **Three product pages told a small untruth.** Travel Bowl, Automatic Ball
+  Launcher and LED Safety Halo Collar ship from CJ's US warehouse but carried
+  "We ship direct from our overseas fulfilment partner rather than holding
+  stock in the US". Owner approved the fix. They now read "This one ships from
+  a US warehouse. Your tracking link is emailed when the parcel is handed to
+  the carrier." No speed claim: one US order is no basis for one, so the
+  store-wide 10 to 16 business days stays. `delivery_promise.delivery_block
+  (origin)` holds both notes; `apply_delivery_promise.py` picks per product
+  and verifies all 54 on a re-fetch. Storefront checked with `?nocache=`.
+* **Root cause, and a false pass in the margin guard.** `freight_floor.
+  origin_for()` said 'US' if ANY stock row was US. The Pet Hair Remover Mitt
+  has ~6,450 units in China and 12 in the US, and CJ books it on CJPacket
+  Ordinary from China. So margin_guard, sync_price_book, price_review,
+  guard_unshippable and calibrate_floors all priced it on US domestic freight
+  with 0% duty. Variant CJYD233200804DW read 25.0%; on its real lane it is
+  17.1%. It was the only one of 48 SPUs affected. `origin_for` now takes the
+  BOOKED carrier from `config/carriers.json` (US only for a "US to US"
+  service), falls back to requiring EVERY stock row be US, and re-raises
+  `CJQuotaExhausted` instead of caching a guess.
+* **OWNER DECISION: hold the Mitt at $9.99.** Recorded in price_book as
+  `below_standard_by_choice`, floor 17.0 against a true 17.1, same pattern as
+  the brush and trimmer.
+* **If carriers.json goes stale** (a product re-paired onto a different
+  carrier), origin follows the file, not CJ. Re-scrape it whenever pairing
+  changes.
+* **A dropped connection used to crash any CJ-reading run.** margin_guard died
+  mid-sweep on `http.client.RemoteDisconnected` inside a freight quote, with
+  no verdict; `cj_api.call()` retried only HTTP 429. It now retries transport
+  errors with backoff and, if they persist, returns the same unanswered shape
+  an HTTP 500 always did, which margin_guard (`answered: False`) and
+  guard_unshippable (UNKNOWN, coverage gate) already treat as "could not
+  verify". Write endpoints (create, confirm, pay, delete...) are never
+  blind-retried; none are called through `call()` today, all 70 call sites
+  are reads or quotes.
 
 ## 2026-09-11: TikTok
 
@@ -13,11 +50,22 @@
   `sameAs`, verified live. `config/connect_socials.py` gained `--tiktok <url>`,
   and now REPLACES a stale sameAs block instead of skipping it forever, which
   is why a later profile could never have reached the structured data before.
-* **OWNER DECISION: open TikTok Shop with the FULL catalogue.** This reverses
-  the 2026-08 "not viable" verdict (marketing plan 3.1, task #60), which rested
-  on third-party blogs. TikTok's current cross-border shipping rules, dispatch
-  and delivery deadlines, pet-supplies fees and the Shopify TikTok app's order
-  sync are being re-verified against primary sources before anything connects.
+* ~~Open TikTok Shop with the FULL catalogue~~ was the first ask. TikTok's own
+  rules forbid it for China-shipped stock (below), so the **OWNER DECISION is
+  TikTok ADS to wagvive.com**: no TikTok Shop, no 3-product pilot, no US
+  stocking for now. Also decided: keep Shopify's auto-managed privacy policy
+  (no TikTok named by hand), and set the TikTok pixel to **Always on** under
+  Settings > Customer events once the app is installed.
+* **Owner steps, in order:** install Shopify's free TikTok app (OAuth grant);
+  sign in or create TikTok for Business, Business Center and Ads Manager;
+  choose **Enhanced** data sharing, not Maximum; create the pixel; **skip the
+  TikTok Shop "Connect" step** and never switch on auto-listing; do NOT install
+  CJ's "TikTok Shop US Local" app; switch @wagvive to a Business Account in the
+  TikTok app. Budgets later ($50/day campaign minimum, $30/day per ad group).
+* **Claude, after install:** set pixel Always on, confirm it loads on the
+  storefront, publish ONLY singles at or above 20% to the TikTok channel (kits
+  cannot sync; every by-choice and sub-20% product stays out of paid ads),
+  record `pixel_id` in `config/marketing/accounts.json`.
 * Owner-only: TikTok Shop Seller Center registration, business and identity
   verification, bank details. Installing Shopify's TikTok app is an OAuth grant
   and needs the owner's explicit go-ahead at the moment of install.

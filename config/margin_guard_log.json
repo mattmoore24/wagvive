@@ -1,5 +1,5 @@
 {
- "ran_at": "2026-09-10T10:27:13",
+ "ran_at": "2026-09-11T21:04:31",
  "floor": "price_book",
  "applied": false,
  "checked": 219,
@@ -27,56 +27,6 @@
    "stress_margin": 14.0,
    "freight_headroom": 9.36,
    "freight": 8.31
-  },
-  {
-   "product": "Wagvive 3-in-1 Travel Bowl",
-   "variant": "Green / 450 ml",
-   "sku": "CJPB26582870002",
-   "price": 17.99,
-   "margin": 25.0,
-   "stress_margin": 18.0,
-   "freight_headroom": 1.31,
-   "freight": 0.0
-  },
-  {
-   "product": "Wagvive 3-in-1 Travel Bowl",
-   "variant": "Blue / 450 ml",
-   "sku": "CJPB26582870003",
-   "price": 17.99,
-   "margin": 25.0,
-   "stress_margin": 18.0,
-   "freight_headroom": 1.31,
-   "freight": 0.0
-  },
-  {
-   "product": "Wagvive 3-in-1 Travel Bowl",
-   "variant": "Green / 650 ml",
-   "sku": "CJPB26582870006",
-   "price": 17.99,
-   "margin": 25.0,
-   "stress_margin": 18.0,
-   "freight_headroom": 1.31,
-   "freight": 0.0
-  },
-  {
-   "product": "Wagvive 3-in-1 Travel Bowl",
-   "variant": "Blue / 650 ml",
-   "sku": "CJPB26582870007",
-   "price": 17.99,
-   "margin": 25.0,
-   "stress_margin": 18.0,
-   "freight_headroom": 1.31,
-   "freight": 0.0
-  },
-  {
-   "product": "Wagvive 3-in-1 Travel Bowl",
-   "variant": "Yellow / 650 ml",
-   "sku": "CJPB26582870008",
-   "price": 17.99,
-   "margin": 25.0,
-   "stress_margin": 18.0,
-   "freight_headroom": 1.31,
-   "freight": 0.0
   },
   {
    "product": "Wagvive Anti-Spill Floating Water Bowl",
@@ -1043,10 +993,10 @@
    "variant": "Light Brown",
    "sku": "CJYD233200804DW",
    "price": 9.99,
-   "margin": 25.0,
-   "stress_margin": 15.6,
-   "freight_headroom": 5.66,
-   "freight": 4.94
+   "margin": 17.1,
+   "stress_margin": 6.7,
+   "freight_headroom": 5.61,
+   "freight": 5.36
   },
   {
    "product": "Wagvive Pumpkin Chew Toy",
