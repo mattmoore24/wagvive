@@ -6,6 +6,24 @@
 
 **Last updated:** 2026-09-11. TikTok Shop is OUT for the China catalogue (TikTok's rule); OWNER DECISION: TikTok ADS to wagvive.com instead. Three US-warehouse pages corrected. Origin bug fixed for all pricing; Mitt held at $9.99 by decision.
 
+## 2026-09-14: the failed 6-hourly run, and the gap behind it
+
+* **Run #159 (2026-09-13 16:29 UTC) failed on ONE Shopify `HTTP 500
+  {"errors":"Internal Server Error"}`** inside `fix_locations.py --apply`,
+  whose helper retried only 429. The next three runs passed untouched, so the
+  store was never wrong. Read from the job log in the owner's signed-in
+  browser (Actions logs need a login even on a public repo).
+* **Every step had the same gap, in six drifted copies.** `sync_inventory` and
+  `margin_guard` did not retry at all, not even 429; `guard_unshippable`,
+  `kit_margins`, `verify_kit_inventory` retried 429 at most. All five now go
+  through `config/shopify_http.urlopen_json()`: retries 429/500/502/503/504
+  and dropped connections with backoff, raises any other status at once.
+  `fix_locations` got the same policy locally, plus "404 on a DELETE retry
+  means the first attempt landed". Safe because every call in the job is a
+  read, a GraphQL query, or `inventory_levels/set` (absolute, repeatable).
+  Tested offline against simulated 500/503/drop/422; `verify_kit_inventory`
+  passed live through the new helper.
+
 ## 2026-09-11, part 2: warehouse notes, and the origin bug behind them
 
 * **Three product pages told a small untruth.** Travel Bowl, Automatic Ball

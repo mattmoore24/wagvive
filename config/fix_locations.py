@@ -23,7 +23,7 @@ not report double the real figure.
     python config/fix_locations.py           # report only
     python config/fix_locations.py --apply
 """
-import json, os, sys, time, urllib.error, urllib.request
+import http.client, json, os, sys, time, urllib.error, urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cj_api
@@ -44,6 +44,15 @@ DOMAIN, TOKEN, VERSION = (env['SHOPIFY_STORE_DOMAIN'],
                           env['SHOPIFY_API_VERSION'])
 
 
+# Shopify answers the occasional one-off 5xx. Run #159 of the scheduled job
+# (2026-09-13 16:29 UTC) failed here on a single `HTTP 500 {"errors":"Internal
+# Server Error"}` because only 429 was retried; the next three runs passed
+# untouched. Every write below is safe to repeat: `set` writes an absolute
+# figure, `connect` on a connected item is a no-op, and a DELETE that landed
+# before the error answers 404 on the retry, which is success.
+RETRY_STATUS = (429, 500, 502, 503, 504)
+
+
 def api(method, path, payload=None, tries=6):
     """Shopify caps REST at 2 calls/second and answers 429 past that. This walks
     the whole catalogue variant by variant, so it WILL hit the cap without a
@@ -59,11 +68,14 @@ def api(method, path, payload=None, tries=6):
                 time.sleep(0.55)
                 return json.loads(body) if body.strip() else {}
         except urllib.error.HTTPError as exc:
-            if exc.code == 429 and attempt < tries - 1:
+            if method == 'DELETE' and exc.code == 404 and attempt > 0:
+                return {}                    # the earlier attempt already deleted it
+            if exc.code in RETRY_STATUS and attempt < tries - 1:
                 time.sleep(2.0 * (attempt + 1))
                 continue
             raise
-        except urllib.error.URLError:
+        except (urllib.error.URLError, ConnectionError, TimeoutError,
+                http.client.HTTPException):
             if attempt < tries - 1:
                 time.sleep(2.0 * (attempt + 1))
                 continue

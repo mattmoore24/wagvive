@@ -64,20 +64,21 @@ query($id: ID!) {
 """
 
 
+import shopify_http  # noqa: E402  one retry policy for the whole job
+
+
 def gql(query, variables):
     body = json.dumps({'query': query, 'variables': variables}).encode()
     req = urllib.request.Request(
         f'https://{DOMAIN}/admin/api/{VERSION}/graphql.json', data=body, method='POST',
         headers={'X-Shopify-Access-Token': TOKEN, 'Content-Type': 'application/json'})
-    with urllib.request.urlopen(req, timeout=90) as r:
-        return json.loads(r.read().decode())
+    return shopify_http.urlopen_json(req, timeout=90)
 
 
 def api(path):
     req = urllib.request.Request(f'https://{DOMAIN}/admin/api/{VERSION}/{path}',
                                  headers={'X-Shopify-Access-Token': TOKEN})
-    with urllib.request.urlopen(req, timeout=90) as r:
-        return json.loads(r.read().decode())
+    return shopify_http.urlopen_json(req, timeout=90)
 
 
 def cj_lookup(sku):

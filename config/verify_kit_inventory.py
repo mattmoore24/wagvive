@@ -111,14 +111,16 @@ query($id: ID!) {
 '''
 
 
+import shopify_http  # noqa: E402  one retry policy for the whole job
+
+
 def gql(q, v=None):
     body = json.dumps({'query': q, 'variables': v or {}}).encode()
     rq = urllib.request.Request(f'https://{D}/admin/api/{V}/graphql.json',
                                 data=body, method='POST',
                                 headers={'X-Shopify-Access-Token': T,
                                          'Content-Type': 'application/json'})
-    with urllib.request.urlopen(rq, timeout=180) as r:
-        out = json.loads(r.read().decode())
+    out = shopify_http.urlopen_json(rq, timeout=180)
     if out.get('errors'):
         raise SystemExit(json.dumps(out['errors'])[:600])
     time.sleep(0.4)

@@ -95,13 +95,15 @@ DOMAIN, TOKEN, VERSION = (env['SHOPIFY_STORE_DOMAIN'],
                           env['SHOPIFY_API_VERSION'])
 
 
+import shopify_http  # noqa: E402  one retry policy for the whole job
+
+
 def api(method, path, payload=None):
     url = f'https://{DOMAIN}/admin/api/{VERSION}/{path}'
     data = json.dumps(payload).encode() if payload is not None else None
     req = urllib.request.Request(url, data=data, method=method, headers={
         'X-Shopify-Access-Token': TOKEN, 'Content-Type': 'application/json'})
-    with urllib.request.urlopen(req, timeout=120) as r:
-        return json.loads(r.read().decode() or '{}')
+    return shopify_http.urlopen_json(req)
 
 
 def upper_days(aging):

@@ -64,24 +64,19 @@ DOMAIN, TOKEN, VERSION = (env['SHOPIFY_STORE_DOMAIN'],
 SHOP = env.get('SHOPIFY_PUBLIC_DOMAIN', 'wagvive.com')
 
 
+import shopify_http  # noqa: E402  one retry policy for the whole job
+
+
 def api(path, method='GET', payload=None):
     data = json.dumps(payload).encode() if payload else None
     req = urllib.request.Request(
         f'https://{DOMAIN}/admin/api/{VERSION}/{path}', data=data,
         method=method, headers={'X-Shopify-Access-Token': TOKEN,
                                 'Content-Type': 'application/json'})
-    for attempt in range(5):
-        try:
-            with urllib.request.urlopen(req, timeout=120) as r:
-                raw = r.read().decode()
-            time.sleep(0.55)
-            return json.loads(raw) if raw.strip() else {}
-        except urllib.error.HTTPError as e:
-            if e.code == 429 and attempt < 4:
-                time.sleep(2 ** attempt)
-                continue
-            raise SystemExit(f'{method} {path}: {e.code} {e.read().decode()[:300]}')
-    return {}
+    try:
+        return shopify_http.urlopen_json(req, pause=0.55)
+    except urllib.error.HTTPError as e:
+        raise SystemExit(f'{method} {path}: {e.code} {e.read().decode()[:300]}')
 
 
 # CJ's codes for "this product is gone", as distinct from "I have no answer".
