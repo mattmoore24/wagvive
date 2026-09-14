@@ -26,8 +26,12 @@ text, repeated on CJ's product page):
 
   * Size6 exists as a SKU but is on no chart anywhere, so it is not sold. The
     owner chose "XS only if its measurements can be confirmed"; they cannot.
-  * CJ 10 and 16 land between bands already served and are retired, as the
-    scale requires, so each letter is one obvious choice.
+  * CJ 10 and 16 are not sold because the scale allows one supplier size per
+    letter. They are NOT redundant: they are the only sizes for chests of 50
+    to 61 cm and 82 to 90 cm, which S/M and L/XL leave open, so the size
+    guide names both gaps and says to size up (corrected after review).
+  * M is CJ 12 on band coverage (61 to 70 of M's 55 to 70) rather than CJ 10
+    (55 to 60 only); the midpoints are a near tie.
 
 MONEY. Live LuWei Ordinary US quotes, 2026-09-14, 20% duty:
 
@@ -92,18 +96,23 @@ VARIANTS = [
 ]
 OPTIONS = [('Size', ['S', 'M', 'L', 'XL'])]
 
+# NEWLINES BETWEEN BLOCKS ARE LOAD-BEARING. Shopify's structured data strips
+# the tags without adding a space, so '</p><p>' became "included.A padded" in
+# the JSON-LD description that search and shopping snippets read. The Big Dog
+# Costume's body has a newline between every block, which is why it reads
+# cleanly.
 BODY = (
- '<p><strong>A hot dog, with the dog included.</strong></p>'
+ '<p><strong>A hot dog, with the dog included.</strong></p>\n'
  '<p>A padded bun wraps around your dog’s middle, with a plump sausage, a '
  'squiggle of mustard and a ruffle of lettuce running along the back. It '
  'fastens with hook and loop tape, so it goes on in seconds and there is '
- 'nothing to pull over the head.</p>'
- '<ul>'
- '<li>Sizes S to XL, from a Shih Tzu to a Great Dane</li>'
+ 'nothing to pull over the head.</p>\n'
+ '<ul>\n'
+ '<li>Sizes S to XL, from a Shih Tzu to a Great Dane</li>\n'
  '<li>Soft padded bun with sesame dots, a plush sausage with mustard, and '
- 'green lettuce trim</li>'
- '<li>Hook and loop fastening, and the head, legs and tail stay free</li>'
- '</ul>')
+ 'green lettuce trim</li>\n'
+ '<li>Hook and loop fastening, and the head, legs and tail stay free</li>\n'
+ '</ul>\n')
 
 SEO_TITLE = 'Hot Dog Costume for Dogs, Sizes S to XL | Wagvive'
 SEO_DESC = ('A padded hot dog bun costume for dogs, with a plush sausage, '

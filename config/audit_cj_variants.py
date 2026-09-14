@@ -6,7 +6,8 @@ Feeds the imagery/sizing audit: for each SPU it records the full variant list
 (so missing sizes show up), each variant's key, dimensions and weight, and the
 supplier description HTML, which is where CJ hides its size charts.
 
-Query CJ by SPU (`sku[:11]`), NOT by variant SKU — the variant SKU returns
+Query CJ by SPU (`cj_sku.spu(sku)`, which is `sku[:11]` only for
+unhyphenated SKUs), NOT by variant SKU — the variant SKU returns
 "Product not found".
 
 Usage:

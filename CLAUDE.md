@@ -110,7 +110,12 @@ store-level Not Sync is the real guarantee.
 **Duplicate-source check:** before creating any product, verify the CJ SPU is
 not already used by an existing product — a duplicate slipped through once
 because the audit compared titles, not source SKUs. The margin/catalog audits
-now must compare `sku[:11]` across the catalogue.
+now must compare the SPU, `cj_sku.spu(sku)`, across the catalogue. **Not
+`sku[:11]`:** that rule said `[:11]` until 2026-09-14, when the Hot Dog Costume
+arrived with a 13 character SPU and hyphenated variant SKUs
+(`CJJJCWGD00035-8`). `[:11]` made it "CJJJCWGD000", CJ answered "product not
+found", the old shipping guard filed that as a delisting, and a scheduled run
+took the new product off sale within minutes of launch.
 
 Rules:
 - Stock lives at `Shop location` only. `config/fix_locations.py --apply` strips
@@ -329,6 +334,13 @@ visible is an accepted, deliberate trade for unlimited Actions minutes.
 Verify against the live system, not the tool's return value: re-fetch the object,
 load the storefront, check the rendered HTML. Several "successful" writes in this
 project's history did nothing.
+
+**Push before you publish.** The 6-hourly job runs the code on `origin/main`,
+not the working copy. If a new product needs a code change to be read
+correctly, commit and push that change BEFORE the product goes live. On
+2026-09-14 the Hot Dog Costume was published with its hyphenated-SKU fix still
+uncommitted; a scheduled run started 4.5 minutes later on the old code, filed
+the product as delisted and took all four sizes off sale.
 
 For a variant-level write (price, inventory), re-fetch the SPECIFIC variant by
 ID (`variants/{id}.json`), not the product's embedded variant list

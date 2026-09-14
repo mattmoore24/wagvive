@@ -186,8 +186,19 @@ MAP = {
  #   16: 80-95 / 48   18: 90-102 / 55   (cm)
  # Size6 exists as a SKU but appears on NO chart, so it is not sold (owner
  # decision: XS only if its measurements could be confirmed; they could not).
- # 10 and 16 sit between bands already served and are retired, as the scale
- # requires. Identity `keep`, for the same reason as the vest above.
+ #
+ # 10 AND 16 ARE NOT SOLD, BUT NOT BECAUSE THEY DUPLICATE A BAND. The scale
+ # allows one supplier size per letter, and four letters (S to XL) span a
+ # chart CJ splits six ways. 10 (50 to 60) and 16 (80 to 95) are the ONLY
+ # sizes covering chests of 50 to 61 cm and 82 to 90 cm, which our S/M and
+ # L/XL leave open. The size guide names both gaps and says to size up. The
+ # first version of this comment said they "sit between bands already
+ # served"; a review on 2026-09-14 caught that it was false.
+ #
+ # M IS CJ 12 ON BAND COVERAGE, NOT THE MIDPOINT RULE ABOVE. Midpoints are a
+ # near tie (12's 70.5 is 8.0 cm from M's 62.5, 10's 55 is 7.5 cm), so
+ # coverage decides: 12 serves 61 to 70 of M's 55 to 70, 10 only 55 to 60.
+ # Identity `keep`, for the same reason as the vest above.
  'wagvive-hot-dog-costume': dict(
      basis='costume bust cm from the maker chart in the CJ description',
      keep={'S': 'S', 'M': 'M', 'L': 'L', 'XL': 'XL'},
@@ -196,7 +207,9 @@ MAP = {
      supplier_retired=['Size6', '10', '16'],
      note='S to XL, no XS: CJ publishes no measurements for its smallest '
           'size. The maker gives M a 61 to 80 cm bust and L 70 to 82 cm, an '
-          'overlap the hook and loop fastening absorbs; weight decides.'),
+          'overlap the hook and loop fastening absorbs; weight decides. '
+          'Chests of 50 to 61 and 82 to 90 cm fall between sizes we sell; '
+          'the guide says so and says to size up.'),
 }
 
 # The Sofa & Furniture Cover is deliberately NOT on this scale. It is sized to

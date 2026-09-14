@@ -136,9 +136,13 @@ NOTE = {
  'wagvive-hot-dog-costume':
     'The bun sits along your dog’s back and fastens with hook and loop tape, '
     'so it adjusts, which is why the maker’s chest ranges for M and L '
-    'overlap. If your dog fits both, go by weight. It starts at S: the maker '
-    'publishes no measurements for a smaller size, so we do not sell one '
-    'rather than guess. For a toy breed see the Pumpkin Hoodie.',
+    'overlap. If your dog fits both, go by weight. No size we sell is '
+    'measured for a chest of 19.7 to 24 in (50 to 61 cm) or 32.3 to 35.4 in '
+    '(82 to 90 cm). If your dog measures in one of those ranges, choose the '
+    'size above: it will sit a little loose, and the tape still fastens. It '
+    'starts at S: the maker publishes no measurements for a smaller size, so '
+    'we do not sell one rather than guess. For a toy breed see the Pumpkin '
+    'Hoodie.',
  'wagvive-calming-hooded-anxiety-vest':
     'A calming vest has to be SNUG to do anything, so this is the one product '
     'in the store where measuring is worth the two minutes. It runs XS to L '

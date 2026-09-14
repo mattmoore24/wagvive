@@ -42,9 +42,29 @@
   and all the China-shipped stock TikTok Shop US forbids. The new costume was
   deliberately NOT published there (owner: hold on TikTok). Decide whether
   that channel should carry anything before TikTok work resumes.
-* **Scheduled job:** GitHub did not run the 18:17 UTC slot at all (last run
-  12:57 UTC). A scheduling delay, not a failure; the retry fix from part 1 is
-  still waiting for its first real run.
+* **INCIDENT, my ordering: the costume went live BEFORE the hyphen fix was
+  pushed.** Scheduled run 34901224919 started 21:53 UTC, 4.5 minutes after
+  launch, on the old code (97c8d9e). Its `sku[:11]` made the SPU
+  "CJJJCWGD000", CJ answered "product not found", the guard filed that as a
+  DELISTING, zeroed all four sizes and failed the job (owner got a failure
+  email). Fixed: pushed in 6fbb68b, stock restored from CJ at Shop location
+  (11,220 / 11,135 / 12,691 / 12,783), the FIXED guard re-run report-only at
+  100% coverage (223/223) with every variant shippable, storefront buyable
+  again. **Lesson: push code that the scheduled job needs BEFORE publishing
+  anything that depends on it.** The job runs on origin/main, not on disk.
+* **Review (24-agent, each finding double-checked) fixes applied:** the size
+  guide now names the two chest ranges no size we sell covers (50 to 61 and
+  82 to 90 cm, which CJ 10 and 16 would have) and says to size up; the size
+  mapping comments no longer claim 10/16 were redundant; description blocks
+  newline-separated so the structured data no longer reads "included.A
+  padded"; CLAUDE.md's `sku[:11]` rule rewritten to `cj_sku.spu`. Still
+  site-wide and older than this: every product's delivery block joins as
+  "business days.We ship" in structured data (DELIVERY + DELIVERY_NOTE with
+  no separator); `apply_delivery_promise.py` compares without whitespace so
+  a fix there needs a forced rewrite.
+* **Scheduled job:** GitHub skipped the 18:17 UTC slot entirely and ran the
+  next one at 21:53, late. The retry fix from part 1 has still not had a
+  clean run to prove it; check the next one.
 
 ## 2026-09-14: second Halloween sweep, six products recommended (NOT yet added)
 
