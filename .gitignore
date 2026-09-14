@@ -47,3 +47,6 @@ desktop.ini
 # Shopify app client_secret (found 2026-08-19 while auditing whether this
 # repo could safely be made public). The "local" in the name means local.
 .claude/settings.local.json
+
+# Sourcing working file: holds local image paths (with the Windows username). Never commit.
+config/scout_halloween_costed.json

@@ -6,6 +6,25 @@
 
 **Last updated:** 2026-09-11. TikTok Shop is OUT for the China catalogue (TikTok's rule); OWNER DECISION: TikTok ADS to wagvive.com instead. Three US-warehouse pages corrected. Origin bug fixed for all pricing; Mitt held at $9.99 by decision.
 
+## 2026-09-14: second Halloween sweep, six products recommended (NOT yet added)
+
+* Full write-up with live numbers: `docs/halloween-sweep-2026-09.md`. Owner has
+  NOT yet chosen which to add; nothing was created.
+* **CJ `/product/listV2` can source; the old note saying CJ's API cannot was
+  about `/product/list`.** listV2 does real keyword search and sorts by
+  `listedNum` (orderBy=1, sort=desc), 100 rows a page, 50 points a call.
+  `config/scout_halloween.py` (sweep, `--refilter` re-filters the saved sweep
+  with no CJ calls) then `config/cost_halloween.py` (live cost, freight and
+  20% price per candidate; photos saved OUTSIDE the repo).
+* **REST `products.json?status=any` returns ZERO products.** Omit `status` to
+  get every status. The sweep's first duplicate check silently compared
+  against nothing because of it.
+* Shortlist, all clearing 20% on live quotes for every kept variant: Deadly
+  Doll costume $21.99, padded Hot Dog costume $19.99/$21.99/$25.99 by size
+  (only large-dog costume found), Bat Wings $9.99, Halloween Collar $12.99,
+  Reversible Halloween Bandana $10.99, Skull Tutu Dress $12.99.
+* Safe last Halloween order date under the 10 to 16 day promise: Wed 7 Oct.
+
 ## 2026-09-14: the failed 6-hourly run, and the gap behind it
 
 * **Run #159 (2026-09-13 16:29 UTC) failed on ONE Shopify `HTTP 500
