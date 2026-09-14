@@ -179,6 +179,24 @@ MAP = {
           'XL: the largest size CJ makes stops at 88 lb and a 35 in chest, '
           'which is the top of our L. Selling it as XL would break the one '
           'promise the scale makes.'),
+
+ # Hot Dog Costume (2026-09-14): maker chart, in the CJ description text and on
+ # CJ's product page, gives bust and back length for sizes 8 to 18:
+ #   8: 40-50 / 23   10: 50-60 / 27   12: 61-80 / 32   14: 70-82 / 39
+ #   16: 80-95 / 48   18: 90-102 / 55   (cm)
+ # Size6 exists as a SKU but appears on NO chart, so it is not sold (owner
+ # decision: XS only if its measurements could be confirmed; they could not).
+ # 10 and 16 sit between bands already served and are retired, as the scale
+ # requires. Identity `keep`, for the same reason as the vest above.
+ 'wagvive-hot-dog-costume': dict(
+     basis='costume bust cm from the maker chart in the CJ description',
+     keep={'S': 'S', 'M': 'M', 'L': 'L', 'XL': 'XL'},
+     retire=[],
+     supplier={'S': '8', 'M': '12', 'L': '14', 'XL': 'Size18'},
+     supplier_retired=['Size6', '10', '16'],
+     note='S to XL, no XS: CJ publishes no measurements for its smallest '
+          'size. The maker gives M a 61 to 80 cm bust and L 70 to 82 cm, an '
+          'overlap the hook and loop fastening absorbs; weight decides.'),
 }
 
 # The Sofa & Furniture Cover is deliberately NOT on this scale. It is sized to

@@ -579,5 +579,16 @@
    "CJPC296312414NM": 20.99
   },
   "price": 20.99
+ },
+ "10546549326113": {
+  "title": "Wagvive Hot Dog Costume",
+  "variants": {
+   "CJJJCWGD00035-8": 19.99,
+   "CJJJCWGD00035-12": 20.99,
+   "CJJJCWGD00035-14": 20.99,
+   "CJJJCWGD00035-Size18": 25.99
+  },
+  "price": 25.99,
+  "floor_margin_pct": 20.0
  }
 }

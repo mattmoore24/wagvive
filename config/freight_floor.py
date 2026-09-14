@@ -212,11 +212,13 @@ def origin_for(sku, default='CN'):
     sku = str(sku or '')
     if not sku:
         return default
-    # Cached by SPU (sku[:11]), not by variant sku. A warehouse is a property of
-    # the PRODUCT, so all its variants share the answer, and margin_guard walks
+    # Cached by SPU, not by variant sku. A warehouse is a property of the
+    # PRODUCT, so all its variants share the answer, and margin_guard walks
     # 258 variants across about 38 SPUs. Keying per variant made this one stock
     # call each and pushed the scheduled job toward its 30 minute timeout.
-    spu = sku[:11]
+    # cj_sku.spu, not sku[:11]: hyphenated SKUs have longer SPUs.
+    import cj_sku
+    spu = cj_sku.spu(sku)
     if spu in _ORIGIN_CACHE:
         return _ORIGIN_CACHE[spu]
     lane = _booked_lane(spu)

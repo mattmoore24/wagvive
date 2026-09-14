@@ -6,7 +6,7 @@ gets a check, because "the write returned 200" has repeatedly not meant the
 store was correct:
 
   1. SKU RESOLUTION. Every Shopify variant SKU must resolve to a real CJ
-     variant under its SPU (sku[:11]). A variant CJ cannot see is a variant CJ
+     variant under its SPU (cj_sku.spu). A variant CJ cannot see is a variant CJ
      cannot fulfil, and it fails silently at order time, not at listing time.
   2. DUPLICATE SOURCES. No two products may share an SPU. One duplicate
      slipped through once because the audit compared titles, not source SKUs.
@@ -37,6 +37,7 @@ import json, os, re, sys, time, urllib.error, urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'config'))
 import cj_api
+import cj_sku
 import freight_floor
 
 SHOP_LOCATION = 113363058977
@@ -120,7 +121,7 @@ def main():
         if not skus:
             problems.append(f'{p["title"]}: no SKUs at all')
             continue
-        spus = {s[:11] for s in skus}
+        spus = {cj_sku.spu(s) for s in skus}
         if len(spus) > 1:
             warnings.append(f'{p["title"]}: spans {len(spus)} SPUs {sorted(spus)}')
         for spu in spus:
@@ -156,7 +157,7 @@ def main():
             sku = v.get('sku')
             if not sku:
                 continue
-            if sku not in cj_variants.get(sku[:11], {}):
+            if sku not in cj_variants.get(cj_sku.spu(sku), {}):
                 unresolved.append((p['title'], v['title'], sku))
     print(f'  {len(spu_owner)} distinct SPUs, '
           f'{sum(len(x) for x in cj_variants.values())} CJ variants seen')
@@ -228,7 +229,7 @@ def main():
     for p in singles:
         for v in p['variants']:
             sku = v.get('sku')
-            cv = cj_variants.get(str(sku)[:11], {}).get(sku)
+            cv = cj_variants.get(cj_sku.spu(sku), {}).get(sku)
             if not cv:
                 continue
             got = v.get('inventory_quantity') or 0
@@ -278,7 +279,7 @@ def main():
         nofreight = []
         for p in singles:
             sku = next((v['sku'] for v in p['variants'] if v.get('sku')), None)
-            cv = cj_variants.get(str(sku)[:11], {}).get(sku)
+            cv = cj_variants.get(cj_sku.spu(sku), {}).get(sku)
             if not cv:
                 continue
             # Origin comes from the STOCK ROWS, not the SKU prefix. The CJBQ
@@ -286,13 +287,10 @@ def main():
             # and US-warehoused, so quoting it from CN returns no carrier at all
             # and the product reads as unshippable when it ships next-day
             # domestically.
-            try:
-                rows = cj_api.call('/product/stock/queryBySku',
-                                   {'sku': sku}).get('data') or []
-            except Exception:
-                rows = []
-            origin = ('US' if any((x.get('countryCode') or '').upper() == 'US'
-                                  for x in rows) else 'CN')
+            # 2026-09-14: and not "any US row" either, which priced the China-
+            # shipped Pet Hair Remover Mitt as US stock. freight_floor.origin_for
+            # uses the carrier CJ actually books, the same answer pricing uses.
+            origin = freight_floor.origin_for(sku)
             # RETRY before believing CJ has no carriers. An empty answer from CJ
             # is not evidence of anything (CLAUDE.md) and this call had no retry,
             # so one transient empty response reported a live, perfectly

@@ -41,6 +41,7 @@ sys.path.insert(0, os.path.join(ROOT, 'config'))
 import cj_api                                            # noqa: E402
 import freight_floor                                    # noqa: E402
 from freight_floor import upper_days                     # noqa: E402
+import cj_sku                                           # noqa: E402
 
 MAX_DAYS = 12                       # the promise made site-wide and in email
 
@@ -102,7 +103,7 @@ def cj_vids():
     """
     out, delisted = {}, {}
     prods = api('products.json?limit=250&status=active')['products']
-    spus = {v['sku'][:11] for p in prods for v in p['variants'] if v.get('sku')}
+    spus = {cj_sku.spu(v['sku']) for p in prods for v in p['variants'] if v.get('sku')}
     for spu in sorted(spus):
         try:
             d = cj_api.call('/product/query', {'productSku': spu}) or {}
@@ -185,7 +186,7 @@ def main():
             # A delisting is a finding, not an unknown. No carrier can be
             # quoted for a product CJ has taken off the shelf, so falling
             # through to the quote below would only report "CJ did not answer".
-            if sku[:11] in delisted:
+            if cj_sku.spu(sku) in delisted:
                 bad.append({'product': p['title'], 'handle': p['handle'],
                             'variant': v['title'], 'sku': sku,
                             'variant_id': v['id'],

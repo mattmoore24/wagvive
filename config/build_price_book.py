@@ -102,7 +102,8 @@ def main():
         skus = [v['sku'] for v in p['variants'] if v.get('sku')]
         if not skus:
             continue
-        spu = skus[0][:11]
+        import cj_sku                   # not [:11]: see cj_sku.py
+        spu = cj_sku.spu(skus[0])
         d = cj_api.call('/product/query', {'productSku': spu}) or {}
         cj = {v.get('variantSku'): v for v in
               ((d.get('data') or {}).get('variants') or [])}

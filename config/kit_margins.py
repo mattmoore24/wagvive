@@ -89,7 +89,8 @@ def cj_lookup(sku):
     summing per-item parcels, which overstated the Dog Enrichment Kit's freight
     by 71% against the real invoice.
     """
-    r = cj_api.call('/product/query', {'productSku': str(sku)[:11]})
+    import cj_sku
+    r = cj_api.call('/product/query', {'productSku': cj_sku.spu(sku)})
     for v in ((r.get('data') or {}).get('variants') or []):
         if v.get('variantSku') == sku:
             raw = str(v.get('variantSellPrice') or '').split('-')[0]

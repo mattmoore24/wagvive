@@ -51,7 +51,8 @@
   "CJYD2529337": "LuWei Ordinary US",
   "CJYD2626864": "YunExpress Ordinary",
   "CJYD2640786": "LuWei Ordinary US",
-  "CJYD2754094": "LuWei Ordinary US"
+  "CJYD2754094": "LuWei Ordinary US",
+  "CJJJCWGD00035": "LuWei Ordinary US"
  },
  "_source": "Scraped from CJ's own Store Products -> Connected table on 2026-09-10, which is the booked carrier per connection. Previously hand-kept and covered only 19 of 48 live SPUs, so 30 products were priced against the cheapest carrier rather than the one actually booked. A carrier named here is still subject to freight_floor.credible_floor(): booking a carrier says WHICH carrier, not that its quoted price is real."
 }

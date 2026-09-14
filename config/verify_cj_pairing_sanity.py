@@ -74,7 +74,8 @@ def main():
         sku = next((v.get('sku') for v in p['variants'] if v.get('sku')), None)
         if not sku:
             continue                      # kits carry no SKU, by design
-        spu = sku[:11]
+        import cj_sku
+        spu = cj_sku.spu(sku)            # not sku[:11]: see cj_sku.py
         if spu in seen:
             continue
         seen.add(spu)

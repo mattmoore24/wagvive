@@ -95,6 +95,9 @@ FIT = {
  'wagvive-led-safety-halo-collar': ('Adjusts to fit a neck of', {
     'M': '14 to 16.5 in (36 to 42 cm)', 'L': '16 to 21 in (41 to 53 cm)',
     'XL': '17 to 23 in (43 to 58 cm)'}),
+ # From the maker chart in CJ's description (see size_scale.MAP).
+ 'wagvive-hot-dog-costume': ('Costume chest', {
+    'S': LR(40, 50), 'M': LR(61, 80), 'L': LR(70, 82), 'XL': LR(90, 102)}),
 }
 
 KIT_HANDLES = ['calm-comfort-kit', 'grooming-essentials-kit', 'new-puppy-kit',
@@ -130,6 +133,12 @@ NOTE = {
     'smallest size only closes down to a 14 in (36 cm) neck, which is larger '
     'than most toy and small breeds, so it is not the right buy for a '
     'chihuahua or a shih tzu.',
+ 'wagvive-hot-dog-costume':
+    'The bun sits along your dog’s back and fastens with hook and loop tape, '
+    'so it adjusts, which is why the maker’s chest ranges for M and L '
+    'overlap. If your dog fits both, go by weight. It starts at S: the maker '
+    'publishes no measurements for a smaller size, so we do not sell one '
+    'rather than guess. For a toy breed see the Pumpkin Hoodie.',
  'wagvive-calming-hooded-anxiety-vest':
     'A calming vest has to be SNUG to do anything, so this is the one product '
     'in the store where measuring is worth the two minutes. It runs XS to L '

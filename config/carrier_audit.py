@@ -67,7 +67,8 @@ def main():
     for p in api('products.json?limit=250&status=active')['products']:
         for v in p['variants']:
             if v.get('sku'):
-                live.setdefault(str(v['sku'])[:11], []).append((p['title'], v['title'], v['sku']))
+                import cj_sku      # not sku[:11]: hyphenated SKUs have longer SPUs
+                live.setdefault(cj_sku.spu(v['sku']), []).append((p['title'], v['title'], v['sku']))
 
     total_saving = 0.0
     for spu, rows in live.items():

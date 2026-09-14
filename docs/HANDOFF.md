@@ -6,6 +6,46 @@
 
 **Last updated:** 2026-09-11. TikTok Shop is OUT for the China catalogue (TikTok's rule); OWNER DECISION: TikTok ADS to wagvive.com instead. Three US-warehouse pages corrected. Origin bug fixed for all pricing; Mitt held at $9.99 by decision.
 
+## 2026-09-14, part 2: Hot Dog Costume added, live, paired to CJ
+
+* **Wagvive Hot Dog Costume** (`wagvive-hot-dog-costume`, id 10546549326113,
+  CJ SPU CJJJCWGD00035). Owner chose: Fall & Halloween collection only (there
+  is NO fall kit), and the store's XS to XL scale. Sizes **S $19.99, M $20.99,
+  L $20.99, XL $25.99** (CJ 8, 12, 14, Size18), worst 22.1%, the rest 24%, on
+  live LuWei Ordinary US quotes. The lowest 20%-clearing .99 prices left S/M/L
+  at 20.1 to 20.4%, 2 to 8 cents of freight from the floor, which would flake
+  the 6-hourly job; one step up gives about 80 cents of headroom.
+  **No XS:** CJ's Size6 is on no chart anywhere (checked the API and CJ's own
+  product page). CJ 10 and 16 retired per the scale. `config/add_hot_dog_costume.py`.
+* **Photos:** cream flat-lay (leads, wired to all 4 variants) plus two
+  lifestyle shots, a Golden Retriever and a Bichon, each at the proportion
+  CJ's own photos show. Art in the repo: `config/branding/fall/wagvive-hot-dog-costume.jpg`
+  and the new `config/branding/fall-lifestyle/`. FILENAMES MATTER:
+  `audit_fall_imagery.py` only counts an image as house art when the Shopify
+  filename starts with the handle; the first upload sent no filename and failed
+  it. `config/apply_hot_dog_images.py`.
+* **Size guide** written by `apply_size_guides.guide_for()` from inside the
+  publish step, because `apply_size_guides.py --apply` walks ACTIVE products
+  only and so could not reach the draft (a deadlock with "no publish without
+  a guide").
+* **CJ pairing done** in the owner's Chrome: S/M/L/XL to CJJJCWGD00035-8/-12/
+  -14/-Size18, LuWei Ordinary US, verified in CJ's Connected table.
+  `carriers.json` and `price_book.json` (floor 20.0) updated.
+* **HYPHENATED SKUs broke the repo-wide `sku[:11]` assumption.** This SPU is
+  13 characters and its variants carry a hyphen, so `[:11]` gave
+  "CJJJCWGD000", which the margin guard, shipping guard, carrier lookup and
+  CJ audits would each have silently skipped. New `config/cj_sku.spu()`;
+  every live and audit script switched to it. Historic one-off scripts still
+  say `[:11]` and are fine for the SKUs they were written for.
+* **TIKTOK, FOR THE OWNER (nothing changed):** 48 of 54 active products are
+  published to the Shopify "TikTok" sales channel, including sub-20% items
+  and all the China-shipped stock TikTok Shop US forbids. The new costume was
+  deliberately NOT published there (owner: hold on TikTok). Decide whether
+  that channel should carry anything before TikTok work resumes.
+* **Scheduled job:** GitHub did not run the 18:17 UTC slot at all (last run
+  12:57 UTC). A scheduling delay, not a failure; the retry fix from part 1 is
+  still waiting for its first real run.
+
 ## 2026-09-14: second Halloween sweep, six products recommended (NOT yet added)
 
 * Full write-up with live numbers: `docs/halloween-sweep-2026-09.md`. Owner has

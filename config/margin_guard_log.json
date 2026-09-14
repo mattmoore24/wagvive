@@ -1,9 +1,9 @@
 {
- "ran_at": "2026-09-11T21:04:31",
+ "ran_at": "2026-09-14T17:58:37",
  "floor": "price_book",
  "applied": false,
- "checked": 219,
- "expected": 219,
+ "checked": 223,
+ "expected": 223,
  "coverage": 1.0,
  "breaches": [],
  "unresolved": [],
@@ -527,6 +527,46 @@
    "stress_margin": 17.7,
    "freight_headroom": 11.98,
    "freight": 9.56
+  },
+  {
+   "product": "Wagvive Hot Dog Costume",
+   "variant": "S",
+   "sku": "CJJJCWGD00035-8",
+   "price": 19.99,
+   "margin": 24.0,
+   "stress_margin": 15.3,
+   "freight_headroom": 7.0,
+   "freight": 5.75
+  },
+  {
+   "product": "Wagvive Hot Dog Costume",
+   "variant": "M",
+   "sku": "CJJJCWGD00035-12",
+   "price": 20.99,
+   "margin": 24.0,
+   "stress_margin": 15.2,
+   "freight_headroom": 7.77,
+   "freight": 6.46
+  },
+  {
+   "product": "Wagvive Hot Dog Costume",
+   "variant": "L",
+   "sku": "CJJJCWGD00035-14",
+   "price": 20.99,
+   "margin": 24.1,
+   "stress_margin": 15.3,
+   "freight_headroom": 7.77,
+   "freight": 6.44
+  },
+  {
+   "product": "Wagvive Hot Dog Costume",
+   "variant": "XL",
+   "sku": "CJJJCWGD00035-Size18",
+   "price": 25.99,
+   "margin": 22.1,
+   "stress_margin": 13.4,
+   "freight_headroom": 8.27,
+   "freight": 7.1
   },
   {
    "product": "Wagvive Jack-o-Lantern Sweater",

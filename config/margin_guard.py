@@ -96,6 +96,7 @@ DOMAIN, TOKEN, VERSION = (env['SHOPIFY_STORE_DOMAIN'],
 
 
 import shopify_http  # noqa: E402  one retry policy for the whole job
+import cj_sku        # noqa: E402  SPU of a variant SKU, hyphen-aware
 
 
 def api(method, path, payload=None):
@@ -145,7 +146,7 @@ def live_cj_costs(skus):
     `kit_margins.cj_lookup` already returned a 3-tuple for the same reason.
     """
     out = {}
-    spus = {str(s)[:11] for s in skus if s}
+    spus = {cj_sku.spu(s) for s in skus if s}      # not s[:11]: see cj_sku.py
     for spu in sorted(spus):
         r = cj_api.call('/product/query', {'productSku': spu})
         for v in ((r.get('data') or {}).get('variants') or []):
@@ -251,7 +252,7 @@ def best_freight(vid, start, sku='', weight_g=None):
     # below: 0.75 x a China airfreight line is not a credible floor for a US
     # domestic shipment, and would reject real US quotes as placeholders.
     floor = freight_floor.credible_floor(weight_g if start != 'US' else None)
-    want = SELECTED_CARRIER.get(str(sku)[:11])
+    want = SELECTED_CARRIER.get(cj_sku.spu(sku))
     for o in opts:
         if want and str(o.get('logisticName')).strip() == want:
             p = o.get('logisticPrice')
