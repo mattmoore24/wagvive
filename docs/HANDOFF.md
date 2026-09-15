@@ -32,7 +32,9 @@
 * **ADS MANAGER AUTOMATION TRAPS (cost time on 2026-09-14):** `ctrl+a`
   selects the WHOLE PAGE when no input really has focus, and keystrokes that
   land on the page can open a "Publish draft items?" dialog: close it with its
-  own Close button, NEVER Publish. Set text fields with the native value
+  own Close button, NEVER Publish. **Escape opens that dialog too** (it means
+  "leave the editor"), so never press Escape to dismiss a picker in the
+  campaign editor; check for the dialog before every click on Next. Set text fields with the native value
   setter plus an `input` event, not by typing. The schedule's `mm/dd/yyyy`
   inputs have zero size (hidden behind calendar buttons), so typing into them
   does nothing. The form scrolls inside its own panel; mouse-wheel over the
