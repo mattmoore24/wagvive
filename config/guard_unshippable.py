@@ -84,6 +84,30 @@ def api(path, method='GET', payload=None):
 # 1602002 is "Product has been removed from shelves"; 1602001 is "Product not
 # found". Both are DEFINITIVE NEGATIVES and must not be filed under unknown.
 DELISTED_CODES = {1602002, 1602001}
+NOT_FOUND_CODE = 1602001
+
+
+def sku_exists(sku):
+    """True if CJ still answers for this exact variant SKU.
+
+    DEFENCE IN DEPTH, added 2026-09-14. "Product not found" (1602001) is only a
+    definitive negative if the SPU we asked about is the right one. On that day
+    the SPU was derived as sku[:11] from a hyphenated SKU (CJJJCWGD00035-8 ->
+    "CJJJCWGD000"), CJ correctly said "not found", this guard filed it as a
+    delisting, zeroed a product that had gone live minutes earlier and failed
+    the job. cj_sku.spu() fixed the derivation; this makes the guard refuse to
+    zero anything on "not found" while the SKU itself still resolves, so the
+    NEXT derivation bug costs a warning instead of a product.
+    """
+    if not sku:
+        return False
+    try:
+        rows = cj_api.call('/product/stock/queryBySku', {'sku': sku}).get('data')
+    except cj_api.CJQuotaExhausted:
+        raise
+    except Exception:
+        return False
+    return isinstance(rows, list) and bool(rows)
 
 
 def cj_vids():
@@ -103,11 +127,22 @@ def cj_vids():
     """
     out, delisted = {}, {}
     prods = api('products.json?limit=250&status=active')['products']
-    spus = {cj_sku.spu(v['sku']) for p in prods for v in p['variants'] if v.get('sku')}
+    sample = {}
+    for p in prods:
+        for v in p['variants']:
+            if v.get('sku'):
+                sample.setdefault(cj_sku.spu(v['sku']), v['sku'])
+    spus = set(sample)
     for spu in sorted(spus):
         try:
             d = cj_api.call('/product/query', {'productSku': spu}) or {}
             if d.get('code') in DELISTED_CODES and not d.get('result'):
+                if d.get('code') == NOT_FOUND_CODE and sku_exists(sample.get(spu)):
+                    print(f'  ! {spu}: CJ says "not found" for the SPU, but its '
+                          f'SKU {sample[spu]} still resolves. Treated as UNKNOWN, '
+                          f'NOT delisted: the SPU was probably derived wrongly '
+                          f'(see config/cj_sku.py).')
+                    continue
                 delisted[spu] = d.get('message') or f"CJ code {d.get('code')}"
             data = d.get('data')
             if isinstance(data, list):
