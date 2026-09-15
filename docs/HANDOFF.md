@@ -6,6 +6,45 @@
 
 **Last updated:** 2026-09-11. TikTok Shop is OUT for the China catalogue (TikTok's rule); OWNER DECISION: TikTok ADS to wagvive.com instead. Three US-warehouse pages corrected. Origin bug fixed for all pricing; Mitt held at $9.99 by decision.
 
+## 2026-09-14, part 3: Meta / Instagram audit, and the first Meta campaign (DRAFT)
+
+* **Instagram connection: confirmed.** All 55 active products are published
+  to Shopify's Facebook & Instagram channel. Meta catalog 1366548401518894
+  (commerce account 1420420603480544) holds all 55 products / 262 items, every
+  item Eligible and In stock; its only "issue" is "Products without video"
+  (262), a tip. Instagram and Facebook shops both live (last edited Aug 10).
+  Website footer + Organization sameAs already link Instagram, TikTok and
+  Pinterest (verified live today).
+* **Hot dog "no size S on Instagram" (owner report):** Meta shows S Eligible /
+  In stock / $19.99, updated 6:23 PM ET, after the incident restore. The gap was
+  the stale-code run zeroing all sizes (part 2); Instagram lags the catalog.
+  Meta's Commerce Manager list is VIRTUALISED (about 8 rows drawn) and its
+  AI search persists a hidden filter in the URL: the Big Dog Costume looked like
+  "4 of 7" only because of that filter. Use "Add filter > Issues" to audit.
+* **Ad account 300113527844230:** CAN advertise now (a boosted Instagram post
+  ran on it; the August "not allowed to advertise" restriction is gone).
+  **No payment method on file**, and **Meta caps it at $20/day** for now. An
+  "Act now: verification may be required soon" banner: owner-only identity step.
+* **Pixel/dataset 1770353747621287:** PageView, AddToCart, InitiateCheckout
+  active browser + server. **Purchase last received 12 days ago**: order #1005
+  (Google free listing, iPhone Safari) never reached Meta. Likely browser
+  privacy, one order; watch it once ads run.
+* **ADS MANAGER AUTOMATION TRAPS (cost time on 2026-09-14):** `ctrl+a`
+  selects the WHOLE PAGE when no input really has focus, and keystrokes that
+  land on the page can open a "Publish draft items?" dialog: close it with its
+  own Close button, NEVER Publish. Set text fields with the native value
+  setter plus an `input` event, not by typing. The schedule's `mm/dd/yyyy`
+  inputs have zero size (hidden behind calendar buttons), so typing into them
+  does nothing. The form scrolls inside its own panel; mouse-wheel over the
+  form works, `scrollIntoView` on the label does not. Dropdown options are not
+  `role=option`; click them by screen position after a screenshot.
+* **OWNER DECISIONS for the first campaign:** Sales objective, Advantage+
+  (Meta-chosen) placements, WHOLE catalog (owner chose it over the 38-product
+  profitable set, knowing 14 singles + 3 kits lose money per ad sale), $100
+  total at Meta's $20/day cap over 5 days (built as a $100 LIFETIME budget so
+  it cannot exceed $100). Break-even ad cost per first order is only $1.80 to
+  $5.60 on singles: this is a learning test, not expected profit.
+
 ## 2026-09-14, part 2: Hot Dog Costume added, live, paired to CJ
 
 * **Wagvive Hot Dog Costume** (`wagvive-hot-dog-costume`, id 10546549326113,
