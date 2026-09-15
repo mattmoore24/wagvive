@@ -29,6 +29,20 @@
   active browser + server. **Purchase last received 12 days ago**: order #1005
   (Google free listing, iPhone Safari) never reached Meta. Likely browser
   privacy, one order; watch it once ads run.
+* **THE DRAFT, as left (all "In draft", "Review and publish (3)", NOTHING
+  published):** campaign 120249722617000381 "Wagvive Advantage+ Sales,
+  catalog test, Sep 2026" (Sales, Advantage+ on, LIFETIME $100, highest
+  volume); ad set 120249722616990381 "Whole catalog, US, Advantage+" (Website,
+  pixel "Shopify: abezff5d 1786059759 business's pixel", event PURCHASE, US,
+  18+, Advantage+ audience and placements); ad 120249722617010381 "New Sales
+  Ad" (catalog carousel, All Products, Page: Wagvive).
+  **Before publishing:** (1) owner adds a payment method; (2) owner connects
+  the @wagvive Instagram profile in the ad's Identity ("Connect profile" needs
+  an Instagram login; until then Instagram placements show the Facebook Page);
+  (3) owner does the verification banner (recommended); (4) THEN set the
+  schedule to launch day through launch day + 5 (it still says Sep 14 to
+  Oct 14, which would pace the $100 at about $3/day), and publish only on the
+  owner's explicit go.
 * **ADS MANAGER AUTOMATION TRAPS (cost time on 2026-09-14):** `ctrl+a`
   selects the WHOLE PAGE when no input really has focus, and keystrokes that
   land on the page can open a "Publish draft items?" dialog: close it with its
